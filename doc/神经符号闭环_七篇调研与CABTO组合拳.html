@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神经符号闭环：七篇论文横向对比与 CABTO 落地路线</title>
+<style>
+:root{
+  --ink:#14202e; --ink2:#3a4c60; --muted:#75869a;
+  --accent:#0e7490; --accent-soft:#e0f2f7;
+  --green:#0e7a4d; --green-soft:#e9f7f0;
+  --red:#b42318; --red-soft:#fdeceb;
+  --amber:#a16207; --amber-soft:#fff6e0;
+  --violet:#6d28d9; --violet-soft:#f1ebfd;
+  --line:#e0e7ef; --bg:#f5f8fb; --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 80px;}
+.hero{background:linear-gradient(135deg,#0b1c33 0%,#0e2f4f 55%,#0e7490 100%);color:#fff;
+  padding:56px 24px 44px;margin-bottom:36px;}
+.hero-inner{max-width:1080px;margin:0 auto;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.tag{font-size:12.5px;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);letter-spacing:.5px;}
+.tag.hl{background:#0e7490;border-color:#0e7490;}
+.hero h1{font-size:29px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.hero .sub{font-size:16.5px;color:#c4d9f5;margin-bottom:18px;}
+.hero .meta{font-size:14px;color:#a3bddb;}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:6px 8px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 18px rgba(15,40,80,.08);}
+.toc a{font-size:13.5px;color:var(--ink2);text-decoration:none;padding:5px 12px;border-radius:8px;}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;margin-bottom:28px;}
+h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;}
+h2 .no{font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:8px;padding:2px 10px;letter-spacing:1px;flex-shrink:0;}
+h3{font-size:17.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);}
+h3::before{content:"▎";color:var(--accent);margin-right:2px;}
+p{margin-bottom:14px;color:var(--ink2);}
+strong{color:var(--ink);}
+ul,ol{margin:0 0 14px 26px;color:var(--ink2);}
+li{margin-bottom:7px;}
+.tldr{background:linear-gradient(135deg,#e8f0fe,#dbe8fd);border-left:5px solid var(--accent);
+  padding:22px 26px;border-radius:0 12px 12px 0;margin-bottom:28px;font-size:16.5px;}
+.tldr b{color:var(--accent);}
+.box{border-radius:12px;padding:18px 22px;margin:18px 0;font-size:15.5px;}
+.box .bt{font-weight:700;margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.box.insight{background:var(--green-soft);border:1px solid #bfe5d2;}
+.box.insight .bt{color:var(--green);}
+.box.key{background:var(--accent-soft);border:1px solid #c8dcfd;}
+.box.key .bt{color:var(--accent);}
+.box.combo{background:var(--violet-soft);border:1px solid #d9c8f7;}
+.box.combo .bt{color:var(--violet);}
+.box.warn{background:var(--amber-soft);border:1px solid #f6cdb4;}
+.box.warn .bt{color:var(--amber);}
+.tblwrap{overflow-x:auto;}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px;}
+.tbl th{background:#eef3fa;color:var(--ink);font-weight:700;padding:9px 10px;
+  border:1px solid var(--line);text-align:left;vertical-align:top;}
+.tbl td{padding:8px 10px;border:1px solid var(--line);text-align:left;vertical-align:top;color:var(--ink2);}
+.tbl tr.cabto td{background:#f1ebfd;font-weight:600;color:var(--ink);}
+.tbl .hi{color:var(--accent);font-weight:700;}
+.paper{margin-bottom:26px;padding-bottom:20px;border-bottom:1px dashed var(--line);}
+.paper:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.paper h4{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.paper .venue{font-size:12.5px;color:var(--muted);margin-bottom:10px;}
+.paper .tagline{font-size:14px;color:var(--accent);font-weight:600;margin-bottom:8px;}
+.chips{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.chip{flex:1;min-width:170px;background:#fafbfd;border:1px solid var(--line);
+  border-radius:12px;padding:14px 16px;}
+.chip .cv{font-size:21px;font-weight:800;color:var(--accent);}
+.chip .cl{font-size:12.5px;color:var(--muted);margin-top:2px;}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:40px;}
+code{background:#eef2f7;padding:1px 7px;border-radius:5px;font-size:13px;color:#0a5a75;}
+@media (max-width:700px){section{padding:24px 20px;} .hero h1{font-size:24px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag-row">
+      <span class="tag hl">神经-符号闭环</span>
+      <span class="tag">行为树 / BT</span>
+      <span class="tag">大模型规划</span>
+      <span class="tag">可学习记忆</span>
+      <span class="tag">形式验证</span>
+      <span class="tag">RL / RFT</span>
+    </div>
+    <h1>神经符号闭环：七篇论文横向对比与 CABTO 落地路线</h1>
+    <div class="sub">围绕"大模型 × 符号规划"闭环，七篇代表性工作的思路、对比，以及对 CABTO 的三条可直接落地的组合拳</div>
+    <div class="meta">调研时间窗 2024–2026 · 面向 CABTO（AAAI 2026）扩刊与可学习化改造</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<nav class="toc">
+  <a href="#s1">① 一句话串讲</a>
+  <a href="#s2">② 横向对比表</a>
+  <a href="#s3">③ 七篇逐篇详解</a>
+  <a href="#s4">④ 三条组合拳</a>
+  <a href="#s5">⑤ 落地小结</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">01</span>一句话串起这七篇</h2>
+  <div class="tldr">
+    七篇论文其实围绕<b>同一个大命题</b>——<b>「神经（大模型）」和「符号（BT / 规约 / 规划）」怎么闭环</b>，只是各自攻克一个环节：
+  </div>
+  <div class="chips">
+    <div class="chip"><div class="cv">表示</div><div class="cl">把什么当作可进化的符号工件<br>EPM(记忆) · VASO(合约) · BT(VersualRL / StructuredRobotPolicies / CABTO)</div></div>
+    <div class="chip"><div class="cv">反馈</div><div class="cl">用什么信号驱动进化<br>VASO(形式反例) · LLM-GROP(ASP约束) · VersualRL(视觉批评) · LeTS-Drive(环境奖励)</div></div>
+    <div class="chip"><div class="cv">数据</div><div class="cl">数据从哪来、怎么学<br>SynthDemo-RL(合成教师+SFT+PPO) · StructuredRobotPolicies(合成监督) · EPM(特权启发式造标签)</div></div>
+  </div>
+  <div class="box key">
+    <div class="bt">CABTO 的生态位</div>
+    CABTO 恰好站在这三条线的交叉点上：它既有「符号工件」（动作模型 + BT 系统）、又有「形式化验证」（completeness / consistency），唯独缺「可学习化」（低层策略、感知、跨任务积累）。下面三篇的组合拳正是补这三块。
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span>七篇横向对比表</h2>
+  <div class="tblwrap">
+  <table class="tbl">
+    <tr>
+      <th>论文</th><th>核心问题</th><th>符号层 / 表示</th><th>大模型角色</th><th>反馈 / 验证</th><th>学习化</th><th>数据来源</th><th>关键结果</th><th>与 CABTO 关联</th>
+    </tr>
+    <tr><td><strong>EPM</strong><br><span style="color:var(--muted)">ICLR 2026</span></td>
+      <td>动态环境的可学习记忆</td>
+      <td>物体清单（3D 坐标 + 语言描述）</td>
+      <td>VLM 增量维护状态（Add / Update / Remove）</td>
+      <td>特权信息 + 启发式造标签</td>
+      <td>LoRA 微调 VLM；HD 模仿 + DDAFT</td>
+      <td>仿真 + 真机(Spot)</td>
+      <td class="hi">+55% 成功率</td>
+      <td>中 · 可学习记忆 + 免查询接口 + rollout/RFT</td>
+    </tr>
+    <tr><td><strong>VASO</strong><br><span style="color:var(--muted)">arXiv 2606.05395</span></td>
+      <td>技能「信任成本」高</td>
+      <td>语义合约（LTL + 标注函数）</td>
+      <td>LLM 生成 / 精炼技能合约</td>
+      <td class="hi">模型检查器反例</td>
+      <td>冻结权重、prompt 层文本梯度</td>
+      <td>真机(Jackal / PX4)</td>
+      <td class="hi">97.2% 规约符合</td>
+      <td class="hi">高 · 可验证反例精炼</td>
+    </tr>
+    <tr><td><strong>LLM-GROP</strong><br><span style="color:var(--muted)">IJRR 2025</span></td>
+      <td>欠指定目标 + 移动操作</td>
+      <td>符号空间关系 → 几何</td>
+      <td>LLM 常识生成布局</td>
+      <td>ASP 一致性 + 拒绝采样</td>
+      <td>FCN 学站位热图</td>
+      <td>仿真 + 真机</td>
+      <td class="hi">84.4% 成功率</td>
+      <td>中 · LLM 候选 + 符号兜底</td>
+    </tr>
+    <tr><td><strong>VersualRL</strong><br><span style="color:var(--muted)">IROS 2026</span></td>
+      <td>真机执行不确定性</td>
+      <td>行为树（可执行）</td>
+      <td>VLM critic + LLM actor</td>
+      <td>VLM 视觉执行反馈</td>
+      <td>冻结、符号层 BT 编辑</td>
+      <td class="hi">纯真机</td>
+      <td>可解释策略进化</td>
+      <td class="hi">高 · 同构 BT 闭环</td>
+    </tr>
+    <tr><td><strong>SynthDemo-RL</strong><br><span style="color:var(--muted)">arXiv 2609.21650</span></td>
+      <td>VLA 零奖励困境</td>
+      <td>VLA 动作（子符号）</td>
+      <td>LLM 当教师调参</td>
+      <td>稀疏二值奖励</td>
+      <td>SFT + PPO</td>
+      <td>合成 + 仿真 + 真机</td>
+      <td class="hi">97.8% / 97.1%</td>
+      <td class="hi">高 · 合成教师 + RFT 范式</td>
+    </tr>
+    <tr><td><strong>LeTS-Drive</strong><br><span style="color:var(--muted)">IEEE T-RO</span></td>
+      <td>长时程 POMDP 不可实时</td>
+      <td>POMDP 信念树</td>
+      <td>（无 LLM，纯 RL）</td>
+      <td>环境奖励</td>
+      <td>策略 / 价值网络闭环 RL</td>
+      <td>仿真(SUMMIT)</td>
+      <td>闭环 ~1/10 数据</td>
+      <td>中 · 规划-学习数据飞轮</td>
+    </tr>
+    <tr><td><strong>StructuredRobotPolicies</strong><br><span style="color:var(--muted)">arXiv 2604.02812</span></td>
+      <td>BT 黑盒 + 数据稀缺</td>
+      <td>行为树（vision-to-BT）</td>
+      <td>VLM 直接合成 BT</td>
+      <td>合成监督</td>
+      <td>LoRA 微调 12B</td>
+      <td class="hi">纯合成 → 真机</td>
+      <td>零样本真机迁移</td>
+      <td class="hi">最高 · BT + 合成数据</td>
+    </tr>
+    <tr class="cabto">
+      <td><strong>CABTO</strong><br><span style="color:var(--muted)">AAAI 2026（本文）</span></td>
+      <td>BT Grounding（complete + consistent）</td>
+      <td>动作模型 ⟨pre, add, del⟩ + BT 系统</td>
+      <td>LLM 提议动作模型 + VLM 采样策略</td>
+      <td>仿真闭环校验 + VLM 软校验</td>
+      <td>（缺：低层策略 / 感知 / 积累）</td>
+      <td>仿真 7 任务集 3 场景</td>
+      <td>完整性 50%→90%+</td>
+      <td>——</td>
+    </tr>
+  </table>
+  </div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span>七篇逐篇详解</h2>
+
+  <div class="paper">
+    <h4>EPM · Embodied Perception Memory（可学习记忆）</h4>
+    <div class="venue">ICLR 2026 · Meta FAIR</div>
+    <div class="tagline">把「世界状态」做成一个可学习的、跨帧增量维护的对象。</div>
+    <p><strong>解决什么</strong>：动态环境里机器人要记住「物体在哪、什么状态」，但旧记忆难应对物体移动、多模型拼接又贵、查询接口不实用。</p>
+    <p><strong>怎么做</strong>：单个 VLM 从第一人称观测出发，用 Add / Update / Remove 三种操作增量维护一份文本环境清单（物体 = 3D 坐标 + 语言描述），直接喂给 LLM 规划器；用「特权信息 + 启发式」造数据做 LoRA 微调；规划器用「人类示范模仿(HD) + 难度感知 RL(DDAFT)」训练。</p>
+    <p><strong>结果</strong>：比强基线 +55% 成功率，8B 模型反超 70B 零样本。</p>
+    <p><strong>给 CABTO</strong>：可学习记忆 + 免查询接口 + rollout/RFT 训练范式。</p>
+  </div>
+
+  <div class="paper">
+    <h4>VASO · 形式可验证自进化技能</h4>
+    <div class="venue">arXiv 2606.05395 · UT Austin</div>
+    <div class="tagline">把「形式化验证的反例」变成「技能自进化的优化信号」。</div>
+    <p><strong>解决什么</strong>：基础模型让「造技能」便宜了，但「信技能」还贵——执行反馈等 trace 级证据覆盖不了时序安全契约。</p>
+    <p><strong>怎么做</strong>：每个技能 = 语义合约（LTL 规约 + 命题对齐的标注函数），两级验证（技能级过滤逻辑矛盾 + 计划级模型检查），失败时把反例轨迹翻译成「文本梯度」迭代改写合约，冻结权重纯 prompt 层操作。</p>
+    <p><strong>结果</strong>：97.2% 规约符合率，&lt;100 样本、每技能 &lt;20 分钟。</p>
+    <p><strong>给 CABTO</strong>：把「VLM 软校验」升级成「可验证反例驱动的精炼」。</p>
+  </div>
+
+  <div class="paper">
+    <h4>LLM-GROP · 视觉接地的任务运动规划</h4>
+    <div class="venue">IJRR 2025 · SUNY / UT Austin / Sony AI</div>
+    <div class="tagline">LLM 常识解决「放哪」，视觉组件解决「站哪」，联合优化可行性 + 效率。</div>
+    <p><strong>解决什么</strong>：欠指定指令（摆一桌餐具）需要常识；移动操作要选对站立位置（同时决定导航可行性与操作可达性）。</p>
+    <p><strong>怎么做</strong>：LLM 常识生成布局（符号空间关系 → 几何关系，ASP 一致性检查 + 拒绝采样兜底），GROP 用 FCN 学「可行性热图」选站立位置，效用函数 U = R·F − C 联合优化。</p>
+    <p><strong>结果</strong>：真机 84.4% 成功率，用户评分优于三类基线。</p>
+    <p><strong>给 CABTO</strong>：LLM 当「候选生成器」+ 符号约束兜底的结构。</p>
+  </div>
+
+  <div class="paper">
+    <h4>VersualRL · 闭环言语强化学习</h4>
+    <div class="venue">IROS 2026 · Skoltech</div>
+    <div class="tagline">VLM critic 看执行轨迹给结构化批评，LLM actor 在符号层改行为树。</div>
+    <p><strong>解决什么</strong>：真机执行不确定性下，深度 RL 子符号策略黑盒难调试，LLM 规划器又开环缺物理反馈。</p>
+    <p><strong>怎么做</strong>：VLM critic（视觉快照 + BT 轨迹 → 结构化批评 + 告警分 + 置信度）+ LLM actor（专家节点库上做离散 BT 编辑），两模型冻结、零梯度、零仿真。</p>
+    <p><strong>结果</strong>：可解释的策略进化；微调 3B critic 优于未调 7B；因果归因质量 &gt; 感知精度。</p>
+    <p><strong>给 CABTO</strong>：同构 BT 闭环，但只改结构不做接地——是需压住的对手，也是可借的「结构化反馈」范式。</p>
+  </div>
+
+  <div class="paper">
+    <h4>SynthDemo-RL · 合成示范打破零奖励困境</h4>
+    <div class="venue">arXiv 2609.21650 · Fujitsu</div>
+    <div class="tagline">自动化教师先「点亮」零奖励任务，稀疏奖励 RL 再拉高平均分。</div>
+    <p><strong>解决什么</strong>：VLA 迁到新任务、又没人演示时，稀疏二值奖励的 RL 探索不出任何成功轨迹（大量任务恒为 0%）。</p>
+    <p><strong>怎么做</strong>：自动化教师（GraspGen 抓取 + LLM 失败调参 + 脚本执行）从仿真特权状态合成成功轨迹 → SFT 蒸馏进学生 → PPO 稀疏奖励精调。核心诊断指标 reward coverage（至少成功一次的任务占比）。</p>
+    <p><strong>结果</strong>：27 个零成功任务全部救活，LIBERO-PRO 平均 97.8% / 97.1%。</p>
+    <p><strong>给 CABTO</strong>：合成教师点亮零奖励 + 稀疏 RL 的完整配方。</p>
+  </div>
+
+  <div class="paper">
+    <h4>LeTS-Drive · 规划-学习闭环</h4>
+    <div class="venue">IEEE T-RO · NUS</div>
+    <div class="tagline">「局部规划、全局学习」——学习启发式让短时程搜索近似长时程规划。</div>
+    <p><strong>解决什么</strong>：密集无规则交通下长时程 POMDP 搜索树指数爆炸、无法实时。</p>
+    <p><strong>怎么做</strong>：在线规划器做短时程信念树搜索，策略 / 价值网络做长时程启发式引导（复杂度 O(|A|^H K) → O(|A|^D K)）；学习器从规划器经验更新网络、反哺规划器，闭环互提升。价值裁剪保证近最优性 + 训练稳定。</p>
+    <p><strong>结果</strong>：闭环 ~1/10 数据追平开环；场景越密收益越大；带理论保证。</p>
+    <p><strong>给 CABTO</strong>：「规划器蒸馏结构化价值 → 学习器 → 反哺规划器」的数据飞轮。</p>
+  </div>
+
+  <div class="paper">
+    <h4>StructuredRobotPolicies · 合成神经符号监督</h4>
+    <div class="venue">arXiv 2604.02812 · Padova / Fraunhofer</div>
+    <div class="tagline">纯合成数据训练 VLM，从视觉直接合成可执行行为树（vision-to-BT）。</div>
+    <p><strong>解决什么</strong>：end-to-end 策略黑盒难分析 + 真人示范数据稀缺。</p>
+    <p><strong>怎么做</strong>：自动化管线程序化生成 10,000 个 domain-randomized 合成样本（场景 + instruction-policy 对），LoRA 微调 12B VLM 学「结构化空间-符号映射」，从视觉 + 指令 + 系统规约直接输出 BT。</p>
+    <p><strong>结果</strong>：零真实数据训练，Franka Panda + UR5e 两异构机械臂零样本真机迁移。</p>
+    <p><strong>给 CABTO</strong>：离 CABTO 最近——证明了「BT 合成可以被合成数据训练」。</p>
+  </div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span>三条组合拳（如何落地）</h2>
+
+  <div class="box combo">
+    <div class="bt">组合拳 1 · SynthDemo-RL：合成教师点亮零奖励 → 稀疏奖励 RL</div>
+    <p>映射：CABTO 的「自动化教师」= 你现成的 <code>world_state</code> oracle + <code>PrimitiveRunner</code> 脚本原语 + oracle 位姿；「一致性验证」= 稀疏二值奖励。</p>
+    <ul>
+      <li>先用 oracle 教师为每个 ⟨h, π⟩ 动作模型生成至少一条成功执行轨迹（点亮零奖励）；</li>
+      <li>再把成功轨迹蒸馏成训练信号，用「一致性达标=1 / 否则=0」做 RFT / PPO。</li>
+    </ul>
+  </div>
+
+  <div class="box combo">
+    <div class="bt">组合拳 2 · EPM：可学习记忆替代单帧打点 + oracle 谓词</div>
+    <p>训练一个 VLM，输入 RGB + 旧谓词状态 + 动作，输出谓词更新（Add / Remove / No updates），跨帧增量维护世界状态。</p>
+    <ul>
+      <li>先谓词级（替代 <code>world_state.compute_state</code> 的 oracle）；</li>
+      <li>再物体级（拿 3D 坐标，替代 Qwen 打点 + known_height）。</li>
+    </ul>
+  </div>
+
+  <div class="box combo">
+    <div class="bt">组合拳 3 · VASO：形式反例 → 文本梯度，升级跨层精化</div>
+    <p>CABTO 的 consistency 定义本身就是 STRIPS 形式化的，<code>check_effect</code> 的 violations 就是反例雏形。</p>
+    <ul>
+      <li>把 violations 从「二值 check 结果」升级成「结构化、可归因、可反哺动作模型修订」的文本梯度；</li>
+      <li>精确到「动作模型 h 的 add 效应 lift(obj) 未达成，因低层策略 grasp 深度不足」。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span>落地小结</h2>
+  <div class="box insight">
+    <div class="bt">一条线串起三条组合拳</div>
+    <ol style="margin-bottom:0">
+      <li><strong>造数据</strong>：用 <code>world_state</code> oracle + 脚本原语当「教师」，为每个动作模型点亮零奖励（SynthDemo-RL 范式）；</li>
+      <li><strong>学记忆</strong>：用这些数据训一个「CABTO-EPM」，替代单帧打点 + oracle 谓词（EPM 范式）；</li>
+      <li><strong>精化</strong>：把一致性违背编译成形式反例 → 文本梯度，驱动动作模型可验证地修订（VASO 范式）。</li>
+    </ol>
+  </div>
+  <p>三条正好对应 TPAMI 报告里的方向 E（RL 低层策略）、B（学习谓词）、C（可验证 grounding），是「可学习化改造 CABTO」的一条完整路径。</p>
+</section>
+
+<div class="foot">神经符号闭环调研报告 · 生成于 2026-09-26 · 覆盖 EPM / VASO / LLM-GROP / VersualRL / SynthDemo-RL / LeTS-Drive / StructuredRobotPolicies 七篇</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+{
+  "task": "blocks",
+  "rows": [
+    {
+      "action_id": "pick(object=red,support=blue)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_ok": true,
+      "attribution": "OK(动作模型+策略都通)",
+      "probe2_violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "probe2_exception": null
+    },
+    {
+      "action_id": "place(object=red,support=blue)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_ok": true,
+      "attribution": "OK(动作模型+策略都通)",
+      "probe2_violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "probe2_exception": null
+    },
+    {
+      "action_id": "pick(object=yellow,support=green)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_ok": true,
+      "attribution": "OK(动作模型+策略都通)",
+      "probe2_violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "probe2_exception": null
+    },
+    {
+      "action_id": "place(object=yellow,support=green)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_ok": true,
+      "attribution": "OK(动作模型+策略都通)",
+      "probe2_violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "probe2_exception": null
+    },
+    {
+      "action_id": "home()",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_ok": true,
+      "attribution": "OK(动作模型+策略都通)",
+      "probe2_violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "probe2_exception": null
+    }
+  ]
+}

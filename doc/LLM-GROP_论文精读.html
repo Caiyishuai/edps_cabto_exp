@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM-GROP 论文精读</title>
+<style>
+:root{
+  --ink:#14202e; --ink2:#3a4c60; --muted:#75869a;
+  --accent:#2563eb; --accent-soft:#e8f0fe;
+  --green:#0e7a4d; --green-soft:#e9f7f0;
+  --red:#b42318; --red-soft:#fdeceb;
+  --amber:#a16207; --amber-soft:#fff6e0;
+  --line:#e0e7ef; --bg:#f5f8fb; --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.hero{background:linear-gradient(135deg,#0b1c33 0%,#123059 55%,#1d4f8a 100%);color:#fff;
+  padding:56px 24px 44px;margin-bottom:36px;}
+.hero-inner{max-width:980px;margin:0 auto;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.tag{font-size:12.5px;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);letter-spacing:.5px;}
+.tag.hl{background:#2563eb;border-color:#2563eb;}
+.hero h1{font-size:28px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.hero .sub{font-size:16.5px;color:#c4d9f5;margin-bottom:18px;}
+.hero .meta{font-size:14px;color:#a3bddb;}
+.hero a{color:#93c5fd;text-decoration:none;border-bottom:1px dashed rgba(147,197,253,.5);}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:6px 8px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 18px rgba(15,40,80,.08);}
+.toc a{font-size:13.5px;color:var(--ink2);text-decoration:none;padding:5px 12px;border-radius:8px;}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;margin-bottom:28px;}
+h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;}
+h2 .no{font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:8px;padding:2px 10px;letter-spacing:1px;flex-shrink:0;}
+h3{font-size:17.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);}
+h3::before{content:"▎";color:var(--accent);margin-right:2px;}
+p{margin-bottom:14px;color:var(--ink2);}
+strong{color:var(--ink);}
+ul,ol{margin:0 0 14px 26px;color:var(--ink2);}
+li{margin-bottom:7px;}
+.tldr{background:linear-gradient(135deg,#e8f0fe,#dbe8fd);border-left:5px solid var(--accent);
+  padding:22px 26px;border-radius:0 12px 12px 0;margin-bottom:28px;font-size:16.5px;}
+.tldr b{color:var(--accent);}
+figure{margin:22px 0;text-align:center;}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 3px 14px rgba(15,40,80,.08);}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.7;padding:0 18px;}
+.box{border-radius:12px;padding:18px 22px;margin:18px 0;font-size:15.5px;}
+.box .bt{font-weight:700;margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.box.insight{background:var(--green-soft);border:1px solid #bfe5d2;}
+.box.insight .bt{color:var(--green);}
+.box.warn{background:var(--red-soft);border:1px solid #f6c6c2;}
+.box.warn .bt{color:var(--red);}
+.box.key{background:var(--accent-soft);border:1px solid #c8dcfd;}
+.box.key .bt{color:var(--accent);}
+.formula{background:#eef4fb;border:1px dashed #bcd3ee;border-radius:10px;
+  padding:14px 20px;margin:14px 0;font-family:"Times New Roman",Georgia,serif;
+  font-size:16px;color:var(--ink);text-align:center;overflow-x:auto;}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;}
+.tbl th{background:#eef3fa;color:var(--ink);font-weight:700;padding:8px 10px;
+  border:1px solid var(--line);text-align:center;}
+.tbl td{padding:7px 10px;border:1px solid var(--line);text-align:center;color:var(--ink2);}
+.tbl td.l,.tbl th.l{text-align:left;}
+.tbl tr.ours td{background:#e8f0fe;font-weight:600;color:var(--ink);}
+.tbl .best{color:var(--accent);font-weight:700;}
+.chips{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.chip{flex:1;min-width:170px;background:#f8fafd;border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;}
+.chip .cv{font-size:22px;font-weight:800;color:var(--accent);}
+.chip .cl{font-size:13px;color:var(--muted);margin-top:2px;}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:40px;}
+code{background:#eef2f7;padding:1px 7px;border-radius:5px;font-size:13px;color:#1d4ed8;}
+.linklist li{margin-bottom:9px;}
+@media (max-width:700px){section{padding:24px 20px;} .hero h1{font-size:22px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag-row">
+      <span class="tag hl">任务与运动规划 TAMP</span>
+      <span class="tag">移动操作 MoMa</span>
+      <span class="tag">LLM 常识</span>
+      <span class="tag">视觉接地</span>
+      <span class="tag">IJRR 2025 · arXiv 2511.07727</span>
+    </div>
+    <h1>LLM-GROP：用大语言模型做视觉接地的机器人任务与运动规划</h1>
+    <div class="sub">LLM-GROP: Visually Grounded Robot Task and Motion Planning with Large Language Models</div>
+    <div class="meta">Xiaohan Zhang*, Yan Ding*, Yohei Hayamizu*, Zainab Altaweel*, Yifeng Zhu, Yuke Zhu, Peter Stone, Chris Paxton, Shiqi Zhang · SUNY Binghamton / UT Austin / Sony AI / Hello Robot / 上海AI实验室 / OneStar Robotics（*共同一作）</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="tldr">
+  <b>一句话总结：</b>给机器人下"摆一桌餐具"这种<strong>欠指定（underspecified）</strong>指令时，叉子该放盘子左边还是右边？这类问题需要常识。LLM-GROP 用 LLM 提取常识生成"符号空间关系 → 几何空间关系"的目标布局，再用 <b>GROP</b> 视觉组件（FCN 可行性热图）为移动操作选站立位置，联合优化<b>可行性 + 效率</b>，在真实移动操作机器人与仿真中完成长时程物体重排，真机成功率 <b>84.4%</b>，用户评分显著优于三类基线。
+</div>
+
+<nav class="toc">
+  <a href="#s1">① 摘要解读</a>
+  <a href="#s2">② 背景与动机</a>
+  <a href="#s3">③ 方法</a>
+  <a href="#s4">④ 实验设置</a>
+  <a href="#s5">⑤ 结果与分析</a>
+  <a href="#s6">⑥ Insights</a>
+  <a href="#s7">⑦ 讨论与局限</a>
+  <a href="#s8">⑧ 链接</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">01</span>摘要解读</h2>
+  <p>任务规划（高层目标）与运动规划（低层可行性）是机器人两大核心问题，TAMP 把它们交织起来同时保证"目标达成 + 运动可行"。本文关注<strong>多物体移动操作（MoMa）</strong>——需交织导航与操作动作，核心是：给定"摆一桌叉刀盘"这种<strong>欠指定目标</strong>，计算每个物体<strong>放在哪、怎么放</strong>。</p>
+  <ul>
+    <li><strong>用 LLM 的常识</strong>（如餐具如何摆放）同时促进任务级与运动级规划；</li>
+    <li><strong>用计算机视觉</strong>学一个"选底座位置"的策略，以支撑 MoMa 行为（底座位置 = 机器人在工作空间中的"足迹"与朝向）。</li>
+  </ul>
+  <p>这套框架既考虑物体重排的常识，又能适应"需移动大量物体"的新情形。真机完成 <strong>84.4%</strong> 物体重排试验；主观人工评测表明机器人的表现仍低于有经验的真人服务员。</p>
+  <div class="chips">
+    <div class="chip"><div class="cv">84.4%</div><div class="cl">真机物体重排成功率（45 次试验 38 成功）</div></div>
+    <div class="chip"><div class="cv">U(p)=R·F−C</div><div class="cl">效用函数：可行性 F 与成本 C 联合优化</div></div>
+    <div class="chip"><div class="cv">9 任务</div><div class="cl">3–5 个餐具/任务，仿真 + 真机</div></div>
+    <div class="chip"><div class="cv">FCN 热图</div><div class="cl">视觉组件为导航/操作选站立位置</div></div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span>研究背景与动机（Introduction）</h2>
+  <h3>欠指定目标需要常识</h3>
+  <p>多物体重排（摆桌、理书架、装洗碗机）是服务机器人的日常技能。多数现有系统要求<strong>显式指令</strong>（把同色物品排成一行、摆成特定形状）；但真实用户请求往往<strong>欠指定</strong>——摆桌方式很多，有些更受欢迎。叉子为何在盘子左边、刀在右边？这需要社会约定式的<strong>常识</strong>。LLM（如 ChatGPT）恰好富含这类常识。</p>
+  <figure>
+    <img src="assets/grop_fig1_domain.png" alt="MoMa 领域示意">
+    <figcaption>图 1：移动操作领域示意。移动操作机器人摆餐桌：需摆放刀、叉、盘、杯垫、马克杯等多个餐具（分散在其他桌上），环境含随机生成的障碍（如椅子，不在预建地图里）。机器人须计算语义正确的目标布局 + 重排物体的任务运动计划（含导航与操作）。</figcaption>
+  </figure>
+  <h3>三条技术路线与本文的结合</h3>
+  <ul>
+    <li><strong>传统 TAMP</strong>：多数假设完全可观测、确定性世界，只关心可行性、忽视效率；本文额外考虑<strong>机器人运动不确定性 + 任务完成效率</strong>；</li>
+    <li><strong>物体重排（StructFormer、DALL-E-Bot 等）</strong>：依赖示范数据或单一俯视视角；本文<strong>零样本用 LLM 常识</strong>、支持全房间移动操作；</li>
+    <li><strong>基础模型规划（SayCan、VLM-TAMP 等）</strong>：多关注语义目标；本文<strong>同时优化可行性 + 效率</strong>，并用视觉概率评估 MoMa 可行性。</li>
+  </ul>
+  <div class="box key">
+    <div class="bt">关键区别：把"效率"纳入优化</div>
+    当高层动作耗时很短时，TAMP 可只关心可行性；但当存在长距离导航这类耗时动作时，任务完成效率不容忽视。LLM-GROP 用<strong>概率评估可行性</strong>，从而在"高可行但高成本"与"略低可行但低成本"之间灵活权衡——这是既有方法不支持的。
+  </div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span>方法详解</h2>
+
+  <h3>3.1 问题形式化</h3>
+  <p>任务：把分散在多处的 N 个餐具物体重排成语义有效、符合常识的桌面布局。行动分<strong>导航动作 aⁿ（位置→位置）</strong>与<strong>操作动作 aᵐ（装载 load / 卸载 unload）</strong>，通过先决条件/效果定义。不确定性体现为：导航动作在任务级确定、在<strong>运动级不确定</strong>（机器人到不了精确的 2D 目标位，因定位与驱动不完美）。</p>
+  <p>方案质量由效用函数评估：</p>
+  <div class="formula">U(p) = R · F(p) − C(p)</div>
+  <p>F(p)∈[0,1] 为计划可行性（成功执行的概率），C(p) 为执行总成本，R 为成功奖励。最优算法报告效用最高的任务-运动计划 p*。</p>
+
+  <h3>3.2 LLM 引导的目标生成（4.1 节）</h3>
+  <ol>
+    <li><strong>生成符号空间关系（Template 1）</strong>：让 LLM 输出物体间的符号关系（"叉子在盘子左边、刀在右边"）。为防止逻辑矛盾，用<strong>答案集编程（ASP）</strong>做一致性检查（如规则 <code>:- below(X,Y), right(X,Y)</code>），出现矛盾则重新 prompt；</li>
+    <li><strong>生成几何空间关系（Template 2）</strong>：追问"物体 A 该放物体 B 左方几厘米？"，从 LLM 回复里按关键词"centimeter"提取数值（如"刀在盘右 5–7 cm"）；</li>
+    <li><strong>自适应采样</strong>：以推荐位置 (x_i, y_i) 为均值做 2D 高斯采样，再用<strong>拒绝采样</strong>规则（遵守符号关系、避免重叠、不越桌面边界）筛选出 M 个可行配置序列。</li>
+  </ol>
+
+  <h3>3.3 视觉接地的 TAMP（4.2 节，核心组件 GROP）</h3>
+  <figure>
+    <img src="assets/grop_fig2_overview.png" alt="LLM-GROP 总览">
+    <figcaption>图 2：LLM-GROP 总览。两个关键组件：LLM（生成餐具间的符号与几何空间关系）+ 任务运动规划器（据 LLM 信息生成执行计划）。关键子组件 GROP 以俯视图为输入，建议支撑 MoMa 行为的站立位置（仅用仿真数据训练）；真机上机器人估计物体位姿、构建数字孪生做规划。</figcaption>
+  </figure>
+  <p><strong>GROP 算法</strong>（Algorithm 1）：先用数据集 D 训练一个 <strong>FCN 可行性评估器 Ψ</strong>；任务规划器 Plnrt 产出一组任务级满足计划；对每条计划，逐动作对（导航+操作）评估可行性 F 与成本 C；运动规划器 Plnrm 为每个动作算运动轨迹；最后选出效用 U(p) 最大的任务-运动计划。</p>
+  <ul>
+    <li><strong>运动级可行性</strong>：Feam(x,y) = 从以 y 为中心的灰度热图中读取位置 x 的成功概率；</li>
+    <li><strong>任务级可行性</strong>：Feat(aⁿ,aᵐ) 对若干按热图加权的采样站立位置取平均成功概率。</li>
+  </ul>
+  <h3>3.4 FCN 的数据收集与训练</h3>
+  <figure>
+    <img src="assets/grop_fig3_grop.png" alt="GROP 数据收集训练">
+    <figcaption>图 3：GROP 的数据收集与训练。一个任务 = 一个桌面"卸载目标" + 一个障碍（椅子）配置。每个像素当作导航目标做试验（导航 + 卸载），多次试验得该位置可行性，形成热图；FCN 以俯视图为输入预测热图，用于评估动作可行性 + 选择运动级导航目标。</figcaption>
+  </figure>
+  <p>数据点格式 <code>(IM_y, x) : r</code>（俯视图 IM_y + 位置 x + 成功与否）。每个位置重复 N=5 次求成功率；对 24×8 像素区域遍历生成一张热图。10 个随机障碍环境 × 随机采样卸载位置 = <strong>100 个任务</strong>，数据集规模 96,000（100×N×Width×Height）。FCN 用 softmax + 交叉熵在离散成功级标签上做像素级分类；推理时把 logits 转概率再加权平均，得到平滑连续热图。<strong>Ψ 只用仿真数据训练</strong>，真机部署时估计障碍位姿、用训练阶段的同款仿真资产重建数字孪生、渲染俯视图直接喂给 Ψ，从而绕开 sim-to-real 视觉鸿沟。</p>
+  <figure>
+    <img src="assets/grop_fig4_example.png" alt="示例任务运动规划">
+    <figcaption>图 4：LLM-GROP 示例——"摆上面包盘、叉、刀、面包"的导航轨迹（虚线）。系统用 LLM 常识生成高效（最小化总导航成本）且可行（选桌子可卸载的一侧）的抓放运动计划。</figcaption>
+  </figure>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span>实验设置</h2>
+  <h3>实验平台</h3>
+  <ul>
+    <li><strong>真机</strong>：轮式底座 + 6-DOF 机械臂的移动操作机器人；用 MoveIt 规划抓取/释放（无机器学习），QR 码定位物体、餐具架提升叉刀抓取成功率；</li>
+    <li><strong>仿真</strong>：Gazebo 模拟器；</li>
+    <li>LLM 组件默认用 <strong>GPT-3（text-davinci-003）</strong>（与前两篇会议论文保持一致），并对比 GPT-4 / Gemini / Claude。</li>
+  </ul>
+  <h3>任务（9 个，3–5 个物体）</h3>
+  <table class="tbl">
+    <tr><th class="l">Task #</th><th class="l">物体（餐具组合）</th></tr>
+    <tr><td class="l">1–5</td><td class="l">各 3 个物体（如：餐盘+餐叉+餐刀；面包盘+水杯+面包；马克杯+面包盘+杯垫；果盘+马克杯+草莓；马克杯+餐盘+杯盖）</td></tr>
+    <tr><td class="l">6–7</td><td class="l">各 4 个物体</td></tr>
+    <tr><td class="l">8（仅仿真）/ 9（仅真机）</td><td class="l">各 5 个物体</td></tr>
+  </table>
+  <h3>评估指标</h3>
+  <ul>
+    <li><strong>成功率</strong>（真机）：最终物体位置是否"看起来自然"（俯拍图人工判定）；</li>
+    <li><strong>用户评分（1–5 分）</strong>：Table 2 定义了 5 级评分准则（1=缺关键物品，5=达到经验服务员的美学标准）；</li>
+    <li><strong>执行时间</strong>（效率指标）。</li>
+  </ul>
+  <h3>对比方法（3 个基线）</h3>
+  <table class="tbl">
+    <tr><th class="l">基线</th><th class="l">说明</th></tr>
+    <tr><td class="l">TPRA（最弱）</td><td class="l">任务规划 + 随机排布：随机选站立位置、随机无碰撞放置物体</td></tr>
+    <tr><td class="l">LATP</td><td class="l">LLM 预测物体排布 + 任务规划：站立位置在桌周均匀采样</td></tr>
+    <tr><td class="l">GROP</td><td class="l">考虑效率与可行性的 TAMP，但缺语义有效排布能力（随机放置）</td></tr>
+  </table>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span>实验结果与分析</h2>
+
+  <h3>5.1 真机演示</h3>
+  <p>任务 4、7、9 在三种环境（无障碍 / 椅子上侧 / 椅子下侧）各重复 5 次。GROP 使机器人<strong>根据椅子位置自适应调整站位</strong>，同时 LLM 生成合理布局。用户评分（Table 4）随物体数增加而下降，复杂障碍环境下进一步下降（需绕障导航）。</p>
+  <figure>
+    <img src="assets/grop_fig6_trials.png" alt="真机试验分类">
+    <figcaption>图 6：真机试验总览。45 次试验按任务与环境复杂度分类，38 次成功、7 次失败（总成功率 84.4%）；失败进一步归因——导航失败 3 次、操作失败 4 次。</figcaption>
+  </figure>
+
+  <h3>5.2 仿真性能评估（对比基线）</h3>
+  <figure>
+    <img src="assets/grop_fig8_comparison.png" alt="整体性能对比">
+    <figcaption>图 8：LLM-GROP 与三个基线的整体性能（用户评分 vs 执行时间，均值±标准误）。LLM-GROP 取得最高评分与最短执行时间；GROP 效率相当但评分显著更低；TPRA/LATP 评分低且效率差（导航目标落在障碍区时难调整轨迹）。</figcaption>
+  </figure>
+  <p>8 个任务 × 20 次 = 640 张图，5 名研究生评分（共 3200 样本）。LLM-GROP 取得最高用户评分 + 最短执行时间。GROP 虽同样高效，但<strong>因缺乏语义有效排布能力而评分显著低</strong>；TPRA/LATP 既低分又低效——它们缺少复杂环境里的导航能力，导航目标落在障碍区时难以调整轨迹。</p>
+  <figure>
+    <img src="assets/grop_fig9_ratings.png" alt="单任务用户评分">
+    <figcaption>图 9：单个任务的用户评分。LLM-GROP 在每个任务上均优于基线；任务 1–5（3 物体）略高于任务 6、8（更多物体，挑战更大）。</figcaption>
+  </figure>
+
+  <h3>5.3 不同 LLM 的敏感性</h3>
+  <table class="tbl">
+    <tr><th class="l">Task</th><th>GPT-3</th><th>GPT-4</th><th>Gemini</th><th>Claude</th></tr>
+    <tr><td class="l">Task 1</td><td>4.06</td><td class="best">4.98</td><td>4.87</td><td>4.50</td></tr>
+    <tr><td class="l">Task 2</td><td>3.99</td><td>4.48</td><td class="best">4.70</td><td>3.65</td></tr>
+    <tr><td class="l">Task 6</td><td>3.91</td><td class="best">4.92</td><td>2.36</td><td>4.90</td></tr>
+    <tr><td class="l">Task 8（5 物体最复杂）</td><td class="best">3.79</td><td>2.22</td><td>1.83</td><td>1.00</td></tr>
+  </table>
+  <p>GPT-4 在 8 个任务里的 4 个（Task 1/3/6/7，3–4 物体）表现最佳；但<strong>没有单一模型在所有任务上一致占优</strong>——不同模型各有擅长（Gemini 擅长关系/空间型任务，Claude 擅长 3 物体细微关系）。有意思的是，最复杂的 5 物体任务里 GPT-3 反而得分最高。<strong>应根据任务的关系与结构需求选择最合适的 LLM</strong>。</p>
+</section>
+
+<section id="s6">
+  <h2><span class="no">06</span>核心 Insights</h2>
+  <div class="box insight">
+    <div class="bt">1. 常识可以"零样本"从 LLM 蒸馏，替代示范数据</div>
+    StructFormer 需要示范数据预测布局，DALL-E-Bot 需要扩散模型生成目标图。LLM-GROP 用 template prompt 直接问出"叉子在盘左、刀在右"这种社会约定，<strong>避免了示范数据收集</strong>——常识被编码在 LLM 权重里，免费可取。
+  </div>
+  <div class="box insight">
+    <div class="bt">2. 可行性要"概率化"，才能和效率一起优化</div>
+    把可行性建模为概率 F(p)∈[0,1]，才能在"高可行高成本"与"略低可行低成本"之间权衡。<strong>当长距离导航成本很高时，这个权衡是决定性的</strong>——纯可行性优化会牺牲效率，纯效率优化会撞障碍。
+  </div>
+  <div class="box insight">
+    <div class="bt">3. 视觉接地的对象是"站立位置"，而非物体</div>
+    GROP 的核心创新是让 CV 学"机器人该站哪"（底座足迹 + 朝向），而非识别物体。站立位置同时决定导航可行性与操作可达性，是<strong>MoMa 中导航与操作之间的关键接口</strong>。
+  </div>
+  <div class="box insight">
+    <div class="bt">4. 数字孪生绕开 sim-to-real 视觉鸿沟</div>
+    FCN 只用仿真数据训练，真机部署时不直接喂真实照片，而是<strong>估计障碍位姿、用仿真资产重建数字孪生、渲染俯视图</strong>再喂给 FCN。这种"真→孪生→仿真渲染"的技巧避开了视觉域迁移难题。
+  </div>
+  <div class="box insight">
+    <div class="bt">5. LLM 常识是"好的起点"而非"可信的终点"</div>
+    LLM 会产出逻辑矛盾的布局（如"果盘既在叉子下又在叉子右"），因此用 ASP 做一致性检查 + 拒绝采样过滤是必要的。<strong>把 LLM 的常识输出当作"候选生成器"，再用符号约束 + 几何规则兜底</strong>。
+  </div>
+</section>
+
+<section id="s7">
+  <h2><span class="no">07</span>讨论与局限</h2>
+  <h3>边界与假设</h3>
+  <ul>
+    <li><strong>完整 3D 模型假设</strong>：假设场景中每个物体都有完整 3D 模型（实践中选与仿真资产几何/外观接近的真实物体）；未来可接 Real2Sim（3D 重建 / 图像生成）建精确模型；</li>
+    <li><strong>俯视感知</strong>：当前用俯视图感知世界配置；未来可接入 ego-centric 视觉 + 主动感知，或用 LLaVA/GPT-4o 等 VLM 做导航目标选择器；</li>
+    <li><strong>导航与操作时序交织</strong>：本文假设二者时序交替（通过站立位置连接），未做全身控制下的同步导航+操作；</li>
+    <li><strong>不可移动物体</strong>：假设除目标物外其余物体静止，未做二阶推理（移动障碍物以辅助操作）。</li>
+  </ul>
+  <h3>结论</h3>
+  <p>LLM-GROP 展示了如何<strong>从 LLM 提取语义信息、用于对物体放置做符合常识的决策</strong>，并用 CV 方法为移动操作视觉接地任务运动规划、让机器人选择同时支撑导航与操作的站立位置。仿真与真机对比均验证其在 MoMa 任务上的优势。</p>
+</section>
+
+<section id="s8">
+  <h2><span class="no">08</span>论文与代码链接</h2>
+  <ul class="linklist">
+    <li>📄 论文（IJRR 2025）：<code>arXiv:2511.07727</code> — <a href="https://arxiv.org/abs/2511.07727">https://arxiv.org/abs/2511.07727</a> · DOI <code>10.1177/02783649251378196</code></li>
+    <li>📄 前作（会议版）：LLM-GROP（IROS 2023，Ding et al.）+ GROP（Zhang et al. 2022）</li>
+    <li>🔗 作者主页（Shiqi Zhang 组）：<a href="https://www.cs.utexas.edu/~pstone/Papers/bib2html/b2hd-LLM-GROP_IJRR_2025.html">论文页（含 PDF + slides）</a></li>
+    <li>⚠️ 官方代码仓库未明确公开；仿真环境基于 Gazebo、规划基于 MoveIt（<a href="https://moveit.ros.org/">moveit.ros.org</a>）</li>
+  </ul>
+</section>
+
+<div class="foot">LLM-GROP 论文精读笔记 · 生成于 2026-09-26 · 图表均截取自原论文</div>
+</div>
+
+</body>
+</html>

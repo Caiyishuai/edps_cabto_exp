@@ -1,0 +1,86 @@
+{
+  "task": "blocks",
+  "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+  "rows": [
+    {
+      "action_id": "pick(object=red,support=blue)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": true,
+      "attribution": "OK(全链路通)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": null
+    },
+    {
+      "action_id": "place(object=red,support=blue)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": false,
+      "attribution": "感知错(qwen定位误差)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "at_target(red)",
+          "empty()"
+        ],
+        "remaining_del": [
+          "holding(red)"
+        ],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": "ValueError: No matching cube RGB region near Qwen point"
+    },
+    {
+      "action_id": "pick(object=yellow,support=green)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": true,
+      "attribution": "OK(全链路通)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": null
+    },
+    {
+      "action_id": "place(object=yellow,support=green)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": false,
+      "attribution": "感知错(qwen定位误差)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "at_target(yellow)",
+          "empty()"
+        ],
+        "remaining_del": [
+          "holding(yellow)"
+        ],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": "ValueError: No matching cube RGB region near Qwen point"
+    },
+    {
+      "action_id": "home()",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": true,
+      "attribution": "OK(全链路通)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": null
+    }
+  ]
+}

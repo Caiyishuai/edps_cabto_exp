@@ -1,0 +1,283 @@
+{
+  "task": "blocks",
+  "seeds": [
+    0
+  ],
+  "models": [
+    {
+      "name": "pick",
+      "args": {
+        "object": "yellow",
+        "support": "green"
+      },
+      "pre": [
+        "empty()",
+        "at_source(yellow)"
+      ],
+      "add": [
+        "holding(yellow)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(yellow)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "yellow",
+        "support": "green"
+      },
+      "pre": [
+        "holding(yellow)"
+      ],
+      "add": [
+        "at_target(yellow)",
+        "empty()"
+      ],
+      "del": [
+        "holding(yellow)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "pick",
+      "args": {
+        "object": "red",
+        "support": "blue"
+      },
+      "pre": [
+        "empty()",
+        "at_source(red)"
+      ],
+      "add": [
+        "holding(red)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(red)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "red",
+        "support": "blue"
+      },
+      "pre": [
+        "holding(red)"
+      ],
+      "add": [
+        "at_target(red)",
+        "empty()"
+      ],
+      "del": [
+        "holding(red)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "home",
+      "args": {},
+      "pre": [
+        "empty()"
+      ],
+      "add": [
+        "home_completed()"
+      ],
+      "del": []
+    }
+  ],
+  "results": [
+    {
+      "model": "pick",
+      "args": {
+        "object": "yellow",
+        "support": "green"
+      },
+      "pre": [
+        "empty()",
+        "at_source(yellow)"
+      ],
+      "add": [
+        "holding(yellow)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(yellow)",
+        "home_completed()"
+      ],
+      "pre_holds": true,
+      "before": [
+        "at_source(red)",
+        "at_source(yellow)",
+        "empty()"
+      ],
+      "after": [
+        "at_source(red)",
+        "holding(yellow)"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "blocks"
+    },
+    {
+      "model": "place",
+      "args": {
+        "object": "yellow",
+        "support": "green"
+      },
+      "pre": [
+        "holding(yellow)"
+      ],
+      "add": [
+        "at_target(yellow)",
+        "empty()"
+      ],
+      "del": [
+        "holding(yellow)",
+        "home_completed()"
+      ],
+      "pre_holds": true,
+      "before": [
+        "at_source(red)",
+        "holding(yellow)"
+      ],
+      "after": [
+        "at_source(red)",
+        "at_target(yellow)",
+        "empty()"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "blocks"
+    },
+    {
+      "model": "pick",
+      "args": {
+        "object": "red",
+        "support": "blue"
+      },
+      "pre": [
+        "empty()",
+        "at_source(red)"
+      ],
+      "add": [
+        "holding(red)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(red)",
+        "home_completed()"
+      ],
+      "pre_holds": true,
+      "before": [
+        "at_source(red)",
+        "at_source(yellow)",
+        "empty()"
+      ],
+      "after": [
+        "at_source(yellow)",
+        "holding(red)"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "blocks"
+    },
+    {
+      "model": "place",
+      "args": {
+        "object": "red",
+        "support": "blue"
+      },
+      "pre": [
+        "holding(red)"
+      ],
+      "add": [
+        "at_target(red)",
+        "empty()"
+      ],
+      "del": [
+        "holding(red)",
+        "home_completed()"
+      ],
+      "pre_holds": true,
+      "before": [
+        "at_source(yellow)",
+        "holding(red)"
+      ],
+      "after": [
+        "at_source(yellow)",
+        "at_target(red)",
+        "empty()"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "blocks"
+    },
+    {
+      "model": "home",
+      "args": {},
+      "pre": [
+        "empty()"
+      ],
+      "add": [
+        "home_completed()"
+      ],
+      "del": [],
+      "pre_holds": true,
+      "before": [
+        "at_target(red)",
+        "at_target(yellow)",
+        "empty()"
+      ],
+      "after": [
+        "at_target(red)",
+        "at_target(yellow)",
+        "empty()",
+        "home_completed()"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "blocks"
+    }
+  ],
+  "all_oracle_reachable": true
+}

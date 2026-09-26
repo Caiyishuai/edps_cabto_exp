@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embodied Learnable Memory（EPM）论文精读</title>
+<style>
+:root{
+  --ink:#152036; --ink2:#3f4d68; --muted:#7a8699;
+  --accent:#6d28d9; --accent-soft:#f1ebfd;
+  --green:#0e7a4d; --green-soft:#e9f7f0;
+  --red:#b42318; --red-soft:#fdeceb;
+  --line:#e6e2f0; --bg:#f8f7fc; --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.hero{background:linear-gradient(135deg,#1d1040 0%,#372071 55%,#5b34ad 100%);color:#fff;
+  padding:56px 24px 44px;margin-bottom:36px;}
+.hero-inner{max-width:980px;margin:0 auto;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.tag{font-size:12.5px;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);letter-spacing:.5px;}
+.tag.hl{background:#6d28d9;border-color:#6d28d9;}
+.hero h1{font-size:30px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.hero .sub{font-size:17px;color:#d4c6f2;margin-bottom:18px;}
+.hero .meta{font-size:14px;color:#b3a3d9;}
+.hero a{color:#c9b3ff;text-decoration:none;border-bottom:1px dashed rgba(201,179,255,.5);}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:6px 8px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 18px rgba(50,30,100,.08);}
+.toc a{font-size:13.5px;color:var(--ink2);text-decoration:none;padding:5px 12px;border-radius:8px;}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;margin-bottom:28px;}
+h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;}
+h2 .no{font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:8px;padding:2px 10px;letter-spacing:1px;flex-shrink:0;}
+h3{font-size:17.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);}
+h3::before{content:"▎";color:var(--accent);margin-right:2px;}
+p{margin-bottom:14px;color:var(--ink2);}
+strong{color:var(--ink);}
+ul,ol{margin:0 0 14px 26px;color:var(--ink2);}
+li{margin-bottom:7px;}
+.tldr{background:linear-gradient(135deg,#f1ebfd,#e8defc);border-left:5px solid var(--accent);
+  padding:22px 26px;border-radius:0 12px 12px 0;margin-bottom:28px;font-size:16.5px;}
+.tldr b{color:var(--accent);}
+figure{margin:22px 0;text-align:center;}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 3px 14px rgba(50,30,100,.08);}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.7;padding:0 18px;}
+.box{border-radius:12px;padding:18px 22px;margin:18px 0;font-size:15.5px;}
+.box .bt{font-weight:700;margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.box.insight{background:var(--green-soft);border:1px solid #bfe5d2;}
+.box.insight .bt{color:var(--green);}
+.box.warn{background:var(--red-soft);border:1px solid #f6c6c2;}
+.box.warn .bt{color:var(--red);}
+.box.key{background:var(--accent-soft);border:1px solid #d9c8f7;}
+.box.key .bt{color:var(--accent);}
+.formula{background:#f4f1fa;border:1px dashed #cdbcea;border-radius:10px;
+  padding:14px 20px;margin:14px 0;font-family:"Times New Roman",Georgia,serif;
+  font-size:16px;color:var(--ink);text-align:center;overflow-x:auto;}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;}
+.tbl th{background:#f2eefb;color:var(--ink);font-weight:700;padding:8px 10px;
+  border:1px solid var(--line);text-align:center;}
+.tbl td{padding:7px 10px;border:1px solid var(--line);text-align:center;color:var(--ink2);}
+.tbl td.l,.tbl th.l{text-align:left;}
+.tbl tr.ours td{background:#f1ebfd;font-weight:600;color:var(--ink);}
+.tbl .best{color:var(--accent);font-weight:700;}
+.tbl .zero{color:var(--red);}
+.chips{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.chip{flex:1;min-width:180px;background:#faf9fd;border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;}
+.chip .cv{font-size:24px;font-weight:800;color:var(--accent);}
+.chip .cl{font-size:13px;color:var(--muted);margin-top:2px;}
+.op{display:inline-block;font-weight:700;border-radius:6px;padding:0 8px;font-size:13.5px;}
+.op.add{background:#e5f6ec;color:#0e7a4d;}
+.op.upd{background:#fff6e0;color:#a16207;}
+.op.del{background:#fdeceb;color:#b42318;}
+.op.none{background:#eef1f6;color:#556079;}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:40px;}
+code{background:#f0edf7;padding:1px 7px;border-radius:5px;font-size:13.5px;color:#5b21a6;}
+.linklist li{margin-bottom:9px;}
+@media (max-width:700px){section{padding:24px 20px;} .hero h1{font-size:24px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag-row">
+      <span class="tag hl">具身智能</span>
+      <span class="tag">可学习记忆</span>
+      <span class="tag">VLM / LLM 规划</span>
+      <span class="tag">强化学习（DDAFT）</span>
+      <span class="tag">ICLR 2026 · Meta FAIR</span>
+    </div>
+    <h1>Planning with an Embodied Learnable Memory</h1>
+    <div class="sub">EPM：用一个可学习的 VLM 记忆，支撑动态环境中的长时程移动操作规划</div>
+    <div class="meta">Priyam Parashar*, Jacob Krantz*, Matthew Chang*, Kavit Shah, Xavier Puig†, Roozbeh Mottaghi†（*共同一作，Meta FAIR）</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="tldr">
+  <b>一句话总结：</b>现有具身记忆（点云特征、场景图、查询检索）难以应对"物体经常被移动"的动态环境、计算开销大、还依赖多模型拼接。本文提出 <b>EPM（Embodied Perception Memory）</b>：单个 VLM 从第一人称观测出发，通过 <span class="op add">Add</span>/<span class="op upd">Update</span>/<span class="op del">Remove</span> 操作维护一份<b>文本化环境表示</b>，与 LLM 规划器无缝衔接；再用<b>人类示范模仿</b> + 新颖的<b>难度感知在线 RL（DDAFT）</b>训练规划器——在 PARTNR 基准上比强基线<b>成功率提升至多 55%</b>，甚至超过配备了<b>真值感知</b>的基线。
+</div>
+
+<nav class="toc">
+  <a href="#s1">① 摘要解读</a>
+  <a href="#s2">② 背景与动机</a>
+  <a href="#s3">③ EPM 记忆</a>
+  <a href="#s4">④ 规划与训练</a>
+  <a href="#s5">⑤ 实验设置</a>
+  <a href="#s6">⑥ 结果与分析</a>
+  <a href="#s7">⑦ Insights</a>
+  <a href="#s8">⑧ 局限与链接</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">01</span>摘要解读</h2>
+  <p>摘要从人类经验切入：人能毫不费力地走向"上次放干净马克杯的橱柜"，取杯到桌上准备咖啡——这依赖<strong>记忆、感知、规划</strong>三者的交织：记忆提供环境中物体的心智地图，随观察不断更新，进而支撑有效规划。机器人要达到这种效率，就需要同样的能力。现有记忆表示的三大短板：</p>
+  <ol>
+    <li><strong>难应对动态环境</strong>——物体频繁被机器人或人移动、改变状态；</li>
+    <li><strong>计算缺陷</strong>——多模型拼接、反复调用大模型查询，内存与算力开销高；</li>
+    <li><strong>查询接口不实用</strong>——朴素的语言特征匹配无法兼顾精度与召回，规划器难以写出精确查询。</li>
+  </ol>
+  <p>EPM 的答案是<strong>单个可学习的 VLM</strong>：以自我中心视觉维护并更新文本环境表示；配合两种互补的规划器训练方法——<strong>人类轨迹模仿</strong>（自然探索与交互）与<strong>DDAFT</strong>（难度感知探索的在线 RL）。</p>
+  <div class="chips">
+    <div class="chip"><div class="cv">+55%</div><div class="cl">PARTNR 规划任务成功率相对 DynaMem 的绝对提升</div></div>
+    <div class="chip"><div class="cv">+12%</div><div class="cl">相对 PARTNR-Pretrained（LLama3.3-70B）的提升</div></div>
+    <div class="chip"><div class="cv">8B &lt; 70B</div><div class="cl">HD 训练的 8B 模型在 GT 感知下反超 70B 零样本规划器</div></div>
+    <div class="chip"><div class="cv">3.5×</div><div class="cl">相对 DynaMem 的推理速度优势</div></div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span>研究背景与动机（Introduction）</h2>
+  <h3>长时程移动操作需要什么样的记忆？</h3>
+  <p>记忆不仅要捕获场景中物体的空间配置、上下文与状态，还要<strong>随智能体探索或环境变化而动态更新</strong>，并与规划系统集成、提供任务上下文。表 1 对比了各类记忆表示的能力边界：</p>
+  <table class="tbl">
+    <tr><th class="l">方法</th><th>开放词汇</th><th>物体关系</th><th>纠错</th><th>动态性</th><th>免查询</th><th>单模型</th></tr>
+    <tr><td class="l">ConceptFusion (RSS'23)</td><td>◐</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td class="l">ConceptGraphs (ICRA'24)</td><td>◐</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td class="l">3D-Mem (CVPR'25)</td><td>◐</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td class="l">DynaMem (arXiv'24)</td><td>◐</td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+    <tr class="ours"><td class="l">EPM（本文）</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+  </table>
+  <h3>现有路线的三类困境</h3>
+  <ul>
+    <li><strong>存储自我观测/特征化点云 + 查询检索</strong>（DynaMem、3D-Mem 等）：动态场景难维护；规划时需要 LLM 先生成查询再生成动作——查询写不准，且特征匹配难以兼顾精度与召回（GOAT 工作的发现）；</li>
+    <li><strong>多模型流水线</strong>（独立检测/分割 + 场景图 + LLM）：小物体/稀有物体场景有效，但内存与计算开销高，各模块误差在整个系统传播导致规划失败；</li>
+    <li><strong>VLM 直接从观测预测动作</strong>：动作直接落地到视觉，但受 VLM 上下文/记忆限制，<strong>无法支撑大环境中的长时程探索</strong>。</li>
+  </ul>
+  <div class="box key">
+    <div class="bt">核心洞察：记忆直接产出"规划器可直接读的文本"</div>
+    EPM 把环境编码为<strong>物体中心</strong>的表示：每个物体 = 3D 坐标 + 自然语言描述（名称、状态、与其他实体的关系）。这天然是一份文本场景表示，LLM 规划器<strong>直接读取上下文即可，无需发出检索查询</strong>——规划器只专注于生成动作。连锁好处：规划器可以在"没有查询标注"的机器人交互数据上训练，从而打开 RL 的大门。
+  </div>
+  <figure>
+    <img src="assets/embodied_fig1_overview.png" alt="EPM 系统总览">
+    <figcaption>图 1：EPM 系统总览。任务："把剪刀、手机和信用卡从桌子拿到柜台"。EPM（VLM）从智能体观测预测更新操作（Add 剪刀/手机到 Entity.1、Remove 误检的 Entity.4），维护文本环境状态（Entity.1: 咖啡桌，Entity.2: 剪刀在 E.1 上…）；高层规划器据此输出动作（Grab Object.2）。</figcaption>
+  </figure>
+  <h3>论文贡献</h3>
+  <ol>
+    <li><strong>EPM</strong>：一种新的可学习记忆表示——单模型、原生处理动态环境、与 LLM 规划器无缝集成；</li>
+    <li><strong>规划训练方法</strong>：人类示范数据 + DDAFT，在强基线上取得显著提升（相对 DynaMem +55%、相对 PP +12%）。</li>
+  </ol>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span>方法 I：EPM 记忆本身</h2>
+  <h3>3.1 问题设定</h3>
+  <p>目标：智能体在与环境交互时<strong>检测并跟踪</strong>场景中的物体。形式化：学习更新函数 f，使得</p>
+  <div class="formula">M<sup>t</sup> = f ( M<sup>t−1</sup>, o<sup>t</sup>, a<sup>t</sup> )</div>
+  <ul>
+    <li><strong>环境状态 M</strong>：实体列表（家具与物体），每个实体 i 有唯一 id<sub>i</sub>、近似质心的 3D 坐标 c<sub>i</sub>∈ℝ³、自然语言描述 d<sub>i</sub>（开放词汇名称、状态、与其他实体的关系）；</li>
+    <li><strong>观测 o<sup>t</sup></strong>：RGBD 图像 + 相机位姿 + 内参；</li>
+    <li><strong>动作 a</strong>：元组 (u, id<sub>v1</sub>…id<sub>vn</sub>)，u 为动词（Navigate / Pick / Place / Open），v 索引环境状态中的实体。</li>
+  </ul>
+  <h3>3.2 四种离散记忆操作</h3>
+  <p>关键设计：EPM <strong>不重新生成整个 M<sup>t</sup></strong>，而是输出一组离散操作，与 M<sup>t−1</sup> 组合得到 M<sup>t</sup>：</p>
+  <ul>
+    <li><span class="op add">Add (&lt;coords&gt;): &lt;description&gt;</span> — 把之前未见过的物体加入环境状态，坐标由像素坐标反投影到世界系；</li>
+    <li><span class="op upd">Update k (&lt;coords&gt;): &lt;description&gt;</span> — 更新 id=k 的实体的坐标与描述（如橱柜被打开、物体被抓起），<strong>同时承担感知纠错</strong>（走近后修正之前标错的类别）；</li>
+    <li><span class="op del">Remove k</span> — 删除从场景消失或之前误检的实体；</li>
+    <li><span class="op none">No updates</span> — 没有新信息时维持 M<sup>t</sup>=M<sup>t−1</sup>。</li>
+  </ul>
+  <p>训练一个 VLM 预测这些操作：输入 RGB 观测 + 文本环境状态 + 机器人动作 + 智能体位姿，输出一组更新操作。</p>
+  <figure>
+    <img src="assets/embodied_fig2_epm.png" alt="EPM 概览">
+    <figcaption>图 2：EPM 概览。左：智能体观测（坐标 + RGB 图像）与动作（Navigate[Entity.1]）；中：当前文本环境状态；VLM 预测更新（Add: pot on Entity.1 / Remove: Entity.4）得到新的环境状态。</figcaption>
+  </figure>
+  <h3>3.3 训练数据：仿真交互 + 特权启发式</h3>
+  <p>在 PARTNR（要求探索与移动物体的室内仿真基准）上生成智能体交互数据：M⁰ 用仿真器提供的静态布局与家具初始化（论文也讨论了用 SfM/3D 重建等替代方案），然后用<strong>特权信息 + 启发式</strong>导出随时间更新记忆的操作序列——得到（观测、动作、环境状态、更新操作）数据集。以监督方式<strong>微调 LLaVa-OneVision-7B（LoRA）</strong>。注：启发式只用于生成训练数据，推理时不使用。</p>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span>方法 II：用 EPM 做规划（两种训练策略）</h2>
+  <h3>4.1 架构：两层控制</h3>
+  <ul>
+    <li><strong>高层规划器</strong>：接收任务描述 ω，从 EPM 获取 M<sup>t</sup>，输出高层动作（Navigate/Open/Pick/Place，以实体为参数）；</li>
+    <li><strong>技能策略</strong>：把高层动作翻译为底层控制（本文用特权技能以聚焦感知与规划研究，框架对技能实现不可知）；技能执行至失败或终止时再次调用规划器；</li>
+    <li>规划器采用 <strong>ReAct</strong> 范式：提示词是 M<sup>t</sup> 中物体（UID + 描述）拼接的文本，自回归的动作预测与世界表示交错；<strong>每步只把 EPM 更新过的物体加入上下文</strong>，避免上下文爆炸。</li>
+  </ul>
+
+  <h3>4.2 从人类示范学规划（HD）</h3>
+  <p>具身规划在典型 LLM 训练数据中严重欠represented，高质量数据难求。作者的做法：<strong>把仿真中人类遥操作示范转换为机器人可用的规划轨迹</strong>。这里有个"感知-动作耦合"难题——不同感知系统的最优动作不同（"像素级完美"感知原地转一圈就能看清全屋，"近视"感知必须走动探索）。解法：<strong>在仿真中回放遥操作、同时让感知系统在环运行</strong>，从而无需感知专属示范就能得到感知专属的规划轨迹：</p>
+  <figure>
+    <img src="assets/embodied_fig3_traces.png" alt="从人类示范生成规划轨迹">
+    <figcaption>图 3：从人类示范生成规划轨迹。在仿真中回放人类示范、感知系统在环，推断出探索动作序列以适配感知系统并教会智能体探索；最后优化轨迹、删除无法推进任务的交互，缓解人类示范中的次优行为。</figcaption>
+  </figure>
+  <ul>
+    <li>每个交互标签（Pick/Place/Open/Close）推出一个规划动作；若 EPM 在上一动作结束时<strong>尚未检测到</strong>交互对象，则插入 Explore 动作去找它；</li>
+    <li><strong>教穷尽搜索</strong>：采样"没找到物体"的探索动作；<strong>教抗幻觉</strong>：探索中采样对幻觉物体的 Nav-Pick 动作；</li>
+    <li><strong>优化</strong>：按 episode 评估函数删除无任务进展的交互序列，缓解人类示范的偶发次优；</li>
+    <li>用 LoRA 微调 LLM（LLama3.1-8B-Instruct）。</li>
+  </ul>
+
+  <h3>4.3 DDAFT：动态难度感知微调（核心创新）</h3>
+  <p>用在线经验进一步改进规划：一种<strong>无价值函数的 LLM RL</strong>。与常见均匀采样训练指令不同，DDAFT <strong>把采样空间偏向"困难"指令</strong>以提高样本效率——类似 DART-Math，但 DART-Math 生成静态数据集，DDAFT <strong>迭代运行、用当前策略动态估计指令难度</strong>：</p>
+  <ol>
+    <li>用初始规划策略（如 HD 模型）在所有训练 episode 上 rollout，得到带任务奖励的轨迹数据集 D₀ = {(x₀,r₀),…,(xₙ,rₙ)}；</li>
+    <li>在 D<sub>t</sub> 上微调规划模型（本文用 <strong>RFT 目标</strong>），再采样新轨迹形成新数据集，交替进行；</li>
+    <li><strong>难度感知采样</strong>：按各 episode 目前失败率的 softmax 分布采样"生成新轨迹的 episode"——<strong>探索集中于当前数据集中还没有成功样本的指令</strong>，形成课程，带来样本高效的政策改进。</li>
+  </ol>
+  <div class="box key">
+    <div class="bt">DDAFT vs 相关方法</div>
+    ReST/RFT/GRPO 类方法均匀采样指令；DART-Math 静态难度加权、一次性构造数据；<strong>DDAFT 动态</strong>——每轮迭代用当前策略的失败率重新定义"难在哪"，训练资源持续流向"还不会的任务"，避免在已会任务上浪费 rollout。
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span>实验设置</h2>
+  <h3>平台与数据集</h3>
+  <ul>
+    <li><strong>感知评估（离线）</strong>：① PARTNR 验证集生成的单智能体演示——12 个不同场景、1000 条演示，每隔 K 步记录环境状态真值；② <strong>Spot-Indoor</strong>（自建）：用 Boston Dynamics Spot 在 ~155 m² 公寓采集 30 条交互序列（15 人类 + 15 机器人）、1100 帧，目标与干扰物在容器间被移动，一半序列中人类也会改变环境；人工标注目标物体、首次出现帧与移动帧。</li>
+    <li><strong>规划评估（在线）</strong>：PARTNR 单智能体基准，held-out 验证集 <strong>1000 episodes、12 个 HSSD 场景</strong>。</li>
+  </ul>
+  <h3>评估指标</h3>
+  <ul>
+    <li><strong>感知</strong>：每步构建环境图 Ĝ<sub>t</sub>（节点=实体，边=关系），与真值部分可观测图 G<sub>t</sub> 做二分图匹配（名称匹配且距离 &lt;0.5 m），报告<strong>节点/边的 Precision、Recall、F1</strong>（按时间平均）；</li>
+    <li><strong>规划</strong>：遵循 PARTNR 协议——<strong>成功率</strong>（完成 episode 百分比）、<strong>完成度</strong>（平均任务进度，即使未完成）、<strong>仿真步数</strong>、<strong>规划周期数</strong>（高层动作数）、<strong>冗余动作率</strong>（无谓重排 / 总重排）。</li>
+  </ul>
+  <h3>对比方法</h3>
+  <table class="tbl">
+    <tr><th class="l">方法</th><th class="l">说明</th></tr>
+    <tr><td class="l">GT（感知基线）</td><td class="l">特权版 EPM：真值传感器在距离/占屏比阈值内直接加物体——展示数据集难度上限</td></tr>
+    <tr><td class="l">GPT-4o</td><td class="l">同 EPM 流程但用 GPT-4o 产生更新操作</td></tr>
+    <tr><td class="l">DynaMem</td><td class="l">全局体素网格 + 物体特征，查询时特征匹配定位 + 目标检测器出 3D 位置（需对词表中每类物体逐帧查询；不能推断关系）</td></tr>
+    <tr><td class="l">PP（PARTNR-Pretrained）</td><td class="l">LLama3.3-70B-Instruct + EPM 表示 + ReAct 提示，零样本微调</td></tr>
+    <tr class="ours"><td class="l">HD（本文）</td><td class="l">LLama3.1-8B-Instruct + 人类示范轨迹微调（PARTNR Train 10 万任务）</td></tr>
+    <tr class="ours"><td class="l">PP+DDAFT / HD+DDAFT（本文）</td><td class="l">在 PP / HD 基础上跑 5 轮 DDAFT（2000 episode 子集，每轮 2000 episodes）</td></tr>
+  </table>
+</section>
+
+<section id="s6">
+  <h2><span class="no">06</span>实验结果与分析</h2>
+
+  <h3>6.1 感知评估（规划之外）</h3>
+  <figure>
+    <img src="assets/embodied_fig4_qualitative.png" alt="感知定性结果">
+    <figcaption>图 4：感知定性结果。左：PARTNR 离线评估中 EPM 的物体添加（上）与误检删除（下）示例；右：真实世界（Spot-Indoor）中 EPM vs DynaMem vs GPT-4o 的定位结果（橙点与包围框为各方法定位的物体）。</figcaption>
+  </figure>
+  <table class="tbl">
+    <tr><th class="l">方法</th><th class="l">数据集</th><th>节点 P</th><th>节点 R</th><th>节点 F1</th><th>边 P</th><th>边 R</th><th>边 F1</th></tr>
+    <tr><td class="l">GT（上限参考）</td><td class="l">PARTNR</td><td>0.86</td><td>0.54</td><td>0.60</td><td>0.83</td><td>0.54</td><td>0.63</td></tr>
+    <tr><td class="l">GPT-4o</td><td class="l">PARTNR</td><td class="zero">0.00</td><td>0.05</td><td class="zero">0.00</td><td class="zero">0.00</td><td class="zero">0.00</td><td class="zero">0.00</td></tr>
+    <tr><td class="l">DynaMem</td><td class="l">PARTNR</td><td>0.04</td><td>0.10</td><td>0.05</td><td colspan="3">—（不支持关系）</td></tr>
+    <tr class="ours"><td class="l">EPM</td><td class="l">PARTNR</td><td class="best">0.36</td><td class="best">0.42</td><td class="best">0.34</td><td class="best">0.66</td><td class="best">0.38</td><td class="best">0.46</td></tr>
+    <tr><td class="l">DynaMem</td><td class="l">Spot-Indoor</td><td class="best">0.42</td><td class="best">0.73</td><td class="best">0.51</td><td colspan="3">—</td></tr>
+    <tr class="ours"><td class="l">EPM</td><td class="l">Spot-Indoor</td><td>0.30</td><td>0.33</td><td>0.24</td><td>0.28</td><td>0.12</td><td>0.16</td></tr>
+  </table>
+  <ul>
+    <li><strong>仿真中显著领先</strong>：EPM F1-node 0.34，但远未饱和——数据集本身很难（物体常部分可见或远距离观察，GT 上限也只有 0.60）；</li>
+    <li><strong>真机可迁移</strong>：只用仿真数据训练的记忆操作，在真实世界能定位物体与关系，但常错误分类、难以区分同物体多实例；</li>
+    <li><strong>DynaMem 真机数字更高，但代价大</strong>：需要对词表中<strong>每个物体类别逐帧查询检测器</strong>——大词表下不可行，且无法推断关系；后续规划实验表明这些局限导致规划性能与效率大幅落后；</li>
+    <li><strong>GPT-4o 幻觉严重</strong>：倾向编造物体与标签，节点精度近乎为 0。</li>
+  </ul>
+
+  <h3>6.2 规划评估（PARTNR，主结果）</h3>
+  <table class="tbl">
+    <tr><th>#</th><th class="l">方法</th><th class="l">感知</th><th>成功率↔</th><th>完成度↔</th><th>仿真步数↗</th><th>规划周期↗</th><th>冗余动作↗</th></tr>
+    <tr><td>1</td><td class="l">DynaMem</td><td class="l">GT</td><td>0.17</td><td>0.33</td><td>7611</td><td>—</td><td>—</td></tr>
+    <tr><td>2</td><td class="l">PP（70B 零样本）</td><td class="l">GT</td><td>0.51</td><td>0.67</td><td>1570</td><td>17.6</td><td>0.19</td></tr>
+    <tr><td>3</td><td class="l">PP+DDAFT（本文）</td><td class="l">GT</td><td>0.66</td><td>0.78</td><td>2160</td><td>22.3</td><td>0.19</td></tr>
+    <tr><td>4</td><td class="l">HD（本文）</td><td class="l">GT</td><td>0.63</td><td>0.74</td><td>2110</td><td>21.6</td><td>0.17</td></tr>
+    <tr class="ours"><td>5</td><td class="l">HD+DDAFT（本文）</td><td class="l">GT</td><td class="best">0.68</td><td class="best">0.80</td><td>2550</td><td>22.7</td><td class="best">0.15</td></tr>
+    <tr><td>6</td><td class="l">DynaMem</td><td class="l">DynaMem</td><td>0.03</td><td>0.11</td><td>5090</td><td>—</td><td>—</td></tr>
+    <tr><td>7</td><td class="l">PP（70B 零样本）</td><td class="l">Learned</td><td>0.46</td><td>0.65</td><td>1850</td><td>19.7</td><td>0.28</td></tr>
+    <tr><td>8</td><td class="l">PP+DDAFT（本文）</td><td class="l">Learned</td><td>0.58</td><td>0.74</td><td>2200</td><td>23.2</td><td>0.27</td></tr>
+    <tr><td>9</td><td class="l">HD（本文）</td><td class="l">Learned</td><td>0.55</td><td>0.69</td><td>3040</td><td>30.2</td><td>0.17</td></tr>
+    <tr class="ours"><td>10</td><td class="l">HD+DDAFT（本文）</td><td class="l">Learned</td><td class="best">0.58</td><td class="best">0.74</td><td>2250</td><td>23.6</td><td>0.23</td></tr>
+  </table>
+  <div class="box insight">
+    <div class="bt">四个关键发现</div>
+    <ul style="margin-bottom:0">
+      <li><strong>HD 用小模型有效规划</strong>：GT 感知下 HD（8B）成功率 0.63 反超 PP（70B）0.51——示范轨迹蒸馏是学习具身规划的有效途径；</li>
+      <li><strong>HD 能适配 EPM 的失败</strong>：学习感知下 HD（0.55）反超 PP 零样本（0.46），<strong>甚至反超 PP 配真值感知（0.51）</strong>——无需采集感知专属示范，示范本身就教会了在噪声记忆上的鲁棒规划；</li>
+      <li><strong>DDAFT 全面有效</strong>：GT 感知下 PP +0.15、HD +0.05；学习感知下 PP +0.12、HD +0.03——对任何基于 EPM 的文本规划策略都是通用配方；</li>
+      <li><strong>整体大幅超越基线</strong>：HD+DDAFT（学习感知）相对 DynaMem +55%、相对 PP +12%；即便给 DynaMem 配真值感知（row 1），仍远逊于本文——检索-检测式方法处理不好"特定实例 / 全部叉子 / 办公室的桌子"这类指代。本文方法比 DynaMem 快 3.5×。</li>
+    </ul>
+  </div>
+
+  <h3>6.3 真实世界评估（Spot 机器人）</h3>
+  <p>用 PP+DDAFT 规划器 + 学习版 EPM 在室内环境、Spot 机器人上测试 20 个场景（有杂乱时把物体移到指定位置，语言指令驱动）：任务成功率 <strong>55%</strong>（失败来自规划与技能执行两方面）；<strong>70% 的任务中 EPM 成功给出正确规划所需信息</strong>。这验证了仿真-only 训练的记忆 + 规划系统在真实世界的可用性。</p>
+</section>
+
+<section id="s7">
+  <h2><span class="no">07</span>核心 Insights</h2>
+  <div class="box insight">
+    <div class="bt">1. "文本化记忆 + 免查询接口"是 LLM 规划器的天然输入</div>
+    把记忆设计成规划器上下文的直接一部分（实体 = 3D 坐标 + 语言描述），省去了查询生成、特征匹配、多次大模型调用。这不仅更快（3.5×），还打开了用<strong>无查询标注</strong>的交互/示范数据训练规划器的大门——这是 DDAFT 得以存在的前提。
+  </div>
+  <div class="box insight">
+    <div class="bt">2. 感知在环的示范回放，解决了"感知-动作耦合"难题</div>
+    不同感知系统对应不同最优动作。与其重新采集感知专属示范，不如<strong>回放人类示范 + 让感知系统在环</strong>，自动合成与自身感知缺陷（幻觉、漏检）匹配的探索与纠错行为——还顺带教会了穷尽搜索和抗幻觉。
+  </div>
+  <div class="box insight">
+    <div class="bt">3. 难度采样应该"动态"而非"静态"</div>
+    DDAFT 的收益来自用当前策略的失败率持续重定义困难指令，把 rollout 预算集中到"还没有成功样本"的任务上。在 GT 感知下给零样本 70B 模型带来 +0.15 成功率——对一个已经很强的基线是很大的边际增益。
+  </div>
+  <div class="box insight">
+    <div class="bt">4. 训练过的 8B &gt; 零样本 70B，且能"补偿"感知噪声</div>
+    HD 不仅以小胜大，还在学习感知（噪声记忆）下反超了零样本模型配真值感知的组合——<strong>在噪声记忆上规划本身是一项可学习的技能</strong>，示范数据里注入的幻觉/失败样本就是这门课的教材。
+  </div>
+  <div class="box insight">
+    <div class="bt">5. 检索-检测式记忆的结构性缺陷</div>
+    DynaMem 在感知指标上（真机）甚至更高，但规划上惨败——因为任务常需要<strong>特定实例、多实例计数、关系指代</strong>（"全部叉子""办公室的桌子"），"先检索后检测"无法处理。这提示：记忆评估不能只看感知指标，要看它在闭环规划中的端到端价值。
+  </div>
+</section>
+
+<section id="s8">
+  <h2><span class="no">08</span>局限、结论与链接</h2>
+  <h3>局限（作者自述）</h3>
+  <ul>
+    <li>训练<strong>仅用仿真数据</strong>——大规模真实动态场景 + 详细规划动作的数据集难以收集，留作未来工作；</li>
+    <li>纯文本表示可能限制某些任务的规划（文本无法表示的物体性质，规划器无从推理）；EPM 框架足够通用，可扩展加入视觉连续特征；未来可与直接操作当前观测的<strong> visuomotor / VLA 模块</strong>组成混合系统；</li>
+    <li>真机验证规模尚小（20 个场景），且代码截至阅读时尚未正式公开。</li>
+  </ul>
+  <h3>结论</h3>
+  <p>EPM 证明了<strong>可学习的显式世界记忆</strong>可以与 LLM 规划器无缝集成：从一般人类示范中就能提取规划训练信号，新提出的 DDAFT 在所有设置下改进规划性能；所提方法甚至在基线配备真值感知时仍然胜出——为长时程移动操作的"记忆-感知-规划"闭环提供了一个简洁、可学习、可扩展的方案。</p>
+  <h3>论文与代码链接</h3>
+  <ul class="linklist">
+    <li>📄 论文：ICLR 2026 — <a href="https://openreview.net/forum?id=79BOATBal9">OpenReview: openreview.net/forum?id=79BOATBal9</a></li>
+    <li>⚠️ 本文<strong>暂无公开官方代码</strong>（"Code: To be confirmed"）</li>
+    <li>🔧 PARTNR 基准（本文的训练/评估平台）：<a href="https://github.com/facebookresearch/partnr_py">github.com/facebookresearch/partnr_py</a></li>
+    <li>🔧 对比基线 DynaMem：<a href="https://github.com/robodhruv/dynamem">github.com/robodhruv/dynamem</a>（另见 Hello Robot stretch_ai 中的实现）</li>
+    <li>🔧 基座模型：LLaVa-OneVision-7B（<a href="https://github.com/LLaVA-VL/LLaVA-NeXT">github.com/LLaVA-VL/LLaVA-NeXT</a>）、LLama3.1/3.3-Instruct</li>
+    <li>🔧 仿真平台：Habitat + HSSD 场景数据集（<a href="https://hssd-3d.github.io/">hssd-3d.github.io</a>）</li>
+  </ul>
+</section>
+
+<div class="foot">Planning with an Embodied Learnable Memory（EPM）论文精读笔记 · 生成于 2026-09-26 · 图表均截取自原论文</div>
+</div>
+
+</body>
+</html>

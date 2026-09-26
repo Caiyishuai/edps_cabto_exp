@@ -1,0 +1,32 @@
+# Scratch / regenerable experiment outputs (not part of the minimal reproduction package)
+/outputs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Build caches
+**/cmake-build*/
+**/build*/
+
+# Local assistant state (memory / work logs) — not part of the repo
+.workbuddy/
+
+# LIBERO reproduction sandbox: keep only the self-contained artifacts (cabto/, bddl_files/, vendor_libero/).
+# The 650M vendored LIBERO clone (third-party, has its own .git) and the 1.2G .venv stay local.
+libero_repro/LIBERO/
+libero_repro/datasets/
+libero_repro/runs/
+libero_repro/.libero/

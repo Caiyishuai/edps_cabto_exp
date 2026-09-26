@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VASO 论文精读</title>
+<style>
+:root{
+  --ink:#0f1f2d; --ink2:#33465a; --muted:#6b8094;
+  --accent:#0e7a6d; --accent-soft:#e3f4f1;
+  --green:#0e7a4d; --green-soft:#e9f7f0;
+  --red:#b42318; --red-soft:#fdeceb;
+  --amber:#a16207; --amber-soft:#fff6e0;
+  --line:#dde7e8; --bg:#f3f8f7; --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.hero{background:linear-gradient(135deg,#06231f 0%,#0b3d35 55%,#0f5c4f 100%);color:#fff;
+  padding:56px 24px 44px;margin-bottom:36px;}
+.hero-inner{max-width:980px;margin:0 auto;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.tag{font-size:12.5px;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);letter-spacing:.5px;}
+.tag.hl{background:#0e9b8a;border-color:#0e9b8a;}
+.hero h1{font-size:30px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.hero .sub{font-size:17px;color:#bfe6df;margin-bottom:18px;}
+.hero .meta{font-size:14px;color:#9cc9c1;}
+.hero a{color:#8fe0d4;text-decoration:none;border-bottom:1px dashed rgba(143,224,212,.5);}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:6px 8px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 18px rgba(10,50,45,.08);}
+.toc a{font-size:13.5px;color:var(--ink2);text-decoration:none;padding:5px 12px;border-radius:8px;}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;margin-bottom:28px;}
+h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;}
+h2 .no{font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:8px;padding:2px 10px;letter-spacing:1px;flex-shrink:0;}
+h3{font-size:17.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);}
+h3::before{content:"▎";color:var(--accent);margin-right:2px;}
+p{margin-bottom:14px;color:var(--ink2);}
+strong{color:var(--ink);}
+ul,ol{margin:0 0 14px 26px;color:var(--ink2);}
+li{margin-bottom:7px;}
+.tldr{background:linear-gradient(135deg,#e3f4f1,#d6efeb);border-left:5px solid var(--accent);
+  padding:22px 26px;border-radius:0 12px 12px 0;margin-bottom:28px;font-size:16.5px;}
+.tldr b{color:var(--accent);}
+figure{margin:22px 0;text-align:center;}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 3px 14px rgba(10,50,45,.08);}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.7;padding:0 18px;}
+.box{border-radius:12px;padding:18px 22px;margin:18px 0;font-size:15.5px;}
+.box .bt{font-weight:700;margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.box.insight{background:var(--green-soft);border:1px solid #bfe5d2;}
+.box.insight .bt{color:var(--green);}
+.box.warn{background:var(--red-soft);border:1px solid #f6c6c2;}
+.box.warn .bt{color:var(--red);}
+.box.key{background:var(--accent-soft);border:1px solid #bde4de;}
+.box.key .bt{color:var(--accent);}
+.formula{background:#eef6f4;border:1px dashed #b8d6d0;border-radius:10px;
+  padding:14px 20px;margin:14px 0;font-family:"Times New Roman",Georgia,serif;
+  font-size:16px;color:var(--ink);text-align:center;overflow-x:auto;}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;}
+.tbl th{background:#edf5f3;color:var(--ink);font-weight:700;padding:8px 10px;
+  border:1px solid var(--line);text-align:center;}
+.tbl td{padding:7px 10px;border:1px solid var(--line);text-align:center;color:var(--ink2);}
+.tbl td.l,.tbl th.l{text-align:left;}
+.tbl tr.ours td{background:#e3f4f1;font-weight:600;color:var(--ink);}
+.tbl .best{color:var(--accent);font-weight:700;}
+.chips{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.chip{flex:1;min-width:170px;background:#f7fbfa;border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;}
+.chip .cv{font-size:23px;font-weight:800;color:var(--accent);}
+.chip .cl{font-size:13px;color:var(--muted);margin-top:2px;}
+.code{background:#0f1f2d;color:#d6e7e4;border-radius:10px;padding:16px 20px;
+  font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.7;
+  overflow-x:auto;margin:14px 0;white-space:pre;}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:40px;}
+code{background:#eef2f1;padding:1px 7px;border-radius:5px;font-size:13.5px;color:#0a5a4d;}
+.linklist li{margin-bottom:9px;}
+@media (max-width:700px){section{padding:24px 20px;} .hero h1{font-size:24px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag-row">
+      <span class="tag hl">物理 AI 智能体</span>
+      <span class="tag">形式验证</span>
+      <span class="tag">LLM 技能自进化</span>
+      <span class="tag">时序逻辑 LTL</span>
+      <span class="tag">arXiv 2606.05395 · 2026-06</span>
+    </div>
+    <h1>VASO：物理 AI 智能体的形式可验证自进化技能</h1>
+    <div class="sub">VASO: Formally Verifiable Self-Evolving Skills for Physical AI Agents</div>
+    <div class="meta">Yunhao Yang*, Neel P. Bhatt*, Kevin Wang, Samuel Tetteh, Zhangyang Wang, Ufuk Topcu · The University of Texas at Austin / Iowa State University（*共同一作）</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="tldr">
+  <b>一句话总结：</b>基础模型让"创造技能"变得廉价，却没让"信任技能"变廉价。现有的技能进化用执行反馈/单测/奖励/LLM 自省来打磨技能，这些信号只能证明"采样过的执行里碰巧没出事"，无法保证技能诱导的计划在<b>未测试条件下</b>满足时序安全契约。VASO 把每个 LLM 生成的技能表示成一个<b>语义合约</b>（形式接口 + 规划器接口），用<b>模型检查器的反例</b>作为优化信号迭代改写技能合约——冻结基础模型权重，在 Jackal 地面机器人与 PX4 四旋翼上达到 <b>97.2% 的规约符合率</b>（不到 100 个优化样本、每技能 20 分钟内）。
+</div>
+
+<nav class="toc">
+  <a href="#s1">① 摘要解读</a>
+  <a href="#s2">② 背景与动机</a>
+  <a href="#s3">③ 方法</a>
+  <a href="#s4">④ 实验设置</a>
+  <a href="#s5">⑤ 结果与分析</a>
+  <a href="#s6">⑥ Insights</a>
+  <a href="#s7">⑦ 局限与结论</a>
+  <a href="#s8">⑧ 链接</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">01</span>摘要解读</h2>
+  <p>可复用技能正成为具身智能体把开放式指令转化为长时程物理行为的"基本单元"。论文一针见血：<strong>基础模型大幅降低了创建技能的成本，却没降低"信任"技能的成本</strong>。现有技能进化回路（执行反馈、单元测试、环境奖励、LLM 自省）提供的都是 <strong>trace 级证据</strong>——只说明技能在采样执行上成功过，而非技能诱导的计划在所有条件下满足时序安全契约。</p>
+  <p>VASO 的核心设计是一个<strong>双接口语义合约</strong>：</p>
+  <ul>
+    <li><strong>形式接口</strong>：把机器人状态、观测、控制命令对齐到逻辑命题，供模型检查器使用；</li>
+    <li><strong>规划器接口</strong>：引导可执行行为的生成。</li>
+  </ul>
+  <p>模型检查器<strong>先过滤逻辑上不一致的技能合约</strong>，再验证技能诱导的计划是否满足全局与局部时序规约；验证失败时，把<strong>反例轨迹翻译成"文本梯度"</strong>更新可复用技能合约，基础模型权重保持冻结。这是首个把形式验证与自进化 LLM 技能闭环起来的框架：形式反例成为优化反馈，而非仅仅验证一次性计划、调 prompt 或微调权重。</p>
+  <div class="chips">
+    <div class="chip"><div class="cv">97.2%</div><div class="cl">形式规约符合率（Jackal + PX4 综合）</div></div>
+    <div class="chip"><div class="cv">&lt; 100</div><div class="cl">达到最优所需的优化样本数</div></div>
+    <div class="chip"><div class="cv">&lt; 20 min</div><div class="cl">单个技能优化耗时</div></div>
+    <div class="chip"><div class="cv">11 规约 × 400 计划</div><div class="cl">评估规模（11 条 LTL 规约、400 个生成计划）</div></div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span>研究背景与动机（Introduction）</h2>
+  <h3>技能可复用 ≠ 技能可信任</h3>
+  <p>一条 prompt 就能产出一个技能描述、代码模板或命令序列，但<strong>看起来合理的技能可能藏着执行期安全失效</strong>：Jackal 地面机器人可能在"观测到人"之后仍继续前进，PX4 四旋翼可能轻微超出高度或速度包线。对物理 AI 智能体而言，核心瓶颈不再是"造更多技能"，而是让技能<strong>以一种可检查、可复用、可验证的方式改进</strong>。</p>
+  <h3>软反馈的局限性</h3>
+  <p>Voyager、Trove、AutoManual、Eureka、AutoSkill 等自进化方法用执行结果/单测/奖励/自省来闭环，这些"软反馈"对扩展能力有用，但只是 trace 级证据。<strong>在 Jackal 与 PX4 基准中，即使是在执行式反馈下最强技能，仍有超过 1/20 的计划违反形式规约</strong>——许多次成功 rollout 无法弥补一次罕见但严重的安全违规。</p>
+  <h3>直接搬形式验证为何难？</h3>
+  <p>一个机器人技能要同时服务几个"互不兼容的消费者"：模型检查器需要符号迁移系统与时序逻辑命题；LLM 规划器需要自然语言/代码式的行为先验；物理机器人需要可执行 API、速度命令或轨迹。</p>
+  <ul>
+    <li>若验证只在计划生成后做，它就成了"最后的 pass/fail 过滤器"，无法改进技能本身；</li>
+    <li>若反馈只用于调 prompt 或微调模型，学到的改进没有暴露为一个可检查、可复用、可独立验证的技能工件；</li>
+    <li>缺的正是：<strong>让形式反例直接作用于技能本身的表示</strong>。</li>
+  </ul>
+  <div class="box key">
+    <div class="bt">核心洞见：把"验证"变成"优化信号"</div>
+    VASO 的可验证技能表示，用<strong>命题对齐的标注函数（labeling function）</strong>作为两个世界的桥梁：它把技能诱导的行为暴露给模型检查器，同时保持技能对 LLM 规划器可用。于是验证不再只是外部安全检查，而成为技能自进化的优化信号。
+  </div>
+  <h3>三个贡献</h3>
+  <ol>
+    <li><strong>可验证的自进化技能表示</strong>：连接时序逻辑规约、命题对齐的机器人语义、规划器行为模板的可复用结构；</li>
+    <li><strong>形式反例作为技能优化反馈</strong>：两级验证（技能级过滤不一致规则 + 计划级识别行为违规），反例转文本梯度精炼技能；</li>
+    <li><strong>物理平台验证</strong>：真机达到 97.2% 规约符合率，<strong>冻结参数下</strong>击败微调基线。</li>
+  </ol>
+  <figure>
+    <img src="assets/vaso_fig1_overview.png" alt="技能自进化回路总览">
+    <figcaption>图 1：技能自进化回路总览。任务 prompt 产出一个可复用技能 → 技能级可行性筛查 → 技能诱导的计划针对时序规约做验证 → 验证器反例被翻译成文本梯度来精炼技能。</figcaption>
+  </figure>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span>方法详解</h2>
+
+  <h3>3.1 问题形式化：技能作为语义合约</h3>
+  <p>技能被定义为三元组 <code>sk = (G, ψ_sk, C_sk)</code>：</p>
+  <ul>
+    <li><strong>G</strong>：全局规约集（LTL 公式），<strong>必须始终满足</strong>的约束（如"见到人 → 下一步停止"）；</li>
+    <li><strong>ψ_sk</strong>：局部规则（LTL 公式），描述该技能的预期行为/目标；</li>
+    <li><strong>C_sk = (L_sk, C^p_sk)</strong>：语义合约——<strong>命题对齐的标注函数 L_sk</strong>（把执行状态映射到成立的原子命题集）+ <strong>文本计划模板 C^p_sk</strong>。</li>
+  </ul>
+  <div class="formula">L_sk(σ) ⊨ G &nbsp;⟺&nbsp; ∀i, L_sk(σ) ⊨ φ_i&nbsp;&nbsp;&nbsp;（全局规约必须恒成立）</div>
+  <p>给定任务 prompt τ、系统命令集 S（如 API）、全局规约 G，基础模型 F_skill 生成技能；语义合约交给规划器 F_plan 生成计划 π；计划诱导执行轨迹 σ，标注函数 L_sk 诱导命题轨迹用于验证。</p>
+
+  <h3>3.2 计划级验证：计划 → 自动机 → 模型检查</h3>
+  <p>VASO 把生成的计划编译成<strong>迁移系统 A_π = (S, S₀, T, L)</strong>：每个执行状态 σ_t 对应一个状态 s_t，每个可执行行为迁移（API 调用/航点更新）对应一条边，标注函数 L(s_t)=L_sk(σ_t) 给状态打上命题标签。然后做形式验证：</p>
+  <div class="formula">A_π ⊗ M ⊨ G ∧ ψ_sk</div>
+  <p>其中 M 是表示环境/系统动力学（所有可能执行）的迁移系统。实现上，计划编译成 <strong>NuSMV</strong> 编码的自动机进行模型检查。</p>
+
+  <h3>3.3 两级验证 + 文本梯度优化（核心）</h3>
+  <figure>
+    <img src="assets/vaso_fig2_vaso.png" alt="VASO 框架总览">
+    <figcaption>图 2：VASO 总览。它验证语义合约生成的计划，并用反馈在闭环中迭代精炼合约。</figcaption>
+  </figure>
+  <ol>
+    <li><strong>技能级验证（过滤逻辑不一致）</strong>：构造组合规约 Φ_sk = (∧_{φ∈G} φ) ∧ ψ_sk，检查是否存在满足它的执行轨迹。通过构造一个"万能迁移系统"（状态集 = 2^AP），把可行性检查转化为可满足性检查，等价地用模型检查器验证 M ⊨ ¬Φ_sk。若成立，说明所有轨迹都违反 Φ_sk、技能不可行，需重新查询 F_skill 精炼局部规则；否则模型检查器返回的反例本身就是"技能逻辑可行"的见证。</li>
+    <li><strong>计划级验证（识别行为违规）</strong>：得到逻辑可行的技能后，生成计划并编译成自动机验证 G ∧ ψ_sk。失败时返回反例轨迹。</li>
+    <li><strong>语义合约精炼（文本梯度下降）</strong>：验证结果 y ∈ {pass, fail(φ)} 被转换成<strong>文本梯度 g</strong>（如"违反规约：G(person observed → X stop)"），作为 ∂L/∂C_s 的离散近似，引导 C_sk 的更新：</li>
+  </ol>
+  <div class="formula">C_sk^(k+1) = F_skill( C_sk^(k), g, τ )&nbsp;&nbsp;——&nbsp;前向 C→π→A_π，反向 A_π→g→C，交替进行</div>
+  <p>整个过程<strong>完全在 prompt 层操作</strong>，无需参数更新、无需梯度回传、无需人工监督（实现上基于 <strong>LLM-AutoDiff</strong>）。</p>
+
+  <h3>3.4 一个具体例子（Jackal 地面导航）</h3>
+  <p>命题对齐的标注函数把底层 API 映射到命题——这是自动机验证的前提：</p>
+  <div class="code">MAX_SPEED = 0.5
+def people_observed() -> bool:  return yolo_listener("people")
+def obstacle_observed() -> bool: return yolo_listener("obstacle")
+def speed() -> float: return CURRENT_SPEED
+def forward() -> None: set_velocity(linear=0.3, angular=0.0)
+def stop() -> None:    set_velocity(linear=0.0, angular=0.0)</div>
+  <p>初始计划模板（<code>if people_observed() or obstacle_observed(): break</code>）会导致机器人一旦检测到人/障碍就永久停在 stop 状态，违反活性局部规则 F(¬people ∧ ¬obstacle) → F(¬stop)。经 VASO 约 10 轮精炼，模板被改写成"见人则停、见障碍则停（或绕行）、否则前进"的正确结构。</p>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span>实验设置</h2>
+  <h3>实验平台</h3>
+  <ul>
+    <li><strong>Clearpath Jackal 地面机器人</strong>：通过速度控制 + 目标检测 API 驱动（velocity_publisher、yolo_listener）；</li>
+    <li><strong>PX4 四旋翼无人机</strong>：执行 NED 坐标系下的速度轨迹（1 FPS 发布）；</li>
+    <li>模型配置：<strong>GPT-5-nano</strong> 作 F_skill（技能生成/精炼）、<strong>GPT-4o-mini</strong> 作 F_plan（规划）。</li>
+  </ul>
+  <h3>评估指标</h3>
+  <ul>
+    <li><strong>Safety Score（SS，安全得分）</strong>：生成计划满足的规约比例 <code>Safety(π) = (1/N) Σᵢ 1[π ⊨ φ_i]</code>——主指标；</li>
+    <li><strong>Task Completion（TC，任务完成率）</strong>：在仿真中评估；</li>
+    <li><strong>技能级可行性</strong>：生成技能满足所有合约的比例。</li>
+  </ul>
+  <h3>规约集（11 条 LTL）</h3>
+  <div class="code"># Jackal 全局：G(people_observed -> X stop)、G(obstacle_observed -> X !forward)、G(speed < 0.5)
+# Jackal 局部：F(!people & !obstacle) -> F(!stop)、F(obstacle) -> turn_left|turn_right
+# PX4 全局：G(max_altitude < 10)、G(velocity_change <= 1)、G(linear_velocity <= 1)
+# PX4 局部：F(v==0 & alt==0)、G(alt==0 -> v==0)、F(v > 0)</div>
+  <h3>对比方法</h3>
+  <table class="tbl">
+    <tr><th class="l">类别</th><th class="l">方法</th><th class="l">说明</th><th>SS / TC</th></tr>
+    <tr><td class="l">零样本规划器</td><td class="l">LLM+P / ReAct / LLM-Planner</td><td class="l">不加技能表示，直接生成计划</td><td>79.5/88.3 · 73.3/86.5 · 90.3/89.3</td></tr>
+    <tr><td class="l">学习类</td><td class="l">DSPy / RoboInstruct / RLVF</td><td class="l">prompt 编译 / 仿真对齐 / 形式反馈微调</td><td>86.8/87.0 · 82.5/67.0 · 94.3/82.5</td></tr>
+    <tr><td class="l">flat prompt 优化</td><td class="l">LAD-VF / LLM-AutoDiff</td><td class="l">直接优化自然语言 prompt，无结构化技能</td><td>≈85%（10 步后平台期）</td></tr>
+    <tr class="ours"><td class="l">本文</td><td class="l">VASO（手工命题对齐）</td><td class="l">结构化技能 + 验证反馈闭环</td><td class="best">97.2 / 85.3</td></tr>
+    <tr class="ours"><td class="l">本文</td><td class="l">VASO（自动命题对齐）</td><td class="l">F_skill 自动生成标注函数</td><td class="best">96.8 / 86.5</td></tr>
+  </table>
+  <h3>四个评估问题</h3>
+  <ol>
+    <li>验证反馈是否真的改进技能？</li>
+    <li>优化技能是否优于优化平铺的自然语言 prompt？</li>
+    <li>优化后的技能能否泛化到未见任务 prompt？</li>
+    <li>自动命题对齐能否替代手工映射？</li>
+  </ol>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span>实验结果与分析</h2>
+
+  <h3>5.1 验证反馈显著改进技能</h3>
+  <p>从 F_skill 的原始输出出发，<strong>89% 的生成技能满足所有合约</strong>；加入验证反馈后，1 轮内可行性提升到 <strong>97%</strong>（最小化重新查询）。比较 100 个初始技能计划 vs 100 个优化后技能计划：优化后技能在 11 条规约、两个平台上达到约 <strong>95% 安全得分</strong>，同时维持 97% 任务可行性——<strong>验证反馈提升的是技能质量，而非一味鼓励保守行为</strong>。</p>
+  <figure>
+    <img src="assets/vaso_fig5_safety.png" alt="安全得分曲线">
+    <figcaption>图 5：左图为 11 条规约上的安全得分（初始 vs 优化，Jackal 与 PX4）；右图对比 VASO 与不做结构化技能表示的 prompt 优化基线随训练步数的安全得分。</figcaption>
+  </figure>
+
+  <h3>5.2 技能表示 > 平铺 prompt</h3>
+  <p>与 flat prompt 优化方法 LAD-VF 对比：VASO 在 <strong>7 步内超过 90%</strong> 安全得分，而缺少结构化技能抽象的 LAD-VF 在 10 步后仍在 <strong>85% 左右平台期</strong>。结论：<strong>优化技能是比直接精炼自然语言 prompt 更有效的优化目标</strong>。</p>
+
+  <h3>5.3 泛化与复用</h3>
+  <p>在四个代表性技能（drive / find-object / bypass-object / fly-in-square）上，对每个技能用 5 个优化期见过的 prompt + 5 个同任务族的未见 prompt 评估。优化技能在新 prompt 上达到 <strong>92–100% 安全、80–96% 任务完成</strong>——可复用的技能无需额外精炼即可迁移。</p>
+
+  <h3>5.4 自动命题对齐实用可行</h3>
+  <p>自动生成的命题对齐函数与手工映射<strong>性能相当</strong>（96.8 vs 97.2 安全得分），同时免除了领域专家手工定义底层符号抽象。论文也诚实指出：对齐函数是 AI 生成且未验证的，映射错误（例如把 NED 三维速度误算成二维水平速度）会导致虚假的验证通过——但实测中这类误差导致的最终安全得分退化不足 1%。</p>
+  <figure>
+    <img src="assets/vaso_fig3_jackal.png" alt="Jackal 真机执行">
+    <figcaption>图 3：Jackal 机器人上的真实执行，包含多个可验证自进化技能（Drive / Find-Object / Bypass-Object 等）。</figcaption>
+  </figure>
+
+  <h3>5.5 效率-性能权衡</h3>
+  <p>与 LAD-VF（flat prompt 优化）、RLVF（验证反馈微调）、ICL（手工构造满足所有规约的 in-context 示例）对比：<strong>仅用 100 个训练样本，VASO 达到最高安全得分，训练时间只有微调方法的 1/4</strong>。</p>
+
+  <h3>5.6 消融（附录 D）</h3>
+  <ul>
+    <li><strong>结构化技能表示</strong>：VASO 7 步超 90%，LLM-AutoDiff 10 步平台期 85%——改进的关键驱动是结构化表示，而非更多优化步数；</li>
+    <li><strong>自动命题对齐</strong>：自动标注与手工标注性能持平，免去人工专家；</li>
+    <li><strong>迭代优化</strong>：初始技能计划安全得分低且方差大，优化后一致达到 95%；</li>
+    <li><strong>技能中介规划</strong>：去掉技能中介改用端到端（零样本或学习类）一致降低安全符合率；最强学习基线 RLVF 仅 93.5%，VASO 97.2%，且计算成本更低。</li>
+  </ul>
+</section>
+
+<section id="s6">
+  <h2><span class="no">06</span>核心 Insights</h2>
+  <div class="box insight">
+    <div class="bt">1. "信任成本"与"创造成本"要解耦</div>
+    基础模型把技能创造的成本打下来了，但安全保证仍是瓶颈。VASO 的关键判断是：<strong>trace 级证据（采样成功）无法覆盖时序安全契约</strong>——哪怕 19/20 次成功，剩下的 1 次罕见违规也可能致命。
+  </div>
+  <div class="box insight">
+    <div class="bt">2. 反例是比"失败"更高质量的梯度</div>
+    与执行反馈只说"失败了"不同，模型检查器的<strong>反例轨迹精确指出违反了哪条规约、在哪个状态</strong>，是可归因的、结构化的优化信号。把反例转成文本梯度，就得到了无需回传、无需微调的"离散梯度下降"。
+  </div>
+  <div class="box insight">
+    <div class="bt">3. 进化的对象应是"技能"，不是 prompt 也不是权重</div>
+    调 prompt 把改进藏进了输入，微调把改进藏进了参数——两者都无法作为独立、可复用、可验证的工件。VASO 让改进落在技能合约本身，<strong>一次反例能影响同一技能诱导的所有未来计划</strong>。
+  </div>
+  <div class="box insight">
+    <div class="bt">4. 结构化表示带来收敛速度的质变</div>
+    VASO 7 步超 90% vs 平铺 prompt 10 步仍 85%：<strong>优化的目标结构（技能 = 全局规约 + 局部规则 + 语义合约）比优化本身更重要</strong>。
+  </div>
+  <div class="box insight">
+    <div class="bt">5. 诚实的失败案例分析才是可信度的来源</div>
+    论文专门展示了"标注函数算错 NED 分量导致假通过"的失败案例，并量化其影响（&lt;1%）。这提示：<strong>形式验证的可信度下界 = 命题对齐的保真度</strong>，是后续概率化校准的方向。
+  </div>
+</section>
+
+<section id="s7">
+  <h2><span class="no">07</span>局限与结论</h2>
+  <h3>局限</h3>
+  <ul>
+    <li><strong>命题对齐未验证</strong>：标注函数 L_sk 是 AI 生成且未验证的，映射错误可能使形式保证失效；</li>
+    <li><strong>仅顺序执行</strong>：技能在顺序、非并发执行下验证，不扩展到重叠/交错执行；</li>
+    <li>未来方向：为命题对齐引入置信度校准等不确定性信号；扩展到多智能体共享约束下的多技能交互。</li>
+  </ul>
+  <h3>结论</h3>
+  <p>VASO 证明了：<strong>把技能当作"可解释的规划原语" + "可验证的行为单元"双重身份，就能让形式验证反例成为技能自进化的优化信号</strong>。在物理机器人上，它以更少的样本、更低的成本，同时超越了 LLM 规划基线与微调方法。</p>
+</section>
+
+<section id="s8">
+  <h2><span class="no">08</span>论文与代码链接</h2>
+  <ul class="linklist">
+    <li>📄 论文：<code>arXiv:2606.05395</code> — <a href="https://arxiv.org/abs/2606.05395">https://arxiv.org/abs/2606.05395</a></li>
+    <li>🌐 项目主页：<a href="https://languagegroundedriskdetection.github.io/ProjectPage/vaso-webpage/">https://languagegroundedriskdetection.github.io/ProjectPage/vaso-webpage/</a></li>
+    <li>⚠️ 官方代码仓库尚未公开（截至阅读时），方法复现可参考：NuSMV 模型检查器（<a href="https://nusmv.fbk.eu/">nusmv.fbk.eu</a>）、LLM-AutoDiff（<code>arXiv:2501.16673</code>）</li>
+  </ul>
+</section>
+
+<div class="foot">VASO 论文精读笔记 · 生成于 2026-09-26 · 图表均截取自原论文</div>
+</div>
+
+</body>
+</html>

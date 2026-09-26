@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VersualRL 论文精读</title>
+<style>
+:root{
+  --ink:#241a14; --ink2:#4c3d31; --muted:#8a7465;
+  --accent:#c2410c; --accent-soft:#fdeee4;
+  --green:#0e7a4d; --green-soft:#e9f7f0;
+  --red:#b42318; --red-soft:#fdeceb;
+  --amber:#a16207; --amber-soft:#fff6e0;
+  --line:#ece0d6; --bg:#fbf7f3; --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.hero{background:linear-gradient(135deg,#2a1005 0%,#4a1f0c 55%,#6b3013 100%);color:#fff;
+  padding:56px 24px 44px;margin-bottom:36px;}
+.hero-inner{max-width:980px;margin:0 auto;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.tag{font-size:12.5px;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);letter-spacing:.5px;}
+.tag.hl{background:#e05d1f;border-color:#e05d1f;}
+.hero h1{font-size:29px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.hero .sub{font-size:17px;color:#f0c9ad;margin-bottom:18px;}
+.hero .meta{font-size:14px;color:#d9a886;}
+.hero a{color:#ffb483;text-decoration:none;border-bottom:1px dashed rgba(255,180,131,.5);}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:6px 8px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 18px rgba(80,40,15,.08);}
+.toc a{font-size:13.5px;color:var(--ink2);text-decoration:none;padding:5px 12px;border-radius:8px;}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;margin-bottom:28px;}
+h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;}
+h2 .no{font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:8px;padding:2px 10px;letter-spacing:1px;flex-shrink:0;}
+h3{font-size:17.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);}
+h3::before{content:"▎";color:var(--accent);margin-right:2px;}
+p{margin-bottom:14px;color:var(--ink2);}
+strong{color:var(--ink);}
+ul,ol{margin:0 0 14px 26px;color:var(--ink2);}
+li{margin-bottom:7px;}
+.tldr{background:linear-gradient(135deg,#fdeee4,#fbe2cf);border-left:5px solid var(--accent);
+  padding:22px 26px;border-radius:0 12px 12px 0;margin-bottom:28px;font-size:16.5px;}
+.tldr b{color:var(--accent);}
+figure{margin:22px 0;text-align:center;}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 3px 14px rgba(80,40,15,.08);}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.7;padding:0 18px;}
+.box{border-radius:12px;padding:18px 22px;margin:18px 0;font-size:15.5px;}
+.box .bt{font-weight:700;margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.box.insight{background:var(--green-soft);border:1px solid #bfe5d2;}
+.box.insight .bt{color:var(--green);}
+.box.warn{background:var(--red-soft);border:1px solid #f6c6c2;}
+.box.warn .bt{color:var(--red);}
+.box.key{background:var(--accent-soft);border:1px solid #f6d0b4;}
+.box.key .bt{color:var(--accent);}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;}
+.tbl th{background:#f7eee8;color:var(--ink);font-weight:700;padding:8px 10px;
+  border:1px solid var(--line);text-align:center;}
+.tbl td{padding:7px 10px;border:1px solid var(--line);text-align:center;color:var(--ink2);}
+.tbl td.l,.tbl th.l{text-align:left;}
+.tbl tr.ours td{background:#fdeee4;font-weight:600;color:var(--ink);}
+.tbl .best{color:var(--accent);font-weight:700;}
+.chips{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.chip{flex:1;min-width:170px;background:#fdf9f5;border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;}
+.chip .cv{font-size:22px;font-weight:800;color:var(--accent);}
+.chip .cl{font-size:13px;color:var(--muted);margin-top:2px;}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:40px;}
+code{background:#f5eeE8;padding:1px 7px;border-radius:5px;font-size:13.5px;color:#9a3d0c;}
+.linklist li{margin-bottom:9px;}
+@media (max-width:700px){section{padding:24px 20px;} .hero h1{font-size:23px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag-row">
+      <span class="tag hl">言语强化学习</span>
+      <span class="tag">行为树</span>
+      <span class="tag">VLM Critic + LLM Actor</span>
+      <span class="tag">闭环</span>
+      <span class="tag">IROS 2026 · arXiv 2603.22169</span>
+    </div>
+    <h1>VersualRL：带视觉执行反馈的闭环言语强化学习，用于任务级机器人规划</h1>
+    <div class="sub">VersualRL: Closed-Loop Verbal Reinforcement Learning with Visual Execution Feedback for Task-Level Robot Planning</div>
+    <div class="meta">Dmitrii Plotnikov*, Iaroslav Kolomiets*, Dmitrii Maliukov*, Dmitrij Kosenkov* 等 · Skoltech Intelligent Space Robotics Laboratory（*共同一作）</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="tldr">
+  <b>一句话总结：</b>真实世界的机器人面临执行不确定性（布局变化、定位误差、底层控制误差），传统 RL 在子符号空间里学出的策略又黑盒又难调试。VersualRL 用 <b>VLM critic</b>（看视觉快照 + 行为树执行轨迹，输出结构化自然语言批评）配 <b>LLM actor</b>（做离散、可解释的行为树编辑），在<b>两个基础模型都冻结</b>、<b>零梯度</b>、<b>零仿真</b>的条件下，于真实移动操作机器人上闭环迭代精炼任务策略——不学稠密奖励，不改神经网络，只在符号层改行为树。
+</div>
+
+<nav class="toc">
+  <a href="#s1">① 摘要解读</a>
+  <a href="#s2">② 背景与动机</a>
+  <a href="#s3">③ 方法</a>
+  <a href="#s4">④ 实验设置</a>
+  <a href="#s5">⑤ 结果与分析</a>
+  <a href="#s6">⑥ Insights</a>
+  <a href="#s7">⑦ 局限与结论</a>
+  <a href="#s8">⑧ 链接</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">01</span>摘要解读</h2>
+  <p>论文提出 VersualRL，一个任务级机器人规划的闭环框架，用<strong>视觉执行反馈</strong>通过<strong>结构化自然语言批评</strong>迭代精炼可执行行为树（BT）。系统由两部分构成：</p>
+  <ul>
+    <li><strong>VLM critic</strong>：分析视觉观测与 BT 执行轨迹，产生结构化的执行批评；</li>
+    <li><strong>LLM actor</strong>：执行离散、可解释的策略更新。</li>
+  </ul>
+  <p>关键约束：物理部署时<strong>两个基础模型都保持冻结</strong>，被更新的只是"被执行的行为树"，在符号层修改、<strong>不做在线梯度式策略优化</strong>。这带来了透明推理、显式因果反馈、人类可解释的策略进化。在真实移动机器人执行"多阶段导航 + 操作"任务（含执行不确定性）上验证，结果支持可解释的策略改进、对执行失败的闭环适应、以及真实物理系统的成功部署。</p>
+  <div class="chips">
+    <div class="chip"><div class="cv">VLM critic</div><div class="cl">三种模式（Initial/Intermediate/Final）+ 告警分 + 置信度</div></div>
+    <div class="chip"><div class="cv">LLM actor</div><div class="cl">在专家节点库上做离散、可解释的 BT 编辑</div></div>
+    <div class="chip"><div class="cv">冻结</div><div class="cl">两个基础模型 + critic 全程冻结，只改 BT</div></div>
+    <div class="chip"><div class="cv">真机</div><div class="cl">移动操作机器人，5 场地 × 10 episode 闭环</div></div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span>研究背景与动机（Introduction）</h2>
+  <h3>真实世界执行不确定性</h3>
+  <p>移动机器人在真实环境里运行，面临布局变化、定位不完美、底层控制误差——这让鲁棒任务级策略的设计既困难又耗时。实践中常用<strong>行为树（BT）</strong>实现策略：BT 模块化、透明，但处理意外失败需要大量手工调参。</p>
+  <h3>两条路线各自的短板</h3>
+  <ul>
+    <li><strong>深度 RL / 多智能体 RL</strong>：提供了自主改进的原则性框架，但通常在<strong>子符号空间</strong>优化策略，产出的行为难解释、难调试，限制了真实部署；</li>
+    <li><strong>LLM 规划器</strong>：推理与泛化强，但通常<strong>开环</strong>运行，缺乏来自物理世界的接地反馈，难以可靠适应真实执行失败。</li>
+  </ul>
+  <div class="box key">
+    <div class="bt">VersualRL 的定位：三个"不像"</div>
+    <ul style="margin-bottom:0">
+      <li>不像 Reflexion 式的纯言语自省——<strong>反馈接地于物理机器人执行</strong>；</li>
+      <li>不像 RL-VLM-F 式的 VLM 奖励学习——<strong>直接编辑可执行符号 BT 策略</strong>，而非学稠密奖励模型或优化神经策略；</li>
+      <li>不像端到端可微学习——<strong>零梯度、零仿真</strong>，符号层进化。</li>
+    </ul>
+  </div>
+  <figure>
+    <img src="assets/versual_fig1_arch.png" alt="VersualRL 闭环架构">
+    <figcaption>图 1：闭环 VersualRL 架构。VLM critic 分析视觉快照与 BT 执行轨迹，产生结构化反馈；LLM actor 用 critic 反馈与人工核验的 episode 分数 R 更新可执行 BT。</figcaption>
+  </figure>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span>方法详解</h2>
+
+  <h3>3.1 策略表示：可执行行为树</h3>
+  <p>任务策略表示为可执行 BT，提供模块化与可解释性。actor 在<strong>预定义的专家设计节点库与子树</strong>上直接修改 BT 的结构与参数，使更新保持透明、可验证、并扎根于已有专家知识。初始 BT 刻意简单、不编码任务策略，只作为迭代改进的起点。</p>
+
+  <h3>3.2 LLM Actor：符号级策略精炼</h3>
+  <p>actor 是符号层工作的 LLM，根据结构化反馈精炼现有 BT。为约束搜索空间、保证语法有效，actor 的提示上下文包含：(i) 任务定义、(ii) 环境规约、(iii) 可用 BT 节点库及描述、(iv) BT 编写知识（编码规则）与当前 BT。<strong>actor 不接收原始传感流、不直接控制机器人</strong>，只提出离散、可解释的 BT 结构与参数编辑。可选地，可给 actor 追加结构化的感知/传感器状态估计（论文把"方块颜色/朝向"作为一项消融），显著改善学习稳定性。</p>
+
+  <h3>3.3 VLM Critic：视觉执行反馈</h3>
+  <p>critic 是观察任务执行的 VLM，输入视觉快照 + BT 执行轨迹，输出<strong>接地于可观测证据的结构化自然语言反馈</strong>（而非标量奖励）。为支持执行的不同阶段，critic 在三种模式下工作：<strong>Initial / Intermediate / Final</strong>。除文本批评外，critic 还输出两个标量：</p>
+  <ul>
+    <li><strong>告警分 s ∈ [0,1]</strong>：问题严重度（s=0 干净，s∈[0.1,0.3] 轻微瑕疵，s∈(0.3,0.5] 临界，s∈[0.5,0.7] 需要处理，s>0.7 严重安全问题）；</li>
+    <li><strong>置信度 c ∈ [0,1]</strong>：评估的确定性。</li>
+  </ul>
+  <p>每个 episode 结束后，<strong>人工评估者</strong>核验物理任务结果，按固定评分规则计算 episode 分数 R（R 由预定义任务条件决定，<strong>不由 critic 预测</strong>）。</p>
+
+  <h3>3.4 闭环流程（Algorithm 1）</h3>
+  <p>每个 episode：执行当前 BT → critic 在三个阶段分析观测与轨迹产生反馈 → 若 s≥0.5 或 c&lt;0.3 通知人工操作员 → actor 用最终 critic 反馈 + 人工核验分数 R 更新 BT，并把 (F, R) 存入记忆 H 供后续使用。</p>
+
+  <h3>3.5 一个关键的定性案例（图 9）</h3>
+  <p>在某个 episode 中，critic 的颜色/朝向感知不足，误报"卸载区为空、执行失败"，而 BT 轨迹与 R 显示运输与放置已成功。此时 <strong>actor 把 critic 输出当作噪声假设</strong>，转而以 BT 轨迹 + R 为据，施加保守且可解释的 BT 补丁：(i) 禁用盲目的 <code>RotateBlocks(mask=1111)</code>（颜色感知不可靠时避免时间开销与误旋转）；(ii) 用 <code>RetryUntilSuccessful</code> 包裹 <code>CursorSequence</code> 修复执行引擎边界情况；(iii) 把策略重构为相互隔离的 <code>Load—Transport—Unload</code> 事务子树并各加 <code>RetryUntilSuccessful</code>，防止跨区域对的宏观重试。</p>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span>实验设置</h2>
+  <h3>实验平台</h3>
+  <ul>
+    <li><strong>定制移动操作机器人</strong>：三全向轮底座 + 伺服驱动夹爪（带辅助真空通道）+ LiDAR + 板载 Intel NUC + STM32 底层控制器 + 紧急停止按钮；</li>
+    <li>执行仓库物流式任务：在预定义区域间自主导航，抓取/旋转/放置方块，每运输周期最多 4 块。</li>
+  </ul>
+  <figure>
+    <img src="assets/versual_fig2_hardware.png" alt="机器人硬件架构">
+    <figcaption>图 2：移动机器人硬件架构：(1) 三全向轮底座 (2) 定制伺服夹爪+真空通道 (3) LiDAR (4) 板载 Intel NUC (5) STM32 底层控制器 (6) LiPo 电池 (7) 急停按钮。</figcaption>
+  </figure>
+  <h3>任务定义</h3>
+  <p>结构化仓库物流场景（限时）：把方块从装载区运到卸载区，每块至少部分落在卸载区内、且朝向正确（朝上那面的颜色决定有效性）；还需把可移动货架沿边界搬到指定侧（隐含要求清空相邻区域）。episode 在机器人回到终点区时结束。</p>
+  <figure>
+    <img src="assets/versual_fig3_env.png" alt="实验环境布局">
+    <figcaption>图 3：实验场地布局：(1) 起止区 (2) 含方块组的装载区 (3) 指定卸载区 (4) 可移动货架初始位 (5) 货架目标位。</figcaption>
+  </figure>
+  <h3>评估指标</h3>
+  <ul>
+    <li><strong>Human-verified episode score R</strong>（主指标，按 Table II 规则：操作时间 −1/秒、超时 −20、正确放置 +10/块、整批 +10、错误放置 −5、完全出区 −10、正确终点 +20）；</li>
+    <li><strong>Issue Detection Recall（IDR）</strong>：critic 对 ground-truth 执行问题的检出召回率；</li>
+    <li><strong>Confidence stability</strong>：critic 置信度的稳定性；</li>
+    <li><strong>Human alarm rate</strong>：触发人工告警的频率。</li>
+  </ul>
+  <h3>对比的 critic 配置（5 种）</h3>
+  <table class="tbl">
+    <tr><th class="l">配置</th><th class="l">说明</th></tr>
+    <tr><td class="l">① 无 critic</td><td class="l">只用 BT 执行轨迹 + 人工核验分数 R（消融视觉反馈的必要性）</td></tr>
+    <tr><td class="l">② Qwen2.5-VL-7B-Instruct</td><td class="l">未微调的大模型 critic</td></tr>
+    <tr class="ours"><td class="l">③ Qwen2.5-VL-3B-Instruct（微调）</td><td class="l">88 个 episode（65 训练/23 验证）LoRA 微调（rank 16，RTX 4090 ≈7h）</td></tr>
+    <tr><td class="l">④ Gemini-3-Pro-Preview</td><td class="l">闭源多模态大模型 critic</td></tr>
+    <tr><td class="l">⑤ Gemini + BlockInfo</td><td class="l">额外提供符号化的方块颜色/朝向信息</td></tr>
+  </table>
+  <p>每个配置在 5 个场地布局（不同方块朝向）上各跑 10 个连续 episode；每个 episode 后 actor 用 critic 反馈 + R 更新 BT。</p>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span>实验结果与分析</h2>
+
+  <h3>5.1 学习动态：微调的小 critic 胜过未调的大 critic</h3>
+  <figure>
+    <img src="assets/versual_fig4_score.png" alt="episode 分数 R">
+    <figcaption>图 4：各环境平均人工核验 episode 分数 R。微调的 Qwen2.5-VL-3B 比更大的 7B 提升更稳定；Gemini(+BlockInfo) 最终表现最高、收敛最一致。</figcaption>
+  </figure>
+  <p>微调 Qwen2.5-VL-3B 的 R 提升比更大的 7B 更一致——<strong>任务特定的微调让 3B 模型产出更接地、更可执行的批评</strong>；未调的 7B 提升慢、方差高，说明<strong>领域适配比模型规模更重要</strong>。Gemini 收敛更快、最终 R 更高；加入符号化的方块颜色信息（Gemini+BlockInfo）进一步改善稳定性，取得最高最终性能。无 critic 基线提升最慢、最不稳：仅凭标量 R，actor 不知道失败原因，策略精炼缺乏针对性。</p>
+
+  <h3>5.2 Issue Detection Recall（IDR）</h3>
+  <figure>
+    <img src="assets/versual_fig5_idr.png" alt="问题检出召回率">
+    <figcaption>图 5：各环境平均 Issue Detection Recall（IDR）。微调 3B 的召回率高于且稳于 7B；Gemini 视觉接地更强、召回率最高。</figcaption>
+  </figure>
+  <p>有趣的是，Gemini(+BlockInfo) 的 IDR 有时反而不如图像-only 的 Gemini——因为 IDR 衡量"问题检出"，而 BlockInfo 主要帮助解决颜色/朝向歧义、改善 actor 更新；剩余错误可能涉及空间放置、时机或操作失败，BlockInfo 对此无益，却能在任务分数上更好。</p>
+
+  <h3>5.3 置信度稳定性与告警率</h3>
+  <p>微调 3B 的置信度比 7B 稳定（7B 方差大、与视觉观测对齐不稳定）；Gemini 整体置信度高，但缺 BlockInfo 时在早期错误频发的 episode 里仍可能高置信。告警率方面：微调 3B 的告警频率随 episode 逐步下降（critic 冻结，下降反映的是 BT 变好、可观测失败减少）；Gemini(+BlockInfo) 取得最均衡的告警行为——早期正确捕捉朝向/放置错误，后期明显减少无谓告警。</p>
+
+  <h3>5.4 因果归因 vs 感知精度（代表性 episode）</h3>
+  <figure>
+    <img src="assets/versual_fig8_episode.png" alt="Qwen2.5-VL-3B episode">
+    <figcaption>图 8：微调 Qwen2.5-VL-3B critic 的一个代表性 episode——完整轨迹 + 中间视觉输入 + 对应 critic 反馈。系统正确识别关键失败，并归因到正确的 Impact Issue 类别与相关 BT 节点。</figcaption>
+  </figure>
+  <p>critic 不仅报"出错了"，还归因到<strong>哪个影响类别、哪个 BT 节点</strong>。这种<strong>影响感知的归因</strong>使 actor 能针对性纠正，而非全局无差别重规划。</p>
+  <figure>
+    <img src="assets/versual_fig9_bt.png" alt="BT 演化">
+    <figcaption>图 9：感知不确定性下的定性 BT 演化。critic 误报时，actor 以 BT 轨迹 + R 为据施加保守补丁（禁用盲旋转、包 RetryUntilSuccessful、拆分事务子树）。</figcaption>
+  </figure>
+</section>
+
+<section id="s6">
+  <h2><span class="no">06</span>核心 Insights</h2>
+  <div class="box insight">
+    <div class="bt">1. 标量奖励 R 在不确定性下不够用</div>
+    R 只反映整体好坏，<strong>无法区分"执行（硬件）错误"与"规划错误"</strong>。结构化反馈（哪个节点、什么影响、什么原因）才是稳定策略改进的必需品——无 critic 基线最慢最不稳正是这个原因。
+  </div>
+  <div class="box insight">
+    <div class="bt">2. 因果归因质量 &gt; 感知精度</div>
+    一个能正确诊断失败原因的 critic，即便物体检测不完美，也能保证鲁棒适应；反之，感知再准但归因错，actor 也无所适从。
+  </div>
+  <div class="box insight">
+    <div class="bt">3. 瓶颈在感知，不在符号规划</div>
+    结构化感知输入（BlockInfo）加速收敛——说明 VersualRL 的短板是<strong>感知基础</strong>（颜色/朝向的视觉分辨），而非符号规划能力。
+  </div>
+  <div class="box insight">
+    <div class="bt">4. 领域适配 &gt; 模型规模</div>
+    微调的 3B critic 全面优于未调的 7B：与 BT 层错误类别的对齐，比通用视觉容量更重要。
+  </div>
+  <div class="box insight">
+    <div class="bt">5. actor 要学会"不信 critic"</div>
+    critic 冻结、会犯错。actor 把 critic 输出当作<strong>噪声假设</strong>、以 BT 轨迹 + R 为据施加保守补丁——这种"在符号层对冲感知不可靠"的能力，是闭环系统鲁棒性的关键。
+  </div>
+</section>
+
+<section id="s7">
+  <h2><span class="no">07</span>局限与结论</h2>
+  <h3>局限</h3>
+  <ul>
+    <li>受 critic 可观察/可归因的窗口限制：<strong>延迟后果的潜在故障</strong>（错误几步后才显现）难以归因，需更长时程时序推理与显式 trace 感知的根因归因；</li>
+    <li>继承 critic 的感知可靠性，感知不足时 actor 的保守更新可能牺牲最优性（如禁用本可有益的旋转）；</li>
+    <li>评估范围窄：单平台 + 单一仓库式任务 + 固定 BT 节点库，泛化到新布局/新本体/更丰富交互待验证。</li>
+  </ul>
+  <h3>结论（三大发现）</h3>
+  <ol>
+    <li>单独 R 分数在不确定性下不足，结构化反馈必不可少；</li>
+    <li>因果归因质量比感知精度更重要；</li>
+    <li>结构化感知输入加速收敛——瓶颈在感知基础而非符号规划。</li>
+  </ol>
+  <p>VersualRL 实现了<strong>无需仿真、无需梯度的可解释硬件策略适应</strong>，为"透明机器人学习"、弥合"计划与现实鸿沟"指出了一条有前景的方向。</p>
+</section>
+
+<section id="s8">
+  <h2><span class="no">08</span>论文与代码链接</h2>
+  <ul class="linklist">
+    <li>📄 论文：<code>arXiv:2603.22169</code>（IROS 2026 已接收）— <a href="https://arxiv.org/abs/2603.22169">https://arxiv.org/abs/2603.22169</a></li>
+    <li>🏛️ 实验室：Skoltech Intelligent Space Robotics Lab — <a href="https://sites.skoltech.ru/isr/">sites.skoltech.ru/isr</a></li>
+    <li>⚠️ 论文未提供官方代码仓库；基座模型 Qwen2.5-VL（<a href="https://github.com/QwenLM/Qwen2.5-VL">github.com/QwenLM/Qwen2.5-VL</a>）为开源。</li>
+  </ul>
+</section>
+
+<div class="foot">VersualRL 论文精读笔记 · 生成于 2026-09-26 · 图表均截取自原论文</div>
+</div>
+
+</body>
+</html>

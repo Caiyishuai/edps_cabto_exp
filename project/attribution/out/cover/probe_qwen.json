@@ -1,0 +1,129 @@
+{
+  "task": "cover",
+  "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+  "rows": [
+    {
+      "action_id": "pick(object=shrimp,support=bowl)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": true,
+      "attribution": "OK(全链路通)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": null
+    },
+    {
+      "action_id": "place(object=shrimp,support=bowl)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": false,
+      "attribution": "感知错(qwen定位误差)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "at_target(shrimp)",
+          "empty()"
+        ],
+        "remaining_del": [
+          "holding(shrimp)"
+        ],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": "RuntimeError: Must carry above destination before lowering"
+    },
+    {
+      "action_id": "pick(object=apple,support=board)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": false,
+      "attribution": "感知错(qwen定位误差)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "holding(apple)"
+        ],
+        "remaining_del": [
+          "at_source(apple)",
+          "empty()"
+        ],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": "ValueError: Cross-view xy disagreement 0.044m exceeds 0.025m; no oracle fallback"
+    },
+    {
+      "action_id": "place(object=apple,support=board)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": false,
+      "attribution": "感知错(qwen定位误差)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "at_target(apple)",
+          "empty()"
+        ],
+        "remaining_del": [
+          "holding(apple)"
+        ],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": "ValueError: Cross-view xy disagreement 0.041m exceeds 0.025m; no oracle fallback"
+    },
+    {
+      "action_id": "pick(object=potato,support=pan)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": false,
+      "attribution": "感知错(qwen定位误差)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "holding(potato)"
+        ],
+        "remaining_del": [
+          "at_source(potato)",
+          "empty()"
+        ],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": "ValueError: Cross-view xy disagreement 0.163m exceeds 0.025m; no oracle fallback"
+    },
+    {
+      "action_id": "place(object=potato,support=pan)",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": false,
+      "attribution": "感知错(qwen定位误差)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "at_target(potato)",
+          "empty()"
+        ],
+        "remaining_del": [
+          "holding(potato)"
+        ],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": "ValueError: Cross-view xy disagreement 0.040m exceeds 0.025m; no oracle fallback"
+    },
+    {
+      "action_id": "home()",
+      "probe1_oracle_ok": true,
+      "probe2_vlm_oracle_ok": true,
+      "probe3_vlm_qwen_ok": true,
+      "attribution": "OK(全链路通)",
+      "probe3_violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "probe3_exception": null
+    }
+  ]
+}

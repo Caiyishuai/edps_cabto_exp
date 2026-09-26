@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structured Robot Policies（神经符号合成监督）论文精读</title>
+<style>
+:root{
+  --ink:#1c1530; --ink2:#453a63; --muted:#7d719a;
+  --accent:#6d28d9; --accent-soft:#f1ebfd;
+  --green:#0e7a4d; --green-soft:#e9f7f0;
+  --red:#b42318; --red-soft:#fdeceb;
+  --amber:#a16207; --amber-soft:#fff6e0;
+  --line:#e7e2f0; --bg:#f8f7fc; --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.hero{background:linear-gradient(135deg,#1d1040 0%,#372071 55%,#5b34ad 100%);color:#fff;
+  padding:56px 24px 44px;margin-bottom:36px;}
+.hero-inner{max-width:980px;margin:0 auto;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.tag{font-size:12.5px;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);letter-spacing:.5px;}
+.tag.hl{background:#7c3aed;border-color:#7c3aed;}
+.hero h1{font-size:28px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.hero .sub{font-size:16.5px;color:#d4c6f2;margin-bottom:18px;}
+.hero .meta{font-size:14px;color:#b3a3d9;}
+.hero a{color:#c9b3ff;text-decoration:none;border-bottom:1px dashed rgba(201,179,255,.5);}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:6px 8px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 18px rgba(50,30,100,.08);}
+.toc a{font-size:13.5px;color:var(--ink2);text-decoration:none;padding:5px 12px;border-radius:8px;}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;margin-bottom:28px;}
+h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;}
+h2 .no{font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:8px;padding:2px 10px;letter-spacing:1px;flex-shrink:0;}
+h3{font-size:17.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);}
+h3::before{content:"▎";color:var(--accent);margin-right:2px;}
+p{margin-bottom:14px;color:var(--ink2);}
+strong{color:var(--ink);}
+ul,ol{margin:0 0 14px 26px;color:var(--ink2);}
+li{margin-bottom:7px;}
+.tldr{background:linear-gradient(135deg,#f1ebfd,#e8defc);border-left:5px solid var(--accent);
+  padding:22px 26px;border-radius:0 12px 12px 0;margin-bottom:28px;font-size:16.5px;}
+.tldr b{color:var(--accent);}
+figure{margin:22px 0;text-align:center;}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 3px 14px rgba(50,30,100,.08);}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.7;padding:0 18px;}
+.box{border-radius:12px;padding:18px 22px;margin:18px 0;font-size:15.5px;}
+.box .bt{font-weight:700;margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.box.insight{background:var(--green-soft);border:1px solid #bfe5d2;}
+.box.insight .bt{color:var(--green);}
+.box.warn{background:var(--red-soft);border:1px solid #f6c6c2;}
+.box.warn .bt{color:var(--red);}
+.box.key{background:var(--accent-soft);border:1px solid #d9c8f7;}
+.box.key .bt{color:var(--accent);}
+.formula{background:#f4f1fa;border:1px dashed #cdbcea;border-radius:10px;
+  padding:14px 20px;margin:14px 0;font-family:"Times New Roman",Georgia,serif;
+  font-size:16px;color:var(--ink);text-align:center;overflow-x:auto;}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:12.5px;}
+.tbl th{background:#f2eefb;color:var(--ink);font-weight:700;padding:7px 8px;
+  border:1px solid var(--line);text-align:center;}
+.tbl td{padding:6px 8px;border:1px solid var(--line);text-align:center;color:var(--ink2);}
+.tbl td.l,.tbl th.l{text-align:left;}
+.tbl tr.ours td{background:#f1ebfd;font-weight:600;color:var(--ink);}
+.tbl .best{color:var(--accent);font-weight:700;}
+.tbl .bad{color:var(--red);}
+.chips{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.chip{flex:1;min-width:170px;background:#faf9fd;border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;}
+.chip .cv{font-size:22px;font-weight:800;color:var(--accent);}
+.chip .cl{font-size:13px;color:var(--muted);margin-top:2px;}
+.code{background:#1c1530;color:#dcd2f0;border-radius:10px;padding:16px 20px;
+  font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.7;
+  overflow-x:auto;margin:14px 0;white-space:pre;}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:40px;}
+code{background:#f0edf7;padding:1px 7px;border-radius:5px;font-size:13px;color:#5b21a6;}
+.linklist li{margin-bottom:9px;}
+@media (max-width:700px){section{padding:24px 20px;} .hero h1{font-size:22px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag-row">
+      <span class="tag hl">神经符号</span>
+      <span class="tag">行为树合成</span>
+      <span class="tag">合成数据</span>
+      <span class="tag">Sim-to-Real</span>
+      <span class="tag">arXiv 2604.02812 · 2026-04</span>
+    </div>
+    <h1>Learning Structured Robot Policies from Vision-Language Models via Synthetic Neuro-Symbolic Supervision</h1>
+    <div class="sub">用合成神经符号监督，把 VLM 特化为可生成结构化机器人策略（行为树）的控制器</div>
+    <div class="meta">Alessandro Adami, Tommaso Tubaldo, Marco Todescato, Ruggero Carli, Pietro Falco · University of Padova / Fraunhofer Italia / Polytechnic of Bari</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="tldr">
+  <b>一句话总结：</b>端到端 VLA 是黑盒，难验证、难做反应式恢复；经典结构化策略（行为树）可解释但难以从感知自动生成。本文用<b>两阶段纯合成流水线</b>——MuJoCo 域随机化生成 <b>10,000 个场景</b>，再由 <b>Gemini 3 Flash</b> 生成"指令 ↔ 行为树"配对——<b>零真实世界数据</b>地微调一个 <b>Pixtral-12B</b>（LoRA），让它从视觉观测 + 指令 + 系统规约直接合成<b>可执行、可验证、反应式</b>的 JSON 行为树，并在 <b>Franka Panda 与 UR5e 两台异构机械臂</b>上零样本迁移成功。
+</div>
+
+<nav class="toc">
+  <a href="#s1">① 摘要解读</a>
+  <a href="#s2">② 背景与动机</a>
+  <a href="#s3">③ 方法</a>
+  <a href="#s4">④ 实验设置</a>
+  <a href="#s5">⑤ 结果与分析</a>
+  <a href="#s6">⑥ Insights</a>
+  <a href="#s7">⑦ 边界与局限</a>
+  <a href="#s8">⑧ 链接</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">01</span>摘要解读</h2>
+  <p>VLM 虽能把多模态观测映射到机器人行为，但主流端到端 visuomotor 策略<strong>不透明、难分析</strong>，限制了真实部署；而经典系统依赖的结构化策略表示<strong>可解释、模块化、能反应式执行</strong>。本文研究如何把基础模型特化为生成<strong>接地于多模态感知的结构化策略</strong>，在高维学习与符号控制之间架桥。</p>
+  <p>核心是一个神经符号方法：VLM 从视觉观测、自然语言指令、结构化系统规约中合成<strong>可执行行为树（BT）</strong>。为获得可扩展的监督信号（无需人工标注），引入自动流水线，生成<strong>域随机化场景 + 基础模型产出的"指令-策略"配对</strong>的合成多模态数据集。通过把"约束符号语法下的结构化任务分解"与"硬件特定的电机控制"解耦，证明一个 <strong>12B 模型仅靠 in-silico 监督就能学到合成 BT 所需的结构化空间-符号映射</strong>。两台异构机械臂上的真机实验确认：这些结构约束的策略能<strong>零样本迁移到真实环境</strong>。</p>
+  <div class="chips">
+    <div class="chip"><div class="cv">10,000</div><div class="cl">MuJoCo 域随机化合成场景数</div></div>
+    <div class="chip"><div class="cv">Pixtral-12B</div><div class="cl">LoRA 微调的开源 VLM（可边缘部署）</div></div>
+    <div class="chip"><div class="cv">0</div><div class="cl">真实世界训练样本数（零样本迁移）</div></div>
+    <div class="chip"><div class="cv">2 平台</div><div class="cl">Franka Panda（7-DOF）+ UR5e（6-DOF）</div></div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span>研究背景与动机（Introduction）</h2>
+  <h3>数据稀缺是根本瓶颈</h3>
+  <p>VLM/VLA 在观测→动作上表现出色，但被<strong>数据稀缺</strong>卡死：收集高质量人工标注机器人示范昂贵、不可扩展，且往往缺乏鲁棒任务规划所需的逻辑多样性。本文的答案是：<strong>能否完全从合成神经符号监督中学习结构化策略？</strong></p>
+  <h3>四个具体瓶颈</h3>
+  <ol>
+    <li><strong>P1 感知与规划解耦</strong>：传统系统把视觉特征提取与逻辑推理分离，误差传播、延迟高；</li>
+    <li><strong>P2 启发式不一致</strong>：通用模型难遵守严格机器人协议（如无碰撞轨迹必需的 z 偏移）；</li>
+    <li><strong>P3 执行脆弱</strong>：线性动作序列缺乏 BT 固有的反应性，无法从扰动中自主恢复；</li>
+    <li><strong>P4 计算不透明</strong>：依赖专有高参数模型，限制了可复现性与边缘实时部署。</li>
+  </ol>
+  <h3>从"text-to-BT"到"vision-to-BT"</h3>
+  <p>早期 LLM 生成 BT 的工作（LLM-BRAIN 等）聚焦语言的"任务→树"映射，<strong>缺少视觉接地</strong>，依赖预解析的物体列表。本文桥接这一 gap：<strong>直接用视觉观测合成 BT，省去单独的符号感知流水线</strong>。相比 [18] 用真实机器人数据蒸馏监督（仍依赖 recorded real-world data），本文做到<strong>零真实样本</strong>。</p>
+  <h3>三大贡献</h3>
+  <ol>
+    <li><strong>可扩展合成监督</strong>：自动流水线生成大规模多模态数据集，无需真实采集，保证视觉-语言-策略间逻辑与语法一致；</li>
+    <li><strong>神经符号特化</strong>：用 LoRA 微调中型 VLM，输出结构化符号策略，把反应式防护、符号空间偏移等架构约束内化为安全约束；</li>
+    <li><strong>零真实数据验证</strong>：零真实样本训练的模型，在结构化任务规划上与人工 prompt 的 SOTA 模型性能持平。</li>
+  </ol>
+  <figure>
+    <img src="assets/srp_fig1_overview.png" alt="框架总览">
+    <figcaption>图 1：框架总览。高保真仿真程序化生成域随机化合成场景与元数据 → 大基础模型转成"指令 + 可执行 BT"监督数据集 → 微调 12B VLM 做约束符号策略合成；推理时接收真实观测 + 指令 + 系统规约，输出可解释、反应式的 BT 策略。</figcaption>
+  </figure>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span>方法详解</h2>
+
+  <h3>3.1 问题形式化</h3>
+  <p>合成任务定义为映射 <code>f_θ : I × U × S → Π</code>：RGB 观测 I、自然语言指令 U、结构化系统规约 S（原语库 + 安全约束 + 动态物体元数据）映射到所有合法 BT 的集合 Π。生成的 BT 若满足 JSON-BT 形式语法则<strong>结构健全</strong>，若计算参数与 I 中物体空间分布对齐则<strong>行为接地</strong>。关键设定：物体位姿 ξ_O 是<strong>动态标签</strong>（物体被移动时元数据更新，BT 引用符号标签而非硬编码坐标仍保持有效）。</p>
+
+  <h3>3.2 原子原语库（硬件无关的抽象层）</h3>
+  <table class="tbl">
+    <tr><th class="l">原语</th><th class="l">类型</th><th class="l">功能</th></tr>
+    <tr><td class="l">MovePose / MoveDown</td><td class="l">Action</td><td class="l">末端移到 6D 目标位姿 / 竖直下移</td></tr>
+    <tr><td class="l">OpenGripper / CloseGripper</td><td class="l">Action</td><td class="l">全开 / 闭合夹爪</td></tr>
+    <tr><td class="l">is_at_pose / is_grasped / is_contact / is_at_home</td><td class="l">Condition</td><td class="l">位姿 / 抓取 / 力接触 / 归位检查</td></tr>
+  </table>
+  <p>把输出空间降到有限原语集，降低了生成复杂度，让 12B 模型能对标更大的闭源模型。</p>
+
+  <h3>3.3 三类形式结构约束（安全与反应性的来源）</h3>
+  <ol>
+    <li><strong>反应式防护（Reactive Guarding）</strong>：交互节点（如 CloseGripper）嵌在 Selector/Parallel 内，配 Condition 检查。如目标位姿 ξ 的运动子树：<code>T_move = Parallel(Condition(is_at_pose, ξ), Action(MovePose, ξ))</code>——运动与感知验证并发评估，物理阈值一满足立即成功；</li>
+    <li><strong>符号空间偏移（Spatial Offsetting）</strong>：模型学会对基准物体坐标施加正的 z 偏移生成接近/抬升位姿：<code>ξ_a = T_off · ξ_O</code>（Δz = [0,0,z_off]，z_off&gt;0）；</li>
+    <li><strong>扁平层级约束（Flat Hierarchy）</strong>：禁止同类型复合节点嵌套（Sequence 不能是 Sequence 的孩子），防止模型幻觉出无限递归循环。</li>
+  </ol>
+  <div class="code">T ::= Composite(c1,...,ck) | Leaf
+Composite ::= {"type": C, "children": [T1,...,Tk]}   // C ∈ {Sequence, Selector, Parallel}
+Leaf ::= {"type": L, "name": γ, "args": [...]}        // L ∈ {Action, Condition}</div>
+
+  <h3>3.4 合成数据生成流水线（两阶段）</h3>
+  <ul>
+    <li><strong>视觉场景生成</strong>：MuJoCo 物理引擎 + 域随机化，程序化生成 <strong>10,000 个</strong>桌面场景（棱柱、平行六面体、圆柱等，随机颜色与空间配置），每场景提取物体位姿 ξ_O 作为符号元数据（含 temp_pose 中间航点）；</li>
+    <li><strong>多模态 prompt 生成</strong>：用 <strong>Gemini 3 Flash</strong> 迭代生成"指令 U + 目标 BT T"配对——第一阶段<strong>高温（T=1.4）</strong>生成多样化人本指令，第二阶段<strong>低温（T=0.2）</strong>生成结构一致的 BT。平均每样本图像采集 ≈0.42s、语义标注 ≈10.87s。</li>
+  </ul>
+  <figure>
+    <img src="assets/srp_fig2_scenes.png" alt="合成桌面场景">
+    <figcaption>图 2：数据集生成中使用的合成桌面场景示例（几何体 + 随机颜色/配置）。</figcaption>
+  </figure>
+  <div class="box key">
+    <div class="bt">标注保真度验证</div>
+    对全量 10,000 样本做两阶段质检：自动脚本校验 BT 语法 + 交叉核对符号参数与元数据（仅发现 2 处标注不一致，均单样本、无结构传播）；人工抽查分层随机批次未发现系统性逻辑错误。说明 Gemini 标注流水线产生的监督高度一致、噪声可忽略。
+  </div>
+
+  <h3>3.5 模型训练：Anchored Loss（关键创新）</h3>
+  <p>训练目标是 SFT：把 (I, S, U, T) 序列化成一个自回归序列 X。作者<strong>刻意偏离标准 instruction masking</strong>，改用<strong>加权 prompt-completion 损失</strong>：</p>
+  <div class="formula">L(θ) = − Σ_t ω_t log P(x_t | x_&lt;t; θ)，&nbsp;&nbsp;ω_t = λ_p（若 t∈prompt 位）/ 1（若 t∈BT 位）</div>
+  <p>λ_p=1（全文监督）迫使模型学习"系统规约 ↔ 符号 BT 输出"之间的边界。论文发现这反直觉但关键：<strong>λ_p=0 的掩码训练 loss 低得诱人（≈0.0016），推理却回退到冗长格式、幻觉出 usage/output 键；λ_p=1 的 Anchored Loss（loss≈0.6）反而 100% schema 合规</strong>。</p>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span>实验设置</h2>
+  <h3>实验平台</h3>
+  <ul>
+    <li><strong>真机</strong>：7-DOF <strong>Franka Emika Panda</strong> + 6-DOF <strong>Universal Robots UR5e</strong>（工业异构机械臂，验证硬件无关性）；俯视相机采集 RGB；</li>
+    <li><strong>训练硬件</strong>：NVIDIA A40（48GB），单卡微调 Pixtral-12B（8-bit Paged AdamW + BF16 + 梯度检查点 + 梯度累积=4）；</li>
+    <li>主模型 A1 用 <strong>4400 token</strong> 上下文窗口（超限样本丢弃 130 个），LoRA rank=16、α=32、dropout=0.05。</li>
+  </ul>
+  <h3>评估指标（两层）</h3>
+  <ul>
+    <li><strong>结构复杂度与语法完整性</strong>：TSR（任务成功率）、JVR（JSON 有效率）、KER（键错误率）、TD（树深度）、LC（叶子数）、ND（节点密度）、MEN（平均执行节点数）；</li>
+    <li><strong>行为逻辑与反应性</strong>：SC（schema 合规率，如接近阶段）、IL（推理延迟，≈60s 生成树、部署后高频执行）。</li>
+  </ul>
+  <h3>对比方法</h3>
+  <table class="tbl">
+    <tr><th class="l">方法</th><th class="l">说明</th></tr>
+    <tr><td class="l">GPT-5 / Gemini 3 Flash（zero-shot / one-shot）</td><td class="l">prompt 版通用大模型（无任务训练）</td></tr>
+    <tr><td class="l">Pixtral-12B 基座</td><td class="l">未微调基座（对照）</td></tr>
+    <tr class="ours"><td class="l">A1（本文主模型）</td><td class="l">heavy 模块、r=16、4400 tokens、10k 样本、λp=1 微调</td></tr>
+    <tr><td class="l">A2–A18</td><td class="l">18 个消融变体（模块映射/rank/窗口/学习率/dropout/数据规模/λp）</td></tr>
+  </table>
+  <p>作者强调：与端到端 VLA 的对比<strong>结构上不可直接比较</strong>（VLA 输出连续动作块而非离散逻辑步），故消融严格评估符号策略合成、不含 VLA。</p>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span>实验结果与分析</h2>
+
+  <h3>5.1 主模型 A1 达成 100% 结构可靠</h3>
+  <table class="tbl">
+    <tr><th class="l">模型</th><th>TSR%</th><th>JVR%</th><th>KER%</th><th>SC%</th><th>IL(s)</th></tr>
+    <tr><td class="l">GPT-5 zero-shot</td><td class="bad">0</td><td class="bad">0</td><td>0</td><td>0</td><td>—</td></tr>
+    <tr><td class="l">GPT-5 one-shot</td><td>80</td><td>80</td><td>0</td><td>80</td><td>—</td></tr>
+    <tr><td class="l">Gemini 3 Flash one-shot</td><td>100</td><td>100</td><td>0</td><td>100</td><td>—</td></tr>
+    <tr><td class="l">Pixtral-12B 基座</td><td class="bad">0</td><td class="bad">0</td><td>0</td><td>0</td><td>52.8</td></tr>
+    <tr class="ours"><td class="l">A1（本文）</td><td class="best">100</td><td class="best">100</td><td class="best">0</td><td class="best">100</td><td>61.9</td></tr>
+    <tr><td class="l">A3（lite，只调 attention）</td><td class="bad">10</td><td class="bad">10</td><td>0</td><td>10</td><td>53.9</td></tr>
+    <tr><td class="l">A6（1200 token 窗口）</td><td class="bad">0</td><td class="bad">10</td><td>0</td><td>0</td><td>18.4</td></tr>
+    <tr><td class="l">A18（λp=0 掩码）</td><td class="bad">0</td><td>100</td><td class="bad">100</td><td>100</td><td>138.6</td></tr>
+  </table>
+  <p>在目标操作域内、零样本条件下，<strong>A1 达到与 one-shot 版前沿模型相当的输出质量</strong>——微调成本可替代 in-context 示例。前沿模型零样本全失败（退化为自然语言描述或幻觉出 name 字段），one-shot 才能语法合规；而 A1 把机器人语法内化为内在先验，<strong>零样本 100% 语法可靠</strong>。</p>
+
+  <h3>5.2 消融：关键设计选择的边际贡献</h3>
+  <ul>
+    <li><strong>模块映射</strong>：lite（A3）几乎全失败（10% TSR，退化为自然语言）；heavy（含 MLP 投影，A1/A2）才能内化 JSON-BT 语法——<strong>MLP 层是视觉-符号映射的必要条件</strong>；</li>
+    <li><strong>LoRA rank</strong>：r=8（A4）"语法脆弱"（JVR 50%），r=32（A5）反而 KER 升到 30%（结构性噪声/幻觉参数）——<strong>r=16 最优</strong>；</li>
+    <li><strong>上下文窗口</strong>：1200 token（A6）多物体任务全失败——不止推理截断，更是<strong>训练期过滤掉了长时程样本</strong>，遇到 Stack 命令发生灾难性分布偏移；</li>
+    <li><strong>学习率</strong>：10⁻³（A13）灾难性遗忘（PPL 18.9），10⁻⁵（A14）学不动（20% TSR）——最敏感超参；</li>
+    <li><strong>数据规模</strong>：2k→5k 是最大跳变（TSR 10%→50%，学会多物体逻辑），10k 补齐鲁棒性（尤其指代消歧）——<strong>后期样本对逻辑接地（颜色/几何→正确符号 ID）最宝贵</strong>。</li>
+  </ul>
+
+  <h3>5.3 真机零样本迁移 + 泛化</h3>
+  <figure>
+    <img src="assets/srp_fig5_platforms.png" alt="真机平台">
+    <figcaption>图 5：验证硬件无关 BT 执行的真机平台：Franka Emika Panda 与 UR5e。</figcaption>
+  </figure>
+  <p>Model A1 从未见过真实机器人或真实照片，却在两台异构机械臂上<strong>零样本执行成功</strong>（所有分布内任务）。反应性对可靠性至关重要：机器人会自动重新评估条件节点（如 is_at_pose）再进入下一个原子动作，从而<strong>消化 Panda 与 UR5e 之间的机械差异</strong>。</p>
+  <figure>
+    <img src="assets/srp_fig8_unseen.png" alt="未见组件验证">
+    <figcaption>图 8：未见组件上的零样本泛化。模型成功识别未见部件及其相对位置，把高层指令翻译成可执行 BT。</figcaption>
+  </figure>
+  <ul>
+    <li><strong>指代消歧</strong>：场景含左右两个不同颜色圆柱，指令"拿起左边圆柱"（不提颜色），模型靠 RGB 中相对空间位置正确识别目标——<strong>视觉主干对"语言↔符号标签"的关联必不可少</strong>；</li>
+    <li><strong>未见几何形状</strong>：训练只有棱柱/圆柱，真机上对 L 形工业件、水果等 OOD 物体仍能正确指代接地（"堆叠 L 形物体"），说明学到的是"把语言指称投射到任意视觉簇"的通用能力，而非记住 MuJoCo 纹理。</li>
+  </ul>
+  <figure>
+    <img src="assets/srp_fig7_execution.png" alt="BT 执行">
+    <figcaption>图 7：图 6 中"把黄色平行六面体堆到蓝色平行六面体上"的行为树执行序列。</figcaption>
+  </figure>
+</section>
+
+<section id="s6">
+  <h2><span class="no">06</span>核心 Insights</h2>
+  <div class="box insight">
+    <div class="bt">1. 数据瓶颈可以用"程序化合成"绕过</div>
+    10,000 个高保真、神经符号训练样本由"物理引擎 + 基础模型"自动产出，绕开了机器人数据收集瓶颈。关键不在规模，而在<strong>视觉、语言、策略三者的逻辑与语法一致性由流水线保证</strong>。
+  </div>
+  <div class="box insight">
+    <div class="bt">2. "Anchored Loss"反直觉：训练 loss 高 ≠ 部署差</div>
+    掩码训练（λp=0）loss 低得诱人却回退、幻觉键；全文监督（λp=1）loss 更高却 100% 合规。<strong>让模型学习 prompt 与输出的边界（哪些元数据是输入、必须被排除）是一种关键正则化</strong>。
+  </div>
+  <div class="box insight">
+    <div class="bt">3. MLP 层是"视觉→符号"的内化场所</div>
+    只调 attention 的 lite 配置几乎全失败；加上 MLP 投影的 heavy 配置才能内化 JSON-BT 语法。符号推理能力的迁移，落脚在 MLP 而非注意力。
+  </div>
+  <div class="box insight">
+    <div class="bt">4. 结构约束 = 内化的安全约束</div>
+    反应式防护（Parallel+Condition）、z 偏移、扁平层级——这些不是事后检查，而是<strong>训练数据里强制编码的范式</strong>。它们让合成策略天然可验证、可反应式恢复。
+  </div>
+  <div class="box insight">
+    <div class="bt">5. 符号中间表示是 Sim-to-Real 的稳定接口</div>
+    模型没有记住 MuJoCo 像素，而是内化了"空间-符号逻辑先验"，从而对光照/阴影/镜头畸变/背景杂乱不敏感，并能跨异构硬件迁移——<strong>把策略架在原子原语上，就与逆运动学、关节控制、末端实现解耦</strong>。
+  </div>
+</section>
+
+<section id="s7">
+  <h2><span class="no">07</span>边界分析与局限</h2>
+  <p>论文用一整节做"边界分析"，诚实刻画了 12B 模型零样本能力的边界：</p>
+  <ul>
+    <li><strong>Pattern Backsliding（未见语义任务）</strong>：指令"交换两个圆柱位置"是训练外的多阶段任务，模型虽正确识别两个物体，却不会分解出"临时缓冲位 → 逐个搬移"的链，而是直接把一个物体放到另一个的接近位姿上——<strong>组合泛化仍受训练分布语义任务覆盖度限制</strong>；</li>
+    <li><strong>Functional Grounding Gap（OOV 原语）</strong>：推理时把平行夹爪换成真空吸盘（EngageVacuum 等 OOV 原语），模型能学新词但<strong>不懂真空需先接触的物理因果</strong>（在机械臂还在 home 位时就吸合）——真正硬件无关需训练分布覆盖多末端模态；</li>
+    <li><strong>Verification Gap</strong>：合成策略仍需人工检查对齐，尚无把高维视觉上下文翻译成形式机器人不变量的自动符号检查器（未来接 LTL 检查）；</li>
+    <li><strong>符号幻觉（但被"安全地装进笼子"）</strong>：让模型操作场景中不存在的物体，它会幻觉出语法完美、命名规范的 BT（如 black_cylinder_0）。但这恰恰体现 BT 相对端到端 VLA 的安全优势：幻觉计划的第一个条件检查 <code>is_at_pose(black_cylinder_0)</code> 会因外部感知找不到该符号而<strong>优雅停止，不执行任何电机动作</strong>。</li>
+  </ul>
+  <h3>结论</h3>
+  <p>本文证明：结构化机器人策略<strong>完全可以从合成监督中学习</strong>，无需真实示范；微调模型内化的是机器人策略的结构化先验（而非记忆模板），并跨异构平台泛化。为不透明端到端 visuomotor 方法提供了一个可解释、可验证的结构化替代方案。</p>
+</section>
+
+<section id="s8">
+  <h2><span class="no">08</span>论文与代码链接</h2>
+  <ul class="linklist">
+    <li>📄 论文：<code>arXiv:2604.02812</code> — <a href="https://arxiv.org/abs/2604.02812">https://arxiv.org/abs/2604.02812</a></li>
+    <li>💻 源代码、合成数据集、微调权重：<strong>论文承诺 upon publication 公开</strong>（截至阅读时尚未放出）</li>
+    <li>🔧 基座模型 Pixtral-12B：<a href="https://arxiv.org/abs/2410.07073">arXiv:2410.07073</a>（Mistral 开源）</li>
+    <li>🔧 仿真引擎 MuJoCo：<a href="https://github.com/google-deepmind/mujoco">github.com/google-deepmind/mujoco</a></li>
+    <li>🔗 团队前作 Real2Sim（主动感知 + VLM 生成 BT）：<code>arXiv:2601.08454</code></li>
+  </ul>
+</section>
+
+<div class="foot">Structured Robot Policies 论文精读笔记 · 生成于 2026-09-26 · 图表均截取自原论文</div>
+</div>
+
+</body>
+</html>

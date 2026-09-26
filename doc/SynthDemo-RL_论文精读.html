@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SynthDemo-RL 论文精读</title>
+<style>
+:root{
+  --ink:#1a2332; --ink2:#44506a; --muted:#7a8699;
+  --accent:#0f62fe; --accent-soft:#e8f0fe;
+  --warm:#c2410c; --warm-soft:#fff3ec;
+  --green:#0e7a4d; --green-soft:#e9f7f0;
+  --red:#b42318; --red-soft:#fdeceb;
+  --line:#e3e8f0; --bg:#f6f8fb; --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+/* hero */
+.hero{background:linear-gradient(135deg,#101a30 0%,#1c2f52 60%,#28466f 100%);color:#fff;
+  padding:56px 24px 44px;margin-bottom:36px;}
+.hero-inner{max-width:980px;margin:0 auto;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.tag{font-size:12.5px;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);letter-spacing:.5px;}
+.tag.hl{background:#0f62fe;border-color:#0f62fe;}
+.hero h1{font-size:32px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.hero .sub{font-size:17px;color:#c3d3ea;margin-bottom:18px;}
+.hero .meta{font-size:14px;color:#9db1cf;}
+.hero a{color:#8ec2ff;text-decoration:none;border-bottom:1px dashed rgba(142,194,255,.5);}
+/* nav */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:6px 8px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 18px rgba(20,40,80,.08);}
+.toc a{font-size:13.5px;color:var(--ink2);text-decoration:none;padding:5px 12px;border-radius:8px;}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+/* sections */
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;margin-bottom:28px;}
+h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;}
+h2 .no{font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:8px;padding:2px 10px;letter-spacing:1px;flex-shrink:0;}
+h3{font-size:17.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);}
+h3::before{content:"▎";color:var(--accent);margin-right:2px;}
+p{margin-bottom:14px;color:var(--ink2);}
+strong{color:var(--ink);}
+ul,ol{margin:0 0 14px 26px;color:var(--ink2);}
+li{margin-bottom:7px;}
+/* tldr */
+.tldr{background:linear-gradient(135deg,#f0f5ff,#eaf3ff);border-left:5px solid var(--accent);
+  padding:22px 26px;border-radius:0 12px 12px 0;margin-bottom:28px;font-size:16.5px;}
+.tldr b{color:var(--accent);}
+/* figure */
+figure{margin:22px 0;text-align:center;}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 3px 14px rgba(20,40,80,.08);}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.7;
+  padding:0 18px;}
+/* boxes */
+.box{border-radius:12px;padding:18px 22px;margin:18px 0;font-size:15.5px;}
+.box .bt{font-weight:700;margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.box.insight{background:var(--green-soft);border:1px solid #bfe5d2;}
+.box.insight .bt{color:var(--green);}
+.box.warn{background:var(--warm-soft);border:1px solid #f6cdb4;}
+.box.warn .bt{color:var(--warm);}
+.box.key{background:var(--accent-soft);border:1px solid #c8dcfd;}
+.box.key .bt{color:var(--accent);}
+/* tables */
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;}
+.tbl th{background:#f0f4fa;color:var(--ink);font-weight:700;padding:9px 12px;
+  border:1px solid var(--line);text-align:center;}
+.tbl td{padding:8px 12px;border:1px solid var(--line);text-align:center;color:var(--ink2);}
+.tbl td.l,.tbl th.l{text-align:left;}
+.tbl tr.ours td{background:#eef7ff;font-weight:600;color:var(--ink);}
+.tbl tr.hd td{background:#fafbfd;}
+.tbl .best{color:var(--accent);font-weight:700;}
+.tbl .zero{color:var(--red);font-weight:600;}
+/* metric chips */
+.chips{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.chip{flex:1;min-width:180px;background:#fafbfd;border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;}
+.chip .cv{font-size:26px;font-weight:800;color:var(--accent);}
+.chip .cl{font-size:13px;color:var(--muted);margin-top:2px;}
+.stage{display:flex;gap:0;margin:20px 0;align-items:stretch;flex-wrap:wrap;}
+.stage .st{flex:1;min-width:220px;background:#fafbfd;border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;position:relative;}
+.stage .arrow{display:flex;align-items:center;padding:0 8px;font-size:22px;color:var(--accent);font-weight:700;}
+.st .sn{font-size:12px;font-weight:700;color:#fff;background:var(--accent);border-radius:6px;
+  padding:2px 9px;display:inline-block;margin-bottom:8px;letter-spacing:1px;}
+.st h4{font-size:15.5px;margin-bottom:6px;color:var(--ink);}
+.st p{font-size:13.8px;margin-bottom:0;}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:40px;}
+code{background:#eef1f6;padding:1px 7px;border-radius:5px;font-size:13.5px;color:#b0306a;}
+.linklist li{margin-bottom:9px;}
+@media (max-width:700px){section{padding:24px 20px;} .hero h1{font-size:25px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag-row">
+      <span class="tag hl">机器人操作</span>
+      <span class="tag">VLA 模型</span>
+      <span class="tag">强化学习</span>
+      <span class="tag">合成示范</span>
+      <span class="tag">arXiv 2609.21650 · 2026-09-18</span>
+    </div>
+    <h1>SynthDemo-RL：用 LLM 引导的合成示范打破 VLA 适配中的"零奖励困境"</h1>
+    <div class="sub">SynthDemo-RL: Breaking the Zero-Reward Barrier in VLA Adaptation with LLM-Guided Synthetic Demonstrations</div>
+    <div class="meta">Hiroaki Kingetsu, Hiroaki Kurihara, Kaoru Yokoo（Fujitsu）· Kenji Fukumizu（数理统计研究所 / Fujitsu）· Manohar Kaul（Institute of Statistical Mathematics）</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="tldr">
+  <b>一句话总结：</b>当 VLA（视觉-语言-动作）模型迁移到新任务、且完全没有人演示时，稀疏二值奖励的 RL 几乎探索不出成功轨迹（大量任务成功率恒为 0%）。本文用一个<b>自动化教师</b>（GraspGen 抓取预测 + LLM 失败调参 + 脚本化执行）从仿真特权状态合成成功轨迹，先 SFT 蒸馏给学生策略，再用 PPO 精调——在 LIBERO-PRO 上把 <b>27 个零成功率任务全部救活</b>，最终平均成功率 <b>97.8% / 97.1%</b>，全程零人类演示。
+</div>
+
+<nav class="toc">
+  <a href="#s1">① 摘要解读</a>
+  <a href="#s2">② 背景与动机</a>
+  <a href="#s3">③ 方法</a>
+  <a href="#s4">④ 实验设置</a>
+  <a href="#s5">⑤ 结果与分析</a>
+  <a href="#s6">⑥ Insights</a>
+  <a href="#s7">⑦ 局限与结论</a>
+  <a href="#s8">⑧ 链接</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">01</span>摘要解读</h2>
+  <p>论文开篇点出了 VLA 模型落地的一大痛点：<strong>微调依赖人类遥操作示范，而 RL 微调在成功轨迹极难被采样时陷入探索困境</strong>。作者提出 SynthDemo-RL——一个教师-学生框架：</p>
+  <ul>
+    <li><strong>自动化教师</strong>：利用仿真器的特权状态（真值物体位姿、实例分割、深度等）生成成功的操作轨迹；</li>
+    <li><strong>VLA 学生</strong>：通过监督微调（SFT）从教师轨迹中蒸馏；</li>
+    <li><strong>PPO 精调</strong>：用二值任务成功奖励做强化学习，让学生超越教师。</li>
+  </ul>
+  <p>摘要的一个方法论贡献是提出了 <strong>reward coverage（奖励覆盖率）</strong>概念：即"在固定评估协议下，至少观察到一次成功的任务占比"。作者指出：平均成功率衡量策略"有多好"，而覆盖率衡量 RL"在多少任务上有东西可学"——<strong>高平均分可能掩盖大量零成功任务，而这些正是稀疏奖励 RL 完全失效的地方</strong>。</p>
+  <div class="chips">
+    <div class="chip"><div class="cv">27 → 0</div><div class="cl">零成功率任务数（LIBERO-PRO，27 个全部被救活）</div></div>
+    <div class="chip"><div class="cv">97.8% / 97.1%</div><div class="cl">LIBERO-PRO Position / Task 轴平均成功率</div></div>
+    <div class="chip"><div class="cv">96.0%</div><div class="cl">标准 LIBERO 三套件平均（零人类演示，仅比 50 条人演示/任务的 π0.5 低 1.7 分）</div></div>
+    <div class="chip"><div class="cv">100%</div><div class="cl">真机 WidowX 开环执行 4 种条件 × 20 次试验全部成功</div></div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span>研究背景与动机（Introduction）</h2>
+  <h3>从"依赖人类示范"到"零示范适配"</h3>
+  <p>VLA 模型（如 OpenVLA、π0.5）凭借互联网级视觉-语言预训练在机器人操作上展现了强泛化，但适配下游任务通常仍依赖<strong>人类遥操作示范的模仿学习（SFT）</strong>，这从根本上限制了 VLA 系统跨任务、跨环境的可扩展性。近期工作（SimpleVLA-RL、VLA-RL、RLinf-VLA 等）证明 RL 可以把 VLA 策略大幅提升到 SFT 基线之上，但<strong>它们全部假设有人类收集的示范做初始化</strong>。</p>
+  <h3>零奖励困境（Zero-Reward Regime）</h3>
+  <p>当任务被扰动、成功轨迹几乎无法被随机采样时，稀疏二值奖励的 RL 找不到任何可强化的行为——这就是论文的出发点。经典解法是给示范（不像 reward shaping 那样需要逐任务设计奖励）。作者的推理是：<strong>如果自动化流程能"偶尔"解出一个任务，其成功轨迹就可以被蒸馏进策略，作为稀疏奖励 RL 的初始化</strong>。</p>
+  <h3>核心区分：平均成功率 vs 奖励覆盖率</h3>
+  <div class="box key">
+    <div class="bt">关键概念：Reward Coverage（奖励覆盖率）</div>
+    覆盖率 = 在评估协议下至少观察到一次成功的任务占比。一个策略可以在 30 个任务上拿 90%、在 27 个任务上恒为 0%，平均值仍然好看——但对这 27 个任务，RL 没有任何梯度信号可用。本文的核心实证发现之一就是：<strong>初始化时是否有非零成功，与 RL 后的最终成败强相关（点二列相关 r = 0.71）</strong>。
+  </div>
+  <h3>目标场景：LIBERO-PRO 扰动任务</h3>
+  <p>论文选择 LIBERO-PRO 作为"零演示适配"的试验田：它在原 LIBERO 任务上做系统性扰动（如移动初始物体位置、改写任务目标），而<strong>微调后的 VLA 在扰动版本上严重退化，且扰动版本不存在任何人类示范</strong>。图 1 展示了整个框架与核心结果。</p>
+  <figure>
+    <img src="assets/synthdemo_fig1_overview.png" alt="SynthDemo-RL 框架总览">
+    <figcaption>图 1：SynthDemo-RL 总览。原任务（绿圈）有 LIBERO 演示，LIBERO-PRO 要求抓"另一只碗"（红圈），微调后的 VLA 在 57 个评分任务中的 27 个上成功率为 0%。自动化教师从仿真特权状态解出扰动任务 → SFT 蒸馏进 VLA 学生 → PPO 精调超越教师。底部：57 个任务的成功热图——直接 PPO 留下 20 个零成功任务，SynthDemo-RL 一个不留。</figcaption>
+  </figure>
+  <h3>论文贡献</h3>
+  <ol>
+    <li><strong>SynthDemo-RL 流水线</strong>：自动化教师 + VLA 蒸馏 + 稀疏奖励 PPO，教师无需人类示范、无需任务特定训练；</li>
+    <li><strong>奖励覆盖率诊断指标</strong>：证明蒸馏合成轨迹能救活全部 27 个零成功任务，而 PPO 匹配的稀疏奖励对照组让大多数任务停留在 0%；</li>
+    <li><strong>合成 SFT 的局限分析</strong>：合成轨迹在运动统计量（饱和动作、jerk）和 frozen-base flow-matching 损失上与人类轨迹系统性不同；即使"人性化"教师缩小这些差异，SFT 仍远低于人类示范 SFT。</li>
+  </ol>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span>方法详解：三阶段流水线</h2>
+
+  <div class="stage">
+    <div class="st"><span class="sn">STAGE 1</span><h4>自动化教师采集</h4><p>GraspGen 提出 6-DoF 抓取 + 脚本化航点执行 + LLM 失败调参，从特权状态合成成功轨迹（每任务 50 条）。</p></div>
+    <div class="arrow">➜</div>
+    <div class="st"><span class="sn">STAGE 2</span><h4>SFT 蒸馏</h4><p>用合成成功轨迹微调 π0.5 学生（flow-matching 目标，openpi 配方），让每个任务获得非零成功率。</p></div>
+    <div class="arrow">➜</div>
+    <div class="st"><span class="sn">STAGE 3</span><h4>PPO 精调</h4><p>Flow-SDE 提供闭式密度的 PPO，二值成功奖励、无 shaping，学生访问教师从未到达的状态并超越教师。</p></div>
+  </div>
+
+  <h3>3.1 自动化教师：把特权状态变成成功轨迹</h3>
+  <p>教师接收语言指令与仿真器状态（真值物体位姿、度量深度、实例分割、相机参数、末端位姿），围绕两个学习组件构建脚本化执行器：</p>
+  <ol>
+    <li><strong>目标指定与物体定位</strong>：任务定义给出操作对象和目标区域，仿真器提供真值位姿；实例掩码 + 度量深度经相机参数反投影成 3D 点云，作为抓取的几何输入。</li>
+    <li><strong>抓取与放置</strong>：神经抓取预测器 <strong>GraspGen</strong> 在物体点云上提出 6-DoF 抓取候选，经包围盒过滤并默认顶向接近（接触深度可调）；放置位姿由目标物体顶面真值位置加偏移计算。</li>
+    <li><strong>闭环执行</strong>：LLM 调参器（GPT-5.5）配置每个操作原语内的航点序列（pre-grasp → grasp → lift → pre-place → place → retreat，或抽屉的 contact-sweep-retreat）及执行参数；比例伺服逐步位置校正——这在接触丰富的抓取阶段至关重要（开环执行会发散）。</li>
+    <li><strong>LLM 引导调参</strong>：失败后，LLM 读取失败阶段与原因（执行日志）、失败尝试的观测图像、<strong>成功库</strong>（其他任务上有效的配置，按相关性排序）和<strong>失败库</strong>（本任务已试过的死路），提出修订配置（接触深度、接近角度、抬升与侧撤、放置偏移）。成功库跨几何相似任务迁移配置，失败库避免重蹈覆辙。</li>
+    <li><strong>数据采集与过滤</strong>：记录多相机观测（第三人称 + 腕部）、7-DoF 动作与本体状态；事后只保留成功 episode、剔除空转转移，导出 LeRobot 格式。</li>
+  </ol>
+  <div class="box warn">
+    <div class="bt">教师的设计哲学：覆盖率优先，而非最优性</div>
+    教师的目标不是生成漂亮轨迹，而是<strong>确保每个任务都产出至少一条成功轨迹</strong>。在 57 个 LIBERO-PRO 任务上，LLM 平均每任务额外尝试 3.3 种不同执行配置；若无 LLM 修订（冻结初始配置重试 25 次），57 个任务中会有 12 个拿不到任何成功轨迹。正是 LLM 把"边缘抓取/捏取、调整抓取深度和侧撤"这类配置切换救活了抽屉、炉灶旋钮、架子放置等难任务。
+  </div>
+
+  <h3>3.2 离线策略蒸馏</h3>
+  <p>教师每个 episode 约需 1.7 分钟（抓取推理 + 闭环规划），无法支撑 10–20 Hz 的在线控制，因此必须蒸馏。学生是 <strong>π0.5</strong>——一个 flow-matching VLA，从第三人称与腕部图像、本体状态和指令预测连续动作块。在 50 条成功 episode/任务上，按 openpi 配方训练（30,000 步、batch 32、峰值学习率 5×10⁻⁵、8 张 MI300X GPU）。标准 LIBERO 从公开 π0.5 基座出发；LIBERO-PRO 适配则从作者自训的 π0.5-LIBERO（人类示范 SFT 版本）出发，<strong>只用扰动任务上合成的轨迹，不回放原 LIBERO 数据</strong>。</p>
+
+  <h3>3.3 RL 精调：Flow-SDE + PPO</h3>
+  <p>通过 RLinf 框架应用 PPO，奖励就是二值任务成功（无 shaping），使优化目标与评估指标完全一致、无需逐任务奖励工程。为获得可处理的似然，采用 <strong>Flow-SDE</strong>：在每个去噪步注入高斯噪声，使转移具有闭式密度，各步对数密度之和即采样去噪路径的对数概率，用于 PPO 比率。关键技术细节：</p>
+  <ul>
+    <li>每个 MDP 步执行一个动作块；稀疏奖励在 episode 结束时到达；</li>
+    <li>GAE 在块步上运行，价值头挂在 π0.5 主干上（无独立 critic）；</li>
+    <li>每轮 8 次 rollout × 64 并行环境 × 240 块步；3 个去噪步、探索噪声 0.5、5 动作块 × 7-DoF；</li>
+    <li>PPO 更新：全局 batch 2048 块步，γ=0.99、GAE λ=0.95、clip 0.2、dual clip 3.0，无 KL 惩罚与熵奖励；actor / value 学习率 5×10⁻⁶ / 1×10⁻⁴。</li>
+  </ul>
+  <p>RL 的双重作用：<strong>一是从教师脚本化执行的偏差中恢复</strong>（访问教师从未产生的状态），<strong>二是让学生超越教师自身的可靠性</strong>——与蒸馏规划器（Neural MP、RPD）中的观察一致。</p>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span>实验设置</h2>
+  <h3>实验平台（仿真与真机）</h3>
+  <ul>
+    <li><strong>LIBERO</strong>（MuJoCo，Franka Panda 单臂）：评估 LIBERO-Spatial（10 任务，空间关系）、LIBERO-Object（10 任务，物体身份）、LIBERO-Goal（9 任务子集，目标变化）；排除 LIBERO-Long 等多阶段任务（教师只实现单原语）。</li>
+    <li><strong>LIBERO-PRO</strong>：对上述套件做系统扰动，选退化最严重的两个轴——<strong>Position</strong>（重排物体初始放置区域，指令不变）与 <strong>Task</strong>（改写目标谓词与指令，如"开中间抽屉"→"开底部抽屉"）。共 <strong>57 个评分任务</strong>（Position 29 + Task 28），每任务 50 次评估试验；训练用初始状态与官方评估集经哈希校验严格分离。</li>
+    <li><strong>RoboTwin 2.0</strong>（SAPIEN）：双臂基准的单臂 Agilex Piper 配置，4 个任务，作为<strong>跨仿真器、跨本体</strong>测试。</li>
+    <li><strong>真机</strong>：Trossen WidowX AI 工作站（右臂、30 Hz、俯视 + 腕部 RGB），配 MuJoCo 数字孪生；孪生渲染将仿真手臂和物体合成到真实相机背景与 3D 高斯泼溅房间重建之上。策略完全在孪生中训练（LoRA 适配器），零真机微调。</li>
+  </ul>
+
+  <h3>评估指标</h3>
+  <ul>
+    <li><strong>任务成功率</strong>：由仿真器内置成功检查器判定，报告每套件平均成功率（每任务 50 次试验；50% 成功率任务的二项标准误约 7 分）；</li>
+    <li><strong>奖励覆盖率（reward coverage）</strong>：报告的评估试验中至少观察到一次成功的任务占比——本文的核心诊断指标；</li>
+    <li><strong>运动统计差异（Cliff's δ）</strong>：饱和动作帧比例、jerk 范数、速度范数、frozen-base flow-matching 损失、DTW 多样性等，量化合成 vs 人类示范的距离；</li>
+    <li>真机上为<strong>开环轨迹可执行性</strong>（目标物体释放并静止在目标区域）。</li>
+  </ul>
+
+  <h3>对比方法</h3>
+  <table class="tbl">
+    <tr><th class="l">方法</th><th class="l">说明</th><th>人类演示</th></tr>
+    <tr><td class="l">(a) SynthDemo-Teacher</td><td class="l">自动化教师（数据生成期单次尝试成功率）</td><td>0</td></tr>
+    <tr><td class="l">(b) SynthDemo-SFT</td><td class="l">教师数据 + π0.5 SFT</td><td>0</td></tr>
+    <tr class="ours"><td class="l">(c) SynthDemo-RL（本文）</td><td class="l">教师数据 + SFT + PPO</td><td>0</td></tr>
+    <tr class="hd"><td class="l">(d) π0.5 (human-demo SFT)</td><td class="l">同学生架构，50 条人类遥操作演示/任务</td><td>50/任务</td></tr>
+    <tr class="hd"><td class="l">(d') (d) + PPO</td><td class="l">与 (c) 相同 RL 配方的稀疏奖励参考</td><td>50/任务</td></tr>
+    <tr><td class="l">π0.5-LIBERO + PPO（对照）</td><td class="l">LIBERO-PRO 上与本文 RL 计算量完全匹配的直接 PPO</td><td>仅原任务</td></tr>
+    <tr><td class="l">SPARK / Pigey / CounterAlign</td><td class="l">LIBERO-PRO 已发表方法（LLM 推理时规划 / 反事实离线 RL），引用作背景参照</td><td>—</td></tr>
+    <tr><td class="l">OpenVLA-OFT / SimpleVLA-RL</td><td class="l">RoboTwin 2.0 上引用已发表结果（不同策略主干）</td><td>专家演示</td></tr>
+  </table>
+  <p>关键对照设计：在 LIBERO-PRO 上，直接 PPO 对照组与 SynthDemo-RL 使用<strong>相同的 PPO 配方、相同的迭代数与环境交互量</strong>（六个套件-轴条件平均 188 次迭代、2310 万块步），唯一差别是前者缺少"目标任务合成 + SFT"这一步——从而把增益干净地归因于合成示范初始化。</p>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span>实验结果与分析</h2>
+
+  <h3>5.1 标准 LIBERO：零演示达到人类示范水平</h3>
+  <table class="tbl">
+    <tr><th class="l">方法（LIBERO，50 试验/任务）</th><th>Spatial</th><th>Object</th><th>Goal</th><th>平均</th></tr>
+    <tr><td class="l">(a) SynthDemo-Teacher（单次尝试）</td><td>79.9</td><td>98.0</td><td>43.0</td><td>73.6</td></tr>
+    <tr><td class="l">(b) SynthDemo-SFT</td><td>55.3</td><td>69.8</td><td>45.1</td><td>56.7</td></tr>
+    <tr class="ours"><td class="l">(c) SynthDemo-RL（本文）</td><td class="best">96.2</td><td>98.6</td><td>93.3</td><td class="best">96.0</td></tr>
+    <tr class="hd"><td class="l">(d) π0.5 + 人类示范 SFT</td><td>97.8</td><td>99.0</td><td>96.2</td><td>97.7</td></tr>
+    <tr class="hd"><td class="l">(d') (d) + PPO</td><td>95.8</td><td>99.0</td><td>97.3</td><td>97.4</td></tr>
+  </table>
+  <p><strong>要点：</strong>(b) 与 (d) 唯一差别是 50 条 SFT episode 的来源（合成 vs 人类），却相差 41 分——<strong>蒸馏本身远不能弥合差距；真正弥合差距的是 RL</strong>。(c) 比 SFT 高约 40 分，并在每个套件上超越教师单次尝试成功率（Goal 上 93.3 vs 43.0 尤为显著）。</p>
+
+  <h3>5.2 LIBERO-PRO：零示范适配扰动任务（核心实验）</h3>
+  <table class="tbl">
+    <tr><th rowspan="2" class="l">方法（50 试验/任务）</th><th colspan="4">Position 轴</th><th colspan="4">Task 轴</th></tr>
+    <tr><th>Spatial</th><th>Object</th><th>Goal</th><th>平均/覆盖</th><th>Spatial</th><th>Object</th><th>Goal</th><th>平均/覆盖</th></tr>
+    <tr><td class="l">适配前 π0.5-LIBERO</td><td>48.4</td><td>16.8</td><td>24.7</td><td>30.0 · <span class="zero">14/29</span></td><td>51.2</td><td>10.8</td><td>27.0</td><td>29.7 · <span class="zero">16/28</span></td></tr>
+    <tr><td class="l">直接 PPO（匹配 RL 计算量）</td><td>50.8</td><td>33.6</td><td>41.3</td><td>41.9 · <span class="zero">15/29</span></td><td>79.2</td><td>52.4</td><td>73.5</td><td>68.4 · <span class="zero">22/28</span></td></tr>
+    <tr><td class="l">SynthDemo-Teacher（调参后）</td><td>60.0</td><td>68.0</td><td>68.9</td><td>65.6 · 29/29</td><td>60.1</td><td>70.6</td><td>82.4</td><td>71.0 · 28/28</td></tr>
+    <tr><td class="l">SynthDemo-SFT</td><td>57.3</td><td>56.5</td><td>54.8</td><td>56.2 · 29/29</td><td>53.3</td><td>66.3</td><td>42.7</td><td>54.1 · 28/28</td></tr>
+    <tr class="ours"><td class="l">SynthDemo-RL（本文）</td><td class="best">96.4</td><td class="best">99.0</td><td class="best">98.0</td><td class="best">97.8 · 29/29</td><td class="best">95.0</td><td class="best">99.6</td><td class="best">96.8</td><td class="best">97.1 · 28/28</td></tr>
+    <tr><td class="l">参照：SPARK / Pigey / CounterAlign</td><td colspan="8" class="l" style="text-align:left">Position 平均 46.5 / 54.7 / 50.7；Task 平均 40.9 / 52.0 / 45.0（各自协议，非受控比较）</td></tr>
+  </table>
+  <div class="box insight">
+    <div class="bt">覆盖率才是关键证据</div>
+    <ul style="margin-bottom:0">
+      <li>适配前 57 个评分任务中 <strong>27 个恒为 0%</strong>；直接 PPO 在其 RL 预算内只救回 10 个，<strong>17 个仍是 0%</strong>，还把 3 个原本非零的任务打到 0%；</li>
+      <li>SynthDemo-SFT 在 RL 之前就让<strong>全部 57 个任务非零</strong>（三个训练种子均如此），SynthDemo-RL 最终覆盖率 57/57；</li>
+      <li>覆盖率对试验预算敏感：若每任务只跑 10 次试验，期望覆盖任务数为 π0.5-LIBERO 26.6、对照组 35.4、SynthDemo-SFT 53.6、SynthDemo-RL 57；</li>
+      <li>初始化是否非零与 RL 后结果强相关（点二列 r = 0.71）：零成功初始化平均终值 26.0%，非零初始化平均 91.7%。</li>
+    </ul>
+  </div>
+  <p>其他发现：<strong>SFT 有遗忘</strong>——在原策略已解出的任务上蒸馏扰动数据会掉点（如 92→20、100→34），但 RL 基本挽回（92→20→92）；<strong>回放原 LIBERO 数据无助于适配</strong>（Position 轴 SFT 加入 20 条原任务数据后平均反而 57.7%→51.5%）。</p>
+
+  <h3>5.3 RoboTwin 2.0：跨仿真器、跨本体</h3>
+  <table class="tbl">
+    <tr><th class="l">方法（100 次试验/任务）</th><th>place cup</th><th>move can</th><th>place a2b</th><th>beat hammer</th><th>平均</th></tr>
+    <tr><td class="l">(a) SynthDemo-Teacher</td><td>94.0</td><td>57.0</td><td>86.0</td><td>80.0</td><td>79.3</td></tr>
+    <tr><td class="l">(b) SynthDemo-SFT</td><td>96.0</td><td>38.0</td><td>56.0</td><td>32.0</td><td>55.5</td></tr>
+    <tr class="ours"><td class="l">(c) SynthDemo-RL</td><td class="best">96.0</td><td>60.0</td><td>66.0</td><td>75.0</td><td class="best">74.3</td></tr>
+    <tr class="hd"><td class="l">(e) OpenVLA-OFT（专家演示）</td><td>77.3</td><td>28.1</td><td>37.5</td><td>28.1</td><td>42.8</td></tr>
+    <tr class="hd"><td class="l">(e') +SimpleVLA-RL（专家演示）</td><td>94.2</td><td class="best">61.2</td><td>45.3</td><td class="best">87.5</td><td>72.1</td></tr>
+  </table>
+  <p>RL 把 SFT 平均从 55.5% 提到 74.3%，数值上接近用 1000 条专家演示/任务的 SimpleVLA-RL；增益最大的正是 SFT 最弱的 beat hammer（32→75）。但两个任务学生仍低于教师，place cup 上 RL 未改善强 SFT 策略。</p>
+
+  <h3>5.4 真机可执行性</h3>
+  <figure>
+    <img src="assets/synthdemo_fig2_realrobot.png" alt="真机可执行性实验">
+    <figcaption>图 2：真机物理可执行性。上：真实相机视图与孪生混合渲染；中：孪生中的四种条件（stack / banana / return / distractor，仅 stack 有人类演示）；下：每条件 20 次试验的硬件成功率——本文方法 4×100%，人类示范参考（闭环）为 50 / 0 / 0 / 0。两行训练输入与执行模式不同，故为可执行性记录而非受控比较。</figcaption>
+  </figure>
+  <p>使用同一教师与 SFT+PPO 配方在孪生中训练 π0.5 学生（LoRA），<strong>零真机微调</strong>；策略在孪生中闭环跑出动作序列，然后在真机上<strong>开环执行</strong>（不做重规划）。四种条件各 20 次试验全部成功。注：闭环 sim-to-real 迁移未成功（观测敏感性分析指向前景手臂/盘子的渲染外观），这是论文明确声明的范围外项。</p>
+
+  <h3>5.5 分析：合成示范到底差在哪？</h3>
+  <figure>
+    <img src="assets/synthdemo_fig3_behavior.png" alt="教师签名与策略行为">
+    <figcaption>图 3：从教师"签名"到策略行为。上：一个 LIBERO-Spatial 任务上人类示范（H）、教师示范（S）、SFT 与 RL 策略成功 rollout 的末端路径（加粗为各自中位绕行比的 episode）；下：加粗 episode 的竖直动作，灰带为饱和区（|a|≥0.9375）。RL 把几何"拉直"（中位绕行比 3.7→3.2，人类 2.5），但保留了教师的饱和签名（0.133 vs S 0.158 / H 0.027）。</figcaption>
+  </figure>
+  <ul>
+    <li><strong>运动统计完全分离两 sources</strong>：饱和动作帧与 jerk 范数 Cliff's δ≈1（竖直轴驱动）——这是伺服执行的签名，而非速度差异（速度仅 δ=0.58）；</li>
+    <li><strong>frozen-base FM 损失</strong>：合成 episode 在冻结 π0.5 基座下的预测误差系统性更高（δ=0.89/0.99/0.52）；</li>
+    <li><strong>"人性化"教师只买回一小部分差距</strong>：约束伺服速度与旋转到人类水平后重新生成数据，Spatial 上 SFT 仅从 55.3%→60.2%，在 42.5 分的人类示范差距中只关闭 4.9 分——说明差距还有轨迹形态、抓取语义等来源；</li>
+    <li><strong>RL 的收益不靠"更像人"</strong>：RL 使 detour ratio 关闭 41% 的 SFT-人类差距，但竖直动作分布反而更偏离人类轮廓——41 分的提升并未让测得的竖直动作更像人类。</li>
+  </ul>
+</section>
+
+<section id="s6">
+  <h2><span class="no">06</span>核心 Insights</h2>
+  <div class="box insight">
+    <div class="bt">1. 示范合成的目标应是"覆盖率"，而不是"平均分"</div>
+    教师只需让每个任务"至少成功一次"（哪怕成功率只有 60%），剩下把平均分拉高的工作交给稀疏奖励 RL。这是全文最有行动价值的结论：数据生成系统不必追求完美执行，<strong>必须保证零奖励任务被点亮</strong>。
+  </div>
+  <div class="box insight">
+    <div class="bt">2. 零成功初始化 ≈ RL 死刑</div>
+    r = 0.71 的相关性表明：初始化为 0% 的任务，RL 后平均只有 26%；而非零初始化（哪怕弱到 0&lt;SFT&lt;50%）RL 后能到 97%。换言之，<strong>SFT 的作用不是提高性能，而是提供 RL 可用的梯度信号</strong>。
+  </div>
+  <div class="box insight">
+    <div class="bt">3. LLM 调参器解决的是"长尾执行配置"</div>
+    12 个无 LLM 就采不到数据任务的共性：铰接抽屉、炉灶旋钮、架子/柜顶放置、扁平细长容器——需要边缘抓取、捏取、调整深度与侧撤等非默认配置。成功库 + 失败库的设计让配置跨任务复用且不重复踩坑。
+  </div>
+  <div class="box insight">
+    <div class="bt">4. 蒸馏有 gap、RL 来买单</div>
+    合成示范与人类示范有真实的分布差异（伺服签名：饱和动作、高 jerk、更高 FM 损失），且这解释不了全部 SFT 差距。但流水线对此鲁棒：<strong>SFT 只需"够用"（全覆盖、非零），RL 负责修正脚本偏差并超越教师</strong>。标准 LIBERO 上 96.0% vs 人类示范 97.7% 仅差 1.7 分。
+  </div>
+</section>
+
+<section id="s7">
+  <h2><span class="no">07</span>局限与结论</h2>
+  <h3>作者声明的局限</h3>
+  <ul>
+    <li><strong>不是"无仿真器"学习</strong>：教师消费真值仿真状态，RL 需要环境 rollout——目标域仿真（如数字孪生）是前置条件；用学习感知替换特权输入、用世界模型替换 RL 仿真器均未验证；</li>
+    <li><strong>SFT 遗忘</strong>：无回放的 SFT 会降低原已解出任务的性能（RL 可大幅挽回）；</li>
+    <li><strong>单原语</strong>：教师每任务执行一个原语，多步操作（LIBERO-Long）需要子目标分解与原语排序，未实现；</li>
+    <li><strong>闭环 sim-to-real 未解决</strong>（真机验证限于开环轨迹可执行性）；<strong>LLM 调参器依赖专有 API</strong>。</li>
+  </ul>
+  <h3>结论</h3>
+  <p>SynthDemo-RL 证明：<strong>在 VLA 规模上，合成示范足以初始化稀疏奖励 RL，从而在目标任务分布上完全不需要新的人类示范</strong>。在 57 个扰动任务上，合成示范救活全部 27 个零成功任务，PPO 把成功率推到 97.8%/97.1%；标准 LIBERO 上零演示达 96.0%；流水线还迁移到 RoboTwin 2.0 与真机开环执行。对领域的启示是：<strong>示范合成的首要指标是 reward coverage，平均成功率留给稀疏奖励 RL 去提升</strong>。</p>
+</section>
+
+<section id="s8">
+  <h2><span class="no">08</span>论文与代码链接</h2>
+  <ul class="linklist">
+    <li>📄 论文 PDF：<code>arXiv:2609.21650</code> — <a href="https://arxiv.org/abs/2609.21650">https://arxiv.org/abs/2609.21650</a></li>
+    <li>⚠️ 本文<strong>未公开官方代码仓库</strong>（截至阅读时）；复现可参考以下开源组件：</li>
+    <li>🔧 π0.5 / openpi 训练配方：<a href="https://github.com/Physical-Intelligence/openpi">github.com/Physical-Intelligence/openpi</a></li>
+    <li>🔧 RLinf（PPO for VLA 框架）：<a href="https://github.com/volcengine/RLinf">github.com/volcengine/RLinf</a></li>
+    <li>🔧 LIBERO 基准：<a href="https://github.com/Lifelong-Robot-Learning/LIBERO">github.com/Lifelong-Robot-Learning/LIBERO</a> · LIBERO-PRO：<a href="https://github.com/sylph01/libero-pro">见论文引用 [8]</a></li>
+    <li>🔧 RoboTwin 2.0 基准：<a href="https://github.com/RoboTwin-Platform/RoboTwin">github.com/RoboTwin-Platform/RoboTwin</a></li>
+    <li>🔧 GraspGen 抓取预测器：见论文引用 [20]（NVIDIA 发布）</li>
+  </ul>
+</section>
+
+<div class="foot">SynthDemo-RL 论文精读笔记 · 生成于 2026-09-26 · 图表均截取自原论文</div>
+</div>
+
+</body>
+</html>

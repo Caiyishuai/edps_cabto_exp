@@ -1,0 +1,411 @@
+{
+  "task": "cover",
+  "seeds": [
+    0
+  ],
+  "models": [
+    {
+      "name": "pick",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [
+        "empty()",
+        "at_source(shrimp)"
+      ],
+      "add": [
+        "holding(shrimp)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(shrimp)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [
+        "holding(shrimp)"
+      ],
+      "add": [
+        "at_target(shrimp)",
+        "empty()"
+      ],
+      "del": [
+        "holding(shrimp)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "pick",
+      "args": {
+        "object": "apple",
+        "support": "board"
+      },
+      "pre": [
+        "empty()",
+        "at_source(apple)"
+      ],
+      "add": [
+        "holding(apple)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(apple)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "apple",
+        "support": "board"
+      },
+      "pre": [
+        "holding(apple)"
+      ],
+      "add": [
+        "at_target(apple)",
+        "empty()"
+      ],
+      "del": [
+        "holding(apple)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "pick",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [
+        "empty()",
+        "at_source(potato)"
+      ],
+      "add": [
+        "holding(potato)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(potato)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [
+        "holding(potato)"
+      ],
+      "add": [
+        "at_target(potato)",
+        "empty()"
+      ],
+      "del": [
+        "holding(potato)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "home",
+      "args": {},
+      "pre": [
+        "empty()"
+      ],
+      "add": [
+        "home_completed()"
+      ],
+      "del": []
+    }
+  ],
+  "results": [
+    {
+      "model": "pick",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [
+        "empty()",
+        "at_source(shrimp)"
+      ],
+      "add": [
+        "holding(shrimp)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(shrimp)",
+        "home_completed()"
+      ],
+      "pre_holds": true,
+      "before": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "empty()"
+      ],
+      "after": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "holding(shrimp)"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "cover"
+    },
+    {
+      "model": "place",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [
+        "holding(shrimp)"
+      ],
+      "add": [
+        "at_target(shrimp)",
+        "empty()"
+      ],
+      "del": [
+        "holding(shrimp)",
+        "home_completed()"
+      ],
+      "pre_holds": true,
+      "before": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "holding(shrimp)"
+      ],
+      "after": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "at_target(shrimp)",
+        "empty()"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "cover"
+    },
+    {
+      "model": "pick",
+      "args": {
+        "object": "apple",
+        "support": "board"
+      },
+      "pre": [
+        "empty()",
+        "at_source(apple)"
+      ],
+      "add": [
+        "holding(apple)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(apple)",
+        "home_completed()"
+      ],
+      "pre_holds": true,
+      "before": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "empty()"
+      ],
+      "after": [
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "holding(apple)"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "cover"
+    },
+    {
+      "model": "place",
+      "args": {
+        "object": "apple",
+        "support": "board"
+      },
+      "pre": [
+        "holding(apple)"
+      ],
+      "add": [
+        "at_target(apple)",
+        "empty()"
+      ],
+      "del": [
+        "holding(apple)",
+        "home_completed()"
+      ],
+      "pre_holds": true,
+      "before": [
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "holding(apple)"
+      ],
+      "after": [
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "at_target(apple)",
+        "empty()"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "cover"
+    },
+    {
+      "model": "pick",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [
+        "empty()",
+        "at_source(potato)"
+      ],
+      "add": [
+        "holding(potato)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(potato)",
+        "home_completed()"
+      ],
+      "pre_holds": true,
+      "before": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "empty()"
+      ],
+      "after": [
+        "at_source(apple)",
+        "at_source(shrimp)",
+        "holding(potato)"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "cover"
+    },
+    {
+      "model": "place",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [
+        "holding(potato)"
+      ],
+      "add": [
+        "at_target(potato)",
+        "empty()"
+      ],
+      "del": [
+        "holding(potato)",
+        "home_completed()"
+      ],
+      "pre_holds": true,
+      "before": [
+        "at_source(apple)",
+        "at_source(shrimp)",
+        "holding(potato)"
+      ],
+      "after": [
+        "at_source(apple)",
+        "at_source(shrimp)",
+        "at_target(potato)",
+        "empty()"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "cover"
+    },
+    {
+      "model": "home",
+      "args": {},
+      "pre": [
+        "empty()"
+      ],
+      "add": [
+        "home_completed()"
+      ],
+      "del": [],
+      "pre_holds": true,
+      "before": [
+        "at_target(apple)",
+        "at_target(potato)",
+        "at_target(shrimp)",
+        "empty()"
+      ],
+      "after": [
+        "at_target(apple)",
+        "at_target(potato)",
+        "at_target(shrimp)",
+        "empty()",
+        "home_completed()"
+      ],
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": []
+      },
+      "exception": null,
+      "seed": 0,
+      "task": "cover"
+    }
+  ],
+  "all_oracle_reachable": true
+}
