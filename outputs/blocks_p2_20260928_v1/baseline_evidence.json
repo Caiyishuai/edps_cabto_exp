@@ -1,0 +1,644 @@
+{
+  "evidence": [
+    {
+      "evidence_id": "94611a251028",
+      "current_grasp_offset_z_m": 0.045,
+      "success": false,
+      "initial_state": [
+        "clear(blue)",
+        "clear(green)",
+        "clear(red)",
+        "clear(yellow)",
+        "empty()",
+        "ontable(blue)",
+        "ontable(green)",
+        "ontable(red)",
+        "ontable(yellow)"
+      ],
+      "actions": {
+        "pick_table": [
+          {
+            "index": 0,
+            "action": "pick_table",
+            "role": "grasp",
+            "model": {
+              "name": "pick_table",
+              "args": {
+                "object": "blue"
+              },
+              "pre": [
+                "empty()",
+                "ontable(blue)",
+                "clear(blue)"
+              ],
+              "add": [
+                "holding(blue)"
+              ],
+              "del": [
+                "empty()",
+                "ontable(blue)",
+                "home_completed()"
+              ]
+            },
+            "before": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "clear(yellow)",
+              "empty()",
+              "ontable(blue)",
+              "ontable(green)",
+              "ontable(red)",
+              "ontable(yellow)"
+            ],
+            "after": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "clear(yellow)",
+              "ontable(blue)",
+              "ontable(green)",
+              "ontable(red)",
+              "ontable(yellow)"
+            ],
+            "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+            "violations": {
+              "missing_pre": [],
+              "missing_add": [
+                "holding(blue)"
+              ],
+              "remaining_del": [
+                "ontable(blue)"
+              ],
+              "missing_preserved_pre": [],
+              "unexpected_added": [
+                "ontable(blue)"
+              ],
+              "unexpected_removed": [
+                "holding(blue)"
+              ]
+            },
+            "success": false,
+            "api_trace": [
+              {
+                "method": "grasp_point",
+                "args": [],
+                "kwargs": {},
+                "status": "returned",
+                "result": [
+                  0.3250000000000149,
+                  0.15500000000011382,
+                  0.42599520594899054
+                ]
+              },
+              {
+                "method": "open_gripper",
+                "args": [],
+                "kwargs": {},
+                "status": "returned",
+                "result": null
+              },
+              {
+                "method": "approach",
+                "args": [
+                  [
+                    0.3250000000000149,
+                    0.15500000000011382,
+                    0.4709952059489905
+                  ]
+                ],
+                "kwargs": {},
+                "status": "returned",
+                "result": null
+              },
+              {
+                "method": "descend",
+                "args": [
+                  [
+                    0.3250000000000149,
+                    0.15500000000011382,
+                    0.4709952059489905
+                  ]
+                ],
+                "kwargs": {},
+                "status": "returned",
+                "result": null
+              },
+              {
+                "method": "close_gripper",
+                "args": [],
+                "kwargs": {},
+                "status": "failed",
+                "error": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}"
+              }
+            ],
+            "finger_forces_N": {
+              "left_finger": 0.0,
+              "right_finger": 0.0
+            }
+          }
+        ]
+      },
+      "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}"
+    },
+    {
+      "evidence_id": "333bb0724f68",
+      "current_grasp_offset_z_m": 0.0,
+      "success": false,
+      "initial_state": [
+        "clear(blue)",
+        "clear(green)",
+        "clear(red)",
+        "empty()",
+        "on(red,yellow)",
+        "ontable(blue)",
+        "ontable(green)",
+        "ontable(yellow)"
+      ],
+      "actions": {
+        "pick_table": [
+          {
+            "index": 0,
+            "action": "pick_table",
+            "role": "grasp",
+            "model": {
+              "name": "pick_table",
+              "args": {
+                "object": "blue"
+              },
+              "pre": [
+                "empty()",
+                "ontable(blue)",
+                "clear(blue)"
+              ],
+              "add": [
+                "holding(blue)"
+              ],
+              "del": [
+                "empty()",
+                "ontable(blue)",
+                "home_completed()"
+              ]
+            },
+            "before": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "empty()",
+              "on(red,yellow)",
+              "ontable(blue)",
+              "ontable(green)",
+              "ontable(yellow)"
+            ],
+            "after": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "holding(blue)",
+              "on(red,yellow)",
+              "ontable(green)",
+              "ontable(yellow)"
+            ],
+            "exception": null,
+            "violations": {
+              "missing_pre": [],
+              "missing_add": [],
+              "remaining_del": [],
+              "missing_preserved_pre": [],
+              "unexpected_added": [],
+              "unexpected_removed": []
+            },
+            "success": true
+          }
+        ],
+        "stack": [
+          {
+            "index": 1,
+            "action": "stack",
+            "role": "placement",
+            "model": {
+              "name": "stack",
+              "args": {
+                "object": "blue",
+                "support": "yellow"
+              },
+              "pre": [
+                "holding(blue)"
+              ],
+              "add": [
+                "empty()",
+                "on(blue,yellow)"
+              ],
+              "del": [
+                "holding(blue)",
+                "clear(yellow)",
+                "home_completed()"
+              ]
+            },
+            "before": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "holding(blue)",
+              "on(red,yellow)",
+              "ontable(green)",
+              "ontable(yellow)"
+            ],
+            "after": [
+              "clear(blue)",
+              "clear(green)",
+              "on(blue,red)",
+              "on(red,yellow)",
+              "ontable(green)",
+              "ontable(yellow)"
+            ],
+            "exception": "RuntimeError: lower_blue: TCP residual 0.0201m",
+            "violations": {
+              "missing_pre": [],
+              "missing_add": [
+                "empty()",
+                "on(blue,yellow)"
+              ],
+              "remaining_del": [],
+              "missing_preserved_pre": [],
+              "unexpected_added": [
+                "on(blue,red)"
+              ],
+              "unexpected_removed": [
+                "clear(red)",
+                "empty()",
+                "on(blue,yellow)"
+              ]
+            },
+            "success": false,
+            "api_trace": [
+              {
+                "method": "destination_point",
+                "args": [],
+                "kwargs": {},
+                "status": "returned",
+                "result": [
+                  0.5450000002861961,
+                  0.15499999971391668,
+                  0.4689904134110098
+                ]
+              },
+              {
+                "method": "carry",
+                "args": [
+                  [
+                    0.5450000002861961,
+                    0.15499999971391668,
+                    0.4689904134110098
+                  ]
+                ],
+                "kwargs": {},
+                "status": "returned",
+                "result": null
+              },
+              {
+                "method": "lower",
+                "args": [
+                  [
+                    0.5450000002861961,
+                    0.15499999971391668,
+                    0.4689904134110098
+                  ]
+                ],
+                "kwargs": {},
+                "status": "failed",
+                "error": "RuntimeError: lower_blue: TCP residual 0.0201m"
+              }
+            ],
+            "finger_forces_N": {
+              "left_finger": 1.616059924645179,
+              "right_finger": 0.0
+            }
+          }
+        ]
+      },
+      "exception": "RuntimeError: lower_blue: TCP residual 0.0201m"
+    },
+    {
+      "evidence_id": "e027735b3d88",
+      "current_grasp_offset_z_m": 0.045,
+      "success": false,
+      "initial_state": [
+        "clear(blue)",
+        "clear(green)",
+        "clear(red)",
+        "empty()",
+        "on(red,yellow)",
+        "ontable(blue)",
+        "ontable(green)",
+        "ontable(yellow)"
+      ],
+      "actions": {
+        "pick_table": [
+          {
+            "index": 0,
+            "action": "pick_table",
+            "role": "grasp",
+            "model": {
+              "name": "pick_table",
+              "args": {
+                "object": "blue"
+              },
+              "pre": [
+                "empty()",
+                "ontable(blue)",
+                "clear(blue)"
+              ],
+              "add": [
+                "holding(blue)"
+              ],
+              "del": [
+                "empty()",
+                "ontable(blue)",
+                "home_completed()"
+              ]
+            },
+            "before": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "empty()",
+              "on(red,yellow)",
+              "ontable(blue)",
+              "ontable(green)",
+              "ontable(yellow)"
+            ],
+            "after": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "on(red,yellow)",
+              "ontable(blue)",
+              "ontable(green)",
+              "ontable(yellow)"
+            ],
+            "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+            "violations": {
+              "missing_pre": [],
+              "missing_add": [
+                "holding(blue)"
+              ],
+              "remaining_del": [
+                "ontable(blue)"
+              ],
+              "missing_preserved_pre": [],
+              "unexpected_added": [
+                "ontable(blue)"
+              ],
+              "unexpected_removed": [
+                "holding(blue)"
+              ]
+            },
+            "success": false,
+            "api_trace": [
+              {
+                "method": "grasp_point",
+                "args": [],
+                "kwargs": {},
+                "status": "returned",
+                "result": [
+                  0.3250000000000149,
+                  0.15500000000011382,
+                  0.42599520594899054
+                ]
+              },
+              {
+                "method": "open_gripper",
+                "args": [],
+                "kwargs": {},
+                "status": "returned",
+                "result": null
+              },
+              {
+                "method": "approach",
+                "args": [
+                  [
+                    0.3250000000000149,
+                    0.15500000000011382,
+                    0.4709952059489905
+                  ]
+                ],
+                "kwargs": {},
+                "status": "returned",
+                "result": null
+              },
+              {
+                "method": "descend",
+                "args": [
+                  [
+                    0.3250000000000149,
+                    0.15500000000011382,
+                    0.4709952059489905
+                  ]
+                ],
+                "kwargs": {},
+                "status": "returned",
+                "result": null
+              },
+              {
+                "method": "close_gripper",
+                "args": [],
+                "kwargs": {},
+                "status": "failed",
+                "error": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}"
+              }
+            ],
+            "finger_forces_N": {
+              "left_finger": 0.0,
+              "right_finger": 0.0
+            }
+          }
+        ]
+      },
+      "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}"
+    },
+    {
+      "evidence_id": "f2c98cb83c7a",
+      "current_grasp_offset_z_m": 0.0,
+      "success": true,
+      "initial_state": [
+        "clear(blue)",
+        "clear(green)",
+        "clear(red)",
+        "clear(yellow)",
+        "empty()",
+        "ontable(blue)",
+        "ontable(green)",
+        "ontable(red)",
+        "ontable(yellow)"
+      ],
+      "actions": {
+        "home": [
+          {
+            "index": 2,
+            "action": "home",
+            "role": "other",
+            "model": {
+              "name": "home",
+              "args": {},
+              "pre": [
+                "empty()",
+                "on(blue,yellow)"
+              ],
+              "add": [
+                "home_completed()"
+              ],
+              "del": []
+            },
+            "before": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "empty()",
+              "on(blue,yellow)",
+              "ontable(green)",
+              "ontable(red)",
+              "ontable(yellow)"
+            ],
+            "after": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "empty()",
+              "home_completed()",
+              "on(blue,yellow)",
+              "ontable(green)",
+              "ontable(red)",
+              "ontable(yellow)"
+            ],
+            "exception": null,
+            "violations": {
+              "missing_pre": [],
+              "missing_add": [],
+              "remaining_del": [],
+              "missing_preserved_pre": [],
+              "unexpected_added": [],
+              "unexpected_removed": []
+            },
+            "success": true
+          }
+        ],
+        "pick_table": [
+          {
+            "index": 0,
+            "action": "pick_table",
+            "role": "grasp",
+            "model": {
+              "name": "pick_table",
+              "args": {
+                "object": "blue"
+              },
+              "pre": [
+                "empty()",
+                "ontable(blue)",
+                "clear(blue)"
+              ],
+              "add": [
+                "holding(blue)"
+              ],
+              "del": [
+                "empty()",
+                "ontable(blue)",
+                "home_completed()"
+              ]
+            },
+            "before": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "clear(yellow)",
+              "empty()",
+              "ontable(blue)",
+              "ontable(green)",
+              "ontable(red)",
+              "ontable(yellow)"
+            ],
+            "after": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "clear(yellow)",
+              "holding(blue)",
+              "ontable(green)",
+              "ontable(red)",
+              "ontable(yellow)"
+            ],
+            "exception": null,
+            "violations": {
+              "missing_pre": [],
+              "missing_add": [],
+              "remaining_del": [],
+              "missing_preserved_pre": [],
+              "unexpected_added": [],
+              "unexpected_removed": []
+            },
+            "success": true
+          }
+        ],
+        "stack": [
+          {
+            "index": 1,
+            "action": "stack",
+            "role": "placement",
+            "model": {
+              "name": "stack",
+              "args": {
+                "object": "blue",
+                "support": "yellow"
+              },
+              "pre": [
+                "holding(blue)"
+              ],
+              "add": [
+                "empty()",
+                "on(blue,yellow)"
+              ],
+              "del": [
+                "holding(blue)",
+                "clear(yellow)",
+                "home_completed()"
+              ]
+            },
+            "before": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "clear(yellow)",
+              "holding(blue)",
+              "ontable(green)",
+              "ontable(red)",
+              "ontable(yellow)"
+            ],
+            "after": [
+              "clear(blue)",
+              "clear(green)",
+              "clear(red)",
+              "empty()",
+              "on(blue,yellow)",
+              "ontable(green)",
+              "ontable(red)",
+              "ontable(yellow)"
+            ],
+            "exception": null,
+            "violations": {
+              "missing_pre": [],
+              "missing_add": [],
+              "remaining_del": [],
+              "missing_preserved_pre": [],
+              "unexpected_added": [],
+              "unexpected_removed": []
+            },
+            "success": true
+          }
+        ]
+      },
+      "exception": null
+    }
+  ],
+  "rollouts": 4
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "backend": "oracle",
+    "object": "potato",
+    "point_kind": "grasp_center",
+    "height_prior_m": 0.41798083548895737,
+    "height_source": "oracle_initial_object_z_plus_frozen_grasp_offset",
+    "fallback": false,
+    "xyz": [
+      0.6700000050473665,
+      -0.19000000385309732,
+      0.41798083548895737
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "status": "complete",
+  "pid": 97282,
+  "ppid": 97277,
+  "created_at_unix": 1790528408.082454,
+  "training_result_sha256": "59ecdd519b39cb0d2820cc5da9f2c13cba52b95c2610d436e854aa31a6609375",
+  "reload_result_sha256": "8c283ee3cfea6791e61864c47c3f853b13265ccdb1da8f1dd133888ec8d51365",
+  "scope": "direct-model training audit; no optimizer steps; not diagnostic accuracy",
+  "cache_policy": "feature-cache optimization rejected after prior failed gradient-equivalence check",
+  "all_saved_adapter_values_finite": true,
+  "all_losses_and_gradient_norms_finite": true,
+  "trainable_target_coverage": {
+    "q_proj": 72,
+    "v_proj": 72
+  },
+  "fresh_loaded_adapter_matches": true,
+  "future_token_change_earlier_logits_max_difference": 0.0,
+  "zero_image_pixels_loss_delta": 0.005481243133544922,
+  "image_check_scope": "real pixel-path numerical dependence, not proof of diagnostic superiority",
+  "mechanics_passed": true,
+  "generation_smoke": {
+    "raw": "```json\n{\n  \"diagnosis\": {\n    \"type\": \"diagnosis\",\n    \"task_type\": \"diagnosis\",\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"apple\",\n        \"support\": \"board\"\n      },\n      \"pre\": {\n        \"empty()\",\n        \"at_source(apple)\"\n      },\n      \"add\": {\n        \"holding(apple)\"\n      },\n      \"del\": {\n        \"empty()\",\n        \"at_source(apple)\",\n        \"home_completed()\"\n      }\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": {\n        \"at",
+    "tokens": 192,
+    "finish_reason": "length",
+    "image_count": 6,
+    "wall_seconds": 7.6951820000540465,
+    "valid_json": false
+  },
+  "peak_memory_gib": 8.737685079686344
+}

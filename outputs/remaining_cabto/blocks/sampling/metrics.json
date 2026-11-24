@@ -1,0 +1,47 @@
+{
+  "objects": {
+    "yellow": {
+      "ok": true,
+      "xy_error_m": 3.0098377569474247e-05,
+      "gap_m": -9.586602446556847e-06,
+      "tilt_deg": 3.41722835252795e-05,
+      "support_contact": true,
+      "support_upright": true,
+      "base_displacement_m": 4.7925436663706625e-06,
+      "origin": [
+        0.570024503694797,
+        0.1499825107092911,
+        0.46598082680856473
+      ]
+    },
+    "red": {
+      "ok": true,
+      "xy_error_m": 2.607302705159141e-05,
+      "gap_m": -9.586599087688108e-06,
+      "tilt_deg": 2.960022273089473e-05,
+      "support_contact": true,
+      "support_upright": true,
+      "base_displacement_m": 4.792540540259596e-06,
+      "origin": [
+        0.5700113844602934,
+        -0.14997653954410178,
+        0.46598082681192327
+      ]
+    }
+  },
+  "released": true,
+  "hand_clearance_m": {
+    "yellow": 0.518797208357975,
+    "red": 0.5187888313956426
+  },
+  "final_home": true,
+  "home_error_rad": 3.4118127330900163e-09,
+  "completed_targets_preserved": true,
+  "forbidden_contacts": [],
+  "max_grasp_relative_slip_m": 0.0032352260911581734,
+  "max_bilateral_contact_gap_s": 0.004,
+  "strict_weld_violation": false,
+  "grasp_verified": true,
+  "motion_verified": true,
+  "success": true
+}

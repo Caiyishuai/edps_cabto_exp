@@ -1,0 +1,146 @@
+{
+  "action_id": "place(object=red,support=blue)",
+  "model": {
+    "name": "place",
+    "args": {
+      "object": "red",
+      "support": "blue"
+    },
+    "program_kind": "place",
+    "pre": [
+      "holding(red)"
+    ],
+    "add": [
+      "at_target(red)",
+      "empty()"
+    ],
+    "del": [
+      "holding(red)",
+      "home_completed()"
+    ],
+    "description": "Stack held cube on bound support cube, release and withdraw. Do not return home."
+  },
+  "attempt": 1,
+  "transfer": {
+    "source_sha256": "7bd21b38784bb86e0c933dc0c29a50adafc03453e3f3011c698b85fba1cc2fd5",
+    "source_attempt": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/sampling_9b_focused/place_shrimp/attempt2",
+    "mode": "unmodified_actual_model_source_schema_transfer",
+    "new_call": false
+  },
+  "source": "def policy(api):\n    api.carry(api.destination_point())\n    api.lower(api.destination_point())\n    api.open_gripper()\n    api.withdraw()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": true,
+    "goal_ok": true,
+    "effect_ok": true,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [],
+      "unexpected_removed": []
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "destination_point",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.5699999999999992,
+          -0.14999999999988617,
+          0.4689952061212042
+        ]
+      },
+      {
+        "method": "carry",
+        "args": [
+          [
+            0.5699999999999992,
+            -0.14999999999988617,
+            0.4689952061212042
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "destination_point",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.5699999999999992,
+          -0.14999999999988617,
+          0.4689952061212042
+        ]
+      },
+      {
+        "method": "lower",
+        "args": [
+          [
+            0.5699999999999992,
+            -0.14999999999988617,
+            0.4689952061212042
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "open_gripper",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "withdraw",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      }
+    ],
+    "before": [
+      "at_source(yellow)",
+      "holding(red)"
+    ],
+    "after": [
+      "at_source(yellow)",
+      "at_target(red)",
+      "empty()"
+    ],
+    "model": {
+      "name": "place",
+      "args": {
+        "object": "red",
+        "support": "blue"
+      },
+      "program_kind": "place",
+      "pre": [
+        "holding(red)"
+      ],
+      "add": [
+        "at_target(red)",
+        "empty()"
+      ],
+      "del": [
+        "holding(red)",
+        "home_completed()"
+      ],
+      "description": "Stack held cube on bound support cube, release and withdraw. Do not return home."
+    },
+    "safety_ok": true,
+    "contract_effect_ok": true,
+    "code_sha256": "7bd21b38784bb86e0c933dc0c29a50adafc03453e3f3011c698b85fba1cc2fd5",
+    "consistency_scope": "full_CP"
+  },
+  "accepted": true
+}

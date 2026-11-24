@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/yishuaicai/mywork/edps_cabto_exp/project/experiments/audit_pick_lora_training.py", line 125, in <module>
+    audit(args)
+  File "/Users/yishuaicai/mywork/edps_cabto_exp/project/experiments/audit_pick_lora_training.py", line 83, in audit
+    processor = load_processor(manifest["snapshot"], add_detokenizer=True,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yishuaicai/.workbuddy/binaries/python/envs/cabto/lib/python3.11/site-packages/mlx_vlm/utils.py", line 927, in load_processor
+    detokenizer_class = load_tokenizer(model_path, return_tokenizer=False)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yishuaicai/.workbuddy/binaries/python/envs/cabto/lib/python3.11/site-packages/mlx_vlm/tokenizer_utils.py", line 462, in load_tokenizer
+    tokenizer_file = model_path / "tokenizer.json"
+                     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'str'

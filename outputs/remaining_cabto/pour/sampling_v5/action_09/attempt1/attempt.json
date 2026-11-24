@@ -1,0 +1,152 @@
+{
+  "action_id": "home_receiver_arm(arm=1,dest=home_receiver_arm,obj=none)",
+  "model": {
+    "name": "home_receiver_arm",
+    "args": {
+      "arm": "1",
+      "obj": "none",
+      "dest": "home_receiver_arm"
+    },
+    "program_kind": "controlled_home",
+    "pre": [
+      "basin_returned()",
+      "empty(1)",
+      "hand_raised(1)",
+      "home(0)",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "home(1)"
+    ],
+    "del": [],
+    "description": "源杯与接收盆已返还，两臂空手张开并处于 HOME 关节姿态，小球仍留在接收盆内。"
+  },
+  "attempt": 1,
+  "transfer": {
+    "source_sha256": "b629a8179e4bdb1b8bdd46386dca8f936b0186cc1eb7ff984b9f3b913613711e",
+    "source_attempt": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/pour/sampling_v5/action_07/attempt1",
+    "mode": "unmodified_actual_model_source_schema_transfer",
+    "new_call": false
+  },
+  "source": "def policy(api):\n    pose = api.controlled_home()\n    return pose",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": true,
+    "goal_ok": true,
+    "effect_ok": true,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [],
+      "unexpected_removed": []
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "controlled_home",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      }
+    ],
+    "before": [
+      "at_source(basin)",
+      "basin_returned()",
+      "caught_by_held_basin()",
+      "collision_free()",
+      "empty(0)",
+      "empty(1)",
+      "hand_raised(0)",
+      "hand_raised(1)",
+      "home(0)",
+      "parked(0)",
+      "parked(1)",
+      "payload_retained()",
+      "source_returned()",
+      "source_upright()",
+      "sphere_in_basin()"
+    ],
+    "after": [
+      "at_source(basin)",
+      "basin_returned()",
+      "caught_by_held_basin()",
+      "collision_free()",
+      "empty(0)",
+      "empty(1)",
+      "hand_raised(0)",
+      "hand_raised(1)",
+      "home(0)",
+      "home(1)",
+      "parked(0)",
+      "parked(1)",
+      "payload_retained()",
+      "source_returned()",
+      "source_upright()",
+      "sphere_in_basin()"
+    ],
+    "model": {
+      "name": "home_receiver_arm",
+      "args": {
+        "arm": "1",
+        "obj": "none",
+        "dest": "home_receiver_arm"
+      },
+      "program_kind": "controlled_home",
+      "pre": [
+        "basin_returned()",
+        "empty(1)",
+        "hand_raised(1)",
+        "home(0)",
+        "sphere_in_basin()",
+        "caught_by_held_basin()",
+        "payload_retained()",
+        "collision_free()"
+      ],
+      "add": [
+        "home(1)"
+      ],
+      "del": [],
+      "description": "源杯与接收盆已返还，两臂空手张开并处于 HOME 关节姿态，小球仍留在接收盆内。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": true,
+    "missing_required_calls": [],
+    "code_sha256": "b629a8179e4bdb1b8bdd46386dca8f936b0186cc1eb7ff984b9f3b913613711e",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+    "physical_diagnostics": {
+      "source": {
+        "returned": true,
+        "xy_error_m": 0.0023505764575476686,
+        "bottom_gap_m": 0.003985823453415693,
+        "rotation_error_deg": 2.605297018973972,
+        "released": true,
+        "origin": [
+          0.1807911100579062,
+          0.10221344856706836,
+          0.5239608802402586
+        ]
+      },
+      "basin": {
+        "returned": true,
+        "xy_error_m": 0.010249010410691263,
+        "bottom_gap_m": -4.223860028795823e-06,
+        "rotation_error_deg": 11.262544209677309,
+        "released": true,
+        "origin": [
+          0.5986576546444047,
+          -0.25983954058579856,
+          0.5199946633987242
+        ]
+      }
+    }
+  },
+  "accepted": true
+}

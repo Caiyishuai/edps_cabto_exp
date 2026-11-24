@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "status": "complete",
+  "fresh_process": true,
+  "adapter_hashes_match": true,
+  "max_logit_difference": 0.0,
+  "reloaded_loss": 2.1346709728240967,
+  "loss_difference": 0.0,
+  "setup": {
+    "load_seconds": 2.5689305420964956,
+    "unfused_rope_modules": 36,
+    "memory_limit_is_guideline_not_hard_cap": true
+  },
+  "scope": "adapter persistence and fresh six-image teacher-forced inference; not generation accuracy or OOD"
+}

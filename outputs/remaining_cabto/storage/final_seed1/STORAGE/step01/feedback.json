@@ -1,0 +1,144 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.29870213585871375,
+        -0.035,
+        0.40800000000000003
+      ]
+    },
+    {
+      "method": "move_above",
+      "args": [
+        [
+          0.29870213585871375,
+          -0.035,
+          0.40800000000000003
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.006476477805062726
+    },
+    {
+      "method": "align_target",
+      "args": [
+        [
+          0.29870213585871375,
+          -0.035,
+          0.40800000000000003
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.2972552289117569,
+        -0.03749985419185773
+      ]
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.29870213585871375,
+          -0.035,
+          0.40800000000000003
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.44254355023083713
+    },
+    {
+      "method": "settle",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "place_release",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "retreat",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.0026691590324115257
+    }
+  ],
+  "before": [
+    "at_source(item0)",
+    "empty(0)",
+    "hands_safe_for_lateral(0)",
+    "holding(1,item1)",
+    "parked(0)",
+    "slot_free(0)",
+    "slot_free(1)",
+    "tray_at_table()"
+  ],
+  "after": [
+    "at_source(item0)",
+    "empty(0)",
+    "empty(1)",
+    "hands_raised()",
+    "hands_safe_for_lateral(0)",
+    "hands_safe_for_lateral(1)",
+    "packed(1)",
+    "parked(0)",
+    "slot_free(0)",
+    "tray_at_table()"
+  ],
+  "model": {
+    "name": "place_tray",
+    "args": {
+      "arm": "1",
+      "obj": "item1",
+      "dest": "tray"
+    },
+    "program_kind": "place",
+    "pre": [
+      "holding(1,item1)",
+      "slot_free(1)"
+    ],
+    "add": [
+      "empty(1)",
+      "hands_raised()",
+      "hands_safe_for_lateral(1)",
+      "packed(1)"
+    ],
+    "del": [
+      "holding(1,item1)",
+      "slot_free(1)"
+    ],
+    "description": "绑定物品已在自由托盘对应槽位内稳定支撑且解除抓持，指定手爪张开并竖直撤离放置面。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "cd84508daea4180486ac513976d14178f3fbec2b9e6c8072acab54e9d190e50e",
+  "consistency_scope": "full_CP"
+}

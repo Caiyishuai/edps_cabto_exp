@@ -1,0 +1,115 @@
+{
+  "status": "complete",
+  "compatibility": {
+    "legacy_baseline_ok": true,
+    "new_default_preserves_legacy": true,
+    "explicit_yaw0_equivalent": true,
+    "explicit_yaw90_ok": true,
+    "all_trial_valid": true,
+    "yaw90_grasp_orientation_error_rad": 8.379565108778112e-05,
+    "note": "grasp_phase orientation is enforced by RebuiltSingleArm.move (<0.03 rad) when target_quat is set; home() does not consume target_quat, so the final TCP returns to the default yaw=0 orientation."
+  },
+  "variants": [
+    {
+      "id": "legacy_0",
+      "yaw_deg": null,
+      "success": true,
+      "trial_valid": true,
+      "exception": null,
+      "target_quat_wxyz": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "grasp_phase_orientation_error_rad": 8.526284382330165e-05,
+      "final_tcp_quat_wxyz": [
+        -7.454484689935852e-11,
+        0.999999980186706,
+        0.00019906427788026892,
+        5.830149495526569e-10
+      ],
+      "home_orientation_vs_target_rad": 0.0003981285583916861,
+      "simulation_seconds": 25.339999999996746,
+      "wall_seconds": 5.901796333026141
+    },
+    {
+      "id": "default",
+      "yaw_deg": null,
+      "success": true,
+      "trial_valid": true,
+      "exception": null,
+      "target_quat_wxyz": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "grasp_phase_orientation_error_rad": 8.526284382330165e-05,
+      "final_tcp_quat_wxyz": [
+        -7.454484689935852e-11,
+        0.999999980186706,
+        0.00019906427788026892,
+        5.830149495526569e-10
+      ],
+      "home_orientation_vs_target_rad": 0.0003981285583916861,
+      "simulation_seconds": 25.339999999996746,
+      "wall_seconds": 7.175274124951102
+    },
+    {
+      "id": "yaw_0",
+      "yaw_deg": 0.0,
+      "success": true,
+      "trial_valid": true,
+      "exception": null,
+      "target_quat_wxyz": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "grasp_phase_orientation_error_rad": 8.526284382330165e-05,
+      "final_tcp_quat_wxyz": [
+        -7.454484689935852e-11,
+        0.999999980186706,
+        0.00019906427788026892,
+        5.830149495526569e-10
+      ],
+      "home_orientation_vs_target_rad": 0.0003981285583916861,
+      "simulation_seconds": 25.339999999996746,
+      "wall_seconds": 6.326812083018012
+    },
+    {
+      "id": "yaw_90",
+      "yaw_deg": 90.0,
+      "success": true,
+      "trial_valid": true,
+      "exception": null,
+      "target_quat_wxyz": [
+        0.0,
+        0.7071067811865476,
+        0.7071067811865475,
+        0.0
+      ],
+      "grasp_phase_orientation_error_rad": 8.379565108778112e-05,
+      "final_tcp_quat_wxyz": [
+        9.06259078640919e-11,
+        0.9999999801864801,
+        0.00019906541319207662,
+        1.2021356577762396e-10
+      ],
+      "home_orientation_vs_target_rad": 1.5703981959658828,
+      "simulation_seconds": 26.259999999996236,
+      "wall_seconds": 5.454066707985476
+    }
+  ],
+  "decision": "minimal_yaw_compatible_in_open_scene",
+  "total_wall_seconds": 25.861991583020426,
+  "peak_rss_mib": 415.6875,
+  "limits": [
+    "Open scene only; no channel walls, no side grasp, no path sweep.",
+    "Fixed J candidate (clear(support), offset=0) and one layout.",
+    "Four correlated trials, not independent generalization samples.",
+    "Positive screen does not prove channel success or a stable yaw-aware grasp."
+  ]
+}

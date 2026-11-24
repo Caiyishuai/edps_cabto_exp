@@ -1,0 +1,10 @@
+{
+  "model_id": "mlx-community/Qwen3.5-9B-4bit",
+  "text": "In classical STRIPS, a robot hand starts empty and an apple is on the table. It closes its fingers, lifts the apple, and holds it. Write the Pick action as JSON with pre, add, del lists using ONLY these atoms: empty(), at_source(apple), holding(apple), home_completed(). Before moving the arm may be home; moving away makes home_completed() false. Delete means facts that become false, NOT facts deleted from the prompt. What must become false when a hand picks something up? Return JSON only.",
+  "image_files": [],
+  "formatted_prompt": "<|im_start|>user\nIn classical STRIPS, a robot hand starts empty and an apple is on the table. It closes its fingers, lifts the apple, and holds it. Write the Pick action as JSON with pre, add, del lists using ONLY these atoms: empty(), at_source(apple), holding(apple), home_completed(). Before moving the arm may be home; moving away makes home_completed() false. Delete means facts that become false, NOT facts deleted from the prompt. What must become false when a hand picks something up? Return JSON only.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "temperature": 0.3,
+  "max_tokens": 500,
+  "raw": "{\n  \"pre\": [\n    \"empty()\",\n    \"at_source(apple)\"\n  ],\n  \"add\": [\n    \"holding(apple)\"\n  ],\n  \"del\": [\n    \"empty()\"\n  ]\n}",
+  "wall_seconds": 2.220945540932007
+}

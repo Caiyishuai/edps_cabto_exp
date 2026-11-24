@@ -1,0 +1,54 @@
+{
+  "decision": "propose",
+  "reason": "Evidence shows consistent grasp failures (indices 0, 2) due to zero finger forces at closure when offset_z is 0.045m, and a stack failure (index 1) due to TCP residual when offset_z is 0.0m. The successful execution (index 2) uses offset_z=0.0 but succeeds because the object is already clear and the gripper closes successfully in that specific instance; however, the pattern suggests the current shared parameter (0.0 or 0.045) is insufficient for reliable grasping across varying states. A small positive offset (e.g., 0.01m) is needed to ensure the gripper approaches slightly above the object surface to engage fingers before contact, preventing the 'No simultaneous two-finger force' error. This repair applies to pick_table and unstack actions.",
+  "accepted": [
+    {
+      "rank": 0,
+      "candidate": {
+        "id": "offset_z_0_01",
+        "pre_add": [],
+        "offset_z_m": 0.01,
+        "reason": "Increases approach height to prevent finger collision and ensure simultaneous force generation during closure, addressing the primary failure mode in failed executions."
+      },
+      "origin": "real_LM_response",
+      "recipe_sha256": "bb49a28af90448d93bb7aa677eb57a874ff16b9af51a33101fbe6be29b540ab8"
+    },
+    {
+      "rank": 1,
+      "candidate": {
+        "id": "offset_z_0_02",
+        "pre_add": [],
+        "offset_z_m": 0.02,
+        "reason": "Provides a more conservative approach height to guarantee clearance over objects of varying heights, reducing collision risk further."
+      },
+      "origin": "real_LM_response",
+      "recipe_sha256": "d081672c7e5d1ff4b8ae8da8c1c52dfd710962f3f2c03c8a97077fb6be4ac4c9"
+    },
+    {
+      "rank": 2,
+      "candidate": {
+        "id": "offset_z_0_005",
+        "pre_add": [],
+        "offset_z_m": 0.005,
+        "reason": "Minimal adjustment to lift the approach point just enough to avoid immediate contact while maintaining proximity for stable grasping."
+      },
+      "origin": "real_LM_response",
+      "recipe_sha256": "d8d897706e947e3b4ef0913ccb225700eacb73bde0a3a06745831d98b9355de9"
+    }
+  ],
+  "rejected": [
+    {
+      "rank": 3,
+      "raw_candidate": {
+        "id": "add_clear_pred",
+        "pre_add": [
+          "clear"
+        ],
+        "offset_z_m": null,
+        "reason": "Adds 'clear' predicate to pick_table preconditions to ensure the object is not obstructed before attempting grasp, preventing failures due to occlusion or unstable support."
+      },
+      "reason": "precondition: expected exactly ['action', 'args', 'predicate']"
+    }
+  ],
+  "status": "parsed"
+}

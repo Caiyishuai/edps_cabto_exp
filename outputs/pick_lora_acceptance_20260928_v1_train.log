@@ -1,0 +1,44 @@
+EVAL before/train diagnosis 2.2247023582458496
+EVAL before/train diagnosis 2.612152338027954
+EVAL before/train diagnosis 2.6471190452575684
+EVAL before/train diagnosis 2.6081607341766357
+EVAL before/train forecast 2.3776633739471436
+EVAL before/train update 2.1322021484375
+EVAL before/train diagnosis 2.207198143005371
+EVAL before/train diagnosis 2.603116989135742
+EVAL before/train diagnosis 2.623013973236084
+EVAL before/train diagnosis 2.600445032119751
+EVAL before/train forecast 2.4192066192626953
+EVAL before/train update 2.106538772583008
+EVAL before/validation diagnosis 2.609666109085083
+EVAL before/validation update 2.1148717403411865
+EVAL before/validation diagnosis 2.6035308837890625
+EVAL before/validation update 2.1339213848114014
+TRAIN {"step": 1, "sample_id": "80b8509c7fce4006b822dd36c17473de", "kind": "diagnosis", "loss": 2.220547914505005, "gradient_norm_before_clip": 0.6893172264099121, "clip_scale": 1.0, "target_tokens": 81, "image_count": 6, "wall_seconds": 30.508243417018093, "peak_memory_gib": 11.797207337804139}
+TRAIN {"step": 2, "sample_id": "ac746fbf267347abb39ddc02db805037", "kind": "diagnosis", "loss": 2.614076852798462, "gradient_norm_before_clip": 0.49194011092185974, "clip_scale": 1.0, "target_tokens": 143, "image_count": 6, "wall_seconds": 27.21035962505266, "peak_memory_gib": 12.01130394730717}
+TRAIN {"step": 3, "sample_id": "478d8ccb18ac41c4acb333e4de4a96b9", "kind": "diagnosis", "loss": 2.643705368041992, "gradient_norm_before_clip": 0.5622711777687073, "clip_scale": 1.0, "target_tokens": 113, "image_count": 6, "wall_seconds": 20.7277054580627, "peak_memory_gib": 12.01130394730717}
+TRAIN {"step": 4, "sample_id": "d6c7a8d8872d4cd6ae4bc4fff815d2a9", "kind": "diagnosis", "loss": 2.6066641807556152, "gradient_norm_before_clip": 0.49497586488723755, "clip_scale": 1.0, "target_tokens": 143, "image_count": 6, "wall_seconds": 22.8668501250213, "peak_memory_gib": 12.015362785197794}
+TRAIN {"step": 5, "sample_id": "694992819d3f48eda520afed962a4ace", "kind": "forecast", "loss": 2.3786609172821045, "gradient_norm_before_clip": 1.3153995275497437, "clip_scale": 0.7602252996568631, "target_tokens": 38, "image_count": 6, "wall_seconds": 24.706511999946088, "peak_memory_gib": 12.089779019355774}
+TRAIN {"step": 6, "sample_id": "393288b9e1354b029de48e096fa6c713", "kind": "update", "loss": 2.127528429031372, "gradient_norm_before_clip": 1.0219470262527466, "clip_scale": 0.9785243014667585, "target_tokens": 96, "image_count": 6, "wall_seconds": 50.75426158297341, "peak_memory_gib": 14.93178622983396}
+TRAIN {"step": 7, "sample_id": "750cbe61cb98417e9096569c0abf97c8", "kind": "diagnosis", "loss": 2.183872699737549, "gradient_norm_before_clip": 1.3720804452896118, "clip_scale": 0.7288202404115781, "target_tokens": 81, "image_count": 6, "wall_seconds": 18.358195999986492, "peak_memory_gib": 14.93178622983396}
+TRAIN {"step": 8, "sample_id": "45f71283850f415fa4193eb3e5b5cd5c", "kind": "diagnosis", "loss": 2.5892717838287354, "gradient_norm_before_clip": 0.8503454923629761, "clip_scale": 1.0, "target_tokens": 143, "image_count": 6, "wall_seconds": 21.118714791955426, "peak_memory_gib": 14.93178622983396}
+TRAIN {"step": 9, "sample_id": "d806effb72e64735b533105540466d78", "kind": "diagnosis", "loss": 2.59641170501709, "gradient_norm_before_clip": 0.6502687335014343, "clip_scale": 1.0, "target_tokens": 113, "image_count": 6, "wall_seconds": 17.40948412497528, "peak_memory_gib": 14.93178622983396}
+TRAIN {"step": 10, "sample_id": "62d0e0b7c3bc408a828e908a9fc14516", "kind": "diagnosis", "loss": 2.5754928588867188, "gradient_norm_before_clip": 0.6127703785896301, "clip_scale": 1.0, "target_tokens": 143, "image_count": 6, "wall_seconds": 17.638174457941204, "peak_memory_gib": 14.93178622983396}
+TRAIN {"step": 11, "sample_id": "93c57fcbd81f4175b34a4cc7b94f17f5", "kind": "forecast", "loss": 2.340022325515747, "gradient_norm_before_clip": 2.2515387535095215, "clip_scale": 0.44414070086125707, "target_tokens": 38, "image_count": 6, "wall_seconds": 17.40353012504056, "peak_memory_gib": 14.93178622983396}
+TRAIN {"step": 12, "sample_id": "30d95a06b2984a8295bb6c286034eea2", "kind": "update", "loss": 2.0599844455718994, "gradient_norm_before_clip": 1.109972596168518, "clip_scale": 0.9009231430144048, "target_tokens": 96, "image_count": 6, "wall_seconds": 21.016917125089094, "peak_memory_gib": 14.93178622983396}
+EVAL after/train diagnosis 2.1346709728240967
+EVAL after/train diagnosis 2.5500166416168213
+EVAL after/train diagnosis 2.5751023292541504
+EVAL after/train diagnosis 2.550804615020752
+EVAL after/train forecast 2.2968838214874268
+EVAL after/train update 2.067281723022461
+EVAL after/train diagnosis 2.1122095584869385
+EVAL after/train diagnosis 2.548429250717163
+EVAL after/train diagnosis 2.5597431659698486
+EVAL after/train diagnosis 2.5453929901123047
+EVAL after/train forecast 2.3150978088378906
+EVAL after/train update 2.038259506225586
+EVAL after/validation diagnosis 2.5519700050354004
+EVAL after/validation update 2.055417776107788
+EVAL after/validation diagnosis 2.5440711975097656
+EVAL after/validation update 2.0677056312561035

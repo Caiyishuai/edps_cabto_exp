@@ -1,0 +1,155 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "source_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.41,
+        0.009999999999999998,
+        0.76
+      ]
+    },
+    {
+      "method": "move_source",
+      "args": [
+        [
+          0.41,
+          0.009999999999999998,
+          0.76
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "receiver_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.69,
+        -0.02,
+        0.59
+      ]
+    },
+    {
+      "method": "align_receiver",
+      "args": [
+        [
+          0.69,
+          -0.02,
+          0.59
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "tip_source",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "settle",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "basin_ready()",
+    "collision_free()",
+    "content_in_source()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "source_upright()"
+  ],
+  "after": [
+    "basin_ready()",
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "sphere_in_basin()"
+  ],
+  "model": {
+    "name": "pour_into_held_basin",
+    "args": {
+      "arm": "0",
+      "obj": "canL",
+      "dest": "pour_into_held_basin"
+    },
+    "program_kind": "coordinated_pour",
+    "pre": [
+      "holding(0,canL)",
+      "holding(1,basin)",
+      "content_in_source()",
+      "basin_ready()",
+      "collision_free()"
+    ],
+    "add": [
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()"
+    ],
+    "del": [
+      "content_in_source()",
+      "source_upright()"
+    ],
+    "description": "小球由实际倾斜越过水平的源杯转移到仍被另一臂抓持的接收盆；两侧抓持保持，小球留在盆内。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "e06cfe1b437bd130d41d13669a3e54a978443d7739fc3a99fd39f0cea789d090",
+  "consistency_scope": "full_CP",
+  "physical_diagnostics": {
+    "source": {
+      "returned": false,
+      "xy_error_m": 0.24195177039678403,
+      "bottom_gap_m": 0.28744798108675207,
+      "rotation_error_deg": 104.99590085797439,
+      "released": false,
+      "origin": [
+        0.3962940278801193,
+        -0.00843224936121296,
+        0.787317512336584
+      ]
+    },
+    "basin": {
+      "returned": false,
+      "xy_error_m": 0.28716828371074965,
+      "bottom_gap_m": 0.03987777432228856,
+      "rotation_error_deg": 2.3543160066476947,
+      "released": false,
+      "origin": [
+        0.6888543974678876,
+        0.003076773220946074,
+        0.5560591292138563
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+def policy(api):
+    donor_arm = api.get_arm("donor")
+    receiver_arm = api.get_arm("receiver")
+    grasp_pose = donor_arm.grasp_pose()
+    donor_arm.approach(grasp_pose)
+    donor_arm.descend(grasp_pose)
+    donor_arm.close_gripper()
+    donor_arm.attach_contact_gated()
+    donor_arm.lift()
+    return api.status()

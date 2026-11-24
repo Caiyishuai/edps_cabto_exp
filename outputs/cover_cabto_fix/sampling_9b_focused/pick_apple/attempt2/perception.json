@@ -1,0 +1,15 @@
+[
+  {
+    "backend": "oracle",
+    "object": "apple",
+    "point_kind": "grasp_center",
+    "height_prior_m": 0.4229845037681055,
+    "height_source": "oracle_initial_object_z_plus_frozen_grasp_offset",
+    "fallback": false,
+    "xyz": [
+      0.4899998457619905,
+      -0.1900001162560898,
+      0.4229845037681055
+    ]
+  }
+]

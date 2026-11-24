@@ -1,0 +1,272 @@
+[
+  {
+    "path": "outputs/cover_cabto_fix/final_visual/result.json",
+    "sha256": "9f47408c1ca7c2604d552e7c061c3a12356f80beb91e93a747347c050966e5dd"
+  },
+  {
+    "path": "outputs/cover_cabto_fix/final_holdout1/result.json",
+    "sha256": "6d322c124cc9cbc6e12b168d6304966a3908aa22b05ba588b53a49925cdf60e9"
+  },
+  {
+    "path": "outputs/cover_cabto_fix/final_holdout2/result.json",
+    "sha256": "856d6afa5cc732910f0e2fe87c29b72d14f7a6b2f561beb1b8da8211408c9bd8"
+  },
+  {
+    "path": "outputs/cover_cabto_fix/proposal_final_v2/models.json",
+    "sha256": "460c80b12826643093166b34a913b26c16b3ef0efbaeb7134e675cb4ba79d727"
+  },
+  {
+    "path": "outputs/cover_cabto_fix/sampling_9b_complete/policies.json",
+    "sha256": "82b72a649d36c61311341d90eef1dda680f30d0101174b6eca0df67c8c37fa95"
+  },
+  {
+    "path": "outputs/cover_cabto_fix/final_visual/C3/before.png",
+    "sha256": "44dca2dfdedca3af68b0abbf3b905d302b3b747618845709325a9dd088f1a83a",
+    "paper_asset": "assets/cover_initial.png"
+  },
+  {
+    "path": "outputs/cover_cabto_fix/final_visual/C3/final.png",
+    "sha256": "c57db154b532ce9eeb3b539d38f27e42d9e30c52d05796722efbad0634ff110d",
+    "paper_asset": "assets/cover_final.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/blocks/final_seed0/result.json",
+    "sha256": "19fa5c6913c43dbe73953186b6251cf492cca34ad2a750085be9e5e9c3e63e42"
+  },
+  {
+    "path": "outputs/remaining_cabto/blocks/final_seed1/result.json",
+    "sha256": "e259baed36e48fe286dee67152026f56d7b7edb0995272779c9a35a43331b8ac"
+  },
+  {
+    "path": "outputs/remaining_cabto/blocks/proposal/models.json",
+    "sha256": "6071fdf7f0b6c3e2c1f4df7c248e657f8b5289ab044212285a936075596091f3"
+  },
+  {
+    "path": "outputs/remaining_cabto/blocks/sampling/policies.json",
+    "sha256": "bcc4e124645a77c1d1d328d0928cf08fbfc3d344e7938a00261d4baa94fb00ad"
+  },
+  {
+    "path": "outputs/remaining_cabto/blocks/final_seed0/B3/step00/before.png",
+    "sha256": "2d71aaa19fb2daeeb755c19219d633f5ca2ef4ac8f10b649ebd1950bec5384a6",
+    "paper_asset": "assets/blocks_initial.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/blocks/final_seed0/B3/final.png",
+    "sha256": "eab01b36aa4247ad4de9b8b6de54477a7d1899e494708099b7d549f40271be40",
+    "paper_asset": "assets/blocks_final.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/pour/final_seed0/result.json",
+    "sha256": "d55baecb72665c734b6539579fbeb70c7f322a8f01f44d16c8c423e8bfb20913"
+  },
+  {
+    "path": "outputs/remaining_cabto/pour/final_seed1/result.json",
+    "sha256": "3a524062f545d4429f0347220854e96720cd8da1bf2bd4b12ddbd962d014aac7"
+  },
+  {
+    "path": "outputs/remaining_cabto/pour/refinement/models.json",
+    "sha256": "769fe0844202b2893dc22bdbdd079f53e40ca564f4ad252300c1642b8046e9f3"
+  },
+  {
+    "path": "outputs/remaining_cabto/pour/sampling_v5/policies.json",
+    "sha256": "7b81a4a1344627d149404a2ddb8322ee22eef4d3ccf8243a57fc50e1e0a5fd93"
+  },
+  {
+    "path": "outputs/remaining_cabto/pour/refinement/patch01.json",
+    "sha256": "6818cb105232d173220eaf3f098151c7b5c655d06bd6fbda0a06a9ee153e4076"
+  },
+  {
+    "path": "outputs/remaining_cabto/pour/refinement/patch02.json",
+    "sha256": "a67f6bd352dd881cb8a765191a8c0864f4ebc0c20ecbc7d30331ac991b7a6f60"
+  },
+  {
+    "path": "outputs/remaining_cabto/pour/refinement/patch03.json",
+    "sha256": "71cb88dac0a35aac17c03dc175a4378f3c7bc0aeee8639b0acb98b0693645294"
+  },
+  {
+    "path": "outputs/remaining_cabto/pour/final_seed0/POUR/step00/before.png",
+    "sha256": "c387562322d1fe701c4ed1479140808febc7cb0bae2e7d0063104e82fd4e2631",
+    "paper_asset": "assets/pour_initial.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/pour/final_seed0/POUR/final.png",
+    "sha256": "b01307747e63247729ec61465c1157cf7ad4e0ff9b105c3f246964d69ec2c30a",
+    "paper_asset": "assets/pour_final.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/handover/final_seed0/result.json",
+    "sha256": "c8176ecc2b3cdf6d59f31a4015b62ddbea3573196bc5de0efd2b604c14261917"
+  },
+  {
+    "path": "outputs/remaining_cabto/handover/final_seed1/result.json",
+    "sha256": "e47f7c1137d16e23109d4550628a7ef629b724f50e51bb3dad87dda7b1dab219"
+  },
+  {
+    "path": "outputs/remaining_cabto/handover/refinement/models.json",
+    "sha256": "e2caa6b45adbff68fff57f8ab8896163829209010f4bb5f70f151a76915bdb25"
+  },
+  {
+    "path": "outputs/remaining_cabto/handover/sampling_v3/policies.json",
+    "sha256": "4c024eaddcb029c3e3f3da295146bf8766bb2028f9cc22d51693d60cb510d203"
+  },
+  {
+    "path": "outputs/remaining_cabto/handover/refinement/patch01.json",
+    "sha256": "aaeb2a1b6991b5982187a061ecf8e2999a160134978e0b1a1bdc3e6d1535219d"
+  },
+  {
+    "path": "outputs/remaining_cabto/handover/refinement/patch02.json",
+    "sha256": "8e1c14ac55b20b1fe9e86fe97ee673286042437c588706303a88c34f1f91adcf"
+  },
+  {
+    "path": "outputs/remaining_cabto/handover/final_seed0/HANDOVER/step00/before.png",
+    "sha256": "5cdade0ca8fb96e9d246b6f018b0773520f5f82efce4d202f086ecfa2b71cfd7",
+    "paper_asset": "assets/handover_initial.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/handover/final_seed0/HANDOVER/final.png",
+    "sha256": "29f8ad6cf8de84a64fb3ba6b7d8c576b66c2cfdecc77418340860710027438e1",
+    "paper_asset": "assets/handover_final.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/final_seed0/result.json",
+    "sha256": "12b96fde6e5264750e27536233a7896c062c001aeb013748c6bb77694f133bb0"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/final_seed1/result.json",
+    "sha256": "760c358a00d3e695a2bb3951fb77111fccb95046b2878871bd7452b316a96d91"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/refinement/models.json",
+    "sha256": "2f8b4f004aa1ca9e22bd4ab865c06f4b30ecae1b8889bca29b09bbf308e3f9be"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/sampling_v2/policies.json",
+    "sha256": "32591a3206c1a6c6e0692dcaa93eae85747ced92ec0bbf32b088dd8c50f2797d"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/refinement/patch01.json",
+    "sha256": "03b57fcd25598e35c42c7d0f3e1a272d79ab75efdcc59e3bd66d8b636a327cdf"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/refinement/patch02.json",
+    "sha256": "741086a3dda2fb1ca69b5c6fde8e75057b3a282da812ca790833d5ec7b0f7dce"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/refinement/patch03.json",
+    "sha256": "0e7fbe2bccecaebf3fcbffb90b9c9fe029900f3b9180174e223d72a904db9f21"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/refinement/patch04.json",
+    "sha256": "b45693db59eb786148d5e542c82c86d503418a0a6e27b4d0519c8920142b1ea4"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/refinement/patch05.json",
+    "sha256": "79d152cfe7d4aa0cb37501d91083d64f2904ddcd2f30ca0c69b44f25dbdd7913"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/refinement/patch06.json",
+    "sha256": "610f70a57be0ebf1f3c80dba37b37c9a98f59fae9676506317aee6840cbe05e6"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/final_seed0/STORAGE/step00/before.png",
+    "sha256": "fec98bf9a5b87bf66c19f9e0b49820fb5258227942d0d442bd72717cfb44c88a",
+    "paper_asset": "assets/storage_initial.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/final_seed0/STORAGE/final.png",
+    "sha256": "b287652d43a63282356a20e51883c85d9e44ea823046c573bc4faa1564232a22",
+    "paper_asset": "assets/storage_final.png"
+  },
+  {
+    "path": "outputs/unified_cameras/verification.json",
+    "sha256": "cb70005b488bf574690ffa6f63037157e6f46c735ba03af439d993a0c298b31d"
+  },
+  {
+    "path": "outputs/unified_cameras/pointing_v3/results.json",
+    "sha256": "44247dc5eda893a1ca5f7deb52fcd18f94cc5845d6c8e9e48143f18be602ebc1"
+  },
+  {
+    "path": "outputs/unified_cameras/selected_v3/storage/frames/002_after_align_xy/rig_wrist_right.png",
+    "sha256": "aa8ae7f737ab11f93ea6cc75d97325ef3a3fb69c297bdcb5a505d472db485d2d",
+    "paper_asset": "assets/storage_wrist_item.png"
+  },
+  {
+    "path": "outputs/unified_cameras/selected_v3/storage/frames/002_after_align_xy/rig_global.png",
+    "sha256": "fd298560c26ee7a50c21e667ad22affa1a40aa6744c8f138bf0a05aaf7621473",
+    "paper_asset": "assets/storage_global_item.png"
+  },
+  {
+    "path": "outputs/unified_cameras/selected_v3/storage/frames/002_after_align_xy/overview.png",
+    "sha256": "3f74b9c060e7d6d3a52d0549bc31977675c7a97fdbaa9d5779d50b72a64c34ac",
+    "paper_asset": "assets/storage_old_item.png"
+  },
+  {
+    "path": "outputs/unified_cameras/selected_v3/storage/frames/004_after_move_above/rig_wrist_right.png",
+    "sha256": "346859939c4d6db8f7d38499882f2bc48370dcdb54af8a016a0ad5bc82f06837",
+    "paper_asset": "assets/storage_wrist_slot.png"
+  },
+  {
+    "path": "outputs/unified_cameras/selected_v3/handover/frames/005_after_approach/rig_wrist_right.png",
+    "sha256": "0f34fde002c89150185d010bb5a4b23a274f2b60a5d1060da3b90cfcba692fd5",
+    "paper_asset": "assets/handover_wrist.png"
+  },
+  {
+    "path": "outputs/unified_cameras/selected_v3/pour/frames/008_after_align_receiver/rig_global.png",
+    "sha256": "0d0e0853b1cb5a4b213c9ed07dafe46d0a633ce66bfb1c0256c11f3953e36179",
+    "paper_asset": "assets/pour_global.png"
+  },
+  {
+    "path": "outputs/cover_cabto_fix/final_visual/C3/perception/000_bowl_overlay.png",
+    "sha256": "d36205e7d56be91a85c6abb9767835e8b266885b2bea27436f5e358208f2e556",
+    "paper_asset": "assets/cover_bowl_overlay.png"
+  },
+  {
+    "path": "outputs/cover_cabto_fix/final_visual/C3/perception/006_apple_overlay.png",
+    "sha256": "90b7ec2bce2b31bf16768882af0c46f4c89c7b3bedd3970343f04310e79b4c3b",
+    "paper_asset": "assets/cover_apple_overlay.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/storage/final_seed0/STORAGE/step08/before.png",
+    "sha256": "2c32f8375a5a0a5e379c3daf41cdbdab5340c3995c7c2d8ebf9a68deb88f5fbf",
+    "paper_asset": "assets/storage_carry.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/handover/final_seed0/HANDOVER/step03/before.png",
+    "sha256": "805e4029a80fa35d2bb49c62a6985cfeee5ca1c17c7562868afc84b78b47e8ca",
+    "paper_asset": "assets/handover_dual_hold.png"
+  },
+  {
+    "path": "outputs/remaining_cabto/pour/final_seed0/POUR/step04/before.png",
+    "sha256": "0d5327b46fb64cf806d81b405560809f76558bbdc9d3eca7d96c1b6c3233dd34",
+    "paper_asset": "assets/pour_caught.png"
+  },
+  {
+    "path": "outputs/cover_cabto_fix/sampling_9b_complete/policies.json",
+    "sha256": "82b72a649d36c61311341d90eef1dda680f30d0101174b6eca0df67c8c37fa95"
+  },
+  {
+    "path": "project/probe_free_tray_packing.py",
+    "sha256": "fc2c5bd65ae66854779b8f0d99310a4dd7ddd79940bd62c39f82611d99d63dbf",
+    "purpose": "operational_definitions_and_verification_semantics"
+  },
+  {
+    "path": "project/core/cover_cabto_grounding.py",
+    "sha256": "40b47b1e194bb183ed684c9c8700e6697339009d135cbe8048845242fb4c3b01",
+    "purpose": "operational_definitions_and_verification_semantics"
+  },
+  {
+    "path": "project/core/cover_cabto_api.py",
+    "sha256": "f63f62dd3c3a06b5344853009e36ea49b6e9555efbb04bdb7e152e6d46a22915",
+    "purpose": "operational_definitions_and_verification_semantics"
+  },
+  {
+    "path": "project/run_remaining_cabto.py",
+    "sha256": "fd7e5ab099e5bb29c70eea6c50a0e8a3d2d24abe7b8f19c4d1971c2591190eed",
+    "purpose": "operational_definitions_and_verification_semantics"
+  },
+  {
+    "path": "project/refine_remaining_frames.py",
+    "sha256": "db898294ac251880cecc2086531eaac175d73970c52f3c6534cf5c8ab97efa83",
+    "purpose": "operational_definitions_and_verification_semantics"
+  }
+]

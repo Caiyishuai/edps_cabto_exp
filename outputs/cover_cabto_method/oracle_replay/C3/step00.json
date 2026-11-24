@@ -1,0 +1,109 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "before": [
+    "at_source(apple)",
+    "at_source(potato)",
+    "at_source(shrimp)",
+    "empty()"
+  ],
+  "after": [
+    "at_source(apple)",
+    "at_source(shrimp)",
+    "holding(potato)"
+  ],
+  "model": {
+    "name": "pick",
+    "args": {
+      "object": "potato",
+      "support": "pan"
+    },
+    "pre": [
+      "empty()",
+      "at_source(potato)"
+    ],
+    "add": [
+      "holding(potato)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(potato)",
+      "home_completed()"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "grasp_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.6700000050474401,
+        -0.19000000385315224,
+        0.41798083548895737
+      ]
+    },
+    {
+      "method": "approach",
+      "args": [
+        [
+          0.6700000050474401,
+          -0.19000000385315224,
+          0.41798083548895737
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "descend",
+      "args": [
+        [
+          0.6700000050474401,
+          -0.19000000385315224,
+          0.41798083548895737
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "close_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "lift",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "forbidden_contacts": [],
+  "code_sha256": "efb0566705be7a62ffd6f4b97078bd4a79bce5a1209f5181bef7bbfa9d0db20c"
+}

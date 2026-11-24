@@ -1,0 +1,1308 @@
+{
+  "scenes": [
+    {
+      "scene": "cover",
+      "goals": 3,
+      "grounded_actions": 7,
+      "episodes": 5,
+      "successful": 5,
+      "transitions": 29,
+      "full_matches": 29,
+      "step_lengths": [
+        3,
+        5,
+        7,
+        7,
+        7
+      ],
+      "accepted_policies": 7,
+      "retained_sampling_attempts": 14,
+      "perception": "VLM_RGB_with_priors",
+      "grasp": "strict"
+    },
+    {
+      "scene": "blocks",
+      "goals": 3,
+      "grounded_actions": 5,
+      "episodes": 6,
+      "successful": 6,
+      "transitions": 22,
+      "full_matches": 22,
+      "step_lengths": [
+        3,
+        3,
+        5,
+        3,
+        3,
+        5
+      ],
+      "accepted_policies": 5,
+      "retained_sampling_attempts": 5,
+      "perception": "VLM_RGB_with_priors",
+      "grasp": "strict"
+    },
+    {
+      "scene": "pour",
+      "goals": 1,
+      "grounded_actions": 10,
+      "episodes": 2,
+      "successful": 2,
+      "transitions": 20,
+      "full_matches": 20,
+      "step_lengths": [
+        10,
+        10
+      ],
+      "accepted_policies": 10,
+      "retained_sampling_attempts": 26,
+      "perception": "oracle",
+      "grasp": "weld_assisted"
+    },
+    {
+      "scene": "handover",
+      "goals": 1,
+      "grounded_actions": 7,
+      "episodes": 2,
+      "successful": 2,
+      "transitions": 14,
+      "full_matches": 14,
+      "step_lengths": [
+        7,
+        7
+      ],
+      "accepted_policies": 7,
+      "retained_sampling_attempts": 19,
+      "perception": "oracle",
+      "grasp": "weld_assisted"
+    },
+    {
+      "scene": "storage",
+      "goals": 1,
+      "grounded_actions": 14,
+      "episodes": 2,
+      "successful": 2,
+      "transitions": 28,
+      "full_matches": 28,
+      "step_lengths": [
+        14,
+        14
+      ],
+      "accepted_policies": 14,
+      "retained_sampling_attempts": 20,
+      "perception": "oracle",
+      "grasp": "weld_assisted"
+    }
+  ],
+  "totals": {
+    "goals": 9,
+    "actions": 43,
+    "episodes": 17,
+    "transitions": 113
+  },
+  "paired_training_witnesses": [
+    {
+      "scene": "pour",
+      "witnesses": 10,
+      "old_full_matches": 8,
+      "patched_models": 2,
+      "postrepair_final_matches": 20
+    },
+    {
+      "scene": "handover",
+      "witnesses": 7,
+      "old_full_matches": 5,
+      "patched_models": 2,
+      "postrepair_final_matches": 14
+    },
+    {
+      "scene": "storage",
+      "witnesses": 14,
+      "old_full_matches": 8,
+      "patched_models": 6,
+      "postrepair_final_matches": 28
+    }
+  ],
+  "model_patches": [
+    {
+      "scene": "pour",
+      "action_id": "return_source_cup(arm=0,dest=return_source_cup,obj=canL)",
+      "patch": {
+        "extra_add": [
+          "parked(0)"
+        ],
+        "extra_del": []
+      },
+      "model": {
+        "name": "return_source_cup",
+        "args": {
+          "arm": "0",
+          "obj": "canL",
+          "dest": "return_source_cup"
+        },
+        "program_kind": "return_source",
+        "pre": [
+          "holding(0,canL)",
+          "source_upright()",
+          "sphere_in_basin()",
+          "caught_by_held_basin()",
+          "payload_retained()",
+          "collision_free()"
+        ],
+        "add": [
+          "empty(0)",
+          "hand_raised(0)",
+          "parked(0)",
+          "source_returned()"
+        ],
+        "del": [
+          "holding(0,canL)"
+        ],
+        "description": "源杯在标定返还位置直立落桌且已解除抓持，源臂空手并撤至外侧安全高度，小球仍留在接收盆内。"
+      },
+      "before": [
+        "caught_by_held_basin()",
+        "collision_free()",
+        "holding(0,canL)",
+        "holding(1,basin)",
+        "payload_retained()",
+        "receiver_separated()",
+        "source_upright()",
+        "sphere_in_basin()"
+      ],
+      "after": [
+        "caught_by_held_basin()",
+        "collision_free()",
+        "empty(0)",
+        "hand_raised(0)",
+        "holding(1,basin)",
+        "parked(0)",
+        "payload_retained()",
+        "receiver_separated()",
+        "source_returned()",
+        "source_upright()",
+        "sphere_in_basin()"
+      ]
+    },
+    {
+      "scene": "pour",
+      "action_id": "return_basin(arm=1,dest=return_basin,obj=basin)",
+      "patch": {
+        "extra_add": [
+          "at_source(basin)",
+          "parked(1)"
+        ],
+        "extra_del": [
+          "receiver_separated()"
+        ]
+      },
+      "model": {
+        "name": "return_basin",
+        "args": {
+          "arm": "1",
+          "obj": "basin",
+          "dest": "return_basin"
+        },
+        "program_kind": "return_basin",
+        "pre": [
+          "holding(1,basin)",
+          "home(0)",
+          "sphere_in_basin()",
+          "caught_by_held_basin()",
+          "payload_retained()",
+          "collision_free()"
+        ],
+        "add": [
+          "at_source(basin)",
+          "basin_returned()",
+          "empty(1)",
+          "hand_raised(1)",
+          "parked(1)"
+        ],
+        "del": [
+          "basin_ready()",
+          "holding(1,basin)",
+          "receiver_separated()"
+        ],
+        "description": "接收盆在标定返还位置落桌且已解除抓持，小球保留在盆内，接收臂空手并撤至外侧安全高度。"
+      },
+      "before": [
+        "caught_by_held_basin()",
+        "collision_free()",
+        "empty(0)",
+        "hand_raised(0)",
+        "holding(1,basin)",
+        "home(0)",
+        "parked(0)",
+        "payload_retained()",
+        "receiver_separated()",
+        "source_returned()",
+        "source_upright()",
+        "sphere_in_basin()"
+      ],
+      "after": [
+        "at_source(basin)",
+        "basin_returned()",
+        "caught_by_held_basin()",
+        "collision_free()",
+        "empty(0)",
+        "empty(1)",
+        "hand_raised(0)",
+        "hand_raised(1)",
+        "home(0)",
+        "parked(0)",
+        "parked(1)",
+        "payload_retained()",
+        "source_returned()",
+        "source_upright()",
+        "sphere_in_basin()"
+      ]
+    },
+    {
+      "scene": "handover",
+      "action_id": "receiver_grasps_box_face(arm=1,dest=receiver_grasps_opposite_handle,obj=baton)",
+      "patch": {
+        "extra_add": [
+          "receiver_holding(baton)"
+        ],
+        "extra_del": []
+      },
+      "model": {
+        "name": "receiver_grasps_box_face",
+        "args": {
+          "arm": "1",
+          "obj": "baton",
+          "dest": "receiver_grasps_opposite_handle"
+        },
+        "program_kind": "receive",
+        "pre": [
+          "donor_holding(baton)",
+          "empty(1)",
+          "at_handover_pose(baton)",
+          "collision_free()"
+        ],
+        "add": [
+          "dual_holding(baton)",
+          "receiver_contact_verified()",
+          "receiver_holding(baton)"
+        ],
+        "del": [
+          "empty(1)",
+          "home(1)"
+        ],
+        "description": "茶盒由两臂共同持有，接收侧指定盒面的当帧与近期双指接触已验证，交出侧仍保持持有。"
+      },
+      "before": [
+        "at_handover_pose(baton)",
+        "baton_airborne()",
+        "collision_free()",
+        "donor_holding(baton)",
+        "empty(1)"
+      ],
+      "after": [
+        "at_handover_pose(baton)",
+        "baton_airborne()",
+        "collision_free()",
+        "donor_holding(baton)",
+        "dual_holding(baton)",
+        "receiver_contact_verified()",
+        "receiver_holding(baton)"
+      ]
+    },
+    {
+      "scene": "handover",
+      "action_id": "donor_releases_after_receiver(arm=0,dest=donor_releases_after_receiver,obj=baton)",
+      "patch": {
+        "extra_add": [],
+        "extra_del": [
+          "at_handover_pose(baton)"
+        ]
+      },
+      "model": {
+        "name": "donor_releases_after_receiver",
+        "args": {
+          "arm": "0",
+          "obj": "baton",
+          "dest": "donor_releases_after_receiver"
+        },
+        "program_kind": "donor_release",
+        "pre": [
+          "dual_holding(baton)",
+          "receiver_contact_verified()",
+          "baton_airborne()",
+          "collision_free()"
+        ],
+        "add": [
+          "donor_withdrawn()",
+          "empty(0)",
+          "handover_verified()",
+          "receiver_holding(baton)"
+        ],
+        "del": [
+          "at_handover_pose(baton)",
+          "donor_holding(baton)",
+          "dual_holding(baton)"
+        ],
+        "description": "茶盒由接收臂持有，交出臂为空且位于安全撤离位；真实事件证明接收验证先于空中释放，运动无禁止碰撞。"
+      },
+      "before": [
+        "at_handover_pose(baton)",
+        "baton_airborne()",
+        "collision_free()",
+        "donor_holding(baton)",
+        "dual_holding(baton)",
+        "receiver_contact_verified()",
+        "receiver_holding(baton)"
+      ],
+      "after": [
+        "baton_airborne()",
+        "collision_free()",
+        "donor_withdrawn()",
+        "empty(0)",
+        "handover_verified()",
+        "receiver_contact_verified()",
+        "receiver_holding(baton)"
+      ]
+    },
+    {
+      "scene": "storage",
+      "action_id": "pick_source(arm=1,dest=source,obj=item1)",
+      "patch": {
+        "extra_add": [],
+        "extra_del": [
+          "hands_raised()",
+          "hands_safe_for_lateral(1)"
+        ]
+      },
+      "model": {
+        "name": "pick_source",
+        "args": {
+          "arm": "1",
+          "obj": "item1",
+          "dest": "source"
+        },
+        "program_kind": "pick",
+        "pre": [
+          "empty(1)",
+          "at_source(item1)"
+        ],
+        "add": [
+          "holding(1,item1)"
+        ],
+        "del": [
+          "at_source(item1)",
+          "empty(1)",
+          "hands_raised()",
+          "hands_safe_for_lateral(1)",
+          "parked(1)"
+        ],
+        "description": "绑定物品被指定机械臂抓持并抬离桌面，抓持偏移可用于放置跟踪。"
+      },
+      "before": [
+        "at_source(item0)",
+        "at_source(item1)",
+        "empty(0)",
+        "empty(1)",
+        "hands_raised()",
+        "hands_safe_for_lateral(0)",
+        "hands_safe_for_lateral(1)",
+        "parked(0)",
+        "parked(1)",
+        "slot_free(0)",
+        "slot_free(1)",
+        "tray_at_table()"
+      ],
+      "after": [
+        "at_source(item0)",
+        "empty(0)",
+        "hands_safe_for_lateral(0)",
+        "holding(1,item1)",
+        "parked(0)",
+        "slot_free(0)",
+        "slot_free(1)",
+        "tray_at_table()"
+      ]
+    },
+    {
+      "scene": "storage",
+      "action_id": "place_tray(arm=1,dest=tray,obj=item1)",
+      "patch": {
+        "extra_add": [
+          "hands_raised()",
+          "hands_safe_for_lateral(1)"
+        ],
+        "extra_del": []
+      },
+      "model": {
+        "name": "place_tray",
+        "args": {
+          "arm": "1",
+          "obj": "item1",
+          "dest": "tray"
+        },
+        "program_kind": "place",
+        "pre": [
+          "holding(1,item1)",
+          "slot_free(1)"
+        ],
+        "add": [
+          "empty(1)",
+          "hands_raised()",
+          "hands_safe_for_lateral(1)",
+          "packed(1)"
+        ],
+        "del": [
+          "holding(1,item1)",
+          "slot_free(1)"
+        ],
+        "description": "绑定物品已在自由托盘对应槽位内稳定支撑且解除抓持，指定手爪张开并竖直撤离放置面。"
+      },
+      "before": [
+        "at_source(item0)",
+        "empty(0)",
+        "hands_safe_for_lateral(0)",
+        "holding(1,item1)",
+        "parked(0)",
+        "slot_free(0)",
+        "slot_free(1)",
+        "tray_at_table()"
+      ],
+      "after": [
+        "at_source(item0)",
+        "empty(0)",
+        "empty(1)",
+        "hands_raised()",
+        "hands_safe_for_lateral(0)",
+        "hands_safe_for_lateral(1)",
+        "packed(1)",
+        "parked(0)",
+        "slot_free(0)",
+        "tray_at_table()"
+      ]
+    },
+    {
+      "scene": "storage",
+      "action_id": "pick_source(arm=0,dest=source,obj=item0)",
+      "patch": {
+        "extra_add": [],
+        "extra_del": [
+          "hands_raised()",
+          "hands_safe_for_lateral(0)"
+        ]
+      },
+      "model": {
+        "name": "pick_source",
+        "args": {
+          "arm": "0",
+          "obj": "item0",
+          "dest": "source"
+        },
+        "program_kind": "pick",
+        "pre": [
+          "empty(0)",
+          "at_source(item0)"
+        ],
+        "add": [
+          "holding(0,item0)"
+        ],
+        "del": [
+          "at_source(item0)",
+          "empty(0)",
+          "hands_raised()",
+          "hands_safe_for_lateral(0)",
+          "parked(0)"
+        ],
+        "description": "绑定物品被指定机械臂抓持并抬离桌面，抓持偏移可用于放置跟踪。"
+      },
+      "before": [
+        "at_source(item0)",
+        "empty(0)",
+        "empty(1)",
+        "hands_raised()",
+        "hands_safe_for_lateral(0)",
+        "hands_safe_for_lateral(1)",
+        "packed(1)",
+        "parked(0)",
+        "parked(1)",
+        "slot_free(0)",
+        "tray_at_table()"
+      ],
+      "after": [
+        "empty(1)",
+        "hands_safe_for_lateral(1)",
+        "holding(0,item0)",
+        "packed(1)",
+        "parked(1)",
+        "slot_free(0)",
+        "tray_at_table()"
+      ]
+    },
+    {
+      "scene": "storage",
+      "action_id": "place_tray(arm=0,dest=tray,obj=item0)",
+      "patch": {
+        "extra_add": [
+          "hands_raised()",
+          "hands_safe_for_lateral(0)"
+        ],
+        "extra_del": []
+      },
+      "model": {
+        "name": "place_tray",
+        "args": {
+          "arm": "0",
+          "obj": "item0",
+          "dest": "tray"
+        },
+        "program_kind": "place",
+        "pre": [
+          "holding(0,item0)",
+          "slot_free(0)"
+        ],
+        "add": [
+          "empty(0)",
+          "hands_raised()",
+          "hands_safe_for_lateral(0)",
+          "packed(0)"
+        ],
+        "del": [
+          "holding(0,item0)",
+          "slot_free(0)"
+        ],
+        "description": "绑定物品已在自由托盘对应槽位内稳定支撑且解除抓持，指定手爪张开并竖直撤离放置面。"
+      },
+      "before": [
+        "empty(1)",
+        "hands_safe_for_lateral(1)",
+        "holding(0,item0)",
+        "packed(1)",
+        "parked(1)",
+        "slot_free(0)",
+        "tray_at_table()"
+      ],
+      "after": [
+        "empty(0)",
+        "empty(1)",
+        "hands_raised()",
+        "hands_safe_for_lateral(0)",
+        "hands_safe_for_lateral(1)",
+        "packed(0)",
+        "packed(1)",
+        "parked(1)",
+        "tray_at_table()"
+      ]
+    },
+    {
+      "scene": "storage",
+      "action_id": "dual_lift_tray(arm=both,dest=dual_lift_tray,obj=tray)",
+      "patch": {
+        "extra_add": [
+          "holding(0,tray)",
+          "holding(1,tray)",
+          "slot_free(0)",
+          "slot_free(1)"
+        ],
+        "extra_del": []
+      },
+      "model": {
+        "name": "dual_lift_tray",
+        "args": {
+          "arm": "both",
+          "obj": "tray",
+          "dest": "dual_lift_tray"
+        },
+        "program_kind": "cooperative_move",
+        "pre": [
+          "packed(0)",
+          "packed(1)",
+          "dual_holding_tray()",
+          "tray_at_table()"
+        ],
+        "add": [
+          "holding(0,tray)",
+          "holding(1,tray)",
+          "slot_free(0)",
+          "slot_free(1)",
+          "tray_lifted()"
+        ],
+        "del": [
+          "tray_at_table()"
+        ],
+        "description": "两臂保持共同抓持，托盘在原桌面水平位置达到标定运输高度，两个物品仍在托盘内。"
+      },
+      "before": [
+        "dual_holding_tray()",
+        "packed(0)",
+        "packed(1)",
+        "tray_at_table()"
+      ],
+      "after": [
+        "dual_holding_tray()",
+        "holding(0,tray)",
+        "holding(1,tray)",
+        "packed(0)",
+        "packed(1)",
+        "slot_free(0)",
+        "slot_free(1)",
+        "tray_lifted()"
+      ]
+    },
+    {
+      "scene": "storage",
+      "action_id": "dual_release_tray(arm=both,dest=dual_release_tray,obj=tray)",
+      "patch": {
+        "extra_add": [],
+        "extra_del": [
+          "holding(0,tray)",
+          "holding(1,tray)"
+        ]
+      },
+      "model": {
+        "name": "dual_release_tray",
+        "args": {
+          "arm": "both",
+          "obj": "tray",
+          "dest": "dual_release_tray"
+        },
+        "program_kind": "dual_release",
+        "pre": [
+          "packed(0)",
+          "packed(1)",
+          "dual_holding_tray()",
+          "tray_on_shelf_held()"
+        ],
+        "add": [
+          "empty(0)",
+          "empty(1)",
+          "hands_near_shelf()",
+          "tray_on_shelf()"
+        ],
+        "del": [
+          "dual_holding_tray()",
+          "holding(0,tray)",
+          "holding(1,tray)",
+          "tray_on_shelf_held()"
+        ],
+        "description": "托盘由货架支撑、双侧抓持 weld 均已解除且两只手爪张开，物品仍在托盘内。"
+      },
+      "before": [
+        "dual_holding_tray()",
+        "holding(0,tray)",
+        "holding(1,tray)",
+        "packed(0)",
+        "packed(1)",
+        "slot_free(0)",
+        "slot_free(1)",
+        "tray_on_shelf_held()"
+      ],
+      "after": [
+        "empty(0)",
+        "empty(1)",
+        "hands_near_shelf()",
+        "packed(0)",
+        "packed(1)",
+        "slot_free(0)",
+        "slot_free(1)",
+        "tray_on_shelf()"
+      ]
+    }
+  ],
+  "camera_summary": {
+    "passed": true,
+    "camera_profile": {
+      "version": "panda_wrist_global_v3",
+      "width": 720,
+      "height": 720,
+      "wrist": {
+        "position_hand_m": [
+          0.0,
+          -0.1,
+          0.025
+        ],
+        "look_at_hand_m": [
+          0.0,
+          0.0,
+          0.16
+        ],
+        "fovy_deg": 75.0
+      },
+      "global": {
+        "offset_table_xy_m": [
+          0.08,
+          0.0
+        ],
+        "height_above_table_m": 1.2,
+        "fovy_deg": 60.0
+      },
+      "optical_frame": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y",
+      "mount_scope": "ideal optical sensor on hand body, no camera housing mass/collision modeled",
+      "control_use": "diagnostic_only_until_localization_and_motion_validation"
+    },
+    "scene_checks": [
+      {
+        "task": "storage",
+        "cameras_added": 3,
+        "control_compatibility_pass": true,
+        "physics_arrays_unchanged": true,
+        "camera_rendering_state_unchanged": true,
+        "wrist_moves_with_parent": true,
+        "identical_profile": true,
+        "captures": 21
+      },
+      {
+        "task": "pour",
+        "cameras_added": 3,
+        "control_compatibility_pass": true,
+        "physics_arrays_unchanged": true,
+        "camera_rendering_state_unchanged": true,
+        "wrist_moves_with_parent": true,
+        "identical_profile": true,
+        "captures": 18
+      },
+      {
+        "task": "handover",
+        "cameras_added": 3,
+        "control_compatibility_pass": true,
+        "physics_arrays_unchanged": true,
+        "camera_rendering_state_unchanged": true,
+        "wrist_moves_with_parent": true,
+        "identical_profile": true,
+        "captures": 12
+      },
+      {
+        "task": "cover",
+        "cameras_added": 2,
+        "control_compatibility_pass": true,
+        "physics_arrays_unchanged": true,
+        "camera_rendering_state_unchanged": true,
+        "wrist_moves_with_parent": true,
+        "identical_profile": true,
+        "captures": 15
+      },
+      {
+        "task": "blocks",
+        "cameras_added": 2,
+        "control_compatibility_pass": true,
+        "physics_arrays_unchanged": true,
+        "camera_rendering_state_unchanged": true,
+        "wrist_moves_with_parent": true,
+        "identical_profile": true,
+        "captures": 11
+      }
+    ],
+    "frames": 77,
+    "images": 282,
+    "max_project_roundtrip_m": 1.0114613123884174e-15,
+    "max_local_mount_error": 4.796163466380676e-14,
+    "tests": 27,
+    "previous_regression_tests": 277,
+    "total_tests": 304,
+    "diagnostic_calls": 28,
+    "point_returned": 18,
+    "abstained": 10,
+    "model_points_not_executable": true,
+    "linked_local_files": 282,
+    "broken_links": [],
+    "scope": "camera installation and finite control-compatibility, NOT new vision-guided task success; reference-z errors evaluation-only"
+  },
+  "camera_point_counts": [
+    {
+      "scene": "pour",
+      "calls": 8,
+      "returned": 2,
+      "abstained": 6
+    },
+    {
+      "scene": "handover",
+      "calls": 4,
+      "returned": 0,
+      "abstained": 4
+    },
+    {
+      "scene": "storage",
+      "calls": 16,
+      "returned": 16,
+      "abstained": 0
+    }
+  ],
+  "camera_point_rows": [
+    {
+      "task": "storage",
+      "capture_index": 0,
+      "target": "item1",
+      "camera": "overview",
+      "status": "point_returned_not_validated",
+      "pixel_error": 3.452039336235017,
+      "conditional_true_plane_xy_error_mm": 12.738423724514822,
+      "reference_visibility": {
+        "target": "item1",
+        "pixel": [
+          285.93330254827447,
+          434.71690205363956
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": true,
+        "first_hit_body": "item1",
+        "ray_distance_m": 1.8670863326226304,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 0,
+      "target": "item1",
+      "camera": "rig_wrist_left",
+      "status": "point_returned_not_validated",
+      "pixel_error": 462.01651615413977,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": {
+        "target": "item1",
+        "pixel": [
+          -128.46708224254922,
+          623.6580197310121
+        ],
+        "in_frame": false,
+        "ray_hits_target_body": false,
+        "first_hit_body": null,
+        "ray_distance_m": null,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 0,
+      "target": "item1",
+      "camera": "rig_wrist_right",
+      "status": "point_returned_not_validated",
+      "pixel_error": 11.680580758181438,
+      "conditional_true_plane_xy_error_mm": 11.803790957592343,
+      "reference_visibility": {
+        "target": "item1",
+        "pixel": [
+          339.5750722212012,
+          549.1087544352895
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": false,
+        "first_hit_body": "hand_R",
+        "ray_distance_m": 0.004954924837539252,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 0,
+      "target": "item1",
+      "camera": "rig_global",
+      "status": "point_returned_not_validated",
+      "pixel_error": 237.50729181194905,
+      "conditional_true_plane_xy_error_mm": 440.3721660681076,
+      "reference_visibility": {
+        "target": "item1",
+        "pixel": [
+          335.73000985531075,
+          481.34995073436806
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": true,
+        "first_hit_body": "item1",
+        "ray_distance_m": 1.1756214186939338,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 2,
+      "target": "item1",
+      "camera": "overview",
+      "status": "point_returned_not_validated",
+      "pixel_error": 4.408472439558366,
+      "conditional_true_plane_xy_error_mm": 13.433138518352735,
+      "reference_visibility": {
+        "target": "item1",
+        "pixel": [
+          285.93291052754137,
+          434.70869857233
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": true,
+        "first_hit_body": "item1",
+        "ray_distance_m": 1.8670750963557032,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 2,
+      "target": "item1",
+      "camera": "rig_wrist_left",
+      "status": "point_returned_not_validated",
+      "pixel_error": 458.1142317799774,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": {
+        "target": "item1",
+        "pixel": [
+          -130.68414560989999,
+          623.4726275049698
+        ],
+        "in_frame": false,
+        "ray_hits_target_body": false,
+        "first_hit_body": null,
+        "ray_distance_m": null,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 2,
+      "target": "item1",
+      "camera": "rig_wrist_right",
+      "status": "point_returned_not_validated",
+      "pixel_error": 31.648964913724164,
+      "conditional_true_plane_xy_error_mm": 19.09397005673614,
+      "reference_visibility": {
+        "target": "item1",
+        "pixel": [
+          350.3723568962768,
+          493.0247596888181
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": false,
+        "first_hit_body": "hand_R",
+        "ray_distance_m": 0.003916663888421976,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 2,
+      "target": "item1",
+      "camera": "rig_global",
+      "status": "point_returned_not_validated",
+      "pixel_error": 235.44992316212992,
+      "conditional_true_plane_xy_error_mm": 436.5497455892158,
+      "reference_visibility": {
+        "target": "item1",
+        "pixel": [
+          335.72957801891556,
+          481.35210991686466
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": true,
+        "first_hit_body": "item1",
+        "ray_distance_m": 1.1755996791884087,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 0,
+      "target": "box_floor",
+      "camera": "overview",
+      "status": "point_returned_not_validated",
+      "pixel_error": 10.253928989074348,
+      "conditional_true_plane_xy_error_mm": 38.53077409663452,
+      "reference_visibility": {
+        "target": "box_floor",
+        "pixel": [
+          325.3155715198602,
+          395.77569775691387
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": true,
+        "first_hit_body": "tray",
+        "ray_distance_m": 1.9660261934066399,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 0,
+      "target": "box_floor",
+      "camera": "rig_wrist_left",
+      "status": "point_returned_not_validated",
+      "pixel_error": 47.120433069211785,
+      "conditional_true_plane_xy_error_mm": 52.24250859326054,
+      "reference_visibility": {
+        "target": "box_floor",
+        "pixel": [
+          134.04872060481608,
+          577.010942995463
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": false,
+        "first_hit_body": "hand_L",
+        "ray_distance_m": 0.006325834624885267,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 0,
+      "target": "box_floor",
+      "camera": "rig_wrist_right",
+      "status": "point_returned_not_validated",
+      "pixel_error": 26.408752458535286,
+      "conditional_true_plane_xy_error_mm": 25.353447270287063,
+      "reference_visibility": {
+        "target": "box_floor",
+        "pixel": [
+          126.07648015789115,
+          606.9457348861148
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": false,
+        "first_hit_body": "hand_R",
+        "ray_distance_m": 0.0075039209969015004,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 0,
+      "target": "box_floor",
+      "camera": "rig_global",
+      "status": "point_returned_not_validated",
+      "pixel_error": 30.545307412050253,
+      "conditional_true_plane_xy_error_mm": 58.39750065293774,
+      "reference_visibility": {
+        "target": "box_floor",
+        "pixel": [
+          310.4958910177705,
+          360.0
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": true,
+        "first_hit_body": "tray",
+        "ray_distance_m": 1.1958567946603325,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 4,
+      "target": "box_floor",
+      "camera": "overview",
+      "status": "point_returned_not_validated",
+      "pixel_error": 13.43365589593431,
+      "conditional_true_plane_xy_error_mm": 34.173633861034865,
+      "reference_visibility": {
+        "target": "box_floor",
+        "pixel": [
+          325.0841529492146,
+          395.69377932355053
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": true,
+        "first_hit_body": "tray",
+        "ray_distance_m": 1.9664272127507552,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 4,
+      "target": "box_floor",
+      "camera": "rig_wrist_left",
+      "status": "point_returned_not_validated",
+      "pixel_error": 18.692399238080302,
+      "conditional_true_plane_xy_error_mm": 21.476657550647797,
+      "reference_visibility": {
+        "target": "box_floor",
+        "pixel": [
+          132.93802846214203,
+          576.1863762671566
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": false,
+        "first_hit_body": "hand_L",
+        "ray_distance_m": 0.006304879660812727,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 4,
+      "target": "box_floor",
+      "camera": "rig_wrist_right",
+      "status": "point_returned_not_validated",
+      "pixel_error": 22.23018646236804,
+      "conditional_true_plane_xy_error_mm": 16.36165403856564,
+      "reference_visibility": {
+        "target": "box_floor",
+        "pixel": [
+          299.7698304804026,
+          570.9725540237074
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": false,
+        "first_hit_body": "hand_R",
+        "ray_distance_m": 0.0055617797473806446,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "storage",
+      "capture_index": 4,
+      "target": "box_floor",
+      "camera": "rig_global",
+      "status": "point_returned_not_validated",
+      "pixel_error": 41.82196168106458,
+      "conditional_true_plane_xy_error_mm": 79.95514675481793,
+      "reference_visibility": {
+        "target": "box_floor",
+        "pixel": [
+          310.1579080010287,
+          360.0
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": false,
+        "first_hit_body": "link6_R",
+        "ray_distance_m": 0.6709372091068883,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "pour",
+      "capture_index": 4,
+      "target": "basin",
+      "camera": "overview",
+      "status": "point_returned_not_validated",
+      "pixel_error": 37.17603302936478,
+      "conditional_true_plane_xy_error_mm": 55.11749176781049,
+      "reference_visibility": {
+        "target": "basin",
+        "pixel": [
+          414.8560945218629,
+          516.8667985777029
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": true,
+        "first_hit_body": "basin",
+        "ray_distance_m": 1.3207342150331987,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "pour",
+      "capture_index": 4,
+      "target": "basin",
+      "camera": "rig_wrist_left",
+      "status": "model_abstained",
+      "pixel_error": null,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": null
+    },
+    {
+      "task": "pour",
+      "capture_index": 4,
+      "target": "basin",
+      "camera": "rig_wrist_right",
+      "status": "model_abstained",
+      "pixel_error": null,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": null
+    },
+    {
+      "task": "pour",
+      "capture_index": 4,
+      "target": "basin",
+      "camera": "rig_global",
+      "status": "model_abstained",
+      "pixel_error": null,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": null
+    },
+    {
+      "task": "pour",
+      "capture_index": 8,
+      "target": "basin_floor",
+      "camera": "overview",
+      "status": "point_returned_not_validated",
+      "pixel_error": 48.68815946078691,
+      "conditional_true_plane_xy_error_mm": 110.51524299230192,
+      "reference_visibility": {
+        "target": "basin_floor",
+        "pixel": [
+          421.7694227027643,
+          395.92632095144506
+        ],
+        "in_frame": true,
+        "ray_hits_target_body": true,
+        "first_hit_body": "basin",
+        "ray_distance_m": 1.6078194993789783,
+        "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+      }
+    },
+    {
+      "task": "pour",
+      "capture_index": 8,
+      "target": "basin_floor",
+      "camera": "rig_wrist_left",
+      "status": "model_abstained",
+      "pixel_error": null,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": null
+    },
+    {
+      "task": "pour",
+      "capture_index": 8,
+      "target": "basin_floor",
+      "camera": "rig_wrist_right",
+      "status": "model_abstained",
+      "pixel_error": null,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": null
+    },
+    {
+      "task": "pour",
+      "capture_index": 8,
+      "target": "basin_floor",
+      "camera": "rig_global",
+      "status": "model_abstained",
+      "pixel_error": null,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": null
+    },
+    {
+      "task": "handover",
+      "capture_index": 5,
+      "target": "grasp1",
+      "camera": "overview",
+      "status": "model_abstained",
+      "pixel_error": null,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": null
+    },
+    {
+      "task": "handover",
+      "capture_index": 5,
+      "target": "grasp1",
+      "camera": "rig_wrist_left",
+      "status": "model_abstained",
+      "pixel_error": null,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": null
+    },
+    {
+      "task": "handover",
+      "capture_index": 5,
+      "target": "grasp1",
+      "camera": "rig_wrist_right",
+      "status": "model_abstained",
+      "pixel_error": null,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": null
+    },
+    {
+      "task": "handover",
+      "capture_index": 5,
+      "target": "grasp1",
+      "camera": "rig_global",
+      "status": "model_abstained",
+      "pixel_error": null,
+      "conditional_true_plane_xy_error_mm": null,
+      "reference_visibility": null
+    }
+  ],
+  "interpretation": "Selected engineering outcomes, not iid samples or equal-budget baselines. Original runs and camera compatibility runs kept separate."
+}

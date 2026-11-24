@@ -1,0 +1,89 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "packed(1)"
+    ],
+    "remaining_del": [
+      "slot_free(1)"
+    ],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "hands_raised()",
+      "hands_safe_for_lateral(1)",
+      "slot_free(1)"
+    ],
+    "unexpected_removed": [
+      "packed(1)"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "retreat",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.006989880126517233
+    }
+  ],
+  "before": [
+    "at_source(item0)",
+    "empty(0)",
+    "hands_safe_for_lateral(0)",
+    "holding(1,item1)",
+    "parked(0)",
+    "slot_free(0)",
+    "slot_free(1)",
+    "tray_at_table()"
+  ],
+  "after": [
+    "at_source(item0)",
+    "empty(0)",
+    "empty(1)",
+    "hands_raised()",
+    "hands_safe_for_lateral(0)",
+    "hands_safe_for_lateral(1)",
+    "parked(0)",
+    "slot_free(0)",
+    "slot_free(1)",
+    "tray_at_table()"
+  ],
+  "model": {
+    "name": "place_tray",
+    "args": {
+      "arm": "1",
+      "obj": "item1",
+      "dest": "tray"
+    },
+    "program_kind": "place",
+    "pre": [
+      "holding(1,item1)",
+      "slot_free(1)"
+    ],
+    "add": [
+      "empty(1)",
+      "packed(1)"
+    ],
+    "del": [
+      "holding(1,item1)",
+      "slot_free(1)"
+    ],
+    "description": "绑定物品已在自由托盘对应槽位内稳定支撑且解除抓持，指定手爪张开并竖直撤离放置面。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "missing_required_calls": [
+    "move_above",
+    "lower",
+    "place_release"
+  ],
+  "code_sha256": "fbd6578c681610df53b5aca7956406d170273afb12b299737fd09ac6651e5a22",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+}

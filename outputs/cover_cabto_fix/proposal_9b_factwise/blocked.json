@@ -1,0 +1,40 @@
+{
+  "violations": [],
+  "error": null,
+  "previous_schemas": {
+    "pick": {
+      "pre": [
+        "home_completed()"
+      ],
+      "add": [
+        "holding(OBJECT)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(OBJECT)",
+        "at_target(OBJECT)",
+        "home_completed()"
+      ]
+    },
+    "place": {
+      "pre": [
+        "holding(OBJECT)",
+        "at_target(OBJECT)"
+      ],
+      "add": [],
+      "del": [
+        "empty()",
+        "at_source(OBJECT)",
+        "holding(OBJECT)"
+      ]
+    },
+    "home": {
+      "pre": [
+        "empty()",
+        "home_completed()"
+      ],
+      "add": [],
+      "del": []
+    }
+  }
+}

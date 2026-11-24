@@ -1,0 +1,202 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "grasp_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.349852546299256,
+        -0.07450391859233436,
+        0.6987342926312591
+      ]
+    },
+    {
+      "method": "approach",
+      "args": [
+        [
+          0.349852546299256,
+          -0.07450391859233436,
+          0.6987342926312591
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 18.480000000000636,
+        "object_position": [
+          0.3498472818011415,
+          0.00046832766710532084,
+          0.6397051822940794
+        ],
+        "tcp_position": [
+          0.34993658250998144,
+          -0.07463481707855929,
+          0.818720257858406
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "descend",
+      "args": [
+        [
+          0.349852546299256,
+          -0.07450391859233436,
+          0.6987342926312591
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 20.59999999999946,
+        "object_position": [
+          0.34984727659140263,
+          0.0004677050299946298,
+          0.6397055990852263
+        ],
+        "tcp_position": [
+          0.3498519238503829,
+          -0.07449255469091771,
+          0.6989888690426247
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "close_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 21.079999999999195,
+        "object_position": [
+          0.34984658763282717,
+          0.00047143542566041,
+          0.639699327826779
+        ],
+        "tcp_position": [
+          0.34984940097069256,
+          -0.07448672795863479,
+          0.698948422835385
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 0.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld",
+        "contact_since": 20.59999999999946
+      }
+    },
+    {
+      "method": "attach_contact_gated",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 21.27199999999909,
+        "object_position": [
+          0.34984660451503125,
+          0.00047144689034439986,
+          0.6396994997422054
+        ],
+        "tcp_position": [
+          0.3498493719452136,
+          -0.07448675769502507,
+          0.6989482779175812
+        ],
+        "weld_constraint_active": true,
+        "holding": true,
+        "grip_command": 0.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    }
+  ],
+  "before": [
+    "at_handover_pose(baton)",
+    "baton_airborne()",
+    "collision_free()",
+    "donor_holding(baton)",
+    "empty(1)"
+  ],
+  "after": [
+    "at_handover_pose(baton)",
+    "baton_airborne()",
+    "collision_free()",
+    "donor_holding(baton)",
+    "dual_holding(baton)",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "model": {
+    "name": "receiver_grasps_box_face",
+    "args": {
+      "arm": "1",
+      "obj": "baton",
+      "dest": "receiver_grasps_opposite_handle"
+    },
+    "program_kind": "receive",
+    "pre": [
+      "donor_holding(baton)",
+      "empty(1)",
+      "at_handover_pose(baton)",
+      "collision_free()"
+    ],
+    "add": [
+      "dual_holding(baton)",
+      "receiver_contact_verified()",
+      "receiver_holding(baton)"
+    ],
+    "del": [
+      "empty(1)",
+      "home(1)"
+    ],
+    "description": "茶盒由两臂共同持有，接收侧指定盒面的当帧与近期双指接触已验证，交出侧仍保持持有。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "e7ffe5ed058625222f461a4df65f5c2df11eeb63d1b522d473cfba7a0e4219db",
+  "consistency_scope": "full_CP",
+  "physical_diagnostics": {
+    "placed": false,
+    "xy_error_m": 0.21143252748705044,
+    "bottom_gap_m": 0.15966056513614135,
+    "rotation_error_deg": 0.019838625813927424,
+    "released": false,
+    "origin": [
+      0.34984660451503125,
+      0.00047144689034439986,
+      0.6396994997422054
+    ],
+    "table_support_contact": false
+  }
+}

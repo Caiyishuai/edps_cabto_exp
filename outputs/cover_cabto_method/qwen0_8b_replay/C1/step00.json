@@ -1,0 +1,76 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "holding(shrimp)"
+    ],
+    "remaining_del": [
+      "at_source(shrimp)",
+      "empty()"
+    ],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "at_source(shrimp)",
+      "empty()"
+    ],
+    "unexpected_removed": [
+      "holding(shrimp)"
+    ]
+  },
+  "before": [
+    "at_source(apple)",
+    "at_source(potato)",
+    "at_source(shrimp)",
+    "empty()"
+  ],
+  "after": [
+    "at_source(apple)",
+    "at_source(potato)",
+    "at_source(shrimp)",
+    "empty()"
+  ],
+  "model": {
+    "name": "pick",
+    "args": {
+      "object": "shrimp",
+      "support": "bowl"
+    },
+    "pre": [
+      "empty()",
+      "at_source(shrimp)"
+    ],
+    "add": [
+      "holding(shrimp)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(shrimp)",
+      "home_completed()"
+    ]
+  },
+  "code_executed": true,
+  "exception": "ValueError: No JSON object in model response",
+  "trace": [
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "grasp_point",
+      "args": [],
+      "kwargs": {},
+      "status": "failed",
+      "error": "ValueError: No JSON object in model response"
+    }
+  ],
+  "forbidden_contacts": [],
+  "code_sha256": "c519cd749debe353036eb5b5736af788aac3a6f3e5ee4347c12c26ec9547472b"
+}

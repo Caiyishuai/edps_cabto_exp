@@ -1,0 +1,138 @@
+{
+  "action_id": "receiver_grasps_box_face(arm=1,dest=receiver_grasps_opposite_handle,obj=baton)",
+  "model": {
+    "name": "receiver_grasps_box_face",
+    "args": {
+      "arm": "1",
+      "obj": "baton",
+      "dest": "receiver_grasps_opposite_handle"
+    },
+    "program_kind": "receive",
+    "pre": [
+      "donor_holding(baton)",
+      "empty(1)",
+      "at_handover_pose(baton)",
+      "collision_free()"
+    ],
+    "add": [
+      "dual_holding(baton)",
+      "receiver_contact_verified()"
+    ],
+    "del": [
+      "empty(1)",
+      "home(1)"
+    ],
+    "description": "茶盒由两臂共同持有，接收侧指定盒面的当帧与近期双指接触已验证，交出侧仍保持持有。"
+  },
+  "attempt": 3,
+  "call": {
+    "model_id": "mlx-community/Qwen3.5-9B-4bit",
+    "text": "Write ONLY one Python function def policy(api):. Implement ONLY this action. No imports, loops, tuple unpacking or direct simulator access. Save API return tuples in local variables; no hardcoded coordinates. Use ONLY api.<method> calls listed below. DO NOT call an action by its name. Returning a status does not execute an action.\nAction semantics: Donor already holds the box at meeting pose. Receiver must grasp its own box-face zone and establish dual holding. Do not release donor.\nAvailable APIs:\napproach(xyz): move OPEN receiver above point.\nattach_contact_gated(): verify contact and activate receiver weld, creating dual holding.\nclose_gripper(): close after descent; does not attach.\ndescend(xyz): lower OPEN receiver to same point.\ngrasp_pose() -> xyz: read receiver grasp point.\nLast actual failed candidate and validator feedback: [{\"source\": \"def policy(api):\\n    grasp_point = api.grasp_pose()\\n    api.descend(grasp_point)\\n    api.attach_contact_gated()\", \"error\": \"RuntimeError: \\u5f53\\u524d API \\u7f3a\\u5c11\\u5df2\\u5b8c\\u6210\\u7684 approach \\u63a7\\u5236\\u8bc1\\u636e\", \"missing_calls\": [], \"violations\": {\"missing_pre\": [], \"missing_add\": [\"dual_holding(baton)\", \"receiver_contact_verified()\"], \"remaining_del\": [\"empty(1)\"], \"missing_preserved_pre\": [], \"unexpected_added\": [\"empty(1)\"], \"unexpected_removed\": [\"dual_holding(baton)\", \"receiver_contact_verified()\"]}}]",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/handover/sampling_v2/action_02/attempt3/context.png"
+    ],
+    "formatted_prompt": "<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Write ONLY one Python function def policy(api):. Implement ONLY this action. No imports, loops, tuple unpacking or direct simulator access. Save API return tuples in local variables; no hardcoded coordinates. Use ONLY api.<method> calls listed below. DO NOT call an action by its name. Returning a status does not execute an action.\nAction semantics: Donor already holds the box at meeting pose. Receiver must grasp its own box-face zone and establish dual holding. Do not release donor.\nAvailable APIs:\napproach(xyz): move OPEN receiver above point.\nattach_contact_gated(): verify contact and activate receiver weld, creating dual holding.\nclose_gripper(): close after descent; does not attach.\ndescend(xyz): lower OPEN receiver to same point.\ngrasp_pose() -> xyz: read receiver grasp point.\nLast actual failed candidate and validator feedback: [{\"source\": \"def policy(api):\\n    grasp_point = api.grasp_pose()\\n    api.descend(grasp_point)\\n    api.attach_contact_gated()\", \"error\": \"RuntimeError: \\u5f53\\u524d API \\u7f3a\\u5c11\\u5df2\\u5b8c\\u6210\\u7684 approach \\u63a7\\u5236\\u8bc1\\u636e\", \"missing_calls\": [], \"violations\": {\"missing_pre\": [], \"missing_add\": [\"dual_holding(baton)\", \"receiver_contact_verified()\"], \"remaining_del\": [\"empty(1)\"], \"missing_preserved_pre\": [], \"unexpected_added\": [\"empty(1)\"], \"unexpected_removed\": [\"dual_holding(baton)\", \"receiver_contact_verified()\"]}}]<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "temperature": 0.3,
+    "max_tokens": 850,
+    "raw": "```python\ndef policy(api):\n    grasp_point = api.grasp_pose()\n    api.descend(grasp_point)\n    api.attach_contact_gated()\n```",
+    "wall_seconds": 1.6257215839577839
+  },
+  "source": "def policy(api):\n    grasp_point = api.grasp_pose()\n    api.descend(grasp_point)\n    api.attach_contact_gated()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": false,
+    "strict_CP_transition_match": false,
+    "goal_ok": false,
+    "effect_ok": false,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [
+        "dual_holding(baton)",
+        "receiver_contact_verified()"
+      ],
+      "remaining_del": [
+        "empty(1)"
+      ],
+      "missing_preserved_pre": [],
+      "unexpected_added": [
+        "empty(1)"
+      ],
+      "unexpected_removed": [
+        "dual_holding(baton)",
+        "receiver_contact_verified()"
+      ]
+    },
+    "code_executed": true,
+    "exception": "RuntimeError: 当前 API 缺少已完成的 approach 控制证据",
+    "trace": [
+      {
+        "method": "grasp_pose",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.34985084432825986,
+          -0.07450101350691023,
+          0.6987337571572111
+        ]
+      },
+      {
+        "method": "descend",
+        "args": [
+          [
+            0.34985084432825986,
+            -0.07450101350691023,
+            0.6987337571572111
+          ]
+        ],
+        "kwargs": {},
+        "status": "failed",
+        "error": "RuntimeError: 当前 API 缺少已完成的 approach 控制证据"
+      }
+    ],
+    "before": [
+      "at_handover_pose(baton)",
+      "baton_airborne()",
+      "collision_free()",
+      "donor_holding(baton)",
+      "empty(1)"
+    ],
+    "after": [
+      "at_handover_pose(baton)",
+      "baton_airborne()",
+      "collision_free()",
+      "donor_holding(baton)",
+      "empty(1)"
+    ],
+    "model": {
+      "name": "receiver_grasps_box_face",
+      "args": {
+        "arm": "1",
+        "obj": "baton",
+        "dest": "receiver_grasps_opposite_handle"
+      },
+      "program_kind": "receive",
+      "pre": [
+        "donor_holding(baton)",
+        "empty(1)",
+        "at_handover_pose(baton)",
+        "collision_free()"
+      ],
+      "add": [
+        "dual_holding(baton)",
+        "receiver_contact_verified()"
+      ],
+      "del": [
+        "empty(1)",
+        "home(1)"
+      ],
+      "description": "茶盒由两臂共同持有，接收侧指定盒面的当帧与近期双指接触已验证，交出侧仍保持持有。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": false,
+    "missing_required_calls": [],
+    "code_sha256": "dc0bf1f955c0061f62d296c54d72c4976d4116cb207756882e7dfb01a625d187",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+  },
+  "accepted": false
+}

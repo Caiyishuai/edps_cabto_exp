@@ -1,0 +1,132 @@
+{
+  "failed_model": {
+    "name": "pick",
+    "args": {
+      "object": "shrimp",
+      "support": "bowl"
+    },
+    "pre": [
+      "empty()",
+      "at_source(shrimp)"
+    ],
+    "add": [
+      "holding(shrimp)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(shrimp)",
+      "home_completed()"
+    ]
+  },
+  "planning": {
+    "complete_for_P": true,
+    "admissible_reachable_states": true,
+    "reachable_state_count": 28,
+    "mutex_violations": [],
+    "tasks": [
+      {
+        "task": "C1",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 3,
+          "action_ids": [
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_source(apple)",
+            "at_source(potato)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 68
+      },
+      {
+        "task": "C2",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 5,
+          "action_ids": [
+            "pick(object=apple,support=board)",
+            "place(object=apple,support=board)",
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_source(potato)",
+            "at_target(apple)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 167
+      },
+      {
+        "task": "C3",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 7,
+          "action_ids": [
+            "pick(object=potato,support=pan)",
+            "place(object=potato,support=pan)",
+            "pick(object=apple,support=board)",
+            "place(object=apple,support=board)",
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_target(apple)",
+            "at_target(potato)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 392
+      }
+    ],
+    "scope": "finite declared P, symbolic; NOT physical consistency"
+  },
+  "execution": [
+    {
+      "generated_code": "```python\ndef policy(api):\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.app",
+      "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+      "violations": null,
+      "api_trace": null,
+      "forbidden_contacts": null,
+      "instruction": "Repair the candidate CODE, keeping the immutable action model and API contracts."
+    },
+    {
+      "generated_code": "```python\ndef policy(api):\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.app",
+      "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+      "violations": null,
+      "api_trace": null,
+      "forbidden_contacts": null,
+      "instruction": "Repair the candidate CODE, keeping the immutable action model and API contracts."
+    },
+    {
+      "generated_code": "```python\ndef policy(api):\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.approach(api.grasp_point())\n    api.open_gripper()\n    api.grasp_point()\n    api.app",
+      "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+      "violations": null,
+      "api_trace": null,
+      "forbidden_contacts": null,
+      "instruction": "Repair the candidate CODE, keeping the immutable action model and API contracts."
+    }
+  ],
+  "status": "not automatically patching h for a code or perception failure"
+}

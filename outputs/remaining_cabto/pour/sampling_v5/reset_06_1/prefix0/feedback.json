@@ -1,0 +1,169 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.18011613729009388,
+        0.270000938867763,
+        0.5349404048584233
+      ]
+    },
+    {
+      "method": "align_xy",
+      "args": [
+        [
+          0.18011613729009388,
+          0.270000938867763,
+          0.5349404048584233
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.005318471778863491
+    },
+    {
+      "method": "descend_to",
+      "args": [
+        0.5349404048584233,
+        [
+          0.18011613729009388,
+          0.270000938867763
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.006666343655870602
+    },
+    {
+      "method": "grasp",
+      "args": [
+        [
+          0.18011613729009388,
+          0.270000938867763,
+          0.5349404048584233
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "record_grab_offset",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "lift",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "at_source(basin)",
+    "at_source(canL)",
+    "basin_returned()",
+    "collision_free()",
+    "content_in_source()",
+    "empty(0)",
+    "empty(1)",
+    "hand_raised(0)",
+    "hand_raised(1)",
+    "home(0)",
+    "home(1)",
+    "parked(0)",
+    "parked(1)",
+    "source_upright()"
+  ],
+  "after": [
+    "at_source(basin)",
+    "basin_returned()",
+    "collision_free()",
+    "content_in_source()",
+    "empty(1)",
+    "hand_raised(1)",
+    "holding(0,canL)",
+    "home(1)",
+    "parked(1)",
+    "source_upright()"
+  ],
+  "model": {
+    "name": "pick_source_cup",
+    "args": {
+      "arm": "0",
+      "obj": "canL",
+      "dest": "pick_source_cup"
+    },
+    "program_kind": "pick",
+    "pre": [
+      "empty(0)",
+      "at_source(canL)",
+      "content_in_source()",
+      "collision_free()"
+    ],
+    "add": [
+      "holding(0,canL)"
+    ],
+    "del": [
+      "empty(0)",
+      "at_source(canL)",
+      "parked(0)",
+      "home(0)",
+      "source_returned()",
+      "hand_raised(0)"
+    ],
+    "description": "源臂抓持含小球的源杯，源杯已离开桌面处于运输高度；抓持偏移可用于后续位置跟踪。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "92ba95dfaf5925451bfcc1c7d88d0f5859a6304fc73a0058c743081ebf8668aa",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+  "physical_diagnostics": {
+    "source": {
+      "returned": false,
+      "xy_error_m": 0.12829633826765247,
+      "bottom_gap_m": 0.15582218656205593,
+      "rotation_error_deg": 15.270041647647089,
+      "released": false,
+      "origin": [
+        0.20535734965359553,
+        0.22576547710494008,
+        0.6606440953284158
+      ]
+    },
+    "basin": {
+      "returned": true,
+      "xy_error_m": 9.745647537150837e-07,
+      "bottom_gap_m": -4.320001689761543e-06,
+      "rotation_error_deg": 0.0004652525878466461,
+      "released": true,
+      "origin": [
+        0.6000012248480447,
+        -0.2699999868242315,
+        0.5199945146533622
+      ]
+    }
+  }
+}

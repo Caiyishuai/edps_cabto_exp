@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "pdf_pages": 17,
+  "pdf_sha256": "8475b247f87aa294e50ea9201001c9824313d0e8092923992451b800e3a701a1",
+  "pdf_bytes": 2857059,
+  "bibliography_entries": 14,
+  "figures": 6,
+  "tables": 7,
+  "algorithms": 1,
+  "undefined_citations_or_references": false,
+  "overfull_boxes": false,
+  "missing_characters": false,
+  "source_hashes_rechecked": true,
+  "main_counts": {
+    "goals": 9,
+    "actions": 43,
+    "episodes": 17,
+    "transitions": 113
+  },
+  "new_simulation_runs_performed_for_manuscript": false,
+  "scope": "Chinese empirical research manuscript; selected frozen results, dual oracle+weld and perception limitations explicitly reported"
+}

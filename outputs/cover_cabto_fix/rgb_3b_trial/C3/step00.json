@@ -1,0 +1,131 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "holding(potato)"
+    ],
+    "remaining_del": [
+      "at_source(potato)"
+    ],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "at_source(potato)"
+    ],
+    "unexpected_removed": [
+      "holding(potato)"
+    ]
+  },
+  "before": [
+    "at_source(apple)",
+    "at_source(potato)",
+    "at_source(shrimp)",
+    "empty()"
+  ],
+  "after": [
+    "at_source(apple)",
+    "at_source(potato)",
+    "at_source(shrimp)"
+  ],
+  "model": {
+    "name": "pick",
+    "args": {
+      "object": "potato",
+      "support": "pan"
+    },
+    "pre": [
+      "empty()",
+      "at_source(potato)"
+    ],
+    "add": [
+      "holding(potato)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(potato)",
+      "home_completed()"
+    ]
+  },
+  "code_executed": true,
+  "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+  "trace": [
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "grasp_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.3081546898626381,
+        -0.19047948039243356,
+        0.41798083548895737
+      ]
+    },
+    {
+      "method": "approach",
+      "args": [
+        [
+          0.3081546898626381,
+          -0.19047948039243356,
+          0.41798083548895737
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "descend",
+      "args": [
+        [
+          0.3081546898626381,
+          -0.19047948039243356,
+          0.41798083548895737
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "close_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "failed",
+      "error": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}"
+    }
+  ],
+  "forbidden_contacts": [
+    {
+      "phase": "grasp_potato",
+      "kind": "robot_environment",
+      "bodies": [
+        "right_finger",
+        "shrimp"
+      ],
+      "samples": 194,
+      "min_distance_m": -0.00044353911969378116
+    },
+    {
+      "phase": "grasp_potato",
+      "kind": "robot_environment",
+      "bodies": [
+        "left_finger",
+        "shrimp"
+      ],
+      "samples": 185,
+      "min_distance_m": -0.00047592434339187756
+    }
+  ],
+  "code_sha256": "efb0566705be7a62ffd6f4b97078bd4a79bce5a1209f5181bef7bbfa9d0db20c"
+}

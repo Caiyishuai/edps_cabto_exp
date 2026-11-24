@@ -1,0 +1,98 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "restore_upright",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "receiver_separated()",
+    "sphere_in_basin()"
+  ],
+  "after": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "receiver_separated()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "model": {
+    "name": "restore_source_upright",
+    "args": {
+      "arm": "0",
+      "obj": "canL",
+      "dest": "restore_source_upright"
+    },
+    "program_kind": "restore_source",
+    "pre": [
+      "holding(0,canL)",
+      "receiver_separated()",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "source_upright()"
+    ],
+    "del": [],
+    "description": "源杯仍被源臂抓持且恢复运输要求的直立姿态，小球仍留在接收盆内。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "5a4fbd324b4d4fb8aaeffada2aa521ee04cbc5326322b5d47b1384a9421bbfd5",
+  "consistency_scope": "full_CP",
+  "physical_diagnostics": {
+    "source": {
+      "returned": false,
+      "xy_error_m": 0.39250863806342756,
+      "bottom_gap_m": -0.002200144974482454,
+      "rotation_error_deg": 12.672533547929781,
+      "released": false,
+      "origin": [
+        0.46598006685485327,
+        -0.1688464846638327,
+        0.5067952361667152
+      ]
+    },
+    "basin": {
+      "returned": false,
+      "xy_error_m": 0.1865434555815443,
+      "bottom_gap_m": 0.03770259904948997,
+      "rotation_error_deg": 2.5263365258523547,
+      "released": false,
+      "origin": [
+        0.7727841454482868,
+        -0.3403196722644685,
+        0.5529617447054286
+      ]
+    }
+  }
+}

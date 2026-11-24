@@ -1,0 +1,233 @@
+{
+  "failed_model": {
+    "name": "pick",
+    "args": {
+      "object": "potato",
+      "support": "pan"
+    },
+    "pre": [
+      "empty()",
+      "at_source(potato)"
+    ],
+    "add": [
+      "holding(potato)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(potato)",
+      "home_completed()"
+    ]
+  },
+  "planning": {
+    "complete_for_P": true,
+    "admissible_reachable_states": true,
+    "reachable_state_count": 28,
+    "mutex_violations": [],
+    "tasks": [
+      {
+        "task": "C1",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 3,
+          "action_ids": [
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_source(apple)",
+            "at_source(potato)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 23
+      },
+      {
+        "task": "C2",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 5,
+          "action_ids": [
+            "pick(object=apple,support=board)",
+            "place(object=apple,support=board)",
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_source(potato)",
+            "at_target(apple)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 65
+      },
+      {
+        "task": "C3",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 7,
+          "action_ids": [
+            "pick(object=potato,support=pan)",
+            "place(object=potato,support=pan)",
+            "pick(object=apple,support=board)",
+            "place(object=apple,support=board)",
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_target(apple)",
+            "at_target(potato)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 246
+      }
+    ],
+    "scope": "finite declared P, symbolic; NOT physical consistency"
+  },
+  "execution": [
+    {
+      "generated_code": "def policy(api):\n    api.approach([0.35, 0.45, 0.6])\n    api.descend([0.35, 0.45, 0.55])\n    api.close_gripper()\n    api.lift()",
+      "error": "ValueError: Waypoint outside scene workspace",
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "holding(potato)"
+        ],
+        "remaining_del": [
+          "at_source(potato)",
+          "empty()"
+        ],
+        "missing_preserved_pre": [],
+        "unexpected_added": [
+          "at_source(potato)",
+          "empty()"
+        ],
+        "unexpected_removed": [
+          "holding(potato)"
+        ]
+      },
+      "api_trace": [
+        {
+          "method": "approach",
+          "args": [
+            [
+              0.35,
+              0.45,
+              0.6
+            ]
+          ],
+          "kwargs": {},
+          "status": "failed",
+          "error": "ValueError: Waypoint outside scene workspace"
+        }
+      ],
+      "forbidden_contacts": [],
+      "instruction": "Repair the candidate CODE, keeping the immutable action model and API contracts."
+    },
+    {
+      "generated_code": "def policy(api):\n    api.grasp_point()\n    api.close_gripper()\n    api.lift()",
+      "error": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "holding(potato)"
+        ],
+        "remaining_del": [
+          "at_source(potato)"
+        ],
+        "missing_preserved_pre": [],
+        "unexpected_added": [
+          "at_source(potato)"
+        ],
+        "unexpected_removed": [
+          "holding(potato)"
+        ]
+      },
+      "api_trace": [
+        {
+          "method": "grasp_point",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": [
+            0.6700000050473665,
+            -0.19000000385309732,
+            0.41798083548895737
+          ]
+        },
+        {
+          "method": "close_gripper",
+          "args": [],
+          "kwargs": {},
+          "status": "failed",
+          "error": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}"
+        }
+      ],
+      "forbidden_contacts": [],
+      "instruction": "Repair the candidate CODE, keeping the immutable action model and API contracts."
+    },
+    {
+      "generated_code": "def policy(api):\n    api.approach([0.6700000050473665, -0.19000000385309732, 0.41798083548895737])\n    api.close_gripper()\n    api.lift()",
+      "error": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "holding(potato)"
+        ],
+        "remaining_del": [
+          "at_source(potato)"
+        ],
+        "missing_preserved_pre": [],
+        "unexpected_added": [
+          "at_source(potato)"
+        ],
+        "unexpected_removed": [
+          "holding(potato)"
+        ]
+      },
+      "api_trace": [
+        {
+          "method": "approach",
+          "args": [
+            [
+              0.6700000050473665,
+              -0.19000000385309732,
+              0.41798083548895737
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "close_gripper",
+          "args": [],
+          "kwargs": {},
+          "status": "failed",
+          "error": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}"
+        }
+      ],
+      "forbidden_contacts": [],
+      "instruction": "Repair the candidate CODE, keeping the immutable action model and API contracts."
+    }
+  ],
+  "status": "not automatically patching h for a code or perception failure"
+}

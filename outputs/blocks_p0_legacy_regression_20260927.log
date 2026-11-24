@@ -1,0 +1,70 @@
+test_both_tasks_have_bounded_speed (test_single_arm_rebuilt.MotionAndSafetyTests.test_both_tasks_have_bounded_speed) ... ok
+test_cover_support_contact_is_surface_height_gated (test_single_arm_rebuilt.MotionAndSafetyTests.test_cover_support_contact_is_surface_height_gated) ... ok
+test_ease_endpoint_slope (test_single_arm_rebuilt.MotionAndSafetyTests.test_ease_endpoint_slope) ... ok
+test_ease_endpoints (test_single_arm_rebuilt.MotionAndSafetyTests.test_ease_endpoints) ... ok
+test_ease_monotone (test_single_arm_rebuilt.MotionAndSafetyTests.test_ease_monotone) ... ok
+test_execution_no_actual_qpos_or_qvel_assignment (test_single_arm_rebuilt.MotionAndSafetyTests.test_execution_no_actual_qpos_or_qvel_assignment) ... ok
+test_no_legacy_task_controller (test_single_arm_rebuilt.MotionAndSafetyTests.test_no_legacy_task_controller) ... ok
+test_pick_requires_simultaneous_finger_force (test_single_arm_rebuilt.MotionAndSafetyTests.test_pick_requires_simultaneous_finger_force) ... ok
+test_pose_observation_does_not_make_home_true (test_single_arm_rebuilt.MotionAndSafetyTests.test_pose_observation_does_not_make_home_true) ... ok
+test_release_checks_raw_constraints_and_actual_width (test_single_arm_rebuilt.MotionAndSafetyTests.test_release_checks_raw_constraints_and_actual_width) ... ok
+test_step_joint_uses_actuators_not_state_writes (test_single_arm_rebuilt.MotionAndSafetyTests.test_step_joint_uses_actuators_not_state_writes) ... ok
+test_success_requires_hand_clearance_and_motion_gate (test_single_arm_rebuilt.MotionAndSafetyTests.test_success_requires_hand_clearance_and_motion_gate) ... ok
+test_support_and_goal_monitor_present (test_single_arm_rebuilt.MotionAndSafetyTests.test_support_and_goal_monitor_present) ... ok
+test_both_scenes_compile (test_single_arm_rebuilt.SceneTests.test_both_scenes_compile) ... ok
+test_bowl_is_upright_and_open (test_single_arm_rebuilt.SceneTests.test_bowl_is_upright_and_open) ... ok
+test_camera_axes_are_orthogonal (test_single_arm_rebuilt.SceneTests.test_camera_axes_are_orthogonal) ... ok
+test_cover_table_is_longer_than_blocks_table (test_single_arm_rebuilt.SceneTests.test_cover_table_is_longer_than_blocks_table) ... ok
+test_cubes_start_without_stack (test_single_arm_rebuilt.SceneTests.test_cubes_start_without_stack) ... ok
+test_explicit_food_to_support_mapping (test_single_arm_rebuilt.SceneTests.test_explicit_food_to_support_mapping) ... FAIL
+test_foods_form_a_front_row (test_single_arm_rebuilt.SceneTests.test_foods_form_a_front_row) ... ERROR
+test_four_free_coloured_cubes (test_single_arm_rebuilt.SceneTests.test_four_free_coloured_cubes) ... ok
+test_gravity_compensation_is_robot_only (test_single_arm_rebuilt.SceneTests.test_gravity_compensation_is_robot_only) ... ok
+test_input_configuration_unchanged (test_single_arm_rebuilt.SceneTests.test_input_configuration_unchanged) ... ok
+test_one_arm_only (test_single_arm_rebuilt.SceneTests.test_one_arm_only) ... ok
+test_seed_changes_initial_layout (test_single_arm_rebuilt.SceneTests.test_seed_changes_initial_layout) ... ok
+test_seed_reproducibility (test_single_arm_rebuilt.SceneTests.test_seed_reproducibility) ... ok
+test_strict_default (test_single_arm_rebuilt.SceneTests.test_strict_default) ... ok
+test_supports_are_fixed_in_a_back_row (test_single_arm_rebuilt.SceneTests.test_supports_are_fixed_in_a_back_row) ... ok
+test_three_foods_are_free_and_not_pinned (test_single_arm_rebuilt.SceneTests.test_three_foods_are_free_and_not_pinned) ... FAIL
+
+======================================================================
+ERROR: test_foods_form_a_front_row (test_single_arm_rebuilt.SceneTests.test_foods_form_a_front_row)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yishuaicai/mywork/edps_cabto_exp/project/test_single_arm_rebuilt.py", line 57, in test_foods_form_a_front_row
+    pos=np.fromstring(root.find(f".//body[@name='{name}']").get("pos"),sep=" ")
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+FAIL: test_explicit_food_to_support_mapping (test_single_arm_rebuilt.SceneTests.test_explicit_food_to_support_mapping)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yishuaicai/mywork/edps_cabto_exp/project/test_single_arm_rebuilt.py", line 66, in test_explicit_food_to_support_mapping
+    self.assertEqual(self.configs["cover"]["pairs"],[["shrimp","bowl"],["apple","board"],["potato","pan"]])
+AssertionError: Lists differ: [['shrimp', 'bowl'], ['apple', 'board'], ['pepper', 'pan']] != [['shrimp', 'bowl'], ['apple', 'board'], ['potato', 'pan']]
+
+First differing element 2:
+['pepper', 'pan']
+['potato', 'pan']
+
+- [['shrimp', 'bowl'], ['apple', 'board'], ['pepper', 'pan']]
+?                                             ^^^^^
+
++ [['shrimp', 'bowl'], ['apple', 'board'], ['potato', 'pan']]
+?                                             ^^^^^
+
+
+======================================================================
+FAIL: test_three_foods_are_free_and_not_pinned (test_single_arm_rebuilt.SceneTests.test_three_foods_are_free_and_not_pinned)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yishuaicai/mywork/edps_cabto_exp/project/test_single_arm_rebuilt.py", line 44, in test_three_foods_are_free_and_not_pinned
+    self.assertIsNotNone(root.find(f".//body[@name='{name}']/freejoint"))
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.314s
+
+FAILED (failures=2, errors=1)

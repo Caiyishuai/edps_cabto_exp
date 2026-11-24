@@ -1,0 +1,197 @@
+{
+  "action_id": "return_source_cup(arm=0,dest=return_source_cup,obj=canL)",
+  "model": {
+    "name": "return_source_cup",
+    "args": {
+      "arm": "0",
+      "obj": "canL",
+      "dest": "return_source_cup"
+    },
+    "program_kind": "return_source",
+    "pre": [
+      "holding(0,canL)",
+      "source_upright()",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "source_returned()",
+      "empty(0)",
+      "hand_raised(0)"
+    ],
+    "del": [
+      "holding(0,canL)"
+    ],
+    "description": "源杯在标定返还位置直立落桌且已解除抓持，源臂空手并撤至外侧安全高度，小球仍留在接收盆内。"
+  },
+  "attempt": 2,
+  "call": {
+    "model_id": "mlx-community/Qwen3.5-9B-4bit",
+    "text": "Write ONLY one Python function def policy(api):. Implement ONLY this action. No imports, loops, tuple unpacking or direct simulator access. Save API return tuples in local variables; no hardcoded coordinates. Use ONLY api.<method> calls listed below. DO NOT call an action by its name. Returning a status does not execute an action.\nAction semantics: The arm already holds the upright source cup. Return it to its support, release it, withdraw the hand; do not return HOME.\nAvailable APIs:\nalign_target(xyz): optional fine horizontal alignment.\nlower(xyz): lower held object to destination; argument must be full destination tuple, NOT a gap scalar. Does not release.\nmove_above(xyz): carry held object above destination, does not lower.\nmove_safe(xyz): carry held object into safe lane. Required before returning across workspace; does not lower or release.\nrelease(): open gripper and deactivate grasp weld, no arm motion.\nretreat(): move OPEN hand away; requires release first.\nsafe_pose() -> xyz: read safe-lane waypoint for held object.\nsettle(): wait without grip change.\ntarget_pose() -> xyz: read final destination surface.\nLast actual failed candidate and validator feedback: [{\"source\": \"def policy(api):\\n    target = api.target_pose()\\n    safe = api.safe_pose()\\n    api.move_safe(safe)\\n    api.lower(target)\\n    api.release()\\n    api.retreat()\", \"error\": null, \"missing_calls\": [\"move_above\"], \"violations\": {\"missing_pre\": [], \"missing_add\": [\"source_returned()\"], \"remaining_del\": [], \"missing_preserved_pre\": [], \"unexpected_added\": [\"parked(0)\"], \"unexpected_removed\": [\"source_returned()\"]}}]",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/pour/sampling_v3/action_06/attempt2/context.png"
+    ],
+    "formatted_prompt": "<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Write ONLY one Python function def policy(api):. Implement ONLY this action. No imports, loops, tuple unpacking or direct simulator access. Save API return tuples in local variables; no hardcoded coordinates. Use ONLY api.<method> calls listed below. DO NOT call an action by its name. Returning a status does not execute an action.\nAction semantics: The arm already holds the upright source cup. Return it to its support, release it, withdraw the hand; do not return HOME.\nAvailable APIs:\nalign_target(xyz): optional fine horizontal alignment.\nlower(xyz): lower held object to destination; argument must be full destination tuple, NOT a gap scalar. Does not release.\nmove_above(xyz): carry held object above destination, does not lower.\nmove_safe(xyz): carry held object into safe lane. Required before returning across workspace; does not lower or release.\nrelease(): open gripper and deactivate grasp weld, no arm motion.\nretreat(): move OPEN hand away; requires release first.\nsafe_pose() -> xyz: read safe-lane waypoint for held object.\nsettle(): wait without grip change.\ntarget_pose() -> xyz: read final destination surface.\nLast actual failed candidate and validator feedback: [{\"source\": \"def policy(api):\\n    target = api.target_pose()\\n    safe = api.safe_pose()\\n    api.move_safe(safe)\\n    api.lower(target)\\n    api.release()\\n    api.retreat()\", \"error\": null, \"missing_calls\": [\"move_above\"], \"violations\": {\"missing_pre\": [], \"missing_add\": [\"source_returned()\"], \"remaining_del\": [], \"missing_preserved_pre\": [], \"unexpected_added\": [\"parked(0)\"], \"unexpected_removed\": [\"source_returned()\"]}}]<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "temperature": 0.15,
+    "max_tokens": 850,
+    "raw": "```python\ndef policy(api):\n    target = api.target_pose()\n    safe = api.safe_pose()\n    api.move_safe(safe)\n    api.move_above(target)\n    api.lower(target)\n    api.release()\n    api.retreat()\n```",
+    "wall_seconds": 1.8930060419952497
+  },
+  "source": "def policy(api):\n    target = api.target_pose()\n    safe = api.safe_pose()\n    api.move_safe(safe)\n    api.move_above(target)\n    api.lower(target)\n    api.release()\n    api.retreat()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": false,
+    "strict_CP_transition_match": false,
+    "goal_ok": false,
+    "effect_ok": false,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [
+        "source_returned()"
+      ],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [
+        "parked(0)"
+      ],
+      "unexpected_removed": [
+        "source_returned()"
+      ]
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "target_pose",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.21,
+          0.1,
+          0.4
+        ]
+      },
+      {
+        "method": "safe_pose",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.24,
+          0.2,
+          0.72
+        ]
+      },
+      {
+        "method": "move_safe",
+        "args": [
+          [
+            0.24,
+            0.2,
+            0.72
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.0020849869057045028
+      },
+      {
+        "method": "move_above",
+        "args": [
+          [
+            0.21,
+            0.1,
+            0.4
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.004282507988876541
+      },
+      {
+        "method": "lower",
+        "args": [
+          [
+            0.21,
+            0.1,
+            0.4
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.5500574938910578
+      },
+      {
+        "method": "release",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "retreat",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.012247867835004521
+      }
+    ],
+    "before": [
+      "caught_by_held_basin()",
+      "collision_free()",
+      "holding(0,canL)",
+      "holding(1,basin)",
+      "payload_retained()",
+      "receiver_separated()",
+      "source_upright()",
+      "sphere_in_basin()"
+    ],
+    "after": [
+      "caught_by_held_basin()",
+      "collision_free()",
+      "empty(0)",
+      "hand_raised(0)",
+      "holding(1,basin)",
+      "parked(0)",
+      "payload_retained()",
+      "receiver_separated()",
+      "source_upright()",
+      "sphere_in_basin()"
+    ],
+    "model": {
+      "name": "return_source_cup",
+      "args": {
+        "arm": "0",
+        "obj": "canL",
+        "dest": "return_source_cup"
+      },
+      "program_kind": "return_source",
+      "pre": [
+        "holding(0,canL)",
+        "source_upright()",
+        "sphere_in_basin()",
+        "caught_by_held_basin()",
+        "payload_retained()",
+        "collision_free()"
+      ],
+      "add": [
+        "source_returned()",
+        "empty(0)",
+        "hand_raised(0)"
+      ],
+      "del": [
+        "holding(0,canL)"
+      ],
+      "description": "源杯在标定返还位置直立落桌且已解除抓持，源臂空手并撤至外侧安全高度，小球仍留在接收盆内。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": false,
+    "missing_required_calls": [],
+    "code_sha256": "fb55c8b2a44f6d264438fe4ad2364efb73276aa0b9c85c5cf9c36a0ea9333c46",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+  },
+  "accepted": false
+}

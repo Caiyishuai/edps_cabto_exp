@@ -1,0 +1,706 @@
+[
+  {
+    "group_id": "ac3432f5a4044ce7b3eade26c76b8ece",
+    "context_id": "35c193adb33948a8a2df0efd2e58f723",
+    "split": "train",
+    "scene": "cover",
+    "object": "apple",
+    "valid": true,
+    "condition_private": "unchanged",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "ok"
+  },
+  {
+    "group_id": "d9857fdfe05e40c9a8f9946f0b448def",
+    "context_id": "35c193adb33948a8a2df0efd2e58f723",
+    "split": "train",
+    "scene": "cover",
+    "object": "apple",
+    "valid": true,
+    "condition_private": "parameter",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "policy"
+  },
+  {
+    "group_id": "650b6121370d49f5b23f05de10200853",
+    "context_id": "35c193adb33948a8a2df0efd2e58f723",
+    "split": "train",
+    "scene": "cover",
+    "object": "apple",
+    "valid": true,
+    "condition_private": "effect_omission",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": true,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "model"
+  },
+  {
+    "group_id": "b4c8634facbc42ccb3bb5430f87d3f59",
+    "context_id": "35c193adb33948a8a2df0efd2e58f723",
+    "split": "train",
+    "scene": "cover",
+    "object": "apple",
+    "valid": true,
+    "condition_private": "combined",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "mixed"
+  },
+  {
+    "group_id": "b2d7e45794fd454bbe1e82af4ea4e403",
+    "context_id": "35c193adb33948a8a2df0efd2e58f723",
+    "split": "train",
+    "scene": "cover",
+    "object": "pepper",
+    "valid": true,
+    "condition_private": "unchanged",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "ok"
+  },
+  {
+    "group_id": "881cfe301a634d9a8e58d83176e07e31",
+    "context_id": "35c193adb33948a8a2df0efd2e58f723",
+    "split": "train",
+    "scene": "cover",
+    "object": "pepper",
+    "valid": true,
+    "condition_private": "parameter",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "policy"
+  },
+  {
+    "group_id": "4b6cf8b801154b77b056adac3e79b117",
+    "context_id": "35c193adb33948a8a2df0efd2e58f723",
+    "split": "train",
+    "scene": "cover",
+    "object": "pepper",
+    "valid": true,
+    "condition_private": "effect_omission",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": true,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "model"
+  },
+  {
+    "group_id": "859dcf5b48fd49bd9062f42d882ee9ce",
+    "context_id": "35c193adb33948a8a2df0efd2e58f723",
+    "split": "train",
+    "scene": "cover",
+    "object": "pepper",
+    "valid": true,
+    "condition_private": "combined",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "mixed"
+  },
+  {
+    "group_id": "5b20508267944c61b80adcc4a79ca0a7",
+    "context_id": "2bad274b10414f79be82ca374a364290",
+    "split": "validation",
+    "scene": "cover",
+    "object": "apple",
+    "valid": true,
+    "condition_private": "unchanged",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "ok"
+  },
+  {
+    "group_id": "199c73ea928c4ff09fdfbd1e48073f53",
+    "context_id": "2bad274b10414f79be82ca374a364290",
+    "split": "validation",
+    "scene": "cover",
+    "object": "apple",
+    "valid": true,
+    "condition_private": "parameter",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "policy"
+  },
+  {
+    "group_id": "0de8023eee7d4d0995c62e486d1d9e4d",
+    "context_id": "2bad274b10414f79be82ca374a364290",
+    "split": "validation",
+    "scene": "cover",
+    "object": "apple",
+    "valid": true,
+    "condition_private": "effect_omission",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": true,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "model"
+  },
+  {
+    "group_id": "42a0e5ad402d472696fba1931c058ae2",
+    "context_id": "2bad274b10414f79be82ca374a364290",
+    "split": "validation",
+    "scene": "cover",
+    "object": "apple",
+    "valid": true,
+    "condition_private": "combined",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "mixed"
+  },
+  {
+    "group_id": "0573c84de515419b9e53fa68510232c1",
+    "context_id": "2bad274b10414f79be82ca374a364290",
+    "split": "validation",
+    "scene": "cover",
+    "object": "pepper",
+    "valid": true,
+    "condition_private": "unchanged",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "ok"
+  },
+  {
+    "group_id": "eb7cbbc9abee4ba8954c981d11a65ebc",
+    "context_id": "2bad274b10414f79be82ca374a364290",
+    "split": "validation",
+    "scene": "cover",
+    "object": "pepper",
+    "valid": true,
+    "condition_private": "parameter",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "policy"
+  },
+  {
+    "group_id": "bb8f021032d44b53b13426180340208e",
+    "context_id": "2bad274b10414f79be82ca374a364290",
+    "split": "validation",
+    "scene": "cover",
+    "object": "pepper",
+    "valid": true,
+    "condition_private": "effect_omission",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": true,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "model"
+  },
+  {
+    "group_id": "c704ebe0659a4d6ca7f47e12b21d8d8c",
+    "context_id": "2bad274b10414f79be82ca374a364290",
+    "split": "validation",
+    "scene": "cover",
+    "object": "pepper",
+    "valid": true,
+    "condition_private": "combined",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "mixed"
+  },
+  {
+    "group_id": "d7bd2ceab8234ea2bc2f93062592d019",
+    "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+    "split": "train",
+    "scene": "blocks",
+    "object": "yellow",
+    "valid": true,
+    "condition_private": "unchanged",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "ok"
+  },
+  {
+    "group_id": "f79baa336265404aa9aa9fb04980eddf",
+    "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+    "split": "train",
+    "scene": "blocks",
+    "object": "yellow",
+    "valid": true,
+    "condition_private": "parameter",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "policy"
+  },
+  {
+    "group_id": "ffb6589b901b469a9da2d0eaf39d6558",
+    "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+    "split": "train",
+    "scene": "blocks",
+    "object": "yellow",
+    "valid": true,
+    "condition_private": "effect_omission",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": true,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "model"
+  },
+  {
+    "group_id": "20cbf5ac4f2a44e39a7d8c4fedd99799",
+    "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+    "split": "train",
+    "scene": "blocks",
+    "object": "yellow",
+    "valid": true,
+    "condition_private": "combined",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "mixed"
+  },
+  {
+    "group_id": "a846049af3eb4a918181f21ef01b6b55",
+    "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+    "split": "train",
+    "scene": "blocks",
+    "object": "red",
+    "valid": true,
+    "condition_private": "unchanged",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "ok"
+  },
+  {
+    "group_id": "55ecb82e42724616a417e3c173d58cb6",
+    "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+    "split": "train",
+    "scene": "blocks",
+    "object": "red",
+    "valid": true,
+    "condition_private": "parameter",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "policy"
+  },
+  {
+    "group_id": "5cad383948da4c02b90c24a3be7e51f3",
+    "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+    "split": "train",
+    "scene": "blocks",
+    "object": "red",
+    "valid": true,
+    "condition_private": "effect_omission",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": true,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "model"
+  },
+  {
+    "group_id": "0d26901162cd47ce97839c1e9e47c676",
+    "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+    "split": "train",
+    "scene": "blocks",
+    "object": "red",
+    "valid": true,
+    "condition_private": "combined",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "mixed"
+  },
+  {
+    "group_id": "ba65323ff1284576b406a3abb4c7cf49",
+    "context_id": "f204f9fd4a234170973307e453967572",
+    "split": "validation",
+    "scene": "blocks",
+    "object": "yellow",
+    "valid": true,
+    "condition_private": "unchanged",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "ok"
+  },
+  {
+    "group_id": "b0164d1138094b7b9d926bddd963aef9",
+    "context_id": "f204f9fd4a234170973307e453967572",
+    "split": "validation",
+    "scene": "blocks",
+    "object": "yellow",
+    "valid": true,
+    "condition_private": "parameter",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "policy"
+  },
+  {
+    "group_id": "1a14c46a09884bbb8a2e2c2201f2a63f",
+    "context_id": "f204f9fd4a234170973307e453967572",
+    "split": "validation",
+    "scene": "blocks",
+    "object": "yellow",
+    "valid": true,
+    "condition_private": "effect_omission",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": true,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "model"
+  },
+  {
+    "group_id": "38206fecbcc24f8597ff3d35a25d7916",
+    "context_id": "f204f9fd4a234170973307e453967572",
+    "split": "validation",
+    "scene": "blocks",
+    "object": "yellow",
+    "valid": true,
+    "condition_private": "combined",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "mixed"
+  },
+  {
+    "group_id": "aba77f2a763a417888af36bc5617f6d6",
+    "context_id": "f204f9fd4a234170973307e453967572",
+    "split": "validation",
+    "scene": "blocks",
+    "object": "red",
+    "valid": true,
+    "condition_private": "unchanged",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "ok"
+  },
+  {
+    "group_id": "bb5870cc837442e9a71abc1d4204545c",
+    "context_id": "f204f9fd4a234170973307e453967572",
+    "split": "validation",
+    "scene": "blocks",
+    "object": "red",
+    "valid": true,
+    "condition_private": "parameter",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "policy"
+  },
+  {
+    "group_id": "6b35a2bf404d4d8db784df020f250196",
+    "context_id": "f204f9fd4a234170973307e453967572",
+    "split": "validation",
+    "scene": "blocks",
+    "object": "red",
+    "valid": true,
+    "condition_private": "effect_omission",
+    "physical": {
+      "none": true,
+      "model_only": true,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": true,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "model"
+  },
+  {
+    "group_id": "75886802e4b249259ade8464fa6fe59b",
+    "context_id": "f204f9fd4a234170973307e453967572",
+    "split": "validation",
+    "scene": "blocks",
+    "object": "red",
+    "valid": true,
+    "condition_private": "combined",
+    "physical": {
+      "none": false,
+      "model_only": false,
+      "policy_only": true,
+      "cross_level": true
+    },
+    "contract": {
+      "none": false,
+      "model_only": false,
+      "policy_only": false,
+      "cross_level": true
+    },
+    "response_class_not_unique_cause": "mixed"
+  }
+]

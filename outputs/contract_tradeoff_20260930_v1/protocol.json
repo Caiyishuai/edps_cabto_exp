@@ -1,0 +1,100 @@
+{
+  "version": "contract-tradeoff-pilot-v1",
+  "main_question": "在有限交互下，建立与实际能力匹配、且能支持任务组合的技能契约。",
+  "scope": "designed_finite_candidate_mechanism_pilot_not_learned_repair",
+  "base_config": "project/scenes/blocks_rebuilt_v1.json",
+  "max_trials": 15,
+  "max_actions": 16,
+  "stable_seconds": 1.0,
+  "max_object_linear_speed_m_s": 0.01,
+  "max_object_angular_speed_rad_s": 0.1,
+  "render": false,
+  "model_calls": 0,
+  "initial_offset_z_m": 0.045,
+  "layout": {
+    "id": "p0-dev-a-reused-geometry",
+    "payload": "yellow",
+    "support": "green",
+    "blocker": "red",
+    "distractor": "blue",
+    "source_xy": [
+      0.34,
+      0.15
+    ],
+    "target_xy": [
+      0.57,
+      0.15
+    ],
+    "buffer_xy": [
+      0.34,
+      -0.15
+    ],
+    "distractor_xy": [
+      0.57,
+      -0.15
+    ]
+  },
+  "candidates": [
+    {
+      "id": "B",
+      "require_clear": false,
+      "require_distractor_clear": false,
+      "offset_z_m": 0.045
+    },
+    {
+      "id": "T",
+      "require_clear": true,
+      "require_distractor_clear": false,
+      "offset_z_m": 0.045
+    },
+    {
+      "id": "P",
+      "require_clear": false,
+      "require_distractor_clear": false,
+      "offset_z_m": 0.0
+    },
+    {
+      "id": "J",
+      "require_clear": true,
+      "require_distractor_clear": false,
+      "offset_z_m": 0.0
+    },
+    {
+      "id": "C",
+      "require_clear": true,
+      "require_distractor_clear": true,
+      "offset_z_m": 0.0
+    }
+  ],
+  "scenario_order": [
+    "H",
+    "D",
+    "E"
+  ],
+  "selection_demands": {
+    "narrow": [
+      "H"
+    ],
+    "broader": [
+      "H",
+      "D"
+    ]
+  },
+  "selection_rule": "max_strict_success_then_min_edit_count_then_registered_order; abstain_on_invalid_or_zero_success",
+  "extension_order": [
+    "J",
+    "B",
+    "T",
+    "P",
+    "C"
+  ],
+  "extension_gate": "stop_if_E_J_has_no_strict_success_witness",
+  "notes": [
+    "All candidates retain identical action inventory, effects, goals and evaluator.",
+    "E stacks blocker on unrelated distractor; target support stays on table.",
+    "No per-trial scene adjustment, evaluator relaxation, model inference or training.",
+    "Candidate selection is frozen using H/D before observing E.",
+    "Planning rejections remain in coverage denominator; no execution means conditional success is null.",
+    "Three related deterministic scenarios are not independent statistical repetitions."
+  ]
+}

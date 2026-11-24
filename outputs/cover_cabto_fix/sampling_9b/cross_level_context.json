@@ -1,0 +1,371 @@
+{
+  "failed_model": {
+    "name": "pick",
+    "args": {
+      "object": "shrimp",
+      "support": "bowl"
+    },
+    "pre": [
+      "empty()",
+      "at_source(shrimp)"
+    ],
+    "add": [
+      "holding(shrimp)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(shrimp)",
+      "home_completed()"
+    ]
+  },
+  "planning": {
+    "complete_for_P": true,
+    "admissible_reachable_states": true,
+    "reachable_state_count": 28,
+    "mutex_violations": [],
+    "tasks": [
+      {
+        "task": "C1",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 3,
+          "action_ids": [
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_source(apple)",
+            "at_source(potato)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 23
+      },
+      {
+        "task": "C2",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 5,
+          "action_ids": [
+            "pick(object=apple,support=board)",
+            "place(object=apple,support=board)",
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_source(potato)",
+            "at_target(apple)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 65
+      },
+      {
+        "task": "C3",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 7,
+          "action_ids": [
+            "pick(object=potato,support=pan)",
+            "place(object=potato,support=pan)",
+            "pick(object=apple,support=board)",
+            "place(object=apple,support=board)",
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_target(apple)",
+            "at_target(potato)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 246
+      }
+    ],
+    "scope": "finite declared P, symbolic; NOT physical consistency"
+  },
+  "execution": [
+    {
+      "generated_code": "def policy(api):\n    # Step 1: Approach the shrimp\n    shrimp_pos = api.grasp_point()\n    api.approach(shrimp_pos)\n    \n    # Step 2: Descend to grasp the shrimp\n    api.descend(shrimp_pos)\n    \n    # Step 3: Close gripper to grasp the shrimp\n    api.close_gripper()\n    \n    # Step 4: Lift the shrimp\n    api.lift()\n    \n    # Step 5: Approach the bowl\n    bowl_pos = api.grasp_point()\n    api.approach(bowl_pos)\n    \n    # Step 6: Descend to place the shrimp in the bowl\n    api.descend(bowl_pos)\n    \n    # Step 7: Open gripper to release the shrimp in the bowl\n    api.open_gripper()\n    \n    # Step 8: Return the arm to HOME\n    api.home_completed()",
+      "error": "PolicyRejected: unsupported API attribute api.home_completed; allowed methods: ['approach', 'close_gripper', 'descend', 'grasp_point', 'lift', 'open_gripper']",
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "holding(shrimp)"
+        ],
+        "remaining_del": [
+          "at_source(shrimp)",
+          "empty()"
+        ],
+        "missing_preserved_pre": [],
+        "unexpected_added": [
+          "at_source(shrimp)",
+          "empty()"
+        ],
+        "unexpected_removed": [
+          "holding(shrimp)"
+        ]
+      },
+      "api_trace": [],
+      "forbidden_contacts": [],
+      "instruction": "Repair the candidate CODE, keeping the immutable action model and API contracts."
+    },
+    {
+      "generated_code": "def policy(api):\n    # Step 1: Approach the shrimp\n    shrimp_pos = api.grasp_point()\n    api.approach(shrimp_pos)\n    \n    # Step 2: Descend to grasp the shrimp\n    api.descend(shrimp_pos)\n    \n    # Step 3: Close gripper to grasp the shrimp\n    api.close_gripper()\n    \n    # Step 4: Lift the shrimp\n    api.lift()\n    \n    # Step 5: Approach the bowl\n    bowl_pos = api.grasp_point()\n    api.approach(bowl_pos)\n    \n    # Step 6: Descend to place the shrimp in the bowl\n    api.descend(bowl_pos)\n    \n    # Step 7: Open gripper to release the shrimp in the bowl\n    api.open_gripper()",
+      "error": null,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "holding(shrimp)"
+        ],
+        "remaining_del": [
+          "empty()"
+        ],
+        "missing_preserved_pre": [],
+        "unexpected_added": [
+          "empty()"
+        ],
+        "unexpected_removed": [
+          "holding(shrimp)"
+        ]
+      },
+      "api_trace": [
+        {
+          "method": "grasp_point",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": [
+            0.31005448082886233,
+            -0.19001732181460515,
+            0.4100006199279825
+          ]
+        },
+        {
+          "method": "approach",
+          "args": [
+            [
+              0.31005448082886233,
+              -0.19001732181460515,
+              0.4100006199279825
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "descend",
+          "args": [
+            [
+              0.31005448082886233,
+              -0.19001732181460515,
+              0.4100006199279825
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "close_gripper",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "lift",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "grasp_point",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": [
+            0.3126631553843794,
+            -0.19026968156724813,
+            0.4100006199279825
+          ]
+        },
+        {
+          "method": "approach",
+          "args": [
+            [
+              0.3126631553843794,
+              -0.19026968156724813,
+              0.4100006199279825
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "descend",
+          "args": [
+            [
+              0.3126631553843794,
+              -0.19026968156724813,
+              0.4100006199279825
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "open_gripper",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        }
+      ],
+      "forbidden_contacts": [],
+      "instruction": "Repair the candidate CODE, keeping the immutable action model and API contracts."
+    },
+    {
+      "generated_code": "def policy(api):\n    # Step 1: Approach the shrimp\n    shrimp_pos = api.grasp_point()\n    api.approach(shrimp_pos)\n    \n    # Step 2: Descend to grasp the shrimp\n    api.descend(shrimp_pos)\n    \n    # Step 3: Close gripper to grasp the shrimp\n    api.close_gripper()\n    \n    # Step 4: Lift the shrimp\n    api.lift()\n    \n    # Step 5: Approach the bowl\n    bowl_pos = api.grasp_point()\n    api.approach(bowl_pos)\n    \n    # Step 6: Descend to place the shrimp in the bowl\n    api.descend(bowl_pos)\n    \n    # Step 7: Open gripper to release the shrimp in the bowl\n    api.open_gripper()",
+      "error": null,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "holding(shrimp)"
+        ],
+        "remaining_del": [
+          "empty()"
+        ],
+        "missing_preserved_pre": [],
+        "unexpected_added": [
+          "empty()"
+        ],
+        "unexpected_removed": [
+          "holding(shrimp)"
+        ]
+      },
+      "api_trace": [
+        {
+          "method": "grasp_point",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": [
+            0.31005448082886233,
+            -0.19001732181460515,
+            0.4100006199279825
+          ]
+        },
+        {
+          "method": "approach",
+          "args": [
+            [
+              0.31005448082886233,
+              -0.19001732181460515,
+              0.4100006199279825
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "descend",
+          "args": [
+            [
+              0.31005448082886233,
+              -0.19001732181460515,
+              0.4100006199279825
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "close_gripper",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "lift",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "grasp_point",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": [
+            0.3126631553843794,
+            -0.19026968156724813,
+            0.4100006199279825
+          ]
+        },
+        {
+          "method": "approach",
+          "args": [
+            [
+              0.3126631553843794,
+              -0.19026968156724813,
+              0.4100006199279825
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "descend",
+          "args": [
+            [
+              0.3126631553843794,
+              -0.19026968156724813,
+              0.4100006199279825
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "open_gripper",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        }
+      ],
+      "forbidden_contacts": [],
+      "instruction": "Repair the candidate CODE, keeping the immutable action model and API contracts."
+    }
+  ],
+  "status": "not automatically patching h for a code or perception failure"
+}

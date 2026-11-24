@@ -1,0 +1,4 @@
+usage: evaluate_decision_quality.py [-h] [--run RUN] --output OUTPUT
+                                    [--max-tokens MAX_TOKENS]
+                                    [--method {base,adapter,all}]
+evaluate_decision_quality.py: error: argument --method: invalid choice: 'rule' (choose from 'base', 'adapter', 'all')

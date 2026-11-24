@@ -1,0 +1,18 @@
+{
+  "matrix_episodes": 128,
+  "v1_v2_outcomes_identical": true,
+  "source_snapshots_match": true,
+  "all_v2_trials_valid": true,
+  "all_artifacts_complete": true,
+  "successful_episodes": 72,
+  "successful_episodes_full_transitions_match": true,
+  "any_weld_violation": false,
+  "v2_cost_seconds": {
+    "development": 21.18717408401426,
+    "validation": 18.94224033295177,
+    "heldout": 37.795637834002264
+  },
+  "scope": "v2 repeats v1 settings after infrastructure hardening; not new holdout evidence",
+  "test_log": "blocks_p0_integrity_tests_20260927.log",
+  "legacy_log": "blocks_p0_legacy_regression_20260927.log"
+}

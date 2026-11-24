@@ -1,0 +1,102 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "before": [
+    "at_source(apple)",
+    "at_source(shrimp)",
+    "at_target(potato)",
+    "empty()"
+  ],
+  "after": [
+    "at_source(shrimp)",
+    "at_target(potato)",
+    "holding(apple)"
+  ],
+  "model": {
+    "name": "pick",
+    "args": {
+      "object": "apple",
+      "support": "board"
+    },
+    "pre": [
+      "empty()",
+      "at_source(apple)"
+    ],
+    "add": [
+      "holding(apple)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(apple)",
+      "home_completed()"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "grasp_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.48999987005452794,
+        -0.1900001502156587,
+        0.4229845037681055
+      ]
+    },
+    {
+      "method": "approach",
+      "args": [
+        [
+          0.48999987005452794,
+          -0.1900001502156587,
+          0.4229845037681055
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "descend",
+      "args": [
+        [
+          0.48999987005452794,
+          -0.1900001502156587,
+          0.4229845037681055
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "close_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "lift",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "forbidden_contacts": [],
+  "code_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6"
+}

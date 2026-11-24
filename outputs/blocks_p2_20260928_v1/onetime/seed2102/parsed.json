@@ -1,0 +1,19 @@
+{
+  "decision": "propose",
+  "reason": "Grasp failures in evidence 94611a251028 and e027735b3d88 show zero finger forces, indicating a controller problem. The placement failure in evidence 333bb0724f68 is due to an occupied support (red on yellow), which is a missing precondition for 'stack', not a grasp parameter issue. Since the instruction forbids mixing placement failures into grasp parameters, only the controller fix is proposed.",
+  "accepted": [
+    {
+      "rank": 0,
+      "candidate": {
+        "id": "controller_force_fix",
+        "pre_add": [],
+        "offset_z_m": 0.045,
+        "reason": "Fixes zero finger force by adjusting the approach height to ensure fingers engage before closure, addressing the controller error without changing preconditions."
+      },
+      "origin": "real_LM_response",
+      "recipe_sha256": "4bc80aa95033dd25da262cd4fa8d019ac2ee010d512d60232c12eb26fa97c5ca"
+    }
+  ],
+  "rejected": [],
+  "status": "parsed"
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "model_id": "mlx-community/Qwen3.5-0.8B-4bit",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful robotics programmer. Follow the requested output format exactly. Produce short complete answers; never repeat code or copy feedback verbatim."
+      },
+      {
+        "role": "user",
+        "content": "Implement def policy(api) to grasp and LIFT one object using only these APIs: approach(p) moves above xyz p; close_gripper() closes at current position; descend(p) lowers to p; grasp_point() returns xyz; lift() raises closed hand; open_gripper() opens. Use local p. No imports or loops. Output Python only."
+      }
+    ],
+    "image_files": [],
+    "formatted_prompt": "<|im_start|>system\nYou are a careful robotics programmer. Follow the requested output format exactly. Produce short complete answers; never repeat code or copy feedback verbatim.<|im_end|>\n<|im_start|>user\nImplement def policy(api) to grasp and LIFT one object using only these APIs: approach(p) moves above xyz p; close_gripper() closes at current position; descend(p) lowers to p; grasp_point() returns xyz; lift() raises closed hand; open_gripper() opens. Use local p. No imports or loops. Output Python only.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "decoding": {
+      "max_tokens": 256,
+      "temperature": 0.15,
+      "top_p": 0.9,
+      "top_k": 20,
+      "repetition_penalty": 1.08,
+      "repetition_context_size": 256,
+      "seed": 1701
+    },
+    "raw": "def def_policy(api):\n    # Approach\n    approach(p)\n    # Close gripper\n    close_gripper()\n    # Descend\n    descend(p)\n    # Grasp point\n    grasp_point()\n    # Lift\n    lift()\n    # Open gripper\n    open_gripper()",
+    "generation_tokens": 68,
+    "wall_seconds": 2.9283664169488475
+  },
+  {
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful robotics programmer. Follow the requested output format exactly. Produce short complete answers; never repeat code or copy feedback verbatim."
+      },
+      {
+        "role": "user",
+        "content": "Implement def policy(api) to grasp and LIFT one object using only these APIs: approach(p) moves above xyz p; close_gripper() closes at current position; descend(p) lowers to p; grasp_point() returns xyz; lift() raises closed hand; open_gripper() opens. Use local p. No imports or loops. Output Python only."
+      }
+    ],
+    "image_files": [],
+    "formatted_prompt": "<|im_start|>system\nYou are a careful robotics programmer. Follow the requested output format exactly. Produce short complete answers; never repeat code or copy feedback verbatim.<|im_end|>\n<|im_start|>user\nImplement def policy(api) to grasp and LIFT one object using only these APIs: approach(p) moves above xyz p; close_gripper() closes at current position; descend(p) lowers to p; grasp_point() returns xyz; lift() raises closed hand; open_gripper() opens. Use local p. No imports or loops. Output Python only.<|im_end|>\n<|im_start|>assistant\n",
+    "decoding": {
+      "max_tokens": 256,
+      "temperature": 0.15,
+      "top_p": 0.9,
+      "top_k": 20,
+      "repetition_penalty": 1.08,
+      "repetition_context_size": 256,
+      "seed": 1701
+    },
+    "raw": "```python\ndef policy(api):\n    api.approach()\n    api.close_gripper()\n    api.descend()\n    api.grasp_point()\n    api.lift()\n    api.open_gripper()\n```",
+    "generation_tokens": 41,
+    "wall_seconds": 2.970893624937162
+  }
+]

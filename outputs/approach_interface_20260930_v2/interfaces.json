@@ -1,0 +1,52 @@
+{
+  "symbols": [
+    {
+      "symbol": "FineCover.approach",
+      "signature": "(self, point)",
+      "source": "project/core/cover_cabto_api.py",
+      "start_line": 236
+    },
+    {
+      "symbol": "FineCover.descend",
+      "signature": "(self, point)",
+      "source": "project/core/cover_cabto_api.py",
+      "start_line": 241
+    },
+    {
+      "symbol": "FineCover.lift",
+      "signature": "(self)",
+      "source": "project/core/cover_cabto_api.py",
+      "start_line": 257
+    },
+    {
+      "symbol": "RebuiltSingleArm.move",
+      "signature": "(self, target, grip, speed=None)",
+      "source": "project/core/single_arm_rebuilt.py",
+      "start_line": 220
+    },
+    {
+      "symbol": "RebuiltSingleArm.move_object",
+      "signature": "(self, n, origin, speed=None)",
+      "source": "project/core/single_arm_rebuilt.py",
+      "start_line": 234
+    },
+    {
+      "symbol": "ArmInterface.solve_ik",
+      "signature": "(self, target_pos, target_quat, restarts=24, iters=120, w_rot=0.5, tol=0.001, local_only=False)",
+      "source": "CABTO/exp4_bt_tasks/stage2_scripted/exp4_env.py",
+      "start_line": 211
+    }
+  ],
+  "pick_api": {
+    "grasp_point": "api.grasp_point() -> (x,y,z). Read-only payload grasp-center estimate in world metres. Backend is selected externally (oracle or Qwen). No movement.",
+    "open_gripper": "api.open_gripper() -> None. Command gripper open and wait; does NOT move arm.",
+    "approach": "api.approach(point) -> None. Move OPEN end effector above the point at safe transport height. One xyz tuple argument. Does NOT descend or close.",
+    "descend": "api.descend(point) -> None. Move OPEN end effector vertically to this grasp xyz. Requires already above it. Does NOT close or lift.",
+    "close_gripper": "api.close_gripper() -> None. Close at CURRENT location and wait. Requires simultaneous two-finger force. Does NOT approach, descend or lift.",
+    "lift": "api.lift() -> None. Raise CLOSED end effector vertically to transport height. Does NOT close. The grasped payload must move upward."
+  },
+  "pose_argument_in_current_move": false,
+  "yaw_argument_in_public_pick_methods": false,
+  "ik_accepts_quaternion": true,
+  "interpretation": "A pose-aware IK backend is not a pose-aware executable task API."
+}

@@ -1,0 +1,10103 @@
+{
+  "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-bf16",
+  "snapshot": "/Users/yishuaicai/.cache/huggingface/hub/models--mlx-community--Qwen2.5-VL-3B-Instruct-bf16/snapshots/33765717028a7f0514ea1d213035cddf4b32c500",
+  "revision": "33765717028a7f0514ea1d213035cddf4b32c500",
+  "weights_loaded": false,
+  "training_started": false,
+  "examples": [
+    {
+      "sample_id": "e37027a4b21649aaae4f41b46fbbbfa1",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4929,
+      "prompt_tokens": 4848,
+      "target_tokens": 81,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "17b193e758124d8ca28ae4a8a52d11f1",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5036,
+      "prompt_tokens": 4998,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "617b5545521b429e876d3e5988310110",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8559,
+      "prompt_tokens": 8466,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "f5dcd9bcac7f451ba0149a9ef1b01b74",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5036,
+      "prompt_tokens": 4998,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3be85e7210294bb0bc93d3dd450b5a5f",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8559,
+      "prompt_tokens": 8466,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3ecac8394b624aceae032721ba827bfc",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5036,
+      "prompt_tokens": 4998,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "eb3d3eac5f1f4662be62acf40ccf3584",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8559,
+      "prompt_tokens": 8466,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "998ee951faab4085b2479ebd35e30383",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5036,
+      "prompt_tokens": 4893,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4a60336eaa21408dba9ea7f8715c0a8d",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5111,
+      "prompt_tokens": 5073,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "7ff304ed2781457eb3784a30c616e931",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8682,
+      "prompt_tokens": 8586,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "6b12c72d1abc4f29829829db1043c286",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5081,
+      "prompt_tokens": 5043,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "d4509541634a4741a1595c8783c22550",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8604,
+      "prompt_tokens": 8511,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "36dbdc4f8b9c4b9aaac7e852c77655b5",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5081,
+      "prompt_tokens": 5043,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "788688579d1945cfae3296c23ac81f33",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8604,
+      "prompt_tokens": 8511,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "0e961c59a89642ee823782b7d7402a51",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4964,
+      "prompt_tokens": 4851,
+      "target_tokens": 113,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "447991ba325d44a386b23f167d47ee0d",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5042,
+      "prompt_tokens": 5004,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "ab270a9f9d6945839020b38321cccb2a",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8565,
+      "prompt_tokens": 8472,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "9b67d9759fea4d0682e1998b323f2aeb",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5036,
+      "prompt_tokens": 4998,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "6148e75c2e4c46309f61f21344c6b5d6",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8565,
+      "prompt_tokens": 8469,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "236f5087cee44f24816f2ab23e52e2f4",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5042,
+      "prompt_tokens": 5004,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "680a6df58b0e431e8b877d7bede453b0",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8565,
+      "prompt_tokens": 8472,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "24759e164cb04bb0a2d5037d5978b673",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5039,
+      "prompt_tokens": 4896,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "0aafa38f86da469c85eb482d8e69aa1d",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5117,
+      "prompt_tokens": 5079,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "af5cab7f47994588b17780ed2a515bd6",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8688,
+      "prompt_tokens": 8592,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "33ac60fc6028449aadf092cbd9219545",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5081,
+      "prompt_tokens": 5043,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "089985fe1d384d81b21d6384e80a5f5e",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8603,
+      "prompt_tokens": 8514,
+      "target_tokens": 89,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "e053b955243242e8817565bb002c0220",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5087,
+      "prompt_tokens": 5049,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "cf08618b40284367a5f61f100b6b3b6b",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8610,
+      "prompt_tokens": 8517,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "b702f2eb59d44949b4858ef60cefa3f0",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4934,
+      "prompt_tokens": 4853,
+      "target_tokens": 81,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "99aa1396f859439b95e83a8933bdad43",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5042,
+      "prompt_tokens": 5004,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "2ba3026ab38d47f29b01cfd52587f9b6",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8570,
+      "prompt_tokens": 8477,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3b85b33bee814eb1aa170e19ad301a56",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5042,
+      "prompt_tokens": 5004,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "9c046d1c65b749d994f4fb13529c41cb",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8570,
+      "prompt_tokens": 8477,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4d556f0c98d8475582f711ea53e4223b",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5042,
+      "prompt_tokens": 5004,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "f38695dc5b454a89b0647e58ac7b0d90",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8570,
+      "prompt_tokens": 8477,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "c8b79c0ff3d74cd2bdbc7f5d777cb51a",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5045,
+      "prompt_tokens": 4902,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "80c6e320fcef4d7897a049a90b685320",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5121,
+      "prompt_tokens": 5083,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "f0ee3c02f8fe4f9b845f46aba14a467f",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8701,
+      "prompt_tokens": 8605,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "ce02e502c4f64628bf23e9232a7cd129",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5091,
+      "prompt_tokens": 5053,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "e437f8a22eaa40e5bce6992533333146",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8619,
+      "prompt_tokens": 8526,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "b07cce14bdad4ef885a189ffe0b8fd90",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5091,
+      "prompt_tokens": 5053,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "f7f01d44ee044a938df9a63bde7f19b3",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8619,
+      "prompt_tokens": 8526,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "1fba5d8e2e5a44c4a7b62748dc717006",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4969,
+      "prompt_tokens": 4856,
+      "target_tokens": 113,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "9d649868fa144cbda3b3dc48cb5be14d",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5048,
+      "prompt_tokens": 5010,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "f8287586338f4fd6aa466321ed7c9fd0",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8576,
+      "prompt_tokens": 8483,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "517d922e8a6a4137a030ae698438619e",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5042,
+      "prompt_tokens": 5004,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "1931e26d63ef419ea3b3515d9d213f23",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8576,
+      "prompt_tokens": 8480,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "e2388347ece14a9b805ad684cddd92d1",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5048,
+      "prompt_tokens": 5010,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4e816427fc924b09870a3e0a6a86abdd",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8576,
+      "prompt_tokens": 8483,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4799398b535143fd92e7a24582e08616",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5048,
+      "prompt_tokens": 4905,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "77a98da33aa442c181dd9937d278a3e1",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5127,
+      "prompt_tokens": 5089,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "a52401efb9a843459b8517c87c3026b7",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8707,
+      "prompt_tokens": 8611,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "57a34061c5344f67a509ff3f4b2d6703",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5091,
+      "prompt_tokens": 5053,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "338064dd0d47490d98d19f3114e89d52",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8618,
+      "prompt_tokens": 8529,
+      "target_tokens": 89,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "6e19d9fa1be643c6be6f652cf61d372d",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5097,
+      "prompt_tokens": 5059,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "961e279a9a4e40cea0c4216f603a7e80",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8625,
+      "prompt_tokens": 8532,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "89f350d97bcd434186e166b292baed00",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4928,
+      "prompt_tokens": 4847,
+      "target_tokens": 81,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "cade07cd7c4b4fe3a4d0a106a221f3da",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5035,
+      "prompt_tokens": 4997,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "b883ea14ba9046e6afe4e3549f858838",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8557,
+      "prompt_tokens": 8464,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "b0180dfb018748239376f20caf574907",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5035,
+      "prompt_tokens": 4997,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "289314ac7ad84b6fa8b26874e2be8206",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8557,
+      "prompt_tokens": 8464,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "da2c25f8ebfd4ce08424ac115022d56b",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5035,
+      "prompt_tokens": 4997,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "ecc77a420e20427eb1ba3ec821122c43",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8557,
+      "prompt_tokens": 8464,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "b064873308424240aa4f6b61f68fb05d",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5038,
+      "prompt_tokens": 4895,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "e231ffbb2afe4ef4b78143f7fa67706a",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5113,
+      "prompt_tokens": 5075,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "6575fe117e4a4a8f959de282ebaf340b",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8686,
+      "prompt_tokens": 8590,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "01816acac5da4773ac572b1dce8e565b",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5083,
+      "prompt_tokens": 5045,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "c463376747eb4c58aed5abc6ea1a4c31",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8605,
+      "prompt_tokens": 8512,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "1e54f88b9f284238bd3a45ef65e421c6",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5083,
+      "prompt_tokens": 5045,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4a4dae51338741a0b95c17344ff2dfc1",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8605,
+      "prompt_tokens": 8512,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "820ae04828ce424ba752e4605e1ebd66",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4963,
+      "prompt_tokens": 4850,
+      "target_tokens": 113,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4790eb9405ca40e7b1d036fdb5f11f31",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5041,
+      "prompt_tokens": 5003,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "e31c349d772546aabfafd7c388fc7d92",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8563,
+      "prompt_tokens": 8470,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3b03a8458ed745ccb1eb68ec68aee7fc",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5035,
+      "prompt_tokens": 4997,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "a0030a20285a445db6d68ff046262770",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8563,
+      "prompt_tokens": 8467,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "09b0accbeba14804b47879d4f71801cf",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5041,
+      "prompt_tokens": 5003,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "82570bff16f446ce9c2bb356208eda59",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8563,
+      "prompt_tokens": 8470,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "fe19d882053c4bd192ad402dabe5c8d8",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5041,
+      "prompt_tokens": 4898,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3a04b8f0c4ab45fb943e24b163aa4db9",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5119,
+      "prompt_tokens": 5081,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "d7f0ebc59a384cb4b1328ea2d66a96ae",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8692,
+      "prompt_tokens": 8596,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "869c7ae796b845fa9527b8a6d4402023",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5083,
+      "prompt_tokens": 5045,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "558b255a44bd4dbd88ddf1051dc76fb4",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8604,
+      "prompt_tokens": 8515,
+      "target_tokens": 89,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "44827df19cf2404396e5dd7e6a6e54e0",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5089,
+      "prompt_tokens": 5051,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "0dda607d724444c7bc190e4839790426",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8611,
+      "prompt_tokens": 8518,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "0f8fadb27b5b47738709a75ca9f5a1d5",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4934,
+      "prompt_tokens": 4853,
+      "target_tokens": 81,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "5703061efdd84f23be9a553747d79946",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5042,
+      "prompt_tokens": 5004,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "00f4ddd645244b0ca3d66f983f439e75",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8570,
+      "prompt_tokens": 8477,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "c6f5cff0bbf74ab4912b24a1dde4b555",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5042,
+      "prompt_tokens": 5004,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "730b0dd7a9c84cf8946f5548307c6c73",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8570,
+      "prompt_tokens": 8477,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "dcb88b3183e14dddadb28d6993aa5f34",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5042,
+      "prompt_tokens": 5004,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "0fb3f2e5df484771967821186ebb8a7d",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8570,
+      "prompt_tokens": 8477,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "03e4933ebb00436fac1917821f653bf4",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5037,
+      "prompt_tokens": 4894,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "da70ccc1bfe744b9977e7df4fc2e6b0f",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5113,
+      "prompt_tokens": 5075,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4cc133b995134384961f161df61570de",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8685,
+      "prompt_tokens": 8589,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "f2c2a04defb64ebcac5a1acd7b548133",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5083,
+      "prompt_tokens": 5045,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "d430c096bcd347199c07631d691a7bbd",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8611,
+      "prompt_tokens": 8518,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3d9ca2d262f640d89ab0cafd5c028199",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5083,
+      "prompt_tokens": 5045,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "9670173a75564faab1a4f03c05ca2508",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8611,
+      "prompt_tokens": 8518,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "30b6f58cfcad4a7d9d6d63af125f1737",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4969,
+      "prompt_tokens": 4856,
+      "target_tokens": 113,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "8cc37d2cd1c74c8ab21ab02c6790a17b",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5048,
+      "prompt_tokens": 5010,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "1d9d5be811d2410c85b8ae4aad85d10e",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8576,
+      "prompt_tokens": 8483,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "7dfa7e2789ba41d5958343c7568f3174",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5042,
+      "prompt_tokens": 5004,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "5319c3e789b24370b630f392653b9640",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8576,
+      "prompt_tokens": 8480,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "c36fc24bd86448738ef1bcd318bf130b",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5048,
+      "prompt_tokens": 5010,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "51925e8cf377473984ff6fbfa75e18dc",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8576,
+      "prompt_tokens": 8483,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "953abff87fca4403af233df6f14e0062",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5040,
+      "prompt_tokens": 4897,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "f89a053733b04ca99e048e10aa8827a9",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5119,
+      "prompt_tokens": 5081,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "42972cd66aa2416e96121e0b088e0d80",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8691,
+      "prompt_tokens": 8595,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "8d8950e9bc8941eb96e7bb3f02e0be71",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5083,
+      "prompt_tokens": 5045,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "5bae3549c70f49969b1ec28c5010d11f",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8610,
+      "prompt_tokens": 8521,
+      "target_tokens": 89,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "463163a72aa546c6a0556e9671f35f30",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5089,
+      "prompt_tokens": 5051,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "14eb8ff6dfeb4372a48976192ac68faf",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8617,
+      "prompt_tokens": 8524,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "cf653774090e48689875b5b3f9dbf18e",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4924,
+      "prompt_tokens": 4843,
+      "target_tokens": 81,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "14722e42c29a46c7841db04e5d656500",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5031,
+      "prompt_tokens": 4993,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "d72bb8b21cb747f88d8805f7ff285a5a",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8551,
+      "prompt_tokens": 8458,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3549dc55ac674cba90448b8296ad6f80",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5031,
+      "prompt_tokens": 4993,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "945d10dcddd34f719ea48df986fa3ff0",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8551,
+      "prompt_tokens": 8458,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "40556eddb2f0416888d4e11f824974c2",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5031,
+      "prompt_tokens": 4993,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "623bd8ee99f34b23838da38e030e53ba",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8551,
+      "prompt_tokens": 8458,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "040698743ea44ff09bb0dfa0912a19f5",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5009,
+      "prompt_tokens": 4866,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "c850f9f6af7246429ee02f3d490eb4b7",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5084,
+      "prompt_tokens": 5046,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "23abfa397db3478ab42f20e56c247140",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8630,
+      "prompt_tokens": 8534,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "74247e030e9448c299b6ddc0a8893de7",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5054,
+      "prompt_tokens": 5016,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "09e0d783274941618830daeaabb8679c",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8574,
+      "prompt_tokens": 8481,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "7c2496c153af402ea8dcf6a8282f76a9",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5054,
+      "prompt_tokens": 5016,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "545b1b727f4b4992b11cd8f94bdcc355",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8574,
+      "prompt_tokens": 8481,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "ec95289c59cf4a818fe7b91b6435bc33",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4959,
+      "prompt_tokens": 4846,
+      "target_tokens": 113,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "1dd2d02ded4b4529af58f41110174fb4",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5037,
+      "prompt_tokens": 4999,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "64b63cf61bea455b95ca9d70d0f2f4b9",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8557,
+      "prompt_tokens": 8464,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "f0c0a12e716e4826adaf9a28b65faf78",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5031,
+      "prompt_tokens": 4993,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "a39e19c10cd64718b0642166928a641a",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8557,
+      "prompt_tokens": 8461,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4e0e8df2f03b4b589fbcd9b441f1eb6e",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5037,
+      "prompt_tokens": 4999,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "dbc1edb8655c4236bb070255c5150e75",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8557,
+      "prompt_tokens": 8464,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4a976e7c38214de392eed92af9da0c65",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5012,
+      "prompt_tokens": 4869,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "b219e332c4bd4bf7880be786e0892c80",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5090,
+      "prompt_tokens": 5052,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "d510477587014c2abe751bb2be3f33f2",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8636,
+      "prompt_tokens": 8540,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "274a93ec0d3940f8bbc898de4266c60c",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5054,
+      "prompt_tokens": 5016,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3ca2e99dac49473aadef0f3575016649",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8573,
+      "prompt_tokens": 8484,
+      "target_tokens": 89,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "249dc3a26cca4dbe883872bedc11e72f",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5060,
+      "prompt_tokens": 5022,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "02cda8a088c84002a57e84395b01a4ad",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8580,
+      "prompt_tokens": 8487,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3fa1910f64a74119b1b5d565c329d711",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4914,
+      "prompt_tokens": 4833,
+      "target_tokens": 81,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "7cac870a5baf4f54ae30c1112ea6aa87",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5018,
+      "prompt_tokens": 4980,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "2f5568b9c46a44eca3bdeb51e41f1826",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8528,
+      "prompt_tokens": 8435,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "5261bf0834a2480c96ca7156d169927f",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5018,
+      "prompt_tokens": 4980,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "e11608800d344ebcb853364099837c95",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8528,
+      "prompt_tokens": 8435,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3f0fb963b75b4af4a7635258882a50b6",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5018,
+      "prompt_tokens": 4980,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4e88a208567b402993599ce82a417c47",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8528,
+      "prompt_tokens": 8435,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "0adcd5f84a3d46b8a8df7ec0b96775dc",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4999,
+      "prompt_tokens": 4856,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "989e15b663934f53bfb0d8ac888f8f97",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5071,
+      "prompt_tokens": 5033,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3d78754ef5f8445db9745c2b769c3440",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8607,
+      "prompt_tokens": 8511,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "e9af7060dfba4c898051450a20ea6d37",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5041,
+      "prompt_tokens": 5003,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "a553ff1b9d274173bd7e5e96ec1b67d7",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8551,
+      "prompt_tokens": 8458,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "df36ff722f5048e185a12380acc2250e",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5041,
+      "prompt_tokens": 5003,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4101f46f81844cb191e736bc180c22f9",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8551,
+      "prompt_tokens": 8458,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4f6498af375b4f9daa494f29376d3faa",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4949,
+      "prompt_tokens": 4836,
+      "target_tokens": 113,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "20ecb291a28f45119af1b9c3141fbc30",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5024,
+      "prompt_tokens": 4986,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "c84f6a8d05044b5bbc7aa56bc4f7f04d",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8534,
+      "prompt_tokens": 8441,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "cc98ea1993a04a24bceb42c75b9c84d0",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5018,
+      "prompt_tokens": 4980,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "b3fe26de578249c9930c78699a3af372",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8534,
+      "prompt_tokens": 8438,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "023c113138fb4006bcf90838c6ead9da",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5024,
+      "prompt_tokens": 4986,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4e186dacb82e43b8bf31047f8af2a27f",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8534,
+      "prompt_tokens": 8441,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "57b671661f3e40db96191bb4dd9ab892",
+      "split": "train",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5002,
+      "prompt_tokens": 4859,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "c3f422ed7b7f4cc1a682c6fe498fc522",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5077,
+      "prompt_tokens": 5039,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "99b112b27beb463aaca4a13da5329d69",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8613,
+      "prompt_tokens": 8517,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "f3c7b15e8d29417e955564efb4e1d838",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5041,
+      "prompt_tokens": 5003,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "2b0aa1b3ad174e179ffaaceb58fccf53",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8550,
+      "prompt_tokens": 8461,
+      "target_tokens": 89,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "8f583882b9ff4c0bb2952f2d829fb0d0",
+      "split": "train",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5047,
+      "prompt_tokens": 5009,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "32618911869f4300a3bb5e9e4a0f860e",
+      "split": "train",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8557,
+      "prompt_tokens": 8464,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "cb40faa4bd694bba9ddd55a11e128f54",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4910,
+      "prompt_tokens": 4829,
+      "target_tokens": 81,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "52a41d26f6464d1792e6024577933e04",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5017,
+      "prompt_tokens": 4979,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "e50cba9efa3f4658826f6e83d5e8ef2a",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8523,
+      "prompt_tokens": 8430,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "14b23064a5504416bb6d62839571f855",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5017,
+      "prompt_tokens": 4979,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "7e0ecd2e15134a47978502f01954fdd7",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8523,
+      "prompt_tokens": 8430,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "7bd4b117796c49abac6da29a6f429a3b",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5017,
+      "prompt_tokens": 4979,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "ba7de6fd0470484dbdfcc5604482b636",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8523,
+      "prompt_tokens": 8430,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "832865f6f978404a8e113b27a8e8f8c9",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5000,
+      "prompt_tokens": 4857,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "10e941a6632b4c5d8b564756daaa8b9b",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5075,
+      "prompt_tokens": 5037,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "28db34340174455db729b0c6d2b39b8f",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8612,
+      "prompt_tokens": 8516,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "0cb8596ad5d84d9f83149880b395cca5",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5045,
+      "prompt_tokens": 5007,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "b9b867f0bb4749cb9d3bd06ab9ea613a",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8551,
+      "prompt_tokens": 8458,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "4c39573eb1ee48d3aa84806f959f0c28",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5045,
+      "prompt_tokens": 5007,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "b0b8e55bca594ab8a0709f123f771fd4",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8551,
+      "prompt_tokens": 8458,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "c2a197acfa66450fa372b13cc1e03587",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4945,
+      "prompt_tokens": 4832,
+      "target_tokens": 113,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "1d6b69f6367745f69a89b5d23f1d748c",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5023,
+      "prompt_tokens": 4985,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "c98b99127d29461b970224675664e63d",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8529,
+      "prompt_tokens": 8436,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "073db11793f74a029b817831aec684ee",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5017,
+      "prompt_tokens": 4979,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "7bf3bd041c534b66aca21d1e30103040",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8529,
+      "prompt_tokens": 8433,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "d2399f68e454469f863498a56a3823d4",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5023,
+      "prompt_tokens": 4985,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "0b0500ed023a496191feb5f4553421c5",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8529,
+      "prompt_tokens": 8436,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "9b91e516008043f090a924386dcb6874",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 5003,
+      "prompt_tokens": 4860,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "f587f4f6e8ac43db856cfb05142db527",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5081,
+      "prompt_tokens": 5043,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "66317d4d20314989b0676b53742ead86",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8618,
+      "prompt_tokens": 8522,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "ba30108bacaa48749be4f1246a4b763d",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5045,
+      "prompt_tokens": 5007,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "37f450c7ce844b7299f425a75e8f1e07",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8550,
+      "prompt_tokens": 8461,
+      "target_tokens": 89,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "9a3c04a36b3543ebad66f01fa81bda57",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5051,
+      "prompt_tokens": 5013,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "548564f40df240388a64296c261bee20",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8557,
+      "prompt_tokens": 8464,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "a596c35205dd4bd7ba3d8102133a4474",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4901,
+      "prompt_tokens": 4820,
+      "target_tokens": 81,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "9bfa42ba8d6d439a99a98d52cf08d074",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5005,
+      "prompt_tokens": 4967,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "2b95b564aabe46858e6d533b0fde4406",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8502,
+      "prompt_tokens": 8409,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "9bdd063b08934772b99702c710fd0269",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5005,
+      "prompt_tokens": 4967,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "c1f1757692184770b27e5da4c0e2151a",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8502,
+      "prompt_tokens": 8409,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "1a4e3c80ed5c481b88023893783f44c4",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5005,
+      "prompt_tokens": 4967,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "af2b17de3e464f2698372001c3903959",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8502,
+      "prompt_tokens": 8409,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "b3fb77cedb8646ccb8c484bb2b9f368e",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4983,
+      "prompt_tokens": 4840,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "5c4452d70652403b857049651eb79794",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5055,
+      "prompt_tokens": 5017,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3653220bc9aa4ad6890c9c8765c67111",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8575,
+      "prompt_tokens": 8479,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "042ac3887f4b419e8695e347cdc6c9dc",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5025,
+      "prompt_tokens": 4987,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "491610da9fc84fd6a2c591e446e721c5",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8522,
+      "prompt_tokens": 8429,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "3486a449476a465aa709a62bdbd3012b",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5025,
+      "prompt_tokens": 4987,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "095f3f3feeac4dcebc6121944295c99d",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8522,
+      "prompt_tokens": 8429,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "e1cae47732164ab89975379fb227c121",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4936,
+      "prompt_tokens": 4823,
+      "target_tokens": 113,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "bc02de4dc6cc470fb8b0a201b516b4e0",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5011,
+      "prompt_tokens": 4973,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "61cea67bedd34644973bfb1cfb3d438b",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8508,
+      "prompt_tokens": 8415,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "d67de40564be4d25838555769de140a0",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5005,
+      "prompt_tokens": 4967,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "e4a2b083e2b44faabe81e00fc7caee53",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8508,
+      "prompt_tokens": 8412,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "d20f626ee87f4530a6599e7c763c982f",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5011,
+      "prompt_tokens": 4973,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "0fad9b0eb0884e2ea5ab8566ab5d429c",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8508,
+      "prompt_tokens": 8415,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "ca6de3c6c2c84dca9a49c498625aa2f1",
+      "split": "validation",
+      "kind": "diagnosis",
+      "image_count": 6,
+      "sequence_tokens": 4986,
+      "prompt_tokens": 4843,
+      "target_tokens": 143,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "5a2917393b62496388a8941776fdea1d",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5061,
+      "prompt_tokens": 5023,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "fe6625e0f55a47af86e90859ba6f63ff",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8581,
+      "prompt_tokens": 8485,
+      "target_tokens": 96,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "0d60818715ce4c3eac1a2590b3136fdb",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5025,
+      "prompt_tokens": 4987,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "732f378a814944188a9dd664cee2b0a2",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8521,
+      "prompt_tokens": 8432,
+      "target_tokens": 89,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "89352c76913d4b8c9fa169d205450c25",
+      "split": "validation",
+      "kind": "forecast",
+      "image_count": 6,
+      "sequence_tokens": 5031,
+      "prompt_tokens": 4993,
+      "target_tokens": 38,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    },
+    {
+      "sample_id": "d14ea6c6452049178c7eea6f67db5b05",
+      "split": "validation",
+      "kind": "update",
+      "image_count": 6,
+      "sequence_tokens": 8528,
+      "prompt_tokens": 8435,
+      "target_tokens": 93,
+      "image_grid_thw": [
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ],
+        [
+          1,
+          28,
+          28
+        ]
+      ],
+      "assistant_only_mask": true,
+      "prompt_and_visual_tokens_ignored": true,
+      "target_decodes_exactly": true,
+      "truncated": false
+    }
+  ],
+  "processor_files": {
+    "added_tokens.json": "58b54bbe36fc752f79a24a271ef66a0a0830054b4dfad94bde757d851968060b",
+    "tokenizer_config.json": "2f58f4bbd7bbce15d683f525954ef3a92cd82f5e06415a9c513859bf8ab72436",
+    "special_tokens_map.json": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+    "chat_template.json": "ad60d90252ed0b0705ba14e2d0ad0fec0beac1ea955642b54059b36052d8bc96",
+    "config.json": "e03e9242deea1b298353bf9e4572612ef80ae0c3ffe2dec20284583302b99ca7",
+    "tokenizer.json": "9c5ae00e602b8860cbd784ba82a8aa14e8feecec692e7076590d014d7b7fdafa",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+    "model.safetensors.index.json": "b3d71b89cda91cc13bb35625314de01bf4fc1546b397c1c2eaa3da08b5796486",
+    "preprocessor_config.json": "f2058c716eef96ccaed1cc1e2d0c08306b62586d535b28d9d08e691b2fab7ca0"
+  },
+  "scope": "processor and reference mask validation; existing MLX trainer collator is NOT certified",
+  "passed": false,
+  "max_tokens": 8192
+}

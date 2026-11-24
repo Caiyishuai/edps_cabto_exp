@@ -1,0 +1,62 @@
+[
+  {
+    "backend": "qwen",
+    "object": "shrimp",
+    "point_kind": "grasp_center",
+    "height_prior_m": 0.4100006199279825,
+    "height_source": "frozen_scene_manual_geometry",
+    "fallback": false,
+    "views": [],
+    "error": "No JSON object in model response"
+  },
+  {
+    "backend": "qwen",
+    "object": "apple",
+    "point_kind": "grasp_center",
+    "height_prior_m": 0.4229845037681055,
+    "height_source": "frozen_scene_manual_geometry",
+    "fallback": false,
+    "views": [],
+    "error": "No JSON object in model response"
+  },
+  {
+    "backend": "qwen",
+    "object": "potato",
+    "point_kind": "grasp_center",
+    "height_prior_m": 0.41798083548895737,
+    "height_source": "frozen_scene_manual_geometry",
+    "fallback": false,
+    "views": [],
+    "error": "No JSON object in model response"
+  },
+  {
+    "backend": "qwen",
+    "object": "bowl",
+    "point_kind": "support_floor_center",
+    "height_prior_m": 0.40800000000000003,
+    "height_source": "frozen_scene_manual_geometry",
+    "fallback": false,
+    "views": [],
+    "error": "No JSON object in model response"
+  },
+  {
+    "backend": "qwen",
+    "object": "board",
+    "point_kind": "support_floor_center",
+    "height_prior_m": 0.42400000000000004,
+    "height_source": "frozen_scene_manual_geometry",
+    "fallback": false,
+    "views": [],
+    "error": "No JSON object in model response"
+  },
+  {
+    "backend": "qwen",
+    "object": "pan",
+    "point_kind": "support_floor_center",
+    "height_prior_m": 0.41000000000000003,
+    "height_source": "frozen_scene_manual_geometry",
+    "fallback": false,
+    "views": [],
+    "error": "No JSON object in model response"
+  }
+]

@@ -1,0 +1,108 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "return_arm_home",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 42.78000000000632,
+        "object_position": [
+          0.45988689779263947,
+          -0.1805094131642238,
+          0.47999892286199985
+        ],
+        "tcp_position": [
+          0.5402618168122288,
+          -0.2934166060062495,
+          0.886265961520872
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld",
+        "home": true
+      }
+    }
+  ],
+  "before": [
+    "at_destination(baton)",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "empty(1)",
+    "handover_verified()",
+    "home(0)",
+    "receiver_contact_verified()",
+    "receiver_withdrawn()"
+  ],
+  "after": [
+    "at_destination(baton)",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "empty(1)",
+    "handover_verified()",
+    "home(0)",
+    "home(1)",
+    "receiver_contact_verified()",
+    "receiver_withdrawn()"
+  ],
+  "model": {
+    "name": "home_receiver_arm",
+    "args": {
+      "arm": "1",
+      "obj": "baton",
+      "dest": "home_receiver_arm"
+    },
+    "program_kind": "controlled_home",
+    "pre": [
+      "at_destination(baton)",
+      "empty(1)",
+      "receiver_withdrawn()",
+      "home(0)",
+      "handover_verified()",
+      "collision_free()"
+    ],
+    "add": [
+      "home(1)"
+    ],
+    "del": [],
+    "description": "绑定的空机械臂处于经执行器控制及实测验证的 HOME 位，无活动抓取 weld，运动无禁止碰撞。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "792a285385ef05011ed0df6e5124e88fbdaba56434cd440832fbe9e03b9beb56",
+  "consistency_scope": "full_CP",
+  "physical_diagnostics": {
+    "placed": true,
+    "xy_error_m": 0.0005218178620882468,
+    "bottom_gap_m": -1.07713800012732e-06,
+    "rotation_error_deg": 0.03848454286575373,
+    "released": true,
+    "origin": [
+      0.45988689779263947,
+      -0.1805094131642238,
+      0.47999892286199985
+    ],
+    "table_support_contact": true
+  }
+}

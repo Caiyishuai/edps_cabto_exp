@@ -1,0 +1,89 @@
+{
+  "run": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/pick_lora_acceptance_20260928_v2",
+  "run_manifest_sha256": "28f60d9d299905e191d6fd772c642dee6487800936a8d51b0b60893553357a1e",
+  "sample_count": 16,
+  "max_tokens": 600,
+  "scope": "dev-asset decision-output acceptance; not OOD generalization",
+  "samples_meta": [
+    {
+      "sample_id": "80b8509c7fce4006b822dd36c17473de",
+      "kind": "diagnosis",
+      "split": "train"
+    },
+    {
+      "sample_id": "ac746fbf267347abb39ddc02db805037",
+      "kind": "diagnosis",
+      "split": "train"
+    },
+    {
+      "sample_id": "478d8ccb18ac41c4acb333e4de4a96b9",
+      "kind": "diagnosis",
+      "split": "train"
+    },
+    {
+      "sample_id": "d6c7a8d8872d4cd6ae4bc4fff815d2a9",
+      "kind": "diagnosis",
+      "split": "train"
+    },
+    {
+      "sample_id": "694992819d3f48eda520afed962a4ace",
+      "kind": "forecast",
+      "split": "train"
+    },
+    {
+      "sample_id": "393288b9e1354b029de48e096fa6c713",
+      "kind": "update",
+      "split": "train"
+    },
+    {
+      "sample_id": "750cbe61cb98417e9096569c0abf97c8",
+      "kind": "diagnosis",
+      "split": "train"
+    },
+    {
+      "sample_id": "45f71283850f415fa4193eb3e5b5cd5c",
+      "kind": "diagnosis",
+      "split": "train"
+    },
+    {
+      "sample_id": "d806effb72e64735b533105540466d78",
+      "kind": "diagnosis",
+      "split": "train"
+    },
+    {
+      "sample_id": "62d0e0b7c3bc408a828e908a9fc14516",
+      "kind": "diagnosis",
+      "split": "train"
+    },
+    {
+      "sample_id": "93c57fcbd81f4175b34a4cc7b94f17f5",
+      "kind": "forecast",
+      "split": "train"
+    },
+    {
+      "sample_id": "30d95a06b2984a8295bb6c286034eea2",
+      "kind": "update",
+      "split": "train"
+    },
+    {
+      "sample_id": "930faf8b8b96489588f9fb7f35722771",
+      "kind": "diagnosis",
+      "split": "validation"
+    },
+    {
+      "sample_id": "cb3511707e63450198a47d24e8b744e3",
+      "kind": "update",
+      "split": "validation"
+    },
+    {
+      "sample_id": "b0e5b88d26b14a52b3e77da6ec67ddec",
+      "kind": "diagnosis",
+      "split": "validation"
+    },
+    {
+      "sample_id": "1f09f206cf2f460893c491185fc271a0",
+      "kind": "update",
+      "split": "validation"
+    }
+  ]
+}

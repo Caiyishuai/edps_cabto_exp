@@ -1,0 +1,476 @@
+{
+  "scope": "frozen one-shot candidate generation and sequential search; no feedback regeneration, no real robot",
+  "artifact_root_hashes": {
+    "manifest.json": "3b18c0e402b5a16160394c5b89341f7282675dd3d9b8eba999cc64745fc0652a",
+    "pools_frozen.json": "56c3d195816c1b8de078922db30ee5067ce8cf4d58ce48fa54067c1c7b3b3427",
+    "searches_frozen.json": "2d4d4d73f1036aee37fb4fbf6e6e7d7299b6a55f7854ed595c3687cf55cb821a",
+    "heldout/results.json": "d96a553af55279a04a7cbe420dd2d3067833e48e6bfa5f2b2dc63dacccfc1d54"
+  },
+  "source_snapshots_and_raw_pool_binding_verified": true,
+  "proposals": [
+    {
+      "seed": 1701,
+      "valid_candidates": 3,
+      "rejected_candidates": [],
+      "generation_tokens": 425,
+      "prompt_tokens": 3615,
+      "finish_reason": "stop",
+      "model_seconds": 11.542217166977935,
+      "call_sha256": "e1b6b0cc923b32ae4b5cdcdcdf08b6013ef5e1bd489a6d013dc6350f4f99a6e7"
+    },
+    {
+      "seed": 1702,
+      "valid_candidates": 3,
+      "rejected_candidates": [
+        {
+          "rank": 3,
+          "raw_candidate": {
+            "id": "add_clear_pred",
+            "pre_add": [
+              "clear"
+            ],
+            "offset_z_m": null,
+            "reason": "Adds 'clear' predicate to pick_table preconditions to ensure the object is not obstructed before attempting grasp, preventing failures due to occlusion or unstable support."
+          },
+          "reason": "precondition: expected exactly ['action', 'args', 'predicate']"
+        }
+      ],
+      "generation_tokens": 482,
+      "prompt_tokens": 3615,
+      "finish_reason": "stop",
+      "model_seconds": 11.933586167055182,
+      "call_sha256": "ce40207588a2198efafeb3595fef42f550eb0693e4c70e1ff8dd974ada5d20d4"
+    },
+    {
+      "seed": 1703,
+      "valid_candidates": 3,
+      "rejected_candidates": [
+        {
+          "rank": 0,
+          "raw_candidate": {
+            "id": "offset_higher_clearance",
+            "pre_add": [],
+            "offset_z_m": 0.06,
+            "reason": "Increases clearance above the max observed bound (0.055m) to ensure the gripper descends sufficiently past the object surface before closing, preventing 'No simultaneous force' errors caused by premature closure or insufficient approach depth."
+          },
+          "reason": "Offset outside finite numeric contract; null means preserve"
+        }
+      ],
+      "generation_tokens": 530,
+      "prompt_tokens": 3615,
+      "finish_reason": "stop",
+      "model_seconds": 12.908028124948032,
+      "call_sha256": "5d648fe4301daeede921048680a02e34cd3e073769c92ed0a31c0e9fe83c9be9"
+    }
+  ],
+  "accepted_entries": 9,
+  "distinct_accepted_recipes": 7,
+  "searches": [
+    {
+      "generation_seed": 1701,
+      "method": "ranked",
+      "random_seed": null,
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 4,
+        "actions": 7,
+        "api_calls": 31,
+        "simulation_seconds": 56.29999999999707,
+        "wall_seconds": 2.9239747498650104
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 8,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1701,
+      "method": "random",
+      "random_seed": 901,
+      "order": [
+        0,
+        2,
+        1
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 4,
+        "actions": 7,
+        "api_calls": 31,
+        "simulation_seconds": 56.29999999999707,
+        "wall_seconds": 2.5531624170253053
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 8,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1701,
+      "method": "random",
+      "random_seed": 902,
+      "order": [
+        0,
+        2,
+        1
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 4,
+        "actions": 7,
+        "api_calls": 31,
+        "simulation_seconds": 56.29999999999707,
+        "wall_seconds": 2.4463065831223503
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 8,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1701,
+      "method": "enumerate",
+      "random_seed": null,
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 4,
+        "actions": 7,
+        "api_calls": 31,
+        "simulation_seconds": 56.29999999999707,
+        "wall_seconds": 2.442159499041736
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 8,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1702,
+      "method": "ranked",
+      "random_seed": null,
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 5,
+        "actions": 11,
+        "api_calls": 47,
+        "simulation_seconds": 88.87999999999734,
+        "wall_seconds": 4.056366000091657
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 9,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1702,
+      "method": "random",
+      "random_seed": 901,
+      "order": [
+        0,
+        2,
+        1
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 5,
+        "actions": 11,
+        "api_calls": 47,
+        "simulation_seconds": 88.87999999999734,
+        "wall_seconds": 4.067152875009924
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 9,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1702,
+      "method": "random",
+      "random_seed": 902,
+      "order": [
+        0,
+        2,
+        1
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 5,
+        "actions": 11,
+        "api_calls": 47,
+        "simulation_seconds": 88.87999999999734,
+        "wall_seconds": 4.008324208087288
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 9,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1702,
+      "method": "enumerate",
+      "random_seed": null,
+      "order": [
+        2,
+        0,
+        1
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 5,
+        "actions": 11,
+        "api_calls": 47,
+        "simulation_seconds": 88.87999999999734,
+        "wall_seconds": 4.006234542001039
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 9,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1703,
+      "method": "ranked",
+      "random_seed": null,
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 4,
+        "actions": 7,
+        "api_calls": 31,
+        "simulation_seconds": 54.079999999998016,
+        "wall_seconds": 2.345624415902421
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 8,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1703,
+      "method": "random",
+      "random_seed": 901,
+      "order": [
+        0,
+        2,
+        1
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 4,
+        "actions": 7,
+        "api_calls": 31,
+        "simulation_seconds": 54.079999999998016,
+        "wall_seconds": 2.26663187390659
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 8,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1703,
+      "method": "random",
+      "random_seed": 902,
+      "order": [
+        0,
+        2,
+        1
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 4,
+        "actions": 7,
+        "api_calls": 31,
+        "simulation_seconds": 54.079999999998016,
+        "wall_seconds": 2.275945376022719
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 8,
+      "first_success_cost": null
+    },
+    {
+      "generation_seed": 1703,
+      "method": "enumerate",
+      "random_seed": null,
+      "order": [
+        2,
+        0,
+        1
+      ],
+      "status": "pool_exhausted_abstain",
+      "selected": null,
+      "search_cost": {
+        "rollouts": 4,
+        "actions": 7,
+        "api_calls": 31,
+        "simulation_seconds": 54.07999999999802,
+        "wall_seconds": 2.2789758320432156
+      },
+      "confirmation_cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0,
+        "wall_seconds": 0
+      },
+      "baseline_plus_search_rollouts": 8,
+      "first_success_cost": null
+    }
+  ],
+  "accounting": {
+    "baseline": {
+      "records": 4,
+      "cost": {
+        "rollouts": 4,
+        "actions": 7,
+        "api_calls": 31,
+        "simulation_seconds": 54.81999999999768,
+        "wall_seconds": 3.219352542073466
+      },
+      "valid": 4,
+      "successes": 1
+    },
+    "search": {
+      "records": 52,
+      "cost": {
+        "rollouts": 52,
+        "actions": 100,
+        "api_calls": 436,
+        "simulation_seconds": 797.0399999999696,
+        "wall_seconds": 35.670858372119255
+      },
+      "valid": 52,
+      "successes": 16
+    },
+    "heldout": {
+      "records": 12,
+      "cost": {
+        "rollouts": 12,
+        "actions": 21,
+        "api_calls": 93,
+        "simulation_seconds": 163.61999999999327,
+        "wall_seconds": 8.531639124732465
+      },
+      "valid": 12,
+      "successes": 3
+    },
+    "negative_controls": {
+      "records": 4,
+      "cost": {
+        "rollouts": 2,
+        "actions": 2,
+        "api_calls": 10,
+        "simulation_seconds": 13.51999999999892,
+        "wall_seconds": 0.7509109589736909
+      },
+      "valid": 4,
+      "successes": 0
+    }
+  },
+  "total_actual_rollouts": 70,
+  "safety_checks": {
+    "weld_violations": 0,
+    "successful_transition_mismatches": 0,
+    "infrastructure_invalid": 0
+  },
+  "heldout": {
+    "physical_baseline_executions": 12,
+    "baseline_successes": 3,
+    "physical_repaired_executions": 0,
+    "abstained_deployment_records": 144,
+    "note": "abstention rows are not physical failures or independent tests"
+  },
+  "insufficient_evidence": {
+    "raw_intent_abstain": true,
+    "parser_status": "rejected_response",
+    "parser_reason": "proposal: expected exactly ['candidates', 'decision', 'reason']",
+    "generation_tokens": 39
+  },
+  "interpretation": "No speed advantage may be claimed unless a repair is confirmed; failed search cost is not time-to-success"
+}

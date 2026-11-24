@@ -1,0 +1,66 @@
+{
+  "id": "f79baa336265404aa9aa9fb04980eddf",
+  "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+  "scene": "blocks",
+  "config_path": "project/scenes/blocks_rebuilt_v1.json",
+  "split": "train",
+  "seed": 0,
+  "object": "yellow",
+  "support": "green",
+  "condition": "parameter",
+  "trials": {
+    "none": {
+      "path": "groups/f79baa336265404aa9aa9fb04980eddf/a055cedef8194225ad772b3853ae9bf5/result.json",
+      "sha256": "6ce28d57c6fa614df01ad61a68e0f0c20a25dcc45f2d97da45902c4edb1e2c7a",
+      "valid": true,
+      "physical_pick_success": false,
+      "contract_consistent": false,
+      "joint_success": false,
+      "model_sha256": "7acbdede75faff7840e4f60851f349db2a0cc0d03c507ca932677244d167feec",
+      "source_sha256": "08d63082fc5af6eab210aafaab272b8469a41b9870df025cfef159997706989b",
+      "scene_sha256": "0a445f991082690dc595c63d66052cbfed8c44ea36b6c776279e3267cdcf9f37",
+      "initial_qpos_sha256": "5c9cd26365d8d098ce62b0e5e795a923b2e77a77bf02bafbb9a580f635eb10bd",
+      "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}"
+    },
+    "model_only": {
+      "path": "groups/f79baa336265404aa9aa9fb04980eddf/466f0523ec14402fba0d799a658675ac/result.json",
+      "sha256": "e8f03bfe26e0d94cc2e2b138afcb86d9b260d02c8a392ffd479d4e3f9843a1d4",
+      "valid": true,
+      "physical_pick_success": false,
+      "contract_consistent": false,
+      "joint_success": false,
+      "model_sha256": "7acbdede75faff7840e4f60851f349db2a0cc0d03c507ca932677244d167feec",
+      "source_sha256": "08d63082fc5af6eab210aafaab272b8469a41b9870df025cfef159997706989b",
+      "scene_sha256": "0a445f991082690dc595c63d66052cbfed8c44ea36b6c776279e3267cdcf9f37",
+      "initial_qpos_sha256": "5c9cd26365d8d098ce62b0e5e795a923b2e77a77bf02bafbb9a580f635eb10bd",
+      "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}"
+    },
+    "policy_only": {
+      "path": "groups/f79baa336265404aa9aa9fb04980eddf/2f47a622ee3d41a9acf2792857cac7e1/result.json",
+      "sha256": "49922e25afa9fd92e5aaecfd7dcbc7cc01cf7dcf66c3ef78b307daa4434c5eb6",
+      "valid": true,
+      "physical_pick_success": true,
+      "contract_consistent": true,
+      "joint_success": true,
+      "model_sha256": "7acbdede75faff7840e4f60851f349db2a0cc0d03c507ca932677244d167feec",
+      "source_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6",
+      "scene_sha256": "0a445f991082690dc595c63d66052cbfed8c44ea36b6c776279e3267cdcf9f37",
+      "initial_qpos_sha256": "5c9cd26365d8d098ce62b0e5e795a923b2e77a77bf02bafbb9a580f635eb10bd",
+      "exception": null
+    },
+    "cross_level": {
+      "path": "groups/f79baa336265404aa9aa9fb04980eddf/9fd73e0bda6847c3accd8e05450cde52/result.json",
+      "sha256": "541141f2bb5d2dd6180cdd4396b6e7b6e9c9662463869f21a7fcfc831bf56710",
+      "valid": true,
+      "physical_pick_success": true,
+      "contract_consistent": true,
+      "joint_success": true,
+      "model_sha256": "7acbdede75faff7840e4f60851f349db2a0cc0d03c507ca932677244d167feec",
+      "source_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6",
+      "scene_sha256": "0a445f991082690dc595c63d66052cbfed8c44ea36b6c776279e3267cdcf9f37",
+      "initial_qpos_sha256": "5c9cd26365d8d098ce62b0e5e795a923b2e77a77bf02bafbb9a580f635eb10bd",
+      "exception": null
+    }
+  },
+  "paired_layer_invariance": true
+}

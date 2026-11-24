@@ -1,0 +1,996 @@
+{
+  "status": "complete",
+  "error": null,
+  "interfaces": {
+    "symbols": [
+      {
+        "symbol": "FineCover.approach",
+        "signature": "(self, point)",
+        "source": "project/core/cover_cabto_api.py",
+        "start_line": 236
+      },
+      {
+        "symbol": "FineCover.descend",
+        "signature": "(self, point)",
+        "source": "project/core/cover_cabto_api.py",
+        "start_line": 241
+      },
+      {
+        "symbol": "FineCover.lift",
+        "signature": "(self)",
+        "source": "project/core/cover_cabto_api.py",
+        "start_line": 257
+      },
+      {
+        "symbol": "RebuiltSingleArm.move",
+        "signature": "(self, target, grip, speed=None)",
+        "source": "project/core/single_arm_rebuilt.py",
+        "start_line": 220
+      },
+      {
+        "symbol": "RebuiltSingleArm.move_object",
+        "signature": "(self, n, origin, speed=None)",
+        "source": "project/core/single_arm_rebuilt.py",
+        "start_line": 234
+      },
+      {
+        "symbol": "ArmInterface.solve_ik",
+        "signature": "(self, target_pos, target_quat, restarts=24, iters=120, w_rot=0.5, tol=0.001, local_only=False)",
+        "source": "CABTO/exp4_bt_tasks/stage2_scripted/exp4_env.py",
+        "start_line": 211
+      }
+    ],
+    "pick_api": {
+      "grasp_point": "api.grasp_point() -> (x,y,z). Read-only payload grasp-center estimate in world metres. Backend is selected externally (oracle or Qwen). No movement.",
+      "open_gripper": "api.open_gripper() -> None. Command gripper open and wait; does NOT move arm.",
+      "approach": "api.approach(point) -> None. Move OPEN end effector above the point at safe transport height. One xyz tuple argument. Does NOT descend or close.",
+      "descend": "api.descend(point) -> None. Move OPEN end effector vertically to this grasp xyz. Requires already above it. Does NOT close or lift.",
+      "close_gripper": "api.close_gripper() -> None. Close at CURRENT location and wait. Requires simultaneous two-finger force. Does NOT approach, descend or lift.",
+      "lift": "api.lift() -> None. Raise CLOSED end effector vertically to transport height. Does NOT close. The grasped payload must move upward."
+    },
+    "pose_argument_in_current_move": false,
+    "yaw_argument_in_public_pick_methods": false,
+    "ik_accepts_quaternion": true,
+    "interpretation": "A pose-aware IK backend is not a pose-aware executable task API."
+  },
+  "pose_checks": [
+    {
+      "scene": "open",
+      "yaw_deg": 0.0,
+      "target_xyz": [
+        0.3400000000000149,
+        0.15000000000011382,
+        0.42599520594899054
+      ],
+      "target_quat_wxyz": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "joint_seed": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "joint_solution": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "position_error_m": 0.0002348024403026356,
+      "rotation_error_rad": 0.00011219692408859153,
+      "joint_limits_ok": true,
+      "ik_endpoint_ok": true,
+      "actual_tool_z_world": [
+        -9.429548045731157e-05,
+        6.0422461061610865e-05,
+        -0.9999999937287435
+      ],
+      "geometry": {
+        "robot_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "objects_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.0,
+          "pairs_below_clearance": [
+            {
+              "geoms": [
+                "geom_98",
+                "geom_27"
+              ],
+              "bodies": [
+                "left_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            },
+            {
+              "geoms": [
+                "geom_104",
+                "geom_27"
+              ],
+              "bodies": [
+                "right_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            }
+          ]
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": true,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "static_endpoint_pass": true,
+      "scratch_time": 0.16000000000000011,
+      "reference_state_unchanged": true,
+      "grasp_executed": false
+    },
+    {
+      "scene": "open",
+      "yaw_deg": 90.0,
+      "target_xyz": [
+        0.3400000000000149,
+        0.15000000000011382,
+        0.42599520594899054
+      ],
+      "target_quat_wxyz": [
+        0.0,
+        0.7071067811865476,
+        0.7071067811865475,
+        0.0
+      ],
+      "joint_seed": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "joint_solution": [
+        -0.13370131952685332,
+        0.33897160220664757,
+        0.36523515324412253,
+        -2.7094035569653774,
+        -0.8104475084069894,
+        2.976922184954777,
+        0.23065673537753661
+      ],
+      "position_error_m": 8.691509907940675e-05,
+      "rotation_error_rad": 2.9167543657416947e-05,
+      "joint_limits_ok": true,
+      "ik_endpoint_ok": true,
+      "actual_tool_z_world": [
+        2.7118322049946217e-05,
+        -1.073880072269146e-05,
+        -0.999999999574636
+      ],
+      "geometry": {
+        "robot_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "objects_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.0,
+          "pairs_below_clearance": [
+            {
+              "geoms": [
+                "geom_100",
+                "geom_27"
+              ],
+              "bodies": [
+                "left_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            },
+            {
+              "geoms": [
+                "geom_107",
+                "geom_27"
+              ],
+              "bodies": [
+                "right_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            }
+          ]
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": true,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "static_endpoint_pass": true,
+      "scratch_time": 0.16000000000000011,
+      "reference_state_unchanged": true,
+      "grasp_executed": false
+    },
+    {
+      "scene": "rails_x",
+      "yaw_deg": 0.0,
+      "target_xyz": [
+        0.3400000000000149,
+        0.15000000000011382,
+        0.42599520594899054
+      ],
+      "target_quat_wxyz": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "joint_seed": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "joint_solution": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "position_error_m": 0.0002348024403026356,
+      "rotation_error_rad": 0.00011219692408859153,
+      "joint_limits_ok": true,
+      "ik_endpoint_ok": true,
+      "actual_tool_z_world": [
+        -9.429548045731157e-05,
+        6.0422461061610865e-05,
+        -0.9999999937287435
+      ],
+      "geometry": {
+        "robot_to_rails": {
+          "pair_count": 46,
+          "min_distance_m": 0.023524492362378135,
+          "pairs_below_clearance": []
+        },
+        "objects_to_rails": {
+          "pair_count": 8,
+          "min_distance_m": 0.017999999999999964,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.0,
+          "pairs_below_clearance": [
+            {
+              "geoms": [
+                "geom_98",
+                "geom_27"
+              ],
+              "bodies": [
+                "left_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            },
+            {
+              "geoms": [
+                "geom_104",
+                "geom_27"
+              ],
+              "bodies": [
+                "right_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            }
+          ]
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": true,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "static_endpoint_pass": true,
+      "scratch_time": 0.16000000000000011,
+      "reference_state_unchanged": true,
+      "grasp_executed": false
+    },
+    {
+      "scene": "rails_x",
+      "yaw_deg": 90.0,
+      "target_xyz": [
+        0.3400000000000149,
+        0.15000000000011382,
+        0.42599520594899054
+      ],
+      "target_quat_wxyz": [
+        0.0,
+        0.7071067811865476,
+        0.7071067811865475,
+        0.0
+      ],
+      "joint_seed": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "joint_solution": [
+        -0.13370131952685332,
+        0.33897160220664757,
+        0.36523515324412253,
+        -2.7094035569653774,
+        -0.8104475084069894,
+        2.976922184954777,
+        0.23065673537753661
+      ],
+      "position_error_m": 8.691509907940675e-05,
+      "rotation_error_rad": 2.9167543657416947e-05,
+      "joint_limits_ok": true,
+      "ik_endpoint_ok": true,
+      "actual_tool_z_world": [
+        2.7118322049946217e-05,
+        -1.073880072269146e-05,
+        -0.999999999574636
+      ],
+      "geometry": {
+        "robot_to_rails": {
+          "pair_count": 46,
+          "min_distance_m": -0.008528896156027255,
+          "pairs_below_clearance": [
+            {
+              "geoms": [
+                "geom_96",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.00650512778368654
+            },
+            {
+              "geoms": [
+                "geom_97",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.008528896156027255
+            },
+            {
+              "geoms": [
+                "geom_98",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.003971565710016722
+            },
+            {
+              "geoms": [
+                "geom_99",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.003971567278412191
+            },
+            {
+              "geoms": [
+                "geom_100",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.003971294526796232
+            },
+            {
+              "geoms": [
+                "geom_101",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.003971296095191645
+            },
+            {
+              "geoms": [
+                "geom_104",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.006446869540287354
+            },
+            {
+              "geoms": [
+                "geom_105",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.008471567309832671
+            },
+            {
+              "geoms": [
+                "geom_106",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.0040285962546687815
+            },
+            {
+              "geoms": [
+                "geom_107",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.004028597823064194
+            },
+            {
+              "geoms": [
+                "geom_108",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.004028894556211304
+            },
+            {
+              "geoms": [
+                "geom_109",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.004028896124606718
+            }
+          ]
+        },
+        "objects_to_rails": {
+          "pair_count": 8,
+          "min_distance_m": 0.017999999999999964,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.0,
+          "pairs_below_clearance": [
+            {
+              "geoms": [
+                "geom_100",
+                "geom_27"
+              ],
+              "bodies": [
+                "left_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            },
+            {
+              "geoms": [
+                "geom_107",
+                "geom_27"
+              ],
+              "bodies": [
+                "right_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            }
+          ]
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": false,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "static_endpoint_pass": false,
+      "scratch_time": 0.16000000000000011,
+      "reference_state_unchanged": true,
+      "grasp_executed": false
+    },
+    {
+      "scene": "rails_y",
+      "yaw_deg": 0.0,
+      "target_xyz": [
+        0.3400000000000149,
+        0.15000000000011382,
+        0.42599520594899054
+      ],
+      "target_quat_wxyz": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "joint_seed": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "joint_solution": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "position_error_m": 0.0002348024403026356,
+      "rotation_error_rad": 0.00011219692408859153,
+      "joint_limits_ok": true,
+      "ik_endpoint_ok": true,
+      "actual_tool_z_world": [
+        -9.429548045731157e-05,
+        6.0422461061610865e-05,
+        -0.9999999937287435
+      ],
+      "geometry": {
+        "robot_to_rails": {
+          "pair_count": 46,
+          "min_distance_m": -0.008533119528260136,
+          "pairs_below_clearance": [
+            {
+              "geoms": [
+                "geom_96",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.00639985821654214
+            },
+            {
+              "geoms": [
+                "geom_97",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.008468022700790985
+            },
+            {
+              "geoms": [
+                "geom_98",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.004032380380116509
+            },
+            {
+              "geoms": [
+                "geom_99",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.004032454723179798
+            },
+            {
+              "geoms": [
+                "geom_100",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.004033045027188181
+            },
+            {
+              "geoms": [
+                "geom_100",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": 0.0
+            },
+            {
+              "geoms": [
+                "geom_101",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "left_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": -0.00403311937025147
+            },
+            {
+              "geoms": [
+                "geom_104",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.006467417698819414
+            },
+            {
+              "geoms": [
+                "geom_105",
+                "audit_rail_geom_-1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_-1"
+              ],
+              "distance_m": 0.0
+            },
+            {
+              "geoms": [
+                "geom_105",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.008533119528260136
+            },
+            {
+              "geoms": [
+                "geom_106",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.003967948199719018
+            },
+            {
+              "geoms": [
+                "geom_107",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.003968022542782307
+            },
+            {
+              "geoms": [
+                "geom_108",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.003967343975108423
+            },
+            {
+              "geoms": [
+                "geom_109",
+                "audit_rail_geom_+1"
+              ],
+              "bodies": [
+                "right_finger",
+                "audit_rail_+1"
+              ],
+              "distance_m": -0.0039674183181717115
+            }
+          ]
+        },
+        "objects_to_rails": {
+          "pair_count": 8,
+          "min_distance_m": 0.017999999999999954,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.0,
+          "pairs_below_clearance": [
+            {
+              "geoms": [
+                "geom_98",
+                "geom_27"
+              ],
+              "bodies": [
+                "left_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            },
+            {
+              "geoms": [
+                "geom_104",
+                "geom_27"
+              ],
+              "bodies": [
+                "right_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            }
+          ]
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": false,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "static_endpoint_pass": false,
+      "scratch_time": 0.16000000000000011,
+      "reference_state_unchanged": true,
+      "grasp_executed": false
+    },
+    {
+      "scene": "rails_y",
+      "yaw_deg": 90.0,
+      "target_xyz": [
+        0.3400000000000149,
+        0.15000000000011382,
+        0.42599520594899054
+      ],
+      "target_quat_wxyz": [
+        0.0,
+        0.7071067811865476,
+        0.7071067811865475,
+        0.0
+      ],
+      "joint_seed": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "joint_solution": [
+        -0.13370131952685332,
+        0.33897160220664757,
+        0.36523515324412253,
+        -2.7094035569653774,
+        -0.8104475084069894,
+        2.976922184954777,
+        0.23065673537753661
+      ],
+      "position_error_m": 8.691509907940675e-05,
+      "rotation_error_rad": 2.9167543657416947e-05,
+      "joint_limits_ok": true,
+      "ik_endpoint_ok": true,
+      "actual_tool_z_world": [
+        2.7118322049946217e-05,
+        -1.073880072269146e-05,
+        -0.999999999574636
+      ],
+      "geometry": {
+        "robot_to_rails": {
+          "pair_count": 46,
+          "min_distance_m": 0.02349271513217607,
+          "pairs_below_clearance": []
+        },
+        "objects_to_rails": {
+          "pair_count": 8,
+          "min_distance_m": 0.017999999999999954,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.0,
+          "pairs_below_clearance": [
+            {
+              "geoms": [
+                "geom_100",
+                "geom_27"
+              ],
+              "bodies": [
+                "left_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            },
+            {
+              "geoms": [
+                "geom_107",
+                "geom_27"
+              ],
+              "bodies": [
+                "right_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            }
+          ]
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": true,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "static_endpoint_pass": true,
+      "scratch_time": 0.16000000000000011,
+      "reference_state_unchanged": true,
+      "grasp_executed": false
+    }
+  ],
+  "scene_checks": [
+    {
+      "scene": "open",
+      "scene_sha256": "c9db0aa2b92f551df15fbe2a2c60d32965ce5fb5741ed75426161aba80afc19a",
+      "initial_state_sha256": "9792b450f1e3b6f4c219b9a4b8ac7e9ae540e29b6d78da39de23967b753963c3",
+      "valid_initial_obstacles": true,
+      "initial_geometry": {
+        "robot_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "objects_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.14099593221470488,
+          "pairs_below_clearance": []
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": true,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "object_state_source": "archived settled initial state"
+    },
+    {
+      "scene": "rails_x",
+      "scene_sha256": "b18d597077d4a022abc38abf1af10e7a86bebde214d0d280bc23daf98c686be2",
+      "initial_state_sha256": "e3ac84f6302d79a8ea3d47e8828bf542d812af627ab3baa8c9a6022850736d86",
+      "valid_initial_obstacles": true,
+      "initial_geometry": {
+        "robot_to_rails": {
+          "pair_count": 46,
+          "min_distance_m": 0.15,
+          "pairs_below_clearance": []
+        },
+        "objects_to_rails": {
+          "pair_count": 8,
+          "min_distance_m": 0.017999999999999964,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.14099593221470488,
+          "pairs_below_clearance": []
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": true,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "object_state_source": "archived settled initial state"
+    },
+    {
+      "scene": "rails_y",
+      "scene_sha256": "e479d07d9cff52dfe182803a354c8d6c5733cec634421ebe23950382e0a27078",
+      "initial_state_sha256": "e3ac84f6302d79a8ea3d47e8828bf542d812af627ab3baa8c9a6022850736d86",
+      "valid_initial_obstacles": true,
+      "initial_geometry": {
+        "robot_to_rails": {
+          "pair_count": 46,
+          "min_distance_m": 0.15,
+          "pairs_below_clearance": []
+        },
+        "objects_to_rails": {
+          "pair_count": 8,
+          "min_distance_m": 0.017999999999999954,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.14099593221470488,
+          "pairs_below_clearance": []
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": true,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "object_state_source": "archived settled initial state"
+    }
+  ],
+  "completed_pose_queries": 6,
+  "dynamic_steps": 0,
+  "reused_queries": 2,
+  "new_queries": 4,
+  "resume_provenance": {
+    "path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/approach_interface_20260930_v2",
+    "reused_queries": 2,
+    "results_sha256": "4461e391354e59d7b889a1bd1ff33b29a8f30ea34f8f2a397c7d9a8883ebbeca",
+    "manifest_sha256": "c5216e1105e0ae7cc517118f8e1cbb98e1bd9dcec421619ba5b74070eac1e505",
+    "prior_wall_seconds": 0.6967264169361442
+  },
+  "forbidden_calls": [],
+  "model_calls": 0,
+  "executed_grasps": 0,
+  "full_pose_side_grasp_supported": false,
+  "total_wall_seconds": 1.648589166929014,
+  "peak_rss_mib": 428.125,
+  "decision": "endpoint_evidence_only_pose_api_and_continuous_execution_still_unimplemented",
+  "limits": [
+    "Six fixed grasp endpoints, not swept paths or pregrasp trajectories.",
+    "Local IK failure is not physical impossibility; success is not grasp success.",
+    "Designed channels and archived same-object seed are development conditions.",
+    "No training, controller change, force-closure or dynamic safety claim."
+  ]
+}

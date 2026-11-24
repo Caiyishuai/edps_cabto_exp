@@ -1,0 +1,43 @@
+{
+  "audit_date": "2026-09-30",
+  "audit_status": "passed",
+  "audit_scope": "Read-only assertions over saved JSON, raw trial artifacts, source snapshots and current source files; no new simulation or model inference.",
+  "trials": 15,
+  "valid_trials": 15,
+  "strict_successes": 7,
+  "execution_failures": 7,
+  "planning_rejections": 1,
+  "action_execution_episodes": 14,
+  "raw_action_inventory_count": 11,
+  "source_snapshot_files": 84,
+  "checks": {
+    "protocol_digests_agree": true,
+    "source_snapshots_match_manifest": true,
+    "current_sources_match_manifest_at_audit": true,
+    "raw_success_matches_summary": true,
+    "successful_trials_pass_stability_mechanics_and_full_transitions": true,
+    "initial_execution_state_digest_recomputed": true,
+    "within_scenario_initial_state_and_scene_pairing": true,
+    "raw_model_policy_digests_match": true,
+    "all_raw_action_inventories_and_effects_equal": true,
+    "candidate_inventory_digests_recomputed": true,
+    "selection_uses_only_registered_development_rows": true,
+    "initial_and_final_active_welds_empty": true
+  },
+  "joint_vs_conservative_only_extra_pre": "clear(blue)",
+  "selection": {"narrow_H": "P", "broader_HD": "J", "development_trials_before_extension": 10},
+  "artifacts_sha256": {
+    "protocol.json": "b36fb67ab3129b6ce3c460a0b227c56d0ba90dd221fe2d082ee39d29a319a05f",
+    "manifest.json": "d476622b1774d9f68e051accf5b2ce881185001c7afe5f12420f271f1887592b",
+    "results.json": "40fdfda2a4111a44fe732b49ac229ff4640203304a59b0e9ea839500c43fcf4b",
+    "selection_frozen.json": "9e3b03fbf55402d049b0cb9bfc0a802432dba718c63a3f9cdc5aff9bb0b01845",
+    "candidate_definitions.json": "61c86e63578de7517e76139c7ece367db12cf4949f036d2c4f7e382c46b28d3e"
+  },
+  "limits": [
+    "This verifies recorded evidence integrity, not universal physical correctness or causal identifiability.",
+    "Five candidates and the overrestrictive predicate were manually specified; no autonomous repair discovery was demonstrated.",
+    "Fixed candidate J succeeded in all three scenarios; no advantage over the best fixed candidate or need for skill splitting was demonstrated.",
+    "Conditional execution success for C is 2/2, but task coverage is 2/3; rejection cannot count as success.",
+    "The 15 trials are related deterministic interventions, not 15 independent statistical repetitions."
+  ]
+}

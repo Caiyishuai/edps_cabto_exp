@@ -1,0 +1,106 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "raise_clear",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.3,
+        -0.28,
+        0.72
+      ]
+    },
+    {
+      "method": "move_to",
+      "args": [
+        [
+          0.3,
+          -0.28,
+          0.72
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.006082064731868287
+    },
+    {
+      "method": "settle",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "empty(0)",
+    "empty(1)",
+    "hands_raised()",
+    "hands_safe_for_lateral(0)",
+    "hands_safe_for_lateral(1)",
+    "packed(0)",
+    "packed(1)",
+    "slot_free(0)",
+    "slot_free(1)",
+    "tray_on_shelf()"
+  ],
+  "after": [
+    "empty(0)",
+    "empty(1)",
+    "hands_raised()",
+    "hands_safe_for_lateral(0)",
+    "hands_safe_for_lateral(1)",
+    "packed(0)",
+    "packed(1)",
+    "parked(1)",
+    "slot_free(0)",
+    "slot_free(1)",
+    "tray_on_shelf()"
+  ],
+  "model": {
+    "name": "park_after_shelf",
+    "args": {
+      "arm": "1",
+      "obj": "none",
+      "dest": "park"
+    },
+    "program_kind": "park",
+    "pre": [
+      "empty(1)",
+      "hands_safe_for_lateral(1)",
+      "tray_on_shelf()"
+    ],
+    "add": [
+      "parked(1)"
+    ],
+    "del": [],
+    "description": "指定机械臂空手张开，已脱离物体周围的竖直障碍区并停泊在共享工作区外。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "943d3c789053afa55f40d47c2b9eb3dd5b87a92b78ff091820f61b96bf9132cd",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+}

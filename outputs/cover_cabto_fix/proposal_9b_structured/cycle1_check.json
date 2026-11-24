@@ -1,0 +1,154 @@
+{
+  "complete_for_P": false,
+  "admissible_reachable_states": false,
+  "reachable_state_count": 9,
+  "mutex_violations": [
+    {
+      "action": "pick(object=shrimp,support=bowl)",
+      "before": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "empty()"
+      ],
+      "after": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "empty()",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "action": "pick(object=apple,support=board)",
+      "before": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "empty()"
+      ],
+      "after": [
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "empty()",
+        "holding(apple)"
+      ]
+    },
+    {
+      "action": "pick(object=apple,support=board)",
+      "before": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "empty()",
+        "holding(shrimp)"
+      ],
+      "after": [
+        "at_source(potato)",
+        "empty()",
+        "holding(apple)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "action": "pick(object=shrimp,support=bowl)",
+      "before": [
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "empty()",
+        "holding(apple)"
+      ],
+      "after": [
+        "at_source(potato)",
+        "empty()",
+        "holding(apple)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "action": "pick(object=apple,support=board)",
+      "before": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "at_target(shrimp)",
+        "empty()"
+      ],
+      "after": [
+        "at_source(potato)",
+        "at_target(shrimp)",
+        "empty()",
+        "holding(apple)"
+      ]
+    },
+    {
+      "action": "place(object=shrimp,support=bowl)",
+      "before": [
+        "at_source(potato)",
+        "empty()",
+        "holding(apple)",
+        "holding(shrimp)"
+      ],
+      "after": [
+        "at_source(potato)",
+        "at_target(shrimp)",
+        "empty()",
+        "holding(apple)"
+      ]
+    },
+    {
+      "action": "place(object=apple,support=board)",
+      "before": [
+        "at_source(potato)",
+        "empty()",
+        "holding(apple)",
+        "holding(shrimp)"
+      ],
+      "after": [
+        "at_source(potato)",
+        "at_target(apple)",
+        "empty()",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "action": "pick(object=shrimp,support=bowl)",
+      "before": [
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "at_target(apple)",
+        "empty()"
+      ],
+      "after": [
+        "at_source(potato)",
+        "at_target(apple)",
+        "empty()",
+        "holding(shrimp)"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "task": "C1",
+      "bfs_reachable": false,
+      "planner": {
+        "reached_goal": false,
+        "reason": "正式 BT 内核无法从该 start 构建目标树"
+      }
+    },
+    {
+      "task": "C2",
+      "bfs_reachable": false,
+      "planner": {
+        "reached_goal": false,
+        "reason": "正式 BT 内核无法从该 start 构建目标树"
+      }
+    },
+    {
+      "task": "C3",
+      "bfs_reachable": false,
+      "planner": {
+        "reached_goal": false,
+        "reason": "正式 BT 内核无法从该 start 构建目标树"
+      }
+    }
+  ],
+  "scope": "finite declared P, symbolic; NOT physical consistency"
+}

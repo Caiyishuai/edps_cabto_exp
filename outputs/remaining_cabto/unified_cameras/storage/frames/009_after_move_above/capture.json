@@ -1,0 +1,856 @@
+{
+  "index": 9,
+  "event": "after_move_above",
+  "action": {
+    "name": "place_tray",
+    "args": {
+      "arm": "0",
+      "obj": "item0",
+      "dest": "tray"
+    },
+    "program_kind": "place",
+    "pre": [
+      "holding(0,item0)",
+      "slot_free(0)"
+    ],
+    "add": [
+      "empty(0)",
+      "hands_raised()",
+      "hands_safe_for_lateral(0)",
+      "packed(0)"
+    ],
+    "del": [
+      "holding(0,item0)",
+      "slot_free(0)"
+    ],
+    "description": "绑定物品已在自由托盘对应槽位内稳定支撑且解除抓持，指定手爪张开并竖直撤离放置面。"
+  },
+  "simulation_time": 12.992000000001008,
+  "images_simultaneous_no_step": true,
+  "render_did_not_change_state": true,
+  "camera_control_use": "diagnostic_only",
+  "views": [
+    {
+      "camera": "overview",
+      "image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/frames/009_after_move_above/overview.png",
+      "image_sha256": "17d53a3a3ce3e0086a17d1afb864fe6aea80821a24112bc33a37b8cd4a5fb41e",
+      "calibration": {
+        "name": "overview",
+        "time": 12.992000000001008,
+        "image_size": [
+          720,
+          720
+        ],
+        "K": [
+          [
+            891.0312672298666,
+            0,
+            360.0
+          ],
+          [
+            0,
+            891.0312672298666,
+            360.0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "T_world_camera": {
+          "position": [
+            1.28,
+            -1.48,
+            1.48
+          ],
+          "rotation": [
+            [
+              0.8544214388699759,
+              -0.2498519966375856,
+              0.4555633705375928
+            ],
+            [
+              0.5195806047182286,
+              0.4108677278040294,
+              -0.7491486537729304
+            ],
+            [
+              5.551115123125783e-17,
+              0.8767905622355694,
+              0.48087244667856993
+            ]
+          ]
+        },
+        "optical_axis_world": [
+          -0.4555633705375928,
+          0.7491486537729304,
+          -0.48087244667856993
+        ],
+        "parent_body": "world",
+        "measured_T_body_camera": {
+          "position": [
+            1.28,
+            -1.48,
+            1.48
+          ],
+          "rotation": [
+            [
+              0.8544214388699759,
+              -0.2498519966375856,
+              0.4555633705375928
+            ],
+            [
+              0.5195806047182286,
+              0.4108677278040294,
+              -0.7491486537729304
+            ],
+            [
+              5.551115123125783e-17,
+              0.8767905622355694,
+              0.48087244667856993
+            ]
+          ]
+        },
+        "fovy_deg": 44.0,
+        "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+      },
+      "max_project_plane_roundtrip_m": 5.891525475012305e-16,
+      "evaluation_only_visibility": [
+        {
+          "target": "item0",
+          "pixel": [
+            328.30951274309723,
+            267.5000209971892
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "item0",
+          "ray_distance_m": 1.9779779419812773,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "item1",
+          "pixel": [
+            319.7232698025352,
+            388.84975553964523
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "item1",
+          "ray_distance_m": 2.008534459853737,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "box_floor",
+          "pixel": [
+            324.41367710917746,
+            396.0776955916058
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "tray",
+          "ray_distance_m": 1.9650933885121886,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "slot0",
+          "pixel": [
+            328.96827609212534,
+            387.6351169724671
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "tray",
+          "ray_distance_m": 2.11241800782204,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "slot1",
+          "pixel": [
+            321.15777425664885,
+            404.45090474458283
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "tray",
+          "ray_distance_m": 1.9728949031761234,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "handle0",
+          "pixel": [
+            350.01997013442764,
+            350.2379647237301
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "tray",
+          "ray_distance_m": 2.1075193928708407,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "handle1",
+          "pixel": [
+            295.3641291209952,
+            392.0685896917746
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "tray",
+          "ray_distance_m": 1.9495360527814383,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "shelf",
+          "pixel": [
+            440.5936097466116,
+            387.7025587780689
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "shelf",
+          "ray_distance_m": 1.8978935691971772,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        }
+      ]
+    },
+    {
+      "camera": "rig_wrist_left",
+      "image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/frames/009_after_move_above/rig_wrist_left.png",
+      "image_sha256": "d2462d25c59a2ce40ae4bc8abec4aafc5713375a488ea15aa609724f2b8cc229",
+      "calibration": {
+        "name": "rig_wrist_left",
+        "time": 12.992000000001008,
+        "image_size": [
+          720,
+          720
+        ],
+        "K": [
+          [
+            469.16113422283405,
+            0,
+            360.0
+          ],
+          [
+            0,
+            469.16113422283405,
+            360.0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "T_world_camera": {
+          "position": [
+            0.37067955965591065,
+            0.042110514178837814,
+            0.778154938884762
+          ],
+          "rotation": [
+            [
+              0.00011244779250535464,
+              -0.803514846322894,
+              0.5952847042333509
+            ],
+            [
+              0.999915839703517,
+              -0.007632331716067975,
+              -0.010490997215912679
+            ],
+            [
+              0.0129730823439283,
+              0.5952357845856295,
+              0.8034463640363467
+            ]
+          ]
+        },
+        "optical_axis_world": [
+          -0.5952847042333509,
+          0.010490997215912679,
+          -0.8034463640363467
+        ],
+        "parent_body": "hand_L",
+        "measured_T_body_camera": {
+          "position": [
+            -2.0431947343276768e-18,
+            -0.09999999999999983,
+            0.02499999999999993
+          ],
+          "rotation": [
+            [
+              -0.999999999999998,
+              7.403415302255837e-17,
+              1.3505803023820574e-17
+            ],
+            [
+              -3.7341002691308795e-18,
+              0.8035571933447088,
+              -0.5952275506257844
+            ],
+            [
+              -1.3222917894007889e-17,
+              -0.5952275506257843,
+              -0.8035571933447088
+            ]
+          ]
+        },
+        "fovy_deg": 75.0,
+        "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+      },
+      "max_project_plane_roundtrip_m": 6.245004513516506e-17,
+      "evaluation_only_visibility": [
+        {
+          "target": "item0",
+          "pixel": [
+            349.6082276486586,
+            190.86649520917138
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_L",
+          "ray_distance_m": 0.0020829592386565096,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "item1",
+          "pixel": [
+            224.82719239222894,
+            568.9279143227768
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_L",
+          "ray_distance_m": 0.005695995003526135,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "box_floor",
+          "pixel": [
+            293.77964016738355,
+            562.8685100728553
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_L",
+          "ray_distance_m": 0.005353108848145021,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "slot0",
+          "pixel": [
+            345.23959393617423,
+            546.1613245302001
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_L",
+          "ray_distance_m": 0.004883846913329472,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "slot1",
+          "pixel": [
+            243.77130594297665,
+            583.314541795432
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_L",
+          "ray_distance_m": 0.0060709888766395225,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "handle0",
+          "pixel": [
+            464.7596535834168,
+            535.866286014264
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_L",
+          "ray_distance_m": 0.0047999645004853765,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "handle1",
+          "pixel": [
+            98.97683379681274,
+            535.1017480534332
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_L",
+          "ray_distance_m": 0.0053533767962994794,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "shelf",
+          "pixel": [
+            101.21598082181555,
+            2191.4597908723413
+          ],
+          "in_frame": false,
+          "ray_hits_target_body": false,
+          "first_hit_body": null,
+          "ray_distance_m": null,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        }
+      ]
+    },
+    {
+      "camera": "rig_wrist_right",
+      "image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/frames/009_after_move_above/rig_wrist_right.png",
+      "image_sha256": "55b88342ffdee06ea6c99f86ecfeae1bcd8269f840693c471eabea0fab827d10",
+      "calibration": {
+        "name": "rig_wrist_right",
+        "time": 12.992000000001008,
+        "image_size": [
+          720,
+          720
+        ],
+        "K": [
+          [
+            469.16113422283405,
+            0,
+            360.0
+          ],
+          [
+            0,
+            469.16113422283405,
+            360.0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "T_world_camera": {
+          "position": [
+            0.19995485479709701,
+            -0.2952746688046109,
+            0.7970770795054631
+          ],
+          "rotation": [
+            [
+              0.00023923491391825147,
+              0.8032705976123354,
+              -0.5956142122029793
+            ],
+            [
+              -0.9999716645911091,
+              0.004673653823707047,
+              0.00590143836881013
+            ],
+            [
+              0.00752414656560324,
+              0.5955959234006356,
+              0.8032489547126729
+            ]
+          ]
+        },
+        "optical_axis_world": [
+          0.5956142122029793,
+          -0.00590143836881013,
+          -0.8032489547126729
+        ],
+        "parent_body": "hand_R",
+        "measured_T_body_camera": {
+          "position": [
+            -1.782330533747222e-17,
+            -0.0999999999999998,
+            0.024999999999999988
+          ],
+          "rotation": [
+            [
+              -0.9999999999999982,
+              -2.075480982965332e-16,
+              1.0442334057613913e-16
+            ],
+            [
+              -1.6116403037870437e-16,
+              0.8035571933447087,
+              -0.5952275506257844
+            ],
+            [
+              9.349073849426661e-19,
+              -0.5952275506257843,
+              -0.8035571933447087
+            ]
+          ]
+        },
+        "fovy_deg": 75.0,
+        "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+      },
+      "max_project_plane_roundtrip_m": 1.249000902703301e-16,
+      "evaluation_only_visibility": [
+        {
+          "target": "item0",
+          "pixel": [
+            -1088.1017809246373,
+            313.28088235936275
+          ],
+          "in_frame": false,
+          "ray_hits_target_body": false,
+          "first_hit_body": null,
+          "ray_distance_m": null,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "item1",
+          "pixel": [
+            0.47913550672581096,
+            536.0492095124089
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_R",
+          "ray_distance_m": 0.005919101608506207,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "box_floor",
+          "pixel": [
+            -24.456015237510087,
+            571.3025881516414
+          ],
+          "in_frame": false,
+          "ray_hits_target_body": false,
+          "first_hit_body": null,
+          "ray_distance_m": null,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "slot0",
+          "pixel": [
+            -82.88851877052463,
+            588.3407745022135
+          ],
+          "in_frame": false,
+          "ray_hits_target_body": false,
+          "first_hit_body": null,
+          "ray_distance_m": null,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "slot1",
+          "pixel": [
+            28.856793289063148,
+            552.2802050746914
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_R",
+          "ray_distance_m": 0.0061784686926131035,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "handle0",
+          "pixel": [
+            -269.9277889920377,
+            546.4171277767118
+          ],
+          "in_frame": false,
+          "ray_hits_target_body": false,
+          "first_hit_body": null,
+          "ray_distance_m": null,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "handle1",
+          "pixel": [
+            82.30469440125398,
+            546.6630218729535
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_R",
+          "ray_distance_m": 0.005719995635365518,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "shelf",
+          "pixel": [
+            48.127760130541276,
+            211.4047733187948
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "hand_R",
+          "ray_distance_m": 0.002539789301778565,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        }
+      ]
+    },
+    {
+      "camera": "rig_global",
+      "image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/frames/009_after_move_above/rig_global.png",
+      "image_sha256": "9c417f69d432a792136357a092ca02f14582a13ef87003ce87ec18968b43fe06",
+      "calibration": {
+        "name": "rig_global",
+        "time": 12.992000000001008,
+        "image_size": [
+          720,
+          720
+        ],
+        "K": [
+          [
+            623.538290724796,
+            0,
+            360.0
+          ],
+          [
+            0,
+            623.538290724796,
+            360.0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "T_world_camera": {
+          "position": [
+            0.38,
+            0.0,
+            1.6
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "optical_axis_world": [
+          -0.0,
+          -0.0,
+          -1.0
+        ],
+        "parent_body": "world",
+        "measured_T_body_camera": {
+          "position": [
+            0.38,
+            0.0,
+            1.6
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "fovy_deg": 60.0,
+        "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+      },
+      "max_project_plane_roundtrip_m": 1.3597399555105182e-16,
+      "evaluation_only_visibility": [
+        {
+          "target": "item0",
+          "pixel": [
+            285.09983848435434,
+            331.4946329483052
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "link6_L",
+          "ray_distance_m": 0.625955984152408,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "item1",
+          "pixel": [
+            315.6642884880062,
+            382.4821120267738
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "item1",
+          "ray_distance_m": 1.1490746056697205,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "box_floor",
+          "pixel": [
+            309.95575700611255,
+            361.18038489940267
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "tray",
+          "ray_distance_m": 1.1959185376336339,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "slot0",
+          "pixel": [
+            303.6477795057969,
+            341.31372304972587
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "link7_L",
+          "ray_distance_m": 0.7562043923924128,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "slot1",
+          "pixel": [
+            317.30739453576473,
+            379.4761849735652
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": false,
+          "first_hit_body": "item1",
+          "ray_distance_m": 1.151687748981754,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "handle0",
+          "pixel": [
+            306.78201245005624,
+            297.9605838857844
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "tray",
+          "ray_distance_m": 1.1226036290423345,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "handle1",
+          "pixel": [
+            306.9806337290628,
+            424.5465287723746
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "tray",
+          "ray_distance_m": 1.123028691340734,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        },
+        {
+          "target": "shelf",
+          "pixel": [
+            475.47005383792515,
+            360.0
+          ],
+          "in_frame": true,
+          "ray_hits_target_body": true,
+          "first_hit_body": "shelf",
+          "ray_distance_m": 1.0983624174196787,
+          "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+        }
+      ]
+    }
+  ],
+  "evaluation_only_targets": [
+    {
+      "name": "item0",
+      "body": "item0",
+      "xyz": [
+        0.2735082610654149,
+        0.040528432047099286,
+        0.7134641697973917
+      ],
+      "semantic": "payload collision top center; decorative studs may lie above"
+    },
+    {
+      "name": "item1",
+      "body": "item1",
+      "xyz": [
+        0.29834195295735266,
+        -0.04140782450291171,
+        0.4515596718658015
+      ],
+      "semantic": "payload collision top center; decorative studs may lie above"
+    },
+    {
+      "name": "box_floor",
+      "body": "tray",
+      "xyz": [
+        0.2843251987796335,
+        -0.0022566649799791085,
+        0.4079167862391563
+      ],
+      "semantic": "interior floor center"
+    },
+    {
+      "name": "slot0",
+      "body": "tray",
+      "xyz": [
+        0.27226565533098124,
+        0.03572448048872658,
+        0.40791761995986675
+      ],
+      "semantic": "unmarked task slot; requires box pose and declared local offset"
+    },
+    {
+      "name": "slot1",
+      "body": "tray",
+      "xyz": [
+        0.2983800378095746,
+        -0.03723467949239611,
+        0.40791600419246193
+      ],
+      "semantic": "unmarked task slot; requires box pose and declared local offset"
+    },
+    {
+      "name": "handle0",
+      "body": "tray",
+      "xyz": [
+        0.28414685759362396,
+        0.11174178621511248,
+        0.4769191146023456
+      ],
+      "semantic": "declared side-handle target"
+    },
+    {
+      "name": "handle1",
+      "body": "tray",
+      "xyz": [
+        0.2845042067202263,
+        -0.11625793369681274,
+        0.47691445784559383
+      ],
+      "semantic": "declared side-handle target"
+    },
+    {
+      "name": "shelf",
+      "body": "shelf",
+      "xyz": [
+        0.58,
+        0.0,
+        0.52
+      ],
+      "semantic": "shelf support center"
+    }
+  ]
+}

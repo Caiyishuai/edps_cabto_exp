@@ -1,0 +1,6 @@
+{
+  "status": "rejected_response",
+  "reason": "proposal: expected exactly ['candidates', 'decision', 'reason']",
+  "accepted": [],
+  "rejected": []
+}

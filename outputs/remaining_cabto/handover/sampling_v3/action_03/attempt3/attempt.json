@@ -1,0 +1,202 @@
+{
+  "action_id": "donor_releases_after_receiver(arm=0,dest=donor_releases_after_receiver,obj=baton)",
+  "model": {
+    "name": "donor_releases_after_receiver",
+    "args": {
+      "arm": "0",
+      "obj": "baton",
+      "dest": "donor_releases_after_receiver"
+    },
+    "program_kind": "donor_release",
+    "pre": [
+      "dual_holding(baton)",
+      "receiver_contact_verified()",
+      "baton_airborne()",
+      "collision_free()"
+    ],
+    "add": [
+      "receiver_holding(baton)",
+      "empty(0)",
+      "donor_withdrawn()",
+      "handover_verified()"
+    ],
+    "del": [
+      "dual_holding(baton)",
+      "donor_holding(baton)"
+    ],
+    "description": "茶盒由接收臂持有，交出臂为空且位于安全撤离位；真实事件证明接收验证先于空中释放，运动无禁止碰撞。"
+  },
+  "attempt": 3,
+  "call": {
+    "model_id": "mlx-community/Qwen3.5-9B-4bit",
+    "text": "Write ONLY one Python function def policy(api):. Implement ONLY this action. No imports, loops, tuple unpacking or direct simulator access. Save API return tuples in local variables; no hardcoded coordinates. Use ONLY api.<method> calls listed below. DO NOT call an action by its name. Returning a status does not execute an action.\nAction semantics: Receiver attachment verified; transfer ownership by releasing donor and withdrawing donor arm. Receiver must keep holding.\nAvailable APIs:\ndetach(): release DONOR weld after opening.\nopen_gripper(): opens DONOR without detaching weld.\nwithdraw(): withdraw DONOR to safe pose after detach.\nLast actual failed candidate and validator feedback: [{\"source\": \"def policy(api):\\n    api.detach()\\n    api.withdraw()\", \"error\": \"RuntimeError: \\u5f53\\u524d API \\u7f3a\\u5c11\\u5df2\\u5b8c\\u6210\\u7684 open_gripper \\u63a7\\u5236\\u8bc1\\u636e\", \"missing_calls\": [], \"violations\": {\"missing_pre\": [], \"missing_add\": [\"donor_withdrawn()\", \"empty(0)\", \"handover_verified()\"], \"remaining_del\": [\"donor_holding(baton)\", \"dual_holding(baton)\"], \"missing_preserved_pre\": [], \"unexpected_added\": [\"donor_holding(baton)\", \"dual_holding(baton)\"], \"unexpected_removed\": [\"donor_withdrawn()\", \"empty(0)\", \"handover_verified()\"]}, \"physical_diagnostics\": {\"placed\": false, \"xy_error_m\": 0.2114357885966322, \"bottom_gap_m\": 0.1596599468800991, \"rotation_error_deg\": 0.019810924636767556, \"released\": false, \"origin\": [0.3498449133355404, 0.0004742352288135664, 0.6396988277015284], \"table_support_contact\": false}}]",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/handover/sampling_v3/action_03/attempt3/context.png"
+    ],
+    "formatted_prompt": "<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Write ONLY one Python function def policy(api):. Implement ONLY this action. No imports, loops, tuple unpacking or direct simulator access. Save API return tuples in local variables; no hardcoded coordinates. Use ONLY api.<method> calls listed below. DO NOT call an action by its name. Returning a status does not execute an action.\nAction semantics: Receiver attachment verified; transfer ownership by releasing donor and withdrawing donor arm. Receiver must keep holding.\nAvailable APIs:\ndetach(): release DONOR weld after opening.\nopen_gripper(): opens DONOR without detaching weld.\nwithdraw(): withdraw DONOR to safe pose after detach.\nLast actual failed candidate and validator feedback: [{\"source\": \"def policy(api):\\n    api.detach()\\n    api.withdraw()\", \"error\": \"RuntimeError: \\u5f53\\u524d API \\u7f3a\\u5c11\\u5df2\\u5b8c\\u6210\\u7684 open_gripper \\u63a7\\u5236\\u8bc1\\u636e\", \"missing_calls\": [], \"violations\": {\"missing_pre\": [], \"missing_add\": [\"donor_withdrawn()\", \"empty(0)\", \"handover_verified()\"], \"remaining_del\": [\"donor_holding(baton)\", \"dual_holding(baton)\"], \"missing_preserved_pre\": [], \"unexpected_added\": [\"donor_holding(baton)\", \"dual_holding(baton)\"], \"unexpected_removed\": [\"donor_withdrawn()\", \"empty(0)\", \"handover_verified()\"]}, \"physical_diagnostics\": {\"placed\": false, \"xy_error_m\": 0.2114357885966322, \"bottom_gap_m\": 0.1596599468800991, \"rotation_error_deg\": 0.019810924636767556, \"released\": false, \"origin\": [0.3498449133355404, 0.0004742352288135664, 0.6396988277015284], \"table_support_contact\": false}}]<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "temperature": 0.3,
+    "max_tokens": 850,
+    "raw": "```python\ndef policy(api):\n    api.open_gripper()\n    api.detach()\n    api.withdraw()\n```",
+    "wall_seconds": 1.5645360420458019
+  },
+  "source": "def policy(api):\n    api.open_gripper()\n    api.detach()\n    api.withdraw()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": false,
+    "goal_ok": true,
+    "effect_ok": true,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [],
+      "unexpected_removed": [
+        "at_handover_pose(baton)"
+      ]
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "open_gripper",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": {
+          "time": 21.443999999998994,
+          "object_position": [
+            0.349844652865689,
+            0.00047419427771006924,
+            0.6397003023877164
+          ],
+          "tcp_position": [
+            0.34984971070695653,
+            0.07550772900699518,
+            0.6991984443316437
+          ],
+          "weld_constraint_active": true,
+          "holding": false,
+          "grip_command": 1.0,
+          "collision_free": true,
+          "home_dirty": true,
+          "mode": "assisted_grasp_weld"
+        }
+      },
+      {
+        "method": "detach",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": {
+          "time": 21.443999999998994,
+          "object_position": [
+            0.349844652865689,
+            0.00047419427771006924,
+            0.6397003023877164
+          ],
+          "tcp_position": [
+            0.34984971070695653,
+            0.07550772900699518,
+            0.6991984443316437
+          ],
+          "weld_constraint_active": false,
+          "holding": false,
+          "grip_command": 1.0,
+          "collision_free": true,
+          "home_dirty": true,
+          "mode": "assisted_grasp_weld"
+        }
+      },
+      {
+        "method": "withdraw",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": {
+          "time": 26.46399999999621,
+          "object_position": [
+            0.3498869494009733,
+            0.00034235136734253493,
+            0.6394262455661195
+          ],
+          "tcp_position": [
+            0.22018999648173235,
+            0.3395821980418728,
+            0.7798855112559966
+          ],
+          "weld_constraint_active": false,
+          "holding": false,
+          "grip_command": 1.0,
+          "collision_free": true,
+          "home_dirty": true,
+          "mode": "assisted_grasp_weld"
+        }
+      }
+    ],
+    "before": [
+      "at_handover_pose(baton)",
+      "baton_airborne()",
+      "collision_free()",
+      "donor_holding(baton)",
+      "dual_holding(baton)",
+      "receiver_contact_verified()",
+      "receiver_holding(baton)"
+    ],
+    "after": [
+      "baton_airborne()",
+      "collision_free()",
+      "donor_withdrawn()",
+      "empty(0)",
+      "handover_verified()",
+      "receiver_contact_verified()",
+      "receiver_holding(baton)"
+    ],
+    "model": {
+      "name": "donor_releases_after_receiver",
+      "args": {
+        "arm": "0",
+        "obj": "baton",
+        "dest": "donor_releases_after_receiver"
+      },
+      "program_kind": "donor_release",
+      "pre": [
+        "dual_holding(baton)",
+        "receiver_contact_verified()",
+        "baton_airborne()",
+        "collision_free()"
+      ],
+      "add": [
+        "receiver_holding(baton)",
+        "empty(0)",
+        "donor_withdrawn()",
+        "handover_verified()"
+      ],
+      "del": [
+        "dual_holding(baton)",
+        "donor_holding(baton)"
+      ],
+      "description": "茶盒由接收臂持有，交出臂为空且位于安全撤离位；真实事件证明接收验证先于空中释放，运动无禁止碰撞。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": true,
+    "missing_required_calls": [],
+    "code_sha256": "4739c1eccec41d660fcf01e92fc4acb830f1b3b14edd4d2ababacff6af6160f8",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+    "physical_diagnostics": {
+      "placed": false,
+      "xy_error_m": 0.21130131946801903,
+      "bottom_gap_m": 0.15936453855235255,
+      "rotation_error_deg": 0.03141619029131363,
+      "released": false,
+      "origin": [
+        0.3498869494009733,
+        0.00034235136734253493,
+        0.6394262455661195
+      ],
+      "table_support_contact": false
+    }
+  },
+  "accepted": true
+}

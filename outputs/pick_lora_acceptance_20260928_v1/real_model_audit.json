@@ -1,0 +1,31 @@
+{
+  "passed": false,
+  "status": "failed",
+  "pid": 69482,
+  "ppid": 1,
+  "created_at_unix": 1790527069.938988,
+  "training_result_sha256": "52641ee98eca41518b2a9fe94160081d0874151dc5f3a6f44130d9f846bcc579",
+  "reload_result_sha256": "b07e5fff1e9a2718450dcd4f1ffbad5edbb99022b57e28cca5f6777acb8fa3b7",
+  "scope": "frozen-model training mechanics audit; no optimizer steps; not diagnostic accuracy",
+  "all_saved_adapter_values_finite": true,
+  "all_losses_and_gradient_norms_finite": true,
+  "trainable_target_coverage": {
+    "q_proj": 72,
+    "v_proj": 72
+  },
+  "fresh_loaded_adapter_matches": true,
+  "direct_cached_max_logit_difference": 0.0,
+  "future_token_change_earlier_logits_max_difference": 0.0,
+  "zero_image_feature_loss_delta": 0.052439212799072266,
+  "image_check_scope": "numerical dependence, not proof that images improve diagnosis",
+  "direct_cached_gradient_relative_l2": 0.3165066090377581,
+  "direct_gradient_norm": 0.9521809091387625,
+  "direct_cached_loss_difference": 0.009512901306152344,
+  "mechanics_passed": false,
+  "generation_smoke": {
+    "error": "AttributeError: Qwen2Tokenizer has no attribute stopping_criteria",
+    "wall_seconds": 0.0005434170598164201
+  },
+  "peak_memory_gib": 35.11027391534299,
+  "error": "ValueError: Real-model audit failed; see individual metrics"
+}

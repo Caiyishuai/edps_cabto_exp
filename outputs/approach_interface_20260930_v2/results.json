@@ -1,0 +1,283 @@
+{
+  "status": "invalid_audit",
+  "error": "ValueError: Archived state shape mismatch: xfrc_applied",
+  "interfaces": {
+    "symbols": [
+      {
+        "symbol": "FineCover.approach",
+        "signature": "(self, point)",
+        "source": "project/core/cover_cabto_api.py",
+        "start_line": 236
+      },
+      {
+        "symbol": "FineCover.descend",
+        "signature": "(self, point)",
+        "source": "project/core/cover_cabto_api.py",
+        "start_line": 241
+      },
+      {
+        "symbol": "FineCover.lift",
+        "signature": "(self)",
+        "source": "project/core/cover_cabto_api.py",
+        "start_line": 257
+      },
+      {
+        "symbol": "RebuiltSingleArm.move",
+        "signature": "(self, target, grip, speed=None)",
+        "source": "project/core/single_arm_rebuilt.py",
+        "start_line": 220
+      },
+      {
+        "symbol": "RebuiltSingleArm.move_object",
+        "signature": "(self, n, origin, speed=None)",
+        "source": "project/core/single_arm_rebuilt.py",
+        "start_line": 234
+      },
+      {
+        "symbol": "ArmInterface.solve_ik",
+        "signature": "(self, target_pos, target_quat, restarts=24, iters=120, w_rot=0.5, tol=0.001, local_only=False)",
+        "source": "CABTO/exp4_bt_tasks/stage2_scripted/exp4_env.py",
+        "start_line": 211
+      }
+    ],
+    "pick_api": {
+      "grasp_point": "api.grasp_point() -> (x,y,z). Read-only payload grasp-center estimate in world metres. Backend is selected externally (oracle or Qwen). No movement.",
+      "open_gripper": "api.open_gripper() -> None. Command gripper open and wait; does NOT move arm.",
+      "approach": "api.approach(point) -> None. Move OPEN end effector above the point at safe transport height. One xyz tuple argument. Does NOT descend or close.",
+      "descend": "api.descend(point) -> None. Move OPEN end effector vertically to this grasp xyz. Requires already above it. Does NOT close or lift.",
+      "close_gripper": "api.close_gripper() -> None. Close at CURRENT location and wait. Requires simultaneous two-finger force. Does NOT approach, descend or lift.",
+      "lift": "api.lift() -> None. Raise CLOSED end effector vertically to transport height. Does NOT close. The grasped payload must move upward."
+    },
+    "pose_argument_in_current_move": false,
+    "yaw_argument_in_public_pick_methods": false,
+    "ik_accepts_quaternion": true,
+    "interpretation": "A pose-aware IK backend is not a pose-aware executable task API."
+  },
+  "pose_checks": [
+    {
+      "scene": "open",
+      "yaw_deg": 0.0,
+      "target_xyz": [
+        0.3400000000000149,
+        0.15000000000011382,
+        0.42599520594899054
+      ],
+      "target_quat_wxyz": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "joint_seed": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "joint_solution": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "position_error_m": 0.0002348024403026356,
+      "rotation_error_rad": 0.00011219692408859153,
+      "joint_limits_ok": true,
+      "ik_endpoint_ok": true,
+      "actual_tool_z_world": [
+        -9.429548045731157e-05,
+        6.0422461061610865e-05,
+        -0.9999999937287435
+      ],
+      "geometry": {
+        "robot_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "objects_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.0,
+          "pairs_below_clearance": [
+            {
+              "geoms": [
+                "geom_98",
+                "geom_27"
+              ],
+              "bodies": [
+                "left_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            },
+            {
+              "geoms": [
+                "geom_104",
+                "geom_27"
+              ],
+              "bodies": [
+                "right_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            }
+          ]
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": true,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "static_endpoint_pass": true,
+      "scratch_time": 0.16000000000000011,
+      "reference_state_unchanged": true,
+      "grasp_executed": false
+    },
+    {
+      "scene": "open",
+      "yaw_deg": 90.0,
+      "target_xyz": [
+        0.3400000000000149,
+        0.15000000000011382,
+        0.42599520594899054
+      ],
+      "target_quat_wxyz": [
+        0.0,
+        0.7071067811865476,
+        0.7071067811865475,
+        0.0
+      ],
+      "joint_seed": [
+        0.213265885883274,
+        0.29769606271895116,
+        0.11531894517845784,
+        -2.7559270992963714,
+        -0.3589052954091575,
+        3.0456073905180805,
+        1.466338846933412
+      ],
+      "joint_solution": [
+        -0.13370131952685332,
+        0.33897160220664757,
+        0.36523515324412253,
+        -2.7094035569653774,
+        -0.8104475084069894,
+        2.976922184954777,
+        0.23065673537753661
+      ],
+      "position_error_m": 8.691509907940675e-05,
+      "rotation_error_rad": 2.9167543657416947e-05,
+      "joint_limits_ok": true,
+      "ik_endpoint_ok": true,
+      "actual_tool_z_world": [
+        2.7118322049946217e-05,
+        -1.073880072269146e-05,
+        -0.999999999574636
+      ],
+      "geometry": {
+        "robot_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "objects_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.0,
+          "pairs_below_clearance": [
+            {
+              "geoms": [
+                "geom_100",
+                "geom_27"
+              ],
+              "bodies": [
+                "left_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            },
+            {
+              "geoms": [
+                "geom_107",
+                "geom_27"
+              ],
+              "bodies": [
+                "right_finger",
+                "table"
+              ],
+              "distance_m": 0.0
+            }
+          ]
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": true,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "static_endpoint_pass": true,
+      "scratch_time": 0.16000000000000011,
+      "reference_state_unchanged": true,
+      "grasp_executed": false
+    }
+  ],
+  "scene_checks": [
+    {
+      "scene": "open",
+      "scene_sha256": "c9db0aa2b92f551df15fbe2a2c60d32965ce5fb5741ed75426161aba80afc19a",
+      "initial_state_sha256": "9792b450f1e3b6f4c219b9a4b8ac7e9ae540e29b6d78da39de23967b753963c3",
+      "valid_initial_obstacles": true,
+      "initial_geometry": {
+        "robot_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "objects_to_rails": {
+          "pair_count": 0,
+          "min_distance_m": null,
+          "pairs_below_clearance": []
+        },
+        "robot_to_environment": {
+          "pair_count": 159,
+          "min_distance_m": 0.14099593221470488,
+          "pairs_below_clearance": []
+        },
+        "deep_self_contacts": [],
+        "obstacle_clearance_ok": true,
+        "other_endpoint_contact_ok": true,
+        "scope": "collision-enabled robot-environment/obstacle geoms plus eligible MuJoCo self contacts; not swept-path clearance"
+      },
+      "object_state_source": "archived settled initial state"
+    }
+  ],
+  "completed_pose_queries": 2,
+  "dynamic_steps": 0,
+  "forbidden_calls": [],
+  "model_calls": 0,
+  "executed_grasps": 0,
+  "full_pose_side_grasp_supported": false,
+  "total_wall_seconds": 0.6967264169361442,
+  "peak_rss_mib": 430.015625,
+  "decision": "endpoint_evidence_only_pose_api_and_continuous_execution_still_unimplemented",
+  "limits": [
+    "Six fixed grasp endpoints, not swept paths or pregrasp trajectories.",
+    "Local IK failure is not physical impossibility; success is not grasp success.",
+    "Designed channels and archived same-object seed are development conditions.",
+    "No training, controller change, force-closure or dynamic safety claim."
+  ]
+}

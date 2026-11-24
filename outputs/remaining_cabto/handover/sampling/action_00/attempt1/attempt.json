@@ -1,0 +1,125 @@
+{
+  "action_id": "pick_tea_box(arm=0,dest=pick_baton_by_donor,obj=baton)",
+  "model": {
+    "name": "pick_tea_box",
+    "args": {
+      "arm": "0",
+      "obj": "baton",
+      "dest": "pick_baton_by_donor"
+    },
+    "program_kind": "donor_pick",
+    "pre": [
+      "empty(0)",
+      "empty(1)",
+      "at_source(baton)",
+      "collision_free()"
+    ],
+    "add": [
+      "donor_holding(baton)",
+      "baton_airborne()"
+    ],
+    "del": [
+      "empty(0)",
+      "at_source(baton)",
+      "home(0)"
+    ],
+    "description": "交出臂持有茶盒且茶盒位于空中，接收臂为空，源位置不再占用，运动无禁止碰撞。"
+  },
+  "attempt": 1,
+  "call": {
+    "model_id": "mlx-community/Qwen3.5-9B-4bit",
+    "text": "Write ONLY def policy(api): implementing ONE action, not the whole task. No imports, loops, tuple unpacking, simulator access or success flags. Use local coordinates read from API. All required movement, closing/opening, attachment/detachment and withdrawal must be EXPLICIT. Do not change the STRIPS model; do not return a success claim.\nAction model: {\"name\": \"pick_tea_box\", \"args\": {\"arm\": \"0\", \"obj\": \"baton\", \"dest\": \"pick_baton_by_donor\"}, \"program_kind\": \"donor_pick\", \"pre\": [\"empty(0)\", \"empty(1)\", \"at_source(baton)\", \"collision_free()\"], \"add\": [\"donor_holding(baton)\", \"baton_airborne()\"], \"del\": [\"empty(0)\", \"at_source(baton)\", \"home(0)\"], \"description\": \"交出臂持有茶盒且茶盒位于空中，接收臂为空，源位置不再占用，运动无禁止碰撞。\"}\nOnly available API signatures (not a required sequence):\napproach(p)：张爪移动到抓位上方的配置净空；p 仅接受本次 API 的 grasp_pose 读数。返回实测数据。\nattach_contact_gated()：检查闭爪、当帧及最近 0.10 秒双指接触和碰撞审计后，显式激活 assisted_grasp_weld；不执行闭爪过程。返回实测数据。\nclose_gripper()：仅执行闭爪控制并记录接触窗口起点，不激活 weld；返回实测数据。\ndescend(p)：从接近位张爪下降到已读取的抓位，不闭爪、不附着；返回实测数据。\ngrasp_pose()：只读当前指定盒面抓位的 TCP 世界坐标，返回有限 xyz 元组。\nlift()：仅将已附着的盒体原点抬到桌面高度加 0.20 米，保持当前 xy；返回实测数据。\nActual previous failure: []",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/handover/sampling/action_00/attempt1/context.png"
+    ],
+    "formatted_prompt": "<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Write ONLY def policy(api): implementing ONE action, not the whole task. No imports, loops, tuple unpacking, simulator access or success flags. Use local coordinates read from API. All required movement, closing/opening, attachment/detachment and withdrawal must be EXPLICIT. Do not change the STRIPS model; do not return a success claim.\nAction model: {\"name\": \"pick_tea_box\", \"args\": {\"arm\": \"0\", \"obj\": \"baton\", \"dest\": \"pick_baton_by_donor\"}, \"program_kind\": \"donor_pick\", \"pre\": [\"empty(0)\", \"empty(1)\", \"at_source(baton)\", \"collision_free()\"], \"add\": [\"donor_holding(baton)\", \"baton_airborne()\"], \"del\": [\"empty(0)\", \"at_source(baton)\", \"home(0)\"], \"description\": \"交出臂持有茶盒且茶盒位于空中，接收臂为空，源位置不再占用，运动无禁止碰撞。\"}\nOnly available API signatures (not a required sequence):\napproach(p)：张爪移动到抓位上方的配置净空；p 仅接受本次 API 的 grasp_pose 读数。返回实测数据。\nattach_contact_gated()：检查闭爪、当帧及最近 0.10 秒双指接触和碰撞审计后，显式激活 assisted_grasp_weld；不执行闭爪过程。返回实测数据。\nclose_gripper()：仅执行闭爪控制并记录接触窗口起点，不激活 weld；返回实测数据。\ndescend(p)：从接近位张爪下降到已读取的抓位，不闭爪、不附着；返回实测数据。\ngrasp_pose()：只读当前指定盒面抓位的 TCP 世界坐标，返回有限 xyz 元组。\nlift()：仅将已附着的盒体原点抬到桌面高度加 0.20 米，保持当前 xy；返回实测数据。\nActual previous failure: []<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "temperature": 0.0,
+    "max_tokens": 1100,
+    "raw": "def policy(api):\n    return api.approach(\"0\")",
+    "wall_seconds": 2.4183344170451164
+  },
+  "source": "def policy(api):\n    return api.approach(\"0\")",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": false,
+    "strict_CP_transition_match": false,
+    "goal_ok": false,
+    "effect_ok": false,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [
+        "baton_airborne()",
+        "donor_holding(baton)"
+      ],
+      "remaining_del": [
+        "at_source(baton)",
+        "empty(0)"
+      ],
+      "missing_preserved_pre": [],
+      "unexpected_added": [
+        "at_source(baton)",
+        "empty(0)"
+      ],
+      "unexpected_removed": [
+        "baton_airborne()",
+        "donor_holding(baton)"
+      ]
+    },
+    "code_executed": true,
+    "exception": "ValueError: 参数必须是本次只读目标接口返回的 xyz",
+    "trace": [
+      {
+        "method": "approach",
+        "args": [
+          "0"
+        ],
+        "kwargs": {},
+        "status": "failed",
+        "error": "ValueError: 参数必须是本次只读目标接口返回的 xyz"
+      }
+    ],
+    "before": [
+      "at_source(baton)",
+      "collision_free()",
+      "empty(0)",
+      "empty(1)"
+    ],
+    "after": [
+      "at_source(baton)",
+      "collision_free()",
+      "empty(0)",
+      "empty(1)"
+    ],
+    "model": {
+      "name": "pick_tea_box",
+      "args": {
+        "arm": "0",
+        "obj": "baton",
+        "dest": "pick_baton_by_donor"
+      },
+      "program_kind": "donor_pick",
+      "pre": [
+        "empty(0)",
+        "empty(1)",
+        "at_source(baton)",
+        "collision_free()"
+      ],
+      "add": [
+        "donor_holding(baton)",
+        "baton_airborne()"
+      ],
+      "del": [
+        "empty(0)",
+        "at_source(baton)",
+        "home(0)"
+      ],
+      "description": "交出臂持有茶盒且茶盒位于空中，接收臂为空，源位置不再占用，运动无禁止碰撞。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": false,
+    "missing_required_calls": [],
+    "code_sha256": "746397b4075cefe8dd507e3821649d8c1858e3e17a648051e3a6504fe96b5782",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+  },
+  "accepted": false
+}

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "samples": 224,
+  "groups": 32,
+  "contexts": 4,
+  "unique_pixel_images": 88,
+  "group_isolation": true,
+  "image_time_cutoffs": true,
+  "future_intervention_frames_excluded": true,
+  "input_private_keys_excluded": true,
+  "multi_image_placeholders": true,
+  "processor_mask_checked": false,
+  "scope": "automated structural/data audit; suggested diagnosis labels still need human review"
+}

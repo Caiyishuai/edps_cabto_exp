@@ -1,0 +1,14 @@
+{
+  "seed": 2101,
+  "rounds": [
+    {
+      "round": 0,
+      "status": "no_candidate_abstain",
+      "parsed_status": "parsed"
+    }
+  ],
+  "confirmed": false,
+  "rollouts": 0,
+  "first_failure": null,
+  "infrastructure_invalid": false
+}

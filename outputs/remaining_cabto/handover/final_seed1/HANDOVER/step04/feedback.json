@@ -1,0 +1,103 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "return_arm_home",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 28.995999999994808,
+        "object_position": [
+          0.34988867212106217,
+          0.00033891793340498264,
+          0.6394256165810246
+        ],
+        "tcp_position": [
+          0.16080952528282527,
+          0.2933566038256968,
+          0.8862810497197955
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld",
+        "home": true
+      }
+    }
+  ],
+  "before": [
+    "baton_airborne()",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "handover_verified()",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "after": [
+    "baton_airborne()",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "handover_verified()",
+    "home(0)",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "model": {
+    "name": "home_donor_arm",
+    "args": {
+      "arm": "0",
+      "obj": "baton",
+      "dest": "home_donor_arm"
+    },
+    "program_kind": "controlled_home",
+    "pre": [
+      "receiver_holding(baton)",
+      "empty(0)",
+      "donor_withdrawn()",
+      "handover_verified()",
+      "collision_free()"
+    ],
+    "add": [
+      "home(0)"
+    ],
+    "del": [],
+    "description": "绑定的空机械臂处于经执行器控制及实测验证的 HOME 位，无活动抓取 weld，运动无禁止碰撞。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "792a285385ef05011ed0df6e5124e88fbdaba56434cd440832fbe9e03b9beb56",
+  "consistency_scope": "full_CP",
+  "physical_diagnostics": {
+    "placed": false,
+    "xy_error_m": 0.21129749134491477,
+    "bottom_gap_m": 0.1593767024170225,
+    "rotation_error_deg": 0.024897360486905322,
+    "released": false,
+    "origin": [
+      0.34988867212106217,
+      0.00033891793340498264,
+      0.6394256165810246
+    ],
+    "table_support_contact": false
+  }
+}

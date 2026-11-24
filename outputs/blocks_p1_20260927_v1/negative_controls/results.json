@@ -1,0 +1,80 @@
+{
+  "controls": [
+    {
+      "candidate": {
+        "id": "wrong_numeric",
+        "pre_add": [],
+        "offset_z_m": 0.05,
+        "reason": "engineered numerical negative control"
+      },
+      "success": false,
+      "valid": true,
+      "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+      "cost": {
+        "rollouts": 1,
+        "actions": 1,
+        "api_calls": 5,
+        "simulation_seconds": 6.75999999999946,
+        "wall_seconds": 0.5066395839676261
+      }
+    },
+    {
+      "candidate": {
+        "id": "blocking_pre",
+        "pre_add": [
+          {
+            "action": "stack",
+            "predicate": "empty",
+            "args": []
+          }
+        ],
+        "offset_z_m": null,
+        "reason": "engineered incompatible precondition"
+      },
+      "success": false,
+      "valid": true,
+      "exception": "ModelValidationError: stack(object=blue,support=yellow): pre ∩ add 必须为空",
+      "cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0.0,
+        "wall_seconds": 0.0
+      }
+    },
+    {
+      "candidate": {
+        "id": "unknown_pred",
+        "pre_add": [
+          {
+            "action": "stack",
+            "predicate": "magic",
+            "args": []
+          }
+        ],
+        "offset_z_m": null,
+        "reason": "engineered grammar rejection"
+      },
+      "success": false,
+      "valid": true,
+      "exception": "CandidateRejected: Unknown action or predicate",
+      "cost": {
+        "rollouts": 0,
+        "actions": 0,
+        "api_calls": 0,
+        "simulation_seconds": 0.0,
+        "wall_seconds": 0.0
+      }
+    }
+  ],
+  "all_bad_search_status": "pool_exhausted_abstain",
+  "all_bad_search_selected": null,
+  "all_bad_search_cost": {
+    "rollouts": 1,
+    "actions": 1,
+    "api_calls": 5,
+    "simulation_seconds": 6.75999999999946,
+    "wall_seconds": 0.24427137500606477
+  },
+  "scope": "engineered negatives excluded from primary LM pool and search advantage"
+}

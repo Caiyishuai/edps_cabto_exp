@@ -1,0 +1,167 @@
+{
+  "action_id": "pour_into_held_basin(arm=0,dest=pour_into_held_basin,obj=canL)",
+  "model": {
+    "name": "pour_into_held_basin",
+    "args": {
+      "arm": "0",
+      "obj": "canL",
+      "dest": "pour_into_held_basin"
+    },
+    "program_kind": "coordinated_pour",
+    "pre": [
+      "holding(0,canL)",
+      "holding(1,basin)",
+      "content_in_source()",
+      "basin_ready()",
+      "collision_free()"
+    ],
+    "add": [
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()"
+    ],
+    "del": [
+      "content_in_source()",
+      "source_upright()"
+    ],
+    "description": "小球由实际倾斜越过水平的源杯转移到仍被另一臂抓持的接收盆；两侧抓持保持，小球留在盆内。"
+  },
+  "attempt": 1,
+  "transfer": {
+    "source_sha256": "e06cfe1b437bd130d41d13669a3e54a978443d7739fc3a99fd39f0cea789d090",
+    "source_attempt": "/Users/yishuaicai/mywork/edps_cabto_exp/project/data/programs/held_basin_pour_result.json#coordinated_pour",
+    "mode": "unmodified_actual_model_source_schema_transfer",
+    "new_call": false
+  },
+  "source": "def policy(api):\n    source_pose = api.source_pose()\n    move_source = api.move_source(source_pose)\n    receiver_pose = api.receiver_pose()\n    align_receiver = api.align_receiver(receiver_pose)\n    tip_source = api.tip_source()\n    settle = api.settle()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": true,
+    "goal_ok": true,
+    "effect_ok": true,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [],
+      "unexpected_removed": []
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "source_pose",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.41,
+          0.009999999999999998,
+          0.76
+        ]
+      },
+      {
+        "method": "move_source",
+        "args": [
+          [
+            0.41,
+            0.009999999999999998,
+            0.76
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "receiver_pose",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.69,
+          -0.02,
+          0.59
+        ]
+      },
+      {
+        "method": "align_receiver",
+        "args": [
+          [
+            0.69,
+            -0.02,
+            0.59
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "tip_source",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "settle",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      }
+    ],
+    "before": [
+      "basin_ready()",
+      "collision_free()",
+      "content_in_source()",
+      "holding(0,canL)",
+      "holding(1,basin)",
+      "source_upright()"
+    ],
+    "after": [
+      "basin_ready()",
+      "caught_by_held_basin()",
+      "collision_free()",
+      "holding(0,canL)",
+      "holding(1,basin)",
+      "payload_retained()",
+      "sphere_in_basin()"
+    ],
+    "model": {
+      "name": "pour_into_held_basin",
+      "args": {
+        "arm": "0",
+        "obj": "canL",
+        "dest": "pour_into_held_basin"
+      },
+      "program_kind": "coordinated_pour",
+      "pre": [
+        "holding(0,canL)",
+        "holding(1,basin)",
+        "content_in_source()",
+        "basin_ready()",
+        "collision_free()"
+      ],
+      "add": [
+        "sphere_in_basin()",
+        "caught_by_held_basin()",
+        "payload_retained()"
+      ],
+      "del": [
+        "content_in_source()",
+        "source_upright()"
+      ],
+      "description": "小球由实际倾斜越过水平的源杯转移到仍被另一臂抓持的接收盆；两侧抓持保持，小球留在盆内。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": true,
+    "missing_required_calls": [],
+    "code_sha256": "e06cfe1b437bd130d41d13669a3e54a978443d7739fc3a99fd39f0cea789d090",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+  },
+  "accepted": true
+}

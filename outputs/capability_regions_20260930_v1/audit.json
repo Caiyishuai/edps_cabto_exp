@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "trials": 24,
+  "paired_cases": 8,
+  "source_snapshot_files": 85,
+  "model_calls": 0,
+  "checked": [
+    "raw traces",
+    "source snapshots",
+    "initial pairing",
+    "shared contracts",
+    "frozen development selection",
+    "metrics"
+  ],
+  "artifact_hashes": {
+    "protocol.json": "1076558eda5688c51d5bb9d6d2a0d44e790694cce1decfc8deb2614d70b1587e",
+    "manifest.json": "1a23f92072d664828b3ee2a79ea602649b4a623aa7de0cc29f51e35b590f9fd9",
+    "results.json": "b3bd2db31f2fd6ea4a2716c5af6a81ed9ce39a0c687e8c3bdeff03f89a9c98f9",
+    "selection_frozen.json": "1a626773b5f679c09d4b22b15cbe1753738ad1decdc60e00dd7308d0f7f5d3c2"
+  },
+  "limits": "Finite deterministic development probe; no statistical generalization or learned skill claim."
+}

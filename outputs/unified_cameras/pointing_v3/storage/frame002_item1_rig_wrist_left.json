@@ -1,0 +1,141 @@
+{
+  "task": "storage",
+  "capture_index": 2,
+  "event": "after_align_xy",
+  "target": "item1",
+  "camera": "rig_wrist_left",
+  "input_image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/frames/002_after_align_xy/rig_wrist_left.png",
+  "input_sha256": "e2614bfaed9b06c193771061bf5e593da33c847edca0898e29695da755f2d76a",
+  "original_run": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/result.json",
+  "original_run_sha256": "93ffc354894cbbd6afe8bc95411efe926d8e5464ad2c6abd3a04d72b5a21bb90",
+  "original_physical_state_time": 0.6400000000000005,
+  "used_by_robot": false,
+  "type": "diagnostic_point_not_executable_grasp",
+  "calibration": {
+    "name": "rig_wrist_left",
+    "time": 0.6400000000000005,
+    "image_size": [
+      720,
+      720
+    ],
+    "K": [
+      [
+        469.16113422283405,
+        0,
+        360.0
+      ],
+      [
+        0,
+        469.16113422283405,
+        360.0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "T_world_camera": {
+      "position": [
+        0.40002807297603715,
+        0.24329857795680582,
+        0.9618824952658389
+      ],
+      "rotation": [
+        [
+          -0.0005274234653111498,
+          -0.8032906854570423,
+          0.5955869344457123
+        ],
+        [
+          0.9999652381583601,
+          -0.005379728191599542,
+          -0.006370321771805354
+        ],
+        [
+          0.008321315964441411,
+          0.5955628708898311,
+          0.8032655989883297
+        ]
+      ]
+    },
+    "optical_axis_world": [
+      -0.5955869344457123,
+      0.006370321771805354,
+      -0.8032655989883297
+    ],
+    "parent_body": "hand_L",
+    "measured_T_body_camera": {
+      "position": [
+        -8.596392186156114e-18,
+        -0.0999999999999997,
+        0.024999999999999988
+      ],
+      "rotation": [
+        [
+          -0.9999999999999976,
+          -3.3538941321779974e-17,
+          -4.235391049068358e-17
+        ],
+        [
+          -7.077706969078203e-17,
+          0.8035571933447083,
+          -0.5952275506257838
+        ],
+        [
+          4.440807391667208e-17,
+          -0.5952275506257839,
+          -0.8035571933447083
+        ]
+      ]
+    },
+    "fovy_deg": 75.0,
+    "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+  },
+  "evaluation_only_reference": {
+    "name": "item1",
+    "body": "item1",
+    "xyz": [
+      0.33500000000471664,
+      -0.22499999999763257,
+      0.4438922445788845
+    ],
+    "semantic": "payload collision top center; decorative studs may lie above"
+  },
+  "reference_semantics": "payload collision top center; decorative studs may lie above",
+  "call": {
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "text": "Point to the center of the small green hinged toy brick with two large round studs outside the open cardboard box. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/frames/002_after_align_xy/rig_wrist_left.png"
+    ],
+    "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the small green hinged toy brick with two large round studs outside the open cardboard box. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.<|im_end|>\n<|im_start|>assistant\n",
+    "temperature": 0.0,
+    "max_tokens": 220,
+    "raw": "{\"point\": [318, 531]}",
+    "wall_seconds": 1.1242842079373077
+  },
+  "point": [
+    318.0,
+    531.0
+  ],
+  "status": "point_returned_not_validated",
+  "reference_visibility": {
+    "target": "item1",
+    "pixel": [
+      -130.68414560989999,
+      623.4726275049698
+    ],
+    "in_frame": false,
+    "ray_hits_target_body": false,
+    "first_hit_body": null,
+    "ray_distance_m": null,
+    "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+  },
+  "evaluation_only_reference_uv": [
+    -130.68414560989999,
+    623.4726275049698
+  ],
+  "pixel_error": 458.1142317799774,
+  "overlay": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/pointing_v3/storage/frame002_item1_rig_wrist_left.png"
+}

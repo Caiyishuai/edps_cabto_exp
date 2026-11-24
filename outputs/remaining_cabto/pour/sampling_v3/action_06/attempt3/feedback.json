@@ -1,0 +1,121 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "source_returned()"
+    ],
+    "remaining_del": [],
+    "missing_preserved_pre": [
+      "source_upright()"
+    ],
+    "unexpected_added": [
+      "parked(0)"
+    ],
+    "unexpected_removed": [
+      "source_returned()",
+      "source_upright()"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "safe_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.24,
+        0.2,
+        0.72
+      ]
+    },
+    {
+      "method": "move_safe",
+      "args": [
+        [
+          0.24,
+          0.2,
+          0.72
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.0020849869057045028
+    },
+    {
+      "method": "release",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "retreat",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.011841540114787512
+    }
+  ],
+  "before": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "receiver_separated()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "after": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "empty(0)",
+    "hand_raised(0)",
+    "holding(1,basin)",
+    "parked(0)",
+    "payload_retained()",
+    "receiver_separated()",
+    "sphere_in_basin()"
+  ],
+  "model": {
+    "name": "return_source_cup",
+    "args": {
+      "arm": "0",
+      "obj": "canL",
+      "dest": "return_source_cup"
+    },
+    "program_kind": "return_source",
+    "pre": [
+      "holding(0,canL)",
+      "source_upright()",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "source_returned()",
+      "empty(0)",
+      "hand_raised(0)"
+    ],
+    "del": [
+      "holding(0,canL)"
+    ],
+    "description": "源杯在标定返还位置直立落桌且已解除抓持，源臂空手并撤至外侧安全高度，小球仍留在接收盆内。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "missing_required_calls": [
+    "move_above",
+    "lower"
+  ],
+  "code_sha256": "1caa975c2f26655221007e3104384302345ace3348884fdcda7c0f13ac366dcd",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "case": "case0000",
+    "layout": "test-a",
+    "target_occupied": false,
+    "grasp_offset_z_m": 0.0,
+    "truth": "ok"
+  },
+  {
+    "case": "case0001",
+    "layout": "test-a",
+    "target_occupied": false,
+    "grasp_offset_z_m": 0.045,
+    "truth": "policy"
+  },
+  {
+    "case": "case0002",
+    "layout": "test-a",
+    "target_occupied": true,
+    "grasp_offset_z_m": 0.0,
+    "truth": "model"
+  },
+  {
+    "case": "case0003",
+    "layout": "test-a",
+    "target_occupied": true,
+    "grasp_offset_z_m": 0.045,
+    "truth": "mixed"
+  },
+  {
+    "case": "case0004",
+    "layout": "test-b",
+    "target_occupied": false,
+    "grasp_offset_z_m": 0.0,
+    "truth": "ok"
+  },
+  {
+    "case": "case0005",
+    "layout": "test-b",
+    "target_occupied": false,
+    "grasp_offset_z_m": 0.045,
+    "truth": "policy"
+  },
+  {
+    "case": "case0006",
+    "layout": "test-b",
+    "target_occupied": true,
+    "grasp_offset_z_m": 0.0,
+    "truth": "model"
+  },
+  {
+    "case": "case0007",
+    "layout": "test-b",
+    "target_occupied": true,
+    "grasp_offset_z_m": 0.045,
+    "truth": "mixed"
+  }
+]

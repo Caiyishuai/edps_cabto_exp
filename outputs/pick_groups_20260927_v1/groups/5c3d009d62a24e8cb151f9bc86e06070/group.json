@@ -1,0 +1,66 @@
+{
+  "id": "5c3d009d62a24e8cb151f9bc86e06070",
+  "context_id": "2b0f793185a84130a6a52a45387d7cc9",
+  "scene": "cover",
+  "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+  "split": "train",
+  "seed": 0,
+  "object": "apple",
+  "support": "board",
+  "condition": "unchanged",
+  "trials": {
+    "none": {
+      "path": "groups/5c3d009d62a24e8cb151f9bc86e06070/feb66cf9b84d4e729e03a64f8e9eb7a4/result.json",
+      "sha256": "c5145a2ce237f33cd378e6ffa9076a99a5602a6ccbe27cb98ce2d6789449a101",
+      "valid": true,
+      "physical_pick_success": true,
+      "contract_consistent": true,
+      "joint_success": true,
+      "model_sha256": "9c2a8a87c3435e3cd96ff5ca3e4747fd1abc8d75d2e0b31b739cb48ea8f5af8e",
+      "source_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6",
+      "scene_sha256": "3b56250468547c81b0402745c14615a3b395a957516dda1f2960be10fe83bb48",
+      "initial_qpos_sha256": "9d2815dd7063b15387249409d1783559daec69e297a20c9176886352ce512247",
+      "exception": null
+    },
+    "model_only": {
+      "path": "groups/5c3d009d62a24e8cb151f9bc86e06070/f980dc4b37fa4c2cae9bca80637dcf5a/result.json",
+      "sha256": "d51df3f1a538ea30c819dd869787dbc4cd3b9e9ef79b6708e2b89acb676d1337",
+      "valid": true,
+      "physical_pick_success": true,
+      "contract_consistent": true,
+      "joint_success": true,
+      "model_sha256": "9c2a8a87c3435e3cd96ff5ca3e4747fd1abc8d75d2e0b31b739cb48ea8f5af8e",
+      "source_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6",
+      "scene_sha256": "3b56250468547c81b0402745c14615a3b395a957516dda1f2960be10fe83bb48",
+      "initial_qpos_sha256": "9d2815dd7063b15387249409d1783559daec69e297a20c9176886352ce512247",
+      "exception": null
+    },
+    "policy_only": {
+      "path": "groups/5c3d009d62a24e8cb151f9bc86e06070/5e5c7fc8e9da477d8f1459b5eec36fed/result.json",
+      "sha256": "a608a8d8cd78e1de63d97a97c8c1d8e254778d8e946c55e34099735082e24b43",
+      "valid": true,
+      "physical_pick_success": true,
+      "contract_consistent": true,
+      "joint_success": true,
+      "model_sha256": "9c2a8a87c3435e3cd96ff5ca3e4747fd1abc8d75d2e0b31b739cb48ea8f5af8e",
+      "source_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6",
+      "scene_sha256": "3b56250468547c81b0402745c14615a3b395a957516dda1f2960be10fe83bb48",
+      "initial_qpos_sha256": "9d2815dd7063b15387249409d1783559daec69e297a20c9176886352ce512247",
+      "exception": null
+    },
+    "cross_level": {
+      "path": "groups/5c3d009d62a24e8cb151f9bc86e06070/f1c96405127a4689aeb69d62a26f722a/result.json",
+      "sha256": "2f4284b4e62fb271993e707f04678d884f4b676002b6afce644cb041d3f4a433",
+      "valid": true,
+      "physical_pick_success": true,
+      "contract_consistent": true,
+      "joint_success": true,
+      "model_sha256": "9c2a8a87c3435e3cd96ff5ca3e4747fd1abc8d75d2e0b31b739cb48ea8f5af8e",
+      "source_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6",
+      "scene_sha256": "3b56250468547c81b0402745c14615a3b395a957516dda1f2960be10fe83bb48",
+      "initial_qpos_sha256": "9d2815dd7063b15387249409d1783559daec69e297a20c9176886352ce512247",
+      "exception": null
+    }
+  },
+  "paired_layer_invariance": true
+}

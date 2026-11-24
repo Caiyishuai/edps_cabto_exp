@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "status": "complete",
+  "fresh_process": true,
+  "pid": 86013,
+  "training_pid": 82213,
+  "started_unix": 1790527913.494825,
+  "adapter_hashes_match": true,
+  "max_logit_difference": 0.0,
+  "reloaded_loss": 2.1370675563812256,
+  "loss_difference": 0.0,
+  "setup": {
+    "load_seconds": 1.057262040907517,
+    "unfused_rope_modules": 36,
+    "memory_limit_is_guideline_not_hard_cap": true
+  },
+  "scope": "adapter persistence and fresh six-image teacher-forced inference; not generation accuracy or OOD"
+}

@@ -1,0 +1,97 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_tray_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.2853664994311949,
+        1.40276194094745e-18,
+        0.62
+      ]
+    },
+    {
+      "method": "move_tray_to",
+      "args": [
+        [
+          0.2853664994311949,
+          1.40276194094745e-18,
+          0.62
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "settle",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "dual_holding_tray()",
+    "packed(0)",
+    "packed(1)",
+    "tray_at_table()"
+  ],
+  "after": [
+    "dual_holding_tray()",
+    "holding(0,tray)",
+    "holding(1,tray)",
+    "packed(0)",
+    "packed(1)",
+    "slot_free(0)",
+    "slot_free(1)",
+    "tray_lifted()"
+  ],
+  "model": {
+    "name": "dual_lift_tray",
+    "args": {
+      "arm": "both",
+      "obj": "tray",
+      "dest": "dual_lift_tray"
+    },
+    "program_kind": "cooperative_move",
+    "pre": [
+      "packed(0)",
+      "packed(1)",
+      "dual_holding_tray()",
+      "tray_at_table()"
+    ],
+    "add": [
+      "holding(0,tray)",
+      "holding(1,tray)",
+      "slot_free(0)",
+      "slot_free(1)",
+      "tray_lifted()"
+    ],
+    "del": [
+      "tray_at_table()"
+    ],
+    "description": "两臂保持共同抓持，托盘在原桌面水平位置达到标定运输高度，两个物品仍在托盘内。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "82c2ef8a40ad6752e66ff9e6d0d94097f24b7677ed588ad536a0a24d121fad94",
+  "consistency_scope": "full_CP"
+}

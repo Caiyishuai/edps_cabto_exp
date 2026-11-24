@@ -1,0 +1,91 @@
+{
+  "raw_evidence_passed": true,
+  "groups": 32,
+  "contexts": 4,
+  "physical_rollouts": 128,
+  "raw_images": 1664,
+  "unique_raw_pixel_images": 120,
+  "outcomes": {
+    "cover": {
+      "none": {
+        "total": 16,
+        "physical": 8,
+        "contract": 4,
+        "joint": 4
+      },
+      "model_only": {
+        "total": 16,
+        "physical": 8,
+        "contract": 8,
+        "joint": 8
+      },
+      "policy_only": {
+        "total": 16,
+        "physical": 16,
+        "contract": 8,
+        "joint": 8
+      },
+      "cross_level": {
+        "total": 16,
+        "physical": 16,
+        "contract": 16,
+        "joint": 16
+      }
+    },
+    "blocks": {
+      "none": {
+        "total": 16,
+        "physical": 8,
+        "contract": 4,
+        "joint": 4
+      },
+      "model_only": {
+        "total": 16,
+        "physical": 8,
+        "contract": 8,
+        "joint": 8
+      },
+      "policy_only": {
+        "total": 16,
+        "physical": 16,
+        "contract": 8,
+        "joint": 8
+      },
+      "cross_level": {
+        "total": 16,
+        "physical": 16,
+        "contract": 16,
+        "joint": 16
+      }
+    }
+  },
+  "dataset_audit": {
+    "passed": true,
+    "samples": 224,
+    "groups": 32,
+    "contexts": 4,
+    "unique_pixel_images": 88,
+    "group_isolation": true,
+    "image_time_cutoffs": true,
+    "future_intervention_frames_excluded": true,
+    "input_private_keys_excluded": true,
+    "multi_image_placeholders": true,
+    "processor_mask_checked": false,
+    "scope": "automated structural/data audit; suggested diagnosis labels still need human review"
+  },
+  "processor_passed": true,
+  "processor_examples": 224,
+  "max_sequence_tokens": 5707,
+  "training_started": false,
+  "production_training_approved": false,
+  "reasons_to_defer_training": [
+    "only four scene-seed contexts and one program family",
+    "diagnosis recommendations are handwritten heuristics",
+    "no unseen-scene test or independent repair validation",
+    "reference assistant mask not wired into actual trainer"
+  ],
+  "roots": {
+    "collection_freeze": "7d6590fde185c9f05980c52c7dc78b014365fe9a11fc8e99980b89d4279457b1",
+    "dataset_manifest": "9abb04277fc843085dbb54a243e8dc2bb0629315832f477db84269e5f7306234"
+  }
+}

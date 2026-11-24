@@ -1,0 +1,19 @@
+{
+  "name": "pick",
+  "args": {
+    "object": "pepper",
+    "support": "pan"
+  },
+  "pre": [
+    "empty()",
+    "at_source(pepper)"
+  ],
+  "add": [
+    "holding(pepper)"
+  ],
+  "del": [
+    "empty()",
+    "at_source(pepper)",
+    "home_completed()"
+  ]
+}

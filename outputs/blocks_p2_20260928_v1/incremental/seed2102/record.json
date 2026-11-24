@@ -1,0 +1,120 @@
+{
+  "seed": 2102,
+  "rounds": [
+    {
+      "round": 0,
+      "proposed": {
+        "id": "grasp_offset_fix",
+        "pre_add": [],
+        "offset_z_m": 0.055,
+        "reason": "Increase Z-offset to maximum bound to resolve zero-finger-force closure failures observed in multiple executions."
+      },
+      "accumulated": {
+        "pre_add": [],
+        "offset_z_m": 0.055
+      },
+      "confirmed": false,
+      "rollouts": 1,
+      "first_failure": {
+        "failed_action": "pick_table",
+        "role": "grasp",
+        "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+        "violations": {
+          "missing_pre": [],
+          "missing_add": [
+            "holding(blue)"
+          ],
+          "remaining_del": [
+            "ontable(blue)"
+          ],
+          "missing_preserved_pre": [],
+          "unexpected_added": [
+            "ontable(blue)"
+          ],
+          "unexpected_removed": [
+            "holding(blue)"
+          ]
+        },
+        "finger_forces_N": {
+          "left_finger": 0.0,
+          "right_finger": 0.0
+        },
+        "before_state": [
+          "clear(blue)",
+          "clear(green)",
+          "clear(red)",
+          "clear(yellow)",
+          "empty()",
+          "ontable(blue)",
+          "ontable(green)",
+          "ontable(red)",
+          "ontable(yellow)"
+        ],
+        "after_state": [
+          "clear(blue)",
+          "clear(green)",
+          "clear(red)",
+          "clear(yellow)",
+          "ontable(blue)",
+          "ontable(green)",
+          "ontable(red)",
+          "ontable(yellow)"
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "status": "no_candidate_abstain",
+      "parsed_status": "parsed"
+    }
+  ],
+  "confirmed": false,
+  "rollouts": 1,
+  "first_failure": {
+    "failed_action": "pick_table",
+    "role": "grasp",
+    "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [
+        "holding(blue)"
+      ],
+      "remaining_del": [
+        "ontable(blue)"
+      ],
+      "missing_preserved_pre": [],
+      "unexpected_added": [
+        "ontable(blue)"
+      ],
+      "unexpected_removed": [
+        "holding(blue)"
+      ]
+    },
+    "finger_forces_N": {
+      "left_finger": 0.0,
+      "right_finger": 0.0
+    },
+    "before_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "after_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ]
+  },
+  "infrastructure_invalid": false
+}

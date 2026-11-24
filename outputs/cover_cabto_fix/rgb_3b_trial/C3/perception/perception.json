@@ -1,0 +1,206 @@
+[
+  {
+    "object": "bowl",
+    "point_kind": "support_floor_center",
+    "height_prior": 0.40800000000000003,
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "source": "Qwen semantic point + RGB refinement + calibrated plane",
+    "fallback": false,
+    "image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/rgb_3b_trial/C3/perception/000_bowl.png",
+    "call": {
+      "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+      "text": "Point to the center of the white bowl interior. Output the pixel coordinate.",
+      "image_files": [
+        "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/rgb_3b_trial/C3/perception/000_bowl.png"
+      ],
+      "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the white bowl interior. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+      "temperature": 0.0,
+      "max_tokens": 200,
+      "raw": "```json\n[\n\t{\"point_2d\": [238, 238], \"label\": \"center of the white bowl interior\"}\n]\n```",
+      "wall_seconds": 3.0985282919136807
+    },
+    "field": "point_2d",
+    "coordinate_contract": "absolute_pixel",
+    "refinement": {
+      "method": "white_component_outer_ellipse_center",
+      "roi": [
+        154,
+        154,
+        323,
+        323
+      ],
+      "component_area": 10236,
+      "coarse_uv": [
+        238.0,
+        238.0
+      ],
+      "refined_uv": [
+        226.58448791503906,
+        226.62815856933594
+      ],
+      "semantic_prior": "bowl"
+    },
+    "xyz": [
+      0.30237037257248806,
+      0.16757475752973994,
+      0.4079999999999999
+    ],
+    "uv": [
+      226.58448791503906,
+      226.62815856933594
+    ]
+  },
+  {
+    "object": "board",
+    "point_kind": "support_floor_center",
+    "height_prior": 0.42400000000000004,
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "source": "Qwen semantic point + RGB refinement + calibrated plane",
+    "fallback": false,
+    "image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/rgb_3b_trial/C3/perception/001_board.png",
+    "call": {
+      "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+      "text": "Point to the center of the wooden chopping board. Output the pixel coordinate.",
+      "image_files": [
+        "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/rgb_3b_trial/C3/perception/001_board.png"
+      ],
+      "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the wooden chopping board. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+      "temperature": 0.0,
+      "max_tokens": 200,
+      "raw": "```json\n[\n\t{\"point_2d\": [378, 238], \"label\": \"center of the wooden chopping board\"}\n]\n```",
+      "wall_seconds": 2.0772343329153955
+    },
+    "field": "point_2d",
+    "coordinate_contract": "absolute_pixel",
+    "refinement": {
+      "method": "component_centroid",
+      "roi": [
+        294,
+        154,
+        463,
+        323
+      ],
+      "component_area": 12780,
+      "coarse_uv": [
+        378.0,
+        238.0
+      ],
+      "refined_uv": [
+        375.9340375586854,
+        230.95657276995306
+      ],
+      "semantic_prior": "board"
+    },
+    "xyz": [
+      0.48972694899761854,
+      0.15976070710699758,
+      0.42399999999999993
+    ],
+    "uv": [
+      375.9340375586854,
+      230.95657276995306
+    ]
+  },
+  {
+    "object": "pan",
+    "point_kind": "support_floor_center",
+    "height_prior": 0.41000000000000003,
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "source": "Qwen semantic point + RGB refinement + calibrated plane",
+    "fallback": false,
+    "image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/rgb_3b_trial/C3/perception/002_pan.png",
+    "call": {
+      "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+      "text": "Point to the center of the round black pan interior, excluding its handle. Output the pixel coordinate.",
+      "image_files": [
+        "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/rgb_3b_trial/C3/perception/002_pan.png"
+      ],
+      "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the round black pan interior, excluding its handle. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+      "temperature": 0.0,
+      "max_tokens": 200,
+      "raw": "```json\n[\n\t{\"point_2d\": [538, 251], \"label\": \"center of the round black pan interior, excluding its handle\"}\n]\n```",
+      "wall_seconds": 2.3661778749665245
+    },
+    "field": "point_2d",
+    "coordinate_contract": "absolute_pixel",
+    "refinement": {
+      "method": "maximum_inscribed_disc",
+      "roi": [
+        454,
+        167,
+        623,
+        336
+      ],
+      "component_area": 6536,
+      "coarse_uv": [
+        538.0,
+        251.0
+      ],
+      "refined_uv": [
+        534.2,
+        219.6
+      ],
+      "semantic_prior": "pan"
+    },
+    "xyz": [
+      0.6884723411007738,
+      0.17608218536480272,
+      0.41000000000000014
+    ],
+    "uv": [
+      534.2,
+      219.6
+    ]
+  },
+  {
+    "object": "potato",
+    "point_kind": "grasp_center",
+    "height_prior": 0.41798083548895737,
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "source": "Qwen semantic point + RGB refinement + calibrated plane",
+    "fallback": false,
+    "image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/rgb_3b_trial/C3/perception/003_potato.png",
+    "call": {
+      "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+      "text": "Point to the yellow brown potato. Output the pixel coordinate.",
+      "image_files": [
+        "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/rgb_3b_trial/C3/perception/003_potato.png"
+      ],
+      "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the yellow brown potato. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+      "temperature": 0.0,
+      "max_tokens": 200,
+      "raw": "```json\n[\n\t{\"point_2d\": [228, 511], \"label\": \"yellow brown potato\"}\n]\n```",
+      "wall_seconds": 1.8725219999905676
+    },
+    "field": "point_2d",
+    "coordinate_contract": "absolute_pixel",
+    "refinement": {
+      "method": "maximum_inscribed_disc",
+      "roi": [
+        192,
+        475,
+        265,
+        548
+      ],
+      "component_area": 625,
+      "coarse_uv": [
+        228.0,
+        511.0
+      ],
+      "refined_uv": [
+        230.0,
+        513.0
+      ],
+      "semantic_prior": "potato"
+    },
+    "xyz": [
+      0.3081546898626381,
+      -0.19047948039243356,
+      0.41798083548895737
+    ],
+    "uv": [
+      230.0,
+      513.0
+    ]
+  }
+]

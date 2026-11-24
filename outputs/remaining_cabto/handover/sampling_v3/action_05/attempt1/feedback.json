@@ -1,0 +1,217 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "receiver_withdrawn()"
+    ],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": [
+      "receiver_withdrawn()"
+    ]
+  },
+  "code_executed": true,
+  "exception": "RuntimeError: 当前 API 缺少已完成的 retreat_vertical 控制证据",
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.46,
+        -0.18,
+        0.48300000000000004
+      ]
+    },
+    {
+      "method": "carry",
+      "args": [
+        [
+          0.46,
+          -0.18,
+          0.48300000000000004
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 32.5359999999938,
+        "object_position": [
+          0.4599685854393063,
+          -0.17997133522154593,
+          0.6398344374905363
+        ],
+        "tcp_position": [
+          0.45996487106823586,
+          -0.25491091752033246,
+          0.6991254147160355
+        ],
+        "weld_constraint_active": true,
+        "holding": true,
+        "grip_command": 0.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.46,
+          -0.18,
+          0.48300000000000004
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 34.855999999996634,
+        "object_position": [
+          0.460091099050099,
+          -0.18043781115955979,
+          0.4863409628396996
+        ],
+        "tcp_position": [
+          0.4601684139373591,
+          -0.2552921772210025,
+          0.5457489300063062
+        ],
+        "weld_constraint_active": true,
+        "holding": true,
+        "grip_command": 0.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 34.91999999999671,
+        "object_position": [
+          0.46005597325844383,
+          -0.18042160063463172,
+          0.4848271067986943
+        ],
+        "tcp_position": [
+          0.4601561463554785,
+          -0.2553108200554385,
+          0.5441951081568173
+        ],
+        "weld_constraint_active": true,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "detach",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 35.207999999997064,
+        "object_position": [
+          0.45988687911764253,
+          -0.180509452849579,
+          0.47999892286199985
+        ],
+        "tcp_position": [
+          0.46010035035293373,
+          -0.2551271116539149,
+          0.5427814826175424
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "withdraw_safe",
+      "args": [],
+      "kwargs": {},
+      "status": "failed",
+      "error": "RuntimeError: 当前 API 缺少已完成的 retreat_vertical 控制证据"
+    }
+  ],
+  "before": [
+    "baton_airborne()",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "handover_verified()",
+    "home(0)",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "after": [
+    "at_destination(baton)",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "empty(1)",
+    "handover_verified()",
+    "home(0)",
+    "receiver_contact_verified()"
+  ],
+  "model": {
+    "name": "receiver_places_baton",
+    "args": {
+      "arm": "1",
+      "obj": "baton",
+      "dest": "receiver_places_baton"
+    },
+    "program_kind": "receiver_place",
+    "pre": [
+      "receiver_holding(baton)",
+      "home(0)",
+      "handover_verified()",
+      "collision_free()"
+    ],
+    "add": [
+      "at_destination(baton)",
+      "empty(1)",
+      "receiver_withdrawn()"
+    ],
+    "del": [
+      "receiver_holding(baton)",
+      "baton_airborne()",
+      "at_handover_pose(baton)"
+    ],
+    "description": "茶盒位于目的地并由桌面真实支撑，接收臂为空且位于安全撤离位，交出臂保持 HOME，运动无禁止碰撞。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "missing_required_calls": [],
+  "code_sha256": "6029bf3ec60434ec638f16c5df93e9c2a893f8ff68bb9668888250b8a84a65a2",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+  "physical_diagnostics": {
+    "placed": true,
+    "xy_error_m": 0.0005218606518693584,
+    "bottom_gap_m": -1.077138000071809e-06,
+    "rotation_error_deg": 0.03847698173637126,
+    "released": true,
+    "origin": [
+      0.45988687911764253,
+      -0.180509452849579,
+      0.47999892286199985
+    ],
+    "table_support_contact": true
+  }
+}

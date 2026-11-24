@@ -1,0 +1,75 @@
+{
+  "seed": 2101,
+  "parsed_status": "parsed",
+  "candidates": [
+    {
+      "id": "stack_clear_support",
+      "pre_add": [
+        {
+          "action": "stack",
+          "predicate": "clear",
+          "args": [
+            "support"
+          ]
+        }
+      ],
+      "offset_z_m": null,
+      "reason": "Placement failure in evidence 333bb0724f68 is caused by the support being occupied; adding 'clear(support)' ensures the support is empty before stacking."
+    },
+    {
+      "id": "pick_table_offset_fix",
+      "pre_add": [],
+      "offset_z_m": 0.055,
+      "reason": "Grasp failures show zero finger force at closure; increasing the Z-offset to the maximum bound (0.055m) may improve contact stability for the gripper controller."
+    }
+  ],
+  "confirmed": false,
+  "rollouts": 2,
+  "first_failure": {
+    "failed_action": "pick_table",
+    "role": "grasp",
+    "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [
+        "holding(blue)"
+      ],
+      "remaining_del": [
+        "ontable(blue)"
+      ],
+      "missing_preserved_pre": [],
+      "unexpected_added": [
+        "ontable(blue)"
+      ],
+      "unexpected_removed": [
+        "holding(blue)"
+      ]
+    },
+    "finger_forces_N": {
+      "left_finger": 0.0,
+      "right_finger": 0.0
+    },
+    "before_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "after_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ]
+  },
+  "infrastructure_invalid": false
+}

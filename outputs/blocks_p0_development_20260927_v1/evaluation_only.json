@@ -1,0 +1,30 @@
+[
+  {
+    "case": "case0000",
+    "layout": "dev-a",
+    "target_occupied": false,
+    "grasp_offset_z_m": 0.0,
+    "truth": "ok"
+  },
+  {
+    "case": "case0001",
+    "layout": "dev-a",
+    "target_occupied": false,
+    "grasp_offset_z_m": 0.045,
+    "truth": "policy"
+  },
+  {
+    "case": "case0002",
+    "layout": "dev-a",
+    "target_occupied": true,
+    "grasp_offset_z_m": 0.0,
+    "truth": "model"
+  },
+  {
+    "case": "case0003",
+    "layout": "dev-a",
+    "target_occupied": true,
+    "grasp_offset_z_m": 0.045,
+    "truth": "mixed"
+  }
+]

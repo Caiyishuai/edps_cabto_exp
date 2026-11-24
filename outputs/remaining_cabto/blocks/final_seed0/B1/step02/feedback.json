@@ -1,0 +1,55 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "return_home",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "at_source(red)",
+    "at_target(yellow)",
+    "empty()"
+  ],
+  "after": [
+    "at_source(red)",
+    "at_target(yellow)",
+    "empty()",
+    "home_completed()"
+  ],
+  "model": {
+    "name": "home",
+    "pre": [
+      "empty()"
+    ],
+    "add": [
+      "home_completed()"
+    ],
+    "del": [],
+    "args": {},
+    "program_kind": "home",
+    "description": "Return empty arm home without moving cubes"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "ab0ee04ddd7a2da959babc4fd9bb5c71364129d4f33dad0d97e70fcd345c474f",
+  "consistency_scope": "full_CP"
+}

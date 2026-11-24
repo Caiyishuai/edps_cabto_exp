@@ -1,0 +1,120 @@
+{
+  "task": "pour",
+  "capture_index": 4,
+  "event": "after_align_xy",
+  "target": "basin",
+  "camera": "rig_wrist_left",
+  "input_image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/pour/frames/004_after_align_xy/rig_wrist_left.png",
+  "input_sha256": "9fd3e130de38cbba21c2d19fd400f75edf35c6b621cad601fdd6faba09a653ee",
+  "original_run": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/pour/result.json",
+  "original_run_sha256": "2a4ee277ea0a0615339f045cbc9cac3184851641ddf076372c85b3dc63c93850",
+  "original_physical_state_time": 3.391999999999848,
+  "used_by_robot": false,
+  "type": "diagnostic_point_not_executable_grasp",
+  "calibration": {
+    "name": "rig_wrist_left",
+    "time": 3.391999999999848,
+    "image_size": [
+      720,
+      720
+    ],
+    "K": [
+      [
+        469.16113422283405,
+        0,
+        360.0
+      ],
+      [
+        0,
+        469.16113422283405,
+        360.0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "T_world_camera": {
+      "position": [
+        0.2798430128649835,
+        0.2185711827266483,
+        0.7937238458619732
+      ],
+      "rotation": [
+        [
+          -0.00022637285040266741,
+          -0.803398358615586,
+          0.5954418746856092
+        ],
+        [
+          0.999945577260325,
+          -0.006392498667403157,
+          -0.008244906203253077
+        ],
+        [
+          0.010430305501076709,
+          0.5954076026845536,
+          0.8033560825640051
+        ]
+      ]
+    },
+    "optical_axis_world": [
+      -0.5954418746856092,
+      0.008244906203253077,
+      -0.8033560825640051
+    ],
+    "parent_body": "hand_L",
+    "measured_T_body_camera": {
+      "position": [
+        -2.928589568679528e-18,
+        -0.09999999999999974,
+        0.024999999999999942
+      ],
+      "rotation": [
+        [
+          -0.9999999999999974,
+          -8.081956233529186e-18,
+          6.395584746954131e-17
+        ],
+        [
+          1.2405403992446988e-17,
+          0.8035571933447083,
+          -0.5952275506257839
+        ],
+        [
+          3.4984300045498e-17,
+          -0.5952275506257838,
+          -0.8035571933447083
+        ]
+      ]
+    },
+    "fovy_deg": 75.0,
+    "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+  },
+  "evaluation_only_reference": {
+    "name": "basin",
+    "body": "basin",
+    "xyz": [
+      0.6000012248489454,
+      -0.26999998690585947,
+      0.5199945146533623
+    ],
+    "semantic": "body origin at handle; not object silhouette center"
+  },
+  "reference_semantics": "body origin at handle; not object silhouette center",
+  "call": {
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "text": "Point to the middle of the brown handle attached to the white basin, where the gripper should hold it. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/pour/frames/004_after_align_xy/rig_wrist_left.png"
+    ],
+    "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the middle of the brown handle attached to the white basin, where the gripper should hold it. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.<|im_end|>\n<|im_start|>assistant\n",
+    "temperature": 0.0,
+    "max_tokens": 220,
+    "raw": "{\"point_2d\": [218, 481], \"visible\": false}",
+    "wall_seconds": 1.6416021249024197
+  },
+  "status": "model_abstained",
+  "overlay": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/pointing_v3/pour/frame004_basin_rig_wrist_left.png"
+}

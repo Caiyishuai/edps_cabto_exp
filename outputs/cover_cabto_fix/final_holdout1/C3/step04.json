@@ -1,0 +1,102 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "before": [
+    "at_source(shrimp)",
+    "at_target(apple)",
+    "at_target(potato)",
+    "empty()"
+  ],
+  "after": [
+    "at_target(apple)",
+    "at_target(potato)",
+    "holding(shrimp)"
+  ],
+  "model": {
+    "name": "pick",
+    "args": {
+      "object": "shrimp",
+      "support": "bowl"
+    },
+    "pre": [
+      "empty()",
+      "at_source(shrimp)"
+    ],
+    "add": [
+      "holding(shrimp)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(shrimp)",
+      "home_completed()"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "grasp_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.3086332266536173,
+        -0.1877038373899633,
+        0.41000061930683923
+      ]
+    },
+    {
+      "method": "approach",
+      "args": [
+        [
+          0.3086332266536173,
+          -0.1877038373899633,
+          0.41000061930683923
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "descend",
+      "args": [
+        [
+          0.3086332266536173,
+          -0.1877038373899633,
+          0.41000061930683923
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "close_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "lift",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "forbidden_contacts": [],
+  "code_sha256": "3adc93a99d786d25338e4ab0a783d33cf28dbae61693c30173c78164ab32f6d4"
+}

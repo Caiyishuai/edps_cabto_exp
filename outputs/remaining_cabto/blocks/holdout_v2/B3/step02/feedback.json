@@ -1,0 +1,72 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "holding(yellow)"
+    ],
+    "remaining_del": [
+      "at_source(yellow)",
+      "empty()"
+    ],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "at_source(yellow)",
+      "empty()"
+    ],
+    "unexpected_removed": [
+      "holding(yellow)"
+    ]
+  },
+  "code_executed": true,
+  "exception": "ValueError: Cube ROI clipped",
+  "trace": [
+    {
+      "method": "grasp_point",
+      "args": [],
+      "kwargs": {},
+      "status": "failed",
+      "error": "ValueError: Cube ROI clipped"
+    }
+  ],
+  "before": [
+    "at_source(yellow)",
+    "at_target(red)",
+    "empty()"
+  ],
+  "after": [
+    "at_source(yellow)",
+    "at_target(red)",
+    "empty()"
+  ],
+  "model": {
+    "name": "pick",
+    "args": {
+      "object": "yellow",
+      "support": "green"
+    },
+    "program_kind": "pick",
+    "pre": [
+      "empty()",
+      "at_source(yellow)"
+    ],
+    "add": [
+      "holding(yellow)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(yellow)",
+      "home_completed()"
+    ],
+    "description": "Grasp the bound cube from table and leave it held in air"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "missing_required_calls": [],
+  "code_sha256": "3adc93a99d786d25338e4ab0a783d33cf28dbae61693c30173c78164ab32f6d4",
+  "consistency_scope": "full_CP"
+}

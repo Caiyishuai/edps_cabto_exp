@@ -1,0 +1,224 @@
+{
+  "task": {
+    "id": "B3",
+    "initial": [
+      "at_source(red)",
+      "at_source(yellow)",
+      "empty()"
+    ],
+    "goal": [
+      "at_target(red)",
+      "at_target(yellow)",
+      "empty()",
+      "home_completed()"
+    ]
+  },
+  "seed": 0,
+  "steps": [
+    {
+      "valid_trial": true,
+      "paper_line20": true,
+      "strict_CP_transition_match": true,
+      "goal_ok": true,
+      "effect_ok": true,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [],
+        "remaining_del": [],
+        "missing_preserved_pre": [],
+        "unexpected_added": [],
+        "unexpected_removed": []
+      },
+      "code_executed": true,
+      "exception": null,
+      "trace": [
+        {
+          "method": "grasp_point",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": [
+            0.34181470956427285,
+            -0.14701820040495725,
+            0.42600000000000005
+          ]
+        },
+        {
+          "method": "approach",
+          "args": [
+            [
+              0.34181470956427285,
+              -0.14701820040495725,
+              0.42600000000000005
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "descend",
+          "args": [
+            [
+              0.34181470956427285,
+              -0.14701820040495725,
+              0.42600000000000005
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "close_gripper",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "lift",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        }
+      ],
+      "before": [
+        "at_source(red)",
+        "at_source(yellow)",
+        "empty()"
+      ],
+      "after": [
+        "at_source(yellow)",
+        "holding(red)"
+      ],
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "red",
+          "support": "blue"
+        },
+        "program_kind": "pick",
+        "pre": [
+          "empty()",
+          "at_source(red)"
+        ],
+        "add": [
+          "holding(red)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(red)",
+          "home_completed()"
+        ],
+        "description": "Grasp the bound cube from table and leave it held in air"
+      },
+      "safety_ok": true,
+      "contract_effect_ok": true,
+      "code_sha256": "3adc93a99d786d25338e4ab0a783d33cf28dbae61693c30173c78164ab32f6d4",
+      "consistency_scope": "full_CP"
+    },
+    {
+      "valid_trial": true,
+      "paper_line20": false,
+      "strict_CP_transition_match": false,
+      "goal_ok": false,
+      "effect_ok": false,
+      "violations": {
+        "missing_pre": [],
+        "missing_add": [
+          "at_target(red)",
+          "empty()"
+        ],
+        "remaining_del": [
+          "holding(red)"
+        ],
+        "missing_preserved_pre": [],
+        "unexpected_added": [
+          "holding(red)"
+        ],
+        "unexpected_removed": [
+          "at_target(red)",
+          "empty()"
+        ]
+      },
+      "code_executed": true,
+      "exception": "ValueError: Cube ROI clipped",
+      "trace": [
+        {
+          "method": "destination_point",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": [
+            0.5684171424198474,
+            -0.14701820040495725,
+            0.46900000000000003
+          ]
+        },
+        {
+          "method": "carry",
+          "args": [
+            [
+              0.5684171424198474,
+              -0.14701820040495725,
+              0.46900000000000003
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "destination_point",
+          "args": [],
+          "kwargs": {},
+          "status": "failed",
+          "error": "ValueError: Cube ROI clipped"
+        }
+      ],
+      "before": [
+        "at_source(yellow)",
+        "holding(red)"
+      ],
+      "after": [
+        "at_source(yellow)",
+        "holding(red)"
+      ],
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "red",
+          "support": "blue"
+        },
+        "program_kind": "place",
+        "pre": [
+          "holding(red)"
+        ],
+        "add": [
+          "at_target(red)",
+          "empty()"
+        ],
+        "del": [
+          "holding(red)",
+          "home_completed()"
+        ],
+        "description": "Stack held cube on bound support cube, release and withdraw. Do not return home."
+      },
+      "safety_ok": true,
+      "contract_effect_ok": false,
+      "code_sha256": "7bd21b38784bb86e0c933dc0c29a50adafc03453e3f3011c698b85fba1cc2fd5",
+      "consistency_scope": "full_CP"
+    }
+  ],
+  "success": false,
+  "error": "Independent action contract failed",
+  "final_state": [
+    "at_source(yellow)",
+    "holding(red)"
+  ],
+  "full_frame_all_match": false,
+  "assist": "strict_no_weld",
+  "perception": "Qwen_RGB"
+}

@@ -1,0 +1,181 @@
+[
+  {
+    "event": "grasp_weld",
+    "arm": 0,
+    "active": true,
+    "object": "baton",
+    "time": 7.039999999999447,
+    "object_position": [
+      0.28003801234661363,
+      0.22179342755232626,
+      0.47999874656389785
+    ],
+    "finger_mid": [
+      0.2800334328844082,
+      0.296859652638846,
+      0.5840462557934091
+    ]
+  },
+  {
+    "event": "contact_gated_attach",
+    "arm": 0,
+    "time": 7.039999999999447,
+    "contact_surface": "tea_box_core",
+    "bilateral_contact_steps": 51,
+    "tcp_grasp_error_m": 0.0004523346158358533,
+    "mode": "assisted_grasp_weld",
+    "handles_exist": false,
+    "final_window_s": 0.1,
+    "activation_pose_jump_m": 0.0,
+    "both_fingers_contact_at_activation": true
+  },
+  {
+    "event": "grasp_weld",
+    "arm": 1,
+    "active": true,
+    "object": "baton",
+    "time": 21.079999999999195,
+    "object_position": [
+      0.34984658763282717,
+      0.00047143542566041,
+      0.639699327826779
+    ],
+    "finger_mid": [
+      0.34984953429016186,
+      -0.07448599517969737,
+      0.7435484228292416
+    ]
+  },
+  {
+    "event": "contact_gated_attach",
+    "arm": 1,
+    "time": 21.079999999999195,
+    "contact_surface": "tea_box_core",
+    "bilateral_contact_steps": 51,
+    "tcp_grasp_error_m": 0.0002812054816627241,
+    "mode": "assisted_grasp_weld",
+    "handles_exist": false,
+    "final_window_s": 0.1,
+    "activation_pose_jump_m": 0.0,
+    "both_fingers_contact_at_activation": true
+  },
+  {
+    "event": "dual_hold_verified",
+    "time": 21.27199999999909,
+    "object_z": 0.6396994997422054
+  },
+  {
+    "event": "grasp_weld",
+    "arm": 0,
+    "active": false,
+    "object": "baton",
+    "time": 21.463999999998983,
+    "object_position": [
+      0.3498463543038264,
+      0.0004714076449643217,
+      0.6397009716700897
+    ],
+    "finger_mid": [
+      0.349855680553198,
+      0.07548316668246141,
+      0.7438008714374307
+    ]
+  },
+  {
+    "event": "donor_release_after_receiver",
+    "time": 21.463999999998983,
+    "receiver_active": true,
+    "object_z": 0.6397009716700897
+  },
+  {
+    "event": "donor_withdrawn",
+    "time": 26.4839999999962
+  },
+  {
+    "event": "controlled_actuator_home",
+    "arm": 0,
+    "time": 27.523999999995624,
+    "q_start": [
+      0.06544097033148519,
+      -0.9751660510812303,
+      0.12324710391960074,
+      -2.723775308303049,
+      0.10362742597658849,
+      1.7511907267651186,
+      0.9015695413559646
+    ],
+    "q_goal": [
+      0.0,
+      -0.785,
+      0.0,
+      -2.356,
+      0.0,
+      1.571,
+      0.785
+    ],
+    "steps": 80
+  },
+  {
+    "event": "pre_release_pose",
+    "time": 34.87599999999666,
+    "object_position": [
+      0.4600910983927251,
+      -0.18043781415087937,
+      0.4863409672706476
+    ]
+  },
+  {
+    "event": "grasp_weld",
+    "arm": 1,
+    "active": false,
+    "object": "baton",
+    "time": 34.939999999996736,
+    "object_position": [
+      0.4600559725317682,
+      -0.18042160362569742,
+      0.4848271115428004
+    ],
+    "finger_mid": [
+      0.46011322315938097,
+      -0.25526945143895075,
+      0.5887949407353477
+    ]
+  },
+  {
+    "event": "post_release_pose",
+    "time": 35.22799999999709,
+    "object_position": [
+      0.45988689779263947,
+      -0.1805094131642238,
+      0.47999892286199985
+    ]
+  },
+  {
+    "event": "receiver_withdrawn",
+    "time": 40.26800000000325
+  },
+  {
+    "event": "controlled_actuator_home",
+    "arm": 1,
+    "time": 41.30800000000452,
+    "q_start": [
+      -0.03448833190605804,
+      -0.9929615657903567,
+      -0.031291906242992905,
+      -2.736943659523754,
+      -0.026611924115232218,
+      1.7441528198130054,
+      0.738410774711597
+    ],
+    "q_goal": [
+      0.0,
+      -0.785,
+      0.0,
+      -2.356,
+      0.0,
+      1.571,
+      0.785
+    ],
+    "steps": 80
+  }
+]

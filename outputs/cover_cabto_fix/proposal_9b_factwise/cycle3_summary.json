@@ -1,0 +1,386 @@
+{
+  "models": [
+    {
+      "name": "pick",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [
+        "home_completed()"
+      ],
+      "add": [
+        "holding(shrimp)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(shrimp)",
+        "at_target(shrimp)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [
+        "holding(shrimp)",
+        "at_target(shrimp)"
+      ],
+      "add": [],
+      "del": [
+        "empty()",
+        "at_source(shrimp)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "name": "pick",
+      "args": {
+        "object": "apple",
+        "support": "board"
+      },
+      "pre": [
+        "home_completed()"
+      ],
+      "add": [
+        "holding(apple)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(apple)",
+        "at_target(apple)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "apple",
+        "support": "board"
+      },
+      "pre": [
+        "holding(apple)",
+        "at_target(apple)"
+      ],
+      "add": [],
+      "del": [
+        "empty()",
+        "at_source(apple)",
+        "holding(apple)"
+      ]
+    },
+    {
+      "name": "pick",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [
+        "home_completed()"
+      ],
+      "add": [
+        "holding(potato)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(potato)",
+        "at_target(potato)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [
+        "holding(potato)",
+        "at_target(potato)"
+      ],
+      "add": [],
+      "del": [
+        "empty()",
+        "at_source(potato)",
+        "holding(potato)"
+      ]
+    },
+    {
+      "name": "home",
+      "args": {},
+      "pre": [
+        "empty()",
+        "home_completed()"
+      ],
+      "add": [],
+      "del": []
+    }
+  ],
+  "calls": [
+    {
+      "cycle": 3,
+      "signature": "pick",
+      "atom": "empty()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\n  \"required_true\": false,\n  \"effect\": \"delete\"\n}",
+        "wall_seconds": 1.6974084170069546
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "pick",
+      "atom": "at_source(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is still resting at its original table source.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is still resting at its original table source.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": false, \"effect\": \"delete\"}",
+        "wall_seconds": 1.3149494170211256
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "pick",
+      "atom": "holding(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is held by the closed gripper in the air.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is held by the closed gripper in the air.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": false, \"effect\": \"add\"}",
+        "wall_seconds": 1.3555674160597846
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "add"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "pick",
+      "atom": "at_target(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is released and resting on its destination support.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is released and resting on its destination support.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": false, \"effect\": \"delete\"}",
+        "wall_seconds": 1.3208481660112739
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "pick",
+      "atom": "home_completed()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": true, \"effect\": \"delete\"}",
+        "wall_seconds": 1.3104358749696985
+      },
+      "classification": {
+        "required_true": true,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "place",
+      "atom": "empty()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\n  \"required_true\": false,\n  \"effect\": \"delete\"\n}",
+        "wall_seconds": 1.6069028750061989
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "place",
+      "atom": "at_source(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is still resting at its original table source.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is still resting at its original table source.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\n  \"required_true\": false,\n  \"effect\": \"delete\"\n}",
+        "wall_seconds": 1.600986999925226
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "place",
+      "atom": "holding(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is held by the closed gripper in the air.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is held by the closed gripper in the air.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\n  \"required_true\": true,\n  \"effect\": \"delete\"\n}",
+        "wall_seconds": 1.7075825840001926
+      },
+      "classification": {
+        "required_true": true,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "place",
+      "atom": "at_target(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is released and resting on its destination support.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is released and resting on its destination support.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": true, \"effect\": \"keep\"}",
+        "wall_seconds": 1.3700536250835285
+      },
+      "classification": {
+        "required_true": true,
+        "effect": "keep"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "place",
+      "atom": "home_completed()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": false, \"effect\": \"keep\"}",
+        "wall_seconds": 1.348448249977082
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "keep"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "home",
+      "atom": "empty()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an EMPTY OPEN arm to HOME; do not touch any object.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an EMPTY OPEN arm to HOME; do not touch any object.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": true, \"effect\": \"keep\"}",
+        "wall_seconds": 1.382894083042629
+      },
+      "classification": {
+        "required_true": true,
+        "effect": "keep"
+      }
+    },
+    {
+      "cycle": 3,
+      "signature": "home",
+      "atom": "home_completed()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an EMPTY OPEN arm to HOME; do not touch any object.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an EMPTY OPEN arm to HOME; do not touch any object.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {\"violations\": [{\"action\": \"place(object=shrimp,support=bowl)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(apple)\", \"at_source(potato)\", \"at_target(shrimp)\"]}, {\"action\": \"pick(object=apple,support=board)\", \"before\": [\"at_source(apple)\", \"at_source(potato)\", \"holding(shrimp)\"], \"after\": [\"at_source(potato)\", \"holding(apple)\", \"holding(shrimp)\"]}], \"error\": null, \"previous_schemas\": {\"pick\": {\"pre\": [], \"add\": [\"holding(OBJECT)\"], \"del\": [\"empty()\", \"at_source(OBJECT)\", \"at_target(OBJECT)\", \"home_completed()\"]}, \"place\": {\"pre\": [\"holding(OBJECT)\"], \"add\": [\"at_target(OBJECT)\"], \"del\": [\"at_source(OBJECT)\", \"holding(OBJECT)\", \"home_completed()\"]}, \"home\": {\"pre\": [\"empty()\"], \"add\": [], \"del\": []}}}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.35,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": true, \"effect\": \"keep\"}",
+        "wall_seconds": 1.3257273330818862
+      },
+      "classification": {
+        "required_true": true,
+        "effect": "keep"
+      }
+    }
+  ],
+  "check": {
+    "complete_for_P": false,
+    "admissible_reachable_states": true,
+    "reachable_state_count": 1,
+    "mutex_violations": [],
+    "tasks": [
+      {
+        "task": "C1",
+        "bfs_reachable": false,
+        "planner": {
+          "reached_goal": false,
+          "reason": "正式 BT 内核无法从该 start 构建目标树"
+        }
+      },
+      {
+        "task": "C2",
+        "bfs_reachable": false,
+        "planner": {
+          "reached_goal": false,
+          "reason": "正式 BT 内核无法从该 start 构建目标树"
+        }
+      },
+      {
+        "task": "C3",
+        "bfs_reachable": false,
+        "planner": {
+          "reached_goal": false,
+          "reason": "正式 BT 内核无法从该 start 构建目标树"
+        }
+      }
+    ],
+    "scope": "finite declared P, symbolic; NOT physical consistency"
+  },
+  "accepted": false
+}

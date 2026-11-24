@@ -1,0 +1,100 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "before": [
+    "at_source(apple)",
+    "at_source(shrimp)",
+    "holding(potato)"
+  ],
+  "after": [
+    "at_source(apple)",
+    "at_source(shrimp)",
+    "at_target(potato)",
+    "empty()"
+  ],
+  "model": {
+    "name": "place",
+    "args": {
+      "object": "potato",
+      "support": "pan"
+    },
+    "pre": [
+      "holding(potato)"
+    ],
+    "add": [
+      "at_target(potato)",
+      "empty()"
+    ],
+    "del": [
+      "holding(potato)"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "destination_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.6750529722731142,
+        0.16617442707148405,
+        0.43000000000000005
+      ]
+    },
+    {
+      "method": "carry",
+      "args": [
+        [
+          0.6750529722731142,
+          0.16617442707148405,
+          0.43000000000000005
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.6750529722731142,
+          0.16617442707148405,
+          0.43000000000000005
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "withdraw",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "forbidden_contacts": [],
+  "code_sha256": "6a7c7506155297871d6e130ea87eddd432b70dafde69d045bf3225c70c95a84e"
+}

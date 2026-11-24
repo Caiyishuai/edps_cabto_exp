@@ -1,0 +1,676 @@
+{
+  "kernel": {
+    "bt_expansion": {
+      "path": "/Users/yishuaicai/mywork/edps_cabto_exp/BTExpansion-demo/src/bt_expansion/__init__.py",
+      "sha256": "bab0549f7fcaa6c2bdd33b02d8c4d8233e7a5c41ffd454307651c6fd9da37fd2"
+    },
+    "bt_expansion.planning": {
+      "path": "/Users/yishuaicai/mywork/edps_cabto_exp/BTExpansion-demo/src/bt_expansion/planning.py",
+      "sha256": "8730a53df5c526809848da9fcedbc02ce4f17ca00322a52e133e8ec909d7f697"
+    },
+    "behavior_tree": {
+      "path": "/Users/yishuaicai/mywork/edps_cabto_exp/BTExpansion-demo/src/behavior_tree/__init__.py",
+      "sha256": "ad77aee97bddc9c41924c5004be56843d937cccb33e88515c74ce2c87bcc8c5a"
+    },
+    "behavior_tree.BehaviorTree": {
+      "path": "/Users/yishuaicai/mywork/edps_cabto_exp/BTExpansion-demo/src/behavior_tree/BehaviorTree.py",
+      "sha256": "512376d555f9f223027d521a3b644f6550c7128285aec61af2c1dcbd685e6038"
+    },
+    "bt_expansion.algorithm": {
+      "path": "/Users/yishuaicai/mywork/edps_cabto_exp/BTExpansion-demo/src/bt_expansion/algorithm.py",
+      "sha256": "ffbe33712df2d05068ccef24e7be90edb7f45e51978af4f99b18b51faa92ae50"
+    }
+  },
+  "model_version": 0,
+  "start": [
+    "clear(green)",
+    "clear(red)",
+    "clear(yellow)",
+    "empty()",
+    "on(red,blue)",
+    "ontable(blue)",
+    "ontable(green)",
+    "ontable(yellow)"
+  ],
+  "goal": [
+    "empty()",
+    "home_completed()",
+    "on(yellow,green)"
+  ],
+  "nodes": [
+    {
+      "id": 0,
+      "type": "cond",
+      "kind": "control"
+    },
+    {
+      "id": 1,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 2,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "empty()",
+        "home_completed()",
+        "on(yellow,green)"
+      ]
+    },
+    {
+      "id": 3,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 4,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 5,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "empty()",
+        "on(yellow,green)"
+      ]
+    },
+    {
+      "id": 6,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 7,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 8,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "holding(yellow)",
+        "on(yellow,green)"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "act",
+      "kind": "action",
+      "action_id": "put_table(object=yellow,support=table)",
+      "model": {
+        "name": "put_table",
+        "args": {
+          "object": "yellow",
+          "support": "table"
+        },
+        "pre": [
+          "holding(yellow)"
+        ],
+        "add": [
+          "empty()",
+          "ontable(yellow)"
+        ],
+        "del": [
+          "holding(yellow)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 11,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 12,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "holding(red)",
+        "on(yellow,green)"
+      ]
+    },
+    {
+      "id": 13,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 14,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "clear(green)",
+        "holding(red)",
+        "holding(yellow)"
+      ]
+    },
+    {
+      "id": 15,
+      "type": "act",
+      "kind": "action",
+      "action_id": "stack(object=yellow,support=green)",
+      "model": {
+        "name": "stack",
+        "args": {
+          "object": "yellow",
+          "support": "green"
+        },
+        "pre": [
+          "holding(yellow)",
+          "clear(green)"
+        ],
+        "add": [
+          "empty()",
+          "on(yellow,green)"
+        ],
+        "del": [
+          "holding(yellow)",
+          "clear(green)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "type": "act",
+      "kind": "action",
+      "action_id": "put_table(object=red,support=table)",
+      "model": {
+        "name": "put_table",
+        "args": {
+          "object": "red",
+          "support": "table"
+        },
+        "pre": [
+          "holding(red)"
+        ],
+        "add": [
+          "empty()",
+          "ontable(red)"
+        ],
+        "del": [
+          "holding(red)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 18,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 19,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "holding(blue)",
+        "on(yellow,green)"
+      ]
+    },
+    {
+      "id": 20,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 21,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "clear(green)",
+        "holding(blue)",
+        "holding(yellow)"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "act",
+      "kind": "action",
+      "action_id": "stack(object=yellow,support=green)",
+      "model": {
+        "name": "stack",
+        "args": {
+          "object": "yellow",
+          "support": "green"
+        },
+        "pre": [
+          "holding(yellow)",
+          "clear(green)"
+        ],
+        "add": [
+          "empty()",
+          "on(yellow,green)"
+        ],
+        "del": [
+          "holding(yellow)",
+          "clear(green)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "type": "act",
+      "kind": "action",
+      "action_id": "put_table(object=blue,support=table)",
+      "model": {
+        "name": "put_table",
+        "args": {
+          "object": "blue",
+          "support": "table"
+        },
+        "pre": [
+          "holding(blue)"
+        ],
+        "add": [
+          "empty()",
+          "ontable(blue)"
+        ],
+        "del": [
+          "holding(blue)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 25,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 26,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "clear(green)",
+        "holding(yellow)"
+      ]
+    },
+    {
+      "id": 27,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 28,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "clear(green)",
+        "clear(yellow)",
+        "empty()",
+        "ontable(yellow)"
+      ]
+    },
+    {
+      "id": 29,
+      "type": "act",
+      "kind": "action",
+      "action_id": "pick_table(object=yellow)",
+      "model": {
+        "name": "pick_table",
+        "args": {
+          "object": "yellow"
+        },
+        "pre": [
+          "empty()",
+          "ontable(yellow)",
+          "clear(yellow)"
+        ],
+        "add": [
+          "holding(yellow)"
+        ],
+        "del": [
+          "empty()",
+          "ontable(yellow)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 30,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 31,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "clear(red)",
+        "empty()",
+        "holding(yellow)",
+        "on(red,green)"
+      ]
+    },
+    {
+      "id": 32,
+      "type": "act",
+      "kind": "action",
+      "action_id": "unstack(object=red,support=green)",
+      "model": {
+        "name": "unstack",
+        "args": {
+          "object": "red",
+          "support": "green"
+        },
+        "pre": [
+          "empty()",
+          "on(red,green)",
+          "clear(red)"
+        ],
+        "add": [
+          "holding(red)",
+          "clear(green)"
+        ],
+        "del": [
+          "empty()",
+          "on(red,green)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 33,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 34,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "clear(blue)",
+        "empty()",
+        "holding(yellow)",
+        "on(blue,green)"
+      ]
+    },
+    {
+      "id": 35,
+      "type": "act",
+      "kind": "action",
+      "action_id": "unstack(object=blue,support=green)",
+      "model": {
+        "name": "unstack",
+        "args": {
+          "object": "blue",
+          "support": "green"
+        },
+        "pre": [
+          "empty()",
+          "on(blue,green)",
+          "clear(blue)"
+        ],
+        "add": [
+          "holding(blue)",
+          "clear(green)"
+        ],
+        "del": [
+          "empty()",
+          "on(blue,green)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 36,
+      "type": "act",
+      "kind": "action",
+      "action_id": "stack(object=yellow,support=green)",
+      "model": {
+        "name": "stack",
+        "args": {
+          "object": "yellow",
+          "support": "green"
+        },
+        "pre": [
+          "holding(yellow)",
+          "clear(green)"
+        ],
+        "add": [
+          "empty()",
+          "on(yellow,green)"
+        ],
+        "del": [
+          "holding(yellow)",
+          "clear(green)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 37,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 38,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "empty()",
+        "on(yellow,green)"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()",
+          "on(yellow,green)"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 40,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()",
+          "on(yellow,green)"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    }
+  ],
+  "edges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      6,
+      9
+    ],
+    [
+      4,
+      10
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      11,
+      13
+    ],
+    [
+      13,
+      14
+    ],
+    [
+      13,
+      15
+    ],
+    [
+      10,
+      16
+    ],
+    [
+      4,
+      17
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      18,
+      20
+    ],
+    [
+      20,
+      21
+    ],
+    [
+      20,
+      22
+    ],
+    [
+      17,
+      23
+    ],
+    [
+      4,
+      24
+    ],
+    [
+      24,
+      25
+    ],
+    [
+      25,
+      26
+    ],
+    [
+      25,
+      27
+    ],
+    [
+      27,
+      28
+    ],
+    [
+      27,
+      29
+    ],
+    [
+      25,
+      30
+    ],
+    [
+      30,
+      31
+    ],
+    [
+      30,
+      32
+    ],
+    [
+      25,
+      33
+    ],
+    [
+      33,
+      34
+    ],
+    [
+      33,
+      35
+    ],
+    [
+      24,
+      36
+    ],
+    [
+      4,
+      37
+    ],
+    [
+      37,
+      38
+    ],
+    [
+      37,
+      39
+    ],
+    [
+      3,
+      40
+    ]
+  ]
+}

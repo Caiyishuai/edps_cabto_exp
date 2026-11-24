@@ -1,0 +1,787 @@
+{
+  "rows": [
+    {
+      "sample_id": "80b8509c7fce4006b822dd36c17473de",
+      "kind": "diagnosis",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "failed_stage",
+          "hypotheses",
+          "physical_pick_success",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "failed_stage": null,
+        "physical_pick_success": true,
+        "contract_consistent": true,
+        "evidence_refs": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "deployable_repair": false,
+        "decision": "no_repair_on_this_trial",
+        "hypotheses": [],
+        "scope": "single_observed_pick_not_whole_task_or_universal_skill"
+      },
+      "generation": {
+        "raw": "{\"failed_stage\": null, \"physical_pick_success\": true, \"contract_consistent\": true, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"no_repair_on_this_trial\", \"hypotheses\": [], \"scope\": \"single_observed_pick_not_whole_task_or_universal_skill\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "ac746fbf267347abb39ddc02db805037",
+      "kind": "diagnosis",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "failed_stage",
+          "hypotheses",
+          "next_test",
+          "physical_pick_success",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "failed_stage": "close_gripper",
+        "physical_pick_success": false,
+        "contract_consistent": false,
+        "evidence_refs": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "deployable_repair": false,
+        "decision": "request_discriminating_trial",
+        "hypotheses": [
+          {
+            "kind": "policy_or_controller_context_mismatch",
+            "support": "unconfirmed"
+          },
+          {
+            "kind": "additional_contract_defect",
+            "support": "not_excluded"
+          }
+        ],
+        "next_test": {
+          "kind": "bounded_policy_parameter_or_code_test",
+          "freeze": [
+            "model",
+            "initial_context",
+            "observer"
+          ]
+        },
+        "scope": "no_unique_cause_from_one_failed_execution"
+      },
+      "generation": {
+        "raw": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "478d8ccb18ac41c4acb333e4de4a96b9",
+      "kind": "diagnosis",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "failed_stage",
+          "hypotheses",
+          "next_test",
+          "physical_pick_success"
+        ]
+      },
+      "parsed": {
+        "failed_stage": null,
+        "physical_pick_success": true,
+        "contract_consistent": false,
+        "evidence_refs": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "deployable_repair": false,
+        "decision": "inspect_contract_effects",
+        "hypotheses": [
+          {
+            "kind": "contract_transition_mismatch",
+            "support": "observed",
+            "unique_cause": false
+          }
+        ],
+        "next_test": {
+          "kind": "contract_only_recheck_then_matched_execution",
+          "freeze": [
+            "policy",
+            "initial_context",
+            "observer"
+          ]
+        }
+      },
+      "generation": {
+        "raw": "{\"failed_stage\": null, \"physical_pick_success\": true, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"inspect_contract_effects\", \"hypotheses\": [{\"kind\": \"contract_transition_mismatch\", \"support\": \"observed\", \"unique_cause\": false}], \"next_test\": {\"kind\": \"contract_only_recheck_then_matched_execution\", \"freeze\": [\"policy\", \"initial_context\", \"observer\"]}}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "d6c7a8d8872d4cd6ae4bc4fff815d2a9",
+      "kind": "diagnosis",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "failed_stage",
+          "hypotheses",
+          "next_test",
+          "physical_pick_success",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "failed_stage": "close_gripper",
+        "physical_pick_success": false,
+        "contract_consistent": false,
+        "evidence_refs": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "deployable_repair": false,
+        "decision": "request_discriminating_trial",
+        "hypotheses": [
+          {
+            "kind": "policy_or_controller_context_mismatch",
+            "support": "unconfirmed"
+          },
+          {
+            "kind": "additional_contract_defect",
+            "support": "not_excluded"
+          }
+        ],
+        "next_test": {
+          "kind": "bounded_policy_parameter_or_code_test",
+          "freeze": [
+            "model",
+            "initial_context",
+            "observer"
+          ]
+        },
+        "scope": "no_unique_cause_from_one_failed_execution"
+      },
+      "generation": {
+        "raw": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "694992819d3f48eda520afed962a4ace",
+      "kind": "forecast",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": null,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "joint_success",
+          "physical_pick_success",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "physical_pick_success": false,
+        "contract_consistent": false,
+        "joint_success": false,
+        "scope": "no_change_trivial_baseline"
+      },
+      "generation": {
+        "raw": "{\"physical_pick_success\": false, \"contract_consistent\": false, \"joint_success\": false, \"scope\": \"no_change_trivial_baseline\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "393288b9e1354b029de48e096fa6c713",
+      "kind": "update",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_improved",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "observed_contract_consistency",
+          "observed_physical_success",
+          "physical_improved",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "decision": "no_improvement_continue_or_abstain",
+        "physical_improved": false,
+        "contract_improved": false,
+        "observed_physical_success": false,
+        "observed_contract_consistency": false,
+        "evidence_refs": [
+          "baseline:E2",
+          "baseline:E4",
+          "intervention:E2",
+          "intervention:E4"
+        ],
+        "deployable_repair": false,
+        "scope": "one_matched_intervention_not_unique_root_cause"
+      },
+      "generation": {
+        "raw": "{\"decision\": \"no_improvement_continue_or_abstain\", \"physical_improved\": false, \"contract_improved\": false, \"observed_physical_success\": false, \"observed_contract_consistency\": false, \"evidence_refs\": [\"baseline:E2\", \"baseline:E4\", \"intervention:E2\", \"intervention:E4\"], \"deployable_repair\": false, \"scope\": \"one_matched_intervention_not_unique_root_cause\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "750cbe61cb98417e9096569c0abf97c8",
+      "kind": "diagnosis",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "failed_stage",
+          "hypotheses",
+          "physical_pick_success",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "failed_stage": null,
+        "physical_pick_success": true,
+        "contract_consistent": true,
+        "evidence_refs": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "deployable_repair": false,
+        "decision": "no_repair_on_this_trial",
+        "hypotheses": [],
+        "scope": "single_observed_pick_not_whole_task_or_universal_skill"
+      },
+      "generation": {
+        "raw": "{\"failed_stage\": null, \"physical_pick_success\": true, \"contract_consistent\": true, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"no_repair_on_this_trial\", \"hypotheses\": [], \"scope\": \"single_observed_pick_not_whole_task_or_universal_skill\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "45f71283850f415fa4193eb3e5b5cd5c",
+      "kind": "diagnosis",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "failed_stage",
+          "hypotheses",
+          "next_test",
+          "physical_pick_success",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "failed_stage": "close_gripper",
+        "physical_pick_success": false,
+        "contract_consistent": false,
+        "evidence_refs": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "deployable_repair": false,
+        "decision": "request_discriminating_trial",
+        "hypotheses": [
+          {
+            "kind": "policy_or_controller_context_mismatch",
+            "support": "unconfirmed"
+          },
+          {
+            "kind": "additional_contract_defect",
+            "support": "not_excluded"
+          }
+        ],
+        "next_test": {
+          "kind": "bounded_policy_parameter_or_code_test",
+          "freeze": [
+            "model",
+            "initial_context",
+            "observer"
+          ]
+        },
+        "scope": "no_unique_cause_from_one_failed_execution"
+      },
+      "generation": {
+        "raw": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "d806effb72e64735b533105540466d78",
+      "kind": "diagnosis",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "failed_stage",
+          "hypotheses",
+          "next_test",
+          "physical_pick_success"
+        ]
+      },
+      "parsed": {
+        "failed_stage": null,
+        "physical_pick_success": true,
+        "contract_consistent": false,
+        "evidence_refs": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "deployable_repair": false,
+        "decision": "inspect_contract_effects",
+        "hypotheses": [
+          {
+            "kind": "contract_transition_mismatch",
+            "support": "observed",
+            "unique_cause": false
+          }
+        ],
+        "next_test": {
+          "kind": "contract_only_recheck_then_matched_execution",
+          "freeze": [
+            "policy",
+            "initial_context",
+            "observer"
+          ]
+        }
+      },
+      "generation": {
+        "raw": "{\"failed_stage\": null, \"physical_pick_success\": true, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"inspect_contract_effects\", \"hypotheses\": [{\"kind\": \"contract_transition_mismatch\", \"support\": \"observed\", \"unique_cause\": false}], \"next_test\": {\"kind\": \"contract_only_recheck_then_matched_execution\", \"freeze\": [\"policy\", \"initial_context\", \"observer\"]}}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "62d0e0b7c3bc408a828e908a9fc14516",
+      "kind": "diagnosis",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "failed_stage",
+          "hypotheses",
+          "next_test",
+          "physical_pick_success",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "failed_stage": "close_gripper",
+        "physical_pick_success": false,
+        "contract_consistent": false,
+        "evidence_refs": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "deployable_repair": false,
+        "decision": "request_discriminating_trial",
+        "hypotheses": [
+          {
+            "kind": "policy_or_controller_context_mismatch",
+            "support": "unconfirmed"
+          },
+          {
+            "kind": "additional_contract_defect",
+            "support": "not_excluded"
+          }
+        ],
+        "next_test": {
+          "kind": "bounded_policy_parameter_or_code_test",
+          "freeze": [
+            "model",
+            "initial_context",
+            "observer"
+          ]
+        },
+        "scope": "no_unique_cause_from_one_failed_execution"
+      },
+      "generation": {
+        "raw": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "93c57fcbd81f4175b34a4cc7b94f17f5",
+      "kind": "forecast",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": null,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "joint_success",
+          "physical_pick_success",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "physical_pick_success": false,
+        "contract_consistent": false,
+        "joint_success": false,
+        "scope": "no_change_trivial_baseline"
+      },
+      "generation": {
+        "raw": "{\"physical_pick_success\": false, \"contract_consistent\": false, \"joint_success\": false, \"scope\": \"no_change_trivial_baseline\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "30d95a06b2984a8295bb6c286034eea2",
+      "kind": "update",
+      "split": "train",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_improved",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "observed_contract_consistency",
+          "observed_physical_success",
+          "physical_improved",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "decision": "no_improvement_continue_or_abstain",
+        "physical_improved": false,
+        "contract_improved": false,
+        "observed_physical_success": false,
+        "observed_contract_consistency": false,
+        "evidence_refs": [
+          "baseline:E2",
+          "baseline:E4",
+          "intervention:E2",
+          "intervention:E4"
+        ],
+        "deployable_repair": false,
+        "scope": "one_matched_intervention_not_unique_root_cause"
+      },
+      "generation": {
+        "raw": "{\"decision\": \"no_improvement_continue_or_abstain\", \"physical_improved\": false, \"contract_improved\": false, \"observed_physical_success\": false, \"observed_contract_consistency\": false, \"evidence_refs\": [\"baseline:E2\", \"baseline:E4\", \"intervention:E2\", \"intervention:E4\"], \"deployable_repair\": false, \"scope\": \"one_matched_intervention_not_unique_root_cause\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "930faf8b8b96489588f9fb7f35722771",
+      "kind": "diagnosis",
+      "split": "validation",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "failed_stage",
+          "hypotheses",
+          "next_test",
+          "physical_pick_success",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "failed_stage": "close_gripper",
+        "physical_pick_success": false,
+        "contract_consistent": false,
+        "evidence_refs": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "deployable_repair": false,
+        "decision": "request_discriminating_trial",
+        "hypotheses": [
+          {
+            "kind": "policy_or_controller_context_mismatch",
+            "support": "unconfirmed"
+          },
+          {
+            "kind": "additional_contract_defect",
+            "support": "not_excluded"
+          }
+        ],
+        "next_test": {
+          "kind": "bounded_policy_parameter_or_code_test",
+          "freeze": [
+            "model",
+            "initial_context",
+            "observer"
+          ]
+        },
+        "scope": "no_unique_cause_from_one_failed_execution"
+      },
+      "generation": {
+        "raw": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "cb3511707e63450198a47d24e8b744e3",
+      "kind": "update",
+      "split": "validation",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_improved",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "observed_contract_consistency",
+          "observed_physical_success",
+          "physical_improved",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "decision": "no_improvement_continue_or_abstain",
+        "physical_improved": false,
+        "contract_improved": false,
+        "observed_physical_success": false,
+        "observed_contract_consistency": false,
+        "evidence_refs": [
+          "baseline:E2",
+          "baseline:E4",
+          "intervention:E2",
+          "intervention:E4"
+        ],
+        "deployable_repair": false,
+        "scope": "one_matched_intervention_not_unique_root_cause"
+      },
+      "generation": {
+        "raw": "{\"decision\": \"no_improvement_continue_or_abstain\", \"physical_improved\": false, \"contract_improved\": false, \"observed_physical_success\": false, \"observed_contract_consistency\": false, \"evidence_refs\": [\"baseline:E2\", \"baseline:E4\", \"intervention:E2\", \"intervention:E4\"], \"deployable_repair\": false, \"scope\": \"one_matched_intervention_not_unique_root_cause\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "b0e5b88d26b14a52b3e77da6ec67ddec",
+      "kind": "diagnosis",
+      "split": "validation",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "failed_stage",
+          "hypotheses",
+          "next_test",
+          "physical_pick_success",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "failed_stage": "close_gripper",
+        "physical_pick_success": false,
+        "contract_consistent": false,
+        "evidence_refs": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "deployable_repair": false,
+        "decision": "request_discriminating_trial",
+        "hypotheses": [
+          {
+            "kind": "policy_or_controller_context_mismatch",
+            "support": "unconfirmed"
+          },
+          {
+            "kind": "additional_contract_defect",
+            "support": "not_excluded"
+          }
+        ],
+        "next_test": {
+          "kind": "bounded_policy_parameter_or_code_test",
+          "freeze": [
+            "model",
+            "initial_context",
+            "observer"
+          ]
+        },
+        "scope": "no_unique_cause_from_one_failed_execution"
+      },
+      "generation": {
+        "raw": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+        "source": "deterministic_rule"
+      }
+    },
+    {
+      "sample_id": "1f09f206cf2f460893c491185fc271a0",
+      "kind": "update",
+      "split": "validation",
+      "score": {
+        "json_valid": true,
+        "core_keys_present": true,
+        "decision_match": true,
+        "outcome_match": true,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_improved",
+          "decision",
+          "deployable_repair",
+          "evidence_refs",
+          "observed_contract_consistency",
+          "observed_physical_success",
+          "physical_improved",
+          "scope"
+        ]
+      },
+      "parsed": {
+        "decision": "no_improvement_continue_or_abstain",
+        "physical_improved": false,
+        "contract_improved": false,
+        "observed_physical_success": false,
+        "observed_contract_consistency": false,
+        "evidence_refs": [
+          "baseline:E2",
+          "baseline:E4",
+          "intervention:E2",
+          "intervention:E4"
+        ],
+        "deployable_repair": false,
+        "scope": "one_matched_intervention_not_unique_root_cause"
+      },
+      "generation": {
+        "raw": "{\"decision\": \"no_improvement_continue_or_abstain\", \"physical_improved\": false, \"contract_improved\": false, \"observed_physical_success\": false, \"observed_contract_consistency\": false, \"evidence_refs\": [\"baseline:E2\", \"baseline:E4\", \"intervention:E2\", \"intervention:E4\"], \"deployable_repair\": false, \"scope\": \"one_matched_intervention_not_unique_root_cause\"}",
+        "source": "deterministic_rule"
+      }
+    }
+  ],
+  "summary": {
+    "diagnosis": {
+      "n": 10,
+      "json_valid": 10,
+      "core_keys_present": 10,
+      "decision_match": 10,
+      "decision_checked": 10,
+      "outcome_match": 10,
+      "echo_any": 0
+    },
+    "forecast": {
+      "n": 2,
+      "json_valid": 2,
+      "core_keys_present": 2,
+      "decision_match": 0,
+      "decision_checked": 0,
+      "outcome_match": 2,
+      "echo_any": 0
+    },
+    "update": {
+      "n": 4,
+      "json_valid": 4,
+      "core_keys_present": 4,
+      "decision_match": 4,
+      "decision_checked": 4,
+      "outcome_match": 4,
+      "echo_any": 0
+    }
+  }
+}

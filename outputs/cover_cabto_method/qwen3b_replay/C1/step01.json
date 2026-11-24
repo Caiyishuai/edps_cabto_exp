@@ -1,0 +1,151 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "at_target(shrimp)",
+      "empty()"
+    ],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": [
+      "at_target(shrimp)",
+      "empty()"
+    ]
+  },
+  "before": [
+    "at_source(apple)",
+    "at_source(potato)",
+    "holding(shrimp)"
+  ],
+  "after": [
+    "at_source(apple)",
+    "at_source(potato)"
+  ],
+  "model": {
+    "name": "place",
+    "args": {
+      "object": "shrimp",
+      "support": "bowl"
+    },
+    "pre": [
+      "holding(shrimp)"
+    ],
+    "add": [
+      "at_target(shrimp)",
+      "empty()"
+    ],
+    "del": [
+      "holding(shrimp)"
+    ]
+  },
+  "code_executed": true,
+  "exception": "RuntimeError: lower_shrimp: TCP residual 0.0203m",
+  "trace": [
+    {
+      "method": "destination_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.26502598847213205,
+        0.20467092531177605,
+        0.41600000000000004
+      ]
+    },
+    {
+      "method": "carry",
+      "args": [
+        [
+          0.26502598847213205,
+          0.20467092531177605,
+          0.41600000000000004
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.26502598847213205,
+          0.20467092531177605,
+          0.41600000000000004
+        ]
+      ],
+      "kwargs": {},
+      "status": "failed",
+      "error": "RuntimeError: lower_shrimp: TCP residual 0.0203m"
+    }
+  ],
+  "forbidden_contacts": [
+    {
+      "phase": "lower_shrimp",
+      "kind": "robot_environment",
+      "bodies": [
+        "bowl",
+        "left_finger"
+      ],
+      "samples": 942,
+      "min_distance_m": -0.00038970495832313373
+    },
+    {
+      "phase": "lower_shrimp",
+      "kind": "robot_environment",
+      "bodies": [
+        "bowl",
+        "right_finger"
+      ],
+      "samples": 6955,
+      "min_distance_m": -0.0005260349050132876
+    },
+    {
+      "phase": "lower_shrimp",
+      "kind": "deep_grasp_contact",
+      "bodies": [
+        "right_finger",
+        "shrimp"
+      ],
+      "samples": 167,
+      "min_distance_m": -0.0022882669244302014
+    },
+    {
+      "phase": "lower_shrimp",
+      "kind": "deep_grasp_contact",
+      "bodies": [
+        "left_finger",
+        "shrimp"
+      ],
+      "samples": 128,
+      "min_distance_m": -0.002293916662464163
+    },
+    {
+      "phase": "lower_shrimp",
+      "kind": "robot_environment",
+      "bodies": [
+        "hand",
+        "shrimp"
+      ],
+      "samples": 323,
+      "min_distance_m": -0.0029548373489182277
+    },
+    {
+      "phase": "lower_shrimp",
+      "kind": "object_obstacle",
+      "bodies": [
+        "shrimp",
+        "table"
+      ],
+      "samples": 7,
+      "min_distance_m": -0.0006092373036535874
+    }
+  ],
+  "code_sha256": "3136df91927d15181c1381b94db52e1d435cc8afbd58e2708d2bef844cb16dec"
+}

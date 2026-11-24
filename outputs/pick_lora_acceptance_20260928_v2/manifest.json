@@ -1,0 +1,1168 @@
+{
+  "created_at": "2026-09-27T16:47:45.773674+00:00",
+  "dataset": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/pick_groups_sft_20260927_v3",
+  "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-bf16",
+  "revision": "33765717028a7f0514ea1d213035cddf4b32c500",
+  "snapshot": "/Users/yishuaicai/.cache/huggingface/hub/models--mlx-community--Qwen2.5-VL-3B-Instruct-bf16/snapshots/33765717028a7f0514ea1d213035cddf4b32c500",
+  "dataset_files": {
+    "dataset_manifest.json": "9abb04277fc843085dbb54a243e8dc2bb0629315832f477db84269e5f7306234",
+    "train.jsonl": "81d79f9a0a36b3c2e14ce45909149bb50ca4e7207d0ee0efea7faa0233b48f3c",
+    "validation.jsonl": "b5c1807fd4402005df272b3e86ac8638e2b1673fe4964e1a13762fa6b4117863",
+    "sample_index.json": "434af8afdb81d81d807f230b1cf26bea6b453eb2e6618df5bb8984fe9926eace",
+    "processor_audit.json": "2d5f080b82130705a1e5adc1617f25be874750dd68dcbd2f4d85ab07f1185a5a"
+  },
+  "source_hashes": {
+    "project/experiments/train_pick_groups_lora.py": "f38b58e32e14f0ff94c698355ba745a73c8d341f120f1ed90de93986fc73b1b8",
+    "project/experiments/inspect_pick_groups_processor.py": "5d2802d7e3cc848ec04bf9fd9f605a866c69421d1a59a67f5c5a4966d8563061",
+    "project/experiments/export_pick_groups.py": "3faa97b145822527d3a26e759572007cd5828d7751fe866c325a402a852d1141",
+    "project/experiments/collect_pick_groups.py": "acd9ce2f3d4105b0f3fc9bc75c35fbafcf10324d09e3730d4ecff0b8664f8c05",
+    "project/experiments/blocks_p0.py": "fede59198e6262ccc2ff56128d1211a531545c9d0fc6496bb2b2f6ffe6c529e2"
+  },
+  "samples": [
+    {
+      "sample_id": "80b8509c7fce4006b822dd36c17473de",
+      "split": "train",
+      "group_id": "ac3432f5a4044ce7b3eade26c76b8ece",
+      "context_id": "35c193adb33948a8a2df0efd2e58f723",
+      "kind": "diagnosis",
+      "scene": "cover",
+      "batch_file": "batches/train_00.npz",
+      "batch_sha256": "deaf8e13ce75f74dfe14fddfc32730049f08a2df9a64bc1fdd96bd31fb54e913",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 3381,
+        "prompt_tokens": 3300,
+        "target_tokens": 81,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=12.540: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=12.540: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / holding_window / overview / t=17.940: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / holding_window / front / t=17.940: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=diagnosis\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"empty()\", \"at_source(apple)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.01054, -0.02209, 0.00021], \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08737, 0.02646, 0.00457]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 17.94, \"state\": [\"at_source(pepper)\", \"at_source(shrimp)\", \"holding(apple)\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.0113, -0.02186, 0.00023], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"apple\": {\"position\": [0.49002, -0.18997, 0.65549], \"quaternion\": [1.0, 9e-05, -0.00067, 0.00175], \"velocity\": [-0.0001, -1e-05, -0.00039, -4e-05, 2e-05, 0.00076]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.48997, -0.18998, 0.65972], \"finger_forces_N\": {\"left_finger\": 0.99678, \"right_finger\": 0.99904}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.03963}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.49, -0.19, 0.42298]}, {\"method\": \"approach\", \"args\": [[0.49, -0.19, 0.42298]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.49, -0.19, 0.42298]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"lift\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}], \"exception\": null, \"check\": {\"valid_trial\": true, \"paper_line20\": true, \"strict_CP_transition_match\": true, \"goal_ok\": true, \"effect_ok\": true, \"violations\": {\"missing_pre\": [], \"missing_add\": [], \"remaining_del\": [], \"missing_preserved_pre\": [], \"unexpected_added\": [], \"unexpected_removed\": []}}, \"physical_pick_success\": true, \"contract_consistent\": true, \"physical_metrics\": {\"success\": true, \"lift_delta_m\": 0.23451, \"bilateral_contact\": true, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.00188, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"failed_stage\": null, \"physical_pick_success\": true, \"contract_consistent\": true, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"no_repair_on_this_trial\", \"hypotheses\": [], \"scope\": \"single_observed_pick_not_whole_task_or_universal_skill\"}",
+      "images": [
+        "media/8a7a98714aa290a3b45862eaeca7ce83cb7dc20495f60af67be13a8bbc5fe1cd.png",
+        "media/ad67b3685cc2d0bf2a7bc2b7357670ae25c3769ea8415733073b8eb05d30b4d6.png",
+        "media/6e3e089fcfd367d4d33f46a701f8c37c9c4e1213b42afd6ed92b2eb35c1cd87f.png",
+        "media/975fdc1042c1ae51e8108dcbfd91f89c10b6533fe647c8f5a699a3ca940d1264.png",
+        "media/797cb5b1e36079faa43679a0e32239189a196bc9d313b072802c9faac04e7ab9.png",
+        "media/8b124961cfb5bb1dc5ff03bdfa9582c213872a9bac40e54e8d2ca4c0c0aa3e57.png"
+      ],
+      "image_sha256": [
+        "8a7a98714aa290a3b45862eaeca7ce83cb7dc20495f60af67be13a8bbc5fe1cd",
+        "ad67b3685cc2d0bf2a7bc2b7357670ae25c3769ea8415733073b8eb05d30b4d6",
+        "6e3e089fcfd367d4d33f46a701f8c37c9c4e1213b42afd6ed92b2eb35c1cd87f",
+        "975fdc1042c1ae51e8108dcbfd91f89c10b6533fe647c8f5a699a3ca940d1264",
+        "797cb5b1e36079faa43679a0e32239189a196bc9d313b072802c9faac04e7ab9",
+        "8b124961cfb5bb1dc5ff03bdfa9582c213872a9bac40e54e8d2ca4c0c0aa3e57"
+      ]
+    },
+    {
+      "sample_id": "ac746fbf267347abb39ddc02db805037",
+      "split": "train",
+      "group_id": "d9857fdfe05e40c9a8f9946f0b448def",
+      "context_id": "35c193adb33948a8a2df0efd2e58f723",
+      "kind": "diagnosis",
+      "scene": "cover",
+      "batch_file": "batches/train_01.npz",
+      "batch_sha256": "c4f44d909355ba09e4651f2697b49d4836f65fcbc465cb454b5bacd4893e7149",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 3502,
+        "prompt_tokens": 3359,
+        "target_tokens": 143,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=11.140: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=11.140: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / action_end / overview / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / action_end / front / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=diagnosis\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"empty()\", \"at_source(apple)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.01054, -0.02209, 0.00021], \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08737, 0.02646, 0.00457]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 11.5, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.0113, -0.02186, 0.00023], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, -1e-05], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.48999, -0.18998, 0.46843], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.49, -0.19, 0.42298]}, {\"method\": \"approach\", \"args\": [[0.49, -0.19, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.49, -0.19, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(apple)\"], \"remaining_del\": [\"at_source(apple)\"], \"missing_preserved_pre\": [], \"unexpected_added\": [\"at_source(apple)\"], \"unexpected_removed\": [\"holding(apple)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+      "images": [
+        "media/8a7a98714aa290a3b45862eaeca7ce83cb7dc20495f60af67be13a8bbc5fe1cd.png",
+        "media/ad67b3685cc2d0bf2a7bc2b7357670ae25c3769ea8415733073b8eb05d30b4d6.png",
+        "media/c7a51afca86446176de6628d9f435e4e8acb74843d369483675eecce7214312b.png",
+        "media/dc6bc331fcfe47d582ae8af8583b663d329de76334438f6da26a3b217df20cc9.png",
+        "media/b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0.png",
+        "media/0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66.png"
+      ],
+      "image_sha256": [
+        "8a7a98714aa290a3b45862eaeca7ce83cb7dc20495f60af67be13a8bbc5fe1cd",
+        "ad67b3685cc2d0bf2a7bc2b7357670ae25c3769ea8415733073b8eb05d30b4d6",
+        "c7a51afca86446176de6628d9f435e4e8acb74843d369483675eecce7214312b",
+        "dc6bc331fcfe47d582ae8af8583b663d329de76334438f6da26a3b217df20cc9",
+        "b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0",
+        "0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66"
+      ]
+    },
+    {
+      "sample_id": "478d8ccb18ac41c4acb333e4de4a96b9",
+      "split": "train",
+      "group_id": "650b6121370d49f5b23f05de10200853",
+      "context_id": "35c193adb33948a8a2df0efd2e58f723",
+      "kind": "diagnosis",
+      "scene": "cover",
+      "batch_file": "batches/train_02.npz",
+      "batch_sha256": "b2e21a1c7f0c35bca6860184cab58c001abcb6d05fc5e3c6090f69ca2842f3b4",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 3416,
+        "prompt_tokens": 3303,
+        "target_tokens": 113,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=12.540: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=12.540: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / holding_window / overview / t=17.940: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / holding_window / front / t=17.940: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=diagnosis\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"at_source(apple)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.01054, -0.02209, 0.00021], \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08737, 0.02646, 0.00457]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 17.94, \"state\": [\"at_source(pepper)\", \"at_source(shrimp)\", \"holding(apple)\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.0113, -0.02186, 0.00023], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"apple\": {\"position\": [0.49002, -0.18997, 0.65549], \"quaternion\": [1.0, 9e-05, -0.00067, 0.00175], \"velocity\": [-0.0001, -1e-05, -0.00039, -4e-05, 2e-05, 0.00076]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.48997, -0.18998, 0.65972], \"finger_forces_N\": {\"left_finger\": 0.99678, \"right_finger\": 0.99904}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.03963}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.49, -0.19, 0.42298]}, {\"method\": \"approach\", \"args\": [[0.49, -0.19, 0.42298]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.49, -0.19, 0.42298]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"lift\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}], \"exception\": null, \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": true, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [], \"remaining_del\": [], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [], \"unexpected_removed\": [\"empty()\"]}}, \"physical_pick_success\": true, \"contract_consistent\": false, \"physical_metrics\": {\"success\": true, \"lift_delta_m\": 0.23451, \"bilateral_contact\": true, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.00188, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"failed_stage\": null, \"physical_pick_success\": true, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"inspect_contract_effects\", \"hypotheses\": [{\"kind\": \"contract_transition_mismatch\", \"support\": \"observed\", \"unique_cause\": false}], \"next_test\": {\"kind\": \"contract_only_recheck_then_matched_execution\", \"freeze\": [\"policy\", \"initial_context\", \"observer\"]}}",
+      "images": [
+        "media/8a7a98714aa290a3b45862eaeca7ce83cb7dc20495f60af67be13a8bbc5fe1cd.png",
+        "media/ad67b3685cc2d0bf2a7bc2b7357670ae25c3769ea8415733073b8eb05d30b4d6.png",
+        "media/6e3e089fcfd367d4d33f46a701f8c37c9c4e1213b42afd6ed92b2eb35c1cd87f.png",
+        "media/975fdc1042c1ae51e8108dcbfd91f89c10b6533fe647c8f5a699a3ca940d1264.png",
+        "media/797cb5b1e36079faa43679a0e32239189a196bc9d313b072802c9faac04e7ab9.png",
+        "media/8b124961cfb5bb1dc5ff03bdfa9582c213872a9bac40e54e8d2ca4c0c0aa3e57.png"
+      ],
+      "image_sha256": [
+        "8a7a98714aa290a3b45862eaeca7ce83cb7dc20495f60af67be13a8bbc5fe1cd",
+        "ad67b3685cc2d0bf2a7bc2b7357670ae25c3769ea8415733073b8eb05d30b4d6",
+        "6e3e089fcfd367d4d33f46a701f8c37c9c4e1213b42afd6ed92b2eb35c1cd87f",
+        "975fdc1042c1ae51e8108dcbfd91f89c10b6533fe647c8f5a699a3ca940d1264",
+        "797cb5b1e36079faa43679a0e32239189a196bc9d313b072802c9faac04e7ab9",
+        "8b124961cfb5bb1dc5ff03bdfa9582c213872a9bac40e54e8d2ca4c0c0aa3e57"
+      ]
+    },
+    {
+      "sample_id": "d6c7a8d8872d4cd6ae4bc4fff815d2a9",
+      "split": "train",
+      "group_id": "b4c8634facbc42ccb3bb5430f87d3f59",
+      "context_id": "35c193adb33948a8a2df0efd2e58f723",
+      "kind": "diagnosis",
+      "scene": "cover",
+      "batch_file": "batches/train_03.npz",
+      "batch_sha256": "afd35145809faa2485f1ea6c946d482673cad64e675be631d929db210fe5e063",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 3505,
+        "prompt_tokens": 3362,
+        "target_tokens": 143,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=11.140: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=11.140: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / action_end / overview / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / action_end / front / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=diagnosis\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"at_source(apple)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.01054, -0.02209, 0.00021], \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08737, 0.02646, 0.00457]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 11.5, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.0113, -0.02186, 0.00023], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, -1e-05], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.48999, -0.18998, 0.46843], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.49, -0.19, 0.42298]}, {\"method\": \"approach\", \"args\": [[0.49, -0.19, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.49, -0.19, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(apple)\"], \"remaining_del\": [\"at_source(apple)\"], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [\"at_source(apple)\"], \"unexpected_removed\": [\"empty()\", \"holding(apple)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+      "images": [
+        "media/8a7a98714aa290a3b45862eaeca7ce83cb7dc20495f60af67be13a8bbc5fe1cd.png",
+        "media/ad67b3685cc2d0bf2a7bc2b7357670ae25c3769ea8415733073b8eb05d30b4d6.png",
+        "media/c7a51afca86446176de6628d9f435e4e8acb74843d369483675eecce7214312b.png",
+        "media/dc6bc331fcfe47d582ae8af8583b663d329de76334438f6da26a3b217df20cc9.png",
+        "media/b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0.png",
+        "media/0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66.png"
+      ],
+      "image_sha256": [
+        "8a7a98714aa290a3b45862eaeca7ce83cb7dc20495f60af67be13a8bbc5fe1cd",
+        "ad67b3685cc2d0bf2a7bc2b7357670ae25c3769ea8415733073b8eb05d30b4d6",
+        "c7a51afca86446176de6628d9f435e4e8acb74843d369483675eecce7214312b",
+        "dc6bc331fcfe47d582ae8af8583b663d329de76334438f6da26a3b217df20cc9",
+        "b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0",
+        "0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66"
+      ]
+    },
+    {
+      "sample_id": "694992819d3f48eda520afed962a4ace",
+      "split": "train",
+      "group_id": "b4c8634facbc42ccb3bb5430f87d3f59",
+      "context_id": "35c193adb33948a8a2df0efd2e58f723",
+      "kind": "forecast",
+      "scene": "cover",
+      "batch_file": "batches/train_04.npz",
+      "batch_sha256": "a784deabfdf0caced1d36c56bf01cd182d01b081929f0ea6f427b2226f4c747e",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 3583,
+        "prompt_tokens": 3545,
+        "target_tokens": 38,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=11.140: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=11.140: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / action_end / overview / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / action_end / front / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=forecast\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"at_source(apple)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.01054, -0.02209, 0.00021], \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08737, 0.02646, 0.00457]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 11.5, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.0113, -0.02186, 0.00023], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, -1e-05], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.48999, -0.18998, 0.46843], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.49, -0.19, 0.42298]}, {\"method\": \"approach\", \"args\": [[0.49, -0.19, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.49, -0.19, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(apple)\"], \"remaining_del\": [\"at_source(apple)\"], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [\"at_source(apple)\"], \"unexpected_removed\": [\"empty()\", \"holding(apple)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}, \"proposed_intervention\": {\"model_delete_added\": [\"empty()\"], \"model_delete_removed\": [], \"candidate_model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"empty()\", \"at_source(apple)\", \"home_completed()\"]}, \"candidate_source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"policy_changed\": false, \"reset_mode\": \"matched_initial_context_not_failed_state_recovery\"}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"physical_pick_success\": false, \"contract_consistent\": false, \"joint_success\": false, \"scope\": \"single_realized_intervention_outcome_not_calibrated_probability\"}",
+      "images": [
+        "media/8a7a98714aa290a3b45862eaeca7ce83cb7dc20495f60af67be13a8bbc5fe1cd.png",
+        "media/ad67b3685cc2d0bf2a7bc2b7357670ae25c3769ea8415733073b8eb05d30b4d6.png",
+        "media/c7a51afca86446176de6628d9f435e4e8acb74843d369483675eecce7214312b.png",
+        "media/dc6bc331fcfe47d582ae8af8583b663d329de76334438f6da26a3b217df20cc9.png",
+        "media/b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0.png",
+        "media/0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66.png"
+      ],
+      "image_sha256": [
+        "8a7a98714aa290a3b45862eaeca7ce83cb7dc20495f60af67be13a8bbc5fe1cd",
+        "ad67b3685cc2d0bf2a7bc2b7357670ae25c3769ea8415733073b8eb05d30b4d6",
+        "c7a51afca86446176de6628d9f435e4e8acb74843d369483675eecce7214312b",
+        "dc6bc331fcfe47d582ae8af8583b663d329de76334438f6da26a3b217df20cc9",
+        "b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0",
+        "0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66"
+      ]
+    },
+    {
+      "sample_id": "393288b9e1354b029de48e096fa6c713",
+      "split": "train",
+      "group_id": "b4c8634facbc42ccb3bb5430f87d3f59",
+      "context_id": "35c193adb33948a8a2df0efd2e58f723",
+      "kind": "update",
+      "scene": "cover",
+      "batch_file": "batches/train_05.npz",
+      "batch_sha256": "075ddfd3d4a47ffff5d257c901d87f8e0a21754e4ee795794c93d3043a878477",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 5620,
+        "prompt_tokens": 5524,
+        "target_tokens": 96,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / action_end / overview / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / action_end / front / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n3. intervention / close_gripper / overview / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n4. intervention / close_gripper / front / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n5. intervention / action_end / overview / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n6. intervention / action_end / front / t=11.500: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=update\n{\"baseline\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"at_source(apple)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.01054, -0.02209, 0.00021], \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08737, 0.02646, 0.00457]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 11.5, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.0113, -0.02186, 0.00023], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, -1e-05], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.48999, -0.18998, 0.46843], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.49, -0.19, 0.42298]}, {\"method\": \"approach\", \"args\": [[0.49, -0.19, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.49, -0.19, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(apple)\"], \"remaining_del\": [\"at_source(apple)\"], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [\"at_source(apple)\"], \"unexpected_removed\": [\"empty()\", \"holding(apple)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}, \"intervention\": {\"model_delete_added\": [\"empty()\"], \"model_delete_removed\": [], \"candidate_model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"empty()\", \"at_source(apple)\", \"home_completed()\"]}, \"candidate_source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"policy_changed\": false, \"reset_mode\": \"matched_initial_context_not_failed_state_recovery\"}, \"intervention_observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"empty()\", \"at_source(apple)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.01054, -0.02209, 0.00021], \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08737, 0.02646, 0.00457]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 11.5, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31005, -0.19002, 0.399], \"quaternion\": [0.9997, -0.0113, -0.02186, 0.00023], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"apple\": {\"position\": [0.49, -0.19, 0.42098], \"quaternion\": [1.0, 0.0, 0.0, -1e-05], \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]}, \"pepper\": {\"position\": [0.67, -0.19, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.48999, -0.18998, 0.46843], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.49, -0.19, 0.42298]}, {\"method\": \"approach\", \"args\": [[0.49, -0.19, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.49, -0.19, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(apple)\"], \"remaining_del\": [\"at_source(apple)\"], \"missing_preserved_pre\": [], \"unexpected_added\": [\"at_source(apple)\"], \"unexpected_removed\": [\"holding(apple)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"decision\": \"no_improvement_continue_or_abstain\", \"physical_improved\": false, \"contract_improved\": false, \"observed_physical_success\": false, \"observed_contract_consistency\": false, \"evidence_refs\": [\"baseline:E2\", \"baseline:E4\", \"intervention:E2\", \"intervention:E4\"], \"deployable_repair\": false, \"scope\": \"one_matched_intervention_not_unique_root_cause\"}",
+      "images": [
+        "media/b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0.png",
+        "media/0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66.png",
+        "media/b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0.png",
+        "media/0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66.png",
+        "media/b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0.png",
+        "media/0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66.png"
+      ],
+      "image_sha256": [
+        "b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0",
+        "0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66",
+        "b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0",
+        "0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66",
+        "b1f405881dde2a66af5ad129624c3fb036f20ea281d08758a0a42671cd45ccc0",
+        "0ff20416c933a442f0fd4b2525f5d754faf2f8224be32e67a6e3e89b69b4aa66"
+      ]
+    },
+    {
+      "sample_id": "750cbe61cb98417e9096569c0abf97c8",
+      "split": "train",
+      "group_id": "d7bd2ceab8234ea2bc2f93062592d019",
+      "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+      "kind": "diagnosis",
+      "scene": "blocks",
+      "batch_file": "batches/train_06.npz",
+      "batch_sha256": "d19fda56bcd7fd3806d14f7b997393f3f5ea2d466dbace8fa1c2197faef66d9b",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 2944,
+        "prompt_tokens": 2863,
+        "target_tokens": 81,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=7.320: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=7.320: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / holding_window / overview / t=10.880: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / holding_window / front / t=10.880: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=diagnosis\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 10.88, \"state\": [\"at_source(red)\", \"holding(yellow)\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34021, 0.14997, 0.61355], \"quaternion\": [1.0, -2e-05, -0.00069, 0.0], \"velocity\": [-1e-05, 0.0, -9e-05, -1e-05, 0.00024, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.34006, 0.14997, 0.61958], \"finger_forces_N\": {\"left_finger\": 1.09984, \"right_finger\": 1.09985}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.04399}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.34, 0.15, 0.426]}, {\"method\": \"approach\", \"args\": [[0.34, 0.15, 0.426]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.34, 0.15, 0.426]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"lift\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}], \"exception\": null, \"check\": {\"valid_trial\": true, \"paper_line20\": true, \"strict_CP_transition_match\": true, \"goal_ok\": true, \"effect_ok\": true, \"violations\": {\"missing_pre\": [], \"missing_add\": [], \"remaining_del\": [], \"missing_preserved_pre\": [], \"unexpected_added\": [], \"unexpected_removed\": []}}, \"physical_pick_success\": true, \"contract_consistent\": true, \"physical_metrics\": {\"success\": true, \"lift_delta_m\": 0.19156, \"bilateral_contact\": true, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.00182, \"max_contact_gap_seconds\": 0.004, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"failed_stage\": null, \"physical_pick_success\": true, \"contract_consistent\": true, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"no_repair_on_this_trial\", \"hypotheses\": [], \"scope\": \"single_observed_pick_not_whole_task_or_universal_skill\"}",
+      "images": [
+        "media/d8bc5c536b2490c7be7a6258db60f62dad5d3441cfd2cc291a944700b696006a.png",
+        "media/dda8e0bfa9ffaa5c0d15ea7d3185a58bcc14c1f5e6f744c0d382512899c161b4.png",
+        "media/2885c1b4e652b9f1cc7b4606f69901b2be1e58e71aa2a9e8e17b1fe0870319b6.png",
+        "media/4cfa17fa8590374da8d12a238444beef611936743acb881769c592d7f5a34923.png",
+        "media/251b19d03fdfbc2fbd058dcdf172305caad77da752ac3647d626f04d447d9a5d.png",
+        "media/f21da0e48f75e1fa2ba576a8d1fd6762993151011dbd0367bb0211f5c132cd47.png"
+      ],
+      "image_sha256": [
+        "d8bc5c536b2490c7be7a6258db60f62dad5d3441cfd2cc291a944700b696006a",
+        "dda8e0bfa9ffaa5c0d15ea7d3185a58bcc14c1f5e6f744c0d382512899c161b4",
+        "2885c1b4e652b9f1cc7b4606f69901b2be1e58e71aa2a9e8e17b1fe0870319b6",
+        "4cfa17fa8590374da8d12a238444beef611936743acb881769c592d7f5a34923",
+        "251b19d03fdfbc2fbd058dcdf172305caad77da752ac3647d626f04d447d9a5d",
+        "f21da0e48f75e1fa2ba576a8d1fd6762993151011dbd0367bb0211f5c132cd47"
+      ]
+    },
+    {
+      "sample_id": "45f71283850f415fa4193eb3e5b5cd5c",
+      "split": "train",
+      "group_id": "f79baa336265404aa9aa9fb04980eddf",
+      "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+      "kind": "diagnosis",
+      "scene": "blocks",
+      "batch_file": "batches/train_07.npz",
+      "batch_sha256": "fdf39f40778d88d0b7e2f8e90d01fc1d6087582cf2fd293584fd25613fe9b41e",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 3053,
+        "prompt_tokens": 2910,
+        "target_tokens": 143,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=6.460: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=6.460: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / action_end / overview / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / action_end / front / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=diagnosis\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 6.82, \"state\": [\"at_source(red)\", \"at_source(yellow)\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.33997, 0.14993, 0.47136], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.34, 0.15, 0.426]}, {\"method\": \"approach\", \"args\": [[0.34, 0.15, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.34, 0.15, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(yellow)\"], \"remaining_del\": [\"at_source(yellow)\"], \"missing_preserved_pre\": [], \"unexpected_added\": [\"at_source(yellow)\"], \"unexpected_removed\": [\"holding(yellow)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+      "images": [
+        "media/d8bc5c536b2490c7be7a6258db60f62dad5d3441cfd2cc291a944700b696006a.png",
+        "media/dda8e0bfa9ffaa5c0d15ea7d3185a58bcc14c1f5e6f744c0d382512899c161b4.png",
+        "media/badce8665301a082c24422d82c3092daf364e0f173609e7b75d54ab436d994ed.png",
+        "media/60dfcb2cbd100293e0b860f4ad4ac753cbc164792fc9d67dc47892d7dd501463.png",
+        "media/12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824.png",
+        "media/21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d.png"
+      ],
+      "image_sha256": [
+        "d8bc5c536b2490c7be7a6258db60f62dad5d3441cfd2cc291a944700b696006a",
+        "dda8e0bfa9ffaa5c0d15ea7d3185a58bcc14c1f5e6f744c0d382512899c161b4",
+        "badce8665301a082c24422d82c3092daf364e0f173609e7b75d54ab436d994ed",
+        "60dfcb2cbd100293e0b860f4ad4ac753cbc164792fc9d67dc47892d7dd501463",
+        "12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824",
+        "21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d"
+      ]
+    },
+    {
+      "sample_id": "d806effb72e64735b533105540466d78",
+      "split": "train",
+      "group_id": "ffb6589b901b469a9da2d0eaf39d6558",
+      "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+      "kind": "diagnosis",
+      "scene": "blocks",
+      "batch_file": "batches/train_08.npz",
+      "batch_sha256": "ba39208d7a98fab2fcfff091ae1248713e743a8cef0dd45b44c0933ebd471ba5",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 2979,
+        "prompt_tokens": 2866,
+        "target_tokens": 113,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=7.320: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=7.320: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / holding_window / overview / t=10.880: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / holding_window / front / t=10.880: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=diagnosis\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"at_source(yellow)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 10.88, \"state\": [\"at_source(red)\", \"holding(yellow)\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34021, 0.14997, 0.61355], \"quaternion\": [1.0, -2e-05, -0.00069, 0.0], \"velocity\": [-1e-05, 0.0, -9e-05, -1e-05, 0.00024, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.34006, 0.14997, 0.61958], \"finger_forces_N\": {\"left_finger\": 1.09984, \"right_finger\": 1.09985}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.04399}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.34, 0.15, 0.426]}, {\"method\": \"approach\", \"args\": [[0.34, 0.15, 0.426]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.34, 0.15, 0.426]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"lift\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}], \"exception\": null, \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": true, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [], \"remaining_del\": [], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [], \"unexpected_removed\": [\"empty()\"]}}, \"physical_pick_success\": true, \"contract_consistent\": false, \"physical_metrics\": {\"success\": true, \"lift_delta_m\": 0.19156, \"bilateral_contact\": true, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.00182, \"max_contact_gap_seconds\": 0.004, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"failed_stage\": null, \"physical_pick_success\": true, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"inspect_contract_effects\", \"hypotheses\": [{\"kind\": \"contract_transition_mismatch\", \"support\": \"observed\", \"unique_cause\": false}], \"next_test\": {\"kind\": \"contract_only_recheck_then_matched_execution\", \"freeze\": [\"policy\", \"initial_context\", \"observer\"]}}",
+      "images": [
+        "media/d8bc5c536b2490c7be7a6258db60f62dad5d3441cfd2cc291a944700b696006a.png",
+        "media/dda8e0bfa9ffaa5c0d15ea7d3185a58bcc14c1f5e6f744c0d382512899c161b4.png",
+        "media/2885c1b4e652b9f1cc7b4606f69901b2be1e58e71aa2a9e8e17b1fe0870319b6.png",
+        "media/4cfa17fa8590374da8d12a238444beef611936743acb881769c592d7f5a34923.png",
+        "media/251b19d03fdfbc2fbd058dcdf172305caad77da752ac3647d626f04d447d9a5d.png",
+        "media/f21da0e48f75e1fa2ba576a8d1fd6762993151011dbd0367bb0211f5c132cd47.png"
+      ],
+      "image_sha256": [
+        "d8bc5c536b2490c7be7a6258db60f62dad5d3441cfd2cc291a944700b696006a",
+        "dda8e0bfa9ffaa5c0d15ea7d3185a58bcc14c1f5e6f744c0d382512899c161b4",
+        "2885c1b4e652b9f1cc7b4606f69901b2be1e58e71aa2a9e8e17b1fe0870319b6",
+        "4cfa17fa8590374da8d12a238444beef611936743acb881769c592d7f5a34923",
+        "251b19d03fdfbc2fbd058dcdf172305caad77da752ac3647d626f04d447d9a5d",
+        "f21da0e48f75e1fa2ba576a8d1fd6762993151011dbd0367bb0211f5c132cd47"
+      ]
+    },
+    {
+      "sample_id": "62d0e0b7c3bc408a828e908a9fc14516",
+      "split": "train",
+      "group_id": "20cbf5ac4f2a44e39a7d8c4fedd99799",
+      "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+      "kind": "diagnosis",
+      "scene": "blocks",
+      "batch_file": "batches/train_09.npz",
+      "batch_sha256": "2ab157d1ca8252acbef9bb07abcaf2e10ed3826c6d65e251e293d7019e91cacc",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 3056,
+        "prompt_tokens": 2913,
+        "target_tokens": 143,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=6.460: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=6.460: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / action_end / overview / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / action_end / front / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=diagnosis\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"at_source(yellow)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 6.82, \"state\": [\"at_source(red)\", \"at_source(yellow)\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.33997, 0.14993, 0.47136], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.34, 0.15, 0.426]}, {\"method\": \"approach\", \"args\": [[0.34, 0.15, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.34, 0.15, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(yellow)\"], \"remaining_del\": [\"at_source(yellow)\"], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [\"at_source(yellow)\"], \"unexpected_removed\": [\"empty()\", \"holding(yellow)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+      "images": [
+        "media/d8bc5c536b2490c7be7a6258db60f62dad5d3441cfd2cc291a944700b696006a.png",
+        "media/dda8e0bfa9ffaa5c0d15ea7d3185a58bcc14c1f5e6f744c0d382512899c161b4.png",
+        "media/badce8665301a082c24422d82c3092daf364e0f173609e7b75d54ab436d994ed.png",
+        "media/60dfcb2cbd100293e0b860f4ad4ac753cbc164792fc9d67dc47892d7dd501463.png",
+        "media/12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824.png",
+        "media/21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d.png"
+      ],
+      "image_sha256": [
+        "d8bc5c536b2490c7be7a6258db60f62dad5d3441cfd2cc291a944700b696006a",
+        "dda8e0bfa9ffaa5c0d15ea7d3185a58bcc14c1f5e6f744c0d382512899c161b4",
+        "badce8665301a082c24422d82c3092daf364e0f173609e7b75d54ab436d994ed",
+        "60dfcb2cbd100293e0b860f4ad4ac753cbc164792fc9d67dc47892d7dd501463",
+        "12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824",
+        "21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d"
+      ]
+    },
+    {
+      "sample_id": "93c57fcbd81f4175b34a4cc7b94f17f5",
+      "split": "train",
+      "group_id": "20cbf5ac4f2a44e39a7d8c4fedd99799",
+      "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+      "kind": "forecast",
+      "scene": "blocks",
+      "batch_file": "batches/train_10.npz",
+      "batch_sha256": "561683f6887328c074c61f1a1609090a817d2c435a6d29dbc266d55c61c18f0f",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 3134,
+        "prompt_tokens": 3096,
+        "target_tokens": 38,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=6.460: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=6.460: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / action_end / overview / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / action_end / front / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=forecast\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"at_source(yellow)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 6.82, \"state\": [\"at_source(red)\", \"at_source(yellow)\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.33997, 0.14993, 0.47136], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.34, 0.15, 0.426]}, {\"method\": \"approach\", \"args\": [[0.34, 0.15, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.34, 0.15, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(yellow)\"], \"remaining_del\": [\"at_source(yellow)\"], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [\"at_source(yellow)\"], \"unexpected_removed\": [\"empty()\", \"holding(yellow)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}, \"proposed_intervention\": {\"model_delete_added\": [\"empty()\"], \"model_delete_removed\": [], \"candidate_model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]}, \"candidate_source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"policy_changed\": false, \"reset_mode\": \"matched_initial_context_not_failed_state_recovery\"}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"physical_pick_success\": false, \"contract_consistent\": false, \"joint_success\": false, \"scope\": \"single_realized_intervention_outcome_not_calibrated_probability\"}",
+      "images": [
+        "media/d8bc5c536b2490c7be7a6258db60f62dad5d3441cfd2cc291a944700b696006a.png",
+        "media/dda8e0bfa9ffaa5c0d15ea7d3185a58bcc14c1f5e6f744c0d382512899c161b4.png",
+        "media/badce8665301a082c24422d82c3092daf364e0f173609e7b75d54ab436d994ed.png",
+        "media/60dfcb2cbd100293e0b860f4ad4ac753cbc164792fc9d67dc47892d7dd501463.png",
+        "media/12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824.png",
+        "media/21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d.png"
+      ],
+      "image_sha256": [
+        "d8bc5c536b2490c7be7a6258db60f62dad5d3441cfd2cc291a944700b696006a",
+        "dda8e0bfa9ffaa5c0d15ea7d3185a58bcc14c1f5e6f744c0d382512899c161b4",
+        "badce8665301a082c24422d82c3092daf364e0f173609e7b75d54ab436d994ed",
+        "60dfcb2cbd100293e0b860f4ad4ac753cbc164792fc9d67dc47892d7dd501463",
+        "12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824",
+        "21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d"
+      ]
+    },
+    {
+      "sample_id": "30d95a06b2984a8295bb6c286034eea2",
+      "split": "train",
+      "group_id": "20cbf5ac4f2a44e39a7d8c4fedd99799",
+      "context_id": "6d3d4963aa7345a1b1616c510d04c5ba",
+      "kind": "update",
+      "scene": "blocks",
+      "batch_file": "batches/train_11.npz",
+      "batch_sha256": "cdc98fadb9eab14c8f460c09ada5f62c6d187c713b6f838107174176e5e6a5f8",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 4724,
+        "prompt_tokens": 4628,
+        "target_tokens": 96,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / action_end / overview / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / action_end / front / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n3. intervention / close_gripper / overview / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n4. intervention / close_gripper / front / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n5. intervention / action_end / overview / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n6. intervention / action_end / front / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=update\n{\"baseline\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"at_source(yellow)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 6.82, \"state\": [\"at_source(red)\", \"at_source(yellow)\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.33997, 0.14993, 0.47136], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.34, 0.15, 0.426]}, {\"method\": \"approach\", \"args\": [[0.34, 0.15, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.34, 0.15, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(yellow)\"], \"remaining_del\": [\"at_source(yellow)\"], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [\"at_source(yellow)\"], \"unexpected_removed\": [\"empty()\", \"holding(yellow)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}, \"intervention\": {\"model_delete_added\": [\"empty()\"], \"model_delete_removed\": [], \"candidate_model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]}, \"candidate_source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"policy_changed\": false, \"reset_mode\": \"matched_initial_context_not_failed_state_recovery\"}, \"intervention_observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 6.82, \"state\": [\"at_source(red)\", \"at_source(yellow)\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.34, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.57, -0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.34, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.57, 0.15, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.33997, 0.14993, 0.47136], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.34, 0.15, 0.426]}, {\"method\": \"approach\", \"args\": [[0.34, 0.15, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.34, 0.15, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(yellow)\"], \"remaining_del\": [\"at_source(yellow)\"], \"missing_preserved_pre\": [], \"unexpected_added\": [\"at_source(yellow)\"], \"unexpected_removed\": [\"holding(yellow)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"decision\": \"no_improvement_continue_or_abstain\", \"physical_improved\": false, \"contract_improved\": false, \"observed_physical_success\": false, \"observed_contract_consistency\": false, \"evidence_refs\": [\"baseline:E2\", \"baseline:E4\", \"intervention:E2\", \"intervention:E4\"], \"deployable_repair\": false, \"scope\": \"one_matched_intervention_not_unique_root_cause\"}",
+      "images": [
+        "media/12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824.png",
+        "media/21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d.png",
+        "media/12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824.png",
+        "media/21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d.png",
+        "media/12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824.png",
+        "media/21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d.png"
+      ],
+      "image_sha256": [
+        "12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824",
+        "21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d",
+        "12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824",
+        "21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d",
+        "12a0aab7641ebf59e09d10c905fdb4fe5022123b1534f7d932b31157e32d8824",
+        "21b7ddb2a8ea47c9583ce747d6d53c7f9bebaa5dd333951819bd530c0160b39d"
+      ]
+    },
+    {
+      "sample_id": "930faf8b8b96489588f9fb7f35722771",
+      "split": "validation",
+      "group_id": "42a0e5ad402d472696fba1931c058ae2",
+      "context_id": "2bad274b10414f79be82ca374a364290",
+      "kind": "diagnosis",
+      "scene": "cover",
+      "batch_file": "batches/validation_00.npz",
+      "batch_sha256": "9b8c054d49da31153d6286b79a2d3b2296eb436a3ef41657473c0bb54319ac2d",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 3544,
+        "prompt_tokens": 3401,
+        "target_tokens": 143,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=11.160: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=11.160: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / action_end / overview / t=11.520: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / action_end / front / t=11.520: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=diagnosis\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"at_source(apple)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31055, -0.18843, 0.399], \"quaternion\": [0.9997, -0.01054, -0.02208, 0.00021], \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08735, 0.02646, 0.00457]}, \"apple\": {\"position\": [0.4911, -0.1911, 0.42098], \"quaternion\": [1.0, 1e-05, -2e-05, 0.0], \"velocity\": [0.00015, 3e-05, 1e-05, -0.00132, 0.00758, 0.0]}, \"pepper\": {\"position\": [0.6692, -0.18851, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 11.52, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31055, -0.18843, 0.399], \"quaternion\": [0.9997, -0.0113, -0.02186, 0.00023], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"apple\": {\"position\": [0.4911, -0.1911, 0.42098], \"quaternion\": [1.0, 1e-05, -2e-05, 0.0], \"velocity\": [-0.00017, -3e-05, -1e-05, 0.00158, -0.00867, 0.0]}, \"pepper\": {\"position\": [0.6692, -0.18851, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.49109, -0.19108, 0.46843], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.4911, -0.1911, 0.42298]}, {\"method\": \"approach\", \"args\": [[0.4911, -0.1911, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.4911, -0.1911, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(apple)\"], \"remaining_del\": [\"at_source(apple)\"], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [\"at_source(apple)\"], \"unexpected_removed\": [\"empty()\", \"holding(apple)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+      "images": [
+        "media/73a250bd5025aa1c289969dcf494a2d6a60b42ed5a01df9c8e3b48aab9d87038.png",
+        "media/4c2afb3dc9afe8bffe7625e601bae55a1bdab7afa454c11eb09336a2dde55d09.png",
+        "media/dc3a1a0bfc73c487ab1e7694a0507a4645f763de56951024e69b69e878d58363.png",
+        "media/002c1fbce484c0a1f7082ef1b5ccb01e9d86025ef26e6d3f767671731c3918c6.png",
+        "media/dc93b19df34d35f0cf94b069964a292496f987faf59ecf7890726d4e96d4b324.png",
+        "media/5b9b21ea00bb93ccdc7ffde6a6b3f385de6b5d2a61255de2305d11541e618ef7.png"
+      ],
+      "image_sha256": [
+        "73a250bd5025aa1c289969dcf494a2d6a60b42ed5a01df9c8e3b48aab9d87038",
+        "4c2afb3dc9afe8bffe7625e601bae55a1bdab7afa454c11eb09336a2dde55d09",
+        "dc3a1a0bfc73c487ab1e7694a0507a4645f763de56951024e69b69e878d58363",
+        "002c1fbce484c0a1f7082ef1b5ccb01e9d86025ef26e6d3f767671731c3918c6",
+        "dc93b19df34d35f0cf94b069964a292496f987faf59ecf7890726d4e96d4b324",
+        "5b9b21ea00bb93ccdc7ffde6a6b3f385de6b5d2a61255de2305d11541e618ef7"
+      ]
+    },
+    {
+      "sample_id": "cb3511707e63450198a47d24e8b744e3",
+      "split": "validation",
+      "group_id": "42a0e5ad402d472696fba1931c058ae2",
+      "context_id": "2bad274b10414f79be82ca374a364290",
+      "kind": "update",
+      "scene": "cover",
+      "batch_file": "batches/validation_01.npz",
+      "batch_sha256": "3f269b3a09fc4ab9d5f49d9026baa7c222709ec52ce052bdd942ede10fbaa25b",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 5698,
+        "prompt_tokens": 5602,
+        "target_tokens": 96,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / action_end / overview / t=11.520: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / action_end / front / t=11.520: <|vision_start|><|image_pad|><|vision_end|>\n3. intervention / close_gripper / overview / t=11.520: <|vision_start|><|image_pad|><|vision_end|>\n4. intervention / close_gripper / front / t=11.520: <|vision_start|><|image_pad|><|vision_end|>\n5. intervention / action_end / overview / t=11.520: <|vision_start|><|image_pad|><|vision_end|>\n6. intervention / action_end / front / t=11.520: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=update\n{\"baseline\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"at_source(apple)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31055, -0.18843, 0.399], \"quaternion\": [0.9997, -0.01054, -0.02208, 0.00021], \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08735, 0.02646, 0.00457]}, \"apple\": {\"position\": [0.4911, -0.1911, 0.42098], \"quaternion\": [1.0, 1e-05, -2e-05, 0.0], \"velocity\": [0.00015, 3e-05, 1e-05, -0.00132, 0.00758, 0.0]}, \"pepper\": {\"position\": [0.6692, -0.18851, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 11.52, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31055, -0.18843, 0.399], \"quaternion\": [0.9997, -0.0113, -0.02186, 0.00023], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"apple\": {\"position\": [0.4911, -0.1911, 0.42098], \"quaternion\": [1.0, 1e-05, -2e-05, 0.0], \"velocity\": [-0.00017, -3e-05, -1e-05, 0.00158, -0.00867, 0.0]}, \"pepper\": {\"position\": [0.6692, -0.18851, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.49109, -0.19108, 0.46843], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.4911, -0.1911, 0.42298]}, {\"method\": \"approach\", \"args\": [[0.4911, -0.1911, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.4911, -0.1911, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(apple)\"], \"remaining_del\": [\"at_source(apple)\"], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [\"at_source(apple)\"], \"unexpected_removed\": [\"empty()\", \"holding(apple)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}, \"intervention\": {\"model_delete_added\": [\"empty()\"], \"model_delete_removed\": [], \"candidate_model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"empty()\", \"at_source(apple)\", \"home_completed()\"]}, \"candidate_source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"policy_changed\": false, \"reset_mode\": \"matched_initial_context_not_failed_state_recovery\"}, \"intervention_observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\"], \"add\": [\"holding(apple)\"], \"del\": [\"empty()\", \"at_source(apple)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31055, -0.18843, 0.399], \"quaternion\": [0.9997, -0.01054, -0.02208, 0.00021], \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08735, 0.02646, 0.00457]}, \"apple\": {\"position\": [0.4911, -0.1911, 0.42098], \"quaternion\": [1.0, 1e-05, -2e-05, 0.0], \"velocity\": [0.00015, 3e-05, 1e-05, -0.00132, 0.00758, 0.0]}, \"pepper\": {\"position\": [0.6692, -0.18851, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 11.52, \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\"], \"derived_state_refreshed\": true, \"objects\": {\"shrimp\": {\"position\": [0.31055, -0.18843, 0.399], \"quaternion\": [0.9997, -0.0113, -0.02186, 0.00023], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"apple\": {\"position\": [0.4911, -0.1911, 0.42098], \"quaternion\": [1.0, 1e-05, -2e-05, 0.0], \"velocity\": [-0.00017, -3e-05, -1e-05, 0.00158, -0.00867, 0.0]}, \"pepper\": {\"position\": [0.6692, -0.18851, 0.41498], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"bowl\": {\"position\": [0.31, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"board\": {\"position\": [0.49, 0.16, 0.412], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"pan\": {\"position\": [0.67, 0.16, 0.4], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.49109, -0.19108, 0.46843], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.4911, -0.1911, 0.42298]}, {\"method\": \"approach\", \"args\": [[0.4911, -0.1911, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.4911, -0.1911, 0.46798]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(apple)\"], \"remaining_del\": [\"at_source(apple)\"], \"missing_preserved_pre\": [], \"unexpected_added\": [\"at_source(apple)\"], \"unexpected_removed\": [\"holding(apple)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"decision\": \"no_improvement_continue_or_abstain\", \"physical_improved\": false, \"contract_improved\": false, \"observed_physical_success\": false, \"observed_contract_consistency\": false, \"evidence_refs\": [\"baseline:E2\", \"baseline:E4\", \"intervention:E2\", \"intervention:E4\"], \"deployable_repair\": false, \"scope\": \"one_matched_intervention_not_unique_root_cause\"}",
+      "images": [
+        "media/dc93b19df34d35f0cf94b069964a292496f987faf59ecf7890726d4e96d4b324.png",
+        "media/5b9b21ea00bb93ccdc7ffde6a6b3f385de6b5d2a61255de2305d11541e618ef7.png",
+        "media/dc93b19df34d35f0cf94b069964a292496f987faf59ecf7890726d4e96d4b324.png",
+        "media/5b9b21ea00bb93ccdc7ffde6a6b3f385de6b5d2a61255de2305d11541e618ef7.png",
+        "media/dc93b19df34d35f0cf94b069964a292496f987faf59ecf7890726d4e96d4b324.png",
+        "media/5b9b21ea00bb93ccdc7ffde6a6b3f385de6b5d2a61255de2305d11541e618ef7.png"
+      ],
+      "image_sha256": [
+        "dc93b19df34d35f0cf94b069964a292496f987faf59ecf7890726d4e96d4b324",
+        "5b9b21ea00bb93ccdc7ffde6a6b3f385de6b5d2a61255de2305d11541e618ef7",
+        "dc93b19df34d35f0cf94b069964a292496f987faf59ecf7890726d4e96d4b324",
+        "5b9b21ea00bb93ccdc7ffde6a6b3f385de6b5d2a61255de2305d11541e618ef7",
+        "dc93b19df34d35f0cf94b069964a292496f987faf59ecf7890726d4e96d4b324",
+        "5b9b21ea00bb93ccdc7ffde6a6b3f385de6b5d2a61255de2305d11541e618ef7"
+      ]
+    },
+    {
+      "sample_id": "b0e5b88d26b14a52b3e77da6ec67ddec",
+      "split": "validation",
+      "group_id": "38206fecbcc24f8597ff3d35a25d7916",
+      "context_id": "f204f9fd4a234170973307e453967572",
+      "kind": "diagnosis",
+      "scene": "blocks",
+      "batch_file": "batches/validation_02.npz",
+      "batch_sha256": "492024ef34b991b62296c35ea9e1901898bf32ee9355bb86d8b608b5ed2f80a0",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 3111,
+        "prompt_tokens": 2968,
+        "target_tokens": 143,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / initial / overview / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / initial / front / t=0.160: <|vision_start|><|image_pad|><|vision_end|>\n3. baseline / descend / overview / t=6.460: <|vision_start|><|image_pad|><|vision_end|>\n4. baseline / descend / front / t=6.460: <|vision_start|><|image_pad|><|vision_end|>\n5. baseline / action_end / overview / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n6. baseline / action_end / front / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=diagnosis\n{\"observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"at_source(yellow)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.3405, -0.14841, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.5711, -0.1511, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.3392, 0.15149, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.56802, 0.15128, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 6.82, \"state\": [\"at_source(red)\", \"at_source(yellow)\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.3405, -0.14841, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.5711, -0.1511, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.3392, 0.15149, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.56802, 0.15128, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.33917, 0.15143, 0.47137], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.3392, 0.15149, 0.426]}, {\"method\": \"approach\", \"args\": [[0.3392, 0.15149, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.3392, 0.15149, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(yellow)\"], \"remaining_del\": [\"at_source(yellow)\"], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [\"at_source(yellow)\"], \"unexpected_removed\": [\"empty()\", \"holding(yellow)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"failed_stage\": \"close_gripper\", \"physical_pick_success\": false, \"contract_consistent\": false, \"evidence_refs\": [\"E2\", \"E3\", \"E4\"], \"deployable_repair\": false, \"decision\": \"request_discriminating_trial\", \"hypotheses\": [{\"kind\": \"policy_or_controller_context_mismatch\", \"support\": \"unconfirmed\"}, {\"kind\": \"additional_contract_defect\", \"support\": \"not_excluded\"}], \"next_test\": {\"kind\": \"bounded_policy_parameter_or_code_test\", \"freeze\": [\"model\", \"initial_context\", \"observer\"]}, \"scope\": \"no_unique_cause_from_one_failed_execution\"}",
+      "images": [
+        "media/f0e10a71de22767c6733131ab29fc2b0d4476569f947f4175bd3c9ba02278f28.png",
+        "media/6753bae5e80940bfed3f3e98f43110f72a22e363079de535c283214d9f3fa18b.png",
+        "media/bd4c716a594c9efc23c7a15b436c44629fbfe3f5df1560571b31a7b22ed8bc0f.png",
+        "media/fb4655f5464d4990f84f0aeab8d3a1678f311520a299172f266285efc2d4a153.png",
+        "media/da6539058cee80d18e5b9ccfe5ceef117e03e12160c35521b311dff8ab913163.png",
+        "media/7b21b107dae440828c8eb69d2d822cd6e001bb1956a742266eeb822ed4c9c27b.png"
+      ],
+      "image_sha256": [
+        "f0e10a71de22767c6733131ab29fc2b0d4476569f947f4175bd3c9ba02278f28",
+        "6753bae5e80940bfed3f3e98f43110f72a22e363079de535c283214d9f3fa18b",
+        "bd4c716a594c9efc23c7a15b436c44629fbfe3f5df1560571b31a7b22ed8bc0f",
+        "fb4655f5464d4990f84f0aeab8d3a1678f311520a299172f266285efc2d4a153",
+        "da6539058cee80d18e5b9ccfe5ceef117e03e12160c35521b311dff8ab913163",
+        "7b21b107dae440828c8eb69d2d822cd6e001bb1956a742266eeb822ed4c9c27b"
+      ]
+    },
+    {
+      "sample_id": "1f09f206cf2f460893c491185fc271a0",
+      "split": "validation",
+      "group_id": "38206fecbcc24f8597ff3d35a25d7916",
+      "context_id": "f204f9fd4a234170973307e453967572",
+      "kind": "update",
+      "scene": "blocks",
+      "batch_file": "batches/validation_03.npz",
+      "batch_sha256": "8cb24ed89bb0abee11d234e28c9c17fa4afa2e628527222d28a7c52225f87271",
+      "audit": {
+        "image_count": 6,
+        "sequence_tokens": 4834,
+        "prompt_tokens": 4738,
+        "target_tokens": 96,
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ],
+          [
+            1,
+            28,
+            28
+          ]
+        ],
+        "assistant_only_mask": true,
+        "prompt_and_visual_tokens_ignored": true,
+        "target_decodes_exactly": true,
+        "truncated": false
+      },
+      "prompt": "<|im_start|>system\n你分析单次机器人抓取。输入状态与传感信息可靠，但动作契约和程序可能有缺陷。区分物理执行结果与符号契约一致性；只引用已提供证据，不把一次失败称为物理不可能。输出简短结构化JSON；没有经过独立验证的修订不得标为可部署。<|im_end|>\n<|im_start|>user\n1. baseline / action_end / overview / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n2. baseline / action_end / front / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n3. intervention / close_gripper / overview / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n4. intervention / close_gripper / front / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n5. intervention / action_end / overview / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n6. intervention / action_end / front / t=6.820: <|vision_start|><|image_pad|><|vision_end|>\n任务类型=update\n{\"baseline\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"at_source(yellow)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.3405, -0.14841, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.5711, -0.1511, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.3392, 0.15149, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.56802, 0.15128, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 6.82, \"state\": [\"at_source(red)\", \"at_source(yellow)\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.3405, -0.14841, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.5711, -0.1511, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.3392, 0.15149, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.56802, 0.15128, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.33917, 0.15143, 0.47137], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.3392, 0.15149, 0.426]}, {\"method\": \"approach\", \"args\": [[0.3392, 0.15149, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.3392, 0.15149, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(yellow)\"], \"remaining_del\": [\"at_source(yellow)\"], \"missing_preserved_pre\": [\"empty()\"], \"unexpected_added\": [\"at_source(yellow)\"], \"unexpected_removed\": [\"empty()\", \"holding(yellow)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}, \"intervention\": {\"model_delete_added\": [\"empty()\"], \"model_delete_removed\": [], \"candidate_model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]}, \"candidate_source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"policy_changed\": false, \"reset_mode\": \"matched_initial_context_not_failed_state_recovery\"}, \"intervention_observed\": {\"model\": {\"name\": \"pick\", \"args\": {\"object\": \"yellow\", \"support\": \"green\"}, \"pre\": [\"empty()\", \"at_source(yellow)\"], \"add\": [\"holding(yellow)\"], \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]}, \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\", \"before\": {\"sim_time\": 0.16, \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.3405, -0.14841, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.5711, -0.1511, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.3392, 0.15149, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.56802, 0.15128, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.30702, 0.0, 0.88727], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 1.0, \"gripper_width_m\": 0.08}, \"after\": {\"sim_time\": 6.82, \"state\": [\"at_source(red)\", \"at_source(yellow)\"], \"derived_state_refreshed\": true, \"objects\": {\"red\": {\"position\": [0.3405, -0.14841, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"blue\": {\"position\": [0.5711, -0.1511, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"yellow\": {\"position\": [0.3392, 0.15149, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, \"green\": {\"position\": [0.56802, 0.15128, 0.422], \"quaternion\": [1.0, 0.0, 0.0, 0.0], \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}, \"tcp\": [0.33917, 0.15143, 0.47137], \"finger_forces_N\": {\"left_finger\": 0.0, \"right_finger\": 0.0}, \"gripper_command\": 0.0, \"gripper_width_m\": 0.00394}, \"api_trace\": [{\"method\": \"grasp_point\", \"args\": [], \"kwargs\": {}, \"status\": \"returned\", \"result\": [0.3392, 0.15149, 0.426]}, {\"method\": \"approach\", \"args\": [[0.3392, 0.15149, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"descend\", \"args\": [[0.3392, 0.15149, 0.471]], \"kwargs\": {}, \"status\": \"returned\", \"result\": null}, {\"method\": \"close_gripper\", \"args\": [], \"kwargs\": {}, \"status\": \"failed\", \"error\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\"}], \"exception\": \"RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}\", \"check\": {\"valid_trial\": true, \"paper_line20\": false, \"strict_CP_transition_match\": false, \"goal_ok\": false, \"effect_ok\": false, \"violations\": {\"missing_pre\": [], \"missing_add\": [\"holding(yellow)\"], \"remaining_del\": [\"at_source(yellow)\"], \"missing_preserved_pre\": [], \"unexpected_added\": [\"at_source(yellow)\"], \"unexpected_removed\": [\"holding(yellow)\"]}}, \"physical_pick_success\": false, \"contract_consistent\": false, \"physical_metrics\": {\"success\": false, \"lift_delta_m\": 0.0, \"bilateral_contact\": false, \"max_non_target_displacement_m\": 0.0, \"forbidden_contacts\": [], \"max_grasp_slip_m\": 0.0, \"max_contact_gap_seconds\": 0.0, \"motion_verified\": true, \"grasp_verified\": true, \"weld_violation\": false, \"scope\": \"single_pick_not_place_release_or_home; fixed_existing_contact_tracking_thresholds\"}, \"evidence_ids\": {\"E1\": \"before\", \"E2\": \"after\", \"E3\": \"api_trace\", \"E4\": \"check\"}}}<|im_end|>\n<|im_start|>assistant\n",
+      "target": "{\"decision\": \"no_improvement_continue_or_abstain\", \"physical_improved\": false, \"contract_improved\": false, \"observed_physical_success\": false, \"observed_contract_consistency\": false, \"evidence_refs\": [\"baseline:E2\", \"baseline:E4\", \"intervention:E2\", \"intervention:E4\"], \"deployable_repair\": false, \"scope\": \"one_matched_intervention_not_unique_root_cause\"}",
+      "images": [
+        "media/da6539058cee80d18e5b9ccfe5ceef117e03e12160c35521b311dff8ab913163.png",
+        "media/7b21b107dae440828c8eb69d2d822cd6e001bb1956a742266eeb822ed4c9c27b.png",
+        "media/da6539058cee80d18e5b9ccfe5ceef117e03e12160c35521b311dff8ab913163.png",
+        "media/7b21b107dae440828c8eb69d2d822cd6e001bb1956a742266eeb822ed4c9c27b.png",
+        "media/da6539058cee80d18e5b9ccfe5ceef117e03e12160c35521b311dff8ab913163.png",
+        "media/7b21b107dae440828c8eb69d2d822cd6e001bb1956a742266eeb822ed4c9c27b.png"
+      ],
+      "image_sha256": [
+        "da6539058cee80d18e5b9ccfe5ceef117e03e12160c35521b311dff8ab913163",
+        "7b21b107dae440828c8eb69d2d822cd6e001bb1956a742266eeb822ed4c9c27b",
+        "da6539058cee80d18e5b9ccfe5ceef117e03e12160c35521b311dff8ab913163",
+        "7b21b107dae440828c8eb69d2d822cd6e001bb1956a742266eeb822ed4c9c27b",
+        "da6539058cee80d18e5b9ccfe5ceef117e03e12160c35521b311dff8ab913163",
+        "7b21b107dae440828c8eb69d2d822cd6e001bb1956a742266eeb822ed4c9c27b"
+      ]
+    }
+  ],
+  "settings": {
+    "rank": 8,
+    "alpha": 16,
+    "dropout": 0.0,
+    "targets": [
+      "q_proj",
+      "v_proj"
+    ],
+    "learning_rate": 1e-05,
+    "steps": 12,
+    "max_tokens": 8192,
+    "seed": 2801,
+    "gradient_clip_norm": 1.0,
+    "gradient_checkpoint": true,
+    "vision_training_path": "direct_model_forward_no_feature_cache",
+    "memory_guideline_gib": 14,
+    "cache_limit_gib": 0.5
+  },
+  "versions": {
+    "mlx": "0.31.2",
+    "mlx-vlm": "0.6.3",
+    "transformers": "5.12.1",
+    "numpy": "2.4.6"
+  },
+  "scope": "12-example short LoRA acceptance; validation is same-family small jitter, NOT OOD"
+}

@@ -1,0 +1,120 @@
+{
+  "task": "pour",
+  "capture_index": 8,
+  "event": "after_align_receiver",
+  "target": "basin_floor",
+  "camera": "rig_wrist_left",
+  "input_image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/pour/frames/008_after_align_receiver/rig_wrist_left.png",
+  "input_sha256": "e7d5b22e9780f947e734475a662eb43a92ab6b6807ef8bf737bbc34b83b640ac",
+  "original_run": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/pour/result.json",
+  "original_run_sha256": "2a4ee277ea0a0615339f045cbc9cac3184851641ddf076372c85b3dc63c93850",
+  "original_physical_state_time": 7.935999999999348,
+  "used_by_robot": false,
+  "type": "diagnostic_point_not_executable_grasp",
+  "calibration": {
+    "name": "rig_wrist_left",
+    "time": 7.935999999999348,
+    "image_size": [
+      720,
+      720
+    ],
+    "K": [
+      [
+        469.16113422283405,
+        0,
+        360.0
+      ],
+      [
+        0,
+        469.16113422283405,
+        360.0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "T_world_camera": {
+      "position": [
+        0.4863435750466906,
+        0.00597525400547048,
+        0.843153550476389
+      ],
+      "rotation": [
+        [
+          0.00010055628820571094,
+          -0.8007815318615839,
+          0.5989565327449442
+        ],
+        [
+          0.9998791265504756,
+          -0.00923171322052646,
+          -0.012510306138110272
+        ],
+        [
+          0.015547417055195523,
+          0.5988853927926667,
+          0.8006838103286982
+        ]
+      ]
+    },
+    "optical_axis_world": [
+      -0.5989565327449442,
+      0.012510306138110272,
+      -0.8006838103286982
+    ],
+    "parent_body": "hand_L",
+    "measured_T_body_camera": {
+      "position": [
+        -4.2098689500979094e-18,
+        -0.09999999999999971,
+        0.024999999999999915
+      ],
+      "rotation": [
+        [
+          -0.9999999999999972,
+          4.814490929796206e-17,
+          -4.874071522590191e-17
+        ],
+        [
+          5.50674074254161e-17,
+          0.8035571933447081,
+          -0.5952275506257836
+        ],
+        [
+          1.4260231392503653e-17,
+          -0.5952275506257838,
+          -0.8035571933447082
+        ]
+      ]
+    },
+    "fovy_deg": 75.0,
+    "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+  },
+  "evaluation_only_reference": {
+    "name": "basin_floor",
+    "body": "basin",
+    "xyz": [
+      0.4150964937180142,
+      0.0018018886596926163,
+      0.46832200679915104
+    ],
+    "semantic": "basin floor center; evaluation-only true surface height"
+  },
+  "reference_semantics": "basin floor center; evaluation-only true surface height",
+  "call": {
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "text": "Point to the center of the interior floor of the white receiving basin, not its rim or wall. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/pour/frames/008_after_align_receiver/rig_wrist_left.png"
+    ],
+    "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the interior floor of the white receiving basin, not its rim or wall. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.<|im_end|>\n<|im_start|>assistant\n",
+    "temperature": 0.0,
+    "max_tokens": 220,
+    "raw": "{\"visible\":false}",
+    "wall_seconds": 1.7768031250452623
+  },
+  "status": "model_abstained",
+  "overlay": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/pointing_v3/pour/frame008_basin_floor_rig_wrist_left.png"
+}

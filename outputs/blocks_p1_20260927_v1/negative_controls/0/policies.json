@@ -1,0 +1,7 @@
+{
+  "pick_table": "def policy(api):\n    p = api.grasp_point()\n    target = (p[0], p[1], p[2] + 0.05)\n    api.open_gripper()\n    api.approach(target)\n    api.descend(target)\n    api.close_gripper()\n    api.lift()\n",
+  "unstack": "def policy(api):\n    p = api.grasp_point()\n    target = (p[0], p[1], p[2] + 0.05)\n    api.open_gripper()\n    api.approach(target)\n    api.descend(target)\n    api.close_gripper()\n    api.lift()\n",
+  "put_table": "def policy(api):\n    p = api.destination_point()\n    api.carry(p)\n    api.lower(p)\n    api.open_gripper()\n    api.withdraw()\n",
+  "stack": "def policy(api):\n    p = api.destination_point()\n    api.carry(p)\n    api.lower(p)\n    api.open_gripper()\n    api.withdraw()\n",
+  "home": "def policy(api):\n    api.return_home()\n"
+}

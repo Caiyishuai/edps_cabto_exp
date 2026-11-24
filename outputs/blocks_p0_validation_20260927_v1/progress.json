@@ -1,0 +1,231 @@
+{
+  "cases": [
+    {
+      "id": "case0000",
+      "outcomes": {
+        "none": true,
+        "model_only": true,
+        "policy_only": true,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": null,
+          "wall_seconds": 1.5391239579766989,
+          "simulation_seconds": 24.879999999997,
+          "models_sha256": "02665711796f230337140eb9de68555a5e5e285aaf221c0c2c6364a1a09b35d1",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "18f5c0c6d641d086383176c8d81f0c8879af5a572b3195dca9c63e9562d9618b"
+        },
+        "model_only": {
+          "exception": null,
+          "wall_seconds": 1.2344009580556303,
+          "simulation_seconds": 24.879999999997,
+          "models_sha256": "bf91589fbbefe03d2530235a6d0049af05da1765fb7552cf9be33270cdb7800d",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "18f5c0c6d641d086383176c8d81f0c8879af5a572b3195dca9c63e9562d9618b"
+        },
+        "policy_only": {
+          "exception": null,
+          "wall_seconds": 1.2137092500925064,
+          "simulation_seconds": 24.879999999997,
+          "models_sha256": "02665711796f230337140eb9de68555a5e5e285aaf221c0c2c6364a1a09b35d1",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "18f5c0c6d641d086383176c8d81f0c8879af5a572b3195dca9c63e9562d9618b"
+        },
+        "cross_level": {
+          "exception": null,
+          "wall_seconds": 1.2262488330015913,
+          "simulation_seconds": 24.879999999997,
+          "models_sha256": "bf91589fbbefe03d2530235a6d0049af05da1765fb7552cf9be33270cdb7800d",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "18f5c0c6d641d086383176c8d81f0c8879af5a572b3195dca9c63e9562d9618b"
+        }
+      },
+      "evaluation_only_truth": "ok",
+      "diagnosis": "ok"
+    },
+    {
+      "id": "case0001",
+      "outcomes": {
+        "none": false,
+        "model_only": false,
+        "policy_only": true,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": "RuntimeError: RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "wall_seconds": 0.2916932499501854,
+          "simulation_seconds": 6.719999999999464,
+          "models_sha256": "02665711796f230337140eb9de68555a5e5e285aaf221c0c2c6364a1a09b35d1",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "18f5c0c6d641d086383176c8d81f0c8879af5a572b3195dca9c63e9562d9618b"
+        },
+        "model_only": {
+          "exception": "RuntimeError: RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "wall_seconds": 0.3025022499496117,
+          "simulation_seconds": 6.719999999999464,
+          "models_sha256": "bf91589fbbefe03d2530235a6d0049af05da1765fb7552cf9be33270cdb7800d",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "18f5c0c6d641d086383176c8d81f0c8879af5a572b3195dca9c63e9562d9618b"
+        },
+        "policy_only": {
+          "exception": null,
+          "wall_seconds": 1.2755049170227721,
+          "simulation_seconds": 24.879999999997,
+          "models_sha256": "02665711796f230337140eb9de68555a5e5e285aaf221c0c2c6364a1a09b35d1",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "18f5c0c6d641d086383176c8d81f0c8879af5a572b3195dca9c63e9562d9618b"
+        },
+        "cross_level": {
+          "exception": null,
+          "wall_seconds": 1.2825529590481892,
+          "simulation_seconds": 24.879999999997,
+          "models_sha256": "bf91589fbbefe03d2530235a6d0049af05da1765fb7552cf9be33270cdb7800d",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "18f5c0c6d641d086383176c8d81f0c8879af5a572b3195dca9c63e9562d9618b"
+        }
+      },
+      "evaluation_only_truth": "policy",
+      "diagnosis": "policy"
+    },
+    {
+      "id": "case0002",
+      "outcomes": {
+        "none": false,
+        "model_only": true,
+        "policy_only": false,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": "RuntimeError: RuntimeError: lower_red: TCP residual 0.0202m",
+          "wall_seconds": 0.958700624993071,
+          "simulation_seconds": 15.940000000001955,
+          "models_sha256": "02665711796f230337140eb9de68555a5e5e285aaf221c0c2c6364a1a09b35d1",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "bfc8c58fcf2237678e8113fda1079d54b6d9c6a7a4c80ffbeac38225068984da"
+        },
+        "model_only": {
+          "exception": null,
+          "wall_seconds": 2.332304541952908,
+          "simulation_seconds": 45.3000000000096,
+          "models_sha256": "bf91589fbbefe03d2530235a6d0049af05da1765fb7552cf9be33270cdb7800d",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "bfc8c58fcf2237678e8113fda1079d54b6d9c6a7a4c80ffbeac38225068984da"
+        },
+        "policy_only": {
+          "exception": "RuntimeError: RuntimeError: lower_red: TCP residual 0.0202m",
+          "wall_seconds": 0.9715177499456331,
+          "simulation_seconds": 15.940000000001955,
+          "models_sha256": "02665711796f230337140eb9de68555a5e5e285aaf221c0c2c6364a1a09b35d1",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "bfc8c58fcf2237678e8113fda1079d54b6d9c6a7a4c80ffbeac38225068984da"
+        },
+        "cross_level": {
+          "exception": null,
+          "wall_seconds": 2.2782322500133887,
+          "simulation_seconds": 45.3000000000096,
+          "models_sha256": "bf91589fbbefe03d2530235a6d0049af05da1765fb7552cf9be33270cdb7800d",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "bfc8c58fcf2237678e8113fda1079d54b6d9c6a7a4c80ffbeac38225068984da"
+        }
+      },
+      "evaluation_only_truth": "model",
+      "diagnosis": "model"
+    },
+    {
+      "id": "case0003",
+      "outcomes": {
+        "none": false,
+        "model_only": false,
+        "policy_only": false,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": "RuntimeError: RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "wall_seconds": 0.322319416096434,
+          "simulation_seconds": 6.719999999999464,
+          "models_sha256": "02665711796f230337140eb9de68555a5e5e285aaf221c0c2c6364a1a09b35d1",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "bfc8c58fcf2237678e8113fda1079d54b6d9c6a7a4c80ffbeac38225068984da"
+        },
+        "model_only": {
+          "exception": "RuntimeError: RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "wall_seconds": 0.30488762503955513,
+          "simulation_seconds": 6.699999999999466,
+          "models_sha256": "bf91589fbbefe03d2530235a6d0049af05da1765fb7552cf9be33270cdb7800d",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "bfc8c58fcf2237678e8113fda1079d54b6d9c6a7a4c80ffbeac38225068984da"
+        },
+        "policy_only": {
+          "exception": "RuntimeError: RuntimeError: lower_red: TCP residual 0.0202m",
+          "wall_seconds": 0.9232075829058886,
+          "simulation_seconds": 15.940000000001955,
+          "models_sha256": "02665711796f230337140eb9de68555a5e5e285aaf221c0c2c6364a1a09b35d1",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "bfc8c58fcf2237678e8113fda1079d54b6d9c6a7a4c80ffbeac38225068984da"
+        },
+        "cross_level": {
+          "exception": null,
+          "wall_seconds": 2.294430625042878,
+          "simulation_seconds": 45.3000000000096,
+          "models_sha256": "bf91589fbbefe03d2530235a6d0049af05da1765fb7552cf9be33270cdb7800d",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "bfc8c58fcf2237678e8113fda1079d54b6d9c6a7a4c80ffbeac38225068984da"
+        }
+      },
+      "evaluation_only_truth": "mixed",
+      "diagnosis": "mixed"
+    }
+  ],
+  "summary": {
+    "groups": {
+      "none": {
+        "success": 1,
+        "total": 4
+      },
+      "model_only": {
+        "success": 2,
+        "total": 4
+      },
+      "policy_only": {
+        "success": 2,
+        "total": 4
+      },
+      "cross_level": {
+        "success": 4,
+        "total": 4
+      }
+    },
+    "case_count": 4,
+    "attribution_correct": 4,
+    "abstentions": 0,
+    "confusion": [
+      {
+        "truth": "mixed",
+        "prediction": "mixed",
+        "count": 1
+      },
+      {
+        "truth": "model",
+        "prediction": "model",
+        "count": 1
+      },
+      {
+        "truth": "ok",
+        "prediction": "ok",
+        "count": 1
+      },
+      {
+        "truth": "policy",
+        "prediction": "policy",
+        "count": 1
+      }
+    ],
+    "cross_level_regressions": [],
+    "interpretation": "paired finite interventions; cases within a layout are correlated; no universal or LM capability claim"
+  }
+}

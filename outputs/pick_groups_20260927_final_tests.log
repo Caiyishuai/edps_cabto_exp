@@ -1,0 +1,19 @@
+test_compact_numeric_input_does_not_change_labels_or_code (test_pick_groups.PickGroupTests.test_compact_numeric_input_does_not_change_labels_or_code) ... ok
+test_empty_or_missing_groups_cannot_pass (test_pick_groups.PickGroupTests.test_empty_or_missing_groups_cannot_pass) ... ok
+test_forecast_descriptor_contains_no_future_outcome (test_pick_groups.PickGroupTests.test_forecast_descriptor_contains_no_future_outcome) ... ok
+test_model_only_update_does_not_claim_physical_gain (test_pick_groups.PickGroupTests.test_model_only_update_does_not_claim_physical_gain) ... ok
+test_no_actual_state_writes_in_new_collector (test_pick_groups.PickGroupTests.test_no_actual_state_writes_in_new_collector) ... ok
+test_omission_can_fail_contract_despite_physical_grasp (test_pick_groups.PickGroupTests.test_omission_can_fail_contract_despite_physical_grasp) ... ok
+test_only_delete_empty_changes (test_pick_groups.PickGroupTests.test_only_delete_empty_changes) ... ok
+test_output_paths_are_bounded (test_pick_groups.PickGroupTests.test_output_paths_are_bounded) ... ok
+test_parameter_mutation_preserves_call_order (test_pick_groups.PickGroupTests.test_parameter_mutation_preserves_call_order) ... ok
+test_private_labels_cannot_influence_input_or_diagnosis (test_pick_groups.PickGroupTests.test_private_labels_cannot_influence_input_or_diagnosis) ... ok
+test_reference_hash_and_unchanged_source (test_pick_groups.PickGroupTests.test_reference_hash_and_unchanged_source) ... ok
+test_selection_keeps_process_stage (test_pick_groups.PickGroupTests.test_selection_keeps_process_stage) ... ok
+test_split_is_by_whole_scene_seed_not_example (test_pick_groups.PickGroupTests.test_split_is_by_whole_scene_seed_not_example) ... ok
+test_stage_rendering_does_not_step_or_control_physics (test_pick_groups.PickGroupTests.test_stage_rendering_does_not_step_or_control_physics) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 2.145s
+
+OK

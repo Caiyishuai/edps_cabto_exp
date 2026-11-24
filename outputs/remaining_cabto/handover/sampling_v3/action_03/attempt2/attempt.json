@@ -1,0 +1,146 @@
+{
+  "action_id": "donor_releases_after_receiver(arm=0,dest=donor_releases_after_receiver,obj=baton)",
+  "model": {
+    "name": "donor_releases_after_receiver",
+    "args": {
+      "arm": "0",
+      "obj": "baton",
+      "dest": "donor_releases_after_receiver"
+    },
+    "program_kind": "donor_release",
+    "pre": [
+      "dual_holding(baton)",
+      "receiver_contact_verified()",
+      "baton_airborne()",
+      "collision_free()"
+    ],
+    "add": [
+      "receiver_holding(baton)",
+      "empty(0)",
+      "donor_withdrawn()",
+      "handover_verified()"
+    ],
+    "del": [
+      "dual_holding(baton)",
+      "donor_holding(baton)"
+    ],
+    "description": "茶盒由接收臂持有，交出臂为空且位于安全撤离位；真实事件证明接收验证先于空中释放，运动无禁止碰撞。"
+  },
+  "attempt": 2,
+  "call": {
+    "model_id": "mlx-community/Qwen3.5-9B-4bit",
+    "text": "Write ONLY one Python function def policy(api):. Implement ONLY this action. No imports, loops, tuple unpacking or direct simulator access. Save API return tuples in local variables; no hardcoded coordinates. Use ONLY api.<method> calls listed below. DO NOT call an action by its name. Returning a status does not execute an action.\nAction semantics: Receiver attachment verified; transfer ownership by releasing donor and withdrawing donor arm. Receiver must keep holding.\nAvailable APIs:\ndetach(): release DONOR weld after opening.\nopen_gripper(): opens DONOR without detaching weld.\nwithdraw(): withdraw DONOR to safe pose after detach.\nLast actual failed candidate and validator feedback: [{\"source\": \"```python<|code_block|>\\ndef policy(api):\\n    api.detach()\\n    api.withdraw()\\n```\", \"error\": \"invalid syntax (<unknown>, line 1)\", \"missing_calls\": null, \"violations\": null, \"physical_diagnostics\": null}]",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/handover/sampling_v3/action_03/attempt2/context.png"
+    ],
+    "formatted_prompt": "<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Write ONLY one Python function def policy(api):. Implement ONLY this action. No imports, loops, tuple unpacking or direct simulator access. Save API return tuples in local variables; no hardcoded coordinates. Use ONLY api.<method> calls listed below. DO NOT call an action by its name. Returning a status does not execute an action.\nAction semantics: Receiver attachment verified; transfer ownership by releasing donor and withdrawing donor arm. Receiver must keep holding.\nAvailable APIs:\ndetach(): release DONOR weld after opening.\nopen_gripper(): opens DONOR without detaching weld.\nwithdraw(): withdraw DONOR to safe pose after detach.\nLast actual failed candidate and validator feedback: [{\"source\": \"```python<|code_block|>\\ndef policy(api):\\n    api.detach()\\n    api.withdraw()\\n```\", \"error\": \"invalid syntax (<unknown>, line 1)\", \"missing_calls\": null, \"violations\": null, \"physical_diagnostics\": null}]<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "temperature": 0.15,
+    "max_tokens": 850,
+    "raw": "```python\ndef policy(api):\n    api.detach()\n    api.withdraw()\n```",
+    "wall_seconds": 1.2204545410349965
+  },
+  "source": "def policy(api):\n    api.detach()\n    api.withdraw()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": false,
+    "strict_CP_transition_match": false,
+    "goal_ok": false,
+    "effect_ok": false,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [
+        "donor_withdrawn()",
+        "empty(0)",
+        "handover_verified()"
+      ],
+      "remaining_del": [
+        "donor_holding(baton)",
+        "dual_holding(baton)"
+      ],
+      "missing_preserved_pre": [],
+      "unexpected_added": [
+        "donor_holding(baton)",
+        "dual_holding(baton)"
+      ],
+      "unexpected_removed": [
+        "donor_withdrawn()",
+        "empty(0)",
+        "handover_verified()"
+      ]
+    },
+    "code_executed": true,
+    "exception": "RuntimeError: 当前 API 缺少已完成的 open_gripper 控制证据",
+    "trace": [
+      {
+        "method": "detach",
+        "args": [],
+        "kwargs": {},
+        "status": "failed",
+        "error": "RuntimeError: 当前 API 缺少已完成的 open_gripper 控制证据"
+      }
+    ],
+    "before": [
+      "at_handover_pose(baton)",
+      "baton_airborne()",
+      "collision_free()",
+      "donor_holding(baton)",
+      "dual_holding(baton)",
+      "receiver_contact_verified()",
+      "receiver_holding(baton)"
+    ],
+    "after": [
+      "at_handover_pose(baton)",
+      "baton_airborne()",
+      "collision_free()",
+      "donor_holding(baton)",
+      "dual_holding(baton)",
+      "receiver_contact_verified()",
+      "receiver_holding(baton)"
+    ],
+    "model": {
+      "name": "donor_releases_after_receiver",
+      "args": {
+        "arm": "0",
+        "obj": "baton",
+        "dest": "donor_releases_after_receiver"
+      },
+      "program_kind": "donor_release",
+      "pre": [
+        "dual_holding(baton)",
+        "receiver_contact_verified()",
+        "baton_airborne()",
+        "collision_free()"
+      ],
+      "add": [
+        "receiver_holding(baton)",
+        "empty(0)",
+        "donor_withdrawn()",
+        "handover_verified()"
+      ],
+      "del": [
+        "dual_holding(baton)",
+        "donor_holding(baton)"
+      ],
+      "description": "茶盒由接收臂持有，交出臂为空且位于安全撤离位；真实事件证明接收验证先于空中释放，运动无禁止碰撞。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": false,
+    "missing_required_calls": [],
+    "code_sha256": "a04bcdb3c4221869bce132c4fe69e91b250900845a1ea08d5b97154d632569fe",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+    "physical_diagnostics": {
+      "placed": false,
+      "xy_error_m": 0.2114357885966322,
+      "bottom_gap_m": 0.1596599468800991,
+      "rotation_error_deg": 0.019810924636767556,
+      "released": false,
+      "origin": [
+        0.3498449133355404,
+        0.0004742352288135664,
+        0.6396988277015284
+      ],
+      "table_support_contact": false
+    }
+  },
+  "accepted": false
+}

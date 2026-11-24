@@ -1,0 +1,257 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.46,
+        -0.18,
+        0.48300000000000004
+      ]
+    },
+    {
+      "method": "carry",
+      "args": [
+        [
+          0.46,
+          -0.18,
+          0.48300000000000004
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 32.55599999999382,
+        "object_position": [
+          0.4599685870969323,
+          -0.1799714179838145,
+          0.6398342824990907
+        ],
+        "tcp_position": [
+          0.4599648712946971,
+          -0.2549111219831524,
+          0.6991251266199349
+        ],
+        "weld_constraint_active": true,
+        "holding": true,
+        "grip_command": 0.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.46,
+          -0.18,
+          0.48300000000000004
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 34.87599999999666,
+        "object_position": [
+          0.4600910983927251,
+          -0.18043781415087937,
+          0.4863409672706476
+        ],
+        "tcp_position": [
+          0.4601684100093046,
+          -0.2552922981736888,
+          0.545748802332471
+        ],
+        "weld_constraint_active": true,
+        "holding": true,
+        "grip_command": 0.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 34.939999999996736,
+        "object_position": [
+          0.4600559725317682,
+          -0.18042160362569742,
+          0.4848271115428004
+        ],
+        "tcp_position": [
+          0.46015614229359103,
+          -0.25531094103150637,
+          0.5441949806816597
+        ],
+        "weld_constraint_active": true,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "detach",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 35.22799999999709,
+        "object_position": [
+          0.45988689779263947,
+          -0.1805094131642238,
+          0.47999892286199985
+        ],
+        "tcp_position": [
+          0.46010034605075045,
+          -0.25512723262962494,
+          0.5427813552547497
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "retreat_vertical",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 37.04799999999931,
+        "object_position": [
+          0.45988689779263947,
+          -0.1805094131642238,
+          0.47999892286199985
+        ],
+        "tcp_position": [
+          0.4600893292787071,
+          -0.2550807859407686,
+          0.6425038159521281
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "withdraw_safe",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 40.26800000000325,
+        "object_position": [
+          0.45988689779263947,
+          -0.1805094131642238,
+          0.47999892286199985
+        ],
+        "tcp_position": [
+          0.5597591292710509,
+          -0.33976659356467737,
+          0.7796650131293751
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    }
+  ],
+  "before": [
+    "baton_airborne()",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "handover_verified()",
+    "home(0)",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "after": [
+    "at_destination(baton)",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "empty(1)",
+    "handover_verified()",
+    "home(0)",
+    "receiver_contact_verified()",
+    "receiver_withdrawn()"
+  ],
+  "model": {
+    "name": "receiver_places_baton",
+    "args": {
+      "arm": "1",
+      "obj": "baton",
+      "dest": "receiver_places_baton"
+    },
+    "program_kind": "receiver_place",
+    "pre": [
+      "receiver_holding(baton)",
+      "home(0)",
+      "handover_verified()",
+      "collision_free()"
+    ],
+    "add": [
+      "at_destination(baton)",
+      "empty(1)",
+      "receiver_withdrawn()"
+    ],
+    "del": [
+      "receiver_holding(baton)",
+      "baton_airborne()",
+      "at_handover_pose(baton)"
+    ],
+    "description": "茶盒位于目的地并由桌面真实支撑，接收臂为空且位于安全撤离位，交出臂保持 HOME，运动无禁止碰撞。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "6506eedae920680e10e87154ba2f3558f63f277b82dc437ffade566b654ef3ad",
+  "consistency_scope": "full_CP",
+  "physical_diagnostics": {
+    "placed": true,
+    "xy_error_m": 0.0005218178620882468,
+    "bottom_gap_m": -1.07713800012732e-06,
+    "rotation_error_deg": 0.03848454286575373,
+    "released": true,
+    "origin": [
+      0.45988689779263947,
+      -0.1805094131642238,
+      0.47999892286199985
+    ],
+    "table_support_contact": true
+  }
+}

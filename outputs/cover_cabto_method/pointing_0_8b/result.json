@@ -1,0 +1,133 @@
+{
+  "model_id": "mlx-community/Qwen3.5-0.8B-4bit",
+  "calibration": [
+    {
+      "name": "shrimp",
+      "cam": "overview",
+      "roundtrip_error_m": 3.2957919968262575e-16
+    },
+    {
+      "name": "shrimp",
+      "cam": "front",
+      "roundtrip_error_m": 2.3055512673781017e-16
+    },
+    {
+      "name": "apple",
+      "cam": "overview",
+      "roundtrip_error_m": 5.551115123125783e-16
+    },
+    {
+      "name": "apple",
+      "cam": "front",
+      "roundtrip_error_m": 0.0
+    },
+    {
+      "name": "potato",
+      "cam": "overview",
+      "roundtrip_error_m": 4.718447854656915e-16
+    },
+    {
+      "name": "potato",
+      "cam": "front",
+      "roundtrip_error_m": 1.7772239894833365e-16
+    }
+  ],
+  "points": [
+    {
+      "name": "shrimp",
+      "accepted": false,
+      "error": "No JSON object in model response"
+    },
+    {
+      "name": "apple",
+      "accepted": false,
+      "error": "No JSON object in model response"
+    },
+    {
+      "name": "potato",
+      "accepted": false,
+      "error": "No JSON object in model response"
+    },
+    {
+      "name": "bowl",
+      "accepted": false,
+      "error": "No JSON object in model response"
+    },
+    {
+      "name": "board",
+      "accepted": false,
+      "error": "No JSON object in model response"
+    },
+    {
+      "name": "pan",
+      "accepted": false,
+      "error": "No JSON object in model response"
+    }
+  ],
+  "records": [
+    {
+      "backend": "qwen",
+      "object": "shrimp",
+      "point_kind": "grasp_center",
+      "height_prior_m": 0.4100006199279825,
+      "height_source": "frozen_scene_manual_geometry",
+      "fallback": false,
+      "views": [],
+      "error": "No JSON object in model response"
+    },
+    {
+      "backend": "qwen",
+      "object": "apple",
+      "point_kind": "grasp_center",
+      "height_prior_m": 0.4229845037681055,
+      "height_source": "frozen_scene_manual_geometry",
+      "fallback": false,
+      "views": [],
+      "error": "No JSON object in model response"
+    },
+    {
+      "backend": "qwen",
+      "object": "potato",
+      "point_kind": "grasp_center",
+      "height_prior_m": 0.41798083548895737,
+      "height_source": "frozen_scene_manual_geometry",
+      "fallback": false,
+      "views": [],
+      "error": "No JSON object in model response"
+    },
+    {
+      "backend": "qwen",
+      "object": "bowl",
+      "point_kind": "support_floor_center",
+      "height_prior_m": 0.40800000000000003,
+      "height_source": "frozen_scene_manual_geometry",
+      "fallback": false,
+      "views": [],
+      "error": "No JSON object in model response"
+    },
+    {
+      "backend": "qwen",
+      "object": "board",
+      "point_kind": "support_floor_center",
+      "height_prior_m": 0.42400000000000004,
+      "height_source": "frozen_scene_manual_geometry",
+      "fallback": false,
+      "views": [],
+      "error": "No JSON object in model response"
+    },
+    {
+      "backend": "qwen",
+      "object": "pan",
+      "point_kind": "support_floor_center",
+      "height_prior_m": 0.41000000000000003,
+      "height_source": "frozen_scene_manual_geometry",
+      "fallback": false,
+      "views": [],
+      "error": "No JSON object in model response"
+    }
+  ],
+  "no_robot_motion": true,
+  "no_fallback": true,
+  "known_z_plane_prior": true,
+  "coordinate_scale": "0..1000 explicit prompt"
+}

@@ -1,0 +1,534 @@
+{
+  "created_at": "2026-09-27T15:37:19.829988+00:00",
+  "protocol": {
+    "version": "pick-attribution-data-acceptance-v1",
+    "scope": "single_pick_data_pipeline_acceptance_not_generalization_or_autonomous_discovery",
+    "historical_policy_file": "reports/remaining_cabto/cover/sampling_9b_complete/policies.json",
+    "historical_policy_action": "pick(object=apple,support=board)",
+    "historical_policy_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6",
+    "scenes": [
+      {
+        "name": "cover",
+        "config": "project/scenes/cover_kitchen_sort_v2.json",
+        "objects": [
+          [
+            "apple",
+            "board"
+          ],
+          [
+            "pepper",
+            "pan"
+          ]
+        ]
+      },
+      {
+        "name": "blocks",
+        "config": "project/scenes/blocks_rebuilt_v1.json",
+        "objects": [
+          [
+            "yellow",
+            "green"
+          ],
+          [
+            "red",
+            "blue"
+          ]
+        ]
+      }
+    ],
+    "contexts": [
+      {
+        "seed": 0,
+        "split": "train"
+      },
+      {
+        "seed": 7,
+        "split": "validation"
+      }
+    ],
+    "conditions": [
+      "unchanged",
+      "parameter",
+      "effect_omission",
+      "combined"
+    ],
+    "interventions": [
+      "none",
+      "model_only",
+      "policy_only",
+      "cross_level"
+    ],
+    "policy_offset_z_m": 0.045,
+    "model_omitted_delete": "empty()",
+    "image_size": 384,
+    "cameras": [
+      "overview",
+      "front"
+    ],
+    "capture_after_apis": [
+      "approach",
+      "descend",
+      "close_gripper",
+      "lift"
+    ],
+    "holding_window_seconds": 0.2,
+    "max_api_calls": 20,
+    "label_scope": "observed_transition_and_paired_intervention_response_not_unique_cause",
+    "split_scope": "all_objects_conditions_and_interventions_of_one_scene_seed_in_same_partition; not_OOD",
+    "training": "not_started; require_data_and_processor_acceptance_before_scaling"
+  },
+  "groups": [
+    {
+      "id": "5c3d009d62a24e8cb151f9bc86e06070",
+      "context_id": "2b0f793185a84130a6a52a45387d7cc9",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "train",
+      "seed": 0,
+      "object": "apple",
+      "support": "board",
+      "condition": "unchanged"
+    },
+    {
+      "id": "649b164c3cef4914b3147705d36b20be",
+      "context_id": "2b0f793185a84130a6a52a45387d7cc9",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "train",
+      "seed": 0,
+      "object": "apple",
+      "support": "board",
+      "condition": "parameter"
+    },
+    {
+      "id": "88ba5dbe56b5411182199c68279d90b0",
+      "context_id": "2b0f793185a84130a6a52a45387d7cc9",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "train",
+      "seed": 0,
+      "object": "apple",
+      "support": "board",
+      "condition": "effect_omission"
+    },
+    {
+      "id": "567623c7f2374430a1c8a4014fbb4963",
+      "context_id": "2b0f793185a84130a6a52a45387d7cc9",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "train",
+      "seed": 0,
+      "object": "apple",
+      "support": "board",
+      "condition": "combined"
+    },
+    {
+      "id": "d438fc0a22db4b5e8034c038687df3c9",
+      "context_id": "2b0f793185a84130a6a52a45387d7cc9",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "train",
+      "seed": 0,
+      "object": "pepper",
+      "support": "pan",
+      "condition": "unchanged"
+    },
+    {
+      "id": "88862d2296be4b53b39aae4b0fee52aa",
+      "context_id": "2b0f793185a84130a6a52a45387d7cc9",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "train",
+      "seed": 0,
+      "object": "pepper",
+      "support": "pan",
+      "condition": "parameter"
+    },
+    {
+      "id": "6527a940e3f8452db6715bd2bcab8fed",
+      "context_id": "2b0f793185a84130a6a52a45387d7cc9",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "train",
+      "seed": 0,
+      "object": "pepper",
+      "support": "pan",
+      "condition": "effect_omission"
+    },
+    {
+      "id": "045530c3968b4962860e2831d124bc15",
+      "context_id": "2b0f793185a84130a6a52a45387d7cc9",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "train",
+      "seed": 0,
+      "object": "pepper",
+      "support": "pan",
+      "condition": "combined"
+    },
+    {
+      "id": "4ac6c4ea74bd4ee28298938885175150",
+      "context_id": "660cbfc8480b4c51959fa873a5e2de17",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "apple",
+      "support": "board",
+      "condition": "unchanged"
+    },
+    {
+      "id": "7875f6d092a54b038cae54d68874f840",
+      "context_id": "660cbfc8480b4c51959fa873a5e2de17",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "apple",
+      "support": "board",
+      "condition": "parameter"
+    },
+    {
+      "id": "136c00f88fe9402b8892f8fbc5bc9196",
+      "context_id": "660cbfc8480b4c51959fa873a5e2de17",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "apple",
+      "support": "board",
+      "condition": "effect_omission"
+    },
+    {
+      "id": "bfc046947ee7466daaaed4b71487f21f",
+      "context_id": "660cbfc8480b4c51959fa873a5e2de17",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "apple",
+      "support": "board",
+      "condition": "combined"
+    },
+    {
+      "id": "8fcb695a6ec54e3aa93c19f08a338b0f",
+      "context_id": "660cbfc8480b4c51959fa873a5e2de17",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "pepper",
+      "support": "pan",
+      "condition": "unchanged"
+    },
+    {
+      "id": "7287630c63a449ef925342f8622b5d0e",
+      "context_id": "660cbfc8480b4c51959fa873a5e2de17",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "pepper",
+      "support": "pan",
+      "condition": "parameter"
+    },
+    {
+      "id": "159ea7cc78a348a2a9f9217396be776c",
+      "context_id": "660cbfc8480b4c51959fa873a5e2de17",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "pepper",
+      "support": "pan",
+      "condition": "effect_omission"
+    },
+    {
+      "id": "6818f15e15294923bbd5462d3d027921",
+      "context_id": "660cbfc8480b4c51959fa873a5e2de17",
+      "scene": "cover",
+      "config_path": "project/scenes/cover_kitchen_sort_v2.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "pepper",
+      "support": "pan",
+      "condition": "combined"
+    },
+    {
+      "id": "62cb98269fbe4a7b9901fbccf7fe27bc",
+      "context_id": "1411528c01ea45a0a4b22a4a488aba06",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "train",
+      "seed": 0,
+      "object": "yellow",
+      "support": "green",
+      "condition": "unchanged"
+    },
+    {
+      "id": "62c5c1ba4a7947248eec2c675d9958b4",
+      "context_id": "1411528c01ea45a0a4b22a4a488aba06",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "train",
+      "seed": 0,
+      "object": "yellow",
+      "support": "green",
+      "condition": "parameter"
+    },
+    {
+      "id": "f2c3ef4bfddf481d81c36228a22f49b2",
+      "context_id": "1411528c01ea45a0a4b22a4a488aba06",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "train",
+      "seed": 0,
+      "object": "yellow",
+      "support": "green",
+      "condition": "effect_omission"
+    },
+    {
+      "id": "da7e739df40f4f66af981f104bbc9e32",
+      "context_id": "1411528c01ea45a0a4b22a4a488aba06",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "train",
+      "seed": 0,
+      "object": "yellow",
+      "support": "green",
+      "condition": "combined"
+    },
+    {
+      "id": "987f7019b896457b9b55dd437e011450",
+      "context_id": "1411528c01ea45a0a4b22a4a488aba06",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "train",
+      "seed": 0,
+      "object": "red",
+      "support": "blue",
+      "condition": "unchanged"
+    },
+    {
+      "id": "80e82d6c26794404b24992156bfa842e",
+      "context_id": "1411528c01ea45a0a4b22a4a488aba06",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "train",
+      "seed": 0,
+      "object": "red",
+      "support": "blue",
+      "condition": "parameter"
+    },
+    {
+      "id": "e245267b79b547f2aefb3b8e11da29c2",
+      "context_id": "1411528c01ea45a0a4b22a4a488aba06",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "train",
+      "seed": 0,
+      "object": "red",
+      "support": "blue",
+      "condition": "effect_omission"
+    },
+    {
+      "id": "6dd309ff17264234a9d2c6cf7ae05f0c",
+      "context_id": "1411528c01ea45a0a4b22a4a488aba06",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "train",
+      "seed": 0,
+      "object": "red",
+      "support": "blue",
+      "condition": "combined"
+    },
+    {
+      "id": "4076de41e57a46fa90e9d5eb16c80693",
+      "context_id": "7a16dedf5f224be2b7474a872d8ab4f5",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "yellow",
+      "support": "green",
+      "condition": "unchanged"
+    },
+    {
+      "id": "94056c7a99ff44a3ab0c42b5472ec637",
+      "context_id": "7a16dedf5f224be2b7474a872d8ab4f5",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "yellow",
+      "support": "green",
+      "condition": "parameter"
+    },
+    {
+      "id": "2568ed9bc2a4494a9e2a4495e9bd75d4",
+      "context_id": "7a16dedf5f224be2b7474a872d8ab4f5",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "yellow",
+      "support": "green",
+      "condition": "effect_omission"
+    },
+    {
+      "id": "ae7c32f5bf5a48649cdcab7a5f0cb7ee",
+      "context_id": "7a16dedf5f224be2b7474a872d8ab4f5",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "yellow",
+      "support": "green",
+      "condition": "combined"
+    },
+    {
+      "id": "c522465c423a423f8595ac93f92bfb78",
+      "context_id": "7a16dedf5f224be2b7474a872d8ab4f5",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "red",
+      "support": "blue",
+      "condition": "unchanged"
+    },
+    {
+      "id": "e01b42ea480d4daf83e194853046ec47",
+      "context_id": "7a16dedf5f224be2b7474a872d8ab4f5",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "red",
+      "support": "blue",
+      "condition": "parameter"
+    },
+    {
+      "id": "2fd73f9d02264c08877ab82d880d6cfe",
+      "context_id": "7a16dedf5f224be2b7474a872d8ab4f5",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "red",
+      "support": "blue",
+      "condition": "effect_omission"
+    },
+    {
+      "id": "7332838c2bfc4561b1a330e5de0ea450",
+      "context_id": "7a16dedf5f224be2b7474a872d8ab4f5",
+      "scene": "blocks",
+      "config_path": "project/scenes/blocks_rebuilt_v1.json",
+      "split": "validation",
+      "seed": 7,
+      "object": "red",
+      "support": "blue",
+      "condition": "combined"
+    }
+  ],
+  "source_hashes": {
+    "CABTO/exp4_bt_tasks/scenes/panda_body.py": "40c00712b7ea61368089074ef65608c9ae4c8956807810c350a14077e4e6d8a3",
+    "CABTO/exp4_bt_tasks/stage2_scripted/exp4_env.py": "55547fe1a52798b1c83eec2e10d937fff8d1b3a2d156e6396c373f4354913ef3",
+    "CABTO/exp4_bt_tasks/stage3_cabto/formal_bt.py": "3adfb1e68ebf7a77d62028c21b4e1436b21149f4f039f9520b21d388e0c92065",
+    "CABTO/exp4_bt_tasks/stage3_cabto/policy_codegen.py": "5bdd98f067ff5818a9acdf0f1dfa504b62118588ee1e2a5f6f26898cd5013763",
+    "project/core/cover_cabto_api.py": "0909007240623355cfe9d332410682acfe76012918cffbb4283ed4b138c29c15",
+    "project/core/cover_cabto_grounding.py": "74ee6faeecf1862f67e21f898fd71e7ade83b822b7d583c680057cc282b4ef44",
+    "project/core/cover_visual_localizer.py": "5789800a125dba957a66f88131eb2e6f699c560706c2178c8fe40edbb459a34e",
+    "project/core/remaining_blocks_api.py": "6a810b28266d02118a809e393530f86d9996e3dde359a628f97167b1f5de780e",
+    "project/core/single_arm_rebuilt.py": "8658b9ab5445db287f99bdc73e0fa8784b175bd7447b62308edf906e4baf3d58",
+    "project/experiments/blocks_p0.py": "fede59198e6262ccc2ff56128d1211a531545c9d0fc6496bb2b2f6ffe6c529e2",
+    "project/experiments/collect_pick_groups.py": "efb5ab9cfe6b39f7738d6b96c1a4ce74bd417553bd63579ea3722b5d38eef669",
+    "project/experiments/export_pick_groups.py": "4aaba7dc5984ccc2f1d443e9b9f6b2e686782c3cbd8ea902bd3979897a0b3d0c",
+    "project/experiments/inspect_pick_groups_processor.py": "0d9bccfecda0e02bf8e6a1c33f8c99011cbaf04226794b76727c4982ab7cfdf8",
+    "project/experiments/pick_groups_protocol.json": "a9a92ed4aa60a86b015ff89fbffcb6e4205033bc877f67685d7220278629dd8d",
+    "project/experiments/test_pick_groups.py": "a03ec363f33fc418aa840757affa8ec3ff22f2d360fd5edce0bb09b0bb4bc207",
+    "project/scenes/blocks_rebuilt_v1.json": "36646f9fb3963c5e77da98a989cb7da31e5f50d386873e2602a0c582b775a8d2",
+    "project/scenes/cover_kitchen_sort_v2.json": "201573c0dbce599c850cc83acd1c709db4c34b9a6fb4502b4fad4947e12e5546",
+    "reports/remaining_cabto/cover/sampling_9b_complete/policies.json": "82b72a649d36c61311341d90eef1dda680f30d0101174b6eca0df67c8c37fa95"
+  },
+  "asset_hashes": {
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/finger_0.obj": "215098c0fcdf7192f6c503a37cf49e3efecf8a9e1320f02b17c5584d89cc5b2c",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_11.obj": "f0adec78d6677b7799d25121981270e8bfe119b5c18d08a91ee37a54ad75f65c",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_10.obj": "c9198b9d8534d628d097b0f2b239bb30343353182df098ce0d9db6bc13326848",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/finger_1.obj": "cf239e9aca26bba09dbbf1c544c47d87cfc9a2f0637c8bb786af750b6d4eca44",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_9.obj": "25a56ea9b02a03b6cb5a81f31c54f54d0185e1a0b3937c37e4289d896e50215a",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_16.obj": "551d7a8b37c53e7a152d008b4e36992e5b5abe74a4be18b57ee6319c27def09f",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_8.obj": "e3f77381817a341030f9dcc4c4aa7c559f80411b453fd87eb0fefecca82151bf",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_15.obj": "5999c1c2497a004a7c4bbe034cdf13744f839d85ae7a11b1bc386c48a3e642e6",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_14.obj": "750ae3ee4781e62e3a045c662195247b03f6642b05aa93104f08258e5f6eba26",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_10.obj": "365f26c21d10332cab8d8704645cb46930c30b3085956f2d097498c793f24db4",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_9.obj": "45178f97d2b5da6bce11f610212c4ef7d08c73db33a4fc38e1b7f66b93d023f5",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_8.obj": "3b8c436999db5586b8eb47bed2b0aa7de6993868b2681b4c04246eeac42fdb7a",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_11.obj": "8ae61e08b3ad064f25bbf03b22e59cc15d65883b5a7ce92711aff29df2493901",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_13.obj": "0a55fa92dccb261d07200e6565fca4c850fd17f0c1ecf38821c0b97d51796c7d",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/hand.stl": "94493e94f30fe940f2c8ca2f155c3bbe67bbff406d3edf5e261670d2f0f6e2ed",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_12.obj": "f28d1bfd62b0244ffd19fb35fe9edefdf583d3c9167db944e87185d919e1d021",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_0.obj": "0504c70ebf1b284ee8faae7dcb896b8830bc672a6552015dd5dbd121fa031fb9",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link4_2.obj": "c89caf26d379c35bb9e191ee2d91d09ab29ecc792b48d8bc10b39e5b38222175",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link5_collision_1.obj": "87cd8f621071df010f774cbde789282b8463840dfe704f8bdfa2e29be0142e15",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/hand_1.obj": "cd76f7494bb314406a1819c46eb826ee254894f87235714f604a470653d9badb",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_7.obj": "2dc0b8ebbbc80e4c065d71e195adbc384f673438641fac82b07b801b4d2837cb",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/hand_0.obj": "b94aab901086f85df04c019b30f43bf9aa23a7ad0443ec80a8c14662a41cabd2",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link5_collision_0.obj": "3e5aa75fb13f193555c3dfb999df91d81df25006a5c3af5338297d78137c129b",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link4_3.obj": "1495d17f45bdb230cf58b0beef9da4e8c9cfe76a3d2d38da89017efe5e093136",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_1.obj": "45f7ca77695198b6d86ec2417ad4e42e6275044f0f96266699ee8e1057757ac1",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_3.obj": "d4f6a25ef32fa1fa4734146981994ee760232cb077c80fea6487d78a077c7f27",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link4_1.obj": "ca935ec7cc8b3f0e86aa079c76b0b3bf593b1e9830bab0fa7131ac51577c74f0",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link5_collision_2.obj": "823ab6c8f7b1d79e0844fa071d82a03499ff68e34fddb1ba3451032c22736040",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/hand_2.obj": "e0f44a71712afa5b98eb20355eff17763d3e2e19f459b2bef19abed3727e64b3",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_5.obj": "9361b104e93743045107aa5b15fb1a0835ba9c1f355aae71f56403cf6a9c33f6",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_4.obj": "215d25789704936120f119c0bc1cc7f68516dd3f8f1df61457b71acac3873f26",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/hand_3.obj": "a431a06d99e88a1b322b3122a01424ee7704daeaad0bc343b90b9604f014ad0c",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link4_0.obj": "443bf6d178177cf347951ecf107ccd10ca444e605e375b67304579e5f948806f",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_2.obj": "e54eee4d8232947ee8af65afd5a067e09dac2da6e7e585cb1dccb65496457da0",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_6.obj": "8fbc031e0d07b795ebf99115c75223141caaba317cab569159f3d477a7821681",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link2.obj": "5c9f8e715de52c3eb71b475de35993b3b96081e02abea9f28c414768877fc59b",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_0.obj": "6b9f41a4c203540daaeb7a33cc3d0d6c6a32dc8bba187074eeaf97b3e36b3f9c",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_1.obj": "57673d2ee2a9db2e10c8986ae57c56a7c39c012b60fd26d7d8549553b664a5ed",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_7.obj": "7dc5ebb799fe281aab27d6e84e7a4efa0a8e42da2369ec83de3ea3f206f62d73",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_5.obj": "7c87664623c3e1a6cb330db273227a69626dc5e53b4caff1d4ee7911eb3340c6",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/hand_4.obj": "21f96ef6a8de082e41b1ea9834f1043de359e5d60305541bcb63539581f53bff",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_3.obj": "3e9c6334d2b3b47944af3458ee5f20519abc20fe7ee23063bb53405ccab28046",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link1.obj": "51091e776b16babdbe2f3849b5c041f921d1f11dd94ac19a0f1c81abf496fbae",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0_2.obj": "1ca435a2a87a9608a146a47955724d43dd7ce10fc3dd3018800aa98f8ba86e05",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6_4.obj": "be353480fe71d46f7a96f0a3cbb7e112caaf8d88368826f321a36a253c8749b2",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link3.stl": "0a8d638b9349c6c0eefc4e888636ac4838c4b27170f18a51699321118af709c1",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link5_1.obj": "9d994bbf83ec241e301b5197a6846da13f2a4a0582edb2c0f76962c5549649d6",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link7_3.obj": "b62d87c4d4bdb7b281ed341d347c39dad0e50bf36aed8ac11d050073701d5f70",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link7_2.obj": "d2faecedb304d0989040d082410378dc949dbbda23bd18c05134f08aae984db5",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link5_0.obj": "a3238b8f2af0f2eb66d9fe63dc5d41ac52d5d38507241b5ed10e3cb019ab3e71",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link2.stl": "370f7605a0fae3529db169ded50f52f171024aa792d4d773bc84197301f6a039",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link0.stl": "dfc6d94330de8ddb005b311bfdba9f3b8e1aa7c256b71592ee7ff32cb9a9a5aa",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link5_2.obj": "83b4ffe9f772cd7fe182e98640650eebc899aaf01842656574b0416c90dd40a4",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link7_0.obj": "04586b0bde011715cfc22072ac72fe0717eb4d4817bcf665987ce6cd88eb2b93",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link7_1.obj": "c3f72289f394c9d6749a4a327fb11f05b203c37c95032c92f28019b40ebe7e00",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link1.stl": "e41a39a94108fcf56aacff603fc91ec80541f4c1af17b51a0de5617f5566e6d2",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link3_1.obj": "2880b7753a7173f38fa87ee21da4dfc7fa7be46fbe07bac5aef9e128513cb118",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link7_5.obj": "099071d3090b51471ba52f4f90814fd3089f4975d196e4d488117073d0bfe491",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link7_4.obj": "cb78ccb61fd4ad6c7bff4c4d2e6cb41e1964a5a3e1a28e67c0c6202371cfc018",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link3_0.obj": "ce2da87f51708e11b189249d41401065dabe89a06e251185a06cef4d5ff27178",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link4.stl": "0180ebb5772ec9840cb049750cffb29a9ddc90311752a16ea34757782ef9e48d",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link6.stl": "20b768e99a0e0440b5754dcca108016434e57937cc356acd9c352ccd3cb27f77",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link3_2.obj": "670cff81ae84693769ca4ae658c154cf909d81167e7c8d22b70ea977f2504efa",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link7_6.obj": "99469e2d95ab74ce0292f2f16954c87a8a7dc16652e62e970fe37c94330a81bb",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link7_7.obj": "426c3db8a19373f3dc73d4bec672e948121b2914c10e2e7b9c7ea80643a19e54",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link3_3.obj": "30ede0c812efd0e0b767d134a4eae0b84e0fa407bb6325a5a555e0569b3a3ffd",
+    "project/mujoco_workspace/franka_articulated/assets/panda_assets/link7.stl": "92ac6afcf7574c034d3170d8a68e95ac9048ab9d0dd5bbd8311b86e551b9ab1c"
+  },
+  "reference_program": {
+    "artifact": "reports/remaining_cabto/cover/sampling_9b_complete/policies.json",
+    "source_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6",
+    "origin": "historical_actual_LM_program; transfer_and_AST_mutation_not_new_generation"
+  },
+  "versions": {
+    "mujoco": "3.10.0",
+    "numpy": "2.4.6",
+    "Pillow": "12.2.0"
+  },
+  "scope": "32 groups share 4 scene-seed contexts and one source family; pipeline acceptance only"
+}

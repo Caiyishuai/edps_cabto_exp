@@ -1,0 +1,181 @@
+{
+  "action_id": "pick_source(arm=0,dest=source,obj=item0)",
+  "attempt": 1,
+  "call": {
+    "model_id": "mlx-community/Qwen3.5-9B-4bit",
+    "text": "A robot control program executed successfully but its STRIPS model omitted observed state changes. Propose a MINIMAL model patch. Return ONLY JSON with extra_add and extra_del arrays. Use exact predicate strings from the evidence. Do not change preconditions or code, do not fabricate objects. A newly true unmodeled fact belongs to extra_add; a lost unmodeled fact belongs to extra_del. This is a finite observed counterexample, not a guarantee for all physical states.\nAction: {\"name\": \"pick_source\", \"args\": {\"arm\": \"0\", \"obj\": \"item0\", \"dest\": \"source\"}, \"program_kind\": \"pick\", \"pre\": [\"empty(0)\", \"at_source(item0)\"], \"add\": [\"holding(0,item0)\"], \"del\": [\"empty(0)\", \"at_source(item0)\", \"parked(0)\"], \"description\": \"绑定物品被指定机械臂抓持并抬离桌面，抓持偏移可用于放置跟踪。\"}\nObserved newly true facts not predicted: []\nObserved removed facts not predicted: [\"hands_raised()\", \"hands_safe_for_lateral(0)\"]\nCurrent full before: [\"at_source(item0)\", \"empty(0)\", \"empty(1)\", \"hands_raised()\", \"hands_safe_for_lateral(0)\", \"hands_safe_for_lateral(1)\", \"packed(1)\", \"parked(0)\", \"parked(1)\", \"slot_free(0)\", \"tray_at_table()\"]\nCurrent full after: [\"empty(1)\", \"hands_safe_for_lateral(1)\", \"holding(0,item0)\", \"packed(1)\", \"parked(1)\", \"slot_free(0)\", \"tray_at_table()\"]",
+    "image_files": [],
+    "formatted_prompt": "<|im_start|>user\nA robot control program executed successfully but its STRIPS model omitted observed state changes. Propose a MINIMAL model patch. Return ONLY JSON with extra_add and extra_del arrays. Use exact predicate strings from the evidence. Do not change preconditions or code, do not fabricate objects. A newly true unmodeled fact belongs to extra_add; a lost unmodeled fact belongs to extra_del. This is a finite observed counterexample, not a guarantee for all physical states.\nAction: {\"name\": \"pick_source\", \"args\": {\"arm\": \"0\", \"obj\": \"item0\", \"dest\": \"source\"}, \"program_kind\": \"pick\", \"pre\": [\"empty(0)\", \"at_source(item0)\"], \"add\": [\"holding(0,item0)\"], \"del\": [\"empty(0)\", \"at_source(item0)\", \"parked(0)\"], \"description\": \"绑定物品被指定机械臂抓持并抬离桌面，抓持偏移可用于放置跟踪。\"}\nObserved newly true facts not predicted: []\nObserved removed facts not predicted: [\"hands_raised()\", \"hands_safe_for_lateral(0)\"]\nCurrent full before: [\"at_source(item0)\", \"empty(0)\", \"empty(1)\", \"hands_raised()\", \"hands_safe_for_lateral(0)\", \"hands_safe_for_lateral(1)\", \"packed(1)\", \"parked(0)\", \"parked(1)\", \"slot_free(0)\", \"tray_at_table()\"]\nCurrent full after: [\"empty(1)\", \"hands_safe_for_lateral(1)\", \"holding(0,item0)\", \"packed(1)\", \"parked(1)\", \"slot_free(0)\", \"tray_at_table()\"]<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "temperature": 0.0,
+    "max_tokens": 600,
+    "raw": "{\n  \"extra_add\": [],\n  \"extra_del\": [\n    \"hands_raised()\",\n    \"hands_safe_for_lateral(0)\"\n  ]\n}",
+    "wall_seconds": 1.0895638749934733
+  },
+  "witness": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": false,
+    "goal_ok": true,
+    "effect_ok": true,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [],
+      "unexpected_removed": [
+        "hands_raised()",
+        "hands_safe_for_lateral(0)"
+      ]
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "target_pose",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.23500000000449248,
+          0.20499999999907503,
+          0.43689224457978354
+        ]
+      },
+      {
+        "method": "align_xy",
+        "args": [
+          [
+            0.23500000000449248,
+            0.20499999999907503,
+            0.43689224457978354
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.006403645555228235
+      },
+      {
+        "method": "descend_to",
+        "args": [
+          0.43689224457978354,
+          [
+            0.23500000000449248,
+            0.20499999999907503
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.006587611139748055
+      },
+      {
+        "method": "grasp",
+        "args": [
+          [
+            0.23500000000449248,
+            0.20499999999907503,
+            0.43689224457978354
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "record_grab_offset",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "lift",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      }
+    ],
+    "before": [
+      "at_source(item0)",
+      "empty(0)",
+      "empty(1)",
+      "hands_raised()",
+      "hands_safe_for_lateral(0)",
+      "hands_safe_for_lateral(1)",
+      "packed(1)",
+      "parked(0)",
+      "parked(1)",
+      "slot_free(0)",
+      "tray_at_table()"
+    ],
+    "after": [
+      "empty(1)",
+      "hands_safe_for_lateral(1)",
+      "holding(0,item0)",
+      "packed(1)",
+      "parked(1)",
+      "slot_free(0)",
+      "tray_at_table()"
+    ],
+    "model": {
+      "name": "pick_source",
+      "args": {
+        "arm": "0",
+        "obj": "item0",
+        "dest": "source"
+      },
+      "program_kind": "pick",
+      "pre": [
+        "empty(0)",
+        "at_source(item0)"
+      ],
+      "add": [
+        "holding(0,item0)"
+      ],
+      "del": [
+        "empty(0)",
+        "at_source(item0)",
+        "parked(0)"
+      ],
+      "description": "绑定物品被指定机械臂抓持并抬离桌面，抓持偏移可用于放置跟踪。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": true,
+    "missing_required_calls": [],
+    "code_sha256": "92ba95dfaf5925451bfcc1c7d88d0f5859a6304fc73a0058c743081ebf8668aa",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+  },
+  "patch": {
+    "extra_add": [],
+    "extra_del": [
+      "hands_raised()",
+      "hands_safe_for_lateral(0)"
+    ]
+  },
+  "model": {
+    "name": "pick_source",
+    "args": {
+      "arm": "0",
+      "obj": "item0",
+      "dest": "source"
+    },
+    "program_kind": "pick",
+    "pre": [
+      "empty(0)",
+      "at_source(item0)"
+    ],
+    "add": [
+      "holding(0,item0)"
+    ],
+    "del": [
+      "at_source(item0)",
+      "empty(0)",
+      "hands_raised()",
+      "hands_safe_for_lateral(0)",
+      "parked(0)"
+    ],
+    "description": "绑定物品被指定机械臂抓持并抬离桌面，抓持偏移可用于放置跟踪。"
+  },
+  "accepted": true
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "backend": "oracle",
+    "object": "shrimp",
+    "point_kind": "grasp_center",
+    "height_prior_m": 0.4100006199279825,
+    "height_source": "oracle_initial_object_z_plus_frozen_grasp_offset",
+    "fallback": false,
+    "xyz": [
+      0.31005448082886233,
+      -0.19001732181460515,
+      0.4100006199279825
+    ]
+  }
+]

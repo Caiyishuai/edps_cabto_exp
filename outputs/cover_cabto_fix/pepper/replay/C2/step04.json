@@ -1,0 +1,52 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "before": [
+    "at_source(pepper)",
+    "at_target(apple)",
+    "at_target(shrimp)",
+    "empty()"
+  ],
+  "after": [
+    "at_source(pepper)",
+    "at_target(apple)",
+    "at_target(shrimp)",
+    "empty()",
+    "home_completed()"
+  ],
+  "model": {
+    "name": "home",
+    "pre": [
+      "empty()"
+    ],
+    "add": [
+      "home_completed()"
+    ],
+    "del": [],
+    "args": {}
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "return_home",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "forbidden_contacts": [],
+  "code_sha256": "ab0ee04ddd7a2da959babc4fd9bb5c71364129d4f33dad0d97e70fcd345c474f"
+}

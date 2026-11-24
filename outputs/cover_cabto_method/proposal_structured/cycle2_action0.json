@@ -1,0 +1,37 @@
+{
+  "cycle": 2,
+  "signature": {
+    "name": "pick",
+    "args": {
+      "object": "shrimp",
+      "support": "bowl"
+    }
+  },
+  "call": {
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "text": "Write the STRIPS contract of ONE action. Return ONLY JSON with three keys pre, add, del, each an array of literal condition strings. Do not repeat the task list; no code.\nAction signature: {\"name\": \"pick\", \"args\": {\"object\": \"shrimp\", \"support\": \"bowl\"}}\nMeaning: Pick up shrimp from its source on the table, leave it held above the table by the gripper.\nAllowed condition strings: [\"at_source(shrimp)\", \"at_target(shrimp)\", \"empty()\", \"holding(shrimp)\", \"home_completed()\"]\nConditions: empty() means open empty gripper; holding(obj) means held above table; at_source(obj) means at original table source; at_target(obj) means released at its matching support; home_completed() means at HOME with empty open gripper. Leaving HOME invalidates home_completed().\npre describes what must hold BEFORE. add describes newly true facts AFTER. del describes facts made false. An atom cannot be both pre and add, or both add and del. Each object must occupy exactly one state at action boundaries.\nTask context: independently complete shrimp->bowl; shrimp->bowl+apple->board; or all three including potato->pan. Each finishes empty at HOME. All start empty with the three objects at source.\nPrior planner feedback: [{\"check\": {\"error\": \"Unknown CP atoms ['at_target(bowl)']\"}, \"previous_models\": [{\"name\": \"pick\", \"args\": {\"object\": \"shrimp\", \"support\": \"bowl\"}, \"pre\": [\"at_source(shrimp)\", \"empty()\"], \"add\": [\"holding(shrimp)\", \"at_target(bowl)\"], \"del\": [\"at_source(shrimp)\"]}, {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\", \"at_source(shrimp)\", \"at_source(potato)\"], \"add\": [\"holding(apple)\", \"holding(shrimp)\", \"holding(potato)\"], \"del\": [\"at_source(apple)\", \"at_source(shrimp)\", \"at_source(potato)\"]}, {\"name\": \"pick\", \"args\": {\"object\": \"potato\", \"support\": \"pan\"}, \"pre\": [\"empty()\", \"at_source(potato)\", \"at_source(pan)\"], \"add\": [\"holding(potato)\", \"holding(pan)\"], \"del\": [\"at_source(potato)\", \"at_source(pan)\"]}, {\"name\": \"place\", \"args\": {\"object\": \"potato\", \"support\": \"pan\"}, \"pre\": [\"empty()\", \"at_source(potato)\", \"at_source(pan)\"], \"add\": [\"holding(potato)\", \"holding(pan)\"], \"del\": [\"at_source(potato)\", \"at_source(pan)\"]}, {\"name\": \"home\", \"args\": {}, \"pre\": [\"empty()\"], \"add\": [\"home_completed()\"], \"del\": [\"empty()\"]}], \"format_errors\": [\"place(object=shrimp,support=bowl): add \\u2229 del \\u5fc5\\u987b\\u4e3a\\u7a7a\", \"place(object=apple,support=board): add \\u2229 del \\u5fc5\\u987b\\u4e3a\\u7a7a\"]}]",
+    "image_files": [],
+    "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\nWrite the STRIPS contract of ONE action. Return ONLY JSON with three keys pre, add, del, each an array of literal condition strings. Do not repeat the task list; no code.\nAction signature: {\"name\": \"pick\", \"args\": {\"object\": \"shrimp\", \"support\": \"bowl\"}}\nMeaning: Pick up shrimp from its source on the table, leave it held above the table by the gripper.\nAllowed condition strings: [\"at_source(shrimp)\", \"at_target(shrimp)\", \"empty()\", \"holding(shrimp)\", \"home_completed()\"]\nConditions: empty() means open empty gripper; holding(obj) means held above table; at_source(obj) means at original table source; at_target(obj) means released at its matching support; home_completed() means at HOME with empty open gripper. Leaving HOME invalidates home_completed().\npre describes what must hold BEFORE. add describes newly true facts AFTER. del describes facts made false. An atom cannot be both pre and add, or both add and del. Each object must occupy exactly one state at action boundaries.\nTask context: independently complete shrimp->bowl; shrimp->bowl+apple->board; or all three including potato->pan. Each finishes empty at HOME. All start empty with the three objects at source.\nPrior planner feedback: [{\"check\": {\"error\": \"Unknown CP atoms ['at_target(bowl)']\"}, \"previous_models\": [{\"name\": \"pick\", \"args\": {\"object\": \"shrimp\", \"support\": \"bowl\"}, \"pre\": [\"at_source(shrimp)\", \"empty()\"], \"add\": [\"holding(shrimp)\", \"at_target(bowl)\"], \"del\": [\"at_source(shrimp)\"]}, {\"name\": \"pick\", \"args\": {\"object\": \"apple\", \"support\": \"board\"}, \"pre\": [\"empty()\", \"at_source(apple)\", \"at_source(shrimp)\", \"at_source(potato)\"], \"add\": [\"holding(apple)\", \"holding(shrimp)\", \"holding(potato)\"], \"del\": [\"at_source(apple)\", \"at_source(shrimp)\", \"at_source(potato)\"]}, {\"name\": \"pick\", \"args\": {\"object\": \"potato\", \"support\": \"pan\"}, \"pre\": [\"empty()\", \"at_source(potato)\", \"at_source(pan)\"], \"add\": [\"holding(potato)\", \"holding(pan)\"], \"del\": [\"at_source(potato)\", \"at_source(pan)\"]}, {\"name\": \"place\", \"args\": {\"object\": \"potato\", \"support\": \"pan\"}, \"pre\": [\"empty()\", \"at_source(potato)\", \"at_source(pan)\"], \"add\": [\"holding(potato)\", \"holding(pan)\"], \"del\": [\"at_source(potato)\", \"at_source(pan)\"]}, {\"name\": \"home\", \"args\": {}, \"pre\": [\"empty()\"], \"add\": [\"home_completed()\"], \"del\": [\"empty()\"]}], \"format_errors\": [\"place(object=shrimp,support=bowl): add \\u2229 del \\u5fc5\\u987b\\u4e3a\\u7a7a\", \"place(object=apple,support=board): add \\u2229 del \\u5fc5\\u987b\\u4e3a\\u7a7a\"]}]<|im_end|>\n<|im_start|>assistant\n",
+    "temperature": 0.15,
+    "max_tokens": 700,
+    "raw": "```json\n{\n  \"pre\": [\"empty()\"],\n  \"add\": [\"holding(shrimp)\", \"at_target(bowl)\"],\n  \"del\": [\"at_source(shrimp)\"]\n}\n```",
+    "wall_seconds": 1.8415902919368818
+  },
+  "model": {
+    "name": "pick",
+    "args": {
+      "object": "shrimp",
+      "support": "bowl"
+    },
+    "pre": [
+      "empty()"
+    ],
+    "add": [
+      "holding(shrimp)",
+      "at_target(bowl)"
+    ],
+    "del": [
+      "at_source(shrimp)"
+    ]
+  }
+}

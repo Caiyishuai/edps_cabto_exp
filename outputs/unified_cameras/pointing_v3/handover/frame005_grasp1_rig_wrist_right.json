@@ -1,0 +1,120 @@
+{
+  "task": "handover",
+  "capture_index": 5,
+  "event": "after_approach",
+  "target": "grasp1",
+  "camera": "rig_wrist_right",
+  "input_image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/handover/frames/005_after_approach/rig_wrist_right.png",
+  "input_sha256": "0f34fde002c89150185d010bb5a4b23a274f2b60a5d1060da3b90cfcba692fd5",
+  "original_run": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/handover/result.json",
+  "original_run_sha256": "6ee16eb36c47a0a87254f19115cb09e33f3be8f6763d1a49a8e0c0417ed4d07a",
+  "original_physical_state_time": 18.460000000000647,
+  "used_by_robot": false,
+  "type": "diagnostic_point_not_executable_grasp",
+  "calibration": {
+    "name": "rig_wrist_right",
+    "time": 18.460000000000647,
+    "image_size": [
+      720,
+      720
+    ],
+    "K": [
+      [
+        469.16113422283405,
+        0,
+        360.0
+      ],
+      [
+        0,
+        469.16113422283405,
+        360.0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "T_world_camera": {
+      "position": [
+        0.24993597191652211,
+        -0.07463361030978556,
+        0.8967211187682111
+      ],
+      "rotation": [
+        [
+          7.000262129075452e-06,
+          0.803565510818892,
+          -0.5952163218304469
+        ],
+        [
+          -0.9999999998940651,
+          -1.9708487577485556e-06,
+          -1.4421594136837523e-05
+        ],
+        [
+          -1.276177700781922e-05,
+          0.5952163218683486,
+          0.8035655107199713
+        ]
+      ]
+    },
+    "optical_axis_world": [
+      0.5952163218304469,
+      1.4421594136837523e-05,
+      -0.8035655107199713
+    ],
+    "parent_body": "hand_R",
+    "measured_T_body_camera": {
+      "position": [
+        1.1139300538531165e-17,
+        -0.09999999999999967,
+        0.024999999999999963
+      ],
+      "rotation": [
+        [
+          -0.9999999999999968,
+          1.3205537406414025e-17,
+          -3.025149671846117e-17
+        ],
+        [
+          1.1642607206666827e-16,
+          0.8035571933447075,
+          -0.5952275506257834
+        ],
+        [
+          -2.6135292348528428e-17,
+          -0.5952275506257835,
+          -0.8035571933447077
+        ]
+      ]
+    },
+    "fovy_deg": 75.0,
+    "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+  },
+  "evaluation_only_reference": {
+    "name": "grasp1",
+    "body": "baton",
+    "xyz": [
+      0.3498510356889702,
+      -0.0745407502009808,
+      0.6986894235471938
+    ],
+    "semantic": "designated box-face grasp zone; not silhouette center"
+  },
+  "reference_semantics": "designated box-face grasp zone; not silhouette center",
+  "call": {
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "text": "Point to the upper edge of the green tea box under the approaching OPEN gripper, at that gripper's grasp location; not the end already held by the other gripper or a display box. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/handover/frames/005_after_approach/rig_wrist_right.png"
+    ],
+    "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the upper edge of the green tea box under the approaching OPEN gripper, at that gripper's grasp location; not the end already held by the other gripper or a display box. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.<|im_end|>\n<|im_start|>assistant\n",
+    "temperature": 0.0,
+    "max_tokens": 220,
+    "raw": "{\"point_2d\": [318, 401], \"visible\": false}",
+    "wall_seconds": 1.6369647911051288
+  },
+  "status": "model_abstained",
+  "overlay": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/pointing_v3/handover/frame005_grasp1_rig_wrist_right.png"
+}

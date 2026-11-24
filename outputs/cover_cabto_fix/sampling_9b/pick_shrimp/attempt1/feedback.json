@@ -1,0 +1,100 @@
+{
+  "action": "pick(object=shrimp,support=bowl)",
+  "attempt": 1,
+  "model": {
+    "name": "pick",
+    "args": {
+      "object": "shrimp",
+      "support": "bowl"
+    },
+    "pre": [
+      "empty()",
+      "at_source(shrimp)"
+    ],
+    "add": [
+      "holding(shrimp)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(shrimp)",
+      "home_completed()"
+    ]
+  },
+  "prefix": [],
+  "call": {
+    "model_id": "mlx-community/Qwen3.5-9B-4bit",
+    "text": "{\"instruction\": \"Generate ONLY a Python def policy(api) implementing this ONE grounded STRIPS action, using real fine-grained API calls. No imports, loops, other functions, simulator objects or success flags. No hardcoded xyz. The return value is not the success criterion. All motion must be explicitly called. Do not change the model.\", \"action_model\": {\"name\": \"pick\", \"args\": {\"object\": \"shrimp\", \"support\": \"bowl\"}, \"pre\": [\"empty()\", \"at_source(shrimp)\"], \"add\": [\"holding(shrimp)\"], \"del\": [\"empty()\", \"at_source(shrimp)\", \"home_completed()\"]}, \"observed_before\": [\"at_source(apple)\", \"at_source(potato)\", \"at_source(shrimp)\", \"empty()\"], \"APIs\": {\"grasp_point\": \"api.grasp_point() -> (x,y,z). Read-only payload grasp-center estimate in world metres. Backend is selected externally (oracle or Qwen). No movement.\", \"open_gripper\": \"api.open_gripper() -> None. Command gripper open and wait; does NOT move arm.\", \"approach\": \"api.approach(point) -> None. Move OPEN end effector above the point at safe transport height. One xyz tuple argument. Does NOT descend or close.\", \"descend\": \"api.descend(point) -> None. Move OPEN end effector vertically to this grasp xyz. Requires already above it. Does NOT close or lift.\", \"close_gripper\": \"api.close_gripper() -> None. Close at CURRENT location and wait. Requires simultaneous two-finger force. Does NOT approach, descend or lift.\", \"lift\": \"api.lift() -> None. Raise CLOSED end effector vertically to transport height. Does NOT close. The grasped payload must move upward.\"}, \"scene\": \"On a longer kitchen worktop, the upright bowl, chopping board, and pan form the back row. Shrimp, apple, and potato form the front row. Place shrimp into the bowl, apple onto the chopping board, and potato into the pan; release every object, withdraw, and return the arm to HOME.\", \"object_roles\": {\"object\": \"shrimp\", \"support\": \"bowl\"}, \"previous_failed_programs_and_execution_feedback\": []}",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/sampling_9b/pick_shrimp/attempt1/before.png"
+    ],
+    "formatted_prompt": "<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>{\"instruction\": \"Generate ONLY a Python def policy(api) implementing this ONE grounded STRIPS action, using real fine-grained API calls. No imports, loops, other functions, simulator objects or success flags. No hardcoded xyz. The return value is not the success criterion. All motion must be explicitly called. Do not change the model.\", \"action_model\": {\"name\": \"pick\", \"args\": {\"object\": \"shrimp\", \"support\": \"bowl\"}, \"pre\": [\"empty()\", \"at_source(shrimp)\"], \"add\": [\"holding(shrimp)\"], \"del\": [\"empty()\", \"at_source(shrimp)\", \"home_completed()\"]}, \"observed_before\": [\"at_source(apple)\", \"at_source(potato)\", \"at_source(shrimp)\", \"empty()\"], \"APIs\": {\"grasp_point\": \"api.grasp_point() -> (x,y,z). Read-only payload grasp-center estimate in world metres. Backend is selected externally (oracle or Qwen). No movement.\", \"open_gripper\": \"api.open_gripper() -> None. Command gripper open and wait; does NOT move arm.\", \"approach\": \"api.approach(point) -> None. Move OPEN end effector above the point at safe transport height. One xyz tuple argument. Does NOT descend or close.\", \"descend\": \"api.descend(point) -> None. Move OPEN end effector vertically to this grasp xyz. Requires already above it. Does NOT close or lift.\", \"close_gripper\": \"api.close_gripper() -> None. Close at CURRENT location and wait. Requires simultaneous two-finger force. Does NOT approach, descend or lift.\", \"lift\": \"api.lift() -> None. Raise CLOSED end effector vertically to transport height. Does NOT close. The grasped payload must move upward.\"}, \"scene\": \"On a longer kitchen worktop, the upright bowl, chopping board, and pan form the back row. Shrimp, apple, and potato form the front row. Place shrimp into the bowl, apple onto the chopping board, and potato into the pan; release every object, withdraw, and return the arm to HOME.\", \"object_roles\": {\"object\": \"shrimp\", \"support\": \"bowl\"}, \"previous_failed_programs_and_execution_feedback\": []}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "temperature": 0.0,
+    "max_tokens": 850,
+    "raw": "```python\ndef policy(api):\n    # Step 1: Approach the shrimp\n    shrimp_pos = api.grasp_point()\n    api.approach(shrimp_pos)\n    \n    # Step 2: Descend to grasp the shrimp\n    api.descend(shrimp_pos)\n    \n    # Step 3: Close gripper to grasp the shrimp\n    api.close_gripper()\n    \n    # Step 4: Lift the shrimp\n    api.lift()\n    \n    # Step 5: Approach the bowl\n    bowl_pos = api.grasp_point()\n    api.approach(bowl_pos)\n    \n    # Step 6: Descend to place the shrimp in the bowl\n    api.descend(bowl_pos)\n    \n    # Step 7: Open gripper to release the shrimp in the bowl\n    api.open_gripper()\n    \n    # Step 8: Return the arm to HOME\n    api.home_completed()\n```",
+    "wall_seconds": 13.026549250003882
+  },
+  "source": "def policy(api):\n    # Step 1: Approach the shrimp\n    shrimp_pos = api.grasp_point()\n    api.approach(shrimp_pos)\n    \n    # Step 2: Descend to grasp the shrimp\n    api.descend(shrimp_pos)\n    \n    # Step 3: Close gripper to grasp the shrimp\n    api.close_gripper()\n    \n    # Step 4: Lift the shrimp\n    api.lift()\n    \n    # Step 5: Approach the bowl\n    bowl_pos = api.grasp_point()\n    api.approach(bowl_pos)\n    \n    # Step 6: Descend to place the shrimp in the bowl\n    api.descend(bowl_pos)\n    \n    # Step 7: Open gripper to release the shrimp in the bowl\n    api.open_gripper()\n    \n    # Step 8: Return the arm to HOME\n    api.home_completed()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": false,
+    "strict_CP_transition_match": false,
+    "goal_ok": false,
+    "effect_ok": false,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [
+        "holding(shrimp)"
+      ],
+      "remaining_del": [
+        "at_source(shrimp)",
+        "empty()"
+      ],
+      "missing_preserved_pre": [],
+      "unexpected_added": [
+        "at_source(shrimp)",
+        "empty()"
+      ],
+      "unexpected_removed": [
+        "holding(shrimp)"
+      ]
+    },
+    "before": [
+      "at_source(apple)",
+      "at_source(potato)",
+      "at_source(shrimp)",
+      "empty()"
+    ],
+    "after": [
+      "at_source(apple)",
+      "at_source(potato)",
+      "at_source(shrimp)",
+      "empty()"
+    ],
+    "model": {
+      "name": "pick",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [
+        "empty()",
+        "at_source(shrimp)"
+      ],
+      "add": [
+        "holding(shrimp)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(shrimp)",
+        "home_completed()"
+      ]
+    },
+    "code_executed": false,
+    "exception": "PolicyRejected: unsupported API attribute api.home_completed; allowed methods: ['approach', 'close_gripper', 'descend', 'grasp_point', 'lift', 'open_gripper']",
+    "trace": [],
+    "forbidden_contacts": [],
+    "code_sha256": "71d7adc92de3c053fb9391bb858812da96faa9aa100b9c8b6cf32c3dac1c6025"
+  },
+  "accepted": false,
+  "simulation_seconds": 0.16000000000000011
+}

@@ -1,0 +1,72 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "restore_upright",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "receiver_separated()",
+    "sphere_in_basin()"
+  ],
+  "after": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "receiver_separated()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "model": {
+    "name": "restore_source_upright",
+    "args": {
+      "arm": "0",
+      "obj": "canL",
+      "dest": "restore_source_upright"
+    },
+    "program_kind": "restore_source",
+    "pre": [
+      "holding(0,canL)",
+      "receiver_separated()",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "source_upright()"
+    ],
+    "del": [],
+    "description": "源杯仍被源臂抓持且恢复运输要求的直立姿态，小球仍留在接收盆内。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "5a4fbd324b4d4fb8aaeffada2aa521ee04cbc5326322b5d47b1384a9421bbfd5",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+}

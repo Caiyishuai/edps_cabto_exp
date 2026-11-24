@@ -1,0 +1,100 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "before": [
+    "at_source(potato)",
+    "at_source(shrimp)",
+    "holding(apple)"
+  ],
+  "after": [
+    "at_source(potato)",
+    "at_source(shrimp)",
+    "at_target(apple)",
+    "empty()"
+  ],
+  "model": {
+    "name": "place",
+    "args": {
+      "object": "apple",
+      "support": "board"
+    },
+    "pre": [
+      "holding(apple)"
+    ],
+    "add": [
+      "at_target(apple)",
+      "empty()"
+    ],
+    "del": [
+      "holding(apple)"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "destination_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.49,
+        0.16,
+        0.447
+      ]
+    },
+    {
+      "method": "carry",
+      "args": [
+        [
+          0.49,
+          0.16,
+          0.447
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.49,
+          0.16,
+          0.447
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "withdraw",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "forbidden_contacts": [],
+  "code_sha256": "fd046b856ff993bc3635afd4877000a981442c663cc93f8b8963ef39d0953056"
+}

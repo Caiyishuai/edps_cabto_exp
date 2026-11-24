@@ -1,0 +1,157 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 21.463999999998983,
+        "object_position": [
+          0.3498463543038264,
+          0.0004714076449643217,
+          0.6397009716700897
+        ],
+        "tcp_position": [
+          0.34985136314631604,
+          0.07550573857705294,
+          0.6992008773581757
+        ],
+        "weld_constraint_active": true,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "detach",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 21.463999999998983,
+        "object_position": [
+          0.3498463543038264,
+          0.0004714076449643217,
+          0.6397009716700897
+        ],
+        "tcp_position": [
+          0.34985136314631604,
+          0.07550573857705294,
+          0.6992008773581757
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "withdraw",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 26.4839999999962,
+        "object_position": [
+          0.34988864921657004,
+          0.0003397010655934566,
+          0.6394272152280193
+        ],
+        "tcp_position": [
+          0.2201899928316005,
+          0.339582190889464,
+          0.7798855106587524
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    }
+  ],
+  "before": [
+    "at_handover_pose(baton)",
+    "baton_airborne()",
+    "collision_free()",
+    "donor_holding(baton)",
+    "dual_holding(baton)",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "after": [
+    "baton_airborne()",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "handover_verified()",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "model": {
+    "name": "donor_releases_after_receiver",
+    "args": {
+      "arm": "0",
+      "obj": "baton",
+      "dest": "donor_releases_after_receiver"
+    },
+    "program_kind": "donor_release",
+    "pre": [
+      "dual_holding(baton)",
+      "receiver_contact_verified()",
+      "baton_airborne()",
+      "collision_free()"
+    ],
+    "add": [
+      "donor_withdrawn()",
+      "empty(0)",
+      "handover_verified()",
+      "receiver_holding(baton)"
+    ],
+    "del": [
+      "at_handover_pose(baton)",
+      "donor_holding(baton)",
+      "dual_holding(baton)"
+    ],
+    "description": "茶盒由接收臂持有，交出臂为空且位于安全撤离位；真实事件证明接收验证先于空中释放，运动无禁止碰撞。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "4739c1eccec41d660fcf01e92fc4acb830f1b3b14edd4d2ababacff6af6160f8",
+  "consistency_scope": "full_CP",
+  "physical_diagnostics": {
+    "placed": false,
+    "xy_error_m": 0.21129817167164314,
+    "bottom_gap_m": 0.1593628331862713,
+    "rotation_error_deg": 0.032786837910814125,
+    "released": false,
+    "origin": [
+      0.34988864921657004,
+      0.0003397010655934566,
+      0.6394272152280193
+    ],
+    "table_support_contact": false
+  }
+}

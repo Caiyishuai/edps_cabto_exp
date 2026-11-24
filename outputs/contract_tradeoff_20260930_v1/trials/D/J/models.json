@@ -1,0 +1,208 @@
+[
+  {
+    "name": "pick_table",
+    "args": {
+      "object": "yellow"
+    },
+    "pre": [
+      "empty()",
+      "ontable(yellow)",
+      "clear(yellow)"
+    ],
+    "add": [
+      "holding(yellow)"
+    ],
+    "del": [
+      "empty()",
+      "ontable(yellow)",
+      "home_completed()"
+    ]
+  },
+  {
+    "name": "unstack",
+    "args": {
+      "object": "yellow",
+      "support": "green"
+    },
+    "pre": [
+      "empty()",
+      "on(yellow,green)",
+      "clear(yellow)"
+    ],
+    "add": [
+      "holding(yellow)",
+      "clear(green)"
+    ],
+    "del": [
+      "empty()",
+      "on(yellow,green)",
+      "home_completed()"
+    ]
+  },
+  {
+    "name": "put_table",
+    "args": {
+      "object": "yellow",
+      "support": "table"
+    },
+    "pre": [
+      "holding(yellow)"
+    ],
+    "add": [
+      "empty()",
+      "ontable(yellow)"
+    ],
+    "del": [
+      "holding(yellow)",
+      "home_completed()"
+    ]
+  },
+  {
+    "name": "pick_table",
+    "args": {
+      "object": "red"
+    },
+    "pre": [
+      "empty()",
+      "ontable(red)",
+      "clear(red)"
+    ],
+    "add": [
+      "holding(red)"
+    ],
+    "del": [
+      "empty()",
+      "ontable(red)",
+      "home_completed()"
+    ]
+  },
+  {
+    "name": "unstack",
+    "args": {
+      "object": "red",
+      "support": "green"
+    },
+    "pre": [
+      "empty()",
+      "on(red,green)",
+      "clear(red)"
+    ],
+    "add": [
+      "holding(red)",
+      "clear(green)"
+    ],
+    "del": [
+      "empty()",
+      "on(red,green)",
+      "home_completed()"
+    ]
+  },
+  {
+    "name": "put_table",
+    "args": {
+      "object": "red",
+      "support": "table"
+    },
+    "pre": [
+      "holding(red)"
+    ],
+    "add": [
+      "empty()",
+      "ontable(red)"
+    ],
+    "del": [
+      "holding(red)",
+      "home_completed()"
+    ]
+  },
+  {
+    "name": "pick_table",
+    "args": {
+      "object": "blue"
+    },
+    "pre": [
+      "empty()",
+      "ontable(blue)",
+      "clear(blue)"
+    ],
+    "add": [
+      "holding(blue)"
+    ],
+    "del": [
+      "empty()",
+      "ontable(blue)",
+      "home_completed()"
+    ]
+  },
+  {
+    "name": "unstack",
+    "args": {
+      "object": "blue",
+      "support": "green"
+    },
+    "pre": [
+      "empty()",
+      "on(blue,green)",
+      "clear(blue)"
+    ],
+    "add": [
+      "holding(blue)",
+      "clear(green)"
+    ],
+    "del": [
+      "empty()",
+      "on(blue,green)",
+      "home_completed()"
+    ]
+  },
+  {
+    "name": "put_table",
+    "args": {
+      "object": "blue",
+      "support": "table"
+    },
+    "pre": [
+      "holding(blue)"
+    ],
+    "add": [
+      "empty()",
+      "ontable(blue)"
+    ],
+    "del": [
+      "holding(blue)",
+      "home_completed()"
+    ]
+  },
+  {
+    "name": "stack",
+    "args": {
+      "object": "yellow",
+      "support": "green"
+    },
+    "pre": [
+      "holding(yellow)",
+      "clear(green)"
+    ],
+    "add": [
+      "empty()",
+      "on(yellow,green)"
+    ],
+    "del": [
+      "holding(yellow)",
+      "clear(green)",
+      "home_completed()"
+    ]
+  },
+  {
+    "name": "home",
+    "args": {},
+    "pre": [
+      "empty()",
+      "on(yellow,green)"
+    ],
+    "add": [
+      "home_completed()"
+    ],
+    "del": []
+  }
+]

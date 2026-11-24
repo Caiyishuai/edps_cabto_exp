@@ -1,0 +1,142 @@
+{
+  "action_id": "home_source_arm(arm=0,dest=home_source_arm,obj=none)",
+  "model": {
+    "name": "home_source_arm",
+    "args": {
+      "arm": "0",
+      "obj": "none",
+      "dest": "home_source_arm"
+    },
+    "program_kind": "controlled_home",
+    "pre": [
+      "source_returned()",
+      "empty(0)",
+      "hand_raised(0)",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "home(0)"
+    ],
+    "del": [],
+    "description": "源杯已返还，源臂空手张开并处于 HOME 关节姿态，小球仍留在接收盆内。"
+  },
+  "attempt": 1,
+  "transfer": {
+    "source_sha256": "b629a8179e4bdb1b8bdd46386dca8f936b0186cc1eb7ff984b9f3b913613711e",
+    "source_attempt": "/Users/yishuaicai/mywork/edps_cabto_exp/tasks/pour/generated_bt/generated_programs.json#controlled_home",
+    "mode": "unmodified_actual_model_source_schema_transfer",
+    "new_call": false
+  },
+  "source": "def policy(api):\n    pose = api.controlled_home()\n    return pose",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": true,
+    "goal_ok": true,
+    "effect_ok": true,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [],
+      "unexpected_removed": []
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "controlled_home",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      }
+    ],
+    "before": [
+      "caught_by_held_basin()",
+      "collision_free()",
+      "empty(0)",
+      "hand_raised(0)",
+      "holding(1,basin)",
+      "parked(0)",
+      "payload_retained()",
+      "receiver_separated()",
+      "source_returned()",
+      "source_upright()",
+      "sphere_in_basin()"
+    ],
+    "after": [
+      "caught_by_held_basin()",
+      "collision_free()",
+      "empty(0)",
+      "hand_raised(0)",
+      "holding(1,basin)",
+      "home(0)",
+      "parked(0)",
+      "payload_retained()",
+      "receiver_separated()",
+      "source_returned()",
+      "source_upright()",
+      "sphere_in_basin()"
+    ],
+    "model": {
+      "name": "home_source_arm",
+      "args": {
+        "arm": "0",
+        "obj": "none",
+        "dest": "home_source_arm"
+      },
+      "program_kind": "controlled_home",
+      "pre": [
+        "source_returned()",
+        "empty(0)",
+        "hand_raised(0)",
+        "sphere_in_basin()",
+        "caught_by_held_basin()",
+        "payload_retained()",
+        "collision_free()"
+      ],
+      "add": [
+        "home(0)"
+      ],
+      "del": [],
+      "description": "源杯已返还，源臂空手张开并处于 HOME 关节姿态，小球仍留在接收盆内。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": true,
+    "missing_required_calls": [],
+    "code_sha256": "b629a8179e4bdb1b8bdd46386dca8f936b0186cc1eb7ff984b9f3b913613711e",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+    "physical_diagnostics": {
+      "source": {
+        "returned": true,
+        "xy_error_m": 0.0023505345976979446,
+        "bottom_gap_m": 0.00398582350055221,
+        "rotation_error_deg": 2.6052528937052903,
+        "released": true,
+        "origin": [
+          0.18079111190067867,
+          0.10221340345521995,
+          0.5239608805643317
+        ]
+      },
+      "basin": {
+        "returned": false,
+        "xy_error_m": 0.18654345212719378,
+        "bottom_gap_m": 0.037702597665066506,
+        "rotation_error_deg": 2.526340037375633,
+        "released": false,
+        "origin": [
+          0.7727841352263148,
+          -0.3403196882171188,
+          0.5529617306984064
+        ]
+      }
+    }
+  },
+  "accepted": true
+}

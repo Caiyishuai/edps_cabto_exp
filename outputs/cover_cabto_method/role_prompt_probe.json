@@ -1,0 +1,19 @@
+{
+  "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+  "text": [
+    {
+      "role": "system",
+      "content": "You write short STRIPS action models as JSON. Use only the predicate names in the question."
+    },
+    {
+      "role": "user",
+      "content": "A robot picks up the shrimp from the table and holds it in the air. Available facts: empty(), at_source(shrimp), holding(shrimp), home_completed(). Give preconditions, add effects, delete effects using JSON keys pre,add,del. The hand is no longer empty and the shrimp is no longer at source after pickup. Leaving home makes home_completed() false. Do not list a fact in both add and del."
+    }
+  ],
+  "image_files": [],
+  "formatted_prompt": "<|im_start|>system\nYou write short STRIPS action models as JSON. Use only the predicate names in the question.<|im_end|>\n<|im_start|>user\nA robot picks up the shrimp from the table and holds it in the air. Available facts: empty(), at_source(shrimp), holding(shrimp), home_completed(). Give preconditions, add effects, delete effects using JSON keys pre,add,del. The hand is no longer empty and the shrimp is no longer at source after pickup. Leaving home makes home_completed() false. Do not list a fact in both add and del.<|im_end|>\n<|im_start|>assistant\n",
+  "temperature": 0.0,
+  "max_tokens": 320,
+  "raw": "{\n  \"pre\": [\"empty()\",\n          \"at_source(shrimp)\",\n          \"holding(shrimp)\",\n          \"home_completed()\"],\n  \"add\": [\"holding(shrimp)\",\n          \"at_source(empty())\"],\n  \"del\": [\"at_source(shrimp)\",\n          \"home_completed()\"]\n}",
+  "wall_seconds": 2.10610529105179
+}

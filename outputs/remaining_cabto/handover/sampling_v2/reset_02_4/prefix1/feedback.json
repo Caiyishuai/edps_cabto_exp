@@ -1,0 +1,124 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.35,
+        0.0,
+        0.64
+      ]
+    },
+    {
+      "method": "move_held",
+      "args": [
+        [
+          0.35,
+          0.0,
+          0.64
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 13.272000000001102,
+        "object_position": [
+          0.3498408199229681,
+          0.0004897430262307338,
+          0.6397026392504075
+        ],
+        "tcp_position": [
+          0.34984551292188637,
+          0.07551761554417234,
+          0.6992001644643975
+        ],
+        "weld_constraint_active": true,
+        "holding": true,
+        "grip_command": 0.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "settle",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 13.560000000001198,
+        "object_position": [
+          0.34984539132293935,
+          0.0004761425721439129,
+          0.6397047300894886
+        ],
+        "tcp_position": [
+          0.3498502022456514,
+          0.075504944301095,
+          0.6992030747212602
+        ],
+        "weld_constraint_active": true,
+        "holding": true,
+        "grip_command": 0.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    }
+  ],
+  "before": [
+    "baton_airborne()",
+    "collision_free()",
+    "donor_holding(baton)",
+    "empty(1)"
+  ],
+  "after": [
+    "at_handover_pose(baton)",
+    "baton_airborne()",
+    "collision_free()",
+    "donor_holding(baton)",
+    "empty(1)"
+  ],
+  "model": {
+    "name": "present_baton_in_air",
+    "args": {
+      "arm": "0",
+      "obj": "baton",
+      "dest": "present_baton_in_air"
+    },
+    "program_kind": "present",
+    "pre": [
+      "donor_holding(baton)",
+      "empty(1)",
+      "baton_airborne()",
+      "collision_free()"
+    ],
+    "add": [
+      "at_handover_pose(baton)"
+    ],
+    "del": [],
+    "description": "交出臂持有的茶盒位于配置的空中交接位，接收臂为空，运动无禁止碰撞。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "406788927d178f094be6511e3229d2e816954e5305822cce56c98d65ca7893c5",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+}

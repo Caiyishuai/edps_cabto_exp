@@ -1,0 +1,100 @@
+{
+  "protocol_sha256": "91b65409e745ac143008a587375856740cb4cf59cdf9c3afa6420242e58ad923",
+  "selections": {
+    "narrow": {
+      "candidate": "P",
+      "reason": "finite_success_then_edit_cost",
+      "scores": [
+        {
+          "candidate": "P",
+          "success_count": 1,
+          "task_count": 1,
+          "edit_count": 1,
+          "order": 2
+        },
+        {
+          "candidate": "J",
+          "success_count": 1,
+          "task_count": 1,
+          "edit_count": 2,
+          "order": 3
+        },
+        {
+          "candidate": "C",
+          "success_count": 1,
+          "task_count": 1,
+          "edit_count": 3,
+          "order": 4
+        },
+        {
+          "candidate": "B",
+          "success_count": 0,
+          "task_count": 1,
+          "edit_count": 0,
+          "order": 0
+        },
+        {
+          "candidate": "T",
+          "success_count": 0,
+          "task_count": 1,
+          "edit_count": 1,
+          "order": 1
+        }
+      ],
+      "scenarios": [
+        "H"
+      ],
+      "evidence_sha256": "d5b13961c50b04b7a43f7853d37c81d26934432791e2c592204a9e5332c97cad",
+      "additional_physical_rollouts": 0
+    },
+    "broader": {
+      "candidate": "J",
+      "reason": "finite_success_then_edit_cost",
+      "scores": [
+        {
+          "candidate": "J",
+          "success_count": 2,
+          "task_count": 2,
+          "edit_count": 2,
+          "order": 3
+        },
+        {
+          "candidate": "C",
+          "success_count": 2,
+          "task_count": 2,
+          "edit_count": 3,
+          "order": 4
+        },
+        {
+          "candidate": "P",
+          "success_count": 1,
+          "task_count": 2,
+          "edit_count": 1,
+          "order": 2
+        },
+        {
+          "candidate": "B",
+          "success_count": 0,
+          "task_count": 2,
+          "edit_count": 0,
+          "order": 0
+        },
+        {
+          "candidate": "T",
+          "success_count": 0,
+          "task_count": 2,
+          "edit_count": 1,
+          "order": 1
+        }
+      ],
+      "scenarios": [
+        "H",
+        "D"
+      ],
+      "evidence_sha256": "de9b1334d407a9d6b024aae686498347d58a30a219b952bbed3f5a77fd872cd3",
+      "additional_physical_rollouts": 0
+    }
+  },
+  "evidence_trial_count": 10,
+  "extension_observed": false
+}

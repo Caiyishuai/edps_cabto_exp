@@ -1,0 +1,142 @@
+{
+  "task": "storage",
+  "capture_index": 2,
+  "event": "after_align_xy",
+  "target": "item1",
+  "camera": "overview",
+  "input_image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/frames/002_after_align_xy/overview.png",
+  "input_sha256": "3f74b9c060e7d6d3a52d0549bc31977675c7a97fdbaa9d5779d50b72a64c34ac",
+  "original_run": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/result.json",
+  "original_run_sha256": "93ffc354894cbbd6afe8bc95411efe926d8e5464ad2c6abd3a04d72b5a21bb90",
+  "original_physical_state_time": 0.6400000000000005,
+  "used_by_robot": false,
+  "type": "diagnostic_point_not_executable_grasp",
+  "calibration": {
+    "name": "overview",
+    "time": 0.6400000000000005,
+    "image_size": [
+      720,
+      720
+    ],
+    "K": [
+      [
+        891.0312672298666,
+        0,
+        360.0
+      ],
+      [
+        0,
+        891.0312672298666,
+        360.0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "T_world_camera": {
+      "position": [
+        1.28,
+        -1.48,
+        1.48
+      ],
+      "rotation": [
+        [
+          0.8544214388699759,
+          -0.2498519966375856,
+          0.4555633705375928
+        ],
+        [
+          0.5195806047182286,
+          0.4108677278040294,
+          -0.7491486537729304
+        ],
+        [
+          5.551115123125783e-17,
+          0.8767905622355694,
+          0.48087244667856993
+        ]
+      ]
+    },
+    "optical_axis_world": [
+      -0.4555633705375928,
+      0.7491486537729304,
+      -0.48087244667856993
+    ],
+    "parent_body": "world",
+    "measured_T_body_camera": {
+      "position": [
+        1.28,
+        -1.48,
+        1.48
+      ],
+      "rotation": [
+        [
+          0.8544214388699759,
+          -0.2498519966375856,
+          0.4555633705375928
+        ],
+        [
+          0.5195806047182286,
+          0.4108677278040294,
+          -0.7491486537729304
+        ],
+        [
+          5.551115123125783e-17,
+          0.8767905622355694,
+          0.48087244667856993
+        ]
+      ]
+    },
+    "fovy_deg": 44.0,
+    "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+  },
+  "evaluation_only_reference": {
+    "name": "item1",
+    "body": "item1",
+    "xyz": [
+      0.33500000000471664,
+      -0.22499999999763257,
+      0.4438922445788845
+    ],
+    "semantic": "payload collision top center; decorative studs may lie above"
+  },
+  "reference_semantics": "payload collision top center; decorative studs may lie above",
+  "call": {
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "text": "Point to the center of the small green hinged toy brick with two large round studs outside the open cardboard box. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/frames/002_after_align_xy/overview.png"
+    ],
+    "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the small green hinged toy brick with two large round studs outside the open cardboard box. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.<|im_end|>\n<|im_start|>assistant\n",
+    "temperature": 0.0,
+    "max_tokens": 220,
+    "raw": "{\"point\": [283, 438]}",
+    "wall_seconds": 1.3061086669331416
+  },
+  "point": [
+    283.0,
+    438.0
+  ],
+  "status": "point_returned_not_validated",
+  "reference_visibility": {
+    "target": "item1",
+    "pixel": [
+      285.93291052754137,
+      434.70869857233
+    ],
+    "in_frame": true,
+    "ray_hits_target_body": true,
+    "first_hit_body": "item1",
+    "ray_distance_m": 1.8670750963557032,
+    "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+  },
+  "evaluation_only_reference_uv": [
+    285.93291052754137,
+    434.70869857233
+  ],
+  "pixel_error": 4.408472439558366,
+  "conditional_true_plane_xy_error_mm": 13.433138518352735,
+  "overlay": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/pointing_v3/storage/frame002_item1_overview.png"
+}

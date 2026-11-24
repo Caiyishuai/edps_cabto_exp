@@ -1,0 +1,136 @@
+[
+  {
+    "object": "green",
+    "call": {
+      "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+      "text": "Point to the green cube. Output the pixel coordinate.",
+      "image_files": [
+        "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/blocks/holdout_v2/B2/perception/000_green.png"
+      ],
+      "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the green cube. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+      "temperature": 0.0,
+      "max_tokens": 180,
+      "raw": "```json\n[\n\t{\"point_2d\": [450, 250], \"label\": \"green cube\"}\n]\n```",
+      "wall_seconds": 0.807546375086531
+    },
+    "height_prior": 0.46900000000000003,
+    "source": "Qwen point + RGB top face + calibrated known plane",
+    "fallback": false,
+    "coarse_uv": [
+      450.0,
+      250.0
+    ],
+    "uv": [
+      442.0,
+      238.5
+    ],
+    "xyz": [
+      0.5696321688694751,
+      0.1476257136297711,
+      0.46900000000000003
+    ],
+    "top_plane_z": 0.444,
+    "roi": [
+      410,
+      210,
+      491,
+      291
+    ]
+  },
+  {
+    "object": "blue",
+    "call": {
+      "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+      "text": "Point to the blue cube. Output the pixel coordinate.",
+      "image_files": [
+        "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/blocks/holdout_v2/B2/perception/001_blue.png"
+      ],
+      "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the blue cube. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+      "temperature": 0.0,
+      "max_tokens": 180,
+      "raw": "```json\n[\n\t{\"point_2d\": [451, 481], \"label\": \"blue cube\"}\n]\n```",
+      "wall_seconds": 0.725584749947302
+    },
+    "height_prior": 0.46900000000000003,
+    "source": "Qwen point + RGB top face + calibrated known plane",
+    "fallback": false,
+    "coarse_uv": [
+      451.0,
+      481.0
+    ],
+    "uv": [
+      439.5,
+      479.5
+    ],
+    "xyz": [
+      0.5665946027454057,
+      -0.1451956607305156,
+      0.46900000000000003
+    ],
+    "top_plane_z": 0.444,
+    "roi": [
+      411,
+      441,
+      492,
+      522
+    ]
+  },
+  {
+    "object": "red",
+    "call": {
+      "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+      "text": "Point to the red cube. Output the pixel coordinate.",
+      "image_files": [
+        "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/blocks/holdout_v2/B2/perception/002_red.png"
+      ],
+      "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the red cube. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+      "temperature": 0.0,
+      "max_tokens": 180,
+      "raw": "```json\n[\n\t{\"point_2d\": [262, 471], \"label\": \"red cube\"}\n]\n```",
+      "wall_seconds": 0.7172096660360694
+    },
+    "height_prior": 0.42600000000000005,
+    "source": "Qwen point + RGB top face + calibrated known plane",
+    "fallback": false,
+    "coarse_uv": [
+      262.0,
+      471.0
+    ],
+    "uv": [
+      254.5,
+      479.5
+    ],
+    "xyz": [
+      0.34181470956427285,
+      -0.1451956607305156,
+      0.42600000000000005
+    ],
+    "top_plane_z": 0.444,
+    "roi": [
+      222,
+      431,
+      303,
+      512
+    ]
+  },
+  {
+    "object": "blue",
+    "source": "initial_pre_occlusion_Qwen_RGB_support_cache",
+    "xyz": [
+      0.5665946027454057,
+      -0.1451956607305156,
+      0.46900000000000003
+    ],
+    "fallback": false
+  },
+  {
+    "object": "blue",
+    "source": "initial_pre_occlusion_Qwen_RGB_support_cache",
+    "xyz": [
+      0.5665946027454057,
+      -0.1451956607305156,
+      0.46900000000000003
+    ],
+    "fallback": false
+  }
+]

@@ -1,0 +1,1917 @@
+{
+  "pools_freeze_sha256": "56c3d195816c1b8de078922db30ee5067ce8cf4d58ce48fa54067c1c7b3b3427",
+  "protocol_sha256": "acdca827d9af6dc7fdeaa4a13a01683b482538e6f99a085c95495a9009106b74",
+  "source_hashes": {
+    "BTExpansion-demo/src/behavior_tree/BehaviorTree.py": "512376d555f9f223027d521a3b644f6550c7128285aec61af2c1dcbd685e6038",
+    "BTExpansion-demo/src/behavior_tree/__init__.py": "ad77aee97bddc9c41924c5004be56843d937cccb33e88515c74ce2c87bcc8c5a",
+    "BTExpansion-demo/src/bt_expansion/__init__.py": "bab0549f7fcaa6c2bdd33b02d8c4d8233e7a5c41ffd454307651c6fd9da37fd2",
+    "BTExpansion-demo/src/bt_expansion/algorithm.py": "ffbe33712df2d05068ccef24e7be90edb7f45e51978af4f99b18b51faa92ae50",
+    "BTExpansion-demo/src/bt_expansion/planning.py": "8730a53df5c526809848da9fcedbc02ce4f17ca00322a52e133e8ec909d7f697",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/finger_0.obj": "215098c0fcdf7192f6c503a37cf49e3efecf8a9e1320f02b17c5584d89cc5b2c",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/finger_1.obj": "cf239e9aca26bba09dbbf1c544c47d87cfc9a2f0637c8bb786af750b6d4eca44",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/hand.stl": "94493e94f30fe940f2c8ca2f155c3bbe67bbff406d3edf5e261670d2f0f6e2ed",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/hand_0.obj": "b94aab901086f85df04c019b30f43bf9aa23a7ad0443ec80a8c14662a41cabd2",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/hand_1.obj": "cd76f7494bb314406a1819c46eb826ee254894f87235714f604a470653d9badb",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/hand_2.obj": "e0f44a71712afa5b98eb20355eff17763d3e2e19f459b2bef19abed3727e64b3",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/hand_3.obj": "a431a06d99e88a1b322b3122a01424ee7704daeaad0bc343b90b9604f014ad0c",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/hand_4.obj": "21f96ef6a8de082e41b1ea9834f1043de359e5d60305541bcb63539581f53bff",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0.stl": "dfc6d94330de8ddb005b311bfdba9f3b8e1aa7c256b71592ee7ff32cb9a9a5aa",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_0.obj": "6b9f41a4c203540daaeb7a33cc3d0d6c6a32dc8bba187074eeaf97b3e36b3f9c",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_1.obj": "57673d2ee2a9db2e10c8986ae57c56a7c39c012b60fd26d7d8549553b664a5ed",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_10.obj": "c9198b9d8534d628d097b0f2b239bb30343353182df098ce0d9db6bc13326848",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_11.obj": "f0adec78d6677b7799d25121981270e8bfe119b5c18d08a91ee37a54ad75f65c",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_2.obj": "1ca435a2a87a9608a146a47955724d43dd7ce10fc3dd3018800aa98f8ba86e05",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_3.obj": "3e9c6334d2b3b47944af3458ee5f20519abc20fe7ee23063bb53405ccab28046",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_4.obj": "215d25789704936120f119c0bc1cc7f68516dd3f8f1df61457b71acac3873f26",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_5.obj": "9361b104e93743045107aa5b15fb1a0835ba9c1f355aae71f56403cf6a9c33f6",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_7.obj": "2dc0b8ebbbc80e4c065d71e195adbc384f673438641fac82b07b801b4d2837cb",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_8.obj": "3b8c436999db5586b8eb47bed2b0aa7de6993868b2681b4c04246eeac42fdb7a",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link0_9.obj": "45178f97d2b5da6bce11f610212c4ef7d08c73db33a4fc38e1b7f66b93d023f5",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link1.obj": "51091e776b16babdbe2f3849b5c041f921d1f11dd94ac19a0f1c81abf496fbae",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link1.stl": "e41a39a94108fcf56aacff603fc91ec80541f4c1af17b51a0de5617f5566e6d2",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link2.obj": "5c9f8e715de52c3eb71b475de35993b3b96081e02abea9f28c414768877fc59b",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link2.stl": "370f7605a0fae3529db169ded50f52f171024aa792d4d773bc84197301f6a039",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link3.stl": "0a8d638b9349c6c0eefc4e888636ac4838c4b27170f18a51699321118af709c1",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link3_0.obj": "ce2da87f51708e11b189249d41401065dabe89a06e251185a06cef4d5ff27178",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link3_1.obj": "2880b7753a7173f38fa87ee21da4dfc7fa7be46fbe07bac5aef9e128513cb118",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link3_2.obj": "670cff81ae84693769ca4ae658c154cf909d81167e7c8d22b70ea977f2504efa",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link3_3.obj": "30ede0c812efd0e0b767d134a4eae0b84e0fa407bb6325a5a555e0569b3a3ffd",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link4.stl": "0180ebb5772ec9840cb049750cffb29a9ddc90311752a16ea34757782ef9e48d",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link4_0.obj": "443bf6d178177cf347951ecf107ccd10ca444e605e375b67304579e5f948806f",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link4_1.obj": "ca935ec7cc8b3f0e86aa079c76b0b3bf593b1e9830bab0fa7131ac51577c74f0",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link4_2.obj": "c89caf26d379c35bb9e191ee2d91d09ab29ecc792b48d8bc10b39e5b38222175",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link4_3.obj": "1495d17f45bdb230cf58b0beef9da4e8c9cfe76a3d2d38da89017efe5e093136",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link5_0.obj": "a3238b8f2af0f2eb66d9fe63dc5d41ac52d5d38507241b5ed10e3cb019ab3e71",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link5_1.obj": "9d994bbf83ec241e301b5197a6846da13f2a4a0582edb2c0f76962c5549649d6",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link5_2.obj": "83b4ffe9f772cd7fe182e98640650eebc899aaf01842656574b0416c90dd40a4",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link5_collision_0.obj": "3e5aa75fb13f193555c3dfb999df91d81df25006a5c3af5338297d78137c129b",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link5_collision_1.obj": "87cd8f621071df010f774cbde789282b8463840dfe704f8bdfa2e29be0142e15",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link5_collision_2.obj": "823ab6c8f7b1d79e0844fa071d82a03499ff68e34fddb1ba3451032c22736040",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6.stl": "20b768e99a0e0440b5754dcca108016434e57937cc356acd9c352ccd3cb27f77",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_0.obj": "0504c70ebf1b284ee8faae7dcb896b8830bc672a6552015dd5dbd121fa031fb9",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_1.obj": "45f7ca77695198b6d86ec2417ad4e42e6275044f0f96266699ee8e1057757ac1",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_10.obj": "365f26c21d10332cab8d8704645cb46930c30b3085956f2d097498c793f24db4",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_11.obj": "8ae61e08b3ad064f25bbf03b22e59cc15d65883b5a7ce92711aff29df2493901",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_12.obj": "f28d1bfd62b0244ffd19fb35fe9edefdf583d3c9167db944e87185d919e1d021",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_13.obj": "0a55fa92dccb261d07200e6565fca4c850fd17f0c1ecf38821c0b97d51796c7d",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_14.obj": "750ae3ee4781e62e3a045c662195247b03f6642b05aa93104f08258e5f6eba26",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_15.obj": "5999c1c2497a004a7c4bbe034cdf13744f839d85ae7a11b1bc386c48a3e642e6",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_16.obj": "551d7a8b37c53e7a152d008b4e36992e5b5abe74a4be18b57ee6319c27def09f",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_2.obj": "e54eee4d8232947ee8af65afd5a067e09dac2da6e7e585cb1dccb65496457da0",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_3.obj": "d4f6a25ef32fa1fa4734146981994ee760232cb077c80fea6487d78a077c7f27",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_4.obj": "be353480fe71d46f7a96f0a3cbb7e112caaf8d88368826f321a36a253c8749b2",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_5.obj": "7c87664623c3e1a6cb330db273227a69626dc5e53b4caff1d4ee7911eb3340c6",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_6.obj": "8fbc031e0d07b795ebf99115c75223141caaba317cab569159f3d477a7821681",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_7.obj": "7dc5ebb799fe281aab27d6e84e7a4efa0a8e42da2369ec83de3ea3f206f62d73",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_8.obj": "e3f77381817a341030f9dcc4c4aa7c559f80411b453fd87eb0fefecca82151bf",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link6_9.obj": "25a56ea9b02a03b6cb5a81f31c54f54d0185e1a0b3937c37e4289d896e50215a",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link7.stl": "92ac6afcf7574c034d3170d8a68e95ac9048ab9d0dd5bbd8311b86e551b9ab1c",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link7_0.obj": "04586b0bde011715cfc22072ac72fe0717eb4d4817bcf665987ce6cd88eb2b93",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link7_1.obj": "c3f72289f394c9d6749a4a327fb11f05b203c37c95032c92f28019b40ebe7e00",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link7_2.obj": "d2faecedb304d0989040d082410378dc949dbbda23bd18c05134f08aae984db5",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link7_3.obj": "b62d87c4d4bdb7b281ed341d347c39dad0e50bf36aed8ac11d050073701d5f70",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link7_4.obj": "cb78ccb61fd4ad6c7bff4c4d2e6cb41e1964a5a3e1a28e67c0c6202371cfc018",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link7_5.obj": "099071d3090b51471ba52f4f90814fd3089f4975d196e4d488117073d0bfe491",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link7_6.obj": "99469e2d95ab74ce0292f2f16954c87a8a7dc16652e62e970fe37c94330a81bb",
+    "CABTO/exp4_bt_tasks/assets/panda_assets/link7_7.obj": "426c3db8a19373f3dc73d4bec672e948121b2914c10e2e7b9c7ea80643a19e54",
+    "CABTO/exp4_bt_tasks/scenes/panda_body.py": "40c00712b7ea61368089074ef65608c9ae4c8956807810c350a14077e4e6d8a3",
+    "CABTO/exp4_bt_tasks/stage2_scripted/exp4_env.py": "55547fe1a52798b1c83eec2e10d937fff8d1b3a2d156e6396c373f4354913ef3",
+    "CABTO/exp4_bt_tasks/stage3_cabto/formal_bt.py": "3adfb1e68ebf7a77d62028c21b4e1436b21149f4f039f9520b21d388e0c92065",
+    "CABTO/exp4_bt_tasks/stage3_cabto/policy_codegen.py": "5bdd98f067ff5818a9acdf0f1dfa504b62118588ee1e2a5f6f26898cd5013763",
+    "project/core/cover_cabto_api.py": "0909007240623355cfe9d332410682acfe76012918cffbb4283ed4b138c29c15",
+    "project/core/cover_cabto_grounding.py": "74ee6faeecf1862f67e21f898fd71e7ade83b822b7d583c680057cc282b4ef44",
+    "project/core/single_arm_rebuilt.py": "8658b9ab5445db287f99bdc73e0fa8784b175bd7447b62308edf906e4baf3d58",
+    "project/experiments/blocks_p0.py": "fede59198e6262ccc2ff56128d1211a531545c9d0fc6496bb2b2f6ffe6c529e2",
+    "project/experiments/blocks_p1_candidates.py": "b68278be14a1d0f040d513f062dadd1078766dd0bf207f34961124abf3f2bcf0",
+    "project/experiments/blocks_p1_protocol.json": "ca264a846324d22af52aa0b179a5eb30d20c5ba797a80f4f4a161f7573ef2377",
+    "project/experiments/run_blocks_p0.py": "553366f469863e37b3325430663ecb21cc4d8ef1820f8064eafd5908b1f19e8d",
+    "project/experiments/run_blocks_p1.py": "80c6bb5cb9d9c7de2eaf19f56787163a2bf1f04a86f37f05c8444f3bc25cc9e0",
+    "project/scenes/blocks_rebuilt_v1.json": "36646f9fb3963c5e77da98a989cb7da31e5f50d386873e2602a0c582b775a8d2"
+  },
+  "searches": [
+    {
+      "path": "searches/generation1701/ranked/search.json",
+      "sha256": "a20183a853517cdb5ba6a77486b77b472857789d03f2ba39f43047a7845e3761",
+      "result": {
+        "method": "ranked",
+        "seed": null,
+        "order": [
+          0,
+          1,
+          2
+        ],
+        "attempts": [
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "lower_z_to_safe_contact",
+              "pre_add": [],
+              "offset_z_m": -0.008,
+              "reason": "Lowers the approach point below the table surface to ensure the gripper contacts the object before closing, resolving the 'No simultaneous force' error seen in failed trials."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 25.63999999999658,
+                  "wall_seconds": 1.5221982499351725
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/ranked/candidate00/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 16.500000000001645,
+                  "wall_seconds": 0.9169124589534476
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0302m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/ranked/candidate00/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "increase_z_margin",
+              "pre_add": [],
+              "offset_z_m": 0.02,
+              "reason": "Increases the Z-offset slightly above the failed 0.045m value to provide more clearance for the approach phase, potentially allowing the controller to find a valid closure trajectory if the current estimate is slightly low."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.319999999999398,
+                  "wall_seconds": 0.2508178330026567
+                },
+                "exception": "RuntimeError: Grasp geometry inconsistent",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/ranked/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "add_clear_predicate",
+              "pre_add": [
+                {
+                  "action": "pick_table",
+                  "predicate": "clear",
+                  "args": [
+                    "object"
+                  ]
+                }
+              ],
+              "offset_z_m": null,
+              "reason": "The failed executions show 'ontable' becoming false after the action (unexpected removal), suggesting the planner might be executing on an unstable state or the preconditions are not strictly enforced at runtime. Adding 'clear' as a required precondition ensures the robot only attempts to pick objects that are truly free of other blocks, preventing collisions with neighbors like 'red' or 'yellow'."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 6.839999999999451,
+                  "wall_seconds": 0.23404620797373354
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/ranked/candidate02/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 56.29999999999707,
+          "wall_seconds": 2.9239747498650104
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 4,
+            "actions": 7,
+            "api_calls": 31,
+            "simulation_seconds": 56.29999999999707,
+            "wall_seconds": 2.9239747498650104
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1701,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1701/random901/search.json",
+      "sha256": "326db4532348d68393c2bf6696101514fdbfb7e977a0bea368f7b0edf578a0ba",
+      "result": {
+        "method": "random",
+        "seed": 901,
+        "order": [
+          0,
+          2,
+          1
+        ],
+        "attempts": [
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "lower_z_to_safe_contact",
+              "pre_add": [],
+              "offset_z_m": -0.008,
+              "reason": "Lowers the approach point below the table surface to ensure the gripper contacts the object before closing, resolving the 'No simultaneous force' error seen in failed trials."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 25.63999999999658,
+                  "wall_seconds": 1.2551139580318704
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/random901/candidate00/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 16.500000000001645,
+                  "wall_seconds": 0.8589350840775296
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0302m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/random901/candidate00/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "add_clear_predicate",
+              "pre_add": [
+                {
+                  "action": "pick_table",
+                  "predicate": "clear",
+                  "args": [
+                    "object"
+                  ]
+                }
+              ],
+              "offset_z_m": null,
+              "reason": "The failed executions show 'ontable' becoming false after the action (unexpected removal), suggesting the planner might be executing on an unstable state or the preconditions are not strictly enforced at runtime. Adding 'clear' as a required precondition ensures the robot only attempts to pick objects that are truly free of other blocks, preventing collisions with neighbors like 'red' or 'yellow'."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 6.839999999999451,
+                  "wall_seconds": 0.2114801249699667
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/random901/candidate02/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "increase_z_margin",
+              "pre_add": [],
+              "offset_z_m": 0.02,
+              "reason": "Increases the Z-offset slightly above the failed 0.045m value to provide more clearance for the approach phase, potentially allowing the controller to find a valid closure trajectory if the current estimate is slightly low."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.319999999999398,
+                  "wall_seconds": 0.2276332499459386
+                },
+                "exception": "RuntimeError: Grasp geometry inconsistent",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/random901/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 56.29999999999707,
+          "wall_seconds": 2.5531624170253053
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 4,
+            "actions": 7,
+            "api_calls": 31,
+            "simulation_seconds": 56.29999999999707,
+            "wall_seconds": 2.5531624170253053
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1701,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1701/random902/search.json",
+      "sha256": "2164dde1f5cc8e4fba8d4b6357a192a54a4d84d9257459256a9dff66f8da0b53",
+      "result": {
+        "method": "random",
+        "seed": 902,
+        "order": [
+          0,
+          2,
+          1
+        ],
+        "attempts": [
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "lower_z_to_safe_contact",
+              "pre_add": [],
+              "offset_z_m": -0.008,
+              "reason": "Lowers the approach point below the table surface to ensure the gripper contacts the object before closing, resolving the 'No simultaneous force' error seen in failed trials."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 25.63999999999658,
+                  "wall_seconds": 1.1444880000781268
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/random902/candidate00/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 16.500000000001645,
+                  "wall_seconds": 0.8515573750482872
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0302m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/random902/candidate00/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "add_clear_predicate",
+              "pre_add": [
+                {
+                  "action": "pick_table",
+                  "predicate": "clear",
+                  "args": [
+                    "object"
+                  ]
+                }
+              ],
+              "offset_z_m": null,
+              "reason": "The failed executions show 'ontable' becoming false after the action (unexpected removal), suggesting the planner might be executing on an unstable state or the preconditions are not strictly enforced at runtime. Adding 'clear' as a required precondition ensures the robot only attempts to pick objects that are truly free of other blocks, preventing collisions with neighbors like 'red' or 'yellow'."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 6.839999999999451,
+                  "wall_seconds": 0.2164748749928549
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/random902/candidate02/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "increase_z_margin",
+              "pre_add": [],
+              "offset_z_m": 0.02,
+              "reason": "Increases the Z-offset slightly above the failed 0.045m value to provide more clearance for the approach phase, potentially allowing the controller to find a valid closure trajectory if the current estimate is slightly low."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.319999999999398,
+                  "wall_seconds": 0.23378633300308138
+                },
+                "exception": "RuntimeError: Grasp geometry inconsistent",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/random902/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 56.29999999999707,
+          "wall_seconds": 2.4463065831223503
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 4,
+            "actions": 7,
+            "api_calls": 31,
+            "simulation_seconds": 56.29999999999707,
+            "wall_seconds": 2.4463065831223503
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1701,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1701/enumerate/search.json",
+      "sha256": "7c2408c5f2723b44d78459d857ecdc5dc89f5a25dd82ffd485d5b95b8e68d918",
+      "result": {
+        "method": "enumerate",
+        "seed": null,
+        "order": [
+          0,
+          1,
+          2
+        ],
+        "attempts": [
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "lower_z_to_safe_contact",
+              "pre_add": [],
+              "offset_z_m": -0.008,
+              "reason": "Lowers the approach point below the table surface to ensure the gripper contacts the object before closing, resolving the 'No simultaneous force' error seen in failed trials."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 25.63999999999658,
+                  "wall_seconds": 1.1576425830135122
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/enumerate/candidate00/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 16.500000000001645,
+                  "wall_seconds": 0.8406362910754979
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0302m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/enumerate/candidate00/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "increase_z_margin",
+              "pre_add": [],
+              "offset_z_m": 0.02,
+              "reason": "Increases the Z-offset slightly above the failed 0.045m value to provide more clearance for the approach phase, potentially allowing the controller to find a valid closure trajectory if the current estimate is slightly low."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.319999999999398,
+                  "wall_seconds": 0.23148045898415148
+                },
+                "exception": "RuntimeError: Grasp geometry inconsistent",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/enumerate/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "add_clear_predicate",
+              "pre_add": [
+                {
+                  "action": "pick_table",
+                  "predicate": "clear",
+                  "args": [
+                    "object"
+                  ]
+                }
+              ],
+              "offset_z_m": null,
+              "reason": "The failed executions show 'ontable' becoming false after the action (unexpected removal), suggesting the planner might be executing on an unstable state or the preconditions are not strictly enforced at runtime. Adding 'clear' as a required precondition ensures the robot only attempts to pick objects that are truly free of other blocks, preventing collisions with neighbors like 'red' or 'yellow'."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 6.839999999999451,
+                  "wall_seconds": 0.21240016596857458
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/enumerate/candidate02/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 56.29999999999707,
+          "wall_seconds": 2.442159499041736
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 4,
+            "actions": 7,
+            "api_calls": 31,
+            "simulation_seconds": 56.29999999999707,
+            "wall_seconds": 2.442159499041736
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1701,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1702/ranked/search.json",
+      "sha256": "81a0e1b404639c17ee79f3200b201db19921e4f55d2ae89a8a2cc2b695dfd6f9",
+      "result": {
+        "method": "ranked",
+        "seed": null,
+        "order": [
+          0,
+          1,
+          2
+        ],
+        "attempts": [
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "offset_z_0_01",
+              "pre_add": [],
+              "offset_z_m": 0.01,
+              "reason": "Increases approach height to prevent finger collision and ensure simultaneous force generation during closure, addressing the primary failure mode in failed executions."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.399999999997267,
+                  "wall_seconds": 1.0780162500450388
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/ranked/candidate00/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 16.5800000000016,
+                  "wall_seconds": 0.8494245000183582
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0500m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/ranked/candidate00/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "offset_z_0_02",
+              "pre_add": [],
+              "offset_z_m": 0.02,
+              "reason": "Provides a more conservative approach height to guarantee clearance over objects of varying heights, reducing collision risk further."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.319999999999398,
+                  "wall_seconds": 0.23057104204781353
+                },
+                "exception": "RuntimeError: Grasp geometry inconsistent",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/ranked/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "offset_z_0_005",
+              "pre_add": [],
+              "offset_z_m": 0.005,
+              "reason": "Minimal adjustment to lift the approach point just enough to avoid immediate contact while maintaining proximity for stable grasping."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.759999999997067,
+                  "wall_seconds": 1.0832113329088315
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/ranked/candidate02/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 15.820000000002006,
+                  "wall_seconds": 0.815142875071615
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0149m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/ranked/candidate02/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 5,
+          "actions": 11,
+          "api_calls": 47,
+          "simulation_seconds": 88.87999999999734,
+          "wall_seconds": 4.056366000091657
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 5,
+            "actions": 11,
+            "api_calls": 47,
+            "simulation_seconds": 88.87999999999734,
+            "wall_seconds": 4.056366000091657
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1702,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1702/random901/search.json",
+      "sha256": "e6180bfb753a50d3d4c5971c4401c7f21db6c94bd69a352e5a24c95d075ac4df",
+      "result": {
+        "method": "random",
+        "seed": 901,
+        "order": [
+          0,
+          2,
+          1
+        ],
+        "attempts": [
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "offset_z_0_01",
+              "pre_add": [],
+              "offset_z_m": 0.01,
+              "reason": "Increases approach height to prevent finger collision and ensure simultaneous force generation during closure, addressing the primary failure mode in failed executions."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.399999999997267,
+                  "wall_seconds": 1.0744974999688566
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random901/candidate00/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 16.5800000000016,
+                  "wall_seconds": 0.846220540930517
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0500m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random901/candidate00/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "offset_z_0_005",
+              "pre_add": [],
+              "offset_z_m": 0.005,
+              "reason": "Minimal adjustment to lift the approach point just enough to avoid immediate contact while maintaining proximity for stable grasping."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.759999999997067,
+                  "wall_seconds": 1.091855708975345
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random901/candidate02/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 15.820000000002006,
+                  "wall_seconds": 0.8207069580676034
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0149m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random901/candidate02/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "offset_z_0_02",
+              "pre_add": [],
+              "offset_z_m": 0.02,
+              "reason": "Provides a more conservative approach height to guarantee clearance over objects of varying heights, reducing collision risk further."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.319999999999398,
+                  "wall_seconds": 0.23387216706760228
+                },
+                "exception": "RuntimeError: Grasp geometry inconsistent",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random901/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 5,
+          "actions": 11,
+          "api_calls": 47,
+          "simulation_seconds": 88.87999999999734,
+          "wall_seconds": 4.067152875009924
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 5,
+            "actions": 11,
+            "api_calls": 47,
+            "simulation_seconds": 88.87999999999734,
+            "wall_seconds": 4.067152875009924
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1702,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1702/random902/search.json",
+      "sha256": "245bdcb949da25d1444b6c50e2f819bb9c6489a341b3ededf79a61ba4ea67f9e",
+      "result": {
+        "method": "random",
+        "seed": 902,
+        "order": [
+          0,
+          2,
+          1
+        ],
+        "attempts": [
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "offset_z_0_01",
+              "pre_add": [],
+              "offset_z_m": 0.01,
+              "reason": "Increases approach height to prevent finger collision and ensure simultaneous force generation during closure, addressing the primary failure mode in failed executions."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.399999999997267,
+                  "wall_seconds": 1.0423466250067577
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random902/candidate00/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 16.5800000000016,
+                  "wall_seconds": 0.8277642080793157
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0500m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random902/candidate00/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "offset_z_0_005",
+              "pre_add": [],
+              "offset_z_m": 0.005,
+              "reason": "Minimal adjustment to lift the approach point just enough to avoid immediate contact while maintaining proximity for stable grasping."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.759999999997067,
+                  "wall_seconds": 1.0911885419627652
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random902/candidate02/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 15.820000000002006,
+                  "wall_seconds": 0.8128157500177622
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0149m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random902/candidate02/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "offset_z_0_02",
+              "pre_add": [],
+              "offset_z_m": 0.02,
+              "reason": "Provides a more conservative approach height to guarantee clearance over objects of varying heights, reducing collision risk further."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.319999999999398,
+                  "wall_seconds": 0.2342090830206871
+                },
+                "exception": "RuntimeError: Grasp geometry inconsistent",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random902/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 5,
+          "actions": 11,
+          "api_calls": 47,
+          "simulation_seconds": 88.87999999999734,
+          "wall_seconds": 4.008324208087288
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 5,
+            "actions": 11,
+            "api_calls": 47,
+            "simulation_seconds": 88.87999999999734,
+            "wall_seconds": 4.008324208087288
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1702,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1702/enumerate/search.json",
+      "sha256": "3057a66c3c2d6afd4fd004dc9eec41f31d43136a197a0a35cc0ee47fa6e9d69a",
+      "result": {
+        "method": "enumerate",
+        "seed": null,
+        "order": [
+          2,
+          0,
+          1
+        ],
+        "attempts": [
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "offset_z_0_005",
+              "pre_add": [],
+              "offset_z_m": 0.005,
+              "reason": "Minimal adjustment to lift the approach point just enough to avoid immediate contact while maintaining proximity for stable grasping."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.759999999997067,
+                  "wall_seconds": 1.0782342080492526
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/enumerate/candidate02/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 15.820000000002006,
+                  "wall_seconds": 0.7948501670034602
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0149m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/enumerate/candidate02/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "offset_z_0_01",
+              "pre_add": [],
+              "offset_z_m": 0.01,
+              "reason": "Increases approach height to prevent finger collision and ensure simultaneous force generation during closure, addressing the primary failure mode in failed executions."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.399999999997267,
+                  "wall_seconds": 1.0615456249797717
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/enumerate/candidate00/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 16.5800000000016,
+                  "wall_seconds": 0.8425109999952838
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0500m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/enumerate/candidate00/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "offset_z_0_02",
+              "pre_add": [],
+              "offset_z_m": 0.02,
+              "reason": "Provides a more conservative approach height to guarantee clearance over objects of varying heights, reducing collision risk further."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.319999999999398,
+                  "wall_seconds": 0.22909354197327048
+                },
+                "exception": "RuntimeError: Grasp geometry inconsistent",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/enumerate/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 5,
+          "actions": 11,
+          "api_calls": 47,
+          "simulation_seconds": 88.87999999999734,
+          "wall_seconds": 4.006234542001039
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 5,
+            "actions": 11,
+            "api_calls": 47,
+            "simulation_seconds": 88.87999999999734,
+            "wall_seconds": 4.006234542001039
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1702,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1703/ranked/search.json",
+      "sha256": "43c31c5f79d5a50ea10801fd7013049c64d0cff362551dde7c919f540319cb2c",
+      "result": {
+        "method": "ranked",
+        "seed": null,
+        "order": [
+          0,
+          1,
+          2
+        ],
+        "attempts": [
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "offset_mid_range",
+              "pre_add": [],
+              "offset_z_m": 0.035,
+              "reason": "Adjusts offset to the midpoint between the failed (0.045m) and successful (0.0m) observations, providing a safer margin for variable object heights while avoiding excessive travel time."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.039999999999429,
+                  "wall_seconds": 0.21741662500426173
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/ranked/candidate00/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "add_clear_predicate",
+              "pre_add": [
+                {
+                  "action": "pick_table",
+                  "predicate": "clear",
+                  "args": [
+                    "object"
+                  ]
+                }
+              ],
+              "offset_z_m": null,
+              "reason": "The failed executions show 'clear(blue)' remaining true after pick_table, violating the expected state transition. Adding 'clear(object)' as a persistent precondition ensures the planner only attempts pickup if the object is truly unobstructed, addressing logical inconsistencies in the world model."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 6.839999999999451,
+                  "wall_seconds": 0.21001229097601026
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/ranked/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "offset_min_safe",
+              "pre_add": [],
+              "offset_z_m": 0.008,
+              "reason": "Sets offset to the absolute minimum bound (-0.008m upper limit effectively 0.008m positive here) to test if the current grasp_point estimate is slightly too high; if this fails, it confirms the need for a larger offset."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.53999999999719,
+                  "wall_seconds": 1.0899871250148863
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/ranked/candidate02/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 15.660000000001952,
+                  "wall_seconds": 0.8282083749072626
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0105m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/ranked/candidate02/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.079999999998016,
+          "wall_seconds": 2.345624415902421
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 4,
+            "actions": 7,
+            "api_calls": 31,
+            "simulation_seconds": 54.079999999998016,
+            "wall_seconds": 2.345624415902421
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1703,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1703/random901/search.json",
+      "sha256": "106fcc744ca926a27e3a030d651241d218b749caedebb43462560ab81d9f0225",
+      "result": {
+        "method": "random",
+        "seed": 901,
+        "order": [
+          0,
+          2,
+          1
+        ],
+        "attempts": [
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "offset_mid_range",
+              "pre_add": [],
+              "offset_z_m": 0.035,
+              "reason": "Adjusts offset to the midpoint between the failed (0.045m) and successful (0.0m) observations, providing a safer margin for variable object heights while avoiding excessive travel time."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.039999999999429,
+                  "wall_seconds": 0.22279570798855275
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/random901/candidate00/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "offset_min_safe",
+              "pre_add": [],
+              "offset_z_m": 0.008,
+              "reason": "Sets offset to the absolute minimum bound (-0.008m upper limit effectively 0.008m positive here) to test if the current grasp_point estimate is slightly too high; if this fails, it confirms the need for a larger offset."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.53999999999719,
+                  "wall_seconds": 1.049968249979429
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/random901/candidate02/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 15.660000000001952,
+                  "wall_seconds": 0.7779914579587057
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0105m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/random901/candidate02/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "add_clear_predicate",
+              "pre_add": [
+                {
+                  "action": "pick_table",
+                  "predicate": "clear",
+                  "args": [
+                    "object"
+                  ]
+                }
+              ],
+              "offset_z_m": null,
+              "reason": "The failed executions show 'clear(blue)' remaining true after pick_table, violating the expected state transition. Adding 'clear(object)' as a persistent precondition ensures the planner only attempts pickup if the object is truly unobstructed, addressing logical inconsistencies in the world model."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 6.839999999999451,
+                  "wall_seconds": 0.21587645797990263
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/random901/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.079999999998016,
+          "wall_seconds": 2.26663187390659
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 4,
+            "actions": 7,
+            "api_calls": 31,
+            "simulation_seconds": 54.079999999998016,
+            "wall_seconds": 2.26663187390659
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1703,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1703/random902/search.json",
+      "sha256": "5a7503160d3cbf0af1343ddc8517cb069601504b6d7d42a657d891df026ec684",
+      "result": {
+        "method": "random",
+        "seed": 902,
+        "order": [
+          0,
+          2,
+          1
+        ],
+        "attempts": [
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "offset_mid_range",
+              "pre_add": [],
+              "offset_z_m": 0.035,
+              "reason": "Adjusts offset to the midpoint between the failed (0.045m) and successful (0.0m) observations, providing a safer margin for variable object heights while avoiding excessive travel time."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.039999999999429,
+                  "wall_seconds": 0.21538083301857114
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/random902/candidate00/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "offset_min_safe",
+              "pre_add": [],
+              "offset_z_m": 0.008,
+              "reason": "Sets offset to the absolute minimum bound (-0.008m upper limit effectively 0.008m positive here) to test if the current grasp_point estimate is slightly too high; if this fails, it confirms the need for a larger offset."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.53999999999719,
+                  "wall_seconds": 1.0590611670631915
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/random902/candidate02/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 15.660000000001952,
+                  "wall_seconds": 0.7918035419424996
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0105m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/random902/candidate02/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "add_clear_predicate",
+              "pre_add": [
+                {
+                  "action": "pick_table",
+                  "predicate": "clear",
+                  "args": [
+                    "object"
+                  ]
+                }
+              ],
+              "offset_z_m": null,
+              "reason": "The failed executions show 'clear(blue)' remaining true after pick_table, violating the expected state transition. Adding 'clear(object)' as a persistent precondition ensures the planner only attempts pickup if the object is truly unobstructed, addressing logical inconsistencies in the world model."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 6.839999999999451,
+                  "wall_seconds": 0.2096998339984566
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/random902/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.079999999998016,
+          "wall_seconds": 2.275945376022719
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 4,
+            "actions": 7,
+            "api_calls": 31,
+            "simulation_seconds": 54.079999999998016,
+            "wall_seconds": 2.275945376022719
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1703,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    },
+    {
+      "path": "searches/generation1703/enumerate/search.json",
+      "sha256": "ebc0a0f2f0afefdbc9af30ba196388b83a68ba88847d2e3df67a11b54bb0f668",
+      "result": {
+        "method": "enumerate",
+        "seed": null,
+        "order": [
+          2,
+          0,
+          1
+        ],
+        "attempts": [
+          {
+            "pool_index": 2,
+            "candidate": {
+              "id": "offset_min_safe",
+              "pre_add": [],
+              "offset_z_m": 0.008,
+              "reason": "Sets offset to the absolute minimum bound (-0.008m upper limit effectively 0.008m positive here) to test if the current grasp_point estimate is slightly too high; if this fails, it confirms the need for a larger offset."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": true,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 3,
+                  "api_calls": 12,
+                  "simulation_seconds": 24.53999999999719,
+                  "wall_seconds": 1.0533396659884602
+                },
+                "exception": null,
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/enumerate/candidate02/probe00/result.json"
+              },
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 2,
+                  "api_calls": 9,
+                  "simulation_seconds": 15.660000000001952,
+                  "wall_seconds": 0.7876796250930056
+                },
+                "exception": "RuntimeError: lower_blue: TCP residual 0.0105m",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/enumerate/candidate02/probe01/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 0,
+            "candidate": {
+              "id": "offset_mid_range",
+              "pre_add": [],
+              "offset_z_m": 0.035,
+              "reason": "Adjusts offset to the midpoint between the failed (0.045m) and successful (0.0m) observations, providing a safer margin for variable object heights while avoiding excessive travel time."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 7.039999999999429,
+                  "wall_seconds": 0.21821645798627287
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/enumerate/candidate00/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          },
+          {
+            "pool_index": 1,
+            "candidate": {
+              "id": "add_clear_predicate",
+              "pre_add": [
+                {
+                  "action": "pick_table",
+                  "predicate": "clear",
+                  "args": [
+                    "object"
+                  ]
+                }
+              ],
+              "offset_z_m": null,
+              "reason": "The failed executions show 'clear(blue)' remaining true after pick_table, violating the expected state transition. Adding 'clear(object)' as a persistent precondition ensures the planner only attempts pickup if the object is truly unobstructed, addressing logical inconsistencies in the world model."
+            },
+            "trials": [
+              {
+                "phase": "probe",
+                "success": false,
+                "trial_valid": true,
+                "cost": {
+                  "rollouts": 1,
+                  "actions": 1,
+                  "api_calls": 5,
+                  "simulation_seconds": 6.839999999999451,
+                  "wall_seconds": 0.21974008297547698
+                },
+                "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+                "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1703/enumerate/candidate01/probe00/result.json"
+              }
+            ],
+            "confirmed": false
+          }
+        ],
+        "selected": null,
+        "status": "pool_exhausted_abstain",
+        "max_rollouts": 20,
+        "cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.07999999999802,
+          "wall_seconds": 2.2789758320432156
+        },
+        "phase_costs": {
+          "probe": {
+            "rollouts": 4,
+            "actions": 7,
+            "api_calls": 31,
+            "simulation_seconds": 54.07999999999802,
+            "wall_seconds": 2.2789758320432156
+          },
+          "confirmation": {
+            "rollouts": 0,
+            "actions": 0,
+            "api_calls": 0,
+            "simulation_seconds": 0,
+            "wall_seconds": 0
+          }
+        },
+        "deployment_rule": "only selected independently confirmed candidate; otherwise abstain",
+        "generation_seed": 1703,
+        "shared_baseline_cost": {
+          "rollouts": 4,
+          "actions": 7,
+          "api_calls": 31,
+          "simulation_seconds": 54.81999999999768,
+          "wall_seconds": 3.219352542073466
+        }
+      }
+    }
+  ]
+}

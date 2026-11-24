@@ -1,0 +1,147 @@
+{
+  "version": "capability-regions-pilot-v1",
+  "main_question": "在有限交互下，建立与实际能力匹配、且能支持任务组合的技能契约。",
+  "question": "Does context-dependent selection outperform a single fixed grasp-offset candidate on this finite paired matrix?",
+  "scope": "development_probe_of_parameter_regions_not_new_skill_discovery",
+  "base_config": "project/scenes/blocks_rebuilt_v1.json",
+  "max_trials": 24,
+  "max_actions": 16,
+  "stable_seconds": 1.0,
+  "max_object_linear_speed_m_s": 0.01,
+  "max_object_angular_speed_rad_s": 0.1,
+  "render": false,
+  "model_calls": 0,
+  "perception": "read_only_oracle",
+  "require_clear": true,
+  "occupied_conditions": [
+    false,
+    true
+  ],
+  "candidates": [
+    {
+      "id": "zero",
+      "offset_z_m": 0.0
+    },
+    {
+      "id": "lower4mm",
+      "offset_z_m": -0.004
+    },
+    {
+      "id": "higher4mm",
+      "offset_z_m": 0.004
+    }
+  ],
+  "layouts": [
+    {
+      "id": "g0",
+      "split": "development",
+      "geometry_origin": "blocks_p0/dev-a coordinates",
+      "payload": "yellow",
+      "support": "green",
+      "blocker": "red",
+      "distractor": "blue",
+      "source_xy": [
+        0.34,
+        0.15
+      ],
+      "target_xy": [
+        0.57,
+        0.15
+      ],
+      "buffer_xy": [
+        0.34,
+        -0.15
+      ],
+      "distractor_xy": [
+        0.57,
+        -0.15
+      ]
+    },
+    {
+      "id": "g1",
+      "split": "development",
+      "geometry_origin": "blocks_p0/val-a coordinates with fixed roles",
+      "payload": "yellow",
+      "support": "green",
+      "blocker": "red",
+      "distractor": "blue",
+      "source_xy": [
+        0.33,
+        0.13
+      ],
+      "target_xy": [
+        0.55,
+        0.13
+      ],
+      "buffer_xy": [
+        0.33,
+        -0.14
+      ],
+      "distractor_xy": [
+        0.56,
+        -0.15
+      ]
+    },
+    {
+      "id": "g2",
+      "split": "extension",
+      "geometry_origin": "blocks_p0/test-a coordinates with fixed roles; historically exposed",
+      "payload": "yellow",
+      "support": "green",
+      "blocker": "red",
+      "distractor": "blue",
+      "source_xy": [
+        0.35,
+        0.11
+      ],
+      "target_xy": [
+        0.56,
+        0.11
+      ],
+      "buffer_xy": [
+        0.35,
+        -0.13
+      ],
+      "distractor_xy": [
+        0.57,
+        -0.16
+      ]
+    },
+    {
+      "id": "g3",
+      "split": "extension",
+      "geometry_origin": "blocks_p0/test-b coordinates with fixed roles; historically exposed",
+      "payload": "yellow",
+      "support": "green",
+      "blocker": "red",
+      "distractor": "blue",
+      "source_xy": [
+        0.32,
+        0.17
+      ],
+      "target_xy": [
+        0.54,
+        0.17
+      ],
+      "buffer_xy": [
+        0.32,
+        -0.12
+      ],
+      "distractor_xy": [
+        0.56,
+        -0.14
+      ]
+    }
+  ],
+  "selection_rule": "maximize development strict success, then minimize absolute offset, then protocol candidate order",
+  "conditional_feature": "observed initial clear(support); scene id and injected condition are not selector inputs",
+  "notes": [
+    "All candidates share complete clear(support) contracts, action inventory, goals and evaluation thresholds.",
+    "Offset is a world-z replacement added after oracle grasp_point and affects pick_table and unstack.",
+    "Geometry is reused development material; extension is a prospective run boundary, not untouched OOD evaluation.",
+    "Freeze global and two-bin observable-condition selectors after exactly 12 development trials.",
+    "Full-matrix per-condition best selection is hindsight diagnostic only, not deployed performance.",
+    "If a fixed candidate covers all conditions, do not claim context-dependent strategies are necessary.",
+    "An invalid trial stops the pilot; no automatic retries, threshold adjustment or model loading."
+  ]
+}

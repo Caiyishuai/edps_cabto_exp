@@ -1,0 +1,19 @@
+{
+  "name": "pick",
+  "args": {
+    "object": "apple",
+    "support": "board"
+  },
+  "pre": [
+    "empty()",
+    "at_source(apple)"
+  ],
+  "add": [
+    "holding(apple)"
+  ],
+  "del": [
+    "empty()",
+    "at_source(apple)",
+    "home_completed()"
+  ]
+}

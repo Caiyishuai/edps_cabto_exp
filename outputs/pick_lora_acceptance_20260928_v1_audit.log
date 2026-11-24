@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/yishuaicai/mywork/edps_cabto_exp/project/experiments/audit_pick_lora_training.py", line 157, in <module>
+    audit(args)
+  File "/Users/yishuaicai/mywork/edps_cabto_exp/project/experiments/audit_pick_lora_training.py", line 137, in audit
+    raise ValueError("Real-model audit failed; see individual metrics")
+ValueError: Real-model audit failed; see individual metrics

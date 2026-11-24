@@ -1,0 +1,38 @@
+{
+  "decision": "propose",
+  "reason": "Grasp failures (evidence 94611a251028 and e027735b3d88) show zero finger force at closure, indicating a controller/parameter issue. Evidence 333bb0724f68 shows a successful grasp but a placement failure due to 'lower_blue: TCP residual', which occurs when the support (yellow) is occupied by red ('on(red,yellow)'). This confirms the placement failure is caused by a missing precondition (clear support). The proposed edit adds the 'clear' predicate to the 'stack' action to resolve the occupancy violation.",
+  "accepted": [
+    {
+      "rank": 0,
+      "candidate": {
+        "id": "stack_clear_support",
+        "pre_add": [
+          {
+            "action": "stack",
+            "predicate": "clear",
+            "args": [
+              "support"
+            ]
+          }
+        ],
+        "offset_z_m": null,
+        "reason": "Placement failure in evidence 333bb0724f68 is caused by the support being occupied; adding 'clear(support)' ensures the support is empty before stacking."
+      },
+      "origin": "real_LM_response",
+      "recipe_sha256": "9f6df79687defb1208a78a6beeae442545cfb26c20896d2ba100439f47a212df"
+    },
+    {
+      "rank": 1,
+      "candidate": {
+        "id": "pick_table_offset_fix",
+        "pre_add": [],
+        "offset_z_m": 0.055,
+        "reason": "Grasp failures show zero finger force at closure; increasing the Z-offset to the maximum bound (0.055m) may improve contact stability for the gripper controller."
+      },
+      "origin": "real_LM_response",
+      "recipe_sha256": "6e69453b84a3118983da37ae975add73dbbf4ca3a07bb5d0da41660fca241c71"
+    }
+  ],
+  "rejected": [],
+  "status": "parsed"
+}

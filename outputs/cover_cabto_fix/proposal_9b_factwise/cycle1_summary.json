@@ -1,0 +1,564 @@
+{
+  "models": [
+    {
+      "name": "pick",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [],
+      "add": [
+        "holding(shrimp)",
+        "at_target(shrimp)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(shrimp)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [
+        "holding(shrimp)"
+      ],
+      "add": [],
+      "del": [
+        "empty()",
+        "at_source(shrimp)",
+        "holding(shrimp)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "pick",
+      "args": {
+        "object": "apple",
+        "support": "board"
+      },
+      "pre": [],
+      "add": [
+        "holding(apple)",
+        "at_target(apple)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(apple)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "apple",
+        "support": "board"
+      },
+      "pre": [
+        "holding(apple)"
+      ],
+      "add": [],
+      "del": [
+        "empty()",
+        "at_source(apple)",
+        "holding(apple)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "pick",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [],
+      "add": [
+        "holding(potato)",
+        "at_target(potato)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(potato)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [
+        "holding(potato)"
+      ],
+      "add": [],
+      "del": [
+        "empty()",
+        "at_source(potato)",
+        "holding(potato)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "home",
+      "args": {},
+      "pre": [
+        "empty()",
+        "home_completed()"
+      ],
+      "add": [],
+      "del": []
+    }
+  ],
+  "calls": [
+    {
+      "cycle": 1,
+      "signature": "pick",
+      "atom": "empty()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\n  \"required_true\": false,\n  \"effect\": \"delete\"\n}",
+        "wall_seconds": 0.8417170409811661
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "pick",
+      "atom": "at_source(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is still resting at its original table source.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is still resting at its original table source.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": false, \"effect\": \"delete\"}",
+        "wall_seconds": 0.4014365420443937
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "pick",
+      "atom": "holding(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is held by the closed gripper in the air.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is held by the closed gripper in the air.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": false, \"effect\": \"add\"}",
+        "wall_seconds": 0.46897837496362627
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "add"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "pick",
+      "atom": "at_target(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is released and resting on its destination support.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the object is released and resting on its destination support.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": false, \"effect\": \"add\"}",
+        "wall_seconds": 0.7416572500951588
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "add"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "pick",
+      "atom": "home_completed()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: grasp an object from its table source and lift it, leaving it held in the air; the arm moves away from HOME.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\n\"required_true\": false,\n\"effect\": \"delete\"\n}",
+        "wall_seconds": 0.9799833749420941
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "place",
+      "atom": "empty()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": false, \"effect\": \"delete\"}",
+        "wall_seconds": 0.6964411250082776
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "place",
+      "atom": "at_source(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is still resting at its original table source.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is still resting at its original table source.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": false, \"effect\": \"delete\"}",
+        "wall_seconds": 1.6130396669032052
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "place",
+      "atom": "holding(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is held by the closed gripper in the air.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is held by the closed gripper in the air.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\n  \"required_true\": true,\n  \"effect\": \"delete\"\n}",
+        "wall_seconds": 1.3630142499459907
+      },
+      "classification": {
+        "required_true": true,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "place",
+      "atom": "at_target(OBJECT)",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is released and resting on its destination support.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the object is released and resting on its destination support.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\n  \"required_true\": false,\n  \"effect\": \"keep\"\n}",
+        "wall_seconds": 1.4073258329881355
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "keep"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "place",
+      "atom": "home_completed()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an ALREADY HELD object to its destination, lower, release and withdraw the hand; do not go HOME.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": false, \"effect\": \"delete\"}",
+        "wall_seconds": 1.114226375008002
+      },
+      "classification": {
+        "required_true": false,
+        "effect": "delete"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "home",
+      "atom": "empty()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an EMPTY OPEN arm to HOME; do not touch any object.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an EMPTY OPEN arm to HOME; do not touch any object.\nAnalyze ONLY this proposition: the robot hand is empty and open.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": true, \"effect\": \"keep\"}",
+        "wall_seconds": 0.9657855419209227
+      },
+      "classification": {
+        "required_true": true,
+        "effect": "keep"
+      }
+    },
+    {
+      "cycle": 1,
+      "signature": "home",
+      "atom": "home_completed()",
+      "call": {
+        "model_id": "mlx-community/Qwen3.5-9B-4bit",
+        "text": "Action: move an EMPTY OPEN arm to HOME; do not touch any object.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}",
+        "image_files": [],
+        "formatted_prompt": "<|im_start|>user\nAction: move an EMPTY OPEN arm to HOME; do not touch any object.\nAnalyze ONLY this proposition: the empty open robot arm is at HOME.\nQuestion 1: must that proposition be TRUE before starting this action? required_true=true or false. Question 2: what does completing this action do to that proposition? effect=add (makes it true), delete (makes it false), or keep (does not change it). If it must be true beforehand and stays true, use keep, not add. False preconditions are not represented. Return ONLY JSON {\"required_true\": boolean, \"effect\": \"add|delete|keep\"}. Do NOT discuss other propositions.\nPrior validator feedback: {}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "temperature": 0.15,
+        "max_tokens": 160,
+        "raw": "{\"required_true\": true, \"effect\": \"keep\"}",
+        "wall_seconds": 0.9402564999181777
+      },
+      "classification": {
+        "required_true": true,
+        "effect": "keep"
+      }
+    }
+  ],
+  "check": {
+    "complete_for_P": false,
+    "admissible_reachable_states": false,
+    "reachable_state_count": 27,
+    "mutex_violations": [
+      {
+        "action": "pick(object=shrimp,support=bowl)",
+        "before": [
+          "at_source(apple)",
+          "at_source(potato)",
+          "at_source(shrimp)",
+          "empty()"
+        ],
+        "after": [
+          "at_source(apple)",
+          "at_source(potato)",
+          "at_target(shrimp)",
+          "holding(shrimp)"
+        ]
+      },
+      {
+        "action": "pick(object=apple,support=board)",
+        "before": [
+          "at_source(apple)",
+          "at_source(potato)",
+          "at_source(shrimp)",
+          "empty()"
+        ],
+        "after": [
+          "at_source(potato)",
+          "at_source(shrimp)",
+          "at_target(apple)",
+          "holding(apple)"
+        ]
+      },
+      {
+        "action": "pick(object=potato,support=pan)",
+        "before": [
+          "at_source(apple)",
+          "at_source(potato)",
+          "at_source(shrimp)",
+          "empty()"
+        ],
+        "after": [
+          "at_source(apple)",
+          "at_source(shrimp)",
+          "at_target(potato)",
+          "holding(potato)"
+        ]
+      },
+      {
+        "action": "pick(object=shrimp,support=bowl)",
+        "before": [
+          "at_source(apple)",
+          "at_source(potato)",
+          "at_target(shrimp)",
+          "holding(shrimp)"
+        ],
+        "after": [
+          "at_source(apple)",
+          "at_source(potato)",
+          "at_target(shrimp)",
+          "holding(shrimp)"
+        ]
+      },
+      {
+        "action": "place(object=shrimp,support=bowl)",
+        "before": [
+          "at_source(apple)",
+          "at_source(potato)",
+          "at_target(shrimp)",
+          "holding(shrimp)"
+        ],
+        "after": [
+          "at_source(apple)",
+          "at_source(potato)",
+          "at_target(shrimp)"
+        ]
+      },
+      {
+        "action": "pick(object=apple,support=board)",
+        "before": [
+          "at_source(apple)",
+          "at_source(potato)",
+          "at_target(shrimp)",
+          "holding(shrimp)"
+        ],
+        "after": [
+          "at_source(potato)",
+          "at_target(apple)",
+          "at_target(shrimp)",
+          "holding(apple)",
+          "holding(shrimp)"
+        ]
+      },
+      {
+        "action": "pick(object=potato,support=pan)",
+        "before": [
+          "at_source(apple)",
+          "at_source(potato)",
+          "at_target(shrimp)",
+          "holding(shrimp)"
+        ],
+        "after": [
+          "at_source(apple)",
+          "at_target(potato)",
+          "at_target(shrimp)",
+          "holding(potato)",
+          "holding(shrimp)"
+        ]
+      },
+      {
+        "action": "pick(object=shrimp,support=bowl)",
+        "before": [
+          "at_source(potato)",
+          "at_source(shrimp)",
+          "at_target(apple)",
+          "holding(apple)"
+        ],
+        "after": [
+          "at_source(potato)",
+          "at_target(apple)",
+          "at_target(shrimp)",
+          "holding(apple)",
+          "holding(shrimp)"
+        ]
+      },
+      {
+        "action": "pick(object=apple,support=board)",
+        "before": [
+          "at_source(potato)",
+          "at_source(shrimp)",
+          "at_target(apple)",
+          "holding(apple)"
+        ],
+        "after": [
+          "at_source(potato)",
+          "at_source(shrimp)",
+          "at_target(apple)",
+          "holding(apple)"
+        ]
+      },
+      {
+        "action": "place(object=apple,support=board)",
+        "before": [
+          "at_source(potato)",
+          "at_source(shrimp)",
+          "at_target(apple)",
+          "holding(apple)"
+        ],
+        "after": [
+          "at_source(potato)",
+          "at_source(shrimp)",
+          "at_target(apple)"
+        ]
+      },
+      {
+        "action": "pick(object=potato,support=pan)",
+        "before": [
+          "at_source(potato)",
+          "at_source(shrimp)",
+          "at_target(apple)",
+          "holding(apple)"
+        ],
+        "after": [
+          "at_source(shrimp)",
+          "at_target(apple)",
+          "at_target(potato)",
+          "holding(apple)",
+          "holding(potato)"
+        ]
+      },
+      {
+        "action": "pick(object=shrimp,support=bowl)",
+        "before": [
+          "at_source(apple)",
+          "at_source(shrimp)",
+          "at_target(potato)",
+          "holding(potato)"
+        ],
+        "after": [
+          "at_source(apple)",
+          "at_target(potato)",
+          "at_target(shrimp)",
+          "holding(potato)",
+          "holding(shrimp)"
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "task": "C1",
+        "bfs_reachable": false,
+        "planner": {
+          "reached_goal": false,
+          "reason": "正式 BT 内核无法从该 start 构建目标树"
+        }
+      },
+      {
+        "task": "C2",
+        "bfs_reachable": false,
+        "planner": {
+          "reached_goal": false,
+          "reason": "正式 BT 内核无法从该 start 构建目标树"
+        }
+      },
+      {
+        "task": "C3",
+        "bfs_reachable": false,
+        "planner": {
+          "reached_goal": false,
+          "reason": "正式 BT 内核无法从该 start 构建目标树"
+        }
+      }
+    ],
+    "scope": "finite declared P, symbolic; NOT physical consistency"
+  },
+  "accepted": false
+}

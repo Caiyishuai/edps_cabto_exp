@@ -1,0 +1,96 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "parked(1)"
+    ],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": [
+      "parked(1)"
+    ]
+  },
+  "code_executed": true,
+  "exception": "RuntimeError: 停泊运动缺少本次 API 绑定的显式竖直撤离证据",
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.3,
+        -0.28,
+        0.72
+      ]
+    },
+    {
+      "method": "move_to",
+      "args": [
+        [
+          0.3,
+          -0.28,
+          0.72
+        ]
+      ],
+      "kwargs": {},
+      "status": "failed",
+      "error": "RuntimeError: 停泊运动缺少本次 API 绑定的显式竖直撤离证据"
+    }
+  ],
+  "before": [
+    "at_source(item0)",
+    "empty(0)",
+    "empty(1)",
+    "hands_raised()",
+    "hands_safe_for_lateral(0)",
+    "hands_safe_for_lateral(1)",
+    "packed(1)",
+    "parked(0)",
+    "slot_free(0)",
+    "tray_at_table()"
+  ],
+  "after": [
+    "at_source(item0)",
+    "empty(0)",
+    "empty(1)",
+    "hands_raised()",
+    "hands_safe_for_lateral(0)",
+    "hands_safe_for_lateral(1)",
+    "packed(1)",
+    "parked(0)",
+    "slot_free(0)",
+    "tray_at_table()"
+  ],
+  "model": {
+    "name": "park",
+    "args": {
+      "arm": "1",
+      "obj": "none",
+      "dest": "park"
+    },
+    "program_kind": "park",
+    "pre": [
+      "empty(1)",
+      "tray_at_table()"
+    ],
+    "add": [
+      "parked(1)"
+    ],
+    "del": [],
+    "description": "指定机械臂空手张开，已脱离物体周围的竖直障碍区并停泊在共享工作区外。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "missing_required_calls": [
+    "raise_clear"
+  ],
+  "code_sha256": "bdf9f73fc8c320925e91eb5e65ba832a3bd3e445341ae630f837b6ab793374a7",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+}

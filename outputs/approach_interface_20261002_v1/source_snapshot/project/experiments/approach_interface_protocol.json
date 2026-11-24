@@ -1,0 +1,28 @@
+{
+  "version": "approach-interface-static-v1",
+  "scope": "interface_and_static_endpoint_screen_not_executed_grasp",
+  "main_question": "在有限交互下，建立与实际能力匹配、且能支持任务组合的技能契约。",
+  "base_config": "project/scenes/blocks_rebuilt_v1.json",
+  "source_trial": "outputs/contract_tradeoff_20260930_v1/trials/H/J",
+  "payload": "yellow",
+  "seed_phase": "grasp_yellow",
+  "seed_rule": "first archived trajectory sample in seed_phase; identical seed for all six queries",
+  "scenes": ["open", "rails_x", "rails_y"],
+  "yaw_degrees": [0.0, 90.0],
+  "max_pose_queries": 6,
+  "ik": {"local_only": true, "iters": 60, "w_rot": 1.0},
+  "screen": {"position_tolerance_m": 0.001, "rotation_tolerance_rad": 0.03, "joint_limit_tolerance_rad": 0.000001, "obstacle_clearance_m": 0.002, "deep_contact_m": -0.0003, "distance_cap_m": 0.15},
+  "channel": {"inner_width_m": 0.08, "wall_thickness_m": 0.01, "wall_length_m": 0.12, "wall_height_m": 0.06, "grasp_offset_z_m": 0.004},
+  "model_calls": 0,
+  "dynamic_steps": 0,
+  "render": false,
+  "notes": [
+    "Designed tray-channel geometry, not a natural failure dataset or untouched test set.",
+    "The 44mm cube fits inside the fixed 80mm channel; real robot collision geometry is screened without resizing fingers or cube.",
+    "Only independent scratch MjData positions are assigned for FK/IK; no actuator rollout, reset settling, grasp force or lift is executed.",
+    "Archived initial object state is reused; arm seed comes from the first archived grasp-phase sample, not a pose search.",
+    "Yaw zero and ninety retain hand +z down; neither is a full-pose side grasp.",
+    "Positive static screening does not prove path feasibility, dynamics, stable grasp or task success.",
+    "No retries, additional yaw/width sweep, geometry tuning or safety threshold changes after results."
+  ]
+}

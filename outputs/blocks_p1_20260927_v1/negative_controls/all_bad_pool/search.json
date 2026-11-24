@@ -1,0 +1,62 @@
+{
+  "method": "ranked",
+  "seed": null,
+  "order": [
+    0
+  ],
+  "attempts": [
+    {
+      "pool_index": 0,
+      "candidate": {
+        "id": "wrong_numeric",
+        "pre_add": [],
+        "offset_z_m": 0.05,
+        "reason": "engineered numerical negative control"
+      },
+      "trials": [
+        {
+          "phase": "probe",
+          "success": false,
+          "trial_valid": true,
+          "cost": {
+            "rollouts": 1,
+            "actions": 1,
+            "api_calls": 5,
+            "simulation_seconds": 6.75999999999946,
+            "wall_seconds": 0.24427137500606477
+          },
+          "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "result_path": "outputs/blocks_p1_20260927_v1/negative_controls/all_bad_pool/candidate00/probe00/result.json"
+        }
+      ],
+      "confirmed": false
+    }
+  ],
+  "selected": null,
+  "status": "pool_exhausted_abstain",
+  "max_rollouts": 20,
+  "cost": {
+    "rollouts": 1,
+    "actions": 1,
+    "api_calls": 5,
+    "simulation_seconds": 6.75999999999946,
+    "wall_seconds": 0.24427137500606477
+  },
+  "phase_costs": {
+    "probe": {
+      "rollouts": 1,
+      "actions": 1,
+      "api_calls": 5,
+      "simulation_seconds": 6.75999999999946,
+      "wall_seconds": 0.24427137500606477
+    },
+    "confirmation": {
+      "rollouts": 0,
+      "actions": 0,
+      "api_calls": 0,
+      "simulation_seconds": 0,
+      "wall_seconds": 0
+    }
+  },
+  "deployment_rule": "only selected independently confirmed candidate; otherwise abstain"
+}

@@ -1,0 +1,396 @@
+{
+  "rows": [
+    {
+      "sample_id": "80b8509c7fce4006b822dd36c17473de",
+      "kind": "diagnosis",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"diagnosis\": {\n    \"type\": \"diagnosis\",\n    \"task\": \"diagnosis\",\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"apple\",\n        \"support\": \"board\"\n      },\n      \"pre\": {\n        \"empty()\",\n        \"at_source(apple)\"\n      },\n      \"add\": {\n        \"holding(apple)\"\n      },\n      \"del\": {\n        \"empty()\",\n        \"at_source(apple)\",\n        \"home_completed()\"\n      }\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": {\n        \"at_source(apple)\",\n        \"at_source(pepper)\",\n        \"at_source(shrimp)\",\n        \"empty()\"\n      },\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"shrimp\": {\n          \"position\": [0.31005, -0.19002, 0.399],\n          \"quaternion\": [0.9997, -0.01054, -0.02209, 0.00021],\n          \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08737, 0.02646, 0.00457]\n        },\n        \"apple\": {\n          \"position\": [0.49, -0.19, 0.42098],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]\n        },\n        \"pepper\": {\n          \"position\": [0.67, -0.19, 0.41498],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"bowl\": {\n          \"position\": [0.31, 0.16, 0.4],\n          \"quaternion\": [1.0, 0.0, 0",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 18.49841145798564
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "ac746fbf267347abb39ddc02db805037",
+      "kind": "diagnosis",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"contract_consistent\": false,\n  \"evidence_ids\": {\n    \"E1\": \"before\",\n    \"E2\": \"after\",\n    \"E3\": \"api_trace\",\n    \"E4\": \"check\"\n  }\n}\n```",
+        "tokens": 57,
+        "finish_reason": "stop",
+        "wall_seconds": 3.8276582080870867
+      },
+      "score": {
+        "json_valid": true,
+        "core_keys_present": false,
+        "decision_match": false,
+        "outcome_match": false,
+        "echoed_input_fields": [
+          "evidence_ids"
+        ],
+        "top_level_keys": [
+          "contract_consistent",
+          "evidence_ids"
+        ]
+      },
+      "parsed": {
+        "contract_consistent": false,
+        "evidence_ids": {
+          "E1": "before",
+          "E2": "after",
+          "E3": "api_trace",
+          "E4": "check"
+        }
+      }
+    },
+    {
+      "sample_id": "478d8ccb18ac41c4acb333e4de4a96b9",
+      "kind": "diagnosis",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"contract_consistent\": false\n}\n```",
+        "tokens": 15,
+        "finish_reason": "stop",
+        "wall_seconds": 2.541775833000429
+      },
+      "score": {
+        "json_valid": true,
+        "core_keys_present": false,
+        "decision_match": false,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": [
+          "contract_consistent"
+        ]
+      },
+      "parsed": {
+        "contract_consistent": false
+      }
+    },
+    {
+      "sample_id": "d6c7a8d8872d4cd6ae4bc4fff815d2a9",
+      "kind": "diagnosis",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"contract_consistent\": false,\n  \"evidence_ids\": {\n    \"E1\": \"before\",\n    \"E2\": \"after\",\n    \"E3\": \"api_trace\",\n    \"E4\": \"check\"\n  }\n}\n```",
+        "tokens": 57,
+        "finish_reason": "stop",
+        "wall_seconds": 3.711197083001025
+      },
+      "score": {
+        "json_valid": true,
+        "core_keys_present": false,
+        "decision_match": false,
+        "outcome_match": false,
+        "echoed_input_fields": [
+          "evidence_ids"
+        ],
+        "top_level_keys": [
+          "contract_consistent",
+          "evidence_ids"
+        ]
+      },
+      "parsed": {
+        "contract_consistent": false,
+        "evidence_ids": {
+          "E1": "before",
+          "E2": "after",
+          "E3": "api_trace",
+          "E4": "check"
+        }
+      }
+    },
+    {
+      "sample_id": "694992819d3f48eda520afed962a4ace",
+      "kind": "forecast",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"observed\": {\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"apple\",\n        \"support\": \"board\"\n      },\n      \"pre\": [\"empty()\", \"at_source(apple)\"],\n      \"add\": [\"holding(apple)\"],\n      \"del\": [\"at_source(apple)\", \"home_completed()\"]\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"],\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"shrimp\": {\n          \"position\": [0.31005, -0.19002, 0.399],\n          \"quaternion\": [0.9997, -0.01054, -0.02209, 0.00021],\n          \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08737, 0.02646, 0.00457]\n        },\n        \"apple\": {\n          \"position\": [0.49, -0.19, 0.42098],\n          \"quaternion\": [1.0, 0.0, 0.0, -1e-05],\n          \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]\n        },\n        \"pepper\": {\n          \"position\": [0.67, -0.19, 0.41498],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"bowl\": {\n          \"position\": [0.31, 0.16, 0.4],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 18.29786708310712
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "393288b9e1354b029de48e096fa6c713",
+      "kind": "update",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"model\": {\n    \"name\": \"pick\",\n    \"args\": {\n      \"object\": \"apple\",\n      \"support\": \"board\"\n    },\n    \"pre\": [\n      \"empty()\",\n      \"at_source(apple)\"\n    ],\n    \"add\": [\n      \"holding(apple)\"\n    ],\n    \"del\": [\n      \"empty()\",\n      \"at_source(apple)\",\n      \"home_completed()\"\n    ]\n  },\n  \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n  \"before\": {\n    \"sim_time\": 0.16,\n    \"state\": [\n      \"at_source(apple)\",\n      \"at_source(pepper)\",\n      \"at_source(shrimp)\",\n      \"empty()\"\n    ],\n    \"derived_state_refreshed\": true,\n    \"objects\": {\n      \"shrimp\": {\n        \"position\": [0.31005, -0.19002, 0.399],\n        \"quaternion\": [0.9997, -0.01054, -0.02209, 0.00021],\n        \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08737, 0.02646, 0.00457]\n      },\n      \"apple\": {\n        \"position\": [0.49, -0.19, 0.42098],\n        \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n        \"velocity\": [0.00028, 5e-05, 1e-05, -0.0026, 0.01418, 0.0]\n      },\n      \"pepper\": {\n        \"position\": [0.67, -0.19, 0.41498],\n        \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n        \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n      },\n      \"bowl\": {\n        \"position\": [0.31, 0.16, 0.4],\n        \"quaternion\": [1.0",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 19.855386833078228
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "750cbe61cb98417e9096569c0abf97c8",
+      "kind": "diagnosis",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"task_type\": \"diagnosis\",\n  \"observed\": {\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"yellow\",\n        \"support\": \"green\"\n      },\n      \"pre\": [\"empty()\", \"at_source(yellow)\"],\n      \"add\": [\"holding(yellow)\"],\n      \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"],\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"red\": {\n          \"position\": [0.34, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"blue\": {\n          \"position\": [0.57, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"yellow\": {\n          \"position\": [0.34, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"green\": {\n          \"position\": [0.57, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        }\n      },\n      \"tcp\": [0.30702, 0.0, 0.88727],\n      \"finger_forces_N\": {\n        \"left_finger\": 0.0,\n       ",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 18.084989207913168
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "45f71283850f415fa4193eb3e5b5cd5c",
+      "kind": "diagnosis",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"task_type\": \"diagnosis\",\n  \"observed\": {\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"yellow\",\n        \"support\": \"green\"\n      },\n      \"pre\": [\"empty()\", \"at_source(yellow)\"],\n      \"add\": [\"holding(yellow)\"],\n      \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"],\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"red\": {\n          \"position\": [0.34, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"blue\": {\n          \"position\": [0.57, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"yellow\": {\n          \"position\": [0.34, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"green\": {\n          \"position\": [0.57, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        }\n      },\n      \"tcp\": [0.30702, 0.0",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 22.934038207982667
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "d806effb72e64735b533105540466d78",
+      "kind": "diagnosis",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"task_type\": \"diagnosis\",\n  \"observed\": {\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"yellow\",\n        \"support\": \"green\"\n      },\n      \"pre\": [\"empty()\", \"at_source(yellow)\"],\n      \"add\": [\"holding(yellow)\"],\n      \"del\": [\"at_source(yellow)\", \"home_completed()\"]\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"],\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"red\": {\n          \"position\": [0.34, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"blue\": {\n          \"position\": [0.57, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"yellow\": {\n          \"position\": [0.34, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"green\": {\n          \"position\": [0.57, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        }\n      },\n      \"tcp\": [0.30702, 0.0, 0.88727],\n      \"finger_forces_N\": {\n        \"left_finger\": 0.0,\n        \"right_f",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 18.85312766698189
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "62d0e0b7c3bc408a828e908a9fc14516",
+      "kind": "diagnosis",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"task_type\": \"diagnosis\",\n  \"observed\": {\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"yellow\",\n        \"support\": \"green\"\n      },\n      \"pre\": [\"empty()\", \"at_source(yellow)\"],\n      \"add\": [\"holding(yellow)\"],\n      \"del\": [\"at_source(yellow)\", \"home_completed()\"]\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"],\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"red\": {\n          \"position\": [0.34, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"blue\": {\n          \"position\": [0.57, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"yellow\": {\n          \"position\": [0.34, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"green\": {\n          \"position\": [0.57, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        }\n      },\n      \"tcp\": [0.30702, 0.0, 0",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 18.5179522089893
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "93c57fcbd81f4175b34a4cc7b94f17f5",
+      "kind": "forecast",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"observed\": {\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"yellow\",\n        \"support\": \"green\"\n      },\n      \"pre\": [\"empty()\", \"at_source(yellow)\"],\n      \"add\": [\"holding(yellow)\"],\n      \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"],\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"red\": {\n          \"position\": [0.34, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"blue\": {\n          \"position\": [0.57, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"yellow\": {\n          \"position\": [0.34, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"green\": {\n          \"position\": [0.57, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        }\n      },\n      \"tcp\": [0.30702, 0.0, 0.88727",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 18.3587728330167
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "30d95a06b2984a8295bb6c286034eea2",
+      "kind": "update",
+      "split": "train",
+      "generation": {
+        "raw": "```json\n{\n  \"task_type\": \"update\",\n  \"baseline\": {\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"yellow\",\n        \"support\": \"green\"\n      },\n      \"pre\": [\"empty()\", \"at_source(yellow)\"],\n      \"add\": [\"holding(yellow)\"],\n      \"del\": [\"empty()\", \"at_source(yellow)\", \"home_completed()\"]\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"],\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"red\": {\n          \"position\": [0.34, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"blue\": {\n          \"position\": [0.57, -0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"yellow\": {\n          \"position\": [0.34, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"green\": {\n          \"position\": [0.57, 0.15, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        }\n      },\n      \"tcp\": [0.30702, 0.0, ",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 20.477249667048454
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "930faf8b8b96489588f9fb7f35722771",
+      "kind": "diagnosis",
+      "split": "validation",
+      "generation": {
+        "raw": "```json\n{\n  \"task_type\": \"diagnosis\",\n  \"observed\": {\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"apple\",\n        \"support\": \"board\"\n      },\n      \"pre\": [\"empty()\", \"at_source(apple)\"],\n      \"add\": [\"holding(apple)\"],\n      \"del\": [\"at_source(apple)\", \"home_completed()\"]\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": [\"at_source(apple)\", \"at_source(pepper)\", \"at_source(shrimp)\", \"empty()\"],\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"shrimp\": {\n          \"position\": [0.31055, -0.18843, 0.399],\n          \"quaternion\": [0.9997, -0.01054, -0.02208, 0.00021],\n          \"velocity\": [-2e-05, -8e-05, -2e-05, -0.08735, 0.02646, 0.00457]\n        },\n        \"apple\": {\n          \"position\": [0.4911, -0.1911, 0.42098],\n          \"quaternion\": [1.0, 1e-05, -2e-05, 0.0],\n          \"velocity\": [0.00015, 3e-05, 1e-05, -0.00132, 0.00758, 0.0]\n        },\n        \"pepper\": {\n          \"position\": [0.6692, -0.18851, 0.41498],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"bowl\": {\n          \"position\": [0.31, 0.16, 0.4],\n          \"qu",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 19.480038917041384
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "cb3511707e63450198a47d24e8b744e3",
+      "kind": "update",
+      "split": "validation",
+      "generation": {
+        "raw": "```json\n{\n  \"contract_consistent\": false,\n  \"evidence_ids\": {\n    \"E1\": \"before\",\n    \"E2\": \"after\",\n    \"E3\": \"api_trace\",\n    \"E4\": \"check\"\n  }\n}\n```",
+        "tokens": 57,
+        "finish_reason": "stop",
+        "wall_seconds": 5.449719000025652
+      },
+      "score": {
+        "json_valid": true,
+        "core_keys_present": false,
+        "decision_match": false,
+        "outcome_match": false,
+        "echoed_input_fields": [
+          "evidence_ids"
+        ],
+        "top_level_keys": [
+          "contract_consistent",
+          "evidence_ids"
+        ]
+      },
+      "parsed": {
+        "contract_consistent": false,
+        "evidence_ids": {
+          "E1": "before",
+          "E2": "after",
+          "E3": "api_trace",
+          "E4": "check"
+        }
+      }
+    },
+    {
+      "sample_id": "b0e5b88d26b14a52b3e77da6ec67ddec",
+      "kind": "diagnosis",
+      "split": "validation",
+      "generation": {
+        "raw": "```json\n{\n  \"task_type\": \"diagnosis\",\n  \"observed\": {\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"yellow\",\n        \"support\": \"green\"\n      },\n      \"pre\": [\"empty()\", \"at_source(yellow)\"],\n      \"add\": [\"holding(yellow)\"],\n      \"del\": [\"at_source(yellow)\", \"home_completed()\"]\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"],\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"red\": {\n          \"position\": [0.3405, -0.14841, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"blue\": {\n          \"position\": [0.5711, -0.1511, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"yellow\": {\n          \"position\": [0.3392, 0.15149, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"green\": {\n          \"position\": [0.56802, 0.15128, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        }\n      },\n",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 19.091330708004534
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    },
+    {
+      "sample_id": "1f09f206cf2f460893c491185fc271a0",
+      "kind": "update",
+      "split": "validation",
+      "generation": {
+        "raw": "```json\n{\n  \"task_type\": \"update\",\n  \"baseline\": {\n    \"model\": {\n      \"name\": \"pick\",\n      \"args\": {\n        \"object\": \"yellow\",\n        \"support\": \"green\"\n      },\n      \"pre\": [\"empty()\", \"at_source(yellow)\"],\n      \"add\": [\"holding(yellow)\"],\n      \"del\": [\"at_source(yellow)\", \"home_completed()\"]\n    },\n    \"source\": \"def policy(api):\\n    grasp_center = api.grasp_point()\\n    grasp_center = (grasp_center[0], grasp_center[1], grasp_center[2] + 0.045)\\n    api.approach(grasp_center)\\n    api.descend(grasp_center)\\n    api.close_gripper()\\n    api.lift()\",\n    \"before\": {\n      \"sim_time\": 0.16,\n      \"state\": [\"at_source(red)\", \"at_source(yellow)\", \"empty()\"],\n      \"derived_state_refreshed\": true,\n      \"objects\": {\n        \"red\": {\n          \"position\": [0.3405, -0.14841, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"blue\": {\n          \"position\": [0.5711, -0.1511, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"yellow\": {\n          \"position\": [0.3392, 0.15149, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        },\n        \"green\": {\n          \"position\": [0.56802, 0.15128, 0.422],\n          \"quaternion\": [1.0, 0.0, 0.0, 0.0],\n          \"velocity\": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n        }\n      },\n      \"",
+        "tokens": 600,
+        "finish_reason": "length",
+        "wall_seconds": 21.005705666029826
+      },
+      "score": {
+        "json_valid": false,
+        "core_keys_present": false,
+        "decision_match": null,
+        "outcome_match": false,
+        "echoed_input_fields": [],
+        "top_level_keys": []
+      },
+      "parsed": null
+    }
+  ],
+  "summary": {
+    "diagnosis": {
+      "n": 10,
+      "json_valid": 3,
+      "core_keys_present": 0,
+      "decision_match": 0,
+      "decision_checked": 3,
+      "outcome_match": 0,
+      "echo_any": 2
+    },
+    "forecast": {
+      "n": 2,
+      "json_valid": 0,
+      "core_keys_present": 0,
+      "decision_match": 0,
+      "decision_checked": 0,
+      "outcome_match": 0,
+      "echo_any": 0
+    },
+    "update": {
+      "n": 4,
+      "json_valid": 1,
+      "core_keys_present": 0,
+      "decision_match": 0,
+      "decision_checked": 1,
+      "outcome_match": 0,
+      "echo_any": 1
+    }
+  }
+}

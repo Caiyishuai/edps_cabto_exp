@@ -1,0 +1,83 @@
+case0000 none True None
+case0000 model_only True None
+case0000 policy_only True None
+case0000 cross_level True None
+case0001 none False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0001 model_only False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0001 policy_only True None
+case0001 cross_level True None
+case0002 none False RuntimeError: lower_yellow: TCP residual 0.0209m
+case0002 model_only True None
+case0002 policy_only False RuntimeError: lower_yellow: TCP residual 0.0209m
+case0002 cross_level True None
+case0003 none False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0003 model_only False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0003 policy_only False RuntimeError: lower_yellow: TCP residual 0.0209m
+case0003 cross_level True None
+case0004 none True None
+case0004 model_only True None
+case0004 policy_only True None
+case0004 cross_level True None
+case0005 none False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0005 model_only False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0005 policy_only True None
+case0005 cross_level True None
+case0006 none False RuntimeError: lower_green: TCP residual 0.0203m
+case0006 model_only True None
+case0006 policy_only False RuntimeError: lower_green: TCP residual 0.0203m
+case0006 cross_level True None
+case0007 none False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0007 model_only False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0007 policy_only False RuntimeError: lower_green: TCP residual 0.0203m
+case0007 cross_level True None
+{
+  "groups": {
+    "none": {
+      "success": 2,
+      "total": 8,
+      "invalid": 0
+    },
+    "model_only": {
+      "success": 4,
+      "total": 8,
+      "invalid": 0
+    },
+    "policy_only": {
+      "success": 4,
+      "total": 8,
+      "invalid": 0
+    },
+    "cross_level": {
+      "success": 8,
+      "total": 8,
+      "invalid": 0
+    }
+  },
+  "case_count": 8,
+  "attribution_correct": 8,
+  "abstentions": 0,
+  "confusion": [
+    {
+      "truth": "mixed",
+      "prediction": "mixed",
+      "count": 2
+    },
+    {
+      "truth": "model",
+      "prediction": "model",
+      "count": 2
+    },
+    {
+      "truth": "ok",
+      "prediction": "ok",
+      "count": 2
+    },
+    {
+      "truth": "policy",
+      "prediction": "policy",
+      "count": 2
+    }
+  ],
+  "cross_level_regressions": [],
+  "interpretation": "paired finite interventions; cases within a layout are correlated; no universal or LM capability claim"
+}

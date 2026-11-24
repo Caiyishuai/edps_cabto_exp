@@ -1,0 +1,18 @@
+{
+  "decision": "propose",
+  "reason": "Grasp failures (evidence 94611a251028, e027735b3d88) show zero finger force at closure, indicating a controller/parameter issue. Evidence 333bb0724f68 shows a successful grasp but a placement failure due to 'lower_blue: TCP residual', implying the gripper is too low or offset is insufficient to clear the object above it. The accumulated patch has no offset adjustment. Increasing the shared offset_z_m should raise the approach height for all pick_table/unstack actions, preventing collision with objects on top and allowing successful closure.",
+  "accepted": [],
+  "rejected": [
+    {
+      "rank": 0,
+      "raw_candidate": {
+        "id": "offset_z_increase",
+        "pre_add": [],
+        "offset_z_m": 0.08,
+        "reason": "Increase shared grasp offset to 0.08m to provide sufficient clearance above stacked objects (blue on red on yellow), resolving both the grasp closure failure (by ensuring fingers can close without hitting the block above) and the placement TCP residual error."
+      },
+      "reason": "Offset outside finite numeric contract; null means preserve"
+    }
+  ],
+  "status": "parsed"
+}

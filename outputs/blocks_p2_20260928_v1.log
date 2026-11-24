@@ -1,0 +1,4 @@
+rule {'confirmed': True, 'rollouts': 6}
+fixed {'confirmed': True, 'rollouts': 11}
+onetime [{'confirmed': False, 'rollouts': 2}, {'confirmed': False, 'rollouts': 1}]
+incremental [{'confirmed': False, 'rollouts': 0}, {'confirmed': False, 'rollouts': 1}]

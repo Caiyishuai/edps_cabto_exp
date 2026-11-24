@@ -1,0 +1,42 @@
+test_clear_is_observed_not_an_injection_flag (test_blocks_p0.BlocksP0Tests.test_clear_is_observed_not_an_injection_flag) ... ok
+test_diagnosis_uses_only_intervention_outcomes (test_blocks_p0.BlocksP0Tests.test_diagnosis_uses_only_intervention_outcomes) ... ok
+test_layout_splits_and_new_pairings (test_blocks_p0.BlocksP0Tests.test_layout_splits_and_new_pairings) ... ok
+test_missing_clear_allows_unsafe_symbolic_shortcut (test_blocks_p0.BlocksP0Tests.test_missing_clear_allows_unsafe_symbolic_shortcut) ... ok
+test_model_patch_changes_only_stack_precondition (test_blocks_p0.BlocksP0Tests.test_model_patch_changes_only_stack_precondition) ... ok
+test_no_direct_execution_state_writes_in_experiment (test_blocks_p0.BlocksP0Tests.test_no_direct_execution_state_writes_in_experiment) ... ok
+test_oracle_reads_do_not_change_execution_state (test_blocks_p0.BlocksP0Tests.test_oracle_reads_do_not_change_execution_state) ... ok
+test_policy_candidates_are_finite_programs (test_blocks_p0.BlocksP0Tests.test_policy_candidates_are_finite_programs) ... ok
+test_repaired_bt_clears_target_before_payload_pick (test_blocks_p0.BlocksP0Tests.test_repaired_bt_clears_target_before_payload_pick) ... ok
+test_scene_builder_does_not_mutate_configuration (test_blocks_p0.BlocksP0Tests.test_scene_builder_does_not_mutate_configuration) ... ok
+test_unoccupied_initial_scene_is_clear (test_blocks_p0.BlocksP0Tests.test_unoccupied_initial_scene_is_clear) ... ok
+test_close_failure_preserves_result (test_blocks_p0.ExperimentIntegrityTests.test_close_failure_preserves_result) ... ok
+test_development_freeze_cannot_skip_validation (test_blocks_p0.ExperimentIntegrityTests.test_development_freeze_cannot_skip_validation) ... ok
+test_empty_and_unapproved_freezes_rejected (test_blocks_p0.ExperimentIntegrityTests.test_empty_and_unapproved_freezes_rejected) ... ok
+test_existing_trial_directory_is_never_overwritten (test_blocks_p0.ExperimentIntegrityTests.test_existing_trial_directory_is_never_overwritten) ... ok
+test_observer_failure_is_invalid_and_persisted (test_blocks_p0.ExperimentIntegrityTests.test_observer_failure_is_invalid_and_persisted) ... ok
+test_render_failure_does_not_become_physical_failure (test_blocks_p0.ExperimentIntegrityTests.test_render_failure_does_not_become_physical_failure) ... ok
+test_tampered_candidate_rejected (test_blocks_p0.ExperimentIntegrityTests.test_tampered_candidate_rejected) ... ok
+test_tampered_evidence_rejected (test_blocks_p0.ExperimentIntegrityTests.test_tampered_evidence_rejected) ... ok
+test_valid_freeze_matches_evidence (test_blocks_p0.ExperimentIntegrityTests.test_valid_freeze_matches_evidence) ... ok
+test_arbitrary_legal_precondition_not_just_clear (test_blocks_p1.CandidateTests.test_arbitrary_legal_precondition_not_just_clear) ... ok
+test_bad_candidates_retained_and_abstention_not_repaired (test_blocks_p1.CandidateTests.test_bad_candidates_retained_and_abstention_not_repaired) ... ok
+test_new_heldout_pairings_and_geometry (test_blocks_p1.CandidateTests.test_new_heldout_pairings_and_geometry) ... ok
+test_non_target_layers_immutable (test_blocks_p1.CandidateTests.test_non_target_layers_immutable) ... ok
+test_parameter_is_replace_not_delta (test_blocks_p1.CandidateTests.test_parameter_is_replace_not_delta) ... ok
+test_parser_rejects_duplicates_nonfinite_trailing_and_thinking (test_blocks_p1.CandidateTests.test_parser_rejects_duplicates_nonfinite_trailing_and_thinking) ... ok
+test_private_tags_do_not_reach_model (test_blocks_p1.CandidateTests.test_private_tags_do_not_reach_model) ... ok
+test_strict_fenced_json_allowed (test_blocks_p1.CandidateTests.test_strict_fenced_json_allowed) ... ok
+test_truncation_rejected_even_if_json_complete (test_blocks_p1.CandidateTests.test_truncation_rejected_even_if_json_complete) ... ok
+test_wrong_fields_predicates_arguments_and_numeric_types (test_blocks_p1.CandidateTests.test_wrong_fields_predicates_arguments_and_numeric_types) ... ok
+test_all_bad_pool_abstains (test_blocks_p1.SearchTests.test_all_bad_pool_abstains) ... ok
+test_budget_cannot_accept_unconfirmed_candidate (test_blocks_p1.SearchTests.test_budget_cannot_accept_unconfirmed_candidate) ... ok
+test_enumeration_actually_evaluates_later_bad_candidate (test_blocks_p1.SearchTests.test_enumeration_actually_evaluates_later_bad_candidate) ... ok
+test_invalid_trial_abstains (test_blocks_p1.SearchTests.test_invalid_trial_abstains) ... ok
+test_no_candidates_no_rollout (test_blocks_p1.SearchTests.test_no_candidates_no_rollout) ... ok
+test_ranked_stops_after_independent_confirmation (test_blocks_p1.SearchTests.test_ranked_stops_after_independent_confirmation) ... ok
+test_real_bad_offset_fails_without_model_fallback (test_blocks_p1.SearchTests.test_real_bad_offset_fails_without_model_fallback) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 4.008s
+
+OK

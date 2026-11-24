@@ -1,0 +1,629 @@
+{
+  "success": false,
+  "trial_valid": true,
+  "artifact_complete": true,
+  "steps": [
+    {
+      "model": {
+        "name": "pick_table",
+        "args": {
+          "object": "blue"
+        },
+        "pre": [
+          "empty()",
+          "ontable(blue)",
+          "clear(blue)"
+        ],
+        "add": [
+          "holding(blue)"
+        ],
+        "del": [
+          "empty()",
+          "ontable(blue)",
+          "home_completed()"
+        ]
+      },
+      "before": {
+        "time": 0.16000000000000011,
+        "state": [
+          "clear(blue)",
+          "clear(green)",
+          "clear(red)",
+          "empty()",
+          "on(red,yellow)",
+          "ontable(blue)",
+          "ontable(green)",
+          "ontable(yellow)"
+        ],
+        "objects": {
+          "blue": {
+            "position": [
+              0.3250000000000149,
+              0.15500000000011382,
+              0.42199520594899054
+            ],
+            "quaternion": [
+              1.0,
+              4.642238403573809e-18,
+              -6.030386898885402e-19,
+              -8.644472647633554e-16
+            ],
+            "velocity": [
+              2.4980018053006586e-18,
+              1.4710455076361604e-17,
+              1.888138651269875e-08,
+              -8.446161113350922e-16,
+              1.6604415825445518e-16,
+              2.258121017456242e-17
+            ]
+          },
+          "yellow": {
+            "position": [
+              0.5450000002853019,
+              0.15499999971481107,
+              0.42199041331206727
+            ],
+            "quaternion": [
+              1.0,
+              -2.0342116689901354e-11,
+              -2.0341867734620113e-11,
+              8.264067640537468e-16
+            ],
+            "velocity": [
+              4.8257435921649307e-11,
+              -4.825742218883435e-11,
+              1.1610087666973745e-08,
+              2.2202130353181354e-09,
+              2.220213340029736e-09,
+              -4.0817468901601165e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.5449999983426094,
+              0.15500000165755456,
+              0.4659808258562317
+            ],
+            "quaternion": [
+              0.9999999999999998,
+              1.8485443554141022e-11,
+              1.848594946643214e-11,
+              -1.3309588578134758e-15
+            ],
+            "velocity": [
+              -9.140387451179425e-11,
+              9.140389853851151e-11,
+              1.0752931077140037e-07,
+              -8.475278690473924e-09,
+              -8.475278853903561e-09,
+              2.8916509724947754e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5599999999999993,
+              -0.1649999999998862,
+              0.42199520594899054
+            ],
+            "quaternion": [
+              1.0,
+              5.497545945849616e-18,
+              -4.475694521763437e-19,
+              -1.7449107516625674e-17
+            ],
+            "velocity": [
+              6.938893903885063e-19,
+              2.1788126857913165e-17,
+              1.8881386504081473e-08,
+              -9.869562573187583e-16,
+              -2.3185599640107664e-16,
+              -5.5010288970791286e-17
+            ]
+          }
+        },
+        "finger_forces_N": {
+          "left_finger": 0.0,
+          "right_finger": 0.0
+        },
+        "tcp": [
+          0.30701957005161024,
+          9.109089131081728e-18,
+          0.8872695582766448
+        ],
+        "active_welds": []
+      },
+      "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+      "api_trace": [
+        {
+          "method": "grasp_point",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": [
+            0.3250000000000149,
+            0.15500000000011382,
+            0.42599520594899054
+          ]
+        },
+        {
+          "method": "open_gripper",
+          "args": [],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "approach",
+          "args": [
+            [
+              0.3250000000000149,
+              0.15500000000011382,
+              0.4709952059489905
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "descend",
+          "args": [
+            [
+              0.3250000000000149,
+              0.15500000000011382,
+              0.4709952059489905
+            ]
+          ],
+          "kwargs": {},
+          "status": "returned",
+          "result": null
+        },
+        {
+          "method": "close_gripper",
+          "args": [],
+          "kwargs": {},
+          "status": "failed",
+          "error": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}"
+        }
+      ],
+      "status": "complete",
+      "after": {
+        "time": 6.999999999999451,
+        "state": [
+          "clear(blue)",
+          "clear(green)",
+          "clear(red)",
+          "on(red,yellow)",
+          "ontable(blue)",
+          "ontable(green)",
+          "ontable(yellow)"
+        ],
+        "objects": {
+          "blue": {
+            "position": [
+              0.3250000000000149,
+              0.15500000000011382,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.1898507495028885e-18,
+              -7.396929158922421e-19,
+              -9.156232958671337e-16
+            ],
+            "velocity": [
+              2.081668171066241e-18,
+              2.4563684419910367e-17,
+              8.635942714646526e-15,
+              -1.2759494108973005e-15,
+              -8.821440687789663e-18,
+              -1.548258367876081e-17
+            ]
+          },
+          "yellow": {
+            "position": [
+              0.5450000002861961,
+              0.15499999971391668,
+              0.4219904134110098
+            ],
+            "quaternion": [
+              0.9999999999999998,
+              8.969015107987131e-14,
+              8.993779885231913e-14,
+              9.395415264604062e-16
+            ],
+            "velocity": [
+              -3.1568824420679574e-19,
+              1.9068188786602718e-17,
+              1.0298589053922219e-14,
+              -9.157172037288255e-16,
+              -2.867568221592061e-16,
+              3.5646077783725954e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.5450000003043569,
+              0.1549999996958072,
+              0.46598082682201997
+            ],
+            "quaternion": [
+              1.0,
+              1.7935304713912434e-13,
+              1.7985652988657999e-13,
+              -1.3089934418370286e-15
+            ],
+            "velocity": [
+              5.495151338492078e-16,
+              -4.918017086295925e-16,
+              -1.060229762853566e-14,
+              -8.310828299154633e-16,
+              -5.524533618014618e-19,
+              3.2140831589984704e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5599999999999993,
+              -0.1649999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.074860751292683e-18,
+              3.0594669687052565e-19,
+              2.3351646474664203e-16
+            ],
+            "velocity": [
+              -9.71445146549279e-19,
+              2.33146835167729e-17,
+              8.633986775726627e-15,
+              -1.158333645382419e-15,
+              5.2324115091622667e-17,
+              -3.5537689585859966e-17
+            ]
+          }
+        },
+        "finger_forces_N": {
+          "left_finger": 0.0,
+          "right_finger": 0.0
+        },
+        "tcp": [
+          0.3249582461784543,
+          0.15492973846266997,
+          0.4714572288048113
+        ],
+        "active_welds": []
+      },
+      "check": {
+        "valid_trial": true,
+        "paper_line20": false,
+        "strict_CP_transition_match": false,
+        "goal_ok": false,
+        "effect_ok": false,
+        "violations": {
+          "missing_pre": [],
+          "missing_add": [
+            "holding(blue)"
+          ],
+          "remaining_del": [
+            "ontable(blue)"
+          ],
+          "missing_preserved_pre": [],
+          "unexpected_added": [
+            "ontable(blue)"
+          ],
+          "unexpected_removed": [
+            "holding(blue)"
+          ]
+        }
+      },
+      "contact_audit": {
+        "allowed_initial_support_contacts": [],
+        "forbidden_contacts": [],
+        "allowance": "only observed source support during unstack; maximum penetration 2mm"
+      }
+    }
+  ],
+  "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+  "infrastructure_errors": [],
+  "scope": "oracle_actuator_only_simulation_finite_candidate_pilot",
+  "initial": {
+    "time": 0.16000000000000011,
+    "state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "empty()",
+      "on(red,yellow)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "objects": {
+      "blue": {
+        "position": [
+          0.3250000000000149,
+          0.15500000000011382,
+          0.42199520594899054
+        ],
+        "quaternion": [
+          1.0,
+          4.642238403573809e-18,
+          -6.030386898885402e-19,
+          -8.644472647633554e-16
+        ],
+        "velocity": [
+          2.4980018053006586e-18,
+          1.4710455076361604e-17,
+          1.888138651269875e-08,
+          -8.446161113350922e-16,
+          1.6604415825445518e-16,
+          2.258121017456242e-17
+        ]
+      },
+      "yellow": {
+        "position": [
+          0.5450000002853019,
+          0.15499999971481107,
+          0.42199041331206727
+        ],
+        "quaternion": [
+          1.0,
+          -2.0342116689901354e-11,
+          -2.0341867734620113e-11,
+          8.264067640537468e-16
+        ],
+        "velocity": [
+          4.8257435921649307e-11,
+          -4.825742218883435e-11,
+          1.1610087666973745e-08,
+          2.2202130353181354e-09,
+          2.220213340029736e-09,
+          -4.0817468901601165e-17
+        ]
+      },
+      "red": {
+        "position": [
+          0.5449999983426094,
+          0.15500000165755456,
+          0.4659808258562317
+        ],
+        "quaternion": [
+          0.9999999999999998,
+          1.8485443554141022e-11,
+          1.848594946643214e-11,
+          -1.3309588578134758e-15
+        ],
+        "velocity": [
+          -9.140387451179425e-11,
+          9.140389853851151e-11,
+          1.0752931077140037e-07,
+          -8.475278690473924e-09,
+          -8.475278853903561e-09,
+          2.8916509724947754e-17
+        ]
+      },
+      "green": {
+        "position": [
+          0.5599999999999993,
+          -0.1649999999998862,
+          0.42199520594899054
+        ],
+        "quaternion": [
+          1.0,
+          5.497545945849616e-18,
+          -4.475694521763437e-19,
+          -1.7449107516625674e-17
+        ],
+        "velocity": [
+          6.938893903885063e-19,
+          2.1788126857913165e-17,
+          1.8881386504081473e-08,
+          -9.869562573187583e-16,
+          -2.3185599640107664e-16,
+          -5.5010288970791286e-17
+        ]
+      }
+    },
+    "finger_forces_N": {
+      "left_finger": 0.0,
+      "right_finger": 0.0
+    },
+    "tcp": [
+      0.30701957005161024,
+      9.109089131081728e-18,
+      0.8872695582766448
+    ],
+    "active_welds": []
+  },
+  "scene_sha256": "efff82b8a4f7ad0167ab92ee5dd4a7b6c97603ac3be1989ab349dab143415d5f",
+  "models_sha256": "019201b5deacc007a658266101d982caa33ef9c1dc84a44014bf9c719e7524a9",
+  "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+  "bt_status": "running",
+  "final": {
+    "time": 6.999999999999451,
+    "state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "on(red,yellow)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "objects": {
+      "blue": {
+        "position": [
+          0.3250000000000149,
+          0.15500000000011382,
+          0.4219952061212042
+        ],
+        "quaternion": [
+          1.0,
+          6.1898507495028885e-18,
+          -7.396929158922421e-19,
+          -9.156232958671337e-16
+        ],
+        "velocity": [
+          2.081668171066241e-18,
+          2.4563684419910367e-17,
+          8.635942714646526e-15,
+          -1.2759494108973005e-15,
+          -8.821440687789663e-18,
+          -1.548258367876081e-17
+        ]
+      },
+      "yellow": {
+        "position": [
+          0.5450000002861961,
+          0.15499999971391668,
+          0.4219904134110098
+        ],
+        "quaternion": [
+          0.9999999999999998,
+          8.969015107987131e-14,
+          8.993779885231913e-14,
+          9.395415264604062e-16
+        ],
+        "velocity": [
+          -3.1568824420679574e-19,
+          1.9068188786602718e-17,
+          1.0298589053922219e-14,
+          -9.157172037288255e-16,
+          -2.867568221592061e-16,
+          3.5646077783725954e-17
+        ]
+      },
+      "red": {
+        "position": [
+          0.5450000003043569,
+          0.1549999996958072,
+          0.46598082682201997
+        ],
+        "quaternion": [
+          1.0,
+          1.7935304713912434e-13,
+          1.7985652988657999e-13,
+          -1.3089934418370286e-15
+        ],
+        "velocity": [
+          5.495151338492078e-16,
+          -4.918017086295925e-16,
+          -1.060229762853566e-14,
+          -8.310828299154633e-16,
+          -5.524533618014618e-19,
+          3.2140831589984704e-17
+        ]
+      },
+      "green": {
+        "position": [
+          0.5599999999999993,
+          -0.1649999999998862,
+          0.4219952061212042
+        ],
+        "quaternion": [
+          1.0,
+          6.074860751292683e-18,
+          3.0594669687052565e-19,
+          2.3351646474664203e-16
+        ],
+        "velocity": [
+          -9.71445146549279e-19,
+          2.33146835167729e-17,
+          8.633986775726627e-15,
+          -1.158333645382419e-15,
+          5.2324115091622667e-17,
+          -3.5537689585859966e-17
+        ]
+      }
+    },
+    "finger_forces_N": {
+      "left_finger": 0.0,
+      "right_finger": 0.0
+    },
+    "tcp": [
+      0.3249582461784543,
+      0.15492973846266997,
+      0.4714572288048113
+    ],
+    "active_welds": []
+  },
+  "final_check": {
+    "success": false,
+    "goal_reached": false,
+    "mechanical_ok": false,
+    "placement": {
+      "ok": false,
+      "xy_error_m": 0.22000000028618122,
+      "gap_m": -0.04399520728980556,
+      "tilt_deg": 0.0,
+      "support_contact": false,
+      "support_upright": true,
+      "base_displacement_m": 9.895060343861294e-11,
+      "origin": [
+        0.3250000000000149,
+        0.15500000000011382,
+        0.4219952061212042
+      ]
+    },
+    "static_displacement_m": {
+      "yellow": 9.895060343861294e-11,
+      "green": 1.7221368775466317e-10
+    },
+    "velocity_ok": true,
+    "contact_audit": {
+      "allowed_initial_support_contacts": [],
+      "forbidden_contacts": [],
+      "allowance": "only observed source support during unstack; maximum penetration 2mm"
+    },
+    "legacy_metrics": {
+      "objects": {
+        "blue": {
+          "ok": false,
+          "xy_error_m": 0.22000000028618122,
+          "gap_m": -0.04399520728980556,
+          "tilt_deg": 0.0,
+          "support_contact": false,
+          "support_upright": true,
+          "base_displacement_m": 9.895060343861294e-11,
+          "origin": [
+            0.3250000000000149,
+            0.15500000000011382,
+            0.4219952061212042
+          ]
+        }
+      },
+      "released": false,
+      "hand_clearance_m": {
+        "blue": 0.049462090210775744
+      },
+      "final_home": false,
+      "home_error_rad": 1.8205578964108475,
+      "completed_targets_preserved": true,
+      "forbidden_contacts": [],
+      "max_grasp_relative_slip_m": 0.0,
+      "max_bilateral_contact_gap_s": 0.0,
+      "strict_weld_violation": false,
+      "grasp_verified": true,
+      "motion_verified": true,
+      "success": false
+    }
+  },
+  "simulation_seconds": 6.839999999999451,
+  "oracle_reads": [
+    {
+      "kind": "oracle_grasp",
+      "object": "blue",
+      "xyz": [
+        0.3250000000000149,
+        0.15500000000011382,
+        0.42599520594899054
+      ]
+    }
+  ],
+  "wall_seconds": 0.2366721669677645,
+  "status": "complete",
+  "physical_rollouts": 1,
+  "candidate_recipe_sha256": "87012db17b9f8259b1553987aea7ddf6d6003070ab0df8a04fb436eb2116aa18"
+}

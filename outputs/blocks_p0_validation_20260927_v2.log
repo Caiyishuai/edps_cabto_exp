@@ -1,0 +1,67 @@
+case0000 none True None
+case0000 model_only True None
+case0000 policy_only True None
+case0000 cross_level True None
+case0001 none False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0001 model_only False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0001 policy_only True None
+case0001 cross_level True None
+case0002 none False RuntimeError: lower_red: TCP residual 0.0202m
+case0002 model_only True None
+case0002 policy_only False RuntimeError: lower_red: TCP residual 0.0202m
+case0002 cross_level True None
+case0003 none False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0003 model_only False RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}
+case0003 policy_only False RuntimeError: lower_red: TCP residual 0.0202m
+case0003 cross_level True None
+{
+  "groups": {
+    "none": {
+      "success": 1,
+      "total": 4,
+      "invalid": 0
+    },
+    "model_only": {
+      "success": 2,
+      "total": 4,
+      "invalid": 0
+    },
+    "policy_only": {
+      "success": 2,
+      "total": 4,
+      "invalid": 0
+    },
+    "cross_level": {
+      "success": 4,
+      "total": 4,
+      "invalid": 0
+    }
+  },
+  "case_count": 4,
+  "attribution_correct": 4,
+  "abstentions": 0,
+  "confusion": [
+    {
+      "truth": "mixed",
+      "prediction": "mixed",
+      "count": 1
+    },
+    {
+      "truth": "model",
+      "prediction": "model",
+      "count": 1
+    },
+    {
+      "truth": "ok",
+      "prediction": "ok",
+      "count": 1
+    },
+    {
+      "truth": "policy",
+      "prediction": "policy",
+      "count": 1
+    }
+  ],
+  "cross_level_regressions": [],
+  "interpretation": "paired finite interventions; cases within a layout are correlated; no universal or LM capability claim"
+}

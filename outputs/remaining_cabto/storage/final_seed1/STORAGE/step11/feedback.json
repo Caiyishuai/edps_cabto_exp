@@ -1,0 +1,89 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "raise_both",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.008041124913133425,
+        0.007843475733186073
+      ]
+    },
+    {
+      "method": "settle",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "empty(0)",
+    "empty(1)",
+    "hands_near_shelf()",
+    "packed(0)",
+    "packed(1)",
+    "slot_free(0)",
+    "slot_free(1)",
+    "tray_on_shelf()"
+  ],
+  "after": [
+    "empty(0)",
+    "empty(1)",
+    "hands_raised()",
+    "hands_safe_for_lateral(0)",
+    "hands_safe_for_lateral(1)",
+    "packed(0)",
+    "packed(1)",
+    "slot_free(0)",
+    "slot_free(1)",
+    "tray_on_shelf()"
+  ],
+  "model": {
+    "name": "dual_withdraw_hands",
+    "args": {
+      "arm": "both",
+      "obj": "tray",
+      "dest": "dual_withdraw_hands"
+    },
+    "program_kind": "dual_withdraw",
+    "pre": [
+      "packed(0)",
+      "packed(1)",
+      "empty(0)",
+      "empty(1)",
+      "tray_on_shelf()",
+      "hands_near_shelf()"
+    ],
+    "add": [
+      "hands_raised()",
+      "hands_safe_for_lateral(0)",
+      "hands_safe_for_lateral(1)"
+    ],
+    "del": [
+      "hands_near_shelf()"
+    ],
+    "description": "托盘已释放在货架上且物品仍被容纳，两只张开的手均高于把手并满足横向运动的净空条件。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "6bc09a48e80dbea4ac6b1e4bdfda5bb4129e3070d7840fd57b88f9d396210caa",
+  "consistency_scope": "full_CP"
+}

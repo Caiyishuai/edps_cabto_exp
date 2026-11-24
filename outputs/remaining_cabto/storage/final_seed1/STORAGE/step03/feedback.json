@@ -1,0 +1,134 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.23507092974816474,
+        0.20770278217347204,
+        0.43689224457978354
+      ]
+    },
+    {
+      "method": "align_xy",
+      "args": [
+        [
+          0.23507092974816474,
+          0.20770278217347204,
+          0.43689224457978354
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.006077453127001373
+    },
+    {
+      "method": "descend_to",
+      "args": [
+        0.43689224457978354,
+        [
+          0.23507092974816474,
+          0.20770278217347204
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.006079958724688152
+    },
+    {
+      "method": "grasp",
+      "args": [
+        [
+          0.23507092974816474,
+          0.20770278217347204,
+          0.43689224457978354
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "record_grab_offset",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "lift",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "at_source(item0)",
+    "empty(0)",
+    "empty(1)",
+    "hands_raised()",
+    "hands_safe_for_lateral(0)",
+    "hands_safe_for_lateral(1)",
+    "packed(1)",
+    "parked(0)",
+    "parked(1)",
+    "slot_free(0)",
+    "tray_at_table()"
+  ],
+  "after": [
+    "empty(1)",
+    "hands_safe_for_lateral(1)",
+    "holding(0,item0)",
+    "packed(1)",
+    "parked(1)",
+    "slot_free(0)",
+    "tray_at_table()"
+  ],
+  "model": {
+    "name": "pick_source",
+    "args": {
+      "arm": "0",
+      "obj": "item0",
+      "dest": "source"
+    },
+    "program_kind": "pick",
+    "pre": [
+      "empty(0)",
+      "at_source(item0)"
+    ],
+    "add": [
+      "holding(0,item0)"
+    ],
+    "del": [
+      "at_source(item0)",
+      "empty(0)",
+      "hands_raised()",
+      "hands_safe_for_lateral(0)",
+      "parked(0)"
+    ],
+    "description": "绑定物品被指定机械臂抓持并抬离桌面，抓持偏移可用于放置跟踪。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "92ba95dfaf5925451bfcc1c7d88d0f5859a6304fc73a0058c743081ebf8668aa",
+  "consistency_scope": "full_CP"
+}

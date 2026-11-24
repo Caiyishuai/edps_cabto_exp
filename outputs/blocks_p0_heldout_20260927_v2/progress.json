@@ -1,0 +1,479 @@
+{
+  "cases": [
+    {
+      "id": "case0000",
+      "outcomes": {
+        "none": true,
+        "model_only": true,
+        "policy_only": true,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.5614428750704974,
+          "simulation_seconds": 24.799999999997045,
+          "models_sha256": "3802651a9d77d4243a66cbae2d6cdcd0ac2c2ff1f87b72ffdedd39cec9a2fba7",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "ab1a6dad74cb6b232ff7bddc51013084afcca68bbd81c361ccbd46b5fe97f0ac"
+        },
+        "model_only": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.2356420829892159,
+          "simulation_seconds": 24.799999999997045,
+          "models_sha256": "ca58b42a6144a2c1d22e20f92ab97f03633b79dfc47986273366686faf658b1a",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "ab1a6dad74cb6b232ff7bddc51013084afcca68bbd81c361ccbd46b5fe97f0ac"
+        },
+        "policy_only": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.2081466659437865,
+          "simulation_seconds": 24.799999999997045,
+          "models_sha256": "3802651a9d77d4243a66cbae2d6cdcd0ac2c2ff1f87b72ffdedd39cec9a2fba7",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "ab1a6dad74cb6b232ff7bddc51013084afcca68bbd81c361ccbd46b5fe97f0ac"
+        },
+        "cross_level": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.2445788329932839,
+          "simulation_seconds": 24.799999999997045,
+          "models_sha256": "ca58b42a6144a2c1d22e20f92ab97f03633b79dfc47986273366686faf658b1a",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "ab1a6dad74cb6b232ff7bddc51013084afcca68bbd81c361ccbd46b5fe97f0ac"
+        }
+      },
+      "evaluation_only_truth": "ok",
+      "diagnosis": "ok"
+    },
+    {
+      "id": "case0001",
+      "outcomes": {
+        "none": false,
+        "model_only": false,
+        "policy_only": true,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.30975395895075053,
+          "simulation_seconds": 6.659999999999471,
+          "models_sha256": "3802651a9d77d4243a66cbae2d6cdcd0ac2c2ff1f87b72ffdedd39cec9a2fba7",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "ab1a6dad74cb6b232ff7bddc51013084afcca68bbd81c361ccbd46b5fe97f0ac"
+        },
+        "model_only": {
+          "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.29512154206167907,
+          "simulation_seconds": 6.659999999999471,
+          "models_sha256": "ca58b42a6144a2c1d22e20f92ab97f03633b79dfc47986273366686faf658b1a",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "ab1a6dad74cb6b232ff7bddc51013084afcca68bbd81c361ccbd46b5fe97f0ac"
+        },
+        "policy_only": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.2215696249622852,
+          "simulation_seconds": 24.799999999997045,
+          "models_sha256": "3802651a9d77d4243a66cbae2d6cdcd0ac2c2ff1f87b72ffdedd39cec9a2fba7",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "ab1a6dad74cb6b232ff7bddc51013084afcca68bbd81c361ccbd46b5fe97f0ac"
+        },
+        "cross_level": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.2811286250362173,
+          "simulation_seconds": 24.799999999997045,
+          "models_sha256": "ca58b42a6144a2c1d22e20f92ab97f03633b79dfc47986273366686faf658b1a",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "ab1a6dad74cb6b232ff7bddc51013084afcca68bbd81c361ccbd46b5fe97f0ac"
+        }
+      },
+      "evaluation_only_truth": "policy",
+      "diagnosis": "policy"
+    },
+    {
+      "id": "case0002",
+      "outcomes": {
+        "none": false,
+        "model_only": true,
+        "policy_only": false,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": "RuntimeError: lower_yellow: TCP residual 0.0209m",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.9757923339493573,
+          "simulation_seconds": 15.820000000002006,
+          "models_sha256": "3802651a9d77d4243a66cbae2d6cdcd0ac2c2ff1f87b72ffdedd39cec9a2fba7",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "5c2fb2fef7d9a8a503602af2d8b9976ec6056cf5119cb39bed846e786665441f"
+        },
+        "model_only": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 2.227946166996844,
+          "simulation_seconds": 44.76000000000894,
+          "models_sha256": "ca58b42a6144a2c1d22e20f92ab97f03633b79dfc47986273366686faf658b1a",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "5c2fb2fef7d9a8a503602af2d8b9976ec6056cf5119cb39bed846e786665441f"
+        },
+        "policy_only": {
+          "exception": "RuntimeError: lower_yellow: TCP residual 0.0209m",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.9360834580147639,
+          "simulation_seconds": 15.820000000002006,
+          "models_sha256": "3802651a9d77d4243a66cbae2d6cdcd0ac2c2ff1f87b72ffdedd39cec9a2fba7",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "5c2fb2fef7d9a8a503602af2d8b9976ec6056cf5119cb39bed846e786665441f"
+        },
+        "cross_level": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 2.2439139171037823,
+          "simulation_seconds": 44.76000000000894,
+          "models_sha256": "ca58b42a6144a2c1d22e20f92ab97f03633b79dfc47986273366686faf658b1a",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "5c2fb2fef7d9a8a503602af2d8b9976ec6056cf5119cb39bed846e786665441f"
+        }
+      },
+      "evaluation_only_truth": "model",
+      "diagnosis": "model"
+    },
+    {
+      "id": "case0003",
+      "outcomes": {
+        "none": false,
+        "model_only": false,
+        "policy_only": false,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.332130708033219,
+          "simulation_seconds": 6.659999999999471,
+          "models_sha256": "3802651a9d77d4243a66cbae2d6cdcd0ac2c2ff1f87b72ffdedd39cec9a2fba7",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "5c2fb2fef7d9a8a503602af2d8b9976ec6056cf5119cb39bed846e786665441f"
+        },
+        "model_only": {
+          "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.30454845901113003,
+          "simulation_seconds": 6.719999999999464,
+          "models_sha256": "ca58b42a6144a2c1d22e20f92ab97f03633b79dfc47986273366686faf658b1a",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "5c2fb2fef7d9a8a503602af2d8b9976ec6056cf5119cb39bed846e786665441f"
+        },
+        "policy_only": {
+          "exception": "RuntimeError: lower_yellow: TCP residual 0.0209m",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.9555522920563817,
+          "simulation_seconds": 15.820000000002006,
+          "models_sha256": "3802651a9d77d4243a66cbae2d6cdcd0ac2c2ff1f87b72ffdedd39cec9a2fba7",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "5c2fb2fef7d9a8a503602af2d8b9976ec6056cf5119cb39bed846e786665441f"
+        },
+        "cross_level": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 2.2176135419867933,
+          "simulation_seconds": 44.76000000000894,
+          "models_sha256": "ca58b42a6144a2c1d22e20f92ab97f03633b79dfc47986273366686faf658b1a",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "5c2fb2fef7d9a8a503602af2d8b9976ec6056cf5119cb39bed846e786665441f"
+        }
+      },
+      "evaluation_only_truth": "mixed",
+      "diagnosis": "mixed"
+    },
+    {
+      "id": "case0004",
+      "outcomes": {
+        "none": true,
+        "model_only": true,
+        "policy_only": true,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.3254875419661403,
+          "simulation_seconds": 25.179999999996834,
+          "models_sha256": "51873f9fb1b8d4bf6887979d25aa232d1afba711ef5a6a09d39682f6c02f9939",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "eea655bbeec2e78d06901062f9db178c4653f81787d8a1714d7ac50220266b56"
+        },
+        "model_only": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.2998364580562338,
+          "simulation_seconds": 25.179999999996834,
+          "models_sha256": "456a8c2fc8bf595bcf82318c0a531dd96235d7324cf477b08511370ff187c921",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "eea655bbeec2e78d06901062f9db178c4653f81787d8a1714d7ac50220266b56"
+        },
+        "policy_only": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.2803371249465272,
+          "simulation_seconds": 25.179999999996834,
+          "models_sha256": "51873f9fb1b8d4bf6887979d25aa232d1afba711ef5a6a09d39682f6c02f9939",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "eea655bbeec2e78d06901062f9db178c4653f81787d8a1714d7ac50220266b56"
+        },
+        "cross_level": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.2780021668877453,
+          "simulation_seconds": 25.179999999996834,
+          "models_sha256": "456a8c2fc8bf595bcf82318c0a531dd96235d7324cf477b08511370ff187c921",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "eea655bbeec2e78d06901062f9db178c4653f81787d8a1714d7ac50220266b56"
+        }
+      },
+      "evaluation_only_truth": "ok",
+      "diagnosis": "ok"
+    },
+    {
+      "id": "case0005",
+      "outcomes": {
+        "none": false,
+        "model_only": false,
+        "policy_only": true,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.3294240840477869,
+          "simulation_seconds": 6.899999999999444,
+          "models_sha256": "51873f9fb1b8d4bf6887979d25aa232d1afba711ef5a6a09d39682f6c02f9939",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "eea655bbeec2e78d06901062f9db178c4653f81787d8a1714d7ac50220266b56"
+        },
+        "model_only": {
+          "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.3331995829939842,
+          "simulation_seconds": 6.899999999999444,
+          "models_sha256": "456a8c2fc8bf595bcf82318c0a531dd96235d7324cf477b08511370ff187c921",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "eea655bbeec2e78d06901062f9db178c4653f81787d8a1714d7ac50220266b56"
+        },
+        "policy_only": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.289183959015645,
+          "simulation_seconds": 25.179999999996834,
+          "models_sha256": "51873f9fb1b8d4bf6887979d25aa232d1afba711ef5a6a09d39682f6c02f9939",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "eea655bbeec2e78d06901062f9db178c4653f81787d8a1714d7ac50220266b56"
+        },
+        "cross_level": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 1.2405340829864144,
+          "simulation_seconds": 25.179999999996834,
+          "models_sha256": "456a8c2fc8bf595bcf82318c0a531dd96235d7324cf477b08511370ff187c921",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "eea655bbeec2e78d06901062f9db178c4653f81787d8a1714d7ac50220266b56"
+        }
+      },
+      "evaluation_only_truth": "policy",
+      "diagnosis": "policy"
+    },
+    {
+      "id": "case0006",
+      "outcomes": {
+        "none": false,
+        "model_only": true,
+        "policy_only": false,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": "RuntimeError: lower_green: TCP residual 0.0203m",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.9119002919178456,
+          "simulation_seconds": 16.140000000001844,
+          "models_sha256": "51873f9fb1b8d4bf6887979d25aa232d1afba711ef5a6a09d39682f6c02f9939",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "070fcb6750ca2dbcbaf164acf495593c8780cd3755d2568fbcd6bb8ece628d5a"
+        },
+        "model_only": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 2.307004916947335,
+          "simulation_seconds": 45.80000000001021,
+          "models_sha256": "456a8c2fc8bf595bcf82318c0a531dd96235d7324cf477b08511370ff187c921",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "070fcb6750ca2dbcbaf164acf495593c8780cd3755d2568fbcd6bb8ece628d5a"
+        },
+        "policy_only": {
+          "exception": "RuntimeError: lower_green: TCP residual 0.0203m",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.9387833329383284,
+          "simulation_seconds": 16.140000000001844,
+          "models_sha256": "51873f9fb1b8d4bf6887979d25aa232d1afba711ef5a6a09d39682f6c02f9939",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "070fcb6750ca2dbcbaf164acf495593c8780cd3755d2568fbcd6bb8ece628d5a"
+        },
+        "cross_level": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 2.287424375070259,
+          "simulation_seconds": 45.80000000001021,
+          "models_sha256": "456a8c2fc8bf595bcf82318c0a531dd96235d7324cf477b08511370ff187c921",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "070fcb6750ca2dbcbaf164acf495593c8780cd3755d2568fbcd6bb8ece628d5a"
+        }
+      },
+      "evaluation_only_truth": "model",
+      "diagnosis": "model"
+    },
+    {
+      "id": "case0007",
+      "outcomes": {
+        "none": false,
+        "model_only": false,
+        "policy_only": false,
+        "cross_level": true
+      },
+      "results": {
+        "none": {
+          "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.3165909999515861,
+          "simulation_seconds": 6.899999999999444,
+          "models_sha256": "51873f9fb1b8d4bf6887979d25aa232d1afba711ef5a6a09d39682f6c02f9939",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "070fcb6750ca2dbcbaf164acf495593c8780cd3755d2568fbcd6bb8ece628d5a"
+        },
+        "model_only": {
+          "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.3026904590660706,
+          "simulation_seconds": 6.799999999999455,
+          "models_sha256": "456a8c2fc8bf595bcf82318c0a531dd96235d7324cf477b08511370ff187c921",
+          "policies_sha256": "403c87cc5e1348db611ea66415a78d7bc8728740652eb0aaec38f099c187321c",
+          "scene_sha256": "070fcb6750ca2dbcbaf164acf495593c8780cd3755d2568fbcd6bb8ece628d5a"
+        },
+        "policy_only": {
+          "exception": "RuntimeError: lower_green: TCP residual 0.0203m",
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 0.9775469999294728,
+          "simulation_seconds": 16.140000000001844,
+          "models_sha256": "51873f9fb1b8d4bf6887979d25aa232d1afba711ef5a6a09d39682f6c02f9939",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "070fcb6750ca2dbcbaf164acf495593c8780cd3755d2568fbcd6bb8ece628d5a"
+        },
+        "cross_level": {
+          "exception": null,
+          "trial_valid": true,
+          "artifact_complete": true,
+          "wall_seconds": 2.2662787090521306,
+          "simulation_seconds": 45.80000000001021,
+          "models_sha256": "456a8c2fc8bf595bcf82318c0a531dd96235d7324cf477b08511370ff187c921",
+          "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+          "scene_sha256": "070fcb6750ca2dbcbaf164acf495593c8780cd3755d2568fbcd6bb8ece628d5a"
+        }
+      },
+      "evaluation_only_truth": "mixed",
+      "diagnosis": "mixed"
+    }
+  ],
+  "summary": {
+    "groups": {
+      "none": {
+        "success": 2,
+        "total": 8,
+        "invalid": 0
+      },
+      "model_only": {
+        "success": 4,
+        "total": 8,
+        "invalid": 0
+      },
+      "policy_only": {
+        "success": 4,
+        "total": 8,
+        "invalid": 0
+      },
+      "cross_level": {
+        "success": 8,
+        "total": 8,
+        "invalid": 0
+      }
+    },
+    "case_count": 8,
+    "attribution_correct": 8,
+    "abstentions": 0,
+    "confusion": [
+      {
+        "truth": "mixed",
+        "prediction": "mixed",
+        "count": 2
+      },
+      {
+        "truth": "model",
+        "prediction": "model",
+        "count": 2
+      },
+      {
+        "truth": "ok",
+        "prediction": "ok",
+        "count": 2
+      },
+      {
+        "truth": "policy",
+        "prediction": "policy",
+        "count": 2
+      }
+    ],
+    "cross_level_regressions": [],
+    "interpretation": "paired finite interventions; cases within a layout are correlated; no universal or LM capability claim"
+  }
+}

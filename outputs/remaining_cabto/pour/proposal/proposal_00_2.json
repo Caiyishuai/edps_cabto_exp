@@ -1,0 +1,41 @@
+{
+  "reference": {
+    "name": "pick_basin",
+    "args": {
+      "arm": "1",
+      "obj": "basin",
+      "dest": "pick_basin"
+    },
+    "program_kind": "pick",
+    "pre": [
+      "empty(1)",
+      "at_source(basin)",
+      "collision_free()"
+    ],
+    "add": [
+      "holding(1,basin)"
+    ],
+    "del": [
+      "empty(1)",
+      "at_source(basin)",
+      "parked(1)",
+      "home(1)",
+      "basin_returned()",
+      "hand_raised(1)"
+    ],
+    "description": "接收臂抓持接收盆，盆已离开桌面处于运输高度；抓持偏移可用于后续位置跟踪。"
+  },
+  "mode": "reference_initialized_local_model_proposal",
+  "call": {
+    "model_id": "mlx-community/Qwen3.5-9B-4bit",
+    "text": "Review this single STRIPS action for a robotic task and propose its pre/add/del. It is initialized from an engineer's existing reference, NOT a blank action discovery. Return ONLY JSON with pre,add,del lists. Preserve the named conditions and safety requirements when they are consistent; do not add unsupported predicates. pre/add and add/del must be disjoint. Do not give control code.\nReference action: {\"name\": \"pick_basin\", \"args\": {\"arm\": \"1\", \"obj\": \"basin\", \"dest\": \"pick_basin\"}, \"program_kind\": \"pick\", \"pre\": [\"empty(1)\", \"at_source(basin)\", \"collision_free()\"], \"add\": [\"holding(1,basin)\"], \"del\": [\"empty(1)\", \"at_source(basin)\", \"parked(1)\", \"home(1)\", \"basin_returned()\", \"hand_raised(1)\"], \"description\": \"接收臂抓持接收盆，盆已离开桌面处于运输高度；抓持偏移可用于后续位置跟踪。\"}\nTask goal: [\"basin_returned()\", \"caught_by_held_basin()\", \"collision_free()\", \"empty(0)\", \"empty(1)\", \"home(0)\", \"home(1)\", \"payload_retained()\", \"source_returned()\", \"sphere_in_basin()\"]\nYour raw answer: {\n  \"pre\": [\n    \"empty(1)\",\n    \"at_source(basin)\",\n    \"collision_free()\",\n    \"home(1)\",\n    \"hand_raised(1)\"\n  ],\n  \"add\": [\n    \"holding(1, basin)\",\n    \"basin_returned()\",\n    \"payload_retained()\"\n  ],\n  \"del\": [\n    \"empty(1)\",\n    \"at_source(basin)\",\n    \"parked(1)\",\n    \"home(1)\",\n    \"hand_raised(1)\"\n  ]\n}\nValidation error: Unknown CP predicate\nYour raw answer: {\n  \"pre\": [\n    \"empty(1)\",\n    \"at_source(basin)\",\n    \"collision_free()\",\n    \"home(1)\",\n    \"hand_raised(1)\"\n  ],\n  \"add\": [\n    \"holding(1, basin)\",\n    \"basin_returned()\",\n    \"payload_retained()\"\n  ],\n  \"del\": [\n    \"empty(1)\",\n    \"at_source(basin)\",\n    \"parked(1)\",\n    \"home(1)\",\n    \"hand_raised(1)\"\n  ]\n}\nValidation error: Unknown CP predicate",
+    "image_files": [],
+    "formatted_prompt": "<|im_start|>user\nReview this single STRIPS action for a robotic task and propose its pre/add/del. It is initialized from an engineer's existing reference, NOT a blank action discovery. Return ONLY JSON with pre,add,del lists. Preserve the named conditions and safety requirements when they are consistent; do not add unsupported predicates. pre/add and add/del must be disjoint. Do not give control code.\nReference action: {\"name\": \"pick_basin\", \"args\": {\"arm\": \"1\", \"obj\": \"basin\", \"dest\": \"pick_basin\"}, \"program_kind\": \"pick\", \"pre\": [\"empty(1)\", \"at_source(basin)\", \"collision_free()\"], \"add\": [\"holding(1,basin)\"], \"del\": [\"empty(1)\", \"at_source(basin)\", \"parked(1)\", \"home(1)\", \"basin_returned()\", \"hand_raised(1)\"], \"description\": \"接收臂抓持接收盆，盆已离开桌面处于运输高度；抓持偏移可用于后续位置跟踪。\"}\nTask goal: [\"basin_returned()\", \"caught_by_held_basin()\", \"collision_free()\", \"empty(0)\", \"empty(1)\", \"home(0)\", \"home(1)\", \"payload_retained()\", \"source_returned()\", \"sphere_in_basin()\"]\nYour raw answer: {\n  \"pre\": [\n    \"empty(1)\",\n    \"at_source(basin)\",\n    \"collision_free()\",\n    \"home(1)\",\n    \"hand_raised(1)\"\n  ],\n  \"add\": [\n    \"holding(1, basin)\",\n    \"basin_returned()\",\n    \"payload_retained()\"\n  ],\n  \"del\": [\n    \"empty(1)\",\n    \"at_source(basin)\",\n    \"parked(1)\",\n    \"home(1)\",\n    \"hand_raised(1)\"\n  ]\n}\nValidation error: Unknown CP predicate\nYour raw answer: {\n  \"pre\": [\n    \"empty(1)\",\n    \"at_source(basin)\",\n    \"collision_free()\",\n    \"home(1)\",\n    \"hand_raised(1)\"\n  ],\n  \"add\": [\n    \"holding(1, basin)\",\n    \"basin_returned()\",\n    \"payload_retained()\"\n  ],\n  \"del\": [\n    \"empty(1)\",\n    \"at_source(basin)\",\n    \"parked(1)\",\n    \"home(1)\",\n    \"hand_raised(1)\"\n  ]\n}\nValidation error: Unknown CP predicate<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "temperature": 0.2,
+    "max_tokens": 850,
+    "raw": "{\n  \"pre\": [\n    \"empty(1)\",\n    \"at_source(basin)\",\n    \"collision_free()\",\n    \"home(1)\",\n    \"hand_raised(1)\"\n  ],\n  \"add\": [\n    \"holding(1, basin)\",\n    \"basin_returned()\",\n    \"payload_retained()\"\n  ],\n  \"del\": [\n    \"empty(1)\",\n    \"at_source(basin)\",\n    \"parked(1)\",\n    \"home(1)\",\n    \"hand_raised(1)\"\n  ]\n}",
+    "wall_seconds": 2.902832749998197
+  },
+  "accepted": false,
+  "error": "Unknown CP predicate"
+}

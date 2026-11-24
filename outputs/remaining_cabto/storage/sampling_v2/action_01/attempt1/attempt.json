@@ -1,0 +1,169 @@
+{
+  "action_id": "place_tray(arm=1,dest=tray,obj=item1)",
+  "model": {
+    "name": "place_tray",
+    "args": {
+      "arm": "1",
+      "obj": "item1",
+      "dest": "tray"
+    },
+    "program_kind": "place",
+    "pre": [
+      "holding(1,item1)",
+      "slot_free(1)"
+    ],
+    "add": [
+      "empty(1)",
+      "packed(1)"
+    ],
+    "del": [
+      "holding(1,item1)",
+      "slot_free(1)"
+    ],
+    "description": "绑定物品已在自由托盘对应槽位内稳定支撑且解除抓持，指定手爪张开并竖直撤离放置面。"
+  },
+  "attempt": 1,
+  "transfer": {
+    "source_sha256": "f6ecf4e96ef8e6323f94898cc65b17db063f506accb607e72caf6d14a200c7b5",
+    "source_attempt": "/Users/yishuaicai/mywork/edps_cabto_exp/project/data/programs/curriculum_pick_result.json#place",
+    "mode": "unmodified_actual_model_source_schema_transfer",
+    "new_call": false
+  },
+  "source": "def policy(api):\n    pose = api.target_pose()\n    api.move_above(pose)\n    api.align_target(pose)\n    api.lower(pose)\n    api.settle()\n    api.place_release()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": true,
+    "goal_ok": true,
+    "effect_ok": false,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [],
+      "unexpected_removed": []
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "target_pose",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.2987296342549792,
+          -0.035000000000000024,
+          0.40800000000000003
+        ]
+      },
+      {
+        "method": "move_above",
+        "args": [
+          [
+            0.2987296342549792,
+            -0.035000000000000024,
+            0.40800000000000003
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.006673957053874475
+      },
+      {
+        "method": "align_target",
+        "args": [
+          [
+            0.2987296342549792,
+            -0.035000000000000024,
+            0.40800000000000003
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.2974440865256748,
+          -0.037447906905131126
+        ]
+      },
+      {
+        "method": "lower",
+        "args": [
+          [
+            0.2987296342549792,
+            -0.035000000000000024,
+            0.40800000000000003
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.441646036689046
+      },
+      {
+        "method": "settle",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "place_release",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      }
+    ],
+    "before": [
+      "at_source(item0)",
+      "empty(0)",
+      "hands_safe_for_lateral(0)",
+      "holding(1,item1)",
+      "parked(0)",
+      "slot_free(0)",
+      "slot_free(1)",
+      "tray_at_table()"
+    ],
+    "after": [
+      "at_source(item0)",
+      "empty(0)",
+      "empty(1)",
+      "hands_safe_for_lateral(0)",
+      "packed(1)",
+      "parked(0)",
+      "slot_free(0)",
+      "tray_at_table()"
+    ],
+    "model": {
+      "name": "place_tray",
+      "args": {
+        "arm": "1",
+        "obj": "item1",
+        "dest": "tray"
+      },
+      "program_kind": "place",
+      "pre": [
+        "holding(1,item1)",
+        "slot_free(1)"
+      ],
+      "add": [
+        "empty(1)",
+        "packed(1)"
+      ],
+      "del": [
+        "holding(1,item1)",
+        "slot_free(1)"
+      ],
+      "description": "绑定物品已在自由托盘对应槽位内稳定支撑且解除抓持，指定手爪张开并竖直撤离放置面。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": true,
+    "missing_required_calls": [
+      "retreat"
+    ],
+    "code_sha256": "f6ecf4e96ef8e6323f94898cc65b17db063f506accb607e72caf6d14a200c7b5",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+  },
+  "accepted": false
+}

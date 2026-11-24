@@ -1,0 +1,2565 @@
+{
+  "kernel": {
+    "bt_expansion": {
+      "path": "/Users/yishuaicai/mywork/edps_cabto_exp/BTExpansion-demo/src/bt_expansion/__init__.py",
+      "sha256": "bab0549f7fcaa6c2bdd33b02d8c4d8233e7a5c41ffd454307651c6fd9da37fd2"
+    },
+    "bt_expansion.planning": {
+      "path": "/Users/yishuaicai/mywork/edps_cabto_exp/BTExpansion-demo/src/bt_expansion/planning.py",
+      "sha256": "8730a53df5c526809848da9fcedbc02ce4f17ca00322a52e133e8ec909d7f697"
+    },
+    "behavior_tree": {
+      "path": "/Users/yishuaicai/mywork/edps_cabto_exp/BTExpansion-demo/src/behavior_tree/__init__.py",
+      "sha256": "ad77aee97bddc9c41924c5004be56843d937cccb33e88515c74ce2c87bcc8c5a"
+    },
+    "behavior_tree.BehaviorTree": {
+      "path": "/Users/yishuaicai/mywork/edps_cabto_exp/BTExpansion-demo/src/behavior_tree/BehaviorTree.py",
+      "sha256": "512376d555f9f223027d521a3b644f6550c7128285aec61af2c1dcbd685e6038"
+    },
+    "bt_expansion.algorithm": {
+      "path": "/Users/yishuaicai/mywork/edps_cabto_exp/BTExpansion-demo/src/bt_expansion/algorithm.py",
+      "sha256": "ffbe33712df2d05068ccef24e7be90edb7f45e51978af4f99b18b51faa92ae50"
+    }
+  },
+  "model_version": 0,
+  "start": [
+    "at_source(apple)",
+    "at_source(potato)",
+    "at_source(shrimp)",
+    "empty()"
+  ],
+  "goal": [
+    "at_target(apple)",
+    "at_target(shrimp)",
+    "empty()",
+    "home_completed()"
+  ],
+  "nodes": [
+    {
+      "id": 0,
+      "type": "cond",
+      "kind": "control"
+    },
+    {
+      "id": 1,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 2,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "at_target(shrimp)",
+        "empty()",
+        "home_completed()"
+      ]
+    },
+    {
+      "id": 3,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 4,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 5,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "holding(shrimp)",
+        "home_completed()"
+      ]
+    },
+    {
+      "id": 6,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 7,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 8,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "holding(apple)",
+        "holding(shrimp)",
+        "home_completed()"
+      ]
+    },
+    {
+      "id": 9,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 10,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 11,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "empty()",
+        "holding(apple)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 12,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 13,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 14,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "holding(apple)",
+        "holding(potato)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 15,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 16,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(shrimp)",
+        "empty()",
+        "holding(apple)",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "act",
+      "kind": "action",
+      "action_id": "pick(object=shrimp,support=bowl)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "empty()",
+          "at_source(shrimp)"
+        ],
+        "add": [
+          "holding(shrimp)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(shrimp)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 19,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "empty()",
+        "holding(potato)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "act",
+      "kind": "action",
+      "action_id": "pick(object=apple,support=board)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "empty()",
+          "at_source(apple)"
+        ],
+        "add": [
+          "holding(apple)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(apple)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=potato,support=pan)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "potato",
+          "support": "pan"
+        },
+        "pre": [
+          "holding(potato)"
+        ],
+        "add": [
+          "at_target(potato)",
+          "empty()"
+        ],
+        "del": [
+          "holding(potato)"
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 23,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "empty()",
+        "holding(apple)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 24,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 25,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 26,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=apple,support=board)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "holding(apple)"
+        ],
+        "add": [
+          "at_target(apple)",
+          "empty()"
+        ],
+        "del": [
+          "holding(apple)"
+        ]
+      }
+    },
+    {
+      "id": 27,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 28,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 29,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "empty()",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 30,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 31,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 32,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "holding(apple)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 33,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 34,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 35,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(shrimp)",
+        "empty()",
+        "holding(apple)"
+      ]
+    },
+    {
+      "id": 36,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 37,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(shrimp)",
+        "holding(apple)",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 38,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=potato,support=pan)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "potato",
+          "support": "pan"
+        },
+        "pre": [
+          "holding(potato)"
+        ],
+        "add": [
+          "at_target(potato)",
+          "empty()"
+        ],
+        "del": [
+          "holding(potato)"
+        ]
+      }
+    },
+    {
+      "id": 39,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 40,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(shrimp)",
+        "empty()",
+        "holding(apple)"
+      ]
+    },
+    {
+      "id": 41,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 42,
+      "type": "act",
+      "kind": "action",
+      "action_id": "pick(object=shrimp,support=bowl)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "empty()",
+          "at_source(shrimp)"
+        ],
+        "add": [
+          "holding(shrimp)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(shrimp)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 43,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 44,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 45,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "empty()",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 46,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 47,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "holding(potato)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=potato,support=pan)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "potato",
+          "support": "pan"
+        },
+        "pre": [
+          "holding(potato)"
+        ],
+        "add": [
+          "at_target(potato)",
+          "empty()"
+        ],
+        "del": [
+          "holding(potato)"
+        ]
+      }
+    },
+    {
+      "id": 49,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 50,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "empty()",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 51,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 52,
+      "type": "act",
+      "kind": "action",
+      "action_id": "pick(object=apple,support=board)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "empty()",
+          "at_source(apple)"
+        ],
+        "add": [
+          "holding(apple)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(apple)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 53,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=apple,support=board)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "holding(apple)"
+        ],
+        "add": [
+          "at_target(apple)",
+          "empty()"
+        ],
+        "del": [
+          "holding(apple)"
+        ]
+      }
+    },
+    {
+      "id": 54,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 55,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 56,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "holding(potato)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 57,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 58,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 59,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(shrimp)",
+        "at_target(apple)",
+        "empty()",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 60,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 61,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(shrimp)",
+        "holding(apple)",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 62,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=apple,support=board)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "holding(apple)"
+        ],
+        "add": [
+          "at_target(apple)",
+          "empty()"
+        ],
+        "del": [
+          "holding(apple)"
+        ]
+      }
+    },
+    {
+      "id": 63,
+      "type": "act",
+      "kind": "action",
+      "action_id": "pick(object=shrimp,support=bowl)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "empty()",
+          "at_source(shrimp)"
+        ],
+        "add": [
+          "holding(shrimp)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(shrimp)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 64,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=potato,support=pan)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "potato",
+          "support": "pan"
+        },
+        "pre": [
+          "holding(potato)"
+        ],
+        "add": [
+          "at_target(potato)",
+          "empty()"
+        ],
+        "del": [
+          "holding(potato)"
+        ]
+      }
+    },
+    {
+      "id": 65,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 66,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "empty()",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 67,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 68,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 69,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=shrimp,support=bowl)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "holding(shrimp)"
+        ],
+        "add": [
+          "at_target(shrimp)",
+          "empty()"
+        ],
+        "del": [
+          "holding(shrimp)"
+        ]
+      }
+    },
+    {
+      "id": 70,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 71,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 72,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(shrimp)",
+        "holding(apple)",
+        "home_completed()"
+      ]
+    },
+    {
+      "id": 73,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 74,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "holding(apple)",
+        "holding(shrimp)",
+        "home_completed()"
+      ]
+    },
+    {
+      "id": 75,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=shrimp,support=bowl)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "holding(shrimp)"
+        ],
+        "add": [
+          "at_target(shrimp)",
+          "empty()"
+        ],
+        "del": [
+          "holding(shrimp)"
+        ]
+      }
+    },
+    {
+      "id": 76,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 77,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 78,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(shrimp)",
+        "empty()",
+        "holding(apple)"
+      ]
+    },
+    {
+      "id": 79,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 80,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "holding(apple)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 81,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=shrimp,support=bowl)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "holding(shrimp)"
+        ],
+        "add": [
+          "at_target(shrimp)",
+          "empty()"
+        ],
+        "del": [
+          "holding(shrimp)"
+        ]
+      }
+    },
+    {
+      "id": 82,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 83,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 84,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(shrimp)",
+        "holding(apple)",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 85,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 86,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 87,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "at_target(shrimp)",
+        "empty()",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 88,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 89,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "holding(potato)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 90,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=shrimp,support=bowl)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "holding(shrimp)"
+        ],
+        "add": [
+          "at_target(shrimp)",
+          "empty()"
+        ],
+        "del": [
+          "holding(shrimp)"
+        ]
+      }
+    },
+    {
+      "id": 91,
+      "type": "act",
+      "kind": "action",
+      "action_id": "pick(object=apple,support=board)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "empty()",
+          "at_source(apple)"
+        ],
+        "add": [
+          "holding(apple)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(apple)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 92,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=potato,support=pan)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "potato",
+          "support": "pan"
+        },
+        "pre": [
+          "holding(potato)"
+        ],
+        "add": [
+          "at_target(potato)",
+          "empty()"
+        ],
+        "del": [
+          "holding(potato)"
+        ]
+      }
+    },
+    {
+      "id": 93,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 94,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(shrimp)",
+        "empty()",
+        "holding(apple)"
+      ]
+    },
+    {
+      "id": 95,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 96,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 97,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=apple,support=board)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "holding(apple)"
+        ],
+        "add": [
+          "at_target(apple)",
+          "empty()"
+        ],
+        "del": [
+          "holding(apple)"
+        ]
+      }
+    },
+    {
+      "id": 98,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 99,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 100,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "at_target(shrimp)",
+        "holding(potato)",
+        "home_completed()"
+      ]
+    },
+    {
+      "id": 101,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 102,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 103,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "at_target(shrimp)",
+        "empty()",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 104,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 105,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "holding(potato)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 106,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=shrimp,support=bowl)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "holding(shrimp)"
+        ],
+        "add": [
+          "at_target(shrimp)",
+          "empty()"
+        ],
+        "del": [
+          "holding(shrimp)"
+        ]
+      }
+    },
+    {
+      "id": 107,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 108,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(shrimp)",
+        "holding(apple)",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 109,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=apple,support=board)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "holding(apple)"
+        ],
+        "add": [
+          "at_target(apple)",
+          "empty()"
+        ],
+        "del": [
+          "holding(apple)"
+        ]
+      }
+    },
+    {
+      "id": 110,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 111,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=potato,support=pan)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "potato",
+          "support": "pan"
+        },
+        "pre": [
+          "holding(potato)"
+        ],
+        "add": [
+          "at_target(potato)",
+          "empty()"
+        ],
+        "del": [
+          "holding(potato)"
+        ]
+      }
+    },
+    {
+      "id": 112,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 113,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 114,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "at_target(shrimp)",
+        "empty()"
+      ]
+    },
+    {
+      "id": 115,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 116,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 117,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 118,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 119,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 120,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(shrimp)",
+        "at_target(apple)",
+        "empty()"
+      ]
+    },
+    {
+      "id": 121,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 122,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 123,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(shrimp)",
+        "holding(apple)"
+      ]
+    },
+    {
+      "id": 124,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 125,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "at_source(shrimp)",
+        "empty()"
+      ]
+    },
+    {
+      "id": 126,
+      "type": "act",
+      "kind": "action",
+      "action_id": "pick(object=apple,support=board)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "empty()",
+          "at_source(apple)"
+        ],
+        "add": [
+          "holding(apple)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(apple)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 127,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=apple,support=board)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "holding(apple)"
+        ],
+        "add": [
+          "at_target(apple)",
+          "empty()"
+        ],
+        "del": [
+          "holding(apple)"
+        ]
+      }
+    },
+    {
+      "id": 128,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 129,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(shrimp)",
+        "at_target(apple)",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 130,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=potato,support=pan)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "potato",
+          "support": "pan"
+        },
+        "pre": [
+          "holding(potato)"
+        ],
+        "add": [
+          "at_target(potato)",
+          "empty()"
+        ],
+        "del": [
+          "holding(potato)"
+        ]
+      }
+    },
+    {
+      "id": 131,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 132,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(shrimp)",
+        "at_target(apple)",
+        "empty()"
+      ]
+    },
+    {
+      "id": 133,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 134,
+      "type": "act",
+      "kind": "action",
+      "action_id": "pick(object=shrimp,support=bowl)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "empty()",
+          "at_source(shrimp)"
+        ],
+        "add": [
+          "holding(shrimp)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(shrimp)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 135,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 136,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "holding(apple)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 137,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=apple,support=board)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "holding(apple)"
+        ],
+        "add": [
+          "at_target(apple)",
+          "empty()"
+        ],
+        "del": [
+          "holding(apple)"
+        ]
+      }
+    },
+    {
+      "id": 138,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=shrimp,support=bowl)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "holding(shrimp)"
+        ],
+        "add": [
+          "at_target(shrimp)",
+          "empty()"
+        ],
+        "del": [
+          "holding(shrimp)"
+        ]
+      }
+    },
+    {
+      "id": 139,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 140,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 141,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(shrimp)",
+        "holding(apple)"
+      ]
+    },
+    {
+      "id": 142,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 143,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "holding(apple)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 144,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=shrimp,support=bowl)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "holding(shrimp)"
+        ],
+        "add": [
+          "at_target(shrimp)",
+          "empty()"
+        ],
+        "del": [
+          "holding(shrimp)"
+        ]
+      }
+    },
+    {
+      "id": 145,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 146,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 147,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "at_target(shrimp)",
+        "empty()"
+      ]
+    },
+    {
+      "id": 148,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 149,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "id": 150,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=shrimp,support=bowl)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "shrimp",
+          "support": "bowl"
+        },
+        "pre": [
+          "holding(shrimp)"
+        ],
+        "add": [
+          "at_target(shrimp)",
+          "empty()"
+        ],
+        "del": [
+          "holding(shrimp)"
+        ]
+      }
+    },
+    {
+      "id": 151,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 152,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "at_target(shrimp)",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 153,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=potato,support=pan)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "potato",
+          "support": "pan"
+        },
+        "pre": [
+          "holding(potato)"
+        ],
+        "add": [
+          "at_target(potato)",
+          "empty()"
+        ],
+        "del": [
+          "holding(potato)"
+        ]
+      }
+    },
+    {
+      "id": 154,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 155,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_source(apple)",
+        "at_target(shrimp)",
+        "empty()"
+      ]
+    },
+    {
+      "id": 156,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 157,
+      "type": "act",
+      "kind": "action",
+      "action_id": "pick(object=apple,support=board)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "empty()",
+          "at_source(apple)"
+        ],
+        "add": [
+          "holding(apple)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(apple)",
+          "home_completed()"
+        ]
+      }
+    },
+    {
+      "id": 158,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=apple,support=board)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "apple",
+          "support": "board"
+        },
+        "pre": [
+          "holding(apple)"
+        ],
+        "add": [
+          "at_target(apple)",
+          "empty()"
+        ],
+        "del": [
+          "holding(apple)"
+        ]
+      }
+    },
+    {
+      "id": 159,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 160,
+      "type": "?",
+      "kind": "control"
+    },
+    {
+      "id": 161,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "at_target(shrimp)",
+        "holding(potato)"
+      ]
+    },
+    {
+      "id": 162,
+      "type": "act",
+      "kind": "action",
+      "action_id": "place(object=potato,support=pan)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "potato",
+          "support": "pan"
+        },
+        "pre": [
+          "holding(potato)"
+        ],
+        "add": [
+          "at_target(potato)",
+          "empty()"
+        ],
+        "del": [
+          "holding(potato)"
+        ]
+      }
+    },
+    {
+      "id": 163,
+      "type": ">",
+      "kind": "control"
+    },
+    {
+      "id": 164,
+      "type": "cond",
+      "kind": "condition",
+      "symbols": [
+        "at_target(apple)",
+        "at_target(shrimp)",
+        "empty()"
+      ]
+    },
+    {
+      "id": 165,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    },
+    {
+      "id": 166,
+      "type": "act",
+      "kind": "action",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "args": {},
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": []
+      }
+    }
+  ],
+  "edges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      7,
+      9
+    ],
+    [
+      9,
+      10
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      10,
+      12
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      13,
+      14
+    ],
+    [
+      13,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      17
+    ],
+    [
+      13,
+      18
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      18,
+      20
+    ],
+    [
+      12,
+      21
+    ],
+    [
+      10,
+      22
+    ],
+    [
+      22,
+      23
+    ],
+    [
+      22,
+      24
+    ],
+    [
+      9,
+      25
+    ],
+    [
+      6,
+      26
+    ],
+    [
+      4,
+      27
+    ],
+    [
+      27,
+      28
+    ],
+    [
+      28,
+      29
+    ],
+    [
+      28,
+      30
+    ],
+    [
+      30,
+      31
+    ],
+    [
+      31,
+      32
+    ],
+    [
+      31,
+      33
+    ],
+    [
+      33,
+      34
+    ],
+    [
+      34,
+      35
+    ],
+    [
+      34,
+      36
+    ],
+    [
+      36,
+      37
+    ],
+    [
+      36,
+      38
+    ],
+    [
+      34,
+      39
+    ],
+    [
+      39,
+      40
+    ],
+    [
+      39,
+      41
+    ],
+    [
+      33,
+      42
+    ],
+    [
+      31,
+      43
+    ],
+    [
+      43,
+      44
+    ],
+    [
+      44,
+      45
+    ],
+    [
+      44,
+      46
+    ],
+    [
+      46,
+      47
+    ],
+    [
+      46,
+      48
+    ],
+    [
+      44,
+      49
+    ],
+    [
+      49,
+      50
+    ],
+    [
+      49,
+      51
+    ],
+    [
+      43,
+      52
+    ],
+    [
+      30,
+      53
+    ],
+    [
+      28,
+      54
+    ],
+    [
+      54,
+      55
+    ],
+    [
+      55,
+      56
+    ],
+    [
+      55,
+      57
+    ],
+    [
+      57,
+      58
+    ],
+    [
+      58,
+      59
+    ],
+    [
+      58,
+      60
+    ],
+    [
+      60,
+      61
+    ],
+    [
+      60,
+      62
+    ],
+    [
+      57,
+      63
+    ],
+    [
+      54,
+      64
+    ],
+    [
+      28,
+      65
+    ],
+    [
+      65,
+      66
+    ],
+    [
+      65,
+      67
+    ],
+    [
+      27,
+      68
+    ],
+    [
+      3,
+      69
+    ],
+    [
+      1,
+      70
+    ],
+    [
+      70,
+      71
+    ],
+    [
+      71,
+      72
+    ],
+    [
+      71,
+      73
+    ],
+    [
+      73,
+      74
+    ],
+    [
+      73,
+      75
+    ],
+    [
+      71,
+      76
+    ],
+    [
+      76,
+      77
+    ],
+    [
+      77,
+      78
+    ],
+    [
+      77,
+      79
+    ],
+    [
+      79,
+      80
+    ],
+    [
+      79,
+      81
+    ],
+    [
+      77,
+      82
+    ],
+    [
+      82,
+      83
+    ],
+    [
+      83,
+      84
+    ],
+    [
+      83,
+      85
+    ],
+    [
+      85,
+      86
+    ],
+    [
+      86,
+      87
+    ],
+    [
+      86,
+      88
+    ],
+    [
+      88,
+      89
+    ],
+    [
+      88,
+      90
+    ],
+    [
+      85,
+      91
+    ],
+    [
+      82,
+      92
+    ],
+    [
+      77,
+      93
+    ],
+    [
+      93,
+      94
+    ],
+    [
+      93,
+      95
+    ],
+    [
+      76,
+      96
+    ],
+    [
+      70,
+      97
+    ],
+    [
+      1,
+      98
+    ],
+    [
+      98,
+      99
+    ],
+    [
+      99,
+      100
+    ],
+    [
+      99,
+      101
+    ],
+    [
+      101,
+      102
+    ],
+    [
+      102,
+      103
+    ],
+    [
+      102,
+      104
+    ],
+    [
+      104,
+      105
+    ],
+    [
+      104,
+      106
+    ],
+    [
+      102,
+      107
+    ],
+    [
+      107,
+      108
+    ],
+    [
+      107,
+      109
+    ],
+    [
+      101,
+      110
+    ],
+    [
+      98,
+      111
+    ],
+    [
+      1,
+      112
+    ],
+    [
+      112,
+      113
+    ],
+    [
+      113,
+      114
+    ],
+    [
+      113,
+      115
+    ],
+    [
+      115,
+      116
+    ],
+    [
+      116,
+      117
+    ],
+    [
+      116,
+      118
+    ],
+    [
+      118,
+      119
+    ],
+    [
+      119,
+      120
+    ],
+    [
+      119,
+      121
+    ],
+    [
+      121,
+      122
+    ],
+    [
+      122,
+      123
+    ],
+    [
+      122,
+      124
+    ],
+    [
+      124,
+      125
+    ],
+    [
+      124,
+      126
+    ],
+    [
+      121,
+      127
+    ],
+    [
+      119,
+      128
+    ],
+    [
+      128,
+      129
+    ],
+    [
+      128,
+      130
+    ],
+    [
+      119,
+      131
+    ],
+    [
+      131,
+      132
+    ],
+    [
+      131,
+      133
+    ],
+    [
+      118,
+      134
+    ],
+    [
+      116,
+      135
+    ],
+    [
+      135,
+      136
+    ],
+    [
+      135,
+      137
+    ],
+    [
+      115,
+      138
+    ],
+    [
+      113,
+      139
+    ],
+    [
+      139,
+      140
+    ],
+    [
+      140,
+      141
+    ],
+    [
+      140,
+      142
+    ],
+    [
+      142,
+      143
+    ],
+    [
+      142,
+      144
+    ],
+    [
+      140,
+      145
+    ],
+    [
+      145,
+      146
+    ],
+    [
+      146,
+      147
+    ],
+    [
+      146,
+      148
+    ],
+    [
+      148,
+      149
+    ],
+    [
+      148,
+      150
+    ],
+    [
+      146,
+      151
+    ],
+    [
+      151,
+      152
+    ],
+    [
+      151,
+      153
+    ],
+    [
+      146,
+      154
+    ],
+    [
+      154,
+      155
+    ],
+    [
+      154,
+      156
+    ],
+    [
+      145,
+      157
+    ],
+    [
+      139,
+      158
+    ],
+    [
+      113,
+      159
+    ],
+    [
+      159,
+      160
+    ],
+    [
+      160,
+      161
+    ],
+    [
+      159,
+      162
+    ],
+    [
+      113,
+      163
+    ],
+    [
+      163,
+      164
+    ],
+    [
+      163,
+      165
+    ],
+    [
+      112,
+      166
+    ]
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "at_target(yellow)",
+      "empty()"
+    ],
+    "remaining_del": [
+      "holding(yellow)"
+    ],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "holding(yellow)"
+    ],
+    "unexpected_removed": [
+      "at_target(yellow)",
+      "empty()"
+    ]
+  },
+  "code_executed": true,
+  "exception": "ValueError: No matching cube RGB region near Qwen point",
+  "trace": [
+    {
+      "method": "destination_point",
+      "args": [],
+      "kwargs": {},
+      "status": "failed",
+      "error": "ValueError: No matching cube RGB region near Qwen point"
+    }
+  ],
+  "before": [
+    "at_source(red)",
+    "holding(yellow)"
+  ],
+  "after": [
+    "at_source(red)",
+    "holding(yellow)"
+  ],
+  "model": {
+    "name": "place",
+    "args": {
+      "object": "yellow",
+      "support": "green"
+    },
+    "program_kind": "place",
+    "pre": [
+      "holding(yellow)"
+    ],
+    "add": [
+      "at_target(yellow)",
+      "empty()"
+    ],
+    "del": [
+      "holding(yellow)",
+      "home_completed()"
+    ],
+    "description": "Stack held cube on bound support cube, release and withdraw. Do not return home."
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "code_sha256": "7bd21b38784bb86e0c933dc0c29a50adafc03453e3f3011c698b85fba1cc2fd5",
+  "consistency_scope": "full_CP"
+}

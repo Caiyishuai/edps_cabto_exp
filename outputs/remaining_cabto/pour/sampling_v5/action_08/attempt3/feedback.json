@@ -1,0 +1,211 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": false,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "at_source(basin)",
+      "parked(1)"
+    ],
+    "unexpected_removed": [
+      "receiver_separated()"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "safe_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.77,
+        -0.34,
+        0.72
+      ]
+    },
+    {
+      "method": "move_safe",
+      "args": [
+        [
+          0.77,
+          -0.34,
+          0.72
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.0067469771377297975
+    },
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.600002199332774,
+        -0.22999997433537026,
+        0.4
+      ]
+    },
+    {
+      "method": "move_above",
+      "args": [
+        [
+          0.600002199332774,
+          -0.22999997433537026,
+          0.4
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.005331706171680508
+    },
+    {
+      "method": "align_target",
+      "args": [
+        [
+          0.600002199332774,
+          -0.22999997433537026,
+          0.4
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.5937457425396276,
+        -0.22550403002876526
+      ]
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.600002199332774,
+          -0.22999997433537026,
+          0.4
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.5386056286969328
+    },
+    {
+      "method": "release",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "settle",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "retreat",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.014643454470831872
+    }
+  ],
+  "before": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "empty(0)",
+    "hand_raised(0)",
+    "holding(1,basin)",
+    "home(0)",
+    "parked(0)",
+    "payload_retained()",
+    "receiver_separated()",
+    "source_returned()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "after": [
+    "at_source(basin)",
+    "basin_returned()",
+    "caught_by_held_basin()",
+    "collision_free()",
+    "empty(0)",
+    "empty(1)",
+    "hand_raised(0)",
+    "hand_raised(1)",
+    "home(0)",
+    "parked(0)",
+    "parked(1)",
+    "payload_retained()",
+    "source_returned()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "model": {
+    "name": "return_basin",
+    "args": {
+      "arm": "1",
+      "obj": "basin",
+      "dest": "return_basin"
+    },
+    "program_kind": "return_basin",
+    "pre": [
+      "holding(1,basin)",
+      "home(0)",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "basin_returned()",
+      "empty(1)",
+      "hand_raised(1)"
+    ],
+    "del": [
+      "holding(1,basin)",
+      "basin_ready()"
+    ],
+    "description": "接收盆在标定返还位置落桌且已解除抓持，小球保留在盆内，接收臂空手并撤至外侧安全高度。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "f7bad05fca31ec8118fb393b66e827bb7220c669cc436a2bdb7d561cc2a7ebfe",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+  "physical_diagnostics": {
+    "source": {
+      "returned": true,
+      "xy_error_m": 0.0023505696736929494,
+      "bottom_gap_m": 0.0039858234529510095,
+      "rotation_error_deg": 2.6052898248693164,
+      "released": true,
+      "origin": [
+        0.18079111048074745,
+        0.10221344121180946,
+        0.5239608802399
+      ]
+    },
+    "basin": {
+      "returned": true,
+      "xy_error_m": 0.010246880045717905,
+      "bottom_gap_m": -3.5744081073374456e-05,
+      "rotation_error_deg": 11.262607874548033,
+      "released": true,
+      "origin": [
+        0.5987378203557435,
+        -0.25983140037075875,
+        0.5199201318357813
+      ]
+    }
+  }
+}

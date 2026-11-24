@@ -1,0 +1,138 @@
+{
+  "method": "enumerate",
+  "seed": null,
+  "order": [
+    0,
+    1,
+    2
+  ],
+  "attempts": [
+    {
+      "pool_index": 0,
+      "candidate": {
+        "id": "lower_z_to_safe_contact",
+        "pre_add": [],
+        "offset_z_m": -0.008,
+        "reason": "Lowers the approach point below the table surface to ensure the gripper contacts the object before closing, resolving the 'No simultaneous force' error seen in failed trials."
+      },
+      "trials": [
+        {
+          "phase": "probe",
+          "success": true,
+          "trial_valid": true,
+          "cost": {
+            "rollouts": 1,
+            "actions": 3,
+            "api_calls": 12,
+            "simulation_seconds": 25.63999999999658,
+            "wall_seconds": 1.1576425830135122
+          },
+          "exception": null,
+          "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/enumerate/candidate00/probe00/result.json"
+        },
+        {
+          "phase": "probe",
+          "success": false,
+          "trial_valid": true,
+          "cost": {
+            "rollouts": 1,
+            "actions": 2,
+            "api_calls": 9,
+            "simulation_seconds": 16.500000000001645,
+            "wall_seconds": 0.8406362910754979
+          },
+          "exception": "RuntimeError: lower_blue: TCP residual 0.0302m",
+          "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/enumerate/candidate00/probe01/result.json"
+        }
+      ],
+      "confirmed": false
+    },
+    {
+      "pool_index": 1,
+      "candidate": {
+        "id": "increase_z_margin",
+        "pre_add": [],
+        "offset_z_m": 0.02,
+        "reason": "Increases the Z-offset slightly above the failed 0.045m value to provide more clearance for the approach phase, potentially allowing the controller to find a valid closure trajectory if the current estimate is slightly low."
+      },
+      "trials": [
+        {
+          "phase": "probe",
+          "success": false,
+          "trial_valid": true,
+          "cost": {
+            "rollouts": 1,
+            "actions": 1,
+            "api_calls": 5,
+            "simulation_seconds": 7.319999999999398,
+            "wall_seconds": 0.23148045898415148
+          },
+          "exception": "RuntimeError: Grasp geometry inconsistent",
+          "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/enumerate/candidate01/probe00/result.json"
+        }
+      ],
+      "confirmed": false
+    },
+    {
+      "pool_index": 2,
+      "candidate": {
+        "id": "add_clear_predicate",
+        "pre_add": [
+          {
+            "action": "pick_table",
+            "predicate": "clear",
+            "args": [
+              "object"
+            ]
+          }
+        ],
+        "offset_z_m": null,
+        "reason": "The failed executions show 'ontable' becoming false after the action (unexpected removal), suggesting the planner might be executing on an unstable state or the preconditions are not strictly enforced at runtime. Adding 'clear' as a required precondition ensures the robot only attempts to pick objects that are truly free of other blocks, preventing collisions with neighbors like 'red' or 'yellow'."
+      },
+      "trials": [
+        {
+          "phase": "probe",
+          "success": false,
+          "trial_valid": true,
+          "cost": {
+            "rollouts": 1,
+            "actions": 1,
+            "api_calls": 5,
+            "simulation_seconds": 6.839999999999451,
+            "wall_seconds": 0.21240016596857458
+          },
+          "exception": "RuntimeError: No simultaneous two-finger force at closure: {'left_finger': 0.0, 'right_finger': 0.0}",
+          "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1701/enumerate/candidate02/probe00/result.json"
+        }
+      ],
+      "confirmed": false
+    }
+  ],
+  "selected": null,
+  "status": "pool_exhausted_abstain",
+  "max_rollouts": 20,
+  "cost": {
+    "rollouts": 4,
+    "actions": 7,
+    "api_calls": 31,
+    "simulation_seconds": 56.29999999999707,
+    "wall_seconds": 2.442159499041736
+  },
+  "phase_costs": {
+    "probe": {
+      "rollouts": 4,
+      "actions": 7,
+      "api_calls": 31,
+      "simulation_seconds": 56.29999999999707,
+      "wall_seconds": 2.442159499041736
+    },
+    "confirmation": {
+      "rollouts": 0,
+      "actions": 0,
+      "api_calls": 0,
+      "simulation_seconds": 0,
+      "wall_seconds": 0
+    }
+  },
+  "deployment_rule": "only selected independently confirmed candidate; otherwise abstain"
+}

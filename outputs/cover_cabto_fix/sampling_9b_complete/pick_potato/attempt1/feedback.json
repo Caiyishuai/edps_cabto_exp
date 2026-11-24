@@ -1,0 +1,138 @@
+{
+  "action": "pick(object=potato,support=pan)",
+  "attempt": 1,
+  "model": {
+    "name": "pick",
+    "args": {
+      "object": "potato",
+      "support": "pan"
+    },
+    "pre": [
+      "empty()",
+      "at_source(potato)"
+    ],
+    "add": [
+      "holding(potato)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(potato)",
+      "home_completed()"
+    ]
+  },
+  "prefix": [],
+  "schema_transfer": {
+    "origin": "accepted_actual_local_model_program",
+    "from_action": "pick(object=shrimp,support=bowl)",
+    "from_attempt": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/cover_cabto_fix/sampling_9b_focused/pick_shrimp/attempt2",
+    "sha256": "3adc93a99d786d25338e4ab0a783d33cf28dbae61693c30173c78164ab32f6d4",
+    "new_model_call": false,
+    "code_modified": false,
+    "physical_revalidation_required": true
+  },
+  "source": "def policy(api):\n    # Get the grasp point for the shrimp\n    grasp_point = api.grasp_point()\n    \n    # Approach the shrimp at a safe height\n    api.approach(grasp_point)\n    \n    # Descend to the grasp point\n    api.descend(grasp_point)\n    \n    # Close the gripper to grasp the shrimp\n    api.close_gripper()\n    \n    # Lift the shrimp to transport height\n    api.lift()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": true,
+    "goal_ok": true,
+    "effect_ok": true,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [],
+      "unexpected_removed": []
+    },
+    "before": [
+      "at_source(apple)",
+      "at_source(potato)",
+      "at_source(shrimp)",
+      "empty()"
+    ],
+    "after": [
+      "at_source(apple)",
+      "at_source(shrimp)",
+      "holding(potato)"
+    ],
+    "model": {
+      "name": "pick",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [
+        "empty()",
+        "at_source(potato)"
+      ],
+      "add": [
+        "holding(potato)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(potato)",
+        "home_completed()"
+      ]
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "grasp_point",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.6700000050473665,
+          -0.19000000385309732,
+          0.41798083548895737
+        ]
+      },
+      {
+        "method": "approach",
+        "args": [
+          [
+            0.6700000050473665,
+            -0.19000000385309732,
+            0.41798083548895737
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "descend",
+        "args": [
+          [
+            0.6700000050473665,
+            -0.19000000385309732,
+            0.41798083548895737
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "close_gripper",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "lift",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      }
+    ],
+    "forbidden_contacts": [],
+    "code_sha256": "3adc93a99d786d25338e4ab0a783d33cf28dbae61693c30173c78164ab32f6d4"
+  },
+  "accepted": true,
+  "simulation_seconds": 19.50000000000007
+}

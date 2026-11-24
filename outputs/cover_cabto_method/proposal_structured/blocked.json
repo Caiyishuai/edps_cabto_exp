@@ -1,0 +1,130 @@
+{
+  "reason": "structured model proposal budget exhausted",
+  "feedback": [
+    {
+      "check": {
+        "error": "Unknown CP atoms ['at_target(bowl)']"
+      },
+      "previous_models": [
+        {
+          "name": "pick",
+          "args": {
+            "object": "shrimp",
+            "support": "bowl"
+          },
+          "pre": [
+            "empty()"
+          ],
+          "add": [
+            "holding(shrimp)",
+            "at_target(bowl)"
+          ],
+          "del": [
+            "at_source(shrimp)"
+          ]
+        },
+        {
+          "name": "place",
+          "args": {
+            "object": "shrimp",
+            "support": "bowl"
+          },
+          "pre": [
+            "empty()",
+            "at_source(shrimp)"
+          ],
+          "add": [
+            "holding(shrimp)",
+            "at_target(bowl)"
+          ],
+          "del": [
+            "at_source(shrimp)"
+          ]
+        },
+        {
+          "name": "pick",
+          "args": {
+            "object": "apple",
+            "support": "board"
+          },
+          "pre": [
+            "empty()",
+            "at_source(apple)",
+            "at_source(board)"
+          ],
+          "add": [
+            "holding(apple)",
+            "holding(board)"
+          ],
+          "del": [
+            "at_source(apple)",
+            "at_source(board)"
+          ]
+        },
+        {
+          "name": "place",
+          "args": {
+            "object": "apple",
+            "support": "board"
+          },
+          "pre": [
+            "empty()",
+            "at_source(apple)",
+            "at_source(board)"
+          ],
+          "add": [
+            "holding(apple)",
+            "at_target(board)"
+          ],
+          "del": [
+            "at_source(apple)",
+            "at_source(board)"
+          ]
+        },
+        {
+          "name": "pick",
+          "args": {
+            "object": "potato",
+            "support": "pan"
+          },
+          "pre": [
+            "empty()",
+            "at_source(potato)",
+            "at_source(pan)"
+          ],
+          "add": [
+            "holding(potato)",
+            "holding(pan)"
+          ],
+          "del": [
+            "at_source(potato)",
+            "at_source(pan)"
+          ]
+        },
+        {
+          "name": "place",
+          "args": {
+            "object": "potato",
+            "support": "pan"
+          },
+          "pre": [
+            "empty()",
+            "at_source(potato)",
+            "at_source(pan)"
+          ],
+          "add": [
+            "holding(potato)",
+            "holding(pan)"
+          ],
+          "del": [
+            "at_source(potato)",
+            "at_source(pan)"
+          ]
+        }
+      ],
+      "format_errors": [
+        "home(): pre ∩ add 必须为空"
+      ]
+    }
+  ]
+}

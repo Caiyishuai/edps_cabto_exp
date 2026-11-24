@@ -1,0 +1,112 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "before": [
+    "at_target(apple)",
+    "at_target(pepper)",
+    "holding(shrimp)"
+  ],
+  "after": [
+    "at_target(apple)",
+    "at_target(pepper)",
+    "at_target(shrimp)",
+    "empty()"
+  ],
+  "model": {
+    "name": "place",
+    "args": {
+      "object": "shrimp",
+      "support": "bowl"
+    },
+    "pre": [
+      "holding(shrimp)"
+    ],
+    "add": [
+      "at_target(shrimp)",
+      "empty()"
+    ],
+    "del": [
+      "holding(shrimp)",
+      "home_completed()"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "destination_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.30943169387437963,
+        0.16051574759716847,
+        0.41600000000000004
+      ]
+    },
+    {
+      "method": "carry",
+      "args": [
+        [
+          0.30943169387437963,
+          0.16051574759716847,
+          0.41600000000000004
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "destination_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.30943169387437963,
+        0.16051574759716847,
+        0.41600000000000004
+      ]
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.30943169387437963,
+          0.16051574759716847,
+          0.41600000000000004
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "withdraw",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "forbidden_contacts": [],
+  "code_sha256": "7bd21b38784bb86e0c933dc0c29a50adafc03453e3f3011c698b85fba1cc2fd5"
+}

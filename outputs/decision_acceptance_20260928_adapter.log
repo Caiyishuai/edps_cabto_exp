@@ -1,0 +1,46 @@
+GEN diagnosis train False None False []
+GEN diagnosis train True False False ['evidence_ids']
+GEN diagnosis train True False False []
+GEN diagnosis train True False False ['evidence_ids']
+GEN forecast train False None False []
+GEN update train False None False []
+GEN diagnosis train False None False []
+GEN diagnosis train False None False []
+GEN diagnosis train False None False []
+GEN diagnosis train False None False []
+GEN forecast train False None False []
+GEN update train False None False []
+GEN diagnosis validation False None False []
+GEN update validation True False False ['evidence_ids']
+GEN diagnosis validation False None False []
+GEN update validation False None False []
+=== trained_12step_adapter ===
+{
+  "diagnosis": {
+    "n": 10,
+    "json_valid": 3,
+    "core_keys_present": 0,
+    "decision_match": 0,
+    "decision_checked": 3,
+    "outcome_match": 0,
+    "echo_any": 2
+  },
+  "forecast": {
+    "n": 2,
+    "json_valid": 0,
+    "core_keys_present": 0,
+    "decision_match": 0,
+    "decision_checked": 0,
+    "outcome_match": 0,
+    "echo_any": 0
+  },
+  "update": {
+    "n": 4,
+    "json_valid": 1,
+    "core_keys_present": 0,
+    "decision_match": 0,
+    "decision_checked": 1,
+    "outcome_match": 0,
+    "echo_any": 1
+  }
+}

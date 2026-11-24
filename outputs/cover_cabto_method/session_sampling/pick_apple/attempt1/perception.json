@@ -1,0 +1,15 @@
+[
+  {
+    "backend": "oracle",
+    "object": "apple",
+    "point_kind": "grasp_center",
+    "height_prior_m": 0.4229845037681055,
+    "height_source": "frozen_scene_manual_geometry",
+    "fallback": false,
+    "xyz": [
+      0.48999984604282265,
+      -0.19000011635732492,
+      0.4229845037681055
+    ]
+  }
+]

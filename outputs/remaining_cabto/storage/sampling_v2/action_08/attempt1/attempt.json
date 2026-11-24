@@ -1,0 +1,131 @@
+{
+  "action_id": "dual_translate_tray(arm=both,dest=dual_translate_tray,obj=tray)",
+  "model": {
+    "name": "dual_translate_tray",
+    "args": {
+      "arm": "both",
+      "obj": "tray",
+      "dest": "dual_translate_tray"
+    },
+    "program_kind": "cooperative_move",
+    "pre": [
+      "packed(0)",
+      "packed(1)",
+      "dual_holding_tray()",
+      "tray_lifted()"
+    ],
+    "add": [
+      "tray_above_shelf()"
+    ],
+    "del": [
+      "tray_lifted()"
+    ],
+    "description": "两臂保持共同抓持，托盘在运输高度位于货架上方，两个物品仍在托盘内。"
+  },
+  "attempt": 1,
+  "transfer": {
+    "source_sha256": "82c2ef8a40ad6752e66ff9e6d0d94097f24b7677ed588ad536a0a24d121fad94",
+    "source_attempt": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/storage/sampling_v2/action_07/attempt1",
+    "mode": "unmodified_actual_model_source_schema_transfer",
+    "new_call": false
+  },
+  "source": "def policy(api):\n    pose = api.target_tray_pose()\n    api.move_tray_to(pose)\n    api.settle()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": true,
+    "goal_ok": true,
+    "effect_ok": true,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [],
+      "unexpected_removed": []
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "target_tray_pose",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.58,
+          0.0,
+          0.62
+        ]
+      },
+      {
+        "method": "move_tray_to",
+        "args": [
+          [
+            0.58,
+            0.0,
+            0.62
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "settle",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      }
+    ],
+    "before": [
+      "dual_holding_tray()",
+      "holding(0,tray)",
+      "holding(1,tray)",
+      "packed(0)",
+      "packed(1)",
+      "slot_free(0)",
+      "slot_free(1)",
+      "tray_lifted()"
+    ],
+    "after": [
+      "dual_holding_tray()",
+      "holding(0,tray)",
+      "holding(1,tray)",
+      "packed(0)",
+      "packed(1)",
+      "slot_free(0)",
+      "slot_free(1)",
+      "tray_above_shelf()"
+    ],
+    "model": {
+      "name": "dual_translate_tray",
+      "args": {
+        "arm": "both",
+        "obj": "tray",
+        "dest": "dual_translate_tray"
+      },
+      "program_kind": "cooperative_move",
+      "pre": [
+        "packed(0)",
+        "packed(1)",
+        "dual_holding_tray()",
+        "tray_lifted()"
+      ],
+      "add": [
+        "tray_above_shelf()"
+      ],
+      "del": [
+        "tray_lifted()"
+      ],
+      "description": "两臂保持共同抓持，托盘在运输高度位于货架上方，两个物品仍在托盘内。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": true,
+    "missing_required_calls": [],
+    "code_sha256": "82c2ef8a40ad6752e66ff9e6d0d94097f24b7677ed588ad536a0a24d121fad94",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+  },
+  "accepted": true
+}

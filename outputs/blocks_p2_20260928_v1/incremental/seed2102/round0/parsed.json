@@ -1,0 +1,19 @@
+{
+  "decision": "propose",
+  "reason": "Grasp failures in evidence 94611a251028 and e027735b3d88 show zero finger forces, indicating a controller problem. The placement failure in evidence 333bb0724f68 is due to an occupied support (red on yellow), which is a missing precondition for 'stack'. Since the accumulated patch is empty, we propose a fix for the persistent grasp failure by adjusting the Z-offset to ensure sufficient force closure.",
+  "accepted": [
+    {
+      "rank": 0,
+      "candidate": {
+        "id": "grasp_offset_fix",
+        "pre_add": [],
+        "offset_z_m": 0.055,
+        "reason": "Increase Z-offset to maximum bound to resolve zero-finger-force closure failures observed in multiple executions."
+      },
+      "origin": "real_LM_response",
+      "recipe_sha256": "6e69453b84a3118983da37ae975add73dbbf4ca3a07bb5d0da41660fca241c71"
+    }
+  ],
+  "rejected": [],
+  "status": "parsed"
+}

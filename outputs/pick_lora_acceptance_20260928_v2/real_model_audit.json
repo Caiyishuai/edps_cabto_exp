@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "status": "failed",
+  "pid": 86104,
+  "ppid": 1,
+  "created_at_unix": 1790527924.8289778,
+  "training_result_sha256": "59ecdd519b39cb0d2820cc5da9f2c13cba52b95c2610d436e854aa31a6609375",
+  "reload_result_sha256": "8c283ee3cfea6791e61864c47c3f853b13265ccdb1da8f1dd133888ec8d51365",
+  "scope": "direct-model training audit; no optimizer steps; not diagnostic accuracy",
+  "cache_policy": "feature-cache optimization rejected after prior failed gradient-equivalence check",
+  "all_saved_adapter_values_finite": true,
+  "all_losses_and_gradient_norms_finite": true,
+  "trainable_target_coverage": {
+    "q_proj": 72,
+    "v_proj": 72
+  },
+  "fresh_loaded_adapter_matches": true,
+  "future_token_change_earlier_logits_max_difference": 0.0,
+  "zero_image_pixels_loss_delta": 0.005481243133544922,
+  "image_check_scope": "real pixel-path numerical dependence, not proof of diagnostic superiority",
+  "mechanics_passed": true,
+  "error": "TypeError: unsupported operand type(s) for /: 'str' and 'str'"
+}

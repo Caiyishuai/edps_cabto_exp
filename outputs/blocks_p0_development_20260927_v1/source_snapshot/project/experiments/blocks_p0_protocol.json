@@ -1,0 +1,20 @@
+{
+  "version": "blocks-p0-v1",
+  "scope": "finite_candidate_intervention_pilot_not_LM_discovery",
+  "perception": "oracle_read_only",
+  "base_config": "project/scenes/blocks_rebuilt_v1.json",
+  "factors": {"target_occupied": [false, true], "grasp_offset_z_m": [0.0, 0.045]},
+  "interventions": ["none", "model_only", "policy_only", "cross_level"],
+  "candidate_precondition": "clear(support)",
+  "candidate_policy_offset_z_m": 0.0,
+  "max_actions": 16,
+  "stable_seconds": 1.0,
+  "max_object_linear_speed_m_s": 0.01,
+  "max_object_angular_speed_rad_s": 0.1,
+  "layouts": [
+    {"id": "dev-a", "split": "development", "payload": "yellow", "support": "green", "blocker": "red", "distractor": "blue", "source_xy": [0.34, 0.15], "target_xy": [0.57, 0.15], "buffer_xy": [0.34, -0.15], "distractor_xy": [0.57, -0.15]},
+    {"id": "val-a", "split": "validation", "payload": "red", "support": "green", "blocker": "yellow", "distractor": "blue", "source_xy": [0.33, 0.13], "target_xy": [0.55, 0.13], "buffer_xy": [0.33, -0.14], "distractor_xy": [0.56, -0.15]},
+    {"id": "test-a", "split": "heldout", "payload": "yellow", "support": "blue", "blocker": "green", "distractor": "red", "source_xy": [0.35, 0.11], "target_xy": [0.56, 0.11], "buffer_xy": [0.35, -0.13], "distractor_xy": [0.57, -0.16]},
+    {"id": "test-b", "split": "heldout", "payload": "green", "support": "red", "blocker": "blue", "distractor": "yellow", "source_xy": [0.32, 0.17], "target_xy": [0.54, 0.17], "buffer_xy": [0.32, -0.12], "distractor_xy": [0.56, -0.14]}
+  ]
+}

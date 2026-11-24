@@ -1,0 +1,24 @@
+{
+  "version": "pick-attribution-data-acceptance-v1",
+  "scope": "single_pick_data_pipeline_acceptance_not_generalization_or_autonomous_discovery",
+  "historical_policy_file": "reports/remaining_cabto/cover/sampling_9b_complete/policies.json",
+  "historical_policy_action": "pick(object=apple,support=board)",
+  "historical_policy_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6",
+  "scenes": [
+    {"name": "cover", "config": "project/scenes/cover_kitchen_sort_v2.json", "objects": [["apple", "board"], ["pepper", "pan"]]},
+    {"name": "blocks", "config": "project/scenes/blocks_rebuilt_v1.json", "objects": [["yellow", "green"], ["red", "blue"]]}
+  ],
+  "contexts": [{"seed": 0, "split": "train"}, {"seed": 7, "split": "validation"}],
+  "conditions": ["unchanged", "parameter", "effect_omission", "combined"],
+  "interventions": ["none", "model_only", "policy_only", "cross_level"],
+  "policy_offset_z_m": 0.045,
+  "model_omitted_delete": "empty()",
+  "image_size": 384,
+  "cameras": ["overview", "front"],
+  "capture_after_apis": ["approach", "descend", "close_gripper", "lift"],
+  "holding_window_seconds": 0.2,
+  "max_api_calls": 20,
+  "label_scope": "observed_transition_and_paired_intervention_response_not_unique_cause",
+  "split_scope": "all_objects_conditions_and_interventions_of_one_scene_seed_in_same_partition; not_OOD",
+  "training": "not_started; require_data_and_processor_acceptance_before_scaling"
+}

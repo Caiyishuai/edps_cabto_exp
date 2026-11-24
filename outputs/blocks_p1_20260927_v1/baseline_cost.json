@@ -1,0 +1,7 @@
+{
+  "rollouts": 4,
+  "actions": 7,
+  "api_calls": 31,
+  "simulation_seconds": 54.81999999999768,
+  "wall_seconds": 3.219352542073466
+}

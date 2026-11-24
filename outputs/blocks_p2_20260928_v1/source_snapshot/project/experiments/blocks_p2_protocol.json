@@ -1,0 +1,39 @@
+{
+  "version": "blocks-p2-incremental-v1",
+  "scope": "staged_evidence_incremental_refinement_vs_onetime_vs_rule_vs_fixed_under_shared_budget",
+  "base_config": "project/scenes/blocks_rebuilt_v1.json",
+  "model_id": "mlx-community/Qwen3.5-9B-4bit",
+  "model_revision": "8b2b98c00a6b4d291155e4890773ca8f769aee53",
+  "generation_seeds": [2101, 2102],
+  "temperature": 0.2,
+  "max_tokens": 1800,
+  "max_candidates": 4,
+  "max_pre_add": 3,
+  "offset_bounds_m": [-0.008, 0.055],
+  "max_rounds": 3,
+  "max_rollouts_per_method": 16,
+  "random_seeds": [901, 902],
+  "factors": {"target_occupied": [false, true], "grasp_offset_z_m": [0.0, 0.045]},
+  "max_actions": 16,
+  "stable_seconds": 1.0,
+  "max_object_linear_speed_m_s": 0.01,
+  "max_object_angular_speed_rad_s": 0.1,
+  "candidate_scope": "append positive preconditions to existing lifted actions; replace one shared pick/unstack grasp z-offset; effects and goals immutable",
+  "probe_order": [[false, 0.045], [true, 0.0], [true, 0.045], [false, 0.0]],
+  "confirmation_order": [[true, 0.045], [false, 0.0]],
+  "staged_evidence": "observations grouped by action name and labeled by role (grasp vs placement), keeping raw failed traces",
+  "feedback_scope": "only which action still fails and its observed violations; never the correct patch or heldout outcomes",
+  "rule_search_order": ["offset_candidates_from_bounded_grid", "clear_support_precondition"],
+  "fixed_pool": [
+    {"id": "off_p05", "pre_add": [], "offset_z_m": 0.005, "reason": "fixed small negative-nudge"},
+    {"id": "off_m08", "pre_add": [], "offset_z_m": -0.008, "reason": "fixed lower bound offset"},
+    {"id": "clear_stack", "pre_add": [{"action": "stack", "predicate": "clear", "args": ["support"]}], "offset_z_m": null, "reason": "fixed clear-support precondition"},
+    {"id": "clear_stack_off_m08", "pre_add": [{"action": "stack", "predicate": "clear", "args": ["support"]}], "offset_z_m": -0.008, "reason": "fixed joint clear+offset"}
+  ],
+  "layouts": [
+    {"id": "p2-dev", "split": "development", "payload": "blue", "support": "yellow", "blocker": "red", "distractor": "green", "source_xy": [0.325, 0.155], "target_xy": [0.545, 0.155], "buffer_xy": [0.325, -0.155], "distractor_xy": [0.56, -0.165]},
+    {"id": "p2-confirm", "split": "confirmation", "payload": "green", "support": "blue", "blocker": "yellow", "distractor": "red", "source_xy": [0.355, 0.145], "target_xy": [0.575, 0.145], "buffer_xy": [0.345, -0.165], "distractor_xy": [0.575, -0.175]},
+    {"id": "p2-h1", "split": "heldout", "payload": "red", "support": "blue", "blocker": "green", "distractor": "yellow", "source_xy": [0.305, 0.125], "target_xy": [0.525, 0.125], "buffer_xy": [0.315, -0.185], "distractor_xy": [0.545, -0.125]},
+    {"id": "p2-h2", "split": "heldout", "payload": "blue", "support": "green", "blocker": "red", "distractor": "yellow", "source_xy": [0.335, 0.175], "target_xy": [0.555, 0.175], "buffer_xy": [0.335, -0.135], "distractor_xy": [0.565, -0.165]}
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "models": [
+    {
+      "name": "pick",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [
+        "empty()",
+        "at_source(shrimp)"
+      ],
+      "add": [
+        "holding(shrimp)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(shrimp)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "shrimp",
+        "support": "bowl"
+      },
+      "pre": [
+        "holding(shrimp)"
+      ],
+      "add": [
+        "at_target(shrimp)",
+        "empty()"
+      ],
+      "del": [
+        "holding(shrimp)"
+      ]
+    },
+    {
+      "name": "pick",
+      "args": {
+        "object": "apple",
+        "support": "board"
+      },
+      "pre": [
+        "empty()",
+        "at_source(apple)"
+      ],
+      "add": [
+        "holding(apple)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(apple)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "apple",
+        "support": "board"
+      },
+      "pre": [
+        "holding(apple)"
+      ],
+      "add": [
+        "at_target(apple)",
+        "empty()"
+      ],
+      "del": [
+        "holding(apple)"
+      ]
+    },
+    {
+      "name": "pick",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [
+        "empty()",
+        "at_source(potato)"
+      ],
+      "add": [
+        "holding(potato)"
+      ],
+      "del": [
+        "empty()",
+        "at_source(potato)",
+        "home_completed()"
+      ]
+    },
+    {
+      "name": "place",
+      "args": {
+        "object": "potato",
+        "support": "pan"
+      },
+      "pre": [
+        "holding(potato)"
+      ],
+      "add": [
+        "at_target(potato)",
+        "empty()"
+      ],
+      "del": [
+        "holding(potato)"
+      ]
+    },
+    {
+      "name": "home",
+      "args": {},
+      "pre": [
+        "empty()"
+      ],
+      "add": [
+        "home_completed()"
+      ],
+      "del": []
+    }
+  ],
+  "P": [
+    {
+      "id": "C1",
+      "initial": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "empty()"
+      ],
+      "goal": [
+        "at_target(shrimp)",
+        "empty()",
+        "home_completed()"
+      ]
+    },
+    {
+      "id": "C2",
+      "initial": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "empty()"
+      ],
+      "goal": [
+        "at_target(apple)",
+        "at_target(shrimp)",
+        "empty()",
+        "home_completed()"
+      ]
+    },
+    {
+      "id": "C3",
+      "initial": [
+        "at_source(apple)",
+        "at_source(potato)",
+        "at_source(shrimp)",
+        "empty()"
+      ],
+      "goal": [
+        "at_target(apple)",
+        "at_target(potato)",
+        "at_target(shrimp)",
+        "empty()",
+        "home_completed()"
+      ]
+    }
+  ],
+  "check": {
+    "complete_for_P": true,
+    "admissible_reachable_states": true,
+    "reachable_state_count": 28,
+    "mutex_violations": [],
+    "tasks": [
+      {
+        "task": "C1",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 3,
+          "action_ids": [
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_source(apple)",
+            "at_source(potato)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 68
+      },
+      {
+        "task": "C2",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 5,
+          "action_ids": [
+            "pick(object=apple,support=board)",
+            "place(object=apple,support=board)",
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_source(potato)",
+            "at_target(apple)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 167
+      },
+      {
+        "task": "C3",
+        "bfs_reachable": true,
+        "planner": {
+          "reached_goal": true,
+          "reason": "符号目标达成",
+          "steps": 7,
+          "action_ids": [
+            "pick(object=potato,support=pan)",
+            "place(object=potato,support=pan)",
+            "pick(object=apple,support=board)",
+            "place(object=apple,support=board)",
+            "pick(object=shrimp,support=bowl)",
+            "place(object=shrimp,support=bowl)",
+            "home()"
+          ],
+          "final_state": [
+            "at_target(apple)",
+            "at_target(potato)",
+            "at_target(shrimp)",
+            "empty()",
+            "home_completed()"
+          ],
+          "scope": "symbolic_only"
+        },
+        "bt_nodes": 392
+      }
+    ],
+    "scope": "finite declared P, symbolic; NOT physical consistency"
+  },
+  "config_sha256": "87831738dd2d6544b3a82e860800830135b30fc8091aa1e677f8789b77cceb4c",
+  "proposal_model": "current_conversation_assistant",
+  "generation_channel": "interactive_LM_output_saved_verbatim_as_candidate_artifact_not_local_Qwen_output",
+  "candidate_sha256": "2c92c2756311dcea6d9385584864a1a5609efdc1d21d26a8e57a2bef4aa6b15d"
+}

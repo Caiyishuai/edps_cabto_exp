@@ -1,0 +1,162 @@
+{
+  "action_id": "present_baton_in_air(arm=0,dest=present_baton_in_air,obj=baton)",
+  "model": {
+    "name": "present_baton_in_air",
+    "args": {
+      "arm": "0",
+      "obj": "baton",
+      "dest": "present_baton_in_air"
+    },
+    "program_kind": "present",
+    "pre": [
+      "donor_holding(baton)",
+      "empty(1)",
+      "baton_airborne()",
+      "collision_free()"
+    ],
+    "add": [
+      "at_handover_pose(baton)"
+    ],
+    "del": [],
+    "description": "交出臂持有的茶盒位于配置的空中交接位，接收臂为空，运动无禁止碰撞。"
+  },
+  "attempt": 1,
+  "call": {
+    "model_id": "mlx-community/Qwen3.5-9B-4bit",
+    "text": "Write ONLY one Python function def policy(api):. Implement ONLY this action. No imports, loops, tuple unpacking or direct simulator access. Save API return tuples in local variables; no hardcoded coordinates. Use ONLY api.<method> calls listed below. DO NOT call an action by its name. Returning a status does not execute an action.\nAction semantics: Donor holds box. Transport to meeting pose and hold, do not release.\nAvailable APIs:\nmove_held(xyz): move held object.\nsettle(): hold still.\ntarget_pose() -> xyz: meeting object origin.\nLast actual failed candidate and validator feedback: []",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/handover/sampling_v2/action_01/attempt1/context.png"
+    ],
+    "formatted_prompt": "<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Write ONLY one Python function def policy(api):. Implement ONLY this action. No imports, loops, tuple unpacking or direct simulator access. Save API return tuples in local variables; no hardcoded coordinates. Use ONLY api.<method> calls listed below. DO NOT call an action by its name. Returning a status does not execute an action.\nAction semantics: Donor holds box. Transport to meeting pose and hold, do not release.\nAvailable APIs:\nmove_held(xyz): move held object.\nsettle(): hold still.\ntarget_pose() -> xyz: meeting object origin.\nLast actual failed candidate and validator feedback: []<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "temperature": 0.0,
+    "max_tokens": 850,
+    "raw": "```python\ndef policy(api):\n    target = api.target_pose()\n    if target is not None:\n        api.move_held(target)\n        api.settle()\n```",
+    "wall_seconds": 1.5242632910376415
+  },
+  "source": "def policy(api):\n    target = api.target_pose()\n    if target is not None:\n        api.move_held(target)\n        api.settle()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": true,
+    "goal_ok": true,
+    "effect_ok": true,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [],
+      "unexpected_removed": []
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "target_pose",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.35,
+          0.0,
+          0.64
+        ]
+      },
+      {
+        "method": "move_held",
+        "args": [
+          [
+            0.35,
+            0.0,
+            0.64
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": {
+          "time": 13.272000000001102,
+          "object_position": [
+            0.3498408199229681,
+            0.0004897430262307338,
+            0.6397026392504075
+          ],
+          "tcp_position": [
+            0.34984551292188637,
+            0.07551761554417234,
+            0.6992001644643975
+          ],
+          "weld_constraint_active": true,
+          "holding": true,
+          "grip_command": 0.0,
+          "collision_free": true,
+          "home_dirty": true,
+          "mode": "assisted_grasp_weld"
+        }
+      },
+      {
+        "method": "settle",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": {
+          "time": 13.560000000001198,
+          "object_position": [
+            0.34984539132293935,
+            0.0004761425721439129,
+            0.6397047300894886
+          ],
+          "tcp_position": [
+            0.3498502022456514,
+            0.075504944301095,
+            0.6992030747212602
+          ],
+          "weld_constraint_active": true,
+          "holding": true,
+          "grip_command": 0.0,
+          "collision_free": true,
+          "home_dirty": true,
+          "mode": "assisted_grasp_weld"
+        }
+      }
+    ],
+    "before": [
+      "baton_airborne()",
+      "collision_free()",
+      "donor_holding(baton)",
+      "empty(1)"
+    ],
+    "after": [
+      "at_handover_pose(baton)",
+      "baton_airborne()",
+      "collision_free()",
+      "donor_holding(baton)",
+      "empty(1)"
+    ],
+    "model": {
+      "name": "present_baton_in_air",
+      "args": {
+        "arm": "0",
+        "obj": "baton",
+        "dest": "present_baton_in_air"
+      },
+      "program_kind": "present",
+      "pre": [
+        "donor_holding(baton)",
+        "empty(1)",
+        "baton_airborne()",
+        "collision_free()"
+      ],
+      "add": [
+        "at_handover_pose(baton)"
+      ],
+      "del": [],
+      "description": "交出臂持有的茶盒位于配置的空中交接位，接收臂为空，运动无禁止碰撞。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": true,
+    "missing_required_calls": [],
+    "code_sha256": "406788927d178f094be6511e3229d2e816954e5305822cce56c98d65ca7893c5",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+  },
+  "accepted": true
+}

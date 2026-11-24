@@ -1,0 +1,114 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.69,
+        -0.02,
+        0.59
+      ]
+    },
+    {
+      "method": "move_basin",
+      "args": [
+        [
+          0.69,
+          -0.02,
+          0.59
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "settle",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "collision_free()",
+    "content_in_source()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "source_upright()"
+  ],
+  "after": [
+    "basin_ready()",
+    "collision_free()",
+    "content_in_source()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "source_upright()"
+  ],
+  "model": {
+    "name": "present_basin",
+    "args": {
+      "arm": "1",
+      "obj": "basin",
+      "dest": "present_basin"
+    },
+    "program_kind": "present_receiver",
+    "pre": [
+      "holding(1,basin)",
+      "collision_free()"
+    ],
+    "add": [
+      "basin_ready()"
+    ],
+    "del": [],
+    "description": "接收盆保持被抓持，位于标定接料站且满足接料几何。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "66f141e06c3c27fceec2b378729f73f2472357087ed5fb2cb4f34b7293f682c6",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+  "physical_diagnostics": {
+    "source": {
+      "returned": false,
+      "xy_error_m": 0.13044010742173812,
+      "bottom_gap_m": 0.1840636518128007,
+      "rotation_error_deg": 15.246465967205225,
+      "released": false,
+      "origin": [
+        0.20514794478633452,
+        0.2279929783121639,
+        0.6882999526047165
+      ]
+    },
+    "basin": {
+      "returned": false,
+      "xy_error_m": 0.2598146095619419,
+      "bottom_gap_m": 0.06336495316959201,
+      "rotation_error_deg": 2.3561891928779723,
+      "released": false,
+      "origin": [
+        0.690901950679564,
+        -0.026605507375013746,
+        0.5795078009889139
+      ]
+    }
+  }
+}

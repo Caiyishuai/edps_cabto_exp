@@ -1,0 +1,158 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_handles",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        [
+          0.28414522818758753,
+          0.11299718229781848,
+          0.4769127119583455
+        ],
+        [
+          0.28465996146143113,
+          -0.11500223666969732,
+          0.476913075277939
+        ]
+      ]
+    },
+    {
+      "method": "move_both_above",
+      "args": [
+        [
+          [
+            0.28414522818758753,
+            0.11299718229781848,
+            0.4769127119583455
+          ],
+          [
+            0.28465996146143113,
+            -0.11500223666969732,
+            0.476913075277939
+          ]
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.0074339680666901525,
+        0.007125098578603979
+      ]
+    },
+    {
+      "method": "move_both_to",
+      "args": [
+        [
+          [
+            0.28414522818758753,
+            0.11299718229781848,
+            0.4769127119583455
+          ],
+          [
+            0.28465996146143113,
+            -0.11500223666969732,
+            0.476913075277939
+          ]
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.00443754006777644,
+        0.00444971135563427
+      ]
+    },
+    {
+      "method": "close_both",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "attach_both",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "settle",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "empty(0)",
+    "empty(1)",
+    "hands_raised()",
+    "hands_safe_for_lateral(0)",
+    "hands_safe_for_lateral(1)",
+    "packed(0)",
+    "packed(1)",
+    "parked(0)",
+    "parked(1)",
+    "tray_at_table()"
+  ],
+  "after": [
+    "dual_holding_tray()",
+    "packed(0)",
+    "packed(1)",
+    "tray_at_table()"
+  ],
+  "model": {
+    "name": "dual_grasp_tray",
+    "args": {
+      "arm": "both",
+      "obj": "tray",
+      "dest": "dual_grasp_tray"
+    },
+    "program_kind": "dual_grasp",
+    "pre": [
+      "packed(0)",
+      "packed(1)",
+      "empty(0)",
+      "empty(1)",
+      "parked(0)",
+      "parked(1)",
+      "tray_at_table()"
+    ],
+    "add": [
+      "dual_holding_tray()"
+    ],
+    "del": [
+      "empty(0)",
+      "empty(1)",
+      "parked(0)",
+      "parked(1)",
+      "hands_raised()",
+      "hands_safe_for_lateral(0)",
+      "hands_safe_for_lateral(1)"
+    ],
+    "description": "两个物品仍在桌上托盘内，两臂在把手处闭合并通过已声明的双 weld 辅助共同抓持托盘。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "a9d28ccdfe950a722e97d28c5dacda0c23104fcf6fc8f9758b4687a53f5d7fb4",
+  "consistency_scope": "full_CP"
+}

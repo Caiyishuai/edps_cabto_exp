@@ -1,0 +1,102 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "donor_withdrawn()",
+      "empty(0)",
+      "handover_verified()"
+    ],
+    "remaining_del": [
+      "donor_holding(baton)",
+      "dual_holding(baton)"
+    ],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "donor_holding(baton)",
+      "dual_holding(baton)"
+    ],
+    "unexpected_removed": [
+      "donor_withdrawn()",
+      "empty(0)",
+      "handover_verified()"
+    ]
+  },
+  "code_executed": true,
+  "exception": "RuntimeError: 当前 API 缺少已完成的 open_gripper 控制证据",
+  "trace": [
+    {
+      "method": "detach",
+      "args": [],
+      "kwargs": {},
+      "status": "failed",
+      "error": "RuntimeError: 当前 API 缺少已完成的 open_gripper 控制证据"
+    }
+  ],
+  "before": [
+    "at_handover_pose(baton)",
+    "baton_airborne()",
+    "collision_free()",
+    "donor_holding(baton)",
+    "dual_holding(baton)",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "after": [
+    "at_handover_pose(baton)",
+    "baton_airborne()",
+    "collision_free()",
+    "donor_holding(baton)",
+    "dual_holding(baton)",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "model": {
+    "name": "donor_releases_after_receiver",
+    "args": {
+      "arm": "0",
+      "obj": "baton",
+      "dest": "donor_releases_after_receiver"
+    },
+    "program_kind": "donor_release",
+    "pre": [
+      "dual_holding(baton)",
+      "receiver_contact_verified()",
+      "baton_airborne()",
+      "collision_free()"
+    ],
+    "add": [
+      "receiver_holding(baton)",
+      "empty(0)",
+      "donor_withdrawn()",
+      "handover_verified()"
+    ],
+    "del": [
+      "dual_holding(baton)",
+      "donor_holding(baton)"
+    ],
+    "description": "茶盒由接收臂持有，交出臂为空且位于安全撤离位；真实事件证明接收验证先于空中释放，运动无禁止碰撞。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "missing_required_calls": [],
+  "code_sha256": "a04bcdb3c4221869bce132c4fe69e91b250900845a1ea08d5b97154d632569fe",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+  "physical_diagnostics": {
+    "placed": false,
+    "xy_error_m": 0.2114357885966322,
+    "bottom_gap_m": 0.1596599468800991,
+    "rotation_error_deg": 0.019810924636767556,
+    "released": false,
+    "origin": [
+      0.3498449133355404,
+      0.0004742352288135664,
+      0.6396988277015284
+    ],
+    "table_support_contact": false
+  }
+}

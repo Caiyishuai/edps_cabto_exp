@@ -1,0 +1,7 @@
+{
+  "status": "interrupted_not_admitted_for_training",
+  "reason": "Static review found derived MuJoCo render state might lag qpos by one integration step; collector stopped before source changes.",
+  "scope": "All partial files preserved. No collection_frozen.json or training approval is issued for this run.",
+  "next_run": "outputs/pick_groups_20260927_v2",
+  "training_started": false
+}

@@ -1,0 +1,96 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "dual_holding(baton)",
+      "receiver_contact_verified()"
+    ],
+    "remaining_del": [
+      "empty(1)"
+    ],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "empty(1)"
+    ],
+    "unexpected_removed": [
+      "dual_holding(baton)",
+      "receiver_contact_verified()"
+    ]
+  },
+  "code_executed": true,
+  "exception": "RuntimeError: 当前 API 缺少已完成的 approach 控制证据",
+  "trace": [
+    {
+      "method": "grasp_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.34985084432825986,
+        -0.07450101350691023,
+        0.6987337571572111
+      ]
+    },
+    {
+      "method": "descend",
+      "args": [
+        [
+          0.34985084432825986,
+          -0.07450101350691023,
+          0.6987337571572111
+        ]
+      ],
+      "kwargs": {},
+      "status": "failed",
+      "error": "RuntimeError: 当前 API 缺少已完成的 approach 控制证据"
+    }
+  ],
+  "before": [
+    "at_handover_pose(baton)",
+    "baton_airborne()",
+    "collision_free()",
+    "donor_holding(baton)",
+    "empty(1)"
+  ],
+  "after": [
+    "at_handover_pose(baton)",
+    "baton_airborne()",
+    "collision_free()",
+    "donor_holding(baton)",
+    "empty(1)"
+  ],
+  "model": {
+    "name": "receiver_grasps_box_face",
+    "args": {
+      "arm": "1",
+      "obj": "baton",
+      "dest": "receiver_grasps_opposite_handle"
+    },
+    "program_kind": "receive",
+    "pre": [
+      "donor_holding(baton)",
+      "empty(1)",
+      "at_handover_pose(baton)",
+      "collision_free()"
+    ],
+    "add": [
+      "dual_holding(baton)",
+      "receiver_contact_verified()"
+    ],
+    "del": [
+      "empty(1)",
+      "home(1)"
+    ],
+    "description": "茶盒由两臂共同持有，接收侧指定盒面的当帧与近期双指接触已验证，交出侧仍保持持有。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "missing_required_calls": [],
+  "code_sha256": "dc0bf1f955c0061f62d296c54d72c4976d4116cb207756882e7dfb01a625d187",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+}

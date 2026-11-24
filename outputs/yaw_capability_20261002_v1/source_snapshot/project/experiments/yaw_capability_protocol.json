@@ -1,0 +1,38 @@
+{
+  "version": "yaw-capability-v1",
+  "scope": "open_scene_compatibility_screen_not_channel_execution",
+  "perception": "oracle_read_only",
+  "base_config": "project/scenes/blocks_rebuilt_v1.json",
+  "require_clear": true,
+  "grasp_offset_z_m": 0.0,
+  "max_actions": 16,
+  "stable_seconds": 1.0,
+  "max_object_linear_speed_m_s": 0.01,
+  "max_object_angular_speed_rad_s": 0.1,
+  "orientation_tolerance_rad": 0.03,
+  "layout": {
+    "id": "dev-a",
+    "payload": "yellow",
+    "support": "green",
+    "blocker": "red",
+    "distractor": "blue",
+    "source_xy": [0.34, 0.15],
+    "target_xy": [0.57, 0.15],
+    "buffer_xy": [0.34, -0.15],
+    "distractor_xy": [0.57, -0.15]
+  },
+  "variants": [
+    {"id": "legacy_0", "yaw_deg": null, "note": "旧控制器默认朝下抓取；target_quat=None"},
+    {"id": "default", "yaw_deg": null, "note": "新代码默认路径；应等价 legacy_0"},
+    {"id": "yaw_0", "yaw_deg": 0.0, "note": "显式 yaw=0，应等价默认"},
+    {"id": "yaw_90", "yaw_deg": 90.0, "note": "显式 yaw=90，绕世界Z旋转夹爪开合方向"}
+  ],
+  "notes": [
+    "Open-scene compatibility only; no channel walls, no side grasp.",
+    "All variants share the same initial state, task, contract, skill library and evaluator.",
+    "legacy_0 and default are both target_quat=None; they differ only to confirm the new default path preserves legacy behaviour.",
+    "yaw_0 sets yaw_down(0) which equals the default downward grasp quat.",
+    "Positive compatibility does not prove channel success, path feasibility or a stable yaw-aware grasp.",
+    "Orientation residual is enforced by RebuiltSingleArm.move only when target_quat is not None."
+  ]
+}

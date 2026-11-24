@@ -1,0 +1,158 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": false,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": [
+      "at_handover_pose(baton)"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 21.443999999998994,
+        "object_position": [
+          0.349844652865689,
+          0.00047419427771006924,
+          0.6397003023877164
+        ],
+        "tcp_position": [
+          0.34984971070695653,
+          0.07550772900699518,
+          0.6991984443316437
+        ],
+        "weld_constraint_active": true,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "detach",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 21.443999999998994,
+        "object_position": [
+          0.349844652865689,
+          0.00047419427771006924,
+          0.6397003023877164
+        ],
+        "tcp_position": [
+          0.34984971070695653,
+          0.07550772900699518,
+          0.6991984443316437
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    },
+    {
+      "method": "withdraw",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": {
+        "time": 26.46399999999621,
+        "object_position": [
+          0.3498869494009733,
+          0.00034235136734253493,
+          0.6394262455661195
+        ],
+        "tcp_position": [
+          0.22018999648173235,
+          0.3395821980418728,
+          0.7798855112559966
+        ],
+        "weld_constraint_active": false,
+        "holding": false,
+        "grip_command": 1.0,
+        "collision_free": true,
+        "home_dirty": true,
+        "mode": "assisted_grasp_weld"
+      }
+    }
+  ],
+  "before": [
+    "at_handover_pose(baton)",
+    "baton_airborne()",
+    "collision_free()",
+    "donor_holding(baton)",
+    "dual_holding(baton)",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "after": [
+    "baton_airborne()",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "handover_verified()",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "model": {
+    "name": "donor_releases_after_receiver",
+    "args": {
+      "arm": "0",
+      "obj": "baton",
+      "dest": "donor_releases_after_receiver"
+    },
+    "program_kind": "donor_release",
+    "pre": [
+      "dual_holding(baton)",
+      "receiver_contact_verified()",
+      "baton_airborne()",
+      "collision_free()"
+    ],
+    "add": [
+      "receiver_holding(baton)",
+      "empty(0)",
+      "donor_withdrawn()",
+      "handover_verified()"
+    ],
+    "del": [
+      "dual_holding(baton)",
+      "donor_holding(baton)"
+    ],
+    "description": "茶盒由接收臂持有，交出臂为空且位于安全撤离位；真实事件证明接收验证先于空中释放，运动无禁止碰撞。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "4739c1eccec41d660fcf01e92fc4acb830f1b3b14edd4d2ababacff6af6160f8",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+  "physical_diagnostics": {
+    "placed": false,
+    "xy_error_m": 0.21130131946801903,
+    "bottom_gap_m": 0.15936453855235255,
+    "rotation_error_deg": 0.03141619029131363,
+    "released": false,
+    "origin": [
+      0.3498869494009733,
+      0.00034235136734253493,
+      0.6394262455661195
+    ],
+    "table_support_contact": false
+  }
+}

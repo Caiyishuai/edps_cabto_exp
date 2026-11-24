@@ -1,0 +1,35 @@
+{
+  "trial_id": "4f9cf9878832455b96c0cc617d4031b2",
+  "valid": false,
+  "artifact_complete": true,
+  "exception": null,
+  "infrastructure_errors": [],
+  "api_trace": [],
+  "model": {
+    "name": "pick",
+    "args": {
+      "object": "apple",
+      "support": "board"
+    },
+    "pre": [
+      "empty()",
+      "at_source(apple)"
+    ],
+    "add": [
+      "holding(apple)"
+    ],
+    "del": [
+      "empty()",
+      "at_source(apple)",
+      "home_completed()"
+    ]
+  },
+  "source": "def policy(api):\n    grasp_center = api.grasp_point()\n    api.approach(grasp_center)\n    api.descend(grasp_center)\n    api.close_gripper()\n    api.lift()",
+  "model_sha256": "9c2a8a87c3435e3cd96ff5ca3e4747fd1abc8d75d2e0b31b739cb48ea8f5af8e",
+  "source_sha256": "7ab1050f759e338e964f00731fbed8769bd7483aea99b613f9c8fb6d408b1bf6",
+  "physical_pick_success": false,
+  "contract_consistent": false,
+  "joint_success": false,
+  "scope": "single_pick_data_acceptance",
+  "status": "started"
+}

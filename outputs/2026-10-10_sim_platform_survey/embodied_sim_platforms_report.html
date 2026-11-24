@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>具身智能仿真平台调研 · 基于/任务/机器人/数据集/Mac 可跑性</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#2b3138; --sub:#6b7480; --line:#e7eaee;
+    --green:#3d8b5f; --green-bg:#e8f4ed;
+    --blue:#3f6ea6; --blue-bg:#e9f0f8;
+    --amber:#a67c2e; --amber-bg:#f7f0e0;
+    --ok:#2e7d4f; --ok-bg:#e4f2e9;
+    --cond:#a8681f; --cond-bg:#faf0dd;
+    --no:#b3423f; --no-bg:#fbe9e8;
+    --chip:#eef1f4;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--ink); line-height:1.65;}
+  .wrap{max-width:1120px; margin:0 auto; padding:36px 24px 80px;}
+  header.hero{background:linear-gradient(135deg,#eaf1ec 0%,#e8eef7 55%,#f5efe2 100%); border:1px solid var(--line); border-radius:16px; padding:34px 38px; margin-bottom:28px;}
+  header.hero h1{font-size:26px; font-weight:700; letter-spacing:.5px;}
+  header.hero p{color:var(--sub); margin-top:10px; font-size:14px; max-width:860px;}
+  header.hero .meta{margin-top:14px; font-size:12.5px; color:#8a929c;}
+  h2.section{font-size:19px; font-weight:700; margin:44px 0 6px; display:flex; align-items:center; gap:10px;}
+  h2.section .dot{width:10px; height:10px; border-radius:3px; display:inline-block;}
+  .section-sub{color:var(--sub); font-size:13.5px; margin-bottom:18px;}
+
+  /* 筛选器 */
+  .filters{display:flex; gap:8px; flex-wrap:wrap; margin:20px 0 4px;}
+  .filters button{border:1px solid var(--line); background:#fff; color:var(--sub); border-radius:20px; padding:6px 16px; font-size:13px; cursor:pointer; transition:all .15s;}
+  .filters button.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .filters button:hover:not(.active){border-color:#c6ccd4;}
+
+  /* 分组标题条 */
+  .group-band{display:flex; align-items:center; gap:12px; margin:34px 0 14px;}
+  .group-band .tag{color:#fff; font-size:13px; font-weight:600; padding:4px 14px; border-radius:6px;}
+  .group-band .desc{font-size:13px; color:var(--sub);}
+  .g-green .tag{background:var(--green);} .g-blue .tag{background:var(--blue);} .g-amber .tag{background:var(--amber);}
+
+  /* 平台卡片 */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(500px,1fr)); gap:18px;}
+  @media (max-width:600px){.grid{grid-template-columns:1fr;}}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow .2s;}
+  .card:hover{box-shadow:0 6px 22px rgba(40,50,60,.08);}
+  .card-head{padding:16px 20px 12px; display:flex; flex-wrap:wrap; align-items:center; gap:8px; border-bottom:1px solid var(--line);}
+  .card-head .num{font-size:11px; color:#9aa2ac; font-weight:600; width:20px;}
+  .card-head h3{font-size:16.5px; font-weight:700;}
+  .chip{font-size:11px; padding:2px 9px; border-radius:10px; background:var(--chip); color:#59616b; white-space:nowrap;}
+  .chip.engine{background:#eef3fa; color:var(--blue);}
+  .badge{font-size:11.5px; font-weight:600; padding:2.5px 10px; border-radius:10px; white-space:nowrap;}
+  .b-ok{background:var(--ok-bg); color:var(--ok);} .b-cond{background:var(--cond-bg); color:var(--cond);} .b-no{background:var(--no-bg); color:var(--no);}
+  .fit{margin-left:auto; display:flex; gap:6px;}
+  .fit span{font-size:11px; padding:2px 8px; border-radius:9px;}
+  .f-il{background:#f0e9f8; color:#7a4fa3;} .f-rl{background:#e6f0e4; color:#4c7a3f;} .f-vla{background:#fdeee0; color:#b3662a;} .f-nav{background:#e2eef3; color:#3a7486;} .f-data{background:#f1ecdf; color:#8a6d2f;}
+  .card-img{background:#f2f3f5; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line); min-height:120px;}
+  .card-img img{width:100%; height:230px; object-fit:cover; display:block;}
+  .img-note{font-size:11.5px; color:#9aa2ac; padding:10px 14px; text-align:center;}
+  .facts{padding:14px 20px 16px; display:grid; grid-template-columns:64px 1fr; row-gap:7px; column-gap:12px; font-size:13px;}
+  .facts dt{color:#98a0aa; font-size:12px; padding-top:1px;}
+  .facts dd{color:var(--ink);}
+  .facts dd .hl{color:var(--blue); font-weight:600;}
+  .foot{padding:10px 20px 16px; font-size:12.5px; color:var(--sub); border-top:1px dashed var(--line); background:#fbfcfd;}
+  .foot b{color:var(--ink); font-weight:600;}
+
+  /* 结论速览 */
+  .quick{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; margin-top:18px;}
+  .quick .q{border-radius:12px; padding:18px 20px; border:1px solid var(--line);}
+  .q h4{font-size:14px; margin-bottom:8px; display:flex; gap:8px; align-items:center;}
+  .q p{font-size:13px; color:#4c545d;}
+  .q p b{color:var(--ink);}
+  .q-ok{background:#f0f7f2;} .q-ok h4{color:var(--ok);}
+  .q-mid{background:#fdf8ee;} .q-mid h4{color:var(--cond);}
+  .q-no{background:#fcf1f0;} .q-no h4{color:var(--no);}
+
+  /* 矩阵表 */
+  .tbl-wrap{background:#fff; border:1px solid var(--line); border-radius:14px; overflow-x:auto; margin-top:18px;}
+  table{border-collapse:collapse; width:100%; min-width:880px; font-size:12.8px;}
+  th{background:#f2f4f6; text-align:left; padding:10px 14px; font-weight:600; color:#5a626c; white-space:nowrap; border-bottom:1px solid var(--line);}
+  td{padding:9px 14px; border-bottom:1px solid #f0f2f4; vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  td b{font-weight:600;}
+  .dot-s{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px;}
+
+  /* 建议 */
+  .advice{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; margin-top:18px;}
+  .adv{background:#fff; border:1px solid var(--line); border-left:4px solid var(--green); border-radius:10px; padding:18px 20px; font-size:13.5px;}
+  .adv h4{font-size:14.5px; margin-bottom:8px;}
+  .adv p{color:#4c545d;}
+  .adv.a2{border-left-color:var(--blue);} .adv.a3{border-left-color:var(--amber);}
+
+  /* 工具条 */
+  .tools{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; margin-top:18px;}
+  .tool{background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px 18px; font-size:13px;}
+  .tool b{display:block; margin-bottom:4px; font-size:13.5px;}
+  .tool p{color:var(--sub);}
+  footer{margin-top:56px; font-size:12px; color:#a0a8b0; text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>具身智能仿真平台全景调研</h1>
+  <p>按"入门 → 进阶 → 精通"三档梳理 19 个平台 / 数据集的<b>底层引擎、任务、机器人、用途、数据集</b>，标注每个平台的<b>模仿学习 / RL 适配性</b>与 <b>Apple&nbsp;Silicon&nbsp;Mac 可跑性</b>（依据官方 README、安装文档与 GitHub Issue 逐条核实）。</p>
+  <div class="meta">调研时间：2026-10-10 ｜ 硬件基准：Apple Silicon Mac（无 NVIDIA RTX / 无 CUDA）｜ 图标：✅ 原生可跑 · ⚠️ 有条件能跑 · ❌ 不可行</div>
+</header>
+
+<h2 class="section"><span class="dot" style="background:#2b3138"></span>30 秒结论</h2>
+<div class="quick">
+  <div class="q q-ok">
+    <h4>✅ Mac 上真正能跑的核心</h4>
+    <p><b>MuJoCo 全家桶</b>：Meta-World、robosuite、robomimic、LIBERO、HumanoidBench、D4RL（Gymnasium-Robotics 版），外加 <b>Genesis</b>（官方支持 Metal/Apple Silicon）、<b>ManiSkill3（CPU 单环境）</b>、<b>Habitat（带窗模式）</b>。代价：无 GPU 并行，只能 CPU 单/少环境。</p>
+  </div>
+  <div class="q q-mid">
+    <h4>⚠️ 纯数据可在 Mac 分析</h4>
+    <p><b>Open X-Embodiment</b>、<b>AgiBot World</b> 是真机数据集（非仿真器），Mac 上可以下载、读取、可视化、做轻量微调实验；但完整训练管线（GO-1 / RT-X 类）需要 CUDA。</p>
+  </div>
+  <div class="q q-no">
+    <h4>❌ Mac 完全没戏</h4>
+    <p><b>Isaac Lab、OmniGibson、GRUtopia、RoboTwin</b> 全线依赖 NVIDIA RTX + CUDA（官方仅列 Ubuntu/Windows）；<b>RLBench</b> 的 PyRep 官方声明仅支持 Linux。这些必须走 Linux 服务器或云 GPU。</p>
+  </div>
+</div>
+
+<h2 class="section" style="margin-top:36px"><span class="dot" style="background:#2b3138"></span>Mac 可跑性 × 用途矩阵</h2>
+<p class="section-sub">一页看全：绿点 = Mac 可跑，黄点 = 有条件，红点 = 不可行。模仿 = 适合模仿学习（有演示数据 / 行为克隆管线）；RL = 在线强化学习训练友好。</p>
+<div class="tbl-wrap">
+<table>
+  <tr><th>平台</th><th>底层引擎</th><th>Mac 可跑性</th><th>模仿学习</th><th>RL</th><th>数据集</th><th>一句话定位</th></tr>
+  <tr><td><b>Meta-World</b></td><td>MuJoCo</td><td><span class="dot-s" style="background:var(--ok)"></span>✅ 官方测试 macOS</td><td>—</td><td>●●● 元/多任务 RL 标配</td><td>无（程序化任务分布）</td><td>50 任务元 RL 基准</td></tr>
+  <tr><td><b>robosuite</b></td><td>MuJoCo</td><td><span class="dot-s" style="background:var(--ok)"></span>✅ 官方支持（viewer 需 mjpython）</td><td>●●●（配 robomimic）</td><td>●●●</td><td>无自带（配 robomimic）</td><td>模块化操作框架，机器人最多</td></tr>
+  <tr><td><b>robomimic</b></td><td>MuJoCo</td><td><span class="dot-s" style="background:var(--ok)"></span>✅ 随 robosuite</td><td>●●● 离线 IL 横评</td><td>● 离线 RL</td><td>PH/MH/MG 人机演示 HDF5</td><td>模仿学习算法基准库</td></tr>
+  <tr><td><b>D4RL / Franka Kitchen</b></td><td>MuJoCo</td><td><span class="dot-s" style="background:var(--cond)"></span>⚠️ 用 Gymnasium-Robotics 版可跑；旧 mujoco-py 版在 ARM 未确认</td><td>—</td><td>●●● 离线 RL 标配</td><td>kitchen 数据集（人类演示）</td><td>离线 RL 经典数据集</td></tr>
+  <tr><td><b>Isaac Lab / IsaacBench</b></td><td>Isaac Sim（PhysX+RTX）</td><td><span class="dot-s" style="background:var(--no)"></span>❌ 仅 Ubuntu/Win11 + RTX</td><td>●●●（Mimic）</td><td>●●● GPU 千级并行</td><td>无内置（Mimic/GR00T 生成）</td><td>NVIDIA 生态 GPU 并行首选</td></tr>
+  <tr><td><b>ManiSkill 2/3</b></td><td>SAPIEN</td><td><span class="dot-s" style="background:var(--cond)"></span>⚠️ CPU Sim ✅ / GPU Sim ❌（官方矩阵）</td><td>●●●</td><td>●●●（GPU 并行在 Mac 不可用）</td><td>官方演示数据集</td><td>任务族最丰富的开源基准之一</td></tr>
+  <tr><td><b>RLBench</b></td><td>CoppeliaSim + PyRep</td><td><span class="dot-s" style="background:var(--no)"></span>❌ PyRep 官方仅支持 Linux</td><td>●●●（PerAct 系标配）</td><td>●</td><td>脚本化无限演示</td><td>100 任务语言条件操作</td></tr>
+  <tr><td><b>LIBERO</b></td><td>robosuite / MuJoCo</td><td><span class="dot-s" style="background:var(--ok)"></span>✅ 与 robosuite 同栈</td><td>●●● VLA 评测事实标准</td><td>●</td><td>130 任务 × 50 条人类演示（≈40GB）</td><td>终身学习 + VLA 论文标配</td></tr>
+  <tr><td><b>Habitat 2.0/3.0</b></td><td>habitat-sim 自研 + Bullet</td><td><span class="dot-s" style="background:var(--cond)"></span>⚠️ 有 macOS-arm64 包，但 headless/EGL 不支持，带窗低帧率</td><td>—</td><td>●● 导航 RL</td><td>HM3D / ReplicaCAD / YCB / MP3D</td><td>室内导航/重排/人机协作首选</td></tr>
+  <tr><td><b>ALFRED</b></td><td>AI2-THOR（Unity）</td><td><span class="dot-s" style="background:var(--cond)"></span>⚠️ macOS 有据但 Unity 播放器为 x86，Apple Silicon 需 Rosetta 未官方确认</td><td>●●● 语言条件长程 IL</td><td>—（离散动作）</td><td>8055 条专家演示 / 120 场景</td><td>语言→家务长程任务</td></tr>
+  <tr><td><b>OmniGibson / BEHAVIOR-1K</b></td><td>Isaac Sim / Omniverse</td><td><span class="dot-s" style="background:var(--no)"></span>❌ 仅 Ubuntu/Win + RTX 2070+</td><td>●●</td><td>●●</td><td>BEHAVIOR-1K（>30GB，需签协议）</td><td>最逼真的家居长程仿真</td></tr>
+  <tr><td><b>Genesis</b></td><td>自研多物理引擎（支持 Metal）</td><td><span class="dot-s" style="background:var(--ok)"></span>✅ 官方支持 Apple Silicon（有 render_on_macos.py 示例）</td><td>●</td><td>●●●（Mac 无 CUDA 并行加成）</td><td>无自带数据集</td><td>新生代跨平台仿真，Mac 原生希望</td></tr>
+  <tr><td><b>Open X-Embodiment</b></td><td>真机数据集（RLDS）</td><td><span class="dot-s" style="background:var(--cond)"></span>⚠️ 数据可下可读；TFDS 在 ARM 需 tensorflow-macos</td><td>●●● 预训练</td><td>—</td><td>1M+ 轨迹 / 22 种本体 / 160k 任务</td><td>跨本体 VLA 预训练数据池</td></tr>
+  <tr><td><b>RoboVerse (MetaSim)</b></td><td>多后端（MuJoCo/SAPIEN/Isaac/Genesis/PyBullet…）</td><td><span class="dot-s" style="background:var(--cond)"></span>⚠️ 仅 MuJoCo/PyBullet 后端理论可行（未确认）</td><td>●●●</td><td>●●●</td><td>集成 LIBERO/ManiSkill/RoboTwin 等</td><td>跨仿真器统一层 + 域随机化</td></tr>
+  <tr><td><b>GRUtopia</b></td><td>Isaac Sim 4.2</td><td><span class="dot-s" style="background:var(--no)"></span>❌ 仅 Ubuntu + RTX</td><td>●</td><td>●●</td><td>GRScenes-100（需签协议）</td><td>城市场景人形具身智能</td></tr>
+  <tr><td><b>RoboGen</b></td><td>PyBullet + LLM 自动生成</td><td><span class="dot-s" style="background:var(--cond)"></span>⚠️ PyBullet 跨平台，但 OMPL 依赖安装复杂，未确认</td><td>●（生成演示）</td><td>●●（自动出 reward）</td><td>生成式（无固定大数据集）</td><td>LLM 自动生成任务+奖励</td></tr>
+  <tr><td><b>AgiBot World</b></td><td>真机数据集（LeRobot 格式）</td><td><span class="dot-s" style="background:var(--cond)"></span>⚠️ 可读取/可视化；训练 GO-1 需 CUDA 12.4</td><td>●●● 真机预训练</td><td>—</td><td>约 100 万条真机轨迹 / 217 任务 / 106 场景</td><td>全球最大级开源真机操作数据集</td></tr>
+  <tr><td><b>HumanoidBench</b></td><td>MuJoCo（+MJX）</td><td><span class="dot-s" style="background:var(--ok)"></span>✅ 纯 Python + mujoco（无 CUDA 依赖）</td><td>—</td><td>●●● 全身分层 RL</td><td>无自带（含 RL 基线）</td><td>人形全身控制 27 任务基准</td></tr>
+  <tr><td><b>RoboTwin</b></td><td>SAPIEN + cuRobo</td><td><span class="dot-s" style="background:var(--no)"></span>❌ LeRobot 官方要求 Linux + NVIDIA GPU</td><td>●●● 双臂数据生成</td><td>●</td><td>统一格式 >10 万双臂轨迹（79.6GB）</td><td>双臂协作 VLA 评测新贵</td></tr>
+</table>
+</div>
+
+<div class="filters" id="filters">
+  <button class="active" data-f="all">全部 19 个</button>
+  <button data-f="mac-ok">✅ Mac 可跑</button>
+  <button data-f="mac-cond">⚠️ 有条件</button>
+  <button data-f="mac-no">❌ Mac 不可行</button>
+  <button data-f="il">模仿学习友好</button>
+  <button data-f="rl">RL 友好</button>
+</div>
+
+<!-- ============ 入门 ============ -->
+<div class="group-band g-green"><span class="tag">入门</span><span class="desc">单臂操作 · 算法验证 · 日考基础 —— MuJoCo 系为主，Mac 全部能跑</span></div>
+<div class="grid" id="cards">
+
+<div class="card" data-tags="mac-ok rl cond-meta">
+  <div class="card-head"><span class="num">01</span><h3>Meta-World</h3>
+    <span class="chip engine">MuJoCo</span><span class="badge b-ok">✅ Mac 可跑</span>
+    <div class="fit"><span class="f-rl">RL</span></div>
+  </div>
+  <div class="card-img"><div class="img-note">官方仅提供文字 banner，无场景图 —— <b>pip install metaworld</b> 后三行 gymnasium 代码即可看到 Sawyer 机械臂渲染窗口</div></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">MuJoCo</span>，Farama Foundation 维护，Gymnasium 接口</dd>
+    <dt>任务</dt><dd><b>50 个桌面操作任务</b>（reach/pick-place/door/open/dial 等），MT1 / MT10 / MT50 / ML1-45 协议</dd>
+    <dt>机器人</dt><dd>Sawyer 单臂（固定）</dd>
+    <dt>用途</dt><dd>多任务学习与<b>元强化学习（Meta-RL）</b>的事实标准基准</dd>
+    <dt>数据集</dt><dd>无自带数据集 —— 任务分布程序化生成，供在线 RL 采样</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>官方 README 明确"tested on Linux and macOS"（Py3.8–3.11），无 GPU 也能跑，渲染走 CGL。<b>适合：</b>在 Mac 上做元 RL / 多任务 RL 原型验证。</div>
+</div>
+
+<div class="card" data-tags="mac-ok rl il">
+  <div class="card-head"><span class="num">02</span><h3>robosuite</h3>
+    <span class="chip engine">MuJoCo</span><span class="badge b-ok">✅ Mac 可跑</span>
+    <div class="fit"><span class="f-rl">RL</span><span class="f-il">模仿</span></div>
+  </div>
+  <div class="card-img"><img src="img/robosuite.png" alt="robosuite 多任务环境全景" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">MuJoCo</span>，ARISE Initiative（Stanford/UT Austin）出品的模块化框架</dd>
+    <dt>任务</dt><dd>Lift / Stack / NutAssembly / Door / PickPlace / TwoArmHandover 等可自由组合的模块化任务</dd>
+    <dt>机器人</dt><dd><b>Panda、UR5e、Sawyer、IIWA、Jaco、Kinova3、GR1 人形</b> —— 支持机器人种类最多的 MuJoCo 框架</dd>
+    <dt>用途</dt><dd>操作 RL / 模仿学习环境底座、遥操作数据采集、MJCF↔USD 转换</dd>
+    <dt>数据集</dt><dd>无自带，与 robomimic 数据管线配套使用</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>官网安装页写明支持 macOS；渲染后端用 cgl，离屏 viewer 需 <b>mjpython</b> 启动，EGL/GPU 渲染路径不可用。<b>适合：</b>本机做操作 RL 环境与遥操作采集。</div>
+</div>
+
+<div class="card" data-tags="mac-ok il">
+  <div class="card-head"><span class="num">03</span><h3>RoboMimic</h3>
+    <span class="chip engine">MuJoCo</span><span class="badge b-ok">✅ Mac 可跑</span>
+    <div class="fit"><span class="f-il">模仿</span></div>
+  </div>
+  <div class="card-img"><img src="img/robomimic.gif" alt="robomimic Lift 任务演示动图" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">MuJoCo / robosuite</span>，ARISE Initiative 的<b>离线模仿学习框架</b></dd>
+    <dt>任务</dt><dd>5 个操作任务（Lift / Can / Square / Transport / Tool Hang）+ 3 个真机任务</dd>
+    <dt>机器人</dt><dd>Franka Panda 为主（兼容 robosuite 全系）</dd>
+    <dt>用途</dt><dd><b>模仿学习算法横评基准</b>：BC / BC-RNN / IQL / CQL / sac 等统一实现，论文复现友好</dd>
+    <dt>数据集</dt><dd>PH（熟练人类）200 条/任务、MH（多人类）300 条/任务、MG（机器生成），HDF5 格式</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>官方声明 Linux + macOS；纯 CPU 即可训练小模型，BC 类算法在 Mac 上完全够用。<b>适合：</b>模仿学习入门与算法对比的首选。</div>
+</div>
+
+<div class="card" data-tags="mac-cond rl">
+  <div class="card-head"><span class="num">04</span><h3>D4RL / Franka Kitchen</h3>
+    <span class="chip engine">MuJoCo</span><span class="badge b-cond">⚠️ 用新版可跑</span>
+    <div class="fit"><span class="f-rl">离线 RL</span></div>
+  </div>
+  <div class="card-img"><img src="img/d4rl_kitchen.gif" alt="Franka Kitchen 环境动图" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">MuJoCo</span>；原版 d4rl 包依赖过时的 mujoco-py（ARM64 存疑），<b>推荐 Gymnasium-Robotics 的 Franka Kitchen 实现</b></dd>
+    <dt>任务</dt><dd>厨房场景 7 个目标子任务：微波炉、水壶、灯开关、柜门、灶台等组合</dd>
+    <dt>机器人</dt><dd>9-DoF Franka 移动操作臂</dd>
+    <dt>用途</dt><dd><b>离线强化学习</b>经典基准（CQL/IQL/Decision Transformer 论文标配）</dd>
+    <dt>数据集</dt><dd>kitchen-complete / partial / mixed-v0，约 566 条人类演示</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>Gymnasium-Robotics 版官方声明支持 Linux 和 macOS；避免装旧版 d4rl 包。<b>适合：</b>离线 RL / 序列决策模型实验。</div>
+</div>
+
+<!-- ============ 进阶 ============ -->
+</div>
+
+<div class="group-band g-blue" style="margin-top:40px"><span class="tag">进阶</span><span class="desc">高保真 + GPU 并行 + 多智能体 —— 大部分依赖 NVIDIA，Mac 只能浅尝</span></div>
+<div class="grid">
+
+<div class="card" data-tags="mac-no rl il">
+  <div class="card-head"><span class="num">05</span><h3>Isaac Lab / IsaacBench</h3>
+    <span class="chip engine">Isaac Sim</span><span class="badge b-no">❌ Mac 不可行</span>
+    <div class="fit"><span class="f-rl">RL</span><span class="f-il">模仿</span></div>
+  </div>
+  <div class="card-img"><img src="img/isaaclab.jpg" alt="Isaac Lab 多机器人并行训练" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">NVIDIA Isaac Sim</span>（PhysX + OpenUSD + RTX 光追），GPU 千级并行环境</dd>
+    <dt>任务</dt><dd>数千并行环境的操作/运动任务 + IsaacBench 闭环评测环境</dd>
+    <dt>机器人</dt><dd>H1 / G1 人形、ANYmal 四足、Franka、GR1</dd>
+    <dt>用途</dt><dd><b>GPU 大规模并行 RL</b>、合成数据生成、VLA 评测（NVIDIA 生态核心）</dd>
+    <dt>数据集</dt><dd>无内置；靠 Mimic / GR00T 管线生成</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>官方仅支持 Ubuntu 22.04/24.04 或 Win11 + NVIDIA RTX；macOS 只能当 WebRTC 客户端远程看 Linux 服务器画面。<b>想上它 = 上云/上实验室服务器。</b></div>
+</div>
+
+<div class="card" data-tags="mac-cond rl il">
+  <div class="card-head"><span class="num">06</span><h3>ManiSkill 2/3</h3>
+    <span class="chip engine">SAPIEN</span><span class="badge b-cond">⚠️ Mac 仅 CPU 模式</span>
+    <div class="fit"><span class="f-rl">RL</span><span class="f-il">模仿</span></div>
+  </div>
+  <div class="card-img"><img src="img/maniskill.jpg" alt="ManiSkill 多任务多机器人场景" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">SAPIEN 3</span> 物理引擎（UCSD 出品），支持 GPU 并行与光追渲染</dd>
+    <dt>任务</dt><dd>数十个任务族：桌面操作、灵巧手、人形、移动操作、绘画等</dd>
+    <dt>机器人</dt><dd>Panda、Fetch、WidowX、ANYmal、Unitree Go2 等</dd>
+    <dt>用途</dt><dd>GPU 并行 RL/IL、sim2real、操作通用基准</dd>
+    <dt>数据集</dt><dd>官方提供各任务演示数据集（可下）</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>官方兼容性矩阵：macOS 上 <b>CPU Sim ✅ / GPU Sim ❌ / Rendering ✅</b>（limited support）。单环境 CPU 仿真没问题，但没有并行加速 —— 做评估可以，大规模训练建议远程。<b>适合：</b>Mac 上跑单个任务调试与看效果。</div>
+</div>
+
+<div class="card" data-tags="mac-no il">
+  <div class="card-head"><span class="num">07</span><h3>RLBench</h3>
+    <span class="chip engine">CoppeliaSim</span><span class="badge b-no">❌ Mac 不可行</span>
+    <div class="fit"><span class="f-il">模仿</span></div>
+  </div>
+  <div class="card-img"><img src="img/rlbench.png" alt="RLBench 100 任务网格" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">CoppeliaSim</span>（原 V-REP）+ PyRep Python 桥接</dd>
+    <dt>任务</dt><dd><b>100 个操作任务</b>，每任务 10–60 个随机变体（倒茶、开抽屉、插积木…）</dd>
+    <dt>机器人</dt><dd>Franka Panda（PyRep 另支持 Mico/Jaco/Sawyer/UR5）</dd>
+    <dt>用途</dt><dd>多任务模仿学习、few-shot、语言条件操作（PerAct/RVT 系论文标配）</dd>
+    <dt>数据集</dt><dd>脚本化路径点 → 可生成<b>无限专家演示</b>（MPP 方法）</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>CoppeliaSim 本体有 macOS 版，但 PyRep 官方声明"仅支持 Linux"——全链路在 Mac 跑不通，建议 Docker/远程。<b>适合：</b>做语言条件操作（PerAct 系）时在 Linux 上用。</div>
+</div>
+
+<div class="card" data-tags="mac-ok il">
+  <div class="card-head"><span class="num">08</span><h3>LIBERO</h3>
+    <span class="chip engine">MuJoCo</span><span class="badge b-ok">✅ Mac 可跑</span>
+    <div class="fit"><span class="f-il">模仿</span><span class="f-vla">VLA 评测</span></div>
+  </div>
+  <div class="card-img"><img src="img/libero.png" alt="LIBERO 五个任务套件示意" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">robosuite / MuJoCo</span>，UT Austin 终身学习组出品</dd>
+    <dt>任务</dt><dd><b>130 任务 / 5 套件</b>：Spatial / Object / Goal / Long（各 10）+ LIBERO-90</dd>
+    <dt>机器人</dt><dd>Franka Emika Panda（桌面场景）</dd>
+    <dt>用途</dt><dd>终身/持续学习基准；如今是 <b>VLA 微调评测的事实标准</b>（OpenVLA / Octo / π0 / DP / ACT 都报 LIBERO 成绩）</dd>
+    <dt>数据集</dt><dd>每任务 50 条人类遥操作演示，共约 6.5 万条 / 40GB HDF5（HF: yifengzhu-hf/LIBERO-datasets，另有 RLDS 版）</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>与 robosuite 同栈，Mac 可跑环境；演示数据 40GB 下载后 Mac 上做离线 IL / VLA 轻量微调可行（大模型推理建议量化）。<b>Mac 用户做模仿学习最值得先跑的一个。</b></div>
+</div>
+
+<div class="card" data-tags="mac-cond rl nav">
+  <div class="card-head"><span class="num">09</span><h3>Habitat 2.0 / 3.0</h3>
+    <span class="chip engine">habitat-sim</span><span class="badge b-cond">⚠️ Mac 带窗可跑</span>
+    <div class="fit"><span class="f-nav">导航</span><span class="f-rl">RL</span></div>
+  </div>
+  <div class="card-img"><img src="img/habitat3.gif" alt="Habitat 3.0 人机协作场景" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">habitat-sim 自研引擎 + Bullet</span>（Meta 出品），面向室内大规模场景</dd>
+    <dt>任务</dt><dd>点目标/物体目标导航、交互式重排（2.0）、人-机器人社交导航协作（3.0）</dd>
+    <dt>机器人</dt><dd>Fetch 移动操作臂；3.0 加入<b>人形化身与人机协作</b></dd>
+    <dt>用途</dt><dd>具身导航、重排、具身问答 —— 导航 RL 事实标准</dd>
+    <dt>数据集</dt><dd><b>HM3D、ReplicaCAD、YCB、MP3D、Gibson</b> 大规模扫描场景</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>conda 有 macOS-arm64 构建，但 headless(EGL) 明确不支持 macOS —— 只能带窗运行且无 GPU 加速、帧率低。能跑着玩，别指望效率。<b>适合：</b>做导航类课题时本机调试，训练上 Linux。</div>
+</div>
+
+<div class="card" data-tags="mac-cond il nav">
+  <div class="card-head"><span class="num">10</span><h3>ALFRED</h3>
+    <span class="chip engine">AI2-THOR</span><span class="badge b-cond">⚠️ Apple Silicon 未官方确认</span>
+    <div class="fit"><span class="f-il">模仿</span><span class="f-nav">导航</span></div>
+  </div>
+  <div class="card-img"><img src="img/alfred.png" alt="ALFRED 语言指令+视觉序列" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">AI2-THOR</span>（Unity3D 渲染，AI2 出品）</dd>
+    <dt>任务</dt><dd>7 类家务长程任务（加热食物、收纳、清洁…），语言指令 → 子目标序列</dd>
+    <dt>机器人</dt><dd>AI2-THOR 离散动作智能体（非连续控制机械臂）</dd>
+    <dt>用途</dt><dd><b>语言条件长程模仿学习</b>基准（LLM+具身任务分解研究常用）</dd>
+    <dt>数据集</dt><dd>ALFRED：8055 条专家演示 / 120 个场景</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>官方 Requirements 写 macOS 10.9+，但 Unity 播放器是 x86_64 —— Apple Silicon 走 Rosetta 未官方确认，可尝试但别抱太大期望。<b>注意：</b>离散动作空间，不能做操作 RL。</div>
+</div>
+
+<div class="card" data-tags="mac-no rl il">
+  <div class="card-head"><span class="num">11</span><h3>OmniGibson / BEHAVIOR-1K</h3>
+    <span class="chip engine">Isaac Sim</span><span class="badge b-no">❌ Mac 不可行</span>
+    <div class="fit"><span class="f-rl">RL</span><span class="f-il">模仿</span></div>
+  </div>
+  <div class="card-img"><img src="img/omnigibson.png" alt="OmniGibson 逼真室内场景" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">NVIDIA Omniverse / Isaac Sim</span>（PhysX + RTX），Stanford 出品，保真度最高一档</dd>
+    <dt>任务</dt><dd><b>1000+ 种日常活动</b>（BDDL 描述），挑战赛 50 任务</dd>
+    <dt>机器人</dt><dd>Fetch、Tiago、R1 Pro、人形</dd>
+    <dt>用途</dt><dd>高保真家居长程操作/导航、sim2real</dd>
+    <dt>数据集</dt><dd>BEHAVIOR-1K 数据集（>30GB，需签协议下载）</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>官方要求 Ubuntu 22.04+/Win10+、RTX 2070+、8GB VRAM、32GB RAM —— 门槛最高的平台之一，Mac 彻底出局。<b>适合：</b>有 RTX 服务器后做"全家桶"家居仿真。</div>
+</div>
+
+<div class="card" data-tags="mac-ok rl">
+  <div class="card-head"><span class="num">12</span><h3>Genesis</h3>
+    <span class="chip engine">自研多引擎</span><span class="badge b-ok">✅ Mac 原生可跑</span>
+    <div class="fit"><span class="f-rl">RL</span></div>
+  </div>
+  <div class="card-img"><img src="img/genesis.png" alt="Genesis 主视觉" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">自研统一物理引擎</span>（多求解器），编译后端支持 CUDA / ROCm / <b>Metal</b> / Vulkan / ARM64</dd>
+    <dt>任务</dt><dd>无固定基准 —— 以示例场景为主（刚体/软体/流体/机器人操作）</dd>
+    <dt>机器人</dt><dd>Franka、Unitree 等，直接加载 MJCF/URDF</dd>
+    <dt>用途</dt><dd>通用多物理仿真、大规模并行数据生成、可微仿真探索（新生代，2024 底开源爆红）</dd>
+    <dt>数据集</dt><dd>无自带数据集</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>官方文档把 macOS（x86_64 / Apple Silicon）列为受支持系统，仓库里有 <b>examples/render_on_macos.py</b>。社区反馈 Mac 上 python-tk/trimesh 等依赖易踩坑；宣传的 43M FPS 是 RTX 4090 口径，Mac 上别期待并行神话。<b>最值得 Mac 用户尝鲜的新引擎。</b></div>
+</div>
+
+<!-- ============ 精通 ============ -->
+<div class="card" data-tags="mac-cond il data">
+  <div class="card-head"><span class="num">13</span><h3>Open X-Embodiment</h3>
+    <span class="chip engine">真机数据集</span><span class="badge b-cond">⚠️ 可下可读，训练需算力</span>
+    <div class="fit"><span class="f-data">数据集</span><span class="f-il">模仿</span></div>
+  </div>
+  <div class="card-img"><img src="img/oxe.png" alt="Open X-Embodiment 数据总览" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">非仿真器</span> —— Google/DeepMind 联合 34 个实验室聚合的<b>真机数据集</b>（RLDS 格式）</dd>
+    <dt>任务</dt><dd><b>100 万+ 真机轨迹、22 种机器人本体、527 技能、16 万任务</b>（图中"25 款"口径偏大，官方为 22 种本体）</dd>
+    <dt>机器人</dt><dd>Franka、UR5、WidowX、xArm、Sawyer、Kuka、双臂、四足……</dd>
+    <dt>用途</dt><dd>跨本体通用策略<b>预训练</b>（RT-X / Octo / OpenVLA 的训练数据池）</dd>
+    <dt>数据集</dt><dd>OXE 本身（TFDS / RLDS 格式，可直接流式读取）</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>数据可下载、可分析可视化；但 TFDS 流水线在 Apple Silicon 需 tensorflow-macos，完整预训练必须有 GPU 集群。<b>适合：</b>理解 VLA 训练数据形态、做小规模微调实验。</div>
+</div>
+
+<div class="card" data-tags="mac-cond il rl">
+  <div class="card-head"><span class="num">14</span><h3>RoboVerse (MetaSim)</h3>
+    <span class="chip engine">多后端统一</span><span class="badge b-cond">⚠️ Mac 仅 MuJoCo/PyBullet 后端</span>
+    <div class="fit"><span class="f-il">模仿</span><span class="f-rl">RL</span><span class="f-data">数据生成</span></div>
+  </div>
+  <div class="card-img"><img src="img/roboverse.png" alt="RoboVerse 多仿真器统一平台" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">统一层 + 多后端</span>：Isaac Sim / IsaacGym / MuJoCo / SAPIEN / Genesis / PyBullet / Newton 可切换</dd>
+    <dt>任务</dt><dd>直接集成 LIBERO、ManiSkill、RoboTwin、Meta-World、robosuite、HumanoidBench 等主流基准</dd>
+    <dt>机器人</dt><dd>Franka 等（content pack 提供）</dd>
+    <dt>用途</dt><dd>跨仿真器迁移、真物交互、域随机化数据生成（MetaSim 思路）</dd>
+    <dt>数据集</dt><dd>自带数据集 + 上述全部基准的演示数据</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>官方安装以 Linux + CUDA 为主；MuJoCo/PyBullet 后端在 Mac 理论可行但未获官方确认。<b>适合：</b>统一管理多个基准（建议 Linux 环境），Mac 可做接口层浏览。</div>
+</div>
+
+<div class="card" data-tags="mac-no rl">
+  <div class="card-head"><span class="num">15</span><h3>GRUtopia</h3>
+    <span class="chip engine">Isaac Sim</span><span class="badge b-no">❌ Mac 不可行</span>
+    <div class="fit"><span class="f-rl">RL</span></div>
+  </div>
+  <div class="card-img"><img src="img/grutopia.png" alt="GRUtopia 城市基准" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">Isaac Sim 4.2</span>（Omniverse），上海 AI Lab / OpenRobotLab 出品（现已更名 InternUtopia）</dd>
+    <dt>任务</dt><dd>城市场景 GRScenes-100 中的导航、操作、NPC 对话任务</dd>
+    <dt>机器人</dt><dd>Unitree H1 人形等</dd>
+    <dt>用途</dt><dd>大规模城市场景具身智能 + LLM 智能体集成</dd>
+    <dt>数据集</dt><dd>GRScenes-100 场景库（需签协议）</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>官方 Prerequisites：Ubuntu 20.04/22.04、32GB RAM、RTX 2070+（需 RT Core）—— 同 Isaac 系，Mac 出局。</div>
+</div>
+
+<div class="card" data-tags="mac-cond rl il">
+  <div class="card-head"><span class="num">16</span><h3>RoboGen</h3>
+    <span class="chip engine">PyBullet + LLM</span><span class="badge b-cond">⚠️ 未获官方确认</span>
+    <div class="fit"><span class="f-rl">RL</span><span class="f-il">数据生成</span></div>
+  </div>
+  <div class="card-img"><img src="img/robogen.png" alt="RoboGen 自动生成任务示例" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">PyBullet + OMPL + GPT-4</span>（CMU 出品；衍生版可接 Genesis/SAPIEN）</dd>
+    <dt>任务</dt><dd>无固定任务 —— <b>LLM 自动提议任务 → 生成场景 → 自动写 reward → RL 训练</b>的闭环流水线</dd>
+    <dt>机器人</dt><dd>Franka 等机械臂 + 四足/运动体</dd>
+    <dt>用途</dt><dd>程序化生成任务与技能数据，探索"自动造数据"</dd>
+    <dt>数据集</dt><dd>生成式（无公开固定大数据集）</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>PyBullet 本身跨平台，但 OMPL 的 Python 绑定安装复杂、官方未声明 macOS 支持 —— 可尝试，未确认。注意别和 NVIDIA hackathon 的同名仓库混淆。</div>
+</div>
+
+<div class="card" data-tags="mac-cond il data">
+  <div class="card-head"><span class="num">17</span><h3>AgiBot World</h3>
+    <span class="chip engine">真机数据集</span><span class="badge b-cond">⚠️ 可读可分析，训练需 CUDA</span>
+    <div class="fit"><span class="f-data">数据集</span><span class="f-il">模仿</span></div>
+  </div>
+  <div class="card-img"><img src="img/agibot.gif" alt="AgiBot World 真机双臂操作" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">非仿真器</span> —— 智元机器人开源的<b>真机采集数据集</b>（LeRobot 格式，CC BY-NC-SA 4.0）</dd>
+    <dt>任务</dt><dd><b>Beta 版约 100 万条真机轨迹 / 2976 小时 / 217 任务 / 87 技能 / 106 场景</b>（Alpha 版 9.2 万条）</dd>
+    <dt>机器人</dt><dd>AgiBot G1 移动双臂（100+ 台同构真机采集）</dd>
+    <dt>用途</dt><dd>真机 VLA 预训练（GO-1 模型的训练数据）</dd>
+    <dt>数据集</dt><dd>AgiBotWorld-Alpha / Beta（HuggingFace 可下）</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>LeRobot 格式数据可读取、可视化、做轻量微调实验；官方 GO-1 训练管线需 CUDA 12.4。<b>适合：</b>研究真机数据结构与 LeRobot 训练格式。</div>
+</div>
+
+<div class="card" data-tags="mac-ok rl">
+  <div class="card-head"><span class="num">18</span><h3>HumanoidBench</h3>
+    <span class="chip engine">MuJoCo</span><span class="badge b-ok">✅ Mac 可跑</span>
+    <div class="fit"><span class="f-rl">RL</span></div>
+  </div>
+  <div class="card-img"><img src="img/humanoidbench.jpg" alt="HumanoidBench 27 任务总览" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">MuJoCo</span>（+MJX 加速底层的运动技能），Carlo D'Eramo 组出品</dd>
+    <dt>任务</dt><dd><b>27 个任务</b>：15 个全身操作（搬箱子、开门）+ 12 个运动（走路、爬楼梯、过障碍）</dd>
+    <dt>机器人</dt><dd>Unitree H1 + 双 Shadow Hand（61 维动作 / 101 DoF），另提供 G1、Digit、Robotiq 选项</dd>
+    <dt>用途</dt><dd>人形全身控制、分层 RL（底层技能 + 高层操作）</dd>
+    <dt>数据集</dt><dd>无自带数据集（内置分层 RL 基线）</dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>纯 Python + mujoco，无 CUDA 依赖，Mac 能跑；MJX 在 Mac 上仅 CPU/JAX 后端。<b>Mac 上研究人形 RL 的唯一顺手选择。</b></div>
+</div>
+
+<div class="card" data-tags="mac-no il data">
+  <div class="card-head"><span class="num">19</span><h3>RoboTwin</h3>
+    <span class="chip engine">SAPIEN</span><span class="badge b-no">❌ Mac 不可行</span>
+    <div class="fit"><span class="f-il">模仿</span><span class="f-data">数据生成</span></div>
+  </div>
+  <div class="card-img"><img src="img/robotwin.gif" alt="RoboTwin 50 个双臂任务" loading="lazy"></div>
+  <dl class="facts">
+    <dt>基于</dt><dd><span class="hl">SAPIEN</span>（注意：不是 Isaac Sim）+ cuRobo + pytorch3d；CVPR 2025 Highlight</dd>
+    <dt>任务</dt><dd><b>2.0 版：50 个双臂协作任务 × 5 种本体</b>，RoboTwin-OD 含 731 物体/147 类，5 维域随机化</dd>
+    <dt>机器人</dt><dd>Aloha-AgileX 双臂（14 DoF）等 5 种构型</dd>
+    <dt>用途</dt><dd>双臂数据生成 + VLA 评测（π0、RDT 等双臂成绩多在此报）</dd>
+    <dt>数据集</dt><dd><b>lerobot/robotwin_unified：>10 万条统一格式轨迹（79.6GB，Apache-2.0）</b></dd>
+  </dl>
+  <div class="foot"><b>Mac 备注：</b>LeRobot 官方文档明确要求 Linux + NVIDIA GPU（CUDA 12.1）。数据可下到 Mac 分析，仿真与数据生成本体需 Linux。<b>做双臂/VLA 研究的重点关注对象。</b></div>
+</div>
+
+</div><!-- /grid -->
+
+<h2 class="section" style="margin-top:48px"><span class="dot" style="background:#2b3138"></span>生态工具速览（原图底部 5 件套）</h2>
+<p class="section-sub">这些不是仿真器，而是让各平台"互通"的胶水 —— 决定了你的数据能不能跨平台流动。</p>
+<div class="tools">
+  <div class="tool"><b>① 资产格式转换：MJCF / URDF → USD</b><p>Isaac Sim 内置 MJCF-to-USD，robosuite 也提供 MJCF↔USD 转换 —— 把 MuJoCo 模型带进 Isaac/Genesis 生态的必经之路。</p></div>
+  <div class="tool"><b>② 数据格式统一：RLDS (OXE) / LeRobot (HF)</b><p>RLDS 是 Open X-Embodiment 的标准格式；LeRobot 是 HuggingFace 生态格式（ManiSkill/RoboTwin/AgiBot World 都有转换版）——选数据集时先看格式。</p></div>
+  <div class="tool"><b>③ 真物交互与模型构建：object2urdf</b><p>把真实物体扫描/建模转成 URDF，放进任意 MuJoCo/SAPIen 系仿真器。</p></div>
+  <div class="tool"><b>④ 跨平台互操作：RoboVerse / MetaSim</b><p>统一多引擎接口 + 兼容主流基准 + 三大平台互操作，一个 API 跑多个后端。</p></div>
+  <div class="tool"><b>⑤ 评测-权变：SIMPLER 等</b><p>SIMPLER（VLA 等构真机评测）：用仿真近似还原真机评测协议，在 Mac 可跑的 MuJoCo 栈上即可对 VLA 做低成本评测。</p></div>
+</div>
+
+<h2 class="section" style="margin-top:48px"><span class="dot" style="background:#2b3138"></span>给你的选型建议（Apple Silicon Mac + 机器人操作研究）</h2>
+<div class="advice">
+  <div class="adv">
+    <h4>🟢 在 Mac 上今天就装这些</h4>
+    <p><b>主线：robosuite + robomimic + LIBERO</b>（一套 pip 全搞定，官方支持 macOS）。模仿学习入门跑 robomimic 的 BC/BC-RNN 基线，然后下 LIBERO 数据集复现 VLA 微调；RL 侧用 Meta-World + HumanoidBench；想尝鲜新引擎装 <b>Genesis</b>。注意 viewer 用 <code>mjpython</code> 启动。</p>
+  </div>
+  <div class="adv a2">
+    <h4>🔵 上 Linux 服务器 / 云 GPU 再碰这些</h4>
+    <p>ManiSkill3 GPU 并行、Isaac Lab、RoboTwin（双臂 VLA）、RLBench（PerAct 系）、OmniGibson、GRUtopia。Mac 当 SSH/可视化终端，训练放远端 —— 这是当前 GPU 并行生态的现实分工。</p>
+  </div>
+  <div class="adv a3">
+    <h4>🟡 模仿学习 vs RL 怎么选</h4>
+    <p><b>模仿学习路线</b>（有演示数据就能学）：robomimic → LIBERO → RoboTwin / AgiBot World / OXE 预训练。Mac 可完成前两步。<br><b>RL 路线</b>（需要在线交互+高吞吐）：Meta-World / ManiSkill / Isaac Lab / HumanoidBench —— 除 Meta-World 外基本都需要 GPU 并行，Mac 只适合调试小环境。</p>
+  </div>
+</div>
+
+<footer>信息核实于 2026-10-10，依据各平台官方 README / 安装文档 / GitHub Issue；截图来自各官方仓库与项目主页，仅用于学习调研。Mac 可跑性以 Apple Silicon + 无 NVIDIA GPU 为基准。</footer>
+</div>
+
+<script>
+const btns = document.querySelectorAll('#filters button');
+btns.forEach(b => b.addEventListener('click', () => {
+  btns.forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  const f = b.dataset.f;
+  document.querySelectorAll('.card').forEach(c => {
+    if (f === 'all') { c.style.display = ''; return; }
+    const tags = c.dataset.tags || '';
+    let show = tags.includes(f);
+    if (f === 'il') show = tags.includes(' il') || tags.startsWith('il');
+    c.style.display = show ? '' : 'none';
+  });
+  document.querySelectorAll('.group-band').forEach(g => g.style.display = f === 'all' ? '' : 'none');
+}));
+</script>
+</body>
+</html>

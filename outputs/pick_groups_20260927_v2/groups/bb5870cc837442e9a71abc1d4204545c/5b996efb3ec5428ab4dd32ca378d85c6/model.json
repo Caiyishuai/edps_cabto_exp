@@ -1,0 +1,19 @@
+{
+  "name": "pick",
+  "args": {
+    "object": "red",
+    "support": "blue"
+  },
+  "pre": [
+    "empty()",
+    "at_source(red)"
+  ],
+  "add": [
+    "holding(red)"
+  ],
+  "del": [
+    "empty()",
+    "at_source(red)",
+    "home_completed()"
+  ]
+}

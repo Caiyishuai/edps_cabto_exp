@@ -1,0 +1,79 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "home(0)"
+    ],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": [
+      "home(0)"
+    ]
+  },
+  "code_executed": false,
+  "exception": "PolicyRejected: unsupported API attribute api.get_arm; allowed methods: ['return_arm_home']",
+  "trace": [],
+  "before": [
+    "baton_airborne()",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "handover_verified()",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "after": [
+    "baton_airborne()",
+    "collision_free()",
+    "donor_withdrawn()",
+    "empty(0)",
+    "handover_verified()",
+    "receiver_contact_verified()",
+    "receiver_holding(baton)"
+  ],
+  "model": {
+    "name": "home_donor_arm",
+    "args": {
+      "arm": "0",
+      "obj": "baton",
+      "dest": "home_donor_arm"
+    },
+    "program_kind": "controlled_home",
+    "pre": [
+      "receiver_holding(baton)",
+      "empty(0)",
+      "donor_withdrawn()",
+      "handover_verified()",
+      "collision_free()"
+    ],
+    "add": [
+      "home(0)"
+    ],
+    "del": [],
+    "description": "绑定的空机械臂处于经执行器控制及实测验证的 HOME 位，无活动抓取 weld，运动无禁止碰撞。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "missing_required_calls": [],
+  "code_sha256": "d18ff4dc3130b7bda48e891b8a7a6f26c2171a7a70de33c0a09b8dda1831b199",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+  "physical_diagnostics": {
+    "placed": false,
+    "xy_error_m": 0.21130131946801903,
+    "bottom_gap_m": 0.15936453855235255,
+    "rotation_error_deg": 0.03141619029131363,
+    "released": false,
+    "origin": [
+      0.3498869494009733,
+      0.00034235136734253493,
+      0.6394262455661195
+    ],
+    "table_support_contact": false
+  }
+}

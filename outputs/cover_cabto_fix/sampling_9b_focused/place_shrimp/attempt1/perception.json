@@ -1,0 +1,28 @@
+[
+  {
+    "backend": "oracle",
+    "object": "shrimp",
+    "point_kind": "grasp_center",
+    "height_prior_m": 0.4100006199279825,
+    "height_source": "oracle_initial_object_z_plus_frozen_grasp_offset",
+    "fallback": false,
+    "xyz": [
+      0.31005448082886233,
+      -0.19001732181460515,
+      0.4100006199279825
+    ]
+  },
+  {
+    "backend": "oracle",
+    "object": "bowl",
+    "point_kind": "support_floor_center",
+    "height_prior_m": 0.40800000000000003,
+    "height_source": "frozen_scene_support_surface_z",
+    "fallback": false,
+    "xyz": [
+      0.31,
+      0.16,
+      0.40800000000000003
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "success": false,
+  "trial_valid": true,
+  "candidate_rejected": true,
+  "physical_rollouts": 0,
+  "steps": [],
+  "simulation_seconds": 0.0,
+  "wall_seconds": 0.0,
+  "exception": "ModelValidationError: stack(object=blue,support=yellow): pre ∩ add 必须为空"
+}

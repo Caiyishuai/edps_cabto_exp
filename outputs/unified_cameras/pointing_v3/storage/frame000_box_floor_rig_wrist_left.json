@@ -1,0 +1,142 @@
+{
+  "task": "storage",
+  "capture_index": 0,
+  "event": "initial",
+  "target": "box_floor",
+  "camera": "rig_wrist_left",
+  "input_image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/frames/000_initial/rig_wrist_left.png",
+  "input_sha256": "57f6e0bdbaeb45e33a177c6d946f51d8809c861f943c6f25d3632c4012f078aa",
+  "original_run": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/result.json",
+  "original_run_sha256": "93ffc354894cbbd6afe8bc95411efe926d8e5464ad2c6abd3a04d72b5a21bb90",
+  "original_physical_state_time": 0.16000000000000011,
+  "used_by_robot": false,
+  "type": "diagnostic_point_not_executable_grasp",
+  "calibration": {
+    "name": "rig_wrist_left",
+    "time": 0.16000000000000011,
+    "image_size": [
+      720,
+      720
+    ],
+    "K": [
+      [
+        469.16113422283405,
+        0,
+        360.0
+      ],
+      [
+        0,
+        469.16113422283405,
+        360.0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "T_world_camera": {
+      "position": [
+        0.40002260604801604,
+        0.24323955645198433,
+        0.9625521160891766
+      ],
+      "rotation": [
+        [
+          -0.0005019242417182435,
+          -0.8033438054499974,
+          0.5955153048555271
+        ],
+        [
+          0.9999775609554687,
+          -0.004381397226316253,
+          -0.005067636914371565
+        ],
+        [
+          0.0066802438283530274,
+          0.5954993984912671,
+          0.8033279783120539
+        ]
+      ]
+    },
+    "optical_axis_world": [
+      -0.5955153048555271,
+      0.005067636914371565,
+      -0.8033279783120539
+    ],
+    "parent_body": "hand_L",
+    "measured_T_body_camera": {
+      "position": [
+        -2.9406829924440675e-18,
+        -0.09999999999999987,
+        0.024999999999999908
+      ],
+      "rotation": [
+        [
+          -0.9999999999999987,
+          -6.723996110217215e-17,
+          -1.750866522694207e-17
+        ],
+        [
+          -5.28769985349345e-17,
+          0.8035571933447093,
+          -0.5952275506257847
+        ],
+        [
+          4.9575144570928664e-17,
+          -0.5952275506257845,
+          -0.8035571933447091
+        ]
+      ]
+    },
+    "fovy_deg": 75.0,
+    "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+  },
+  "evaluation_only_reference": {
+    "name": "box_floor",
+    "body": "tray",
+    "xyz": [
+      0.28535645303499646,
+      1.4260567342399394e-18,
+      0.4078994508541816
+    ],
+    "semantic": "interior floor center"
+  },
+  "reference_semantics": "interior floor center",
+  "call": {
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "text": "Point to the center of the flat interior floor of the open cardboard box, not the walls or flaps. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/storage/frames/000_initial/rig_wrist_left.png"
+    ],
+    "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the flat interior floor of the open cardboard box, not the walls or flaps. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.<|im_end|>\n<|im_start|>assistant\n",
+    "temperature": 0.0,
+    "max_tokens": 220,
+    "raw": "{\"point\":[181,581]}",
+    "wall_seconds": 1.2156059999251738
+  },
+  "point": [
+    181.0,
+    581.0
+  ],
+  "status": "point_returned_not_validated",
+  "reference_visibility": {
+    "target": "box_floor",
+    "pixel": [
+      134.04872060481608,
+      577.010942995463
+    ],
+    "in_frame": true,
+    "ray_hits_target_body": false,
+    "first_hit_body": "hand_L",
+    "ray_distance_m": 0.006325834624885267,
+    "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+  },
+  "evaluation_only_reference_uv": [
+    134.04872060481608,
+    577.010942995463
+  ],
+  "pixel_error": 47.120433069211785,
+  "conditional_true_plane_xy_error_mm": 52.24250859326054,
+  "overlay": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/pointing_v3/storage/frame000_box_floor_rig_wrist_left.png"
+}

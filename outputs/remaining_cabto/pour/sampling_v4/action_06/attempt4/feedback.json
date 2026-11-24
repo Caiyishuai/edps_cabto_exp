@@ -1,0 +1,139 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "empty(0)",
+      "hand_raised(0)",
+      "source_returned()"
+    ],
+    "remaining_del": [
+      "holding(0,canL)"
+    ],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "holding(0,canL)"
+    ],
+    "unexpected_removed": [
+      "empty(0)",
+      "hand_raised(0)",
+      "source_returned()"
+    ]
+  },
+  "code_executed": true,
+  "exception": "ValueError: 安全通道坐标必须保持原值",
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.21,
+        0.1,
+        0.4
+      ]
+    },
+    {
+      "method": "move_safe",
+      "args": [
+        [
+          0.21,
+          0.1,
+          0.4
+        ]
+      ],
+      "kwargs": {},
+      "status": "failed",
+      "error": "ValueError: 安全通道坐标必须保持原值"
+    }
+  ],
+  "before": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "receiver_separated()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "after": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "receiver_separated()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "model": {
+    "name": "return_source_cup",
+    "args": {
+      "arm": "0",
+      "obj": "canL",
+      "dest": "return_source_cup"
+    },
+    "program_kind": "return_source",
+    "pre": [
+      "holding(0,canL)",
+      "source_upright()",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "source_returned()",
+      "empty(0)",
+      "hand_raised(0)"
+    ],
+    "del": [
+      "holding(0,canL)"
+    ],
+    "description": "源杯在标定返还位置直立落桌且已解除抓持，源臂空手并撤至外侧安全高度，小球仍留在接收盆内。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "missing_required_calls": [
+    "move_above",
+    "align_target",
+    "lower",
+    "release",
+    "retreat",
+    "settle"
+  ],
+  "code_sha256": "616788ca50a0f9e96f1e8948ebbdd82b144e2a6bc5d7135942f1d59e20c52c8f",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+  "physical_diagnostics": {
+    "source": {
+      "returned": false,
+      "xy_error_m": 0.39250863806342756,
+      "bottom_gap_m": -0.002200144974482454,
+      "rotation_error_deg": 12.672533547929781,
+      "released": false,
+      "origin": [
+        0.46598006685485327,
+        -0.1688464846638327,
+        0.5067952361667152
+      ]
+    },
+    "basin": {
+      "returned": false,
+      "xy_error_m": 0.1865434555815443,
+      "bottom_gap_m": 0.03770259904948997,
+      "rotation_error_deg": 2.5263365258523547,
+      "released": false,
+      "origin": [
+        0.7727841454482868,
+        -0.3403196722644685,
+        0.5529617447054286
+      ]
+    }
+  }
+}

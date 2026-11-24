@@ -1,0 +1,92 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "at_target(red)",
+      "empty()"
+    ],
+    "remaining_del": [
+      "holding(red)"
+    ],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "holding(red)"
+    ],
+    "unexpected_removed": [
+      "at_target(red)",
+      "empty()"
+    ]
+  },
+  "code_executed": true,
+  "exception": "ValueError: Cube ROI clipped",
+  "trace": [
+    {
+      "method": "destination_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.5684171424198474,
+        -0.14701820040495725,
+        0.46900000000000003
+      ]
+    },
+    {
+      "method": "carry",
+      "args": [
+        [
+          0.5684171424198474,
+          -0.14701820040495725,
+          0.46900000000000003
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "destination_point",
+      "args": [],
+      "kwargs": {},
+      "status": "failed",
+      "error": "ValueError: Cube ROI clipped"
+    }
+  ],
+  "before": [
+    "at_source(yellow)",
+    "holding(red)"
+  ],
+  "after": [
+    "at_source(yellow)",
+    "holding(red)"
+  ],
+  "model": {
+    "name": "place",
+    "args": {
+      "object": "red",
+      "support": "blue"
+    },
+    "program_kind": "place",
+    "pre": [
+      "holding(red)"
+    ],
+    "add": [
+      "at_target(red)",
+      "empty()"
+    ],
+    "del": [
+      "holding(red)",
+      "home_completed()"
+    ],
+    "description": "Stack held cube on bound support cube, release and withdraw. Do not return home."
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "code_sha256": "7bd21b38784bb86e0c933dc0c29a50adafc03453e3f3011c698b85fba1cc2fd5",
+  "consistency_scope": "full_CP"
+}

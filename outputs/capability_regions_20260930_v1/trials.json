@@ -1,0 +1,6278 @@
+[
+  {
+    "scenario": "g0_free",
+    "candidate": "zero",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "c9db0aa2b92f551df15fbe2a2c60d32965ce5fb5741ed75426161aba80afc19a",
+    "initial_state_sha256": "7585375f12d25bc631a0f770e1a3a62ecb61dc59c2105bd97b04014f1b0ab45b",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+    "wall_seconds": 2.1883571250364184,
+    "simulation_seconds": 25.339999999996746,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g0_free/zero/result.json",
+    "layout_id": "g0",
+    "split": "development",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42599520594899054
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3400578557030951,
+          0.14997558991785334,
+          0.6195674781654519
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998416704333256,
+          "right_finger": 1.0998490146074418
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3402156170865189,
+              0.14997545075907423,
+              0.6135635951942063
+            ],
+            "quaternion": [
+              0.9999997441496837,
+              -1.2837075057577987e-05,
+              -0.0007152152689208592,
+              -1.7015221753463802e-06
+            ],
+            "velocity": [
+              -1.9602943994027498e-05,
+              -1.2757730763578472e-05,
+              4.8863595443210874e-05,
+              -6.401416866904022e-05,
+              0.00027977560201166557,
+              8.742732486273186e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5699999999999992,
+              0.15000000000011382,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.9690376446573636e-18,
+              -1.2489576635922187e-19,
+              7.175878597218667e-16
+            ],
+            "velocity": [
+              6.938893903997459e-19,
+              1.373900993023429e-17,
+              8.649803873216754e-15,
+              -8.062251685513536e-16,
+              1.4317015188878314e-16,
+              -3.121559337743627e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.3400000000000149,
+              -0.14999999999988617,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.055968912234984e-18,
+              -2.9144576326704343e-20,
+              -7.455731265897136e-16
+            ],
+            "velocity": [
+              -5.551115124878336e-19,
+              2.3037127760650364e-17,
+              8.643843524995533e-15,
+              -9.692496799948817e-16,
+              3.336431595907265e-17,
+              -6.174300613279153e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              3.4350427187980307e-18,
+              -8.8468882207298e-20,
+              -1.993226831690963e-17
+            ],
+            "velocity": [
+              -7.277511480856048e-30,
+              1.720845688266721e-17,
+              8.6410661148285e-15,
+              -1.0381220329291804e-15,
+              1.7084463552975505e-17,
+              3.252518875552132e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g0_free",
+    "candidate": "lower4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "c9db0aa2b92f551df15fbe2a2c60d32965ce5fb5741ed75426161aba80afc19a",
+    "initial_state_sha256": "7585375f12d25bc631a0f770e1a3a62ecb61dc59c2105bd97b04014f1b0ab45b",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "da035df89e4c65b9428649c8fdafdc69b0166df2320a31dcf01323cde37eb440",
+    "wall_seconds": 1.9132060409756377,
+    "simulation_seconds": 25.579999999996613,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g0_free/lower4mm/result.json",
+    "layout_id": "g0",
+    "split": "development",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42199520594899054
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.340056097394891,
+          0.14997470911352148,
+          0.6195855162886215
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998414193096675,
+          "right_finger": 1.0998492675519913
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.34024934039816,
+              0.14997467068532314,
+              0.6175671749601885
+            ],
+            "quaternion": [
+              0.9999988270318815,
+              -1.3039628656907845e-05,
+              -0.0015315880978313717,
+              -1.651581390492619e-06
+            ],
+            "velocity": [
+              -1.776899479802456e-05,
+              -1.1995200058742585e-05,
+              4.210098735970599e-05,
+              -6.167653512116004e-05,
+              0.000328008160477053,
+              8.4944858009561e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5699999999999992,
+              0.15000000000011382,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.593382839998632e-18,
+              -1.7516501065723545e-19,
+              7.732916146039594e-16
+            ],
+            "velocity": [
+              5.551115123215108e-19,
+              1.942890293143838e-17,
+              8.643142535068924e-15,
+              -7.305526596590114e-16,
+              -5.0569040192549664e-17,
+              5.107836219164668e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.3400000000000149,
+              -0.14999999999988617,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              3.902908881774223e-18,
+              -2.200626799537645e-19,
+              -6.7044447944132465e-16
+            ],
+            "velocity": [
+              5.551115121377016e-19,
+              2.040034807716563e-17,
+              8.641623078946291e-15,
+              -1.2479850481143484e-15,
+              1.3257648841489998e-17,
+              1.1137314791030116e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              3.9887520763031776e-18,
+              -6.372067364976335e-19,
+              5.2364606118562386e-17
+            ],
+            "velocity": [
+              2.2204460492430724e-18,
+              1.346145417455719e-17,
+              8.649947899025542e-15,
+              -7.067182020707055e-16,
+              1.0092952377320545e-16,
+              -2.2286123413903946e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g0_free",
+    "candidate": "higher4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "c9db0aa2b92f551df15fbe2a2c60d32965ce5fb5741ed75426161aba80afc19a",
+    "initial_state_sha256": "7585375f12d25bc631a0f770e1a3a62ecb61dc59c2105bd97b04014f1b0ab45b",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "d4ae3a104ca5e04241862a416a316c5cb8178ca7e4b82984fe72e45652ac1efa",
+    "wall_seconds": 1.8227358750300482,
+    "simulation_seconds": 25.0599999999969,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g0_free/higher4mm/result.json",
+    "layout_id": "g0",
+    "split": "development",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42999520594899054
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3400513350480101,
+          0.14996822219565759,
+          0.6198476603661459
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998426487674136,
+          "right_finger": 1.099848019681777
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.34033282553029964,
+              0.14996800172943578,
+              0.6093918521580942
+            ],
+            "quaternion": [
+              0.9999999056548415,
+              -1.1929302000140338e-05,
+              -0.00043421746220640247,
+              -1.787547738098401e-06
+            ],
+            "velocity": [
+              -2.4576332586794446e-05,
+              -1.6526381413088288e-05,
+              0.00014274381009759352,
+              -7.82133280797308e-05,
+              0.000454572577320987,
+              1.1053490319482289e-05
+            ]
+          },
+          "green": {
+            "position": [
+              0.5699999999999992,
+              0.15000000000011382,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.9196245338289325e-18,
+              -3.419828873501229e-20,
+              6.894217580180643e-16
+            ],
+            "velocity": [
+              5.551115123215547e-19,
+              2.164934898068873e-17,
+              8.638701642970454e-15,
+              -1.3057332738844888e-15,
+              1.032364875693863e-16,
+              -4.236671128503362e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.3400000000000149,
+              -0.14999999999988617,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.4448821756603606e-18,
+              -5.574528673131987e-19,
+              -7.732384111034725e-16
+            ],
+            "velocity": [
+              1.8041124148403802e-18,
+              1.9151347174462633e-17,
+              8.641623078946416e-15,
+              -1.0430927724482101e-15,
+              -1.286090605851391e-16,
+              5.420146489069387e-18
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.398497596281695e-18,
+              -2.4776967440356974e-19,
+              -2.1827291204241567e-16
+            ],
+            "velocity": [
+              5.551115123053948e-19,
+              2.400857290849665e-17,
+              8.641066114828429e-15,
+              -1.1838689116825053e-15,
+              -1.2572987759563836e-16,
+              4.168947482133261e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g0_occupied",
+    "candidate": "zero",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "0b19cbf67ea9821dfb8ae98f8b202565925dc8a0aec528eb4918d6dbe8ff2c09",
+    "initial_state_sha256": "b8d7ae3149574e26ea42aec8ee66958b1cb709f01ec2fe7685957584073cf372",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+    "wall_seconds": 3.5397362500661984,
+    "simulation_seconds": 46.420000000010965,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g0_occupied/zero/result.json",
+    "layout_id": "g0",
+    "split": "development",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.569999998342825,
+          0.15000000165733887,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.569999998342825,
+          0.15000000165733887,
+          0.4699808258562317
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5699472565904998,
+          0.14998409451185768,
+          0.6197048146289369
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998437020725205,
+          "right_finger": 1.09984698959812
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3400000000000149,
+              0.15000000000011382,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              8.322099502430168e-18,
+              -2.8835959140099667e-19,
+              -8.319927385439371e-16
+            ],
+            "velocity": [
+              1.2490009025041341e-18,
+              2.4424906542166776e-17,
+              8.632794216946965e-15,
+              -9.551053610026575e-16,
+              -6.029298351364774e-18,
+              -2.4734246315901163e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5699965697007034,
+              0.14999610379263478,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999988317,
+              6.847756830593531e-18,
+              -8.386676116717815e-21,
+              -1.5284731968647254e-06
+            ],
+            "velocity": [
+              -5.1546800736159844e-20,
+              2.6212220102638833e-17,
+              8.046986473719803e-15,
+              -1.1599784373090085e-15,
+              -7.573237169504969e-18,
+              1.4379575567173074e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.5700480391739245,
+              0.14998400110040583,
+              0.6149300222684811
+            ],
+            "quaternion": [
+              0.9999999976350918,
+              -9.778560788189537e-06,
+              -6.805419186154519e-05,
+              -1.679989362816109e-06
+            ],
+            "velocity": [
+              -3.619140617736064e-05,
+              -1.5466836104506658e-05,
+              0.00012918392394260558,
+              -6.690570948939659e-05,
+              0.0002811943006328761,
+              1.171613993985035e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.261197976184471e-18,
+              -3.6469620335300254e-20,
+              -3.4754179558931527e-17
+            ],
+            "velocity": [
+              4.1633363422908085e-19,
+              2.6645352591838802e-17,
+              8.63432362756586e-15,
+              -1.033176142217914e-15,
+              7.542947996113703e-17,
+              -2.7808743830592403e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42599520612120423
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3400574784001524,
+          0.14997358080503762,
+          0.6195678708184785
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.09984166874585,
+          "right_finger": 1.0998490159886365
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3402088850683614,
+              0.14997343710116612,
+              0.6133860936522597
+            ],
+            "quaternion": [
+              0.9999998058603684,
+              -1.2847308688851384e-05,
+              -0.0006229858045690612,
+              -1.6911198354988722e-06
+            ],
+            "velocity": [
+              -1.9594346631215246e-05,
+              -1.2771889013453286e-05,
+              4.871670419197355e-05,
+              -6.447418343715734e-05,
+              0.00027072589035307315,
+              8.739637136188462e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5699965697007034,
+              0.14999610379263478,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999988317,
+              4.0479591497723244e-18,
+              -1.6518645578065432e-19,
+              -1.5284731969588701e-06
+            ],
+            "velocity": [
+              5.035647115763533e-19,
+              1.8856992564496567e-17,
+              8.060309150014755e-15,
+              -1.1227025144272448e-15,
+              5.699474285607835e-17,
+              9.676805411291627e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.340770120665041,
+              -0.14995806272679202,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999980244,
+              4.885212726617129e-18,
+              -4.488792159157077e-19,
+              -1.987773977751582e-06
+            ],
+            "velocity": [
+              1.3390256887189452e-18,
+              2.1377075495560364e-17,
+              8.639285640510438e-15,
+              -1.0845311027100471e-15,
+              -8.494519823838909e-17,
+              -1.9261504600089353e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.963721875702245e-18,
+              -3.917188170355931e-19,
+              9.236052302536544e-17
+            ],
+            "velocity": [
+              9.71445146541446e-19,
+              1.734723476060309e-17,
+              8.640984965713728e-15,
+              -7.46620325264061e-16,
+              -3.914634032643041e-17,
+              2.2708016427401577e-20
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g0_occupied",
+    "candidate": "lower4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "0b19cbf67ea9821dfb8ae98f8b202565925dc8a0aec528eb4918d6dbe8ff2c09",
+    "initial_state_sha256": "b8d7ae3149574e26ea42aec8ee66958b1cb709f01ec2fe7685957584073cf372",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "da035df89e4c65b9428649c8fdafdc69b0166df2320a31dcf01323cde37eb440",
+    "wall_seconds": 3.649992083082907,
+    "simulation_seconds": 46.960000000011625,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g0_occupied/lower4mm/result.json",
+    "layout_id": "g0",
+    "split": "development",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.569999998342825,
+          0.15000000165733887,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.569999998342825,
+          0.15000000165733887,
+          0.4659808258562317
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5699480514372575,
+          0.14998447483818123,
+          0.619717616216811
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.099843411332741,
+          "right_finger": 1.099847281708513
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3400000000000149,
+              0.15000000000011382,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.196980242599886e-18,
+              7.759847120347927e-20,
+              -8.165973388102906e-16
+            ],
+            "velocity": [
+              -2.7755575635545524e-19,
+              2.2482016249072778e-17,
+              8.639455555094712e-15,
+              -9.140262847394573e-16,
+              -1.2502891320225037e-16,
+              4.484250162841663e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5699966525545146,
+              0.14999627165225216,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999932107,
+              5.3918864463703454e-18,
+              8.288918864822316e-20,
+              -3.684917296669735e-06
+            ],
+            "velocity": [
+              -1.2428660407278607e-19,
+              2.313475478494942e-17,
+              8.437849154902435e-15,
+              -1.210727210511877e-15,
+              1.1342688314208157e-16,
+              1.6127143872629444e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.5700769657172203,
+              0.1499844622983466,
+              0.6190957965876992
+            ],
+            "quaternion": [
+              0.9999999998767436,
+              -9.962937027023233e-06,
+              -1.2027648796468717e-05,
+              -1.6089143883187593e-06
+            ],
+            "velocity": [
+              -3.326991727304703e-05,
+              -1.4458501288280476e-05,
+              0.00011717549903645542,
+              -6.431470360793661e-05,
+              0.0003146328548430077,
+              1.0981417815535229e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.015775659279508e-18,
+              -2.383112615705031e-19,
+              -3.8308864842435704e-17
+            ],
+            "velocity": [
+              1.1102230246198027e-18,
+              2.0261570200244214e-17,
+              8.645425857812121e-15,
+              -9.941611001599821e-16,
+              -1.1796063591461717e-17,
+              -1.5360024089596423e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.4219952061212042
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.34005504770525796,
+          0.14997444637582846,
+          0.6195856076031824
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998414191699037,
+          "right_finger": 1.099849267371442
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3401646824023741,
+              0.1499744087370823,
+              0.617582388180332
+            ],
+            "quaternion": [
+              0.9999986028365918,
+              -1.3045367826584158e-05,
+              -0.00167157171811744,
+              -1.6357268963383575e-06
+            ],
+            "velocity": [
+              -1.7555651786339355e-05,
+              -1.200499221378067e-05,
+              4.2116403953667826e-05,
+              -6.217127519030815e-05,
+              0.0002089757996900738,
+              8.506238759393361e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5699966525545146,
+              0.14999627165225216,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999932107,
+              6.1186740186402255e-18,
+              1.5202950968470006e-20,
+              -3.6849172968133555e-06
+            ],
+            "velocity": [
+              4.308249082397369e-19,
+              1.7999973296058378e-17,
+              8.455612723296776e-15,
+              -6.781228918470549e-16,
+              -8.008889474366941e-17,
+              2.5336711754523665e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.3407897642770847,
+              -0.14995791520655885,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999982664,
+              5.699358895233104e-18,
+              -1.9328969616701822e-19,
+              -1.8619573109953908e-06
+            ],
+            "velocity": [
+              7.584389466843244e-19,
+              1.833509268257236e-17,
+              8.05877629607581e-15,
+              -7.019040518176141e-16,
+              -6.051509671951984e-17,
+              9.504235844855422e-18
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.7006253530123404e-18,
+              -4.404682819892255e-20,
+              1.3555390024853309e-16
+            ],
+            "velocity": [
+              1.3877787807255865e-19,
+              1.8596235663306102e-17,
+              8.636544073615104e-15,
+              -6.694787134672608e-16,
+              -5.216094578455138e-17,
+              -5.279309417544281e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g0_occupied",
+    "candidate": "higher4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "0b19cbf67ea9821dfb8ae98f8b202565925dc8a0aec528eb4918d6dbe8ff2c09",
+    "initial_state_sha256": "b8d7ae3149574e26ea42aec8ee66958b1cb709f01ec2fe7685957584073cf372",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "d4ae3a104ca5e04241862a416a316c5cb8178ca7e4b82984fe72e45652ac1efa",
+    "wall_seconds": 3.4539240419398993,
+    "simulation_seconds": 45.90000000001033,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g0_occupied/higher4mm/result.json",
+    "layout_id": "g0",
+    "split": "development",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.569999998342825,
+          0.15000000165733887,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.569999998342825,
+          0.15000000165733887,
+          0.4739808258562317
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5699517641869157,
+          0.14998586126591015,
+          0.6198565404939754
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998443451278233,
+          "right_finger": 1.0998463394803444
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3400000000000149,
+              0.15000000000011382,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.768637982655658e-18,
+              -1.7867329165189638e-19,
+              -8.140484952630592e-16
+            ],
+            "velocity": [
+              2.775557559571149e-19,
+              2.1926904736760193e-17,
+              8.639455555094729e-15,
+              -1.0572291413371202e-15,
+              2.1569357360923826e-16,
+              -2.0820366076748427e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5699967309533994,
+              0.14999624708488637,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999990303,
+              5.3136614191557025e-18,
+              -2.6750598109007155e-19,
+              1.3919177818839869e-06
+            ],
+            "velocity": [
+              1.9245571863894955e-18,
+              1.665950040149247e-17,
+              9.76788640108622e-15,
+              -9.255869003956186e-16,
+              -7.130875851418348e-17,
+              4.425637631628031e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.57013339764616,
+              0.1499857074460928,
+              0.6112214782078218
+            ],
+            "quaternion": [
+              0.999998952242763,
+              -9.12122428866571e-06,
+              -0.0014475590325506364,
+              -1.7399749796101535e-06
+            ],
+            "velocity": [
+              -4.137907618949852e-05,
+              -1.789383917719018e-05,
+              0.00020602855660909107,
+              -7.633278064042425e-05,
+              0.00040678626359799496,
+              1.3492390708186865e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.905910221959955e-18,
+              -3.985574449726271e-20,
+              -3.215127158893234e-17
+            ],
+            "velocity": [
+              1.3877787807280464e-19,
+              2.3314683517963367e-17,
+              8.638764519664366e-15,
+              -8.828658296397532e-16,
+              6.863713251150213e-17,
+              -2.784057098858145e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.3400000000000149,
+          0.15000000000011382,
+          0.42999520612120423
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3400504595349689,
+          0.1499680959139735,
+          0.6198477329749468
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998426363602807,
+          "right_finger": 1.0998480323564108
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.34029683316938597,
+              0.14996787242996895,
+              0.6092792021804087
+            ],
+            "quaternion": [
+              0.9999998413969428,
+              -1.1961861850945994e-05,
+              -0.0005630806919225388,
+              -1.7710248574700592e-06
+            ],
+            "velocity": [
+              -2.412153983827251e-05,
+              -1.654469313972812e-05,
+              0.00014274014510589017,
+              -7.812656926453195e-05,
+              0.0004046282174295688,
+              1.0995123773032399e-05
+            ]
+          },
+          "green": {
+            "position": [
+              0.5699967309533994,
+              0.14999624708488637,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999990303,
+              6.3601062080282844e-18,
+              3.3098110612801477e-19,
+              1.3919177818486076e-06
+            ],
+            "velocity": [
+              -1.5448897655642976e-18,
+              2.4569839451947313e-17,
+              9.752343278741696e-15,
+              -1.1306958354529937e-15,
+              -1.0916382925312695e-16,
+              2.513196210332602e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.34096540744262477,
+              -0.14995398866357712,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999967473,
+              6.229703001812315e-18,
+              -6.841140780168404e-20,
+              -2.5504766257219293e-06
+            ],
+            "velocity": [
+              -5.1673419527340443e-20,
+              1.673803681723347e-17,
+              7.665089706302312e-15,
+              -8.133639876183588e-16,
+              5.606552831755939e-17,
+              -2.0028177527212805e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.2343252923058464e-18,
+              2.790824448778504e-19,
+              -2.3333715112561047e-16
+            ],
+            "velocity": [
+              -8.326672684740924e-19,
+              2.0539125956400054e-17,
+              8.640984965713662e-15,
+              -1.1312693785754719e-15,
+              -3.920334952566417e-17,
+              3.256605326231346e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g1_free",
+    "candidate": "zero",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "19611519bee5bdfd50956e2029eb3f68cbfb85c3a044c5bbf4876c9cd45b637b",
+    "initial_state_sha256": "83b44dfb5123d8dd2ec43b1b2232c79c4830de7ab58695beff2699e453643731",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+    "wall_seconds": 1.7410980419954285,
+    "simulation_seconds": 24.879999999997,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g1_free/zero/result.json",
+    "layout_id": "g1",
+    "split": "development",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.33000000000045654,
+          0.13000000000026501,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.33000000000045654,
+          0.13000000000026501,
+          0.42599520594899054
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3300733106937943,
+          0.12997437146304375,
+          0.6195623695580185
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.099842441329719,
+          "right_finger": 1.099848242421375
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.330321808517837,
+              0.12997425181972702,
+              0.6133735488672665
+            ],
+            "quaternion": [
+              0.9999987247604385,
+              -1.094963065241542e-05,
+              -0.001596983032205656,
+              -1.672590792133473e-06
+            ],
+            "velocity": [
+              -2.0596665758828923e-05,
+              -1.1941940034921215e-05,
+              4.948945177429708e-05,
+              -6.458242104824863e-05,
+              0.00040753864874189553,
+              7.890337893756058e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5499999999999169,
+              0.1300000000006072,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.430357865964385e-18,
+              -1.1883274464021267e-19,
+              1.1974868923245354e-14
+            ],
+            "velocity": [
+              -2.7755575595081716e-19,
+              2.20656826127594e-17,
+              8.64855059889606e-15,
+              -9.858183710027667e-16,
+              5.704129510232551e-17,
+              -6.0023981712036865e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.3300000000004544,
+              -0.13999999999988094,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.037653582444169e-18,
+              -2.473918139797721e-19,
+              -1.0139703390754878e-14
+            ],
+            "velocity": [
+              8.326672690882457e-19,
+              2.3592239273033105e-17,
+              8.639377793297988e-15,
+              -1.0534610582621386e-15,
+              5.237461184731947e-17,
+              8.393147789296463e-18
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5599999999999993,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              3.7460566536614724e-18,
+              5.544285598957417e-19,
+              -1.927782526487705e-17
+            ],
+            "velocity": [
+              -2.498001805410041e-18,
+              1.7763568395318796e-17,
+              8.640690834586144e-15,
+              -1.055158841690517e-15,
+              -1.7972209025272146e-17,
+              5.2857833220488987e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g1_free",
+    "candidate": "lower4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "19611519bee5bdfd50956e2029eb3f68cbfb85c3a044c5bbf4876c9cd45b637b",
+    "initial_state_sha256": "83b44dfb5123d8dd2ec43b1b2232c79c4830de7ab58695beff2699e453643731",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "da035df89e4c65b9428649c8fdafdc69b0166df2320a31dcf01323cde37eb440",
+    "wall_seconds": 1.81486920802854,
+    "simulation_seconds": 25.179999999996834,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g1_free/lower4mm/result.json",
+    "layout_id": "g1",
+    "split": "development",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.33000000000045654,
+          0.13000000000026501,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.33000000000045654,
+          0.13000000000026501,
+          0.42199520594899054
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3300698809900971,
+          0.12997637649228677,
+          0.619579725888019
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998421750648657,
+          "right_finger": 1.0998485111475942
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.33026608913924593,
+              0.1299763550073878,
+              0.6179315762779254
+            ],
+            "quaternion": [
+              0.9999981814380614,
+              -1.1186872572838497e-05,
+              -0.0019070901205293599,
+              -1.6419577190328305e-06
+            ],
+            "velocity": [
+              -1.7860651989146793e-05,
+              -1.1197080364859852e-05,
+              4.314394748969197e-05,
+              -6.158248316864854e-05,
+              0.0003309301448472197,
+              7.659621136846963e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5499999999999169,
+              0.1300000000006072,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.0326839900432815e-18,
+              8.58916555370124e-20,
+              1.2078457519311014e-14
+            ],
+            "velocity": [
+              -2.77555755950763e-19,
+              2.4008572905853287e-17,
+              8.644109706797599e-15,
+              -1.213575879101214e-15,
+              -3.499381943309073e-17,
+              -1.7741565832523107e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.3300000000004544,
+              -0.13999999999988094,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.035623089898376e-18,
+              -2.4281185057459084e-19,
+              -1.0047977525200457e-14
+            ],
+            "velocity": [
+              1.1102230252446048e-18,
+              2.2065682614173313e-17,
+              8.641598239347315e-15,
+              -1.04563566331485e-15,
+              6.822382612918805e-17,
+              -1.7617274504823003e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5599999999999993,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              8.081897683861772e-18,
+              2.188470531248137e-19,
+              -3.2592510109119987e-17
+            ],
+            "velocity": [
+              -5.55111512315989e-19,
+              2.4286128664991514e-17,
+              8.638470388536907e-15,
+              -8.039097727920931e-16,
+              -5.702471152610144e-17,
+              5.817490403989881e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g1_free",
+    "candidate": "higher4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "19611519bee5bdfd50956e2029eb3f68cbfb85c3a044c5bbf4876c9cd45b637b",
+    "initial_state_sha256": "83b44dfb5123d8dd2ec43b1b2232c79c4830de7ab58695beff2699e453643731",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "d4ae3a104ca5e04241862a416a316c5cb8178ca7e4b82984fe72e45652ac1efa",
+    "wall_seconds": 1.7062737919623032,
+    "simulation_seconds": 24.639999999997134,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g1_free/higher4mm/result.json",
+    "layout_id": "g1",
+    "split": "development",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.33000000000045654,
+          0.13000000000026501,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.33000000000045654,
+          0.13000000000026501,
+          0.42999520594899054
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3300644704082962,
+          0.12996817139267117,
+          0.6198458032983455
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998432612440119,
+          "right_finger": 1.0998474061012005
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3302761053169731,
+              0.1299679915449003,
+              0.609567083367267
+            ],
+            "quaternion": [
+              0.9999998804322852,
+              -1.0205707337040288e-05,
+              -0.0004889050132322789,
+              -1.7743323993999956e-06
+            ],
+            "velocity": [
+              -2.3292580290052375e-05,
+              -1.5191667876745063e-05,
+              0.00013861842968925143,
+              -7.801796757078957e-05,
+              0.00035194543443871373,
+              9.803838311522428e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5499999999999169,
+              0.1300000000006072,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.668967843355152e-18,
+              2.5473364292060695e-19,
+              1.1863102488142098e-14
+            ],
+            "velocity": [
+              -6.938893901855079e-19,
+              2.0677903831977503e-17,
+              8.639668814699061e-15,
+              -1.0547247056688632e-15,
+              1.0581412693839928e-16,
+              8.967118501904446e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.3300000000004544,
+              -0.13999999999988094,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.053015908845003e-18,
+              7.859853459963075e-20,
+              -1.0077660960975328e-14
+            ],
+            "velocity": [
+              -1.3877787745873822e-19,
+              1.8596235662219844e-17,
+              8.641598239347304e-15,
+              -9.992631715526942e-16,
+              2.355734966144813e-16,
+              5.3238473589304036e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5599999999999993,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.2017111931716114e-18,
+              -1.806759820937906e-19,
+              2.990512809506843e-17
+            ],
+            "velocity": [
+              5.551115123090797e-19,
+              1.7347234761084347e-17,
+              8.647352172733853e-15,
+              -8.935163404813348e-16,
+              3.8891989779755595e-17,
+              -4.674378384493117e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g1_occupied",
+    "candidate": "zero",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "00f771660a8422464c4b872c47763ca6be758ab6c1eda13f7fea94cb641cc377",
+    "initial_state_sha256": "f01047b55f30a1b39857bdcabc964e71a4f69de19b8bf237e1523930cbb144bd",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+    "wall_seconds": 3.335836083977483,
+    "simulation_seconds": 45.3000000000096,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g1_occupied/zero/result.json",
+    "layout_id": "g1",
+    "split": "development",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.5499999983428248,
+          0.13000000165718603,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.5499999983428248,
+          0.13000000165718603,
+          0.4699808258562317
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5499530299711564,
+          0.12998741346098222,
+          0.6197041314319355
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998439361317782,
+          "right_finger": 1.099846758359817
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.33000000000045654,
+              0.13000000000026496,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.40652420901812e-18,
+              1.8188216808711308e-19,
+              -4.7284275252039646e-15
+            ],
+            "velocity": [
+              1.3877788155734325e-19,
+              2.2204460494075283e-17,
+              8.645347210305281e-15,
+              -9.114319106731667e-16,
+              -8.650937998286004e-17,
+              6.466938409090063e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5499967373336297,
+              0.1299968254588716,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999992145,
+              4.099091797016288e-18,
+              -2.4964802455144406e-19,
+              -1.2526987390069104e-06
+            ],
+            "velocity": [
+              7.332136851131658e-19,
+              1.8860410938304783e-17,
+              1.015253410765288e-14,
+              -1.0780426374838652e-15,
+              2.046390762871863e-17,
+              -3.8005285259793817e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.5501264689146261,
+              0.1299873363461702,
+              0.6151553178224953
+            ],
+            "quaternion": [
+              0.9999998648102039,
+              -8.607829271813898e-06,
+              -0.0005199067176545902,
+              -1.5759052569676354e-06
+            ],
+            "velocity": [
+              -3.69665297794674e-05,
+              -1.3853598494219811e-05,
+              0.00013425391436870375,
+              -5.81595226428011e-05,
+              0.0003806007416845077,
+              1.1737657205523666e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5599999999999993,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              3.9432981344399525e-18,
+              -3.5206046602488817e-19,
+              -9.256482455953153e-17
+            ],
+            "velocity": [
+              1.804112415013698e-18,
+              1.8596235662115662e-17,
+              8.64064811387447e-15,
+              -1.1013644303964835e-15,
+              7.877498466856809e-17,
+              3.901965468179587e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.33000000000045654,
+          0.13000000000026496,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.33000000000045654,
+          0.13000000000026496,
+          0.42599520612120423
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3300710818515056,
+          0.12997401006126896,
+          0.6195625517788811
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998424365315167,
+          "right_finger": 1.09984824637921
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3302770595662248,
+              0.1299738906399132,
+              0.6133749873983643
+            ],
+            "quaternion": [
+              0.9999988685994592,
+              -1.0972725171510659e-05,
+              -0.0015042196371275911,
+              -1.6383897824557247e-06
+            ],
+            "velocity": [
+              -2.0264836965128637e-05,
+              -1.1967690305020413e-05,
+              4.945819123322589e-05,
+              -6.578625152067092e-05,
+              0.00034710448618913197,
+              7.82784415723774e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5499967373336297,
+              0.1299968254588716,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999992145,
+              6.706419496923173e-18,
+              -1.4799386157790122e-19,
+              -1.2526987391541037e-06
+            ],
+            "velocity": [
+              7.332136851134304e-19,
+              2.1913524256024132e-17,
+              1.014809321555444e-14,
+              -9.5792912311034e-16,
+              7.951455960271297e-17,
+              2.7649233076213627e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.3310015513853976,
+              -0.1399563651037452,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999977156,
+              6.6464304300404485e-18,
+              -3.5766197480938223e-19,
+              -2.137774858003889e-06
+            ],
+            "velocity": [
+              1.5461906158842435e-18,
+              1.9720971595734122e-17,
+              6.414066050256982e-15,
+              -8.226017418787256e-16,
+              -2.758860177701612e-16,
+              1.2354507800747658e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5599999999999993,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.0796790364665e-18,
+              -2.0919931139428844e-23,
+              7.205021614583254e-17
+            ],
+            "velocity": [
+              -1.387778780806852e-19,
+              2.6367796834491918e-17,
+              8.642868559923707e-15,
+              -1.0587692631614336e-15,
+              4.4680441545886405e-17,
+              -3.9002333791240586e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g1_occupied",
+    "candidate": "lower4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "00f771660a8422464c4b872c47763ca6be758ab6c1eda13f7fea94cb641cc377",
+    "initial_state_sha256": "f01047b55f30a1b39857bdcabc964e71a4f69de19b8bf237e1523930cbb144bd",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "da035df89e4c65b9428649c8fdafdc69b0166df2320a31dcf01323cde37eb440",
+    "wall_seconds": 3.393570333952084,
+    "simulation_seconds": 45.90000000001033,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g1_occupied/lower4mm/result.json",
+    "layout_id": "g1",
+    "split": "development",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.5499999983428248,
+          0.13000000165718603,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.5499999983428248,
+          0.13000000165718603,
+          0.4659808258562317
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5499508704679593,
+          0.1299860857445303,
+          0.6197174960758451
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998436774779385,
+          "right_finger": 1.0998470184102551
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.33000000000045654,
+              0.13000000000026496,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.08897565576216e-18,
+              2.2394376404971247e-19,
+              -4.72829641186443e-15
+            ],
+            "velocity": [
+              -1.2490008992240888e-18,
+              1.9567680810590518e-17,
+              8.643126764256007e-15,
+              -8.626800162783115e-16,
+              1.5982450227425597e-16,
+              -3.6231738765832845e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5499966614401617,
+              0.12999639874279612,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999955186,
+              7.521316018498154e-18,
+              -1.1271589155053347e-19,
+              -2.9935699234708824e-06
+            ],
+            "velocity": [
+              2.0768527008817055e-19,
+              2.2482569563732075e-17,
+              1.073873007703117e-14,
+              -9.731602629520238e-16,
+              -2.737651335983062e-17,
+              2.4701037292022266e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.5501421060955572,
+              0.12998607549105964,
+              0.619073547821956
+            ],
+            "quaternion": [
+              0.99999999841333,
+              -8.77237401423992e-06,
+              5.56245398853479e-05,
+              -1.5152070465888798e-06
+            ],
+            "velocity": [
+              -3.3642907388890595e-05,
+              -1.2955676907240777e-05,
+              0.00012164951744697653,
+              -5.5476160598979945e-05,
+              0.0003993384540113743,
+              1.1126409415545613e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5599999999999993,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.424334789226088e-18,
+              3.1527613372773935e-19,
+              -9.758767157440177e-17
+            ],
+            "velocity": [
+              -1.526556658861774e-18,
+              2.4424906541397723e-17,
+              8.638427667825228e-15,
+              -1.0210210710205495e-15,
+              1.4524326281767377e-17,
+              3.0921502213916024e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.33000000000045654,
+          0.13000000000026496,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.33000000000045654,
+          0.13000000000026496,
+          0.4219952061212042
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3300664873760324,
+          0.12997665686672183,
+          0.6195798905738841
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998421720114628,
+          "right_finger": 1.0998485132004068
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3301854300338524,
+              0.12997663626988157,
+              0.6179479520659197
+            ],
+            "quaternion": [
+              0.9999974944173272,
+              -1.1203665110561432e-05,
+              -0.0022385332192078815,
+              -1.6036241950404583e-06
+            ],
+            "velocity": [
+              -1.7720681882341955e-05,
+              -1.1215076422909522e-05,
+              4.3134153469995505e-05,
+              -6.29788456338405e-05,
+              0.00022097759262088343,
+              7.68759642630914e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5499966614401617,
+              0.12999639874279612,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999955186,
+              7.998193521844594e-18,
+              5.835855274289813e-20,
+              -2.993569923516419e-06
+            ],
+            "velocity": [
+              -6.249819983809014e-19,
+              2.345401471027893e-17,
+              1.0734289184932665e-14,
+              -9.945213748661877e-16,
+              6.357901056503608e-17,
+              2.7186153572004997e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.33099858579573976,
+              -0.1399593811153725,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999985062,
+              6.3595179728449475e-18,
+              5.094633064056259e-19,
+              -1.7287820540362411e-06
+            ],
+            "velocity": [
+              -1.7333759263236202e-18,
+              1.8488564693296814e-17,
+              6.514499765859888e-15,
+              -8.629873490131753e-16,
+              -8.742224979272328e-17,
+              5.444923849336918e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5599999999999993,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.00089187589962e-18,
+              2.8612125484009565e-19,
+              -5.028766416629077e-16
+            ],
+            "velocity": [
+              -5.551115123146917e-19,
+              1.9567680808662865e-17,
+              8.642868559923625e-15,
+              -5.972274090127015e-16,
+              2.186926278616086e-17,
+              -1.531443383625049e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g1_occupied",
+    "candidate": "higher4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "00f771660a8422464c4b872c47763ca6be758ab6c1eda13f7fea94cb641cc377",
+    "initial_state_sha256": "f01047b55f30a1b39857bdcabc964e71a4f69de19b8bf237e1523930cbb144bd",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "d4ae3a104ca5e04241862a416a316c5cb8178ca7e4b82984fe72e45652ac1efa",
+    "wall_seconds": 3.2659347919980064,
+    "simulation_seconds": 44.840000000009034,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g1_occupied/higher4mm/result.json",
+    "layout_id": "g1",
+    "split": "development",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.5499999983428248,
+          0.13000000165718603,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.5499999983428248,
+          0.13000000165718603,
+          0.4739808258562317
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5499543053344019,
+          0.12998734327890893,
+          0.6198563321497309
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998445049975119,
+          "right_finger": 1.0998461837053861
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.33000000000045654,
+              0.13000000000026496,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.803017720859505e-18,
+              2.1874172541923693e-19,
+              -4.7387431141789816e-15
+            ],
+            "velocity": [
+              -8.3266726498966145e-19,
+              1.859623566404354e-17,
+              8.636465426108226e-15,
+              -8.640915937446056e-16,
+              -1.1207059394694502e-16,
+              3.399531543313475e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5499967451983829,
+              0.12999680777273623,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999997524,
+              4.380933361293332e-18,
+              1.7970893847934266e-19,
+              7.031752644413883e-07
+            ],
+            "velocity": [
+              -3.9969619997409895e-19,
+              1.993771462334284e-17,
+              7.467939437686945e-15,
+              -1.1218525873485129e-15,
+              1.2715403191544183e-17,
+              5.103282147313826e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.5501927648437818,
+              0.12998721024084828,
+              0.6112565592266935
+            ],
+            "quaternion": [
+              0.9999981309385897,
+              -8.024677344286106e-06,
+              -0.00193340432082443,
+              -1.6318320181816126e-06
+            ],
+            "velocity": [
+              -4.2333493877577956e-05,
+              -1.6003848479404624e-05,
+              0.00021140084282548588,
+              -6.612094174058773e-05,
+              0.0004824927373820861,
+              1.3462902409250867e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5599999999999993,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.11711920001593e-18,
+              -3.6185567085128207e-19,
+              -8.006000431587394e-17
+            ],
+            "velocity": [
+              1.2490009027011016e-18,
+              2.0539125955209703e-17,
+              8.63842766782519e-15,
+              -8.19590643930404e-16,
+              9.736752511992546e-17,
+              -2.260460473255866e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.33000000000045654,
+          0.13000000000026496,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.33000000000045654,
+          0.13000000000026496,
+          0.42999520612120423
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.33006323388345926,
+          0.1299680010016312,
+          0.6198458889585381
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.099843229612333,
+          "right_finger": 1.0998474378296175
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.33034839944435695,
+              0.12996781838145618,
+              0.6094953607149849
+            ],
+            "quaternion": [
+              0.9999980123555072,
+              -1.0285208977978565e-05,
+              -0.0019937844021528897,
+              -1.7338016502930985e-06
+            ],
+            "velocity": [
+              -2.442992476862763e-05,
+              -1.5221437870662943e-05,
+              0.00013858835898677448,
+              -7.814892377834012e-05,
+              0.0004568117401364525,
+              1.0136012590075544e-05
+            ]
+          },
+          "green": {
+            "position": [
+              0.5499967451983829,
+              0.12999680777273623,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999997524,
+              5.626657352788122e-18,
+              1.1108386262455803e-19,
+              7.031752643332275e-07
+            ],
+            "velocity": [
+              1.663743426038269e-20,
+              2.2990827941062268e-17,
+              7.470159883735652e-15,
+              -1.0797511760611615e-15,
+              4.6143333951302124e-17,
+              7.141348766532256e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.33096014293367004,
+              -0.1399547835791226,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999968263,
+              4.761144874425777e-18,
+              -1.9023524325374371e-19,
+              -2.519372280413345e-06
+            ],
+            "velocity": [
+              8.994690589767751e-19,
+              1.9223019370211922e-17,
+              8.443008704080513e-15,
+              -9.995433971867816e-16,
+              -6.34890161562862e-17,
+              5.893290356952804e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5599999999999993,
+              -0.1499999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.244581979793035e-18,
+              -1.4777579303821847e-19,
+              -1.0890050059435206e-16
+            ],
+            "velocity": [
+              4.163336342322644e-19,
+              2.0677903833287986e-17,
+              8.642868559923573e-15,
+              -9.732074326419953e-16,
+              -4.504119648005203e-18,
+              -3.273851254524456e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g2_free",
+    "candidate": "zero",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "849fcd9cff52b9106e2f7a1146dfaddf0e7f10cfd4de7c4fbe2730e6c614b92e",
+    "initial_state_sha256": "d3b1f3a7aed0139b5fab2fd658df441d4d91c5c4da105f1ad4fece211345b05a",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+    "wall_seconds": 1.7290728749940172,
+    "simulation_seconds": 24.799999999997045,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g2_free/zero/result.json",
+    "layout_id": "g2",
+    "split": "extension",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42599520594899054
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3500390658685902,
+          0.10996964877977669,
+          0.6195679122708724
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998427560910065,
+          "right_finger": 1.099847937393361
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.35026905406828374,
+              0.10996955558396457,
+              0.6139749794127564
+            ],
+            "quaternion": [
+              0.9999993270382802,
+              -9.333012599394898e-06,
+              -0.0011601008252146775,
+              -1.3984887163037991e-06
+            ],
+            "velocity": [
+              -2.1154967545497986e-05,
+              -9.646365645742119e-06,
+              4.8472019834247356e-05,
+              -5.0578988754404655e-05,
+              0.0003842719276032596,
+              8.611799847165833e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5599999999999993,
+              0.11000000000011458,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.422549678095001e-18,
+              2.727276878258253e-20,
+              7.793401015307676e-16
+            ],
+            "velocity": [
+              6.938893903865101e-19,
+              2.164934898072831e-17,
+              8.645440068770707e-15,
+              -1.1451476690240188e-15,
+              -6.20328172157251e-17,
+              7.117994787221517e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.3500000000001543,
+              -0.13000000000055215,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.083556176424826e-18,
+              2.3357836412039088e-20,
+              -4.645393157944101e-14
+            ],
+            "velocity": [
+              -1.3877787802424942e-19,
+              2.470246229372736e-17,
+              8.63339184056875e-15,
+              -1.3735838805324604e-15,
+              -4.102773145392478e-17,
+              -5.71847429609432e-18
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1599999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.309994855078075e-18,
+              -3.9444501499199526e-20,
+              -1.6594500165185876e-16
+            ],
+            "velocity": [
+              1.3877787807074192e-19,
+              2.2759572005793267e-17,
+              8.638845668779209e-15,
+              -9.743379352630793e-16,
+              1.2296595837309278e-17,
+              4.787888933234429e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g2_free",
+    "candidate": "lower4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "849fcd9cff52b9106e2f7a1146dfaddf0e7f10cfd4de7c4fbe2730e6c614b92e",
+    "initial_state_sha256": "d3b1f3a7aed0139b5fab2fd658df441d4d91c5c4da105f1ad4fece211345b05a",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "da035df89e4c65b9428649c8fdafdc69b0166df2320a31dcf01323cde37eb440",
+    "wall_seconds": 1.8006393749965355,
+    "simulation_seconds": 25.0599999999969,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g2_free/lower4mm/result.json",
+    "layout_id": "g2",
+    "split": "extension",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42199520594899054
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.35003456265077404,
+          0.1099714567228574,
+          0.6195853442024416
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998425640343803,
+          "right_finger": 1.0998481305774035
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3502562632013412,
+              0.10997144178095623,
+              0.6182318725648495
+            ],
+            "quaternion": [
+              0.9999986110250243,
+              -9.486067886085837e-06,
+              -0.0016666901874328635,
+              -1.3622761423687462e-06
+            ],
+            "velocity": [
+              -1.868843874223632e-05,
+              -9.061974432130295e-06,
+              4.1984449636394046e-05,
+              -4.883798709712296e-05,
+              0.0003701877901036931,
+              8.344846709582835e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5599999999999993,
+              0.11000000000011458,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.8658891691509624e-18,
+              4.906352102859845e-19,
+              8.82377904614042e-16
+            ],
+            "velocity": [
+              -1.526556658863706e-18,
+              2.5812685323072728e-17,
+              8.636558284573621e-15,
+              -1.2620163480140052e-15,
+              -9.434007742915718e-17,
+              -4.0431241627606955e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.3500000000001543,
+              -0.13000000000055215,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.860003549276038e-18,
+              -3.2411601618392315e-19,
+              -4.6567534525575403e-14
+            ],
+            "velocity": [
+              6.938893904443839e-19,
+              1.6098233852882425e-17,
+              8.64893496291341e-15,
+              -7.473922888444486e-16,
+              3.3087096261466148e-18,
+              3.142005572847734e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1599999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              9.062192224944693e-18,
+              -6.118331623488579e-19,
+              2.1338840891571244e-17
+            ],
+            "velocity": [
+              1.3877787807741436e-18,
+              2.6784130470059207e-17,
+              8.636625222730008e-15,
+              -9.669102722673297e-16,
+              2.3741270042058716e-16,
+              8.070559212083915e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g2_free",
+    "candidate": "higher4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "849fcd9cff52b9106e2f7a1146dfaddf0e7f10cfd4de7c4fbe2730e6c614b92e",
+    "initial_state_sha256": "d3b1f3a7aed0139b5fab2fd658df441d4d91c5c4da105f1ad4fece211345b05a",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "d4ae3a104ca5e04241862a416a316c5cb8178ca7e4b82984fe72e45652ac1efa",
+    "wall_seconds": 1.6990878341021016,
+    "simulation_seconds": 24.5199999999972,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g2_free/higher4mm/result.json",
+    "layout_id": "g2",
+    "split": "extension",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42999520594899054
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3500324506583693,
+          0.10996445774933471,
+          0.6198479751060163
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998435332520278,
+          "right_finger": 1.0998471479154817
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.35035871421859527,
+              0.10996430987538168,
+              0.6099427155720593
+            ],
+            "quaternion": [
+              0.9999986728744736,
+              -8.571228493902969e-06,
+              -0.0016291634563273885,
+              -1.5027496921496113e-06
+            ],
+            "velocity": [
+              -2.6255216638081438e-05,
+              -1.248580227187231e-05,
+              0.0001422242698959623,
+              -6.324377494690487e-05,
+              0.0005201550713085601,
+              1.1074308897090093e-05
+            ]
+          },
+          "green": {
+            "position": [
+              0.5599999999999993,
+              0.11000000000011458,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.954777800573347e-18,
+              9.442162786045128e-20,
+              9.65224952193272e-16
+            ],
+            "velocity": [
+              -4.163336342385313e-19,
+              1.4988010832977374e-17,
+              8.649880960869111e-15,
+              -6.479981066318669e-16,
+              5.123158731427575e-17,
+              -6.979178194017294e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.3500000000001543,
+              -0.13000000000055215,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.458033056066607e-18,
+              1.2953813344755642e-19,
+              -4.6676073581926575e-14
+            ],
+            "velocity": [
+              -6.938893903369785e-19,
+              2.373101714718055e-17,
+              8.637832732667104e-15,
+              -1.1113408940652374e-15,
+              -6.040856649632966e-18,
+              7.409984449660003e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1599999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.522612973429338e-18,
+              -2.704427887778416e-20,
+              -3.570246543771545e-17
+            ],
+            "velocity": [
+              2.775557561488658e-19,
+              2.2343238371558555e-17,
+              8.634404776680805e-15,
+              -1.0849997808247658e-15,
+              -5.820828718697484e-17,
+              -2.0258539906502942e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g2_occupied",
+    "candidate": "zero",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "7ca0dcfb717c45df5d56fcb93a61ba7f740a51e53160daade32125b85d5250be",
+    "initial_state_sha256": "c9634a5ad1428bcf51c0dbb494d2a3159a4672042e4d9f06cf11113e011fe8bd",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+    "wall_seconds": 3.2975302080158144,
+    "simulation_seconds": 44.76000000000894,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g2_occupied/zero/result.json",
+    "layout_id": "g2",
+    "split": "extension",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.5599999983428249,
+          0.11000000165733982,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.5599999983428249,
+          0.11000000165733982,
+          0.4699808258562317
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5599510648166414,
+          0.10998915102586983,
+          0.619704425911664
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998442653276848,
+          "right_finger": 1.0998464320671086
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.34999999999999926,
+              0.11000000000011458,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.285943047530452e-18,
+              -3.9374461674188675e-19,
+              8.488572506976369e-16
+            ],
+            "velocity": [
+              1.110223024629038e-18,
+              2.2065682615358712e-17,
+              8.649976096242584e-15,
+              -8.179657164583137e-16,
+              4.1406002159025175e-17,
+              6.18935148961271e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5599967549286209,
+              0.10999734872138837,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999993199,
+              5.408417485800436e-18,
+              -3.1972062884630224e-20,
+              -1.1666948948159535e-06
+            ],
+            "velocity": [
+              -2.6174258405219877e-19,
+              2.241603751940284e-17,
+              6.928975297637906e-15,
+              -1.162236595162722e-15,
+              -1.539220711876223e-16,
+              7.598325109538745e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.5601387232237386,
+              0.10998908727412218,
+              0.6151818922263387
+            ],
+            "quaternion": [
+              0.9999998060255296,
+              -7.132911349559815e-06,
+              -0.0006228130584984543,
+              -1.3849917764687522e-06
+            ],
+            "velocity": [
+              -3.760451399756735e-05,
+              -1.1883169878364808e-05,
+              0.00013279924455220549,
+              -5.1417425755782984e-05,
+              0.0004030404462154694,
+              1.0929528541199695e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1599999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.9713003998244554e-18,
+              3.3704012605927084e-19,
+              3.588601389067835e-17
+            ],
+            "velocity": [
+              -4.163336342400103e-19,
+              2.2343238371416304e-17,
+              8.643205411762925e-15,
+              -1.058578515260439e-15,
+              1.3534545417866475e-16,
+              2.0657566335682244e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42599520612120423
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.35004026792039766,
+          0.10996871918941241,
+          0.6195678770066645
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998427553693468,
+          "right_finger": 1.0998479383026294
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3503050351703643,
+              0.10996862589141965,
+              0.6139787735919725
+            ],
+            "quaternion": [
+              0.9999991578714863,
+              -9.330231051732922e-06,
+              -0.0012977547096529938,
+              -1.4063885642453168e-06
+            ],
+            "velocity": [
+              -2.141613797900664e-05,
+              -9.637764511321358e-06,
+              4.8454609060349464e-05,
+              -5.02280037959829e-05,
+              0.00043378185668362676,
+              8.633054838042878e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5599967549286209,
+              0.10999734872138837,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999993199,
+              5.935817559659953e-18,
+              5.800704729201795e-19,
+              -1.1666948949119789e-06
+            ],
+            "velocity": [
+              -2.0869492365353776e-18,
+              1.972162693115012e-17,
+              6.964502434425567e-15,
+              -8.129993760478605e-16,
+              7.201508700545283e-17,
+              1.44072323310526e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.35100574173562177,
+              -0.1299588626630174,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.999999999998077,
+              6.292846424663561e-18,
+              -4.208674757577656e-19,
+              -1.9608928761952345e-06
+            ],
+            "velocity": [
+              1.795796294262302e-18,
+              2.3759764475447818e-17,
+              1.1511390535120208e-14,
+              -1.1336685606876467e-15,
+              -1.590182327312637e-16,
+              -7.80569580483611e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1599999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.0904759485513555e-18,
+              -9.78017459938763e-20,
+              1.80085707264621e-16
+            ],
+            "velocity": [
+              8.326672684631986e-19,
+              2.3592239274119468e-17,
+              8.643205411763007e-15,
+              -1.0812741820593827e-15,
+              6.32078470151871e-17,
+              -3.379464638752744e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g2_occupied",
+    "candidate": "lower4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "7ca0dcfb717c45df5d56fcb93a61ba7f740a51e53160daade32125b85d5250be",
+    "initial_state_sha256": "c9634a5ad1428bcf51c0dbb494d2a3159a4672042e4d9f06cf11113e011fe8bd",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "da035df89e4c65b9428649c8fdafdc69b0166df2320a31dcf01323cde37eb440",
+    "wall_seconds": 3.435999165987596,
+    "simulation_seconds": 45.3000000000096,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g2_occupied/lower4mm/result.json",
+    "layout_id": "g2",
+    "split": "extension",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.5599999983428249,
+          0.11000000165733982,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.5599999983428249,
+          0.11000000165733982,
+          0.4659808258562317
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5599491268298654,
+          0.10998826039206899,
+          0.6197177325893961
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.099844026051073,
+          "right_finger": 1.099846672709656
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.34999999999999926,
+              0.11000000000011458,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.970906931940356e-18,
+              -4.643061214769822e-19,
+              8.403999085511079e-16
+            ],
+            "velocity": [
+              1.8041124150197752e-18,
+              1.9984014444186505e-17,
+              8.647755650193373e-15,
+              -8.150594453323464e-16,
+              1.1026029819040913e-16,
+              2.6474619118362953e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.559996609417844,
+              0.1099970455176292,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999963548,
+              5.834864391612002e-18,
+              9.583362694297325e-20,
+              -2.6998359680911357e-06
+            ],
+            "velocity": [
+              -7.652138752464048e-19,
+              1.9140853873567883e-17,
+              1.0939054281771493e-14,
+              -8.994086895257404e-16,
+              1.6706485766448e-17,
+              2.0333662410353476e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.5601931720895311,
+              0.10998825177827318,
+              0.619090582894572
+            ],
+            "quaternion": [
+              0.9999999612188911,
+              -7.305115659390354e-06,
+              -0.00027840090960002984,
+              -1.3364360495264323e-06
+            ],
+            "velocity": [
+              -3.419305140390547e-05,
+              -1.1104593807356045e-05,
+              0.00012020921669308622,
+              -4.853498132562758e-05,
+              0.00047660905233257357,
+              1.0525255971984614e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1599999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.537733952883257e-18,
+              -3.4453417885181966e-20,
+              3.163379479930919e-17
+            ],
+            "velocity": [
+              6.9388939038514885e-19,
+              1.9428902931775232e-17,
+              8.640984965713656e-15,
+              -7.094196462598009e-16,
+              5.887013201907883e-17,
+              2.0186180320065594e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.4219952061212042
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3500352163617594,
+          0.10997118958233508,
+          0.6195853081437511
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998425651135484,
+          "right_finger": 1.0998481296694858
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3502569771630497,
+              0.10997117389531762,
+              0.6181969414347792
+            ],
+            "quaternion": [
+              0.9999987818685304,
+              -9.48068852514039e-06,
+              -0.0015608234023663243,
+              -1.3705479700526475e-06
+            ],
+            "velocity": [
+              -1.869054759054498e-05,
+              -9.05691048424215e-06,
+              4.19977401072517e-05,
+              -4.851431755293156e-05,
+              0.0003702308017164909,
+              8.324059805735183e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.559996609417844,
+              0.1099970455176292,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999963548,
+              4.034205838446575e-18,
+              1.77288297904163e-20,
+              -2.699835967753e-06
+            ],
+            "velocity": [
+              -7.132448485557243e-20,
+              1.8446964483177735e-17,
+              1.0923511159426793e-14,
+              -1.0338344744062099e-15,
+              8.261006245771488e-18,
+              3.852739588107479e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.35100440748903483,
+              -0.12996283854595764,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.999999999998833,
+              6.756685205114532e-18,
+              -4.348206905164747e-19,
+              -1.5274341874021782e-06
+            ],
+            "velocity": [
+              1.2284341039828335e-18,
+              2.0010463520204144e-17,
+              1.1519825212587258e-14,
+              -8.059469975740492e-16,
+              5.716370537891543e-17,
+              -2.711063571808309e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1599999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.724773597202596e-18,
+              2.3180809349933125e-19,
+              2.190116368013863e-17
+            ],
+            "velocity": [
+              -1.2490009027088056e-18,
+              2.164934898102538e-17,
+              8.636544073615312e-15,
+              -1.0741389848399406e-15,
+              7.077052715061029e-18,
+              -2.5729333667260855e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g2_occupied",
+    "candidate": "higher4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "7ca0dcfb717c45df5d56fcb93a61ba7f740a51e53160daade32125b85d5250be",
+    "initial_state_sha256": "c9634a5ad1428bcf51c0dbb494d2a3159a4672042e4d9f06cf11113e011fe8bd",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "d4ae3a104ca5e04241862a416a316c5cb8178ca7e4b82984fe72e45652ac1efa",
+    "wall_seconds": 3.2838716660626233,
+    "simulation_seconds": 44.2400000000083,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g2_occupied/higher4mm/result.json",
+    "layout_id": "g2",
+    "split": "extension",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.5599999983428249,
+          0.11000000165733982,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.5599999983428249,
+          0.11000000165733982,
+          0.4739808258562317
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5599527413800595,
+          0.10998932932704321,
+          0.6198565988332299
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998447394197708,
+          "right_finger": 1.099845953624692
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.34999999999999926,
+              0.11000000000011458,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.457840665997589e-18,
+              -2.526201131741982e-19,
+              8.388335366228261e-16
+            ],
+            "velocity": [
+              6.9388939039459775e-19,
+              2.4008572908452676e-17,
+              8.636653419947061e-15,
+              -7.303001753096385e-16,
+              -1.379170015299605e-17,
+              -4.106734119827798e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5599966953833734,
+              0.10999741658815088,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.999999999999612,
+              7.41583117698794e-18,
+              1.0199744651788216e-19,
+              8.816721554773789e-07
+            ],
+            "velocity": [
+              -5.082832334712393e-19,
+              2.2073252750656575e-17,
+              6.1450542309151015e-15,
+              -9.41447305371031e-16,
+              1.3158162723274232e-16,
+              -4.372812553219855e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.5601985203720633,
+              0.10998922010831955,
+              0.6113568337680073
+            ],
+            "quaternion": [
+              0.999997747094257,
+              -6.658396708110061e-06,
+              -0.0021226775378218265,
+              -1.4646562579729677e-06
+            ],
+            "velocity": [
+              -4.301983688946814e-05,
+              -1.3722945198342875e-05,
+              0.0002097131163463334,
+              -5.7703130029602265e-05,
+              0.0004954546780163245,
+              1.3005780926618993e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1599999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.383569427160351e-18,
+              -2.7836010116760876e-19,
+              3.6941330624844443e-17
+            ],
+            "velocity": [
+              9.714451465414446e-19,
+              2.234323837141632e-17,
+              8.640984965713646e-15,
+              -7.999009231728587e-16,
+              3.2975708810928354e-17,
+              3.027969036986839e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.34999999999999926,
+          0.11000000000011458,
+          0.42999520612120423
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3500331620135477,
+          0.10996369110917055,
+          0.6198479470786239
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998435383953538,
+          "right_finger": 1.0998471428757806
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.35031921619267214,
+              0.1099635425408206,
+              0.6098896613057394
+            ],
+            "quaternion": [
+              0.9999994749898491,
+              -8.557161294398471e-06,
+              -0.00102466799744593,
+              -1.5158194803668355e-06
+            ],
+            "velocity": [
+              -2.571356247285472e-05,
+              -1.2480950782148407e-05,
+              0.00014227750687531254,
+              -6.305658889114246e-05,
+              0.0004628647255188801,
+              1.1018994700489757e-05
+            ]
+          },
+          "green": {
+            "position": [
+              0.5599966953833734,
+              0.10999741658815088,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.999999999999612,
+              5.077277264854987e-18,
+              -3.224398707140659e-19,
+              8.816721553350775e-07
+            ],
+            "velocity": [
+              1.5374414672791252e-18,
+              2.1855068340677884e-17,
+              6.12507021647162e-15,
+              -1.0022775172039056e-15,
+              -7.05187051448515e-18,
+              -7.288462808085015e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.3510499962146674,
+              -0.1299589806658992,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999977768,
+              6.323221015375234e-18,
+              -9.637785365541174e-21,
+              -2.108365582789212e-06
+            ],
+            "velocity": [
+              4.89525520317068e-19,
+              1.889658891377459e-17,
+              1.0936267519556365e-14,
+              -8.548099556165348e-16,
+              1.40385388438222e-17,
+              6.755925255462891e-18
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5699999999999992,
+              -0.1599999999998862,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.928524847324622e-18,
+              1.0478041597193145e-19,
+              -1.4553534376198794e-16
+            ],
+            "velocity": [
+              -2.7755575616172137e-19,
+              1.7069679004446393e-17,
+              8.645425857812227e-15,
+              -7.045805204310779e-16,
+              -2.352767674312949e-17,
+              -3.371085372655859e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g3_free",
+    "candidate": "zero",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "1a25bc29cfb032c8a57f18c0e8668a908fc16d3f70577e489abb1687133aaf68",
+    "initial_state_sha256": "b8c2e8b87f1a5999a315f6c31da8d7a90e359c01df449c1c7fb64400bb52a468",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+    "wall_seconds": 1.8239858330925927,
+    "simulation_seconds": 25.179999999996834,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g3_free/zero/result.json",
+    "layout_id": "g3",
+    "split": "extension",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42599520594899054
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.3200855642136305,
+          0.16998627371600936,
+          0.6195625586085507
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998414892245802,
+          "right_finger": 1.099849178277806
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.32073136617893533,
+              0.16998612077212252,
+              0.6135199222391147
+            ],
+            "quaternion": [
+              0.999990093924637,
+              -1.413910999384562e-05,
+              -0.0044510503194177,
+              -1.9327791039569288e-06
+            ],
+            "velocity": [
+              -2.2551214200467918e-05,
+              -1.4933962636794754e-05,
+              4.932710920047713e-05,
+              -8.26136537831489e-05,
+              0.000971561185131125,
+              8.669053596905705e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5399999999999993,
+              0.17000000000011384,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.539619784116122e-18,
+              -5.91910609496957e-20,
+              7.259407693155492e-16
+            ],
+            "velocity": [
+              1.387778780822059e-19,
+              2.1371793224094587e-17,
+              8.642630409099857e-15,
+              -9.508516625983088e-16,
+              1.7844313153639743e-16,
+              -4.821131123310158e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.32000000000045437,
+              -0.11999999999988085,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.764132981863431e-18,
+              -6.916063479693249e-20,
+              -9.96847036294856e-15
+            ],
+            "velocity": [
+              5.551115135940092e-19,
+              2.6506574711898425e-17,
+              8.630713121757266e-15,
+              -1.1516797532291156e-15,
+              7.997652740204182e-17,
+              -2.881511492763277e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5600000000001542,
+              -0.1400000000005521,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.961081399916824e-18,
+              1.9717809606596088e-19,
+              -4.6278301896665806e-14
+            ],
+            "velocity": [
+              -8.326672688433999e-19,
+              1.9984014446027413e-17,
+              8.635966902434965e-15,
+              -1.0493636255292147e-15,
+              1.7590438786487593e-19,
+              -1.7449536275803978e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g3_free",
+    "candidate": "lower4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "1a25bc29cfb032c8a57f18c0e8668a908fc16d3f70577e489abb1687133aaf68",
+    "initial_state_sha256": "b8c2e8b87f1a5999a315f6c31da8d7a90e359c01df449c1c7fb64400bb52a468",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "da035df89e4c65b9428649c8fdafdc69b0166df2320a31dcf01323cde37eb440",
+    "wall_seconds": 1.8066188750090078,
+    "simulation_seconds": 25.43999999999669,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g3_free/lower4mm/result.json",
+    "layout_id": "g3",
+    "split": "extension",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42199520594899054
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.32008655828757804,
+          0.16998677493501668,
+          0.6195800988884932
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998410246858623,
+          "right_finger": 1.099849653490165
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3206195129136623,
+              0.16998674428462454,
+              0.6179398419593977
+            ],
+            "quaternion": [
+              0.9999975405244498,
+              -1.4691751118083277e-05,
+              -0.0022178199781082834,
+              -1.9365569032840045e-06
+            ],
+            "velocity": [
+              -1.7301209433695087e-05,
+              -1.3991472546777884e-05,
+              4.304914295852299e-05,
+              -7.248570910022021e-05,
+              0.0008087608268140561,
+              8.143467929743784e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5399999999999993,
+              0.17000000000011384,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.606609802787864e-18,
+              2.4612180479736715e-19,
+              8.456915206208592e-16
+            ],
+            "velocity": [
+              1.3877787808212978e-19,
+              1.984523656523506e-17,
+              8.640409963050604e-15,
+              -8.212931946499233e-16,
+              -5.56660296739398e-17,
+              2.6579929460303532e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.32000000000045437,
+              -0.11999999999988085,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.0976636587981035e-18,
+              2.9053842410599264e-20,
+              -1.009068584652586e-14
+            ],
+            "velocity": [
+              1.2814759404718595e-27,
+              2.1233015344928683e-17,
+              8.644035798052642e-15,
+              -1.2251464035154137e-15,
+              1.492124375460975e-17,
+              1.3281355147249254e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5600000000001542,
+              -0.1400000000005521,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.0037519960759046e-18,
+              7.552739370816456e-20,
+              -4.619453135106885e-14
+            ],
+            "velocity": [
+              -1.3877787845236463e-19,
+              1.7902346274855218e-17,
+              8.64484868663197e-15,
+              -8.706871433446992e-16,
+              1.5757824448077824e-17,
+              2.8474810495649004e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g3_free",
+    "candidate": "higher4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 3,
+    "actions": [
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "1a25bc29cfb032c8a57f18c0e8668a908fc16d3f70577e489abb1687133aaf68",
+    "initial_state_sha256": "b8c2e8b87f1a5999a315f6c31da8d7a90e359c01df449c1c7fb64400bb52a468",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(green)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(red)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "d4ae3a104ca5e04241862a416a316c5cb8178ca7e4b82984fe72e45652ac1efa",
+    "wall_seconds": 1.91155241697561,
+    "simulation_seconds": 24.91999999999698,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g3_free/higher4mm/result.json",
+    "layout_id": "g3",
+    "split": "extension",
+    "observed_clear_support": true,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42599520594899054
+        ],
+        "commanded_descent_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42999520594899054
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.32007356212796045,
+          0.16997919221205182,
+          0.6198460664389611
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998367774853135,
+          "right_finger": 1.0998537530667762
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3207302002119007,
+              0.16997875439799606,
+              0.6095939188696545
+            ],
+            "quaternion": [
+              0.9999957827998144,
+              -2.3271037349114844e-05,
+              -0.0029041074271335308,
+              -1.0471194029404844e-06
+            ],
+            "velocity": [
+              -2.8128209429655264e-05,
+              -1.6766973652057086e-05,
+              0.00013842936066889015,
+              0.00012824846766252036,
+              0.0009837611925924198,
+              -1.2499662533698788e-05
+            ]
+          },
+          "green": {
+            "position": [
+              0.5399999999999993,
+              0.17000000000011384,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.808120316524615e-18,
+              -2.6646241102135334e-19,
+              7.809799728913921e-16
+            ],
+            "velocity": [
+              9.714451465510378e-19,
+              2.0816681711782018e-17,
+              8.640409963050598e-15,
+              -6.953966777815646e-16,
+              7.639762936969692e-17,
+              4.285726276438037e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.32000000000045437,
+              -0.11999999999988085,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              3.783711293382639e-18,
+              1.6815844532986073e-20,
+              -1.000471389855903e-14
+            ],
+            "velocity": [
+              -9.714451452654494e-19,
+              1.3600232050631035e-17,
+              8.650697136200455e-15,
+              -5.199244302397856e-16,
+              3.269590642370536e-16,
+              -4.2709604826301924e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5600000000001542,
+              -0.1400000000005521,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              7.096249449895361e-18,
+              -2.159557862465275e-19,
+              -4.65277090734371e-14
+            ],
+            "velocity": [
+              2.775557557819678e-19,
+              2.2204460495277953e-17,
+              8.635966902435072e-15,
+              -9.71144728977583e-16,
+              6.695116636274591e-17,
+              2.2054541368472673e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g3_occupied",
+    "candidate": "zero",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "c70b1a5615bc71fcf56e97f9fb4613456ce7dbc496c3b312bb95aade97a261c1",
+    "initial_state_sha256": "e2a8cafa8f620861deb0fa1020206ab41b6547bb421798a911f67196253d42f2",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "4a3e88031b9d0b47358cdfc40caea3824ca9de383b70e1ba22e2201cd1b9ca5d",
+    "wall_seconds": 3.443255875026807,
+    "simulation_seconds": 45.80000000001021,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g3_occupied/zero/result.json",
+    "layout_id": "g3",
+    "split": "extension",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.5399999983428251,
+          0.1700000016573389,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.5399999983428251,
+          0.1700000016573389,
+          0.4699808258562317
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5399545923957043,
+          0.16998370127429752,
+          0.6194282807363574
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998428609323887,
+          "right_finger": 1.099847830524762
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3200000000000149,
+              0.17000000000011384,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              5.62960548130938e-18,
+              -4.414537498257048e-19,
+              -7.577388740498663e-16
+            ],
+            "velocity": [
+              1.249000902597457e-18,
+              1.8457457784471594e-17,
+              8.642604052794344e-15,
+              -4.2039314714919833e-16,
+              1.0295174514746046e-16,
+              4.727143231980461e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5399968234189642,
+              0.16999538981150525,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999995074,
+              7.732757354389793e-18,
+              5.031578119210163e-19,
+              -9.919873772821804e-07
+            ],
+            "velocity": [
+              -1.1613523742267405e-18,
+              2.3097896090912737e-17,
+              1.0927980494785768e-14,
+              -7.930430466436087e-16,
+              -2.3601075281153845e-16,
+              -1.1506367325741555e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.5401020129151665,
+              0.16998358954002923,
+              0.6147478397125812
+            ],
+            "quaternion": [
+              0.9999999014053182,
+              -1.1851069572369705e-05,
+              -0.00044389816223338143,
+              -1.824274541425227e-06
+            ],
+            "velocity": [
+              -3.340057112106119e-05,
+              -1.5997145052280252e-05,
+              9.135086425639952e-05,
+              -6.735331170071036e-05,
+              0.00033299810917859394,
+              1.108989841102828e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5600000000001542,
+              -0.1400000000005521,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.547849384239223e-18,
+              -6.825086526056355e-20,
+              -4.6349293121934357e-14
+            ],
+            "velocity": [
+              1.3877787880657743e-19,
+              1.8596235658821696e-17,
+              8.639034109104553e-15,
+              -8.569479778516076e-16,
+              -1.3045556093635651e-18,
+              -4.5102289591117063e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42599520612120423
+        ],
+        "measured_command_offset_z": 0.0,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.32008194703606085,
+          0.1699835719558787,
+          0.6195633625692336
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.099841300503243,
+          "right_finger": 1.0998493717134084
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3205488480213486,
+              0.16998341947669623,
+              0.6136409481521544
+            ],
+            "quaternion": [
+              0.9999982817186455,
+              -1.4542857565729155e-05,
+              -0.0018537380655938823,
+              -1.8561342656127106e-06
+            ],
+            "velocity": [
+              -2.1091656787919266e-05,
+              -1.4985081769728353e-05,
+              4.938575104625039e-05,
+              -7.958465951666211e-05,
+              0.0007171771692692628,
+              8.07756900292693e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5399968234189642,
+              0.16999538981150525,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999995074,
+              5.29686820027011e-18,
+              2.155146443823729e-19,
+              -9.91987376520124e-07
+            ],
+            "velocity": [
+              3.652042846325198e-19,
+              1.6991669455474365e-17,
+              1.0936862278982498e-14,
+              -8.183420732281872e-16,
+              -3.430548828058505e-17,
+              6.586860384148207e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.32088030325113576,
+              -0.11995890170187569,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.999999999998076,
+              7.181369729347925e-18,
+              1.5799912452574051e-19,
+              -1.961290991532912e-06
+            ],
+            "velocity": [
+              -6.029938462068919e-19,
+              2.2690339803164372e-17,
+              1.0735507265866137e-14,
+              -8.685603628816611e-16,
+              1.788590138765402e-17,
+              -6.160880509480856e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5600000000001542,
+              -0.1400000000005521,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.985613331034593e-18,
+              1.920160235111204e-19,
+              -4.664722224113703e-14
+            ],
+            "velocity": [
+              7.284371402576712e-28,
+              2.1788126854619104e-17,
+              8.643475001203334e-15,
+              -9.898170080198224e-16,
+              -1.155028828684713e-16,
+              -4.005149342056955e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g3_occupied",
+    "candidate": "lower4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "c70b1a5615bc71fcf56e97f9fb4613456ce7dbc496c3b312bb95aade97a261c1",
+    "initial_state_sha256": "e2a8cafa8f620861deb0fa1020206ab41b6547bb421798a911f67196253d42f2",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "da035df89e4c65b9428649c8fdafdc69b0166df2320a31dcf01323cde37eb440",
+    "wall_seconds": 3.519778540940024,
+    "simulation_seconds": 46.36000000001089,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g3_occupied/lower4mm/result.json",
+    "layout_id": "g3",
+    "split": "extension",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.5399999983428251,
+          0.1700000016573389,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.5399999983428251,
+          0.1700000016573389,
+          0.4659808258562317
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5399530033471103,
+          0.16998216442834654,
+          0.6197171102464087
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998430132350723,
+          "right_finger": 1.0998476764178258
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3200000000000149,
+              0.17000000000011384,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.6941218923487735e-18,
+              -3.862775566258268e-19,
+              -7.403768160652337e-16
+            ],
+            "velocity": [
+              1.5265566587537573e-18,
+              1.9567680809096733e-17,
+              8.642604052794326e-15,
+              -8.980439517330645e-16,
+              4.5948319381547916e-17,
+              -2.2268327305747432e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5399967537671893,
+              0.16999516199142456,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999930682,
+              3.553977498900583e-18,
+              -1.442905479300814e-19,
+              -3.7233611739985704e-06
+            ],
+            "velocity": [
+              8.834411707588976e-19,
+              1.8502218906537392e-17,
+              8.447691973879296e-15,
+              -1.1392811753585338e-15,
+              1.9463420702328606e-16,
+              1.6219817451405611e-18
+            ]
+          },
+          "red": {
+            "position": [
+              0.5400641001100391,
+              0.16998215013194243,
+              0.6190351341385969
+            ],
+            "quaternion": [
+              0.9999999939046035,
+              -1.1612382666654145e-05,
+              0.00010978428098908365,
+              -1.8325172335918954e-06
+            ],
+            "velocity": [
+              -3.2433247413981866e-05,
+              -1.656102166824043e-05,
+              0.00012228450590406667,
+              -6.968665191294582e-05,
+              0.0002831454115370859,
+              1.164928117191741e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5600000000001542,
+              -0.1400000000005521,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.825509341136298e-18,
+              1.4231361457456245e-19,
+              -4.6355610477027634e-14
+            ],
+            "velocity": [
+              -9.714451458185863e-19,
+              1.484923295071182e-17,
+              8.645695447252289e-15,
+              -4.868308177912968e-16,
+              -1.642571237364225e-16,
+              -8.885564380814951e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.4219952061212042
+        ],
+        "measured_command_offset_z": -0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.32008084156710237,
+          0.16998425633414704,
+          0.6195812634627698
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998409980907413,
+          "right_finger": 1.0998496766145416
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3205174080104376,
+              0.16998421723476753,
+              0.6176185239764604
+            ],
+            "quaternion": [
+              0.9999951414295405,
+              -1.47923183365855e-05,
+              -0.0031171934841352647,
+              -1.8121559447578925e-06
+            ],
+            "velocity": [
+              -1.7416289254406537e-05,
+              -1.4080552387643292e-05,
+              4.2797271594594833e-05,
+              -7.683759833293675e-05,
+              0.000671832279531629,
+              8.129172888868262e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5399967537671893,
+              0.16999516199142456,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999930682,
+              7.696771643735566e-18,
+              -2.4139706165143903e-19,
+              -3.723361174161456e-06
+            ],
+            "velocity": [
+              8.834411707590572e-19,
+              2.960444915278874e-17,
+              8.447691973879535e-15,
+              -1.08335323133072e-15,
+              9.820034055775708e-17,
+              -3.613138678012141e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.3209096650927584,
+              -0.1199610523235781,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999986909,
+              5.4042961028179166e-18,
+              -4.541225966676419e-19,
+              -1.6182967207007863e-06
+            ],
+            "velocity": [
+              1.5331340528087147e-18,
+              2.3978165617113247e-17,
+              7.246363327602826e-15,
+              -1.058725891818209e-15,
+              7.050038532115758e-18,
+              2.828979492240299e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5600000000001542,
+              -0.1400000000005521,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.4206040347532146e-18,
+              -8.967389543456588e-20,
+              -4.6659208305755315e-14
+            ],
+            "velocity": [
+              -2.775557554278198e-19,
+              2.0122792317681423e-17,
+              8.64569544725247e-15,
+              -1.1447664514307926e-15,
+              -7.106075303674695e-17,
+              6.700603420304362e-18
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  },
+  {
+    "scenario": "g3_occupied",
+    "candidate": "higher4mm",
+    "trial_valid": true,
+    "planning_accepted": true,
+    "planning_rejected": false,
+    "action_execution_started": true,
+    "strict_success": true,
+    "goal_reached": true,
+    "mechanical_ok": true,
+    "all_executed_contracts_match": true,
+    "action_count": 5,
+    "actions": [
+      "unstack",
+      "put_table",
+      "pick_table",
+      "stack",
+      "home"
+    ],
+    "contract_failure_count": 0,
+    "exception": null,
+    "forbidden_contacts": [],
+    "scene_sha256": "c70b1a5615bc71fcf56e97f9fb4613456ce7dbc496c3b312bb95aade97a261c1",
+    "initial_state_sha256": "e2a8cafa8f620861deb0fa1020206ab41b6547bb421798a911f67196253d42f2",
+    "initial_symbolic_state": [
+      "clear(blue)",
+      "clear(red)",
+      "clear(yellow)",
+      "empty()",
+      "on(red,green)",
+      "ontable(blue)",
+      "ontable(green)",
+      "ontable(yellow)"
+    ],
+    "models_sha256": "438bd0e834a69a662d52a80d39ce4d8ce16293024cdbd3c0b88eede1046c716b",
+    "policies_sha256": "d4ae3a104ca5e04241862a416a316c5cb8178ca7e4b82984fe72e45652ac1efa",
+    "wall_seconds": 3.3974472919944674,
+    "simulation_seconds": 45.28000000000957,
+    "result_path": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/capability_regions_20260930_v1/trials/g3_occupied/higher4mm/result.json",
+    "layout_id": "g3",
+    "split": "extension",
+    "observed_clear_support": false,
+    "grasp_evidence": [
+      {
+        "action": {
+          "name": "unstack",
+          "args": {
+            "object": "red",
+            "support": "green"
+          },
+          "pre": [
+            "empty()",
+            "on(red,green)",
+            "clear(red)"
+          ],
+          "add": [
+            "holding(red)",
+            "clear(green)"
+          ],
+          "del": [
+            "empty()",
+            "on(red,green)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.5399999983428251,
+          0.1700000016573389,
+          0.4699808258562317
+        ],
+        "commanded_descent_xyz": [
+          0.5399999983428251,
+          0.1700000016573389,
+          0.4739808258562317
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.5399562331403506,
+          0.16998376452145114,
+          0.6198559386614099
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998440514784678,
+          "right_finger": 1.0998466281579093
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.3200000000000149,
+              0.17000000000011384,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.0308841232216705e-18,
+              -2.1019158962847692e-20,
+              -7.458567499615132e-16
+            ],
+            "velocity": [
+              -2.7755575626210565e-19,
+              1.80411241502371e-17,
+              8.64704494489287e-15,
+              -8.221571471448748e-16,
+              -1.3894779558807147e-16,
+              2.4435876559457393e-17
+            ]
+          },
+          "green": {
+            "position": [
+              0.5399968274236762,
+              0.16999530989449735,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999993289,
+              6.876556050854645e-18,
+              -7.162642500229624e-20,
+              1.1590339183272968e-06
+            ],
+            "velocity": [
+              2.233458457023458e-19,
+              2.6928327666940178e-17,
+              6.831288725189242e-15,
+              -1.2440289189415654e-15,
+              2.2229542277827078e-17,
+              4.1714783509981014e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.540141713635539,
+              0.16998358491884552,
+              0.6111549194604029
+            ],
+            "quaternion": [
+              0.9999991550508414,
+              -1.0691128948628435e-05,
+              -0.001299915179568223,
+              -1.9572170837623863e-06
+            ],
+            "velocity": [
+              -4.034694804633984e-05,
+              -2.0448842970160392e-05,
+              0.00021214982859108292,
+              -8.26145401500781e-05,
+              0.00040461702858888134,
+              1.4104954061591066e-05
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5600000000001542,
+              -0.1400000000005521,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              6.246868592417271e-18,
+              1.3437289184968206e-20,
+              -4.635518991855546e-14
+            ],
+            "velocity": [
+              -6.938893896622858e-19,
+              1.7347234756118424e-17,
+              8.645695447252271e-15,
+              -8.377187831699428e-16,
+              -8.250114828160578e-17,
+              -2.0891714586921783e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      },
+      {
+        "action": {
+          "name": "pick_table",
+          "args": {
+            "object": "yellow"
+          },
+          "pre": [
+            "empty()",
+            "ontable(yellow)",
+            "clear(yellow)"
+          ],
+          "add": [
+            "holding(yellow)"
+          ],
+          "del": [
+            "empty()",
+            "ontable(yellow)",
+            "home_completed()"
+          ]
+        },
+        "read_grasp_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42599520612120423
+        ],
+        "commanded_descent_xyz": [
+          0.3200000000000149,
+          0.17000000000011384,
+          0.42999520612120423
+        ],
+        "measured_command_offset_z": 0.0040000000000000036,
+        "first_api_exception": null,
+        "after_tcp": [
+          0.32007362010337786,
+          0.1699760061618484,
+          0.6196706030419608
+        ],
+        "after_finger_forces_N": {
+          "left_finger": 1.0998417087750691,
+          "right_finger": 1.099848955024323
+        },
+        "after_objects": {
+          "yellow": {
+            "position": [
+              0.32059679114547796,
+              0.16997572329585398,
+              0.6090898200036854
+            ],
+            "quaternion": [
+              0.9999958451434795,
+              -1.4436861422962093e-05,
+              -0.0028826175622389616,
+              -1.8292326579423167e-06
+            ],
+            "velocity": [
+              -2.6796684586953253e-05,
+              -1.683827820455383e-05,
+              6.853735111873067e-05,
+              -8.722883632134253e-05,
+              0.0008003963923695121,
+              8.99977081300855e-06
+            ]
+          },
+          "green": {
+            "position": [
+              0.5399968274236762,
+              0.16999530989449735,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              0.9999999999993289,
+              5.08965031794057e-18,
+              -2.9194790528942773e-19,
+              1.1590339180748098e-06
+            ],
+            "velocity": [
+              4.18467542280901e-19,
+              2.3122082013605642e-17,
+              6.742470883218962e-15,
+              -1.1032830029590913e-15,
+              -1.5215105570277932e-16,
+              -3.166022362625493e-17
+            ]
+          },
+          "red": {
+            "position": [
+              0.3210285799630776,
+              -0.11995652627037398,
+              0.42199520612120417
+            ],
+            "quaternion": [
+              0.9999999999977531,
+              7.744937888192421e-18,
+              3.9335311334293547e-20,
+              -2.1194443702499025e-06
+            ],
+            "velocity": [
+              -1.7679013925176813e-19,
+              2.2825572219012033e-17,
+              1.0153016000846982e-14,
+              -8.66460343071218e-16,
+              -5.762584047181057e-17,
+              -3.16843958303857e-17
+            ]
+          },
+          "blue": {
+            "position": [
+              0.5600000000001542,
+              -0.1400000000005521,
+              0.4219952061212042
+            ],
+            "quaternion": [
+              1.0,
+              4.6234869019597784e-18,
+              5.767674314153481e-20,
+              -4.644439532161688e-14
+            ],
+            "velocity": [
+              -2.7755575542769877e-19,
+              1.373900992608636e-17,
+              8.645695447252674e-15,
+              -9.910195584848009e-16,
+              3.24072908934694e-17,
+              4.7666564254868886e-17
+            ]
+          }
+        },
+        "contract_check": {
+          "valid_trial": true,
+          "paper_line20": true,
+          "strict_CP_transition_match": true,
+          "goal_ok": true,
+          "effect_ok": true,
+          "violations": {
+            "missing_pre": [],
+            "missing_add": [],
+            "remaining_del": [],
+            "missing_preserved_pre": [],
+            "unexpected_added": [],
+            "unexpected_removed": []
+          }
+        },
+        "note": "after_* is action-end evidence, not a closure-time force measurement"
+      }
+    ]
+  }
+]

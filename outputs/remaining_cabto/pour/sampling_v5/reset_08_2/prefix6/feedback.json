@@ -1,0 +1,199 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": false,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "parked(0)"
+    ],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.21,
+        0.1,
+        0.4
+      ]
+    },
+    {
+      "method": "safe_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.24,
+        0.2,
+        0.72
+      ]
+    },
+    {
+      "method": "move_safe",
+      "args": [
+        [
+          0.24,
+          0.2,
+          0.72
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.0020849869057045028
+    },
+    {
+      "method": "move_above",
+      "args": [
+        [
+          0.21,
+          0.1,
+          0.4
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.004282507988876541
+    },
+    {
+      "method": "align_target",
+      "args": [
+        [
+          0.21,
+          0.1,
+          0.4
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.1846331821333586,
+        0.09130646237573753
+      ]
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.21,
+          0.1,
+          0.4
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.5500574938910578
+    },
+    {
+      "method": "release",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "retreat",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.012247867835004521
+    },
+    {
+      "method": "settle",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "receiver_separated()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "after": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "empty(0)",
+    "hand_raised(0)",
+    "holding(1,basin)",
+    "parked(0)",
+    "payload_retained()",
+    "receiver_separated()",
+    "source_returned()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "model": {
+    "name": "return_source_cup",
+    "args": {
+      "arm": "0",
+      "obj": "canL",
+      "dest": "return_source_cup"
+    },
+    "program_kind": "return_source",
+    "pre": [
+      "holding(0,canL)",
+      "source_upright()",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "source_returned()",
+      "empty(0)",
+      "hand_raised(0)"
+    ],
+    "del": [
+      "holding(0,canL)"
+    ],
+    "description": "源杯在标定返还位置直立落桌且已解除抓持，源臂空手并撤至外侧安全高度，小球仍留在接收盆内。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "28936a0ebb52d5231e4ca5ccbb1febb20567c7dcce03eab0c08b07da3a00c414",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+  "physical_diagnostics": {
+    "source": {
+      "returned": true,
+      "xy_error_m": 0.002343708568423545,
+      "bottom_gap_m": 0.003987068266978089,
+      "rotation_error_deg": 2.605350681000981,
+      "released": true,
+      "origin": [
+        0.18077131401681604,
+        0.1022131526249143,
+        0.5239695202651341
+      ]
+    },
+    "basin": {
+      "returned": false,
+      "xy_error_m": 0.18654345309441253,
+      "bottom_gap_m": 0.03770259805270998,
+      "rotation_error_deg": 2.526339054145036,
+      "released": false,
+      "origin": [
+        0.7727841380884704,
+        -0.3403196837503706,
+        0.5529617346203808
+      ]
+    }
+  }
+}

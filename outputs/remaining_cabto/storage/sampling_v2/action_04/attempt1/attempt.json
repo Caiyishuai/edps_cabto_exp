@@ -1,0 +1,177 @@
+{
+  "action_id": "place_tray(arm=0,dest=tray,obj=item0)",
+  "model": {
+    "name": "place_tray",
+    "args": {
+      "arm": "0",
+      "obj": "item0",
+      "dest": "tray"
+    },
+    "program_kind": "place",
+    "pre": [
+      "holding(0,item0)",
+      "slot_free(0)"
+    ],
+    "add": [
+      "empty(0)",
+      "packed(0)"
+    ],
+    "del": [
+      "holding(0,item0)",
+      "slot_free(0)"
+    ],
+    "description": "绑定物品已在自由托盘对应槽位内稳定支撑且解除抓持，指定手爪张开并竖直撤离放置面。"
+  },
+  "attempt": 1,
+  "transfer": {
+    "source_sha256": "cd84508daea4180486ac513976d14178f3fbec2b9e6c8072acab54e9d190e50e",
+    "source_attempt": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/remaining_cabto/storage/sampling_v2/action_01/attempt2",
+    "mode": "unmodified_actual_model_source_schema_transfer",
+    "new_call": false
+  },
+  "source": "def policy(api):\n    pose = api.target_pose()\n    api.move_above(pose)\n    api.align_target(pose)\n    api.lower(pose)\n    api.settle()\n    api.place_release()\n    api.retreat()",
+  "evaluation": {
+    "valid_trial": true,
+    "paper_line20": true,
+    "strict_CP_transition_match": false,
+    "goal_ok": true,
+    "effect_ok": true,
+    "violations": {
+      "missing_pre": [],
+      "missing_add": [],
+      "remaining_del": [],
+      "missing_preserved_pre": [],
+      "unexpected_added": [
+        "hands_raised()",
+        "hands_safe_for_lateral(0)"
+      ],
+      "unexpected_removed": []
+    },
+    "code_executed": true,
+    "exception": null,
+    "trace": [
+      {
+        "method": "target_pose",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.2722656166785419,
+          0.03572464382331689,
+          0.40800000000000003
+        ]
+      },
+      {
+        "method": "move_above",
+        "args": [
+          [
+            0.2722656166785419,
+            0.03572464382331689,
+            0.40800000000000003
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.0049931377823735695
+      },
+      {
+        "method": "align_target",
+        "args": [
+          [
+            0.2722656166785419,
+            0.03572464382331689,
+            0.40800000000000003
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": [
+          0.26940546310816094,
+          0.03826450625876168
+        ]
+      },
+      {
+        "method": "lower",
+        "args": [
+          [
+            0.2722656166785419,
+            0.03572464382331689,
+            0.40800000000000003
+          ]
+        ],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.4419297422255749
+      },
+      {
+        "method": "settle",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "place_release",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": null
+      },
+      {
+        "method": "retreat",
+        "args": [],
+        "kwargs": {},
+        "status": "returned",
+        "result": 0.003175898713051678
+      }
+    ],
+    "before": [
+      "empty(1)",
+      "hands_safe_for_lateral(1)",
+      "holding(0,item0)",
+      "packed(1)",
+      "parked(1)",
+      "slot_free(0)",
+      "tray_at_table()"
+    ],
+    "after": [
+      "empty(0)",
+      "empty(1)",
+      "hands_raised()",
+      "hands_safe_for_lateral(0)",
+      "hands_safe_for_lateral(1)",
+      "packed(0)",
+      "packed(1)",
+      "parked(1)",
+      "tray_at_table()"
+    ],
+    "model": {
+      "name": "place_tray",
+      "args": {
+        "arm": "0",
+        "obj": "item0",
+        "dest": "tray"
+      },
+      "program_kind": "place",
+      "pre": [
+        "holding(0,item0)",
+        "slot_free(0)"
+      ],
+      "add": [
+        "empty(0)",
+        "packed(0)"
+      ],
+      "del": [
+        "holding(0,item0)",
+        "slot_free(0)"
+      ],
+      "description": "绑定物品已在自由托盘对应槽位内稳定支撑且解除抓持，指定手爪张开并竖直撤离放置面。"
+    },
+    "safety_ok": true,
+    "contract_effect_ok": true,
+    "missing_required_calls": [],
+    "code_sha256": "cd84508daea4180486ac513976d14178f3fbec2b9e6c8072acab54e9d190e50e",
+    "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+  },
+  "accepted": true
+}

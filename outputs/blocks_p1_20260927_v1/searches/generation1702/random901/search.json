@@ -1,0 +1,144 @@
+{
+  "method": "random",
+  "seed": 901,
+  "order": [
+    0,
+    2,
+    1
+  ],
+  "attempts": [
+    {
+      "pool_index": 0,
+      "candidate": {
+        "id": "offset_z_0_01",
+        "pre_add": [],
+        "offset_z_m": 0.01,
+        "reason": "Increases approach height to prevent finger collision and ensure simultaneous force generation during closure, addressing the primary failure mode in failed executions."
+      },
+      "trials": [
+        {
+          "phase": "probe",
+          "success": true,
+          "trial_valid": true,
+          "cost": {
+            "rollouts": 1,
+            "actions": 3,
+            "api_calls": 12,
+            "simulation_seconds": 24.399999999997267,
+            "wall_seconds": 1.0744974999688566
+          },
+          "exception": null,
+          "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random901/candidate00/probe00/result.json"
+        },
+        {
+          "phase": "probe",
+          "success": false,
+          "trial_valid": true,
+          "cost": {
+            "rollouts": 1,
+            "actions": 2,
+            "api_calls": 9,
+            "simulation_seconds": 16.5800000000016,
+            "wall_seconds": 0.846220540930517
+          },
+          "exception": "RuntimeError: lower_blue: TCP residual 0.0500m",
+          "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random901/candidate00/probe01/result.json"
+        }
+      ],
+      "confirmed": false
+    },
+    {
+      "pool_index": 2,
+      "candidate": {
+        "id": "offset_z_0_005",
+        "pre_add": [],
+        "offset_z_m": 0.005,
+        "reason": "Minimal adjustment to lift the approach point just enough to avoid immediate contact while maintaining proximity for stable grasping."
+      },
+      "trials": [
+        {
+          "phase": "probe",
+          "success": true,
+          "trial_valid": true,
+          "cost": {
+            "rollouts": 1,
+            "actions": 3,
+            "api_calls": 12,
+            "simulation_seconds": 24.759999999997067,
+            "wall_seconds": 1.091855708975345
+          },
+          "exception": null,
+          "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random901/candidate02/probe00/result.json"
+        },
+        {
+          "phase": "probe",
+          "success": false,
+          "trial_valid": true,
+          "cost": {
+            "rollouts": 1,
+            "actions": 2,
+            "api_calls": 9,
+            "simulation_seconds": 15.820000000002006,
+            "wall_seconds": 0.8207069580676034
+          },
+          "exception": "RuntimeError: lower_blue: TCP residual 0.0149m",
+          "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random901/candidate02/probe01/result.json"
+        }
+      ],
+      "confirmed": false
+    },
+    {
+      "pool_index": 1,
+      "candidate": {
+        "id": "offset_z_0_02",
+        "pre_add": [],
+        "offset_z_m": 0.02,
+        "reason": "Provides a more conservative approach height to guarantee clearance over objects of varying heights, reducing collision risk further."
+      },
+      "trials": [
+        {
+          "phase": "probe",
+          "success": false,
+          "trial_valid": true,
+          "cost": {
+            "rollouts": 1,
+            "actions": 1,
+            "api_calls": 5,
+            "simulation_seconds": 7.319999999999398,
+            "wall_seconds": 0.23387216706760228
+          },
+          "exception": "RuntimeError: Grasp geometry inconsistent",
+          "result_path": "outputs/blocks_p1_20260927_v1/searches/generation1702/random901/candidate01/probe00/result.json"
+        }
+      ],
+      "confirmed": false
+    }
+  ],
+  "selected": null,
+  "status": "pool_exhausted_abstain",
+  "max_rollouts": 20,
+  "cost": {
+    "rollouts": 5,
+    "actions": 11,
+    "api_calls": 47,
+    "simulation_seconds": 88.87999999999734,
+    "wall_seconds": 4.067152875009924
+  },
+  "phase_costs": {
+    "probe": {
+      "rollouts": 5,
+      "actions": 11,
+      "api_calls": 47,
+      "simulation_seconds": 88.87999999999734,
+      "wall_seconds": 4.067152875009924
+    },
+    "confirmation": {
+      "rollouts": 0,
+      "actions": 0,
+      "api_calls": 0,
+      "simulation_seconds": 0,
+      "wall_seconds": 0
+    }
+  },
+  "deployment_rule": "only selected independently confirmed candidate; otherwise abstain"
+}

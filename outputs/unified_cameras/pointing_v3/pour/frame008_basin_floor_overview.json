@@ -1,0 +1,142 @@
+{
+  "task": "pour",
+  "capture_index": 8,
+  "event": "after_align_receiver",
+  "target": "basin_floor",
+  "camera": "overview",
+  "input_image": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/pour/frames/008_after_align_receiver/overview.png",
+  "input_sha256": "9f0429e2e643c63adf75981795213b9a389c5bb699a0bacf7d04ffeb85e271de",
+  "original_run": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/pour/result.json",
+  "original_run_sha256": "2a4ee277ea0a0615339f045cbc9cac3184851641ddf076372c85b3dc63c93850",
+  "original_physical_state_time": 7.935999999999348,
+  "used_by_robot": false,
+  "type": "diagnostic_point_not_executable_grasp",
+  "calibration": {
+    "name": "overview",
+    "time": 7.935999999999348,
+    "image_size": [
+      720,
+      720
+    ],
+    "K": [
+      [
+        891.0312672298666,
+        0,
+        360.0
+      ],
+      [
+        0,
+        891.0312672298666,
+        360.0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "T_world_camera": {
+      "position": [
+        1.0922110894986714,
+        -0.9951837666008037,
+        1.5326285436411489
+      ],
+      "rotation": [
+        [
+          0.7719302356170497,
+          -0.4023049819289207,
+          0.49221378775424096
+        ],
+        [
+          0.6357072528610997,
+          0.488513192342261,
+          -0.5976881708444355
+        ],
+        [
+          -2.7755575615628914e-17,
+          0.7742774453790735,
+          0.6328462985411671
+        ]
+      ]
+    },
+    "optical_axis_world": [
+      -0.49221378775424096,
+      0.5976881708444355,
+      -0.6328462985411671
+    ],
+    "parent_body": "world",
+    "measured_T_body_camera": {
+      "position": [
+        1.0922110894986714,
+        -0.9951837666008037,
+        1.5326285436411489
+      ],
+      "rotation": [
+        [
+          0.7719302356170497,
+          -0.4023049819289207,
+          0.49221378775424096
+        ],
+        [
+          0.6357072528610997,
+          0.488513192342261,
+          -0.5976881708444355
+        ],
+        [
+          -2.7755575615628914e-17,
+          0.7742774453790735,
+          0.6328462985411671
+        ]
+      ]
+    },
+    "fovy_deg": 44.0,
+    "frame_convention": "MuJoCo/OpenGL: forward -Z, image right +X, image up +Y"
+  },
+  "evaluation_only_reference": {
+    "name": "basin_floor",
+    "body": "basin",
+    "xyz": [
+      0.4150964937180142,
+      0.0018018886596926163,
+      0.46832200679915104
+    ],
+    "semantic": "basin floor center; evaluation-only true surface height"
+  },
+  "reference_semantics": "basin floor center; evaluation-only true surface height",
+  "call": {
+    "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    "text": "Point to the center of the interior floor of the white receiving basin, not its rim or wall. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.",
+    "image_files": [
+      "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/selected_v3/pour/frames/008_after_align_receiver/overview.png"
+    ],
+    "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the interior floor of the white receiving basin, not its rim or wall. Output the absolute pixel coordinate as JSON {\"point\":[x,y]}. If that exact target is not visible or you cannot identify it, output only {\"visible\":false}. Do not point to a robot link.<|im_end|>\n<|im_start|>assistant\n",
+    "temperature": 0.0,
+    "max_tokens": 220,
+    "raw": "{\"point\": [388, 431]}",
+    "wall_seconds": 1.780588416964747
+  },
+  "point": [
+    388.0,
+    431.0
+  ],
+  "status": "point_returned_not_validated",
+  "reference_visibility": {
+    "target": "basin_floor",
+    "pixel": [
+      421.7694227027643,
+      395.92632095144506
+    ],
+    "in_frame": true,
+    "ray_hits_target_body": true,
+    "first_hit_body": "basin",
+    "ray_distance_m": 1.6078194993789783,
+    "warning": "GT geometric diagnostic; not a perception output, ray body hit is not precise grasp-point visibility"
+  },
+  "evaluation_only_reference_uv": [
+    421.7694227027643,
+    395.92632095144506
+  ],
+  "pixel_error": 48.68815946078691,
+  "conditional_true_plane_xy_error_mm": 110.51524299230192,
+  "overlay": "/Users/yishuaicai/mywork/edps_cabto_exp/outputs/unified_cameras/pointing_v3/pour/frame008_basin_floor_overview.png"
+}

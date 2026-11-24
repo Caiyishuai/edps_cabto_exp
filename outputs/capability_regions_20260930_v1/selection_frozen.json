@@ -1,0 +1,88 @@
+{
+  "protocol_sha256": "122c2079d6c57900a0b0662a2ebdae632017b2369708f7dc4f376924a7ada498",
+  "status": "frozen",
+  "global": {
+    "candidate": "zero",
+    "scores": [
+      {
+        "candidate": "zero",
+        "successes": 4,
+        "observed_cases": 4,
+        "abs_offset_m": 0.0,
+        "order": 0
+      },
+      {
+        "candidate": "lower4mm",
+        "successes": 4,
+        "observed_cases": 4,
+        "abs_offset_m": 0.004,
+        "order": 1
+      },
+      {
+        "candidate": "higher4mm",
+        "successes": 4,
+        "observed_cases": 4,
+        "abs_offset_m": 0.004,
+        "order": 2
+      }
+    ]
+  },
+  "by_observed_clear": {
+    "false": {
+      "candidate": "zero",
+      "scores": [
+        {
+          "candidate": "zero",
+          "successes": 2,
+          "observed_cases": 2,
+          "abs_offset_m": 0.0,
+          "order": 0
+        },
+        {
+          "candidate": "lower4mm",
+          "successes": 2,
+          "observed_cases": 2,
+          "abs_offset_m": 0.004,
+          "order": 1
+        },
+        {
+          "candidate": "higher4mm",
+          "successes": 2,
+          "observed_cases": 2,
+          "abs_offset_m": 0.004,
+          "order": 2
+        }
+      ]
+    },
+    "true": {
+      "candidate": "zero",
+      "scores": [
+        {
+          "candidate": "zero",
+          "successes": 2,
+          "observed_cases": 2,
+          "abs_offset_m": 0.0,
+          "order": 0
+        },
+        {
+          "candidate": "lower4mm",
+          "successes": 2,
+          "observed_cases": 2,
+          "abs_offset_m": 0.004,
+          "order": 1
+        },
+        {
+          "candidate": "higher4mm",
+          "successes": 2,
+          "observed_cases": 2,
+          "abs_offset_m": 0.004,
+          "order": 2
+        }
+      ]
+    }
+  },
+  "evidence_sha256": "cbe8d22dbb232e6dc366ff9bcd3dca00f40b24938791dd36e06ab23225f2e2e3",
+  "evidence_trial_count": 12,
+  "extension_observed": false,
+  "selection_scope": "finite_grid_baseline_not_learned_router"
+}

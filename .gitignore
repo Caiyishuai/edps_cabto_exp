@@ -1,5 +1,10 @@
-# Scratch / regenerable experiment outputs (not part of the minimal reproduction package)
-/outputs/
+# Experiment outputs are tracked, except files above GitHub's 100MB per-file limit.
+# Excluded: LoRA adapter weights (safetensors) and oversized collision audits.
+outputs/epm_px_data/adapters/*.safetensors
+outputs/epm_data/adapters/*.safetensors
+outputs/remaining_cabto/handover/sampling_v3/collision_audit.json
+outputs/remaining_cabto/handover/final_seed0/HANDOVER/collision_audit.json
+outputs/remaining_cabto/handover/final_seed1/HANDOVER/collision_audit.json
 
 # Python
 __pycache__/

@@ -1,0 +1,197 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "source_returned()"
+    ],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [
+      "parked(0)"
+    ],
+    "unexpected_removed": [
+      "source_returned()"
+    ]
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.21,
+        0.1,
+        0.4
+      ]
+    },
+    {
+      "method": "safe_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.24,
+        0.2,
+        0.72
+      ]
+    },
+    {
+      "method": "move_safe",
+      "args": [
+        [
+          0.24,
+          0.2,
+          0.72
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.0020849869057045028
+    },
+    {
+      "method": "move_above",
+      "args": [
+        [
+          0.21,
+          0.1,
+          0.4
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.004282507988876541
+    },
+    {
+      "method": "align_target",
+      "args": [
+        [
+          0.21,
+          0.1,
+          0.4
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.1846331821333586,
+        0.09130646237573753
+      ]
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.21,
+          0.1,
+          0.4
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.5500574938910578
+    },
+    {
+      "method": "release",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "retreat",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.012247867835004521
+    }
+  ],
+  "before": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "receiver_separated()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "after": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "empty(0)",
+    "hand_raised(0)",
+    "holding(1,basin)",
+    "parked(0)",
+    "payload_retained()",
+    "receiver_separated()",
+    "source_upright()",
+    "sphere_in_basin()"
+  ],
+  "model": {
+    "name": "return_source_cup",
+    "args": {
+      "arm": "0",
+      "obj": "canL",
+      "dest": "return_source_cup"
+    },
+    "program_kind": "return_source",
+    "pre": [
+      "holding(0,canL)",
+      "source_upright()",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "source_returned()",
+      "empty(0)",
+      "hand_raised(0)"
+    ],
+    "del": [
+      "holding(0,canL)"
+    ],
+    "description": "源杯在标定返还位置直立落桌且已解除抓持，源臂空手并撤至外侧安全高度，小球仍留在接收盆内。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": false,
+  "missing_required_calls": [
+    "settle"
+  ],
+  "code_sha256": "8d654ca521936af8f98611c4d7d7ec86d2e2f6d6823fa17b76ed7c1cc89e31d8",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported",
+  "physical_diagnostics": {
+    "source": {
+      "returned": false,
+      "xy_error_m": 0.025404348890535906,
+      "bottom_gap_m": 0.003890313633052034,
+      "rotation_error_deg": 12.549164485711726,
+      "released": true,
+      "origin": [
+        0.20518738932365813,
+        0.10331305925249538,
+        0.5113291402816079
+      ]
+    },
+    "basin": {
+      "returned": false,
+      "xy_error_m": 0.18654345334005526,
+      "bottom_gap_m": 0.03770259815115845,
+      "rotation_error_deg": 2.5263388044367807,
+      "released": false,
+      "origin": [
+        0.7727841388153665,
+        -0.3403196826159592,
+        0.5529617356164367
+      ]
+    }
+  }
+}

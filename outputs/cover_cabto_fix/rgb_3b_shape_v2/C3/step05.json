@@ -1,0 +1,107 @@
+{
+  "valid_trial": true,
+  "paper_line20": false,
+  "strict_CP_transition_match": false,
+  "goal_ok": false,
+  "effect_ok": false,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [
+      "empty()"
+    ],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": [
+      "empty()"
+    ]
+  },
+  "before": [
+    "at_target(apple)",
+    "at_target(potato)",
+    "holding(shrimp)"
+  ],
+  "after": [
+    "at_target(apple)",
+    "at_target(potato)",
+    "at_target(shrimp)"
+  ],
+  "model": {
+    "name": "place",
+    "args": {
+      "object": "shrimp",
+      "support": "bowl"
+    },
+    "pre": [
+      "holding(shrimp)"
+    ],
+    "add": [
+      "at_target(shrimp)",
+      "empty()"
+    ],
+    "del": [
+      "holding(shrimp)"
+    ]
+  },
+  "code_executed": true,
+  "exception": "RuntimeError: Gripper not released",
+  "trace": [
+    {
+      "method": "destination_point",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.30237037257248806,
+        0.16757475752973994,
+        0.41600000000000004
+      ]
+    },
+    {
+      "method": "carry",
+      "args": [
+        [
+          0.30237037257248806,
+          0.16757475752973994,
+          0.41600000000000004
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "lower",
+      "args": [
+        [
+          0.30237037257248806,
+          0.16757475752973994,
+          0.41600000000000004
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "open_gripper",
+      "args": [],
+      "kwargs": {},
+      "status": "failed",
+      "error": "RuntimeError: Gripper not released"
+    }
+  ],
+  "forbidden_contacts": [
+    {
+      "phase": "release_shrimp",
+      "kind": "robot_environment",
+      "bodies": [
+        "bowl",
+        "right_finger"
+      ],
+      "samples": 146,
+      "min_distance_m": -0.0003331257498543557
+    }
+  ],
+  "code_sha256": "3136df91927d15181c1381b94db52e1d435cc8afbd58e2708d2bef844cb16dec"
+}

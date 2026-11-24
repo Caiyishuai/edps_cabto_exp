@@ -1,0 +1,74 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "separate_receiver",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "basin_ready()",
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "sphere_in_basin()"
+  ],
+  "after": [
+    "caught_by_held_basin()",
+    "collision_free()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "payload_retained()",
+    "receiver_separated()",
+    "sphere_in_basin()"
+  ],
+  "model": {
+    "name": "separate_receiver_after_pour",
+    "args": {
+      "arm": "1",
+      "obj": "basin",
+      "dest": "separate_receiver_after_pour"
+    },
+    "program_kind": "separate_receiver",
+    "pre": [
+      "holding(0,canL)",
+      "holding(1,basin)",
+      "basin_ready()",
+      "sphere_in_basin()",
+      "caught_by_held_basin()",
+      "payload_retained()",
+      "collision_free()"
+    ],
+    "add": [
+      "receiver_separated()"
+    ],
+    "del": [
+      "basin_ready()"
+    ],
+    "description": "接收盆仍被抓持，位于负 y 安全通道并保留小球，与源杯分离。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "1e03d5d5e42fe2d4f344d8f8725fd781c118dc1619f9c2c036857901409dd46f",
+  "consistency_scope": "declared_pre_add_del_and_independent_final_goal; extra_observer_frame_drift_reported"
+}

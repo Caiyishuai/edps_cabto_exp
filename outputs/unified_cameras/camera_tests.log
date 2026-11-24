@@ -1,0 +1,32 @@
+test_all_hand_names_share_identical_local_extrinsics (__main__.UnifiedCameraRigTests.test_all_hand_names_share_identical_local_extrinsics) ... ok
+test_augmentation_does_not_mutate_input_profile_or_config (__main__.UnifiedCameraRigTests.test_augmentation_does_not_mutate_input_profile_or_config) ... ok
+test_axes_are_right_handed_and_look_toward_target (__main__.UnifiedCameraRigTests.test_axes_are_right_handed_and_look_toward_target) ... ok
+test_calibration_intrinsics_and_missing_camera (__main__.UnifiedCameraRigTests.test_calibration_intrinsics_and_missing_camera) ... ok
+test_constructor_patch_finally_restores_after_constructor_failure (__main__.UnifiedCameraRigTests.test_constructor_patch_finally_restores_after_constructor_failure) ... ok
+test_constructor_patch_finally_restores_after_context_body_failure (__main__.UnifiedCameraRigTests.test_constructor_patch_finally_restores_after_context_body_failure) ... ok
+test_constructor_patch_finally_restores_after_validation_failure (__main__.UnifiedCameraRigTests.test_constructor_patch_finally_restores_after_validation_failure) ... ok
+test_constructor_patch_success_restores_and_records_metadata (__main__.UnifiedCameraRigTests.test_constructor_patch_success_restores_and_records_metadata) ... ok
+test_dual_arm_adds_exactly_three_cameras (__main__.UnifiedCameraRigTests.test_dual_arm_adds_exactly_three_cameras) ... ok
+test_existing_rig_camera_name_is_rejected (__main__.UnifiedCameraRigTests.test_existing_rig_camera_name_is_rejected) ... ok
+test_global_camera_ignores_object_xml_and_config_positions (__main__.UnifiedCameraRigTests.test_global_camera_ignores_object_xml_and_config_positions) ... ok
+test_global_camera_uses_table_frame_and_custom_profile (__main__.UnifiedCameraRigTests.test_global_camera_uses_table_frame_and_custom_profile) ... ok
+test_legacy_cameras_keep_attributes_parents_and_calibration (__main__.UnifiedCameraRigTests.test_legacy_cameras_keep_attributes_parents_and_calibration) ... ok
+test_missing_worldbody_and_hands_are_rejected (__main__.UnifiedCameraRigTests.test_missing_worldbody_and_hands_are_rejected) ... ok
+test_nested_constructor_contexts_restore_outer_then_original (__main__.UnifiedCameraRigTests.test_nested_constructor_contexts_restore_outer_then_original) ... ok
+test_only_camera_xml_elements_are_added (__main__.UnifiedCameraRigTests.test_only_camera_xml_elements_are_added) ... ok
+test_optical_axis_is_minus_z_and_image_axes_have_correct_sign (__main__.UnifiedCameraRigTests.test_optical_axis_is_minus_z_and_image_axes_have_correct_sign) ... ok
+test_physics_comparison_detects_mass_and_geom_changes (__main__.UnifiedCameraRigTests.test_physics_comparison_detects_mass_and_geom_changes) ... ok
+test_physics_mass_inertia_and_all_geom_arrays_are_unchanged (__main__.UnifiedCameraRigTests.test_physics_mass_inertia_and_all_geom_arrays_are_unchanged) ... ok
+test_plane_behind_camera_or_through_origin_is_rejected (__main__.UnifiedCameraRigTests.test_plane_behind_camera_or_through_origin_is_rejected) ... ok
+test_plane_parallel_to_ray_is_rejected (__main__.UnifiedCameraRigTests.test_plane_parallel_to_ray_is_rejected) ... ok
+test_points_behind_camera_or_at_camera_origin_are_rejected (__main__.UnifiedCameraRigTests.test_points_behind_camera_or_at_camera_origin_are_rejected) ... ok
+test_project_ray_and_plane_round_trip (__main__.UnifiedCameraRigTests.test_project_ray_and_plane_round_trip) ... ok
+test_repeated_installation_is_rejected (__main__.UnifiedCameraRigTests.test_repeated_installation_is_rejected) ... ok
+test_single_arm_adds_exactly_two_cameras (__main__.UnifiedCameraRigTests.test_single_arm_adds_exactly_two_cameras) ... ok
+test_table_config_schemas_are_equivalent (__main__.UnifiedCameraRigTests.test_table_config_schemas_are_equivalent) ... ok
+test_wrist_world_pose_follows_parent_but_local_pose_stays_fixed (__main__.UnifiedCameraRigTests.test_wrist_world_pose_follows_parent_but_local_pose_stays_fixed) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.076s
+
+OK

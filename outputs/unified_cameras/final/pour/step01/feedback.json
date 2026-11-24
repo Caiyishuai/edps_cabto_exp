@@ -1,0 +1,159 @@
+{
+  "valid_trial": true,
+  "paper_line20": true,
+  "strict_CP_transition_match": true,
+  "goal_ok": true,
+  "effect_ok": true,
+  "violations": {
+    "missing_pre": [],
+    "missing_add": [],
+    "remaining_del": [],
+    "missing_preserved_pre": [],
+    "unexpected_added": [],
+    "unexpected_removed": []
+  },
+  "code_executed": true,
+  "exception": null,
+  "trace": [
+    {
+      "method": "target_pose",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": [
+        0.6000012248480447,
+        -0.2699999868242315,
+        0.5349945146533622
+      ]
+    },
+    {
+      "method": "align_xy",
+      "args": [
+        [
+          0.6000012248480447,
+          -0.2699999868242315,
+          0.5349945146533622
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.004190607303977448
+    },
+    {
+      "method": "descend_to",
+      "args": [
+        0.5349945146533622,
+        [
+          0.6000012248480447,
+          -0.2699999868242315
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": 0.005606763161081928
+    },
+    {
+      "method": "grasp",
+      "args": [
+        [
+          0.6000012248480447,
+          -0.2699999868242315,
+          0.5349945146533622
+        ]
+      ],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "record_grab_offset",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    },
+    {
+      "method": "lift",
+      "args": [],
+      "kwargs": {},
+      "status": "returned",
+      "result": null
+    }
+  ],
+  "before": [
+    "at_source(basin)",
+    "basin_returned()",
+    "collision_free()",
+    "content_in_source()",
+    "empty(1)",
+    "hand_raised(1)",
+    "holding(0,canL)",
+    "home(1)",
+    "parked(1)",
+    "source_upright()"
+  ],
+  "after": [
+    "collision_free()",
+    "content_in_source()",
+    "holding(0,canL)",
+    "holding(1,basin)",
+    "source_upright()"
+  ],
+  "model": {
+    "name": "pick_basin",
+    "args": {
+      "arm": "1",
+      "obj": "basin",
+      "dest": "pick_basin"
+    },
+    "program_kind": "pick",
+    "pre": [
+      "empty(1)",
+      "at_source(basin)",
+      "collision_free()"
+    ],
+    "add": [
+      "holding(1,basin)"
+    ],
+    "del": [
+      "empty(1)",
+      "at_source(basin)",
+      "parked(1)",
+      "home(1)",
+      "basin_returned()",
+      "hand_raised(1)"
+    ],
+    "description": "接收臂抓持接收盆，盆已离开桌面处于运输高度；抓持偏移可用于后续位置跟踪。"
+  },
+  "safety_ok": true,
+  "contract_effect_ok": true,
+  "missing_required_calls": [],
+  "code_sha256": "92ba95dfaf5925451bfcc1c7d88d0f5859a6304fc73a0058c743081ebf8668aa",
+  "consistency_scope": "full_CP",
+  "physical_diagnostics": {
+    "source": {
+      "returned": false,
+      "xy_error_m": 0.13044010665396885,
+      "bottom_gap_m": 0.1840636503922789,
+      "rotation_error_deg": 15.246465795185898,
+      "released": false,
+      "origin": [
+        0.2051479447374393,
+        0.22799297753932232,
+        0.6882999534899097
+      ]
+    },
+    "basin": {
+      "returned": false,
+      "xy_error_m": 0.03849245078392211,
+      "bottom_gap_m": 0.15243748524007517,
+      "rotation_error_deg": 2.289541884948991,
+      "released": false,
+      "origin": [
+        0.6067239699955459,
+        -0.23209896423656465,
+        0.668351794915176
+      ]
+    }
+  }
+}
