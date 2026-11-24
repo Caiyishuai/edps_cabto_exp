@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CABTO 三步实验：决策验收 + 增量闭环 + 同预算修复曲线</title><style>:root{color-scheme:dark;--bg:#0d1117;--panel:#161b22;--line:#30363d;--fg:#e6edf3;--dim:#9aa4b2;--blue:#58a6ff}*{box-sizing:border-box}body{background:var(--bg);color:var(--fg);margin:0;font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}main{max-width:1080px;margin:auto;padding:42px 28px 75px}h1{font-size:30px;line-height:1.4}h2{border-left:4px solid var(--blue);padding-left:12px;font-size:22px;margin-top:36px}h3,a{color:#79c0ff}code{font-size:.88em;padding:2px 5px;background:#0b1020;color:#79c0ff;border-radius:4px;overflow-wrap:anywhere}.muted,small{color:var(--dim)}.callout,blockquote{padding:16px 20px;border-left:4px solid var(--blue);background:var(--panel);margin:20px 0}.warn{border-color:#d29922}.good{border-color:#3fb950}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card{padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:8px}.card strong{font-size:24px;color:#79c0ff;display:block}table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}th,td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#1f242c}tr:nth-child(even){background:var(--panel)}li{margin:7px 0}footer{padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:13px;margin-top:40px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0b1020;padding:15px;border:1px solid var(--line);font-size:12.5px;border-radius:7px}@media(max-width:720px){main{padding:24px 16px}.cards{grid-template-columns:1fr}h1{font-size:25px}}</style></head><body><main>
+<p class="muted">2026-09-28 · 本地 MLX + 真实 MuJoCo · 三步实验落地</p>
+<h1>从「能生成文本」到「能逐步修对」<br>三步实验的结论</h1>
+<div class="callout warn"><strong>目标结论暂未成立：在当前 9B 模型下，CABTO 还不能用真实执行证据逐步修对并减少交互。</strong>但失败位置已经精确定位到「模型提案质量」这一层，而不是搜索、证据组织或执行验证——后者三块都被证明是正确的。</div>
+<div class="cards"><div class="card"><strong>4/16</strong>适配器能输出合法JSON<br><small>基座仅 2/16，且都缺决策核心字段</small></div><div class="card"><strong>6 vs 11</strong>规则与固定枚举的交互<br><small>两者都能修对并迁移到留出 8/8</small></div><div class="card"><strong>0/4</strong>模型方法确认修复<br><small>一次提案与增量反馈均未提出联合修复</small></div></div>
+
+<section><h2>1. 本轮做了什么</h2>
+<p>按上一轮评估确定的三步执行，全部落地并有可追溯产物：</p>
+<ol><li><strong>可用决策输出验收</strong>：比较未微调基座、12步适配器、确定性规则在结构化决策上的合法性、忠实性与复述。</li><li><strong>P2 增量修订闭环</strong>：把「一次生成完整候选」改为「按动作分组证据 → 提出局部修订 → 执行 → 反馈剩余失败 → 保留有效补丁 → 再提出」。</li><li><strong>同预算修复曲线</strong>：规则、固定枚举、一次提案、增量反馈四种方法在同一预算下比较，并做全新留出。</li></ol>
+<p>所有方法共享同一验收门：通过 4 个开发探针 + 2 个独立确认条件；赢家再在 2 个从未用过的新留出布局上验证。</p>
+</section>
+
+<section><h2>2. 第一步：决策输出验收（负结论）</h2>
+<p>在 16 条开发样本（诊断 10、预测 2、更新 4）上比较三种方法。诊断/更新的参考答案本身就是输入布尔值的确定性投影，规则基线应得满分；真正要回答的是「VLM 能否产生合法、忠实的决策」。</p>
+<table><tr><th>方法</th><th>诊断(10)</th><th>预测(2)</th><th>更新(4)</th><th>合法JSON</th><th>含决策核心字段</th><th>复述输入</th></tr>
+<tr><td>规则基线</td><td>10/10</td><td>2/2</td><td>4/4</td><td>16/16</td><td>16/16</td><td>0</td></tr>
+<tr><td>基座（未微调）</td><td>1/10</td><td>0/2</td><td>1/4</td><td>2/16</td><td>0/16</td><td>2</td></tr>
+<tr><td>12步适配器</td><td>3/10</td><td>0/2</td><td>1/4</td><td>4/16</td><td>0/16</td><td>3</td></tr></table>
+<p>「含决策核心字段」对三任务分别要求 <code>decision/physical/contract</code>、<code>physical/contract/joint</code>、<code>decision/physical_improved/contract_improved</code>。<strong>基座和适配器没有一条输出同时满足这些核心字段</strong>；少数合法JSON只是碎片（如只有 <code>{"contract_consistent": false}</code>）或复述输入（如原样输出 <code>evidence_ids</code>、<code>model</code>）。</p>
+<blockquote class="warn">结论：12 步适配器只把「完全不能输出JSON」微调到「偶尔输出碎片JSON」，尚未产生可用决策。12 条样本 × 12 步远不足以学会精确 schema；且 prompt 未给出字段级合同。这不影响 P2——P2 按评估建议改用 9B 文本模型，不依赖适配器。</blockquote>
+</section>
+
+<section><h2>3. 第二步 + 第三步：增量闭环与同预算修复（核心负结论）</h2>
+<p>任务：Blocks 中 <code>pick(payload) → stack(payload, support) → home</code>，故障为「抓取点偏高 45mm」与「目标支撑被占」。正确修复是 <strong>同时</strong>把抓取 offset 改回 0.0 并给 <code>stack</code> 加 <code>clear(support)</code> 前提。</p>
+<table><tr><th>方法</th><th>确认修复</th><th>交互(rollout)</th><th>全新留出</th><th>说明</th></tr>
+<tr><td>规则（确定性分阶段诊断）</td><td>✅</td><td>6</td><td>8/8</td><td>从证据直接判定两类失败，一次提出联合修复</td></tr>
+<tr><td>固定枚举（4 候选）</td><td>✅</td><td>11</td><td>8/8</td><td>盲枚举到第 4 个联合候选</td></tr>
+<tr><td>一次提案（9B 分阶段证据）</td><td>❌</td><td>2 / 1</td><td>—</td><td>分别提出 clear 或 offset，从不联合</td></tr>
+<tr><td>增量反馈（9B + 执行反馈）</td><td>❌</td><td>0 / 1</td><td>—</td><td>仍提出错误方向 offset，或被拒绝</td></tr></table>
+<p>共享基线证据 4 次 rollout 不计入各方法；每方法预算 16 次。规则（6）和固定枚举（11）都能找到联合修复并在两个全新留出布局（<code>red→blue</code>、<code>blue→green</code>，从未用过）上 8/8 通过。</p>
+
+<h3>模型到底提出了什么</h3>
+<table><tr><th>种子</th><th>候选</th><th>问题</th></tr>
+<tr><td>一次提案 2101</td><td><code>stack_clear_support</code>（clear，offset null）+ <code>pick_table_offset_fix</code>（offset 0.055）</td><td>clear 与 offset 分成两个候选；offset 方向错误</td></tr>
+<tr><td>一次提案 2102</td><td><code>controller_force_fix</code>（offset 0.045）</td><td>等于把注入值原样重提</td></tr>
+<tr><td>增量 2102 第0轮</td><td><code>grasp_offset_fix</code>（offset 0.055）</td><td>越加越高</td></tr>
+<tr><td>增量 2102 第1轮</td><td>offset 越界（被拒）</td><td>收到反馈后仍往错误方向</td></tr>
+<tr><td>增量 2101 第0轮</td><td>offset 越界（被拒）</td><td>—</td></tr></table>
+<blockquote>模型原文（增量 2102 第0轮）：「Grasp failures … show zero finger force at closure, indicating a controller/parameter issue. … proposes a fix … by adjusting the Z offset to 0.055」。</blockquote>
+<p><strong>失败根因是「诊断到参数的映射方向」：</strong>模型正确识别了「闭爪时双指力为零」，却提出把抓取点再抬高（0.055，比注入的 0.045 更高），方向反了；并且始终不把 <code>clear(support)</code> 与 offset 合并。</p>
+</section>
+
+<section><h2>4. 这条结论意味着什么</h2>
+<div class="callout good">三个机制的验证结果被干净地分离出来了：</div>
+<ul><li><strong>执行与验证机制正确</strong>：规则和固定枚举都能修对并迁移到全新留出 8/8，说明 MuJoCo 执行、契约检查、验收门都是对的。</li><li><strong>证据组织（分阶段）不足以救模型</strong>：分阶段证据下的一次提案仍失败，说明瓶颈不在证据是否按动作分组。</li><li><strong>增量反馈不足以救模型</strong>：给反馈后模型仍往错误方向，说明瓶颈也不在「一轮 vs 多轮」。</li><li><strong>瓶颈在模型提案本身</strong>：9B 模型无法把「零接触力」映射为「降低抓取高度」，也无法组合两个独立修复。这是诊断→参数推理的能力缺陷，不是搜索或验证问题。</li></ul>
+<p>这直接回应了上一轮的目标问题：<strong>「CABTO 能否用真实执行证据逐步修对并减少交互」——在当前 9B 模型下不能。</strong>且失败已被定位到最窄的一层：候选生成。</p>
+</section>
+
+<section><h2>5. 下一步</h2>
+<ol><li><strong>给模型正确的参数语义</strong>：把 offset 的方向/含义显式写进提示（「offset 是相对测量抓取点的增量，正=更高，负=更低；零接触力通常意味着抓取点过高，应减小 offset」），先排除「方向理解错误」这一可低成本修复的因素。</li><li><strong>分离单缺陷 vs 双缺陷</strong>：先测「只有抓取偏差」和「只有目标占用」两种单缺陷下模型能否各自修对；再测联合。这能把「参数映射错误」与「不会组合两个修复」分开归因。</li><li><strong>再用微调训练「分阶段诊断 + 参数映射 + 联合修订」</strong>：用规则和真实干预生成「诊断→正确修订」监督，训练适配器学会方向与组合；但先在第 1、2 步确认瓶颈后，再决定是否值得投入训练。</li><li><strong>保留全新留出</strong>：本轮 <code>red→blue</code>、<code>blue→green</code> 已打开，下一轮改方法后不能再用作「未见」。</li></ol>
+<p>最值得争取的下一条结论仍然是同一条，只是要先把「模型能否提出方向正确的单步修复」这个更小的前提做实，再谈「逐步修对 + 减少交互」。</p>
+</section>
+
+<section><h2>6. 文件与复现</h2>
+<table><tr><th>产物</th><th>位置</th></tr>
+<tr><td>决策验收入口与结果</td><td><code>project/experiments/evaluate_decision_quality.py</code> · <a href="../outputs/decision_acceptance_20260928_v1/adapter.json">适配器</a> · <a href="../outputs/decision_acceptance_20260928_v1/base.json">基座</a> · <a href="../outputs/decision_acceptance_20260928_v1/rule.json">规则</a></td></tr>
+<tr><td>P2 协议</td><td><code>project/experiments/blocks_p2_protocol.json</code></td></tr>
+<tr><td>P2 分阶段证据/增量提示</td><td><code>project/experiments/blocks_p2_candidates.py</code></td></tr>
+<tr><td>P2 四方法编排</td><td><code>project/experiments/run_blocks_p2.py</code></td></tr>
+<tr><td>P2 结果与原始提案</td><td><a href="../outputs/blocks_p2_20260928_v1/results.json"><code>outputs/blocks_p2_20260928_v1/</code></a></td></tr>
+<tr><td>上一轮评估记录</td><td><a href="cabto-next-step-assessment-20260928.md">评估与三步方案</a></td></tr></table>
+<p>P2 共 41 个物理试次全部有效、无 weld 违规；留出基线另计。未提交 Git，<code>outputs/</code> 仍是本地忽略目录。</p>
+</section>
+<footer>本报告区分了「执行验证正确」「证据组织无效」「反馈无效」「模型提案错误」四层，不把搜索/验证的问题误归于模型，也不把模型的失败美化成方法失败。</footer>
+</main></body></html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VisualPredicator 论文精读</title>
+<style>
+:root{
+  --ink:#102a28; --ink2:#33534f; --muted:#6d8a85;
+  --accent:#0d9488; --accent-soft:#e0f3f0;
+  --green:#0e7a4d; --green-soft:#e9f7f0;
+  --red:#b42318; --red-soft:#fdeceb;
+  --amber:#a16207; --amber-soft:#fff6e0;
+  --line:#d9e8e5; --bg:#f2f8f6; --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.hero{background:linear-gradient(135deg,#052e2b 0%,#0a4a43 55%,#0f6f64 100%);color:#fff;
+  padding:56px 24px 44px;margin-bottom:36px;}
+.hero-inner{max-width:980px;margin:0 auto;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.tag{font-size:12.5px;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);letter-spacing:.5px;}
+.tag.hl{background:#0d9488;border-color:#0d9488;}
+.hero h1{font-size:29px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.hero .sub{font-size:16.5px;color:#c2e6e0;margin-bottom:18px;}
+.hero .meta{font-size:14px;color:#a0cec7;}
+.hero a{color:#8fe0d6;text-decoration:none;border-bottom:1px dashed rgba(143,224,214,.5);}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:6px 8px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 18px rgba(10,60,55,.08);}
+.toc a{font-size:13.5px;color:var(--ink2);text-decoration:none;padding:5px 12px;border-radius:8px;}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;margin-bottom:28px;}
+h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;}
+h2 .no{font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:8px;padding:2px 10px;letter-spacing:1px;flex-shrink:0;}
+h3{font-size:17.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);}
+h3::before{content:"▎";color:var(--accent);margin-right:2px;}
+p{margin-bottom:14px;color:var(--ink2);}
+strong{color:var(--ink);}
+ul,ol{margin:0 0 14px 26px;color:var(--ink2);}
+li{margin-bottom:7px;}
+.tldr{background:linear-gradient(135deg,#e0f3f0,#d2ede9);border-left:5px solid var(--accent);
+  padding:22px 26px;border-radius:0 12px 12px 0;margin-bottom:28px;font-size:16.5px;}
+.tldr b{color:var(--accent);}
+figure{margin:22px 0;text-align:center;}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 3px 14px rgba(10,60,55,.08);}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.7;padding:0 18px;}
+.box{border-radius:12px;padding:18px 22px;margin:18px 0;font-size:15.5px;}
+.box .bt{font-weight:700;margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.box.insight{background:var(--green-soft);border:1px solid #bfe5d2;}
+.box.insight .bt{color:var(--green);}
+.box.warn{background:var(--red-soft);border:1px solid #f6c6c2;}
+.box.warn .bt{color:var(--red);}
+.box.key{background:var(--accent-soft);border:1px solid #bce4de;}
+.box.key .bt{color:var(--accent);}
+.formula{background:#eef6f4;border:1px dashed #b8d6d0;border-radius:10px;
+  padding:14px 20px;margin:14px 0;font-family:"Times New Roman",Georgia,serif;
+  font-size:16px;color:var(--ink);text-align:center;overflow-x:auto;}
+.code{background:#102a28;color:#cfe9e4;border-radius:10px;padding:16px 20px;
+  font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.7;
+  overflow-x:auto;margin:14px 0;white-space:pre;}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;}
+.tbl th{background:#eaf4f1;color:var(--ink);font-weight:700;padding:8px 10px;
+  border:1px solid var(--line);text-align:center;}
+.tbl td{padding:7px 10px;border:1px solid var(--line);text-align:center;color:var(--ink2);}
+.tbl td.l,.tbl th.l{text-align:left;}
+.tbl tr.ours td{background:#e0f3f0;font-weight:600;color:var(--ink);}
+.tbl .best{color:var(--accent);font-weight:700;}
+.chips{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.chip{flex:1;min-width:170px;background:#f5faf9;border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;}
+.chip .cv{font-size:22px;font-weight:800;color:var(--accent);}
+.chip .cl{font-size:13px;color:var(--muted);margin-top:2px;}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:40px;}
+code{background:#edf3f1;padding:1px 7px;border-radius:5px;font-size:13px;color:#0a6b60;}
+.linklist li{margin-bottom:9px;}
+@media (max-width:700px){section{padding:24px 20px;} .hero h1{font-size:23px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag-row">
+      <span class="tag hl">神经符号谓词</span>
+      <span class="tag">抽象世界模型</span>
+      <span class="tag">VLM 感知接地</span>
+      <span class="tag">在线谓词发明</span>
+      <span class="tag">ICLR 2025 · arXiv 2410.23156</span>
+    </div>
+    <h1>VisualPredicator：用神经符号谓词学习抽象世界模型，用于机器人规划</h1>
+    <div class="sub">VISUALPREDICATOR: Learning Abstract World Models with Neuro-Symbolic Predicates for Robot Planning</div>
+    <div class="meta">Yichao Liang, Nishanth Kumar, Hao Tang, Adrian Weller, Joshua B. Tenenbaum, Tom Silver, João F. Henriques, Kevin Ellis · Cambridge / Cornell / MIT / Princeton / Oxford / Turing Institute</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="tldr">
+  <b>一句话总结：</b>机器人规划既需要<strong>感知丰富</strong>（看出油腻的锅铲很难抓）又需要<strong>逻辑丰富</strong>（用天平称重时要数两边质量）的抽象。本文提出 <b>Neuro-Symbolic Predicates（NSP）</b>——一段能调用 VLM 查询感知属性、再用 Python 算法做逻辑运算的代码片段——作为一阶抽象语言，并给出<strong>在线</strong>发明谓词、学习抽象世界模型的算法。在 5 个仿真机器人域上，样本效率、分布外泛化、可解释性均优于分层强化学习、VLM 规划与符号谓词发明方法，逼近人类手工设计的 oracle 抽象。
+</div>
+
+<nav class="toc">
+  <a href="#s1">① 摘要解读</a>
+  <a href="#s2">② 背景与动机</a>
+  <a href="#s3">③ NSP 表示</a>
+  <a href="#s4">④ 学习算法</a>
+  <a href="#s5">⑤ 实验设置</a>
+  <a href="#s6">⑥ 结果与分析</a>
+  <a href="#s7">⑦ Insights</a>
+  <a href="#s8">⑧ 链接</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">01</span>摘要解读</h2>
+  <p>广泛智能的智能体应形成<strong>任务特定的抽象</strong>，选择性地暴露任务的关键要素、屏蔽原始感知运动空间的复杂性。本文提出 <strong>Neuro-Symbolic Predicates</strong>——一种<strong>一阶抽象语言</strong>，结合符号与神经知识表示的优势，并给出<strong>在线发明这些谓词、学习抽象世界模型</strong>的算法。</p>
+  <p>在分布内与分布外任务上，作者对比了分层强化学习（HRL）、VLM 规划、符号谓词发明三类方法，跨 5 个仿真机器人域。结果表明本方法<strong>样本复杂度更低、分布外泛化更强、可解释性更好</strong>。</p>
+  <div class="chips">
+    <div class="chip"><div class="cv">NSP</div><div class="cl">Python 代码 + VLM API 查询的一阶抽象语言</div></div>
+    <div class="chip"><div class="cv">5 域</div><div class="cl">PyBullet 仿真：Cover/Blocks/Coffee/Cover Heavy/Balance</div></div>
+    <div class="chip"><div class="cv">7 方法</div><div class="cl">对比 HRL/VLM/符号基线 + oracle</div></div>
+    <div class="chip"><div class="cv">≈ oracle</div><div class="cl">自主发现的抽象逼近专家手工设计</div></div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span>研究背景与动机（Introduction）</h2>
+  <h3>规划需要"感知 + 逻辑"双丰富的抽象</h3>
+  <p>以家用机器人为例：要知道"油腻的锅铲难抓"——判断"是否油腻"是<strong>微妙的感知问题</strong>；而用天平称重、判断天平朝哪边倾斜，则要数两边质量并比较——这是<strong>逻辑上精密的运算</strong>。传统机器人任务规划用<strong>硬编码的符号世界模型</strong>，无法适应新环境；近期工作用受限的学习形式推动抽象学习，但<strong>限制允许的感知与逻辑抽象、且需要示范数据</strong>，不能让机器人自主探索。</p>
+  <h3>NSP 的表示能力</h3>
+  <p>NSP 的表示能力带来两大突破：</p>
+  <ul>
+    <li><strong>更宽的感知原语</strong>：原则上 VLM 能感知的一切（颜色、材质、油腻程度、遮挡关系…）都可作为谓词；</li>
+    <li><strong>更深的逻辑结构</strong>：原则上 Python 可计算的任何东西（计数、比较、递归、循环…）都可编码进谓词。</li>
+  </ul>
+  <h3>三大挑战</h3>
+  <ol>
+    <li>谓词须从<strong>像素级输入</strong>学习，极其复杂且可能含噪；</li>
+    <li>不能过拟合训练情形，须<strong>零样本泛化</strong>到测试时的复杂新任务；</li>
+    <li>需要<strong>高效探索</strong>不同计划来收集学习好谓词所需的数据。</li>
+  </ol>
+  <div class="box key">
+    <div class="bt">核心洞见：把 VLM 的"看图说话"封装成"可组合的谓词"</div>
+    借鉴 ViperGPT / VisProg 的思路，NSP 让 VLM 回答"机器人是否抓住 jug？"这类自然语言断言，再在 Python 里对结果做算法操作（递归、计数、比较）。这样，感知的柔性与逻辑的严谨被统一进同一种可被标准规划器消费的符号表示。
+  </div>
+  <h3>三大贡献</h3>
+  <ol>
+    <li><strong>NSP</strong>：一种兼具逻辑与感知丰富特征的决策状态表示；</li>
+    <li><strong>发明 NSP 的算法</strong>：通过与环境的交互在线学习，并扩展了一个新的操作学习算法；</li>
+    <li><strong>评估</strong>：在 5 个仿真机器人任务上对比 6 种方法。</li>
+  </ol>
+  <figure>
+    <img src="assets/visual_fig1_preds.png" alt="学习到的 NSP 谓词示例">
+    <figcaption>图 1：机器人学习域示例，展示学到的神经符号谓词。(A) 做咖啡并倒入两个杯子——学到查询 VLM 判断咖啡壶是否在咖啡机内的谓词；(B) 用天平激活需平衡托盘的机器——学到判断天平是否平衡的谓词。</figcaption>
+  </figure>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span>NSP 表示：谓词与高层动作</h2>
+  <h3>3.1 谓词：抽象状态</h3>
+  <p>谓词 ψ 是状态的布尔特征，可被特定物体参数化。一谓词集 Ψ 诱导出抽象状态 = 当前状态下成立的所有"谓词-物体"组合：</p>
+  <div class="formula">ABSTRACT<sub>Ψ</sub>(x) = { (ψ, o₁, …, o<sub>m</sub>) : ψ(o₁,…,o<sub>m</sub>) 在状态 x 中成立 }</div>
+  <h3>3.2 两类 NSP</h3>
+  <ul>
+    <li><strong>Primitive NSP（原语谓词）</strong>：直接对原始状态求值，如 <code>Holding(obj)</code>（用 VLM 查询）、<code>GripperOpen()</code>（用本体感受）；</li>
+    <li><strong>Derived NSP（派生谓词）</strong>：只基于其他 NSP 的真值计算自身真值，如 <code>OnPlate</code> 递归判断"某块是否在盘子上、或在盘子上的东西上"。派生谓词处理逻辑丰富的关系（计数、递归、比较）。</li>
+  </ul>
+  <figure>
+    <img src="assets/visual_fig2_nsp.png" alt="Holding 与 OnPlate NSP 分类器">
+    <figcaption>图 2：Holding 与 OnPlate NSP 的分类器示例。Holding 直接查 VLM；OnPlate 是递归的派生谓词——判断块是否在盘上，或在盘上的东西上。</figcaption>
+  </figure>
+  <h3>3.3 提升原语谓词精度的两个技巧</h3>
+  <ol>
+    <li><strong>额外上下文</strong>：VLM 并非 100% 准确（遮挡、部分可观测）。因此谓词额外条件化于<strong>上一个动作</strong>、<strong>上一帧视觉观测</strong>、<strong>上一个真值</strong>（如"刚执行了 Pick(jug)"可消解"壶是被夹住还是仅仅在旁边"的歧义）；</li>
+    <li><strong>视觉编号标注</strong>：给 RGB 图中每个物体叠加唯一 ID 数字（沿用 SoM 做法），让 VLM 能精确回答"机器人抓住的是 block2"而非笼统的"抓住了某个块"。</li>
+  </ol>
+  <h3>3.4 高层动作（HLA）：细化动作空间</h3>
+  <p>HLA 为技能增补<strong>先决条件</strong>（哪些抽象状态允许成功使用该技能）与<strong>后置条件</strong>（技能如何变换抽象状态）。形式化：</p>
+  <div class="formula">ω = ⟨π, PRE, EFF⁺, EFF⁻⟩</div>
+  <p>谓词 + HLA 共同定义抽象世界模型，其转移函数 F 为：若 PRE ⊆ s，则新状态 = s ∪ EFF⁺ \ EFF⁻，否则未定义。关键约束：<strong>派生谓词不进入后置条件</strong>（因为可立即由原语谓词的真值算出）。</p>
+  <h3>3.5 分层规划与两类失败</h3>
+  <p>高层用标准符号规划器（A* + LM-Cut 自动启发式）先规划 HLA 序列，再逐条调用技能策略得到低层动作。学习正是由失败驱动：</p>
+  <ul>
+    <li><strong>失败 #1 Infeasible（不可行）</strong>：某技能执行失败；</li>
+    <li><strong>失败 #2 Not satisficing（不满足）</strong>：技能都成功执行，但未达成目标。</li>
+  </ul>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span>学习算法：与环境交互发明抽象</h2>
+  <p>Algorithm 1 交替进行"学习谓词（状态抽象）、学习 HLA（抽象转移函数）、与环境交互"三件事，跟踪最高训练解决率 ρ_best 与最少不可行计划数 ν_best。</p>
+
+  <h3>4.1 探索（Exploration）</h3>
+  <p>智能体用当前谓词/HLA 规划并执行，收集三类数据：<strong>正转移片段</strong>（成功执行的技能）、<strong>负状态-动作元组</strong>（执行失败的技能）、<strong>满足计划</strong>（若有）。</p>
+
+  <h3>4.2 提议谓词（Proposing Predicates）——三种 VLM 提示策略</h3>
+  <ol>
+    <li><strong>判别（Discrimination）</strong>：给 VLM 看技能成功/失败的示例状态，让它生成预测"技能何时可用"的代码——发现好的先决条件；</li>
+    <li><strong>转移建模（Transition Modeling）</strong>：给 VLM 看成功执行前后的快照，生成描述"哪些属性变了"的代码——发现好的后置条件；</li>
+    <li><strong>无条件生成（Unconditional Generation）</strong>：不依赖原始数据，让 VLM 把已有谓词做逻辑扩展——帮助创造派生谓词。</li>
+  </ol>
+
+  <h3>4.3 选择谓词集（Selecting Predicates）</h3>
+  <p>VLM 生成的谓词精度通常低（不是所有生成都有用），过多谓词又会过拟合。本文假设<strong>没有示范数据</strong>（早期可能找不到任何满足计划），因此设计了新目标：<strong>基于分类准确率 + 简洁偏置</strong>评分谓词集（先学 HLA，再算 HLA 的分类准确率）；后期收集到足够满足计划后切换到 Silver et al. (2023) 的目标（规划效率 + 简洁性）。用<strong>贪心最优优先搜索（GBFS）</strong>从目标谓词集出发逐个加入候选谓词。</p>
+
+  <h3>4.4 学习高层动作（Learning HLAs）</h3>
+  <p>沿用 <strong>cluster-and-intersect</strong> 操作学习算法并改进先决条件学习器。改进动机：Chitnis et al. (2022) 假设给定示范轨迹、学受限先决条件；本文智能体<strong>从零探索、无示范</strong>，需要<strong>更乐观的世界模型</strong>去探索未见情形。新的先决条件学习器保证：每条转移数据被<strong>恰好一个</strong> HLA 建模，并最小化 HLA 的语法复杂度以鼓励乐观模型。</p>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span>实验设置</h2>
+  <h3>实验平台（5 个 PyBullet 仿真域）</h3>
+  <table class="tbl">
+    <tr><th class="l">环境</th><th class="l">任务</th><th class="l">技能</th></tr>
+    <tr><td class="l">Cover</td><td class="l">拾放特定块覆盖桌面指定区域</td><td class="l">Pick / Place</td></tr>
+    <tr><td class="l">Blocks</td><td class="l">按指定配置搭建块塔</td><td class="l">Pick / Stack / PlaceOnTable</td></tr>
+    <tr><td class="l">Coffee</td><td class="l">装咖啡（放壶入机、煮、倒）</td><td class="l">Twist / Pick / Place / TurnMachineOn / Pour</td></tr>
+    <tr><td class="l">Cover Heavy</td><td class="l">Cover 变体：抬不动的大理石块（"不可能任务"）</td><td class="l">同 Cover</td></tr>
+    <tr><td class="l">Balance</td><td class="l">按下按钮激活机器（需两边放等量块）</td><td class="l">PressButton + Blocks 技能</td></tr>
+  </table>
+  <figure>
+    <img src="assets/visual_fig3_envs.png" alt="5 个仿真环境">
+    <figcaption>图 3：环境。上排为训练任务示例，下排为评估任务示例（物体更多、目标更复杂）。</figcaption>
+  </figure>
+  <h3>评估协议与指标</h3>
+  <ul>
+    <li>每结果对 5 个随机种子平均，每种子采样 <strong>50 个测试任务</strong>（物体更多、目标更复杂）；</li>
+    <li>训练任务数：Cover/Coffee 各 5、Cover Heavy/Balance 各 10、Blocks 20；</li>
+    <li>规划预算 n_abstract：除 Coffee（=100）外均为 8；</li>
+    <li>指标：<strong>solve rate（解决率）</strong> + <strong>planning budget utilization（规划预算使用率，越低越好）</strong>。</li>
+  </ul>
+  <h3>对比方法（7 种）</h3>
+  <table class="tbl">
+    <tr><th class="l">方法</th><th class="l">说明</th></tr>
+    <tr class="ours"><td class="l">Ours（本文）</td><td class="l">NSP 表示 + 在线谓词发明</td></tr>
+    <tr><td class="l">MAPLE</td><td class="l">HRL 基线：学 Q 函数选高层动作，不显式学谓词、不做规划（加了目标条件）</td></tr>
+    <tr><td class="l">ViLa</td><td class="l">VLM 规划基线：零样本 prompt VLM 规划动作序列，无学习</td></tr>
+    <tr><td class="l">Sym. pred.</td><td class="l">同算法但只能用常见物体特征写谓词（无开放式 VLM 查询、无派生谓词）</td></tr>
+    <tr><td class="l">Ablate op.</td><td class="l">不用扩展操作学习器的消融</td></tr>
+    <tr><td class="l">No invent</td><td class="l">只用初始抽象、不做任何学习</td></tr>
+    <tr><td class="l">Oracle</td><td class="l">手工设计谓词与操作的规划智能体（上界参考）</td></tr>
+  </table>
+</section>
+
+<section id="s6">
+  <h2><span class="no">06</span>实验结果与分析</h2>
+  <figure>
+    <img src="assets/visual_fig4_results.png" alt="解决率与规划预算">
+    <figcaption>图 4：上排为各域解决率（↑），下排为规划预算使用率（↓）。虚线表示解决所有任务所需的最少计划数（每任务 1 个计划）。</figcaption>
+  </figure>
+
+  <h3>6.1 Q1：全面超越 HRL 与 VLM 规划基线</h3>
+  <ul>
+    <li>本方法在<strong>所有域</strong>上一致超越 MAPLE 与 ViLa，达到接近满分的解决率；</li>
+    <li>MAPLE 即便在训练分布内、用相近交互数据也表现挣扎（稀疏奖励下的探索难题）；</li>
+    <li>ViLa 只在简单任务（Cover）尚可，一旦块初始就在机器人手里就会<strong>冗余重复抓取</strong>（过拟合迹象）；在复杂域常生成不可行计划（从堆中间抽块、不辨壶方向就抓）。</li>
+  </ul>
+
+  <h3>6.2 Q2：逼近手工 oracle 抽象</h3>
+  <p>本方法显著优于 No invent（证明学习谓词抽象的收益），达到与使用手工设计抽象的 Oracle 相近的解决率与效率——<strong>自主发现与人类专家手工打造的抽象同样有效</strong>。</p>
+
+  <h3>6.3 Q3：NSP 表示优于传统符号谓词</h3>
+  <p>Sym. pred.（只用物体特征、无 VLM 查询与派生谓词）在简单域尚可，但在需要<strong>感知线索接地</strong>的域失败：Coffee 里无法可靠判断"壶是否在咖啡机内"（TurnMachineOn 的关键先决条件）；Cover Heavy 里无法识别"抬不动的重块"；Balance 里没有派生 NSP 就难以推理"天平两边块数是否相等"。作者推测：把每状态所有物体的特征值对全塞进 prompt 会压垮 VLM，导致谓词发明质量差。</p>
+
+  <h3>6.4 Q4：扩展操作学习器的价值</h3>
+  <p>优于 Ablate op.——后者有时学到<strong>过于复杂、过拟合早期少量数据</strong>的先决条件（如给 Pour 加上 JugInMachine），阻碍后续学习或损害泛化。这体现了改进的操作学习器在数据稀缺、基于探索的学习场景下的价值。</p>
+</section>
+
+<section id="s7">
+  <h2><span class="no">07</span>核心 Insights</h2>
+  <div class="box insight">
+    <div class="bt">1. 感知与逻辑不必二选一，可用"代码 + VLM"统一</div>
+    NSP 的威力在于把 VLM 的自然语言问答封装成布尔谓词，再用 Python 做递归/计数/比较。这让抽象同时"看得懂"（感知）又"算得清"（逻辑），且能被标准符号规划器直接消费。
+  </div>
+  <div class="box insight">
+    <div class="bt">2. 用"上一个动作/观测"当上下文，缓解 VLM 的感知歧义</div>
+    部分可观测下单帧图像不唯一，但"刚执行了 Pick(jug)"这种动作上下文能消解遮挡歧义——把时序信息注入谓词求值是提升精度的廉价而有效手段。
+  </div>
+  <div class="box insight">
+    <div class="bt">3. 没有示范数据时，谓词选择要靠"分类准确率 + 简洁偏置"</div>
+    早期找不到满足计划，无法用需要示范的目标。本文用"先学 HLA 再算分类准确率"作为替代，后期再切换到规划效率目标——让在线学习在数据稀缺阶段也能启动。
+  </div>
+  <div class="box insight">
+    <div class="bt">4. 乐观世界模型对探索至关重要</div>
+    与"贴近示范"的保守先决条件相反，从零探索的智能体需要<strong>乐观</strong>的先决条件去尝试未见情形，再用失败数据修正——先决条件学习器的语法简洁性偏置正是为鼓励乐观而生。
+  </div>
+  <div class="box insight">
+    <div class="bt">5. 派生谓词是"逻辑丰富"的关键来源</div>
+    天平平衡（两边块数相等）这类抽象，靠单一 VLM 查询难以稳定判断，但用递归/计数的派生谓词就能可靠、高效地推理——这正是 NSP 相对"纯符号特征"方法的本质优势。
+  </div>
+</section>
+
+<section id="s8">
+  <h2><span class="no">08</span>论文与代码链接</h2>
+  <ul class="linklist">
+    <li>📄 论文（ICLR 2025）：<code>arXiv:2410.23156</code> — <a href="https://arxiv.org/abs/2410.23156">https://arxiv.org/abs/2410.23156</a></li>
+    <li>💻 代码（predicators 库，含 VisualPredicator 与后续 ExoPredicator）：<a href="https://github.com/BasisResearch/predicators">https://github.com/BasisResearch/predicators</a></li>
+    <li>🌐 图解博客：<a href="https://lis.csail.mit.edu/bilevel-planning-for-robots-an-illustrated-intro">lis.csail.mit.edu 双语层规划图解</a></li>
+    <li>🔗 相关前作：predicate invention（Silver et al. 2023）、operator learning（Chitnis et al. 2022）</li>
+  </ul>
+</section>
+
+<div class="foot">VisualPredicator 论文精读笔记 · 生成于 2026-09-27 · 图表均截取自原论文</div>
+</div>
+
+</body>
+</html>

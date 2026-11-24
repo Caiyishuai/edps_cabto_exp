@@ -1,9 +1,9 @@
 [
   {
     "backend": "qwen",
-    "object": "pan",
+    "object": "board",
     "point_kind": "support_floor_center",
-    "height_prior_m": 0.41000000000000003,
+    "height_prior_m": 0.42400000000000004,
     "height_source": "frozen_scene_support_surface_z",
     "fallback": false,
     "views": [
@@ -12,33 +12,33 @@
         "image_size": 720,
         "call": {
           "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
-          "text": "Point to the center of the inside floor of the black cooking pan. Output the pixel coordinate.",
+          "text": "Point to the center of the wooden chopping board. Output the pixel coordinate.",
           "image_files": [
-            "/Users/yishuaicai/mywork/edps_cabto_exp/project/attribution/out/cover/qwen/point_000_pan_overview.png"
+            "/Users/yishuaicai/mywork/edps_cabto_exp/project/attribution/out/cover/qwen/point_000_board_overview.png"
           ],
-          "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the inside floor of the black cooking pan. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+          "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the wooden chopping board. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
           "temperature": 0.0,
           "max_tokens": 180,
-          "raw": "```json\n[\n\t{\"point_2d\": [518, 401], \"label\": \"center of the inside floor of the black cooking pan.\"}\n]\n```",
-          "wall_seconds": 0.8719927499769256
+          "raw": "```json\n[\n\t{\"point_2d\": [418, 388], \"label\": \"center of the wooden chopping board\"}\n]\n```",
+          "wall_seconds": 0.8432130420114845
         },
         "coordinate_contract": "absolute_pixel",
         "contract_source": "fixed model-family convention, checked with current-scene diagnostic; no per-point GT choice",
         "parsed_field": "point_2d",
         "uv": [
-          518.0,
-          401.0
+          418.0,
+          388.0
         ],
         "xyz": [
-          0.6905545535732343,
-          0.22577715137631693,
-          0.4099999999999999
+          0.49309019651229036,
+          0.13731553035612865,
+          0.42400000000000015
         ],
         "evaluation_only_gt_uv": [
-          496.4124945954859,
-          413.33331684429334
+          421.7536312182202,
+          382.5959963335118
         ],
-        "evaluation_only_pixel_error": 24.862242335953034,
+        "evaluation_only_pixel_error": 6.579741860423976,
         "evaluation_time": "before any movement"
       },
       {
@@ -46,37 +46,127 @@
         "image_size": 720,
         "call": {
           "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
-          "text": "Point to the center of the inside floor of the black cooking pan. Output the pixel coordinate.",
+          "text": "Point to the center of the wooden chopping board. Output the pixel coordinate.",
           "image_files": [
-            "/Users/yishuaicai/mywork/edps_cabto_exp/project/attribution/out/cover/qwen/point_000_pan_front.png"
+            "/Users/yishuaicai/mywork/edps_cabto_exp/project/attribution/out/cover/qwen/point_000_board_front.png"
           ],
-          "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the inside floor of the black cooking pan. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+          "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the wooden chopping board. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
           "temperature": 0.0,
           "max_tokens": 180,
-          "raw": "```json\n[\n\t{\"point_2d\": [538, 411], \"label\": \"center of the inside floor of the black cooking pan.\"}\n]\n```",
-          "wall_seconds": 1.704487832961604
+          "raw": "```json\n[\n\t{\"point_2d\": [422, 378], \"label\": \"center of the wooden chopping board\"}\n]\n```",
+          "wall_seconds": 0.7753240830497816
         },
         "coordinate_contract": "absolute_pixel",
         "contract_source": "fixed model-family convention, checked with current-scene diagnostic; no per-point GT choice",
         "parsed_field": "point_2d",
         "uv": [
-          538.0,
-          411.0
+          422.0,
+          378.0
         ],
         "xyz": [
-          0.6760724509305361,
-          0.18802564931783416,
-          0.41000000000000003
+          0.4911530241116474,
+          0.12680000016239446,
+          0.42400000000000004
         ],
         "evaluation_only_gt_uv": [
-          524.696692739025,
-          416.5646900105535
+          434.1307044309956,
+          370.54388529955065
         ],
-        "evaluation_only_pixel_error": 14.420255163951266,
+        "evaluation_only_pixel_error": 14.238947869081935,
         "evaluation_time": "before any movement"
       }
     ],
-    "view_disagreement_m": 0.04043398576229249,
-    "error": "Cross-view xy disagreement 0.040m exceeds 0.025m; no oracle fallback"
+    "view_disagreement_m": 0.010692474557610515,
+    "xyz": [
+      0.4921216103119689,
+      0.13205776525926155,
+      0.4240000000000001
+    ],
+    "evaluation_only_xy_error_m": 0.02802266426702471
+  },
+  {
+    "backend": "qwen",
+    "object": "board",
+    "point_kind": "support_floor_center",
+    "height_prior_m": 0.42400000000000004,
+    "height_source": "frozen_scene_support_surface_z",
+    "fallback": false,
+    "views": [
+      {
+        "camera": "overview",
+        "image_size": 720,
+        "call": {
+          "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+          "text": "Point to the center of the wooden chopping board. Output the pixel coordinate.",
+          "image_files": [
+            "/Users/yishuaicai/mywork/edps_cabto_exp/project/attribution/out/cover/qwen/point_001_board_overview.png"
+          ],
+          "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the wooden chopping board. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+          "temperature": 0.0,
+          "max_tokens": 180,
+          "raw": "```json\n[\n\t{\"point_2d\": [422, 392], \"label\": \"center of the wooden chopping board\"}\n]\n```",
+          "wall_seconds": 0.8239293328952044
+        },
+        "coordinate_contract": "absolute_pixel",
+        "contract_source": "fixed model-family convention, checked with current-scene diagnostic; no per-point GT choice",
+        "parsed_field": "point_2d",
+        "uv": [
+          422.0,
+          392.0
+        ],
+        "xyz": [
+          0.5077755982063,
+          0.12850267489848433,
+          0.42400000000000015
+        ],
+        "evaluation_only_gt_uv": [
+          421.7536312182202,
+          382.5959963335118
+        ],
+        "evaluation_only_pixel_error": 9.407230332885423,
+        "evaluation_time": "before any movement"
+      },
+      {
+        "camera": "front",
+        "image_size": 720,
+        "call": {
+          "model_id": "mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+          "text": "Point to the center of the wooden chopping board. Output the pixel coordinate.",
+          "image_files": [
+            "/Users/yishuaicai/mywork/edps_cabto_exp/project/attribution/out/cover/qwen/point_001_board_front.png"
+          ],
+          "formatted_prompt": "<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>Point to the center of the wooden chopping board. Output the pixel coordinate.<|im_end|>\n<|im_start|>assistant\n",
+          "temperature": 0.0,
+          "max_tokens": 180,
+          "raw": "```json\n[\n\t{\"point_2d\": [418, 378], \"label\": \"center of the wooden chopping board\"}\n]\n```",
+          "wall_seconds": 0.7763412079075351
+        },
+        "coordinate_contract": "absolute_pixel",
+        "contract_source": "fixed model-family convention, checked with current-scene diagnostic; no per-point GT choice",
+        "parsed_field": "point_2d",
+        "uv": [
+          418.0,
+          378.0
+        ],
+        "xyz": [
+          0.48633858780313166,
+          0.12236001995517565,
+          0.42400000000000004
+        ],
+        "evaluation_only_gt_uv": [
+          434.1307044309956,
+          370.54388529955065
+        ],
+        "evaluation_only_pixel_error": 17.770573200276846,
+        "evaluation_time": "before any movement"
+      }
+    ],
+    "view_disagreement_m": 0.022299722526930764,
+    "xyz": [
+      0.49705709300471584,
+      0.12543134742683,
+      0.4240000000000001
+    ],
+    "evaluation_only_xy_error_m": 0.03528164256949701
   }
 ]

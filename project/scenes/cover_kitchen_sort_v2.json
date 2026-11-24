@@ -1,7 +1,7 @@
 {
   "version": "cover_kitchen_sort_v2",
   "task": "cover",
-  "specification": "On a longer kitchen worktop, the upright bowl, chopping board, and pan form the back row. Shrimp, apple, and potato form the front row. Place shrimp into the bowl, apple onto the chopping board, and potato into the pan; release every object, withdraw, and return the arm to HOME.",
+  "specification": "On a longer kitchen worktop, the upright bowl, chopping board, and pan form the back row. Shrimp, apple, and green pepper form the front row. Place shrimp into the bowl, apple onto the chopping board, and green pepper into the pan; release every object, withdraw, and return the arm to HOME.",
   "robot_base": [0.0, 0.0, 0.4],
   "table_center": [0.47, 0.0, 0.375],
   "table_half_size": [0.46, 0.36, 0.025],
@@ -16,27 +16,27 @@
   "items": {
     "shrimp": [0.31, -0.19],
     "apple": [0.49, -0.19],
-    "potato": [0.67, -0.19]
+    "pepper": [0.67, -0.19]
   },
   "pairs": [
     ["shrimp", "bowl"],
     ["apple", "board"],
-    ["potato", "pan"]
+    ["pepper", "pan"]
   ],
   "grip_offset_z": {
     "shrimp": 0.011,
     "apple": 0.002,
-    "potato": 0.003
+    "pepper": 0.003
   },
   "placement_origin_z": {
     "shrimp": 0.016,
     "apple": 0.047,
-    "potato": 0.030
+    "pepper": 0.030
   },
   "target_xy_tolerance_m": {
     "shrimp": 0.025,
     "apple": 0.030,
-    "potato": 0.025
+    "pepper": 0.025
   },
   "support_surface_z": {
     "bowl": 0.008,

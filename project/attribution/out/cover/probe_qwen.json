@@ -52,7 +52,7 @@
         ],
         "missing_preserved_pre": []
       },
-      "probe3_exception": "ValueError: Cross-view xy disagreement 0.044m exceeds 0.025m; no oracle fallback"
+      "probe3_exception": "ValueError: Cross-view xy disagreement 0.035m exceeds 0.025m; no oracle fallback"
     },
     {
       "action_id": "place(object=apple,support=board)",
@@ -71,7 +71,7 @@
         ],
         "missing_preserved_pre": []
       },
-      "probe3_exception": "ValueError: Cross-view xy disagreement 0.041m exceeds 0.025m; no oracle fallback"
+      "probe3_exception": "ValueError: Cross-view xy disagreement 0.044m exceeds 0.025m; no oracle fallback"
     },
     {
       "action_id": "pick(object=potato,support=pan)",
@@ -90,7 +90,7 @@
         ],
         "missing_preserved_pre": []
       },
-      "probe3_exception": "ValueError: Cross-view xy disagreement 0.163m exceeds 0.025m; no oracle fallback"
+      "probe3_exception": "ValueError: Cross-view xy disagreement 0.138m exceeds 0.025m; no oracle fallback"
     },
     {
       "action_id": "place(object=potato,support=pan)",
@@ -109,7 +109,7 @@
         ],
         "missing_preserved_pre": []
       },
-      "probe3_exception": "ValueError: Cross-view xy disagreement 0.040m exceeds 0.025m; no oracle fallback"
+      "probe3_exception": "ValueError: Cross-view xy disagreement 0.048m exceeds 0.025m; no oracle fallback"
     },
     {
       "action_id": "home()",

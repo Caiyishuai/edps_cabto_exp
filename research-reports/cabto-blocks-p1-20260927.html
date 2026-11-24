@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CABTO Blocks P1：真实模型候选生成与预算搜索</title><style>
+:root{color-scheme:dark;--bg:#0d1117;--panel:#161b22;--line:#30363d;--fg:#e6edf3;--muted:#9aa4b2;--accent:#58a6ff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}main{max-width:1120px;margin:auto;padding:42px 30px 80px}h1{line-height:1.4;font-size:32px}h2{margin-top:40px;padding-left:12px;border-left:4px solid var(--accent)}h3{color:#79c0ff}a{color:var(--accent)}code{padding:2px 5px;background:#0b1020;border-radius:4px;color:#79c0ff;font-size:.88em;overflow-wrap:anywhere}.muted,small{color:var(--muted)}.callout,blockquote{background:var(--panel);border-left:4px solid var(--accent);padding:18px 22px;margin:20px 0}.warning{border-color:#d29922}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:18px}.card strong{display:block;font-size:26px;color:#79c0ff}.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px;margin:18px 0}th,td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top}th{background:#1f242c}tr:nth-child(even){background:var(--panel)}li{margin:8px 0}.flow{padding:18px;border:1px solid var(--line);border-radius:8px;line-height:2}details{border:1px solid var(--line);padding:14px 18px;border-radius:7px;margin:15px 0}summary{cursor:pointer;color:#79c0ff}footer{border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:13px;margin-top:40px}@media(max-width:720px){main{padding:24px 16px}.cards{grid-template-columns:1fr}h1{font-size:27px}}
+</style></head><body><main>
+<p class="muted">2026-09-27 · P1 首轮 · 实际本地 Qwen3.5-9B-4bit · MuJoCo 执行 · 负结果完整保留</p>
+<h1>CABTO 能否自己提出正确修订，<br>并用更少交互找到它？</h1>
+<div class="callout warning"><strong>本轮答案：在当前9B模型、提示与候选语言下，没有找到通过整套开发检验的修订；因此不能声称节省了“找到正确修复”的交互。</strong> 模型确实提出了一些能修复单一抓取条件的参数，但没有解决同时存在的目标占用问题。失败候选被真实执行和拒绝，系统最终弃权，没有补入P0的标准答案。</div>
+<div class="cards"><div class="card"><strong>3次 / 11项</strong>实际模型生成 / 原始候选条目<br><small>9项通过结构校验，7种不同修订</small></div><div class="card"><strong>0 / 3</strong>生成池中出现完整可确认修订<br><small>三次共享同一开发证据，不是三种独立任务</small></div><div class="card"><strong>70次</strong>实际物理仿真episode<br><small>4基线＋52搜索＋12留出基线＋2负对照</small></div></div>
+<section><h2>1. 与P0相比，这次真正改变了什么</h2>
+<ul><li><strong>正确修订不再写进候选配置。</strong>真实9B模型返回允许动作的正前提追加及抓取Z偏移参数；宿主只做类型、语法、边界和物理验证。</li><li><strong>允许错误候选。</strong>数值越界、字段错误、语义错误、无效前提全部留下原始回复和拒绝原因。格式合法不意味着修复正确。</li><li><strong>允许弃权。</strong>模型可主动abstain；搜索池耗尽、预算用完或基础设施出错也不部署未确认候选。</li><li><strong>真实执行搜索次序。</strong>模型排名、两种固定随机排列和规范枚举各自新建仿真执行，没有先全跑再重排缓存。</li><li><strong>全新留出。</strong>新坐标、新有向物体配对，与P0和本轮开发/确认划分不重合；提案与搜索冻结之后才打开。</li></ul>
+<p>仍保留的先验：固定Oracle感知、已知谓词语言、已有抓放/清障技能、工程控制器、同尺寸同质量四色块；只修正现有动作的前提及一个共享抓取参数，不学习新谓词或完整控制程序。</p>
+<p>本轮是<strong>一次提案批次→固定池顺序搜索</strong>，并未测完CABTO所有可能的多轮跨层反馈策略。负结果不能推广为“CABTO原则上不可能自修复”。</p>
+</section>
+<section><h2>2. 预先冻结的协议</h2>
+<div class="flow">4条真实开发基线 → 隔离后的公共执行证据 → 3次9B独立解码 → 原始回复/候选池冻结 → 同池四种搜索次序 → 4个开发探针全部通过 → 2个独立布局确认 → 冻结赢家或弃权 → 新留出布局</div>
+<table><tr><th>项目</th><th>实际设置</th></tr><tr><td>模型</td><td><code>mlx-community/Qwen3.5-9B-4bit</code>；固定本地snapshot；离线加载；所有权重分片和配置均记录SHA256</td></tr><tr><td>解码</td><td>seed 1701/1702/1703；temperature 0.2；关闭thinking；每次最多1800输出tokens；每批最多4候选；没有格式失败后的人工补答</td></tr><tr><td>模型可见</td><td>当前动作pre/add/del、实际参数、前后符号状态、失败API trace、接触力与异常；提供谓词和参数语言合同</td></tr><tr><td>模型不可见</td><td>注入标签、P0正确补丁、协议中的评测布局、未来候选执行结果、留出结果</td></tr><tr><td>可修改</td><td>最多3个正前提追加；已有动作的object/support绑定变量；抓取偏移替换值在−8mm到55mm；null表示保留原值</td></tr><tr><td>不可修改</td><td>效果、目标、安全阈值、物体、仿真状态、控制器、步数预算</td></tr><tr><td>搜索</td><td>模型排序、random901、random902、规范枚举；同候选池同过滤；每方法最多20次候选物理rollout；前两类首个确认成功即停</td></tr><tr><td>候选通过标准</td><td>4条开发条件全部完成目标且完整迁移/物理验收通过，再通过独立确认布局的混合条件与正常条件；仅单条成功不接受</td></tr></table>
+<p>“枚举”只指冻结有限候选池，不是枚举连续参数空间；预算内枚举也不保证评估所有候选。连续实数不可有限穷举。本轮候选全失败，实际均先耗尽池，未耗尽20次上限。</p>
+<p><a href="../project/experiments/blocks_p1_protocol.json">完整协议</a> · <a href="../outputs/blocks_p1_20260927_v1/proposal_messages.json">实际公共提示</a> · <a href="../outputs/blocks_p1_20260927_v1/model_identity.json">模型身份与分片哈希</a></p>
+</section>
+<section><h2>3. 模型真实提出了什么</h2>
+<div class="scroll"><table><tr><th>解码seed</th><th>原始/合法候选数</th><th>主要修订</th><th>实际问题</th></tr><tr><td>1701</td><td>3 / 3</td><td>偏移−8mm；偏移20mm；给pick_table追加已有的clear(object)</td><td>−8mm可修复一个无遮挡抓取任务，但随后目标占用仍失败；20mm抓姿不通过；重复已有前提没有修复作用</td></tr><tr><td>1702</td><td>4 / 3</td><td>偏移10mm、20mm、5mm；另一个pre_add字段写成字符串数组</td><td>两项小偏移可完成无遮挡任务，但都不能处理占用目标；字段错误被结构检查拒绝</td></tr><tr><td>1703</td><td>4 / 3</td><td>偏移60mm、35mm、8mm；追加已有的clear(object)</td><td>60mm超出预设范围被拒绝；35mm无有效双指抓取；8mm仍不解决占用；重复前提无效</td></tr></table></div>
+<p>共11个原始条目，结构上合法9个，跨三次生成去重后7种修订。<strong>没有任何候选给stack添加目标Clear条件，也没有形成有效的联合修订。</strong>结构合法候选全部按原输出执行，未替换成工程答案。</p>
+<h3>关键错误：把动作阶段混在一起</h3>
+<p>开发证据中，45mm偏移导致抓取闭合时双指力为零；0mm条件下另一次失败发生在<strong>stack的lower阶段</strong>。模型却把这两类失败混为抓取高度问题，提出更多高度修正。</p>
+<blockquote>seed1701 原文片段：<br>“A second failure at 0.0m offset suggests the current grasp center estimate is inaccurate or the approach height is insufficient for contact.”</blockquote>
+<p>这段解释并没有准确定位第二次失败的动作层。另有模型把“增加已有clear(object)”当作新修复。说明本轮困难是<strong>跨动作证据对齐与候选覆盖不足</strong>，不是候选执行器无法表达正确修订。</p>
+<p>真实原文：<a href="../outputs/blocks_p1_20260927_v1/proposals/seed1701/call.json">seed1701</a> · <a href="../outputs/blocks_p1_20260927_v1/proposals/seed1702/call.json">seed1702</a> · <a href="../outputs/blocks_p1_20260927_v1/proposals/seed1703/call.json">seed1703</a>。三次分别生成425、482、530 tokens，均正常stop，无截断。</p>
+</section>
+<section><h2>4. 更少交互找到了吗？没有</h2>
+<table><tr><th>生成池</th><th>模型排名</th><th>随机901</th><th>随机902</th><th>规范枚举</th><th>确认通过</th></tr><tr><td>1701</td><td>4次</td><td>4次</td><td>4次</td><td>4次</td><td>0</td></tr><tr><td>1702</td><td>5次</td><td>5次</td><td>5次</td><td>5次</td><td>0</td></tr><tr><td>1703</td><td>4次</td><td>4次</td><td>4次</td><td>4次</td><td>0</td></tr><tr><th>合计</th><th>13次</th><th>13次</th><th>13次</th><th>13次</th><th>0 / 12条搜索流程</th></tr></table>
+<p>表中为<strong>额外候选搜索rollout</strong>。若把每种方法作为独立部署，仍需计入生成公共证据的4次基线，对应每池8/9/8次总物理交互；本次研究实际共享这些基线，只执行一次，不能重复计算为研究总成本。</p>
+<p>所有候选都在开发探针阶段失败，没有进入独立确认，因此确认成本为0。所有方法最终为 <code>pool_exhausted_abstain</code>。52次搜索执行中有16次完成了某个局部测试任务，但<strong>局部通过不等于候选通过全套检验</strong>。</p>
+<div class="callout warning"><strong>找到首个正确修复的成本在本轮没有观测到。</strong>4或5次是“耗尽当前失败池”的成本，不是“成功修复成本”。因为池中无完整解，本轮无法有效评价成功情况下的排序优势；不能把提前拒绝或零确认成本宣传成效率提升。</div>
+<p>两个固定随机seed在三元素池上恰好得到相同排列，这进一步限制随机对照强度；它们仍实际分别执行，但不能视作两种不同排序证据。三次生成也共享同一开发环境和提示，不是独立环境样本。</p>
+<p><a href="../outputs/blocks_p1_20260927_v1/searches_frozen.json">完整冻结搜索与成本记录</a></p>
+</section>
+<section><h2>5. 弃权和错误候选是否真的生效</h2>
+<h3>真实模型的错误候选</h3><ul><li>60mm偏移被安全范围拒绝，不做自动裁剪；错误字段被拒绝，不补成合法前提。</li><li>35mm/20mm等格式合法偏移进入物理执行，因抓取力/几何或后续放置失败被拒绝。</li><li>重复已有前提可以结构合法，但在实际任务中没有改善，不能被认为是有效修复。</li></ul>
+<h3>独立工程负对照</h3><p>额外测试错误50mm偏移、stack加入empty这一矛盾前提、未知magic谓词。三者均未获接受；前者真实执行失败，后两者在模型/语法检查时拒绝。一个全坏候选池最终弃权，没有兜底到正确候选。它们<strong>不在LM主候选池内，也不计入主方法优势</strong>。</p>
+<h3>无证据时模型主动弃权：意图正确，格式仍失败</h3><p>额外真实调用给空观察证据，模型返回 <code>decision="abstain"</code>，但遗漏必填 <code>candidates: []</code>。严格解析器将它记为 <code>rejected_response</code>。准确口径是：<strong>表达了弃权意图，但没有完成一次格式有效的模型弃权</strong>。不能把它算作100%可靠的弃权能力。</p>
+<p>相比之下，物理搜索的弃权逻辑在12条流程中确实执行，没有部署任何未确认修复。</p>
+<p><a href="../outputs/blocks_p1_20260927_v1/negative_controls/results.json">负对照记录</a> · <a href="../outputs/blocks_p1_20260927_v1/insufficient_evidence/call.json">无证据原始回复</a> · <a href="../outputs/blocks_p1_20260927_v1/insufficient_evidence/parsed.json">严格解析结果</a></p>
+</section>
+<section><h2>6. 全新留出布局：未部署不等于失败实验</h2>
+<table><tr><th>划分</th><th>目标配对</th><th>用途</th></tr><tr><td>开发</td><td>blue → yellow</td><td>4条件生成观察与候选检验</td></tr><tr><td>确认</td><td>green → blue</td><td>预留确认，因候选未过开发而未执行</td></tr><tr><td>新留出1</td><td>red → yellow</td><td>与P0及开发/确认不重合</td></tr><tr><td>新留出2</td><td>blue → red</td><td>与P0及开发/确认不重合</td></tr><tr><td>新留出3</td><td>yellow → red</td><td>与P0及开发/确认不重合</td></tr></table>
+<p>搜索封存后，三个新布局各执行4种条件的未修订基线，共12次，3次正常条件成功。由于没有已确认候选，<strong>修订策略的留出物理执行为0次</strong>，没有修订后泛化成功率可报告。</p>
+<p>旧v1结果JSON为144条弃权部署记录填了 <code>success=false, trial_valid=null, abstained=true</code>。这些是12条搜索流程×12个测试请求的决策记录，<strong>绝不是144次物理失败或独立样本</strong>。审计按abstained字段区分；后续代码已改为success=null，原始v1文件未重写。</p>
+<p><a href="../outputs/blocks_p1_20260927_v1/heldout/results.json">新留出结果及弃权记录</a> · <a href="../outputs/blocks_p1_20260927_v1/heldout/baseline/p1-h1/condition3/before.png">新布局初态图</a> · <a href="../outputs/blocks_p1_20260927_v1/heldout/baseline/p1-h1/condition3/after.png">正常条件完成图</a></p>
+</section>
+<section><h2>7. 成本、检查和审计</h2>
+<table><tr><th>账项</th><th>实际rollout</th><th>高层动作尝试</th><th>API调用</th><th>仿真秒数</th></tr><tr><td>公共开发基线</td><td>4</td><td>7</td><td>31</td><td>54.82</td></tr><tr><td>12条顺序搜索</td><td>52</td><td>100</td><td>436</td><td>797.04</td></tr><tr><td>新留出基线</td><td>12</td><td>21</td><td>93</td><td>163.62</td></tr><tr><td>独立工程负对照</td><td>2</td><td>2</td><td>10</td><td>13.52</td></tr><tr><th>合计</th><th>70</th><th>130</th><th>570</th><th>1029.00</th></tr></table>
+<p>另有2个静态拒绝记录，没有物理rollout。三次主要生成总1437 tokens，额外无证据检查39 tokens；主要生成耗时约36.38秒，额外检查约1.21秒。这些都不是完整端到端成本：权重读取/哈希、每次源码核验、输出和开发时间另计；仿真时间不含初始化前的全部工作。</p>
+<ul><li>真实模型使用缓存离线权重，记录模型revision、分片SHA256、实际formatted prompt、原始raw、生成token和结束原因。</li><li>所有70次物理试次有效，无基础设施无效试次；成功试次中完整符号迁移均匹配；没有weld违规记录。</li><li>审计核对原始回复→解析候选池→实际候选recipe→物理模型/策略文件→搜索成本，未发现本批数据被替换。</li><li>运行版本有源码快照。实验结束后补强了深JSON/超大整数拒绝、gate重复字段绑定、枚举成功后的故障处理；不重问模型、不重跑实验、不把新代码结果覆盖旧证据。</li><li>加固后的兼容性及P1测试共41项通过；其中预算与门禁测试包含mock，不将其作为机器人性能实验。</li><li>冻结是本地哈希与快照约束，不是外部签名或不可篡改存证；同一用户可改动所有本地文件，不能夸大为安全证明。</li></ul>
+<p><a href="../outputs/blocks_p1_20260927_v1_audit.json">完整只读审计JSON</a> · <a href="../outputs/blocks_p1_20260927_hardened_tests.log">41项测试日志</a> · <a href="../project/experiments/audit_blocks_p1.py">可重复审计入口</a></p>
+</section>
+<section><h2>8. 这次负结果意味着什么</h2>
+<p><strong>P0回答的是：</strong>“如果给定正确的前提和参数修订，机器人能否完成任务？”答案是有限条件下可以。</p>
+<p><strong>P1回答的是：</strong>“真实9B从混合执行反馈中能否提出这种完整修订？”本轮没有；它可以提出局部有效参数，但没有正确处理动作阶段、关联条件和已有前提。</p>
+<p>两者之间的差距正是CABTO目前需要攻克的地方。继续扩大固定候选实验成功率不会填平这个差距；单纯换更聪明的排序器，也无法在没有正确解的池中找到解。</p>
+<h3>最有针对性的下一轮，而不是继续美化成绩</h3>
+<ol><li><strong>按动作阶段整理证据。</strong>分别给出pick与stack的成败对照及已有前提，保留原始trace；检验是否减少将放置失败误归因到抓取的情况。</li><li><strong>加入真实执行反馈后的有限重提。</strong>预先规定最多几轮、每轮预算和失败反馈格式；只反馈候选实际在哪一步失败，不告诉模型应加哪个前提。</li><li><strong>把新增信息与成本一起记账。</strong>比较一次批量生成、按阶段生成、执行反馈重提；同等总模型token与物理交互预算，不只比成功者。</li><li><strong>保留无法修复的情况。</strong>加入候选语言无法表达的故障，检验是否真正弃权，而不是不停调整无关参数。</li><li><strong>再封存新的测试集。</strong>本轮三个新布局已打开，若下一轮按本轮反馈改方法，就不能继续称它们为未见留出。</li></ol>
+<div class="callout"><strong>结论：</strong>当前瓶颈首先是“提出覆盖全部缺陷的候选”，其次才是“以更少交互找到候选”。本轮提供了可追溯的负证据和可运行底座，但没有证明自主完整修复或交互节省。</div>
+</section>
+<section><h2>9. 文件与复现入口</h2>
+<ul><li>协议：<code>project/experiments/blocks_p1_protocol.json</code></li><li>真实模型与候选合同：<code>project/experiments/blocks_p1_candidates.py</code></li><li>编排：<code>project/experiments/run_blocks_p1.py</code>，阶段为propose/search/controls/heldout</li><li>测试：<code>project/experiments/test_blocks_p1.py</code></li><li>只读审计：<code>project/experiments/audit_blocks_p1.py</code></li><li>全部原始产物：<code>outputs/blocks_p1_20260927_v1/</code></li></ul>
+<p>P0执行器仅增加可选 <code>models_override</code> 和候选PlanningError分类，原P0调用方式兼容。旧产物的哈希不会冒充新源码；需要复现历史结果时应依据其源码快照与manifest。新实验必须新建输出目录，不覆盖历史数据。没有Git提交；<code>outputs/</code>仍是本地忽略目录，不代表已备份。</p>
+</section>
+<footer>主实验仅运行一次预设协议。失败之后未手改候选，未用留出反馈重提，也未补入P0标准答案。报告区分：局部执行成功、完整修订确认、模型弃权意图、结构拒绝、系统弃权和实际部署。</footer>
+</main></body></html>

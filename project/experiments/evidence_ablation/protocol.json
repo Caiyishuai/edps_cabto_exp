@@ -1,0 +1,45 @@
+{
+  "version": "evidence-ablation-v1",
+  "main_question": "在有限交互下，建立与实际能力匹配、且能支持任务组合的技能契约。",
+  "experiment_question": "在相同物理执行经验下，视觉证据回看能否减少错误的契约更新（错误收紧/错误接受），而不只是提高视觉问答准确率。",
+  "scope": "offline_synthetic_visibility_pilot; no training; no VLM online call; no physical execution; mechanism check before real VLM/physical integration",
+  "notes": [
+    "The visibility model and per-episode predicate truth are injected ground truth for a controlled mechanism check; they are NOT claims about physically self-consistent scenes.",
+    "The judge sees only the readout of the frames it is given. The oracle truth used for scoring is never shown to any method.",
+    "Method C selects frames to inspect using the frozen visibility index (which stage shows which predicate); this isolates the evidence-supply factor. Selecting frames is free of answer leakage.",
+    "readout_noise=0.0 isolates evidence supply; raise it later to test robustness, never as a way to tune the headline comparison."
+  ],
+  "skill": {"name": "pick", "args": {"object": "A", "support": "S"}},
+  "stages": ["before", "approach", "descend", "close_gripper", "lift", "after"],
+  "predicates": {
+    "add": ["holding(A)", "clear(S)"],
+    "del": ["empty()", "ontable(A)"]
+  },
+  "visibility": {
+    "holding(A)": ["descend", "close_gripper", "lift"],
+    "clear(S)": ["before", "descend", "after"],
+    "empty()": ["before", "approach", "close_gripper"],
+    "ontable(A)": ["before", "approach", "lift"]
+  },
+  "min_frames_for_verdict": 2,
+  "methods": {
+    "A": {"label": "before-after only", "stages": ["before", "after"], "inspect": false},
+    "B": {"label": "fixed phase evidence", "stages": ["before", "approach", "descend", "close_gripper", "lift", "after"], "inspect": false},
+    "C": {"label": "on-demand inspection", "stages": ["before", "after"], "inspect": true, "max_inspect_per_predicate": 1}
+  },
+  "episodes": [
+    {"id": "e1_success",       "truth": {"holding(A)": true,  "clear(S)": true,  "empty()": false, "ontable(A)": false}},
+    {"id": "e2_fail_holding",  "truth": {"holding(A)": false, "clear(S)": true,  "empty()": false, "ontable(A)": false}},
+    {"id": "e3_fail_clear",    "truth": {"holding(A)": true,  "clear(S)": false, "empty()": false, "ontable(A)": false}},
+    {"id": "e4_fail_empty",    "truth": {"holding(A)": true,  "clear(S)": true,  "empty()": true,  "ontable(A)": false}},
+    {"id": "e5_fail_ontable",  "truth": {"holding(A)": true,  "clear(S)": true,  "empty()": false, "ontable(A)": true}},
+    {"id": "e6_mixed",         "truth": {"holding(A)": false, "clear(S)": false, "empty()": true,  "ontable(A)": true}}
+  ],
+  "seed": 0,
+  "readout_noise": 0.3,
+  "evidence_cost_per_frame": 1,
+  "metrics": [
+    "correct", "wrong_tighten", "wrong_accept", "abstain",
+    "evidence_frames_total", "inspect_calls_total", "task_coverage"
+  ]
+}

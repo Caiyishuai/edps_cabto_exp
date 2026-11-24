@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CABTO 三阶段的可扩展性：从执行成功到可复用的接地证据</title>
+<style>
+:root{--bg:#0d1117;--bg-2:#161b22;--bg-3:#1f242c;--border:#30363d;--text:#e6edf3;--text-dim:#9aa4b2;--accent:#58a6ff;--accent-2:#79c0ff;--green:#3fb950;--orange:#d29922;--red:#f85149;--code-bg:#0b1020}*{box-sizing:border-box}html{scroll-behavior:smooth}html,body{background:var(--bg);color:var(--text)}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.85;font-size:15.5px}.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}aside.toc{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--bg-2);border-right:1px solid var(--border);padding:28px 18px}aside.toc h2{font-size:13px;color:var(--text-dim);letter-spacing:1px;margin:0 0 12px}aside.toc ol{padding-left:20px}aside.toc li{margin:8px 0}aside.toc a{color:var(--text);font-size:14px}main{max-width:1140px;width:100%;min-width:0;margin:0 auto;padding:48px 52px 80px}header.report-head{margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border)}header h1{font-size:32px;margin:0 0 14px;line-height:1.4}.subtitle{color:var(--text-dim);font-size:17px}.meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}.meta span,.tag{background:var(--bg-3);border:1px solid var(--border);padding:3px 9px;border-radius:5px;font-size:12px;color:var(--text-dim)}section{margin:40px 0;scroll-margin-top:24px}section h2{font-size:23px;border-left:4px solid var(--accent);padding-left:12px}section h3{font-size:18px;margin-top:28px;color:var(--accent-2)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}blockquote,.callout{border-left:3px solid var(--accent);background:var(--bg-2);margin:16px 0;padding:14px 18px;border-radius:0 7px 7px 0}.warn{border-color:var(--orange)}.good{border-color:var(--green)}code{background:var(--code-bg);padding:2px 5px;border-radius:4px;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.88em;color:var(--accent-2);overflow-wrap:anywhere}.equation{background:var(--code-bg);padding:15px 18px;border:1px solid var(--border);border-radius:7px;overflow-x:auto;font-family:Georgia,"Times New Roman",serif;font-size:17px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}th,td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top}th{background:var(--bg-3);color:var(--accent-2)}tr:nth-child(even) td{background:var(--bg-2)}.muted,small{color:var(--text-dim)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{background:var(--bg-2);border:1px solid var(--border);padding:18px;border-radius:8px}.card strong{display:block;color:var(--accent-2);font-size:20px}.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.flow div{padding:15px;background:var(--bg-2);border-top:3px solid var(--accent);border-radius:6px}.flow b{display:block}.cite{font-size:12px;white-space:nowrap}.references{padding-left:23px}.references li{margin:12px 0;font-size:13px;overflow-wrap:anywhere}.timeline{list-style:none;padding-left:16px;border-left:2px solid var(--border)}.timeline li{position:relative;padding:8px 0 8px 18px}.timeline li:before{content:"";position:absolute;left:-22px;top:19px;width:10px;height:10px;border-radius:50%;background:var(--accent)}details{border:1px solid var(--border);padding:14px 18px;border-radius:7px;margin:16px 0}summary{cursor:pointer;color:var(--accent-2)}footer{border-top:1px solid var(--border);padding-top:20px;color:var(--text-dim);font-size:12px}.bars{display:grid;grid-template-columns:80px 1fr 55px;align-items:center;gap:9px 12px;margin:18px 0}.bar{height:18px;background:var(--accent);border-radius:3px;min-width:2px}.bar-track{background:var(--bg-3);border-radius:3px}li{margin:6px 0}@media(max-width:1000px){.layout{grid-template-columns:1fr}aside.toc{position:static;height:auto}main{padding:30px 20px}.cards,.flow{grid-template-columns:1fr}header h1{font-size:27px}}@media print{aside.toc{display:none}.layout{display:block}main{padding:0;max-width:none}details{break-inside:avoid}a{color:inherit}section{break-before:auto}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="toc"><h2>独立研究报告 · CABTO</h2><ol>
+<li><a href="#verdict">核心判断与阅读范围</a></li><li><a href="#method">三阶段到底解决什么</a></li><li><a href="#implementation">论文与实现：证据边界</a></li><li><a href="#guarantee">最关键的保证缺口</a></li><li><a href="#scaling">Scaling up：六个维度</a></li><li><a href="#stages">逐阶段的难点与改造</a></li><li><a href="#papers">本地七篇：借什么、不借什么</a></li><li><a href="#beyond">超出七篇清单的研究</a></li><li><a href="#critique">为什么不直接沿用“组合拳”</a></li><li><a href="#roadmap">建议的研究主线与优先级</a></li><li><a href="#experiments">怎样真正证明可扩展</a></li><li><a href="#references">原文与代码来源</a></li>
+</ol><p class="muted">原论文优先于精读笔记；实现优先于概览描述；有限证据不等于全局保证。</p></aside>
+<main>
+<header class="report-head"><h1>CABTO 三阶段能否 Scaling Up？</h1><div class="subtitle">从“生成并跑通一套行为库”，走向“用有限交互获得可组合、可迁移、可验证的动作契约”</div><div class="meta"><span>研究类型：academic</span><span>检索日期：2026-09-27</span><span>论文 × 源码 × 实验产物</span><span>未修改业务代码或重跑机器人实验</span></div></header>
+<section id="verdict"><h2>1. 核心判断与阅读范围</h2>
+<blockquote><strong>三阶段分解值得保留，但当前扩展瓶颈不是“模型还不够大”，而是“如何可靠地区分建模错误、感知错误与策略能力不足，并把修订结果推广到未见上下文”。</strong> CABTO 最有价值的研究对象是动作模型与物理实现之间的契约，不是再做一个从语言生成 BT 的系统。它可以在有边界的任务族内扩展；现有论文与这批产物尚未证明开放世界、大对象数、长序列或跨本体的可扩展性。<a class="cite" href="#r1">[1]</a><a class="cite" href="#r2">[2]</a></blockquote>
+<div class="cards"><div class="card"><strong>保留三阶段</strong>模型提案、策略实现、跨层修订分别承担不同责任，适合模块化复用。</div><div class="card"><strong>重做验证逻辑</strong>成功一次不是普适一致；失败几次不是物理不可实现。</div><div class="card"><strong>优先研究第三阶段</strong>把错误归因、最小修订、旧任务保持、跨上下文复用做成一个可验证问题。</div></div>
+<p><strong>研究问题：</strong>给定 CABTO 的三阶段框架，在对象、技能、任务长度、观测噪声和环境变化增大时，哪些环节能摊销，哪些会组合爆炸，相关研究究竟提供了什么可迁移的机制？</p>
+<p><strong>阅读范围：</strong>逐页提取并阅读了本地 CABTO、EPM、LLM-GROP、Structured Robot Policies、SynthDemo-RL、VersualRL 六份 PDF；阅读了 <code>doc/</code> 中八份 HTML。<code>VASO_2606.05395.pdf</code> 缺失文件尾标记、解析失败，改读 arXiv v1 正文；LeTS-Drive 本地只有 HTML，补核了原始摘要，正文数字不作为本报告的核验结论。CABTO 以用户指定的本地 <strong>v1</strong> 为分析基准，不把公开后续版本混入。<a class="cite" href="#r1">[1]</a><a class="cite" href="#r10">[10–16]</a><a class="cite" href="#r20">[20]</a></p>
+<p>代码追踪以 <code>outputs/remaining_cabto</code> 的产物和源码快照为起点，再沿入口追到 <code>project/</code> 与 <code>BTExpansion-demo/</code>。该目录主要是实验产物，不是独立实现根目录。当前工作区已有用户修改；本报告不把当前文件一概视为历史运行版本，也未重新运行哈希验收器。<a class="cite" href="#r3">[3]</a><a class="cite" href="#r5">[5]</a></p>
+<details><summary>检索口径与证据等级</summary><p>先独立检索，再回看组合拳。代表性查询：① robot behavior tree synthesis cost optimal regression planning CABTO scalable；② 2025 2026 robot neuro symbolic closed loop planning learned predicates operator learning long horizon manipulation；③ robot predicate invention bilevel planning learning abstractions visual failure operator model；④ VisualPredicator；⑤ ExoPredicator；⑥ VASO 2606.05395。另查询 arXiv 最新 BT 索引，但未将其中未逐篇核验的新条目作为核心论据。内网检索通道不可用；学术问题不采用社区热度作证据。本报告不是穷尽式系统综述。</p><ul><li><strong>原文事实：</strong>来自本地 PDF 或公开原始论文，标页号/节号。</li><li><strong>实现事实：</strong>来自读取的源码、快照及保存记录；不等于本次复现实验。</li><li><strong>分析推论：</strong>由假设或机制推出的风险，不声称已在这17次执行中发生。</li><li><strong>研究建议：</strong>尚需消融和统计实验验证，不是现有能力。</li></ul></details>
+</section>
+<section id="method"><h2>2. 三阶段到底解决什么</h2>
+<div class="flow"><div><b>① 高层模型提案</b>提出 pre/add/del，利用 BT 规划反馈，寻找覆盖指定任务集的候选动作库。</div><div><b>② 低层策略采样</b>为动作模型寻找控制程序、策略族及参数，用实际执行检查契约是否成立。</div><div><b>③ 跨层修订</b>联合规划需求与执行失败，修正遗漏前提或错误效果，重新寻找足够完整的已接地行为库。</div></div>
+<p>这三阶段不是“规划—执行—观察”的泛化口号，也不是代码命令 <code>prepare/sample/replay</code> 的逐一同义替换。论文第三阶段是 <em>Cross-level refinement</em>；最终 <code>replay</code> 是修订后的独立执行验证。论文 Algorithm 2 的外层循环以<strong>已经匹配策略的动作集合</strong>是否覆盖任务集为终止依据，这一点比“高层能找到计划”更强。<a class="cite" href="#r1">[1, pp.2–5]</a><a class="cite" href="#r3">[3]</a></p>
+<h3>为什么这一分解有价值</h3><ul><li><strong>把专家隐性劳动显式化：</strong>不仅决定做什么，还要构造规划器依赖的动作接口，并提供实现。</li><li><strong>避免端到端重学所有组合：</strong>一个可靠的参数化动作可以被不同任务重用；规划器承担部分组合泛化。</li><li><strong>让两种反馈各司其职：</strong>规划失败指向行为库的逻辑覆盖缺口，执行失败提供物理可行性证据。</li><li><strong>允许异构低层：</strong>规则控制、运动规划、VLA、IL/RL 都能成为动作实现，不必把框架押在某一种控制器上。</li></ul><p class="muted">以上是框架潜力，不等于已证实的数据效率或规模优势。若正确动作库本来已知、问题只在视觉跟踪或控制，则联合修模型可能徒增复杂度；必须保留“固定正确模型＋策略学习”这一强对照。</p>
+</section>
+<section id="implementation"><h2>3. 论文与实现：现有证据支持到哪里</h2>
+<div class="table-wrap"><table><thead><tr><th>方面</th><th>论文的目标</th><th>这批实现/产物</th><th>应有判断</th></tr></thead><tbody>
+<tr><td>高层动作库</td><td>LM提出模型，规划反馈补足覆盖</td><td>Cover 在固定 CP/签名下生成3类schema；Blocks迁移它们；三个双臂任务采用工程参考初始化</td><td>证明受约束生成/迁移价值，不证明从空库自主发现</td></tr>
+<tr><td>低层实现</td><td>根据执行上下文采样策略</td><td>生成受限 <code>policy(api)</code>，复用已有生成源码；失败后重置并重放前缀</td><td>有真实执行闭环，但对初态、API与复用样例有较强依赖</td></tr>
+<tr><td>跨层修订</td><td>可修遗漏前提和错误效果</td><td>取最后一个接受样本，只补 <code>extra_add/extra_del</code>，禁止改pre和代码</td><td>是离线、有限证据的效果修订，不是一般跨层故障诊断</td></tr>
+<tr><td>规划内核</td><td>可用可靠且完备的BT规划算法</td><td>实际走 <code>BTExpAlgorithm.run_algorithm_selTree()</code>；适配器不传动作成本</td><td>不能给这条路径冠以成本最优OBTEA/HOBTEA的结论</td></tr>
+<tr><td>执行恢复</td><td>BT具反应性，跨层可迭代修订</td><td>每个动作后读真实状态重新tick；最终replay遇契约失败即结束</td><td>动作边界反应性 ≠ 在线自动修模型/重规划</td></tr>
+</tbody></table></div>
+<p>来源：模型来源与成绩见汇总；采样和重放见运行器；修订范围见专门脚本；内核调用见源码快照及 BT Expansion。<a class="cite" href="#r2">[2]</a><a class="cite" href="#r3">[3]</a><a class="cite" href="#r4">[4]</a><a class="cite" href="#r5">[5]</a><a class="cite" href="#r6">[6]</a></p>
+<h3>保存的最终成绩：值得肯定，但要守住分母</h3>
+<table><thead><tr><th>场景</th><th>最终episode</th><th>状态迁移</th><th>验证条件</th></tr></thead><tbody><tr><td>Cover</td><td>5/5</td><td>29</td><td>Qwen＋RGB＋已知高度；无weld；C3另有两个±2mm扰动</td></tr><tr><td>Blocks</td><td>6/6</td><td>22</td><td>同类视觉条件；无weld；两个初态</td></tr><tr><td>Pour</td><td>2/2</td><td>20</td><td>Oracle几何＋weld；第二次是0mm扰动的重复执行</td></tr><tr><td>Handover</td><td>2/2</td><td>14</td><td>Oracle几何＋weld；活动盒±2mm</td></tr><tr><td>Storage</td><td>2/2</td><td>28</td><td>Oracle几何＋weld；物体±3mm</td></tr><tr><th>合计</th><th>17/17</th><th>113/113完整CP匹配</th><th>是最终选定版本的有限运行结果</th></tr></tbody></table>
+<p>这些记录的积极之处在于：保留了早期失败、区分迁移与新生成、记录模型和程序来源、修效果后要求独立重验，并主动声明不主张普遍物理一致性。<strong>它们不是17次独立的从零生成成功，不是论文ASR/CSR复现，更不能把113次不同动作的相关迁移当成113个同分布可靠性样本。</strong>新增统一相机材料还明确标为诊断用途，没有进入双臂控制闭环。<a class="cite" href="#r2">[2]</a></p>
+<p>论文本身也没有大规模扩展曲线：7任务集、21目标，表1平均执行步数3.5；三个阶段的实验是不同口径。表2低层总成功率62%、表3修订74%，不能与表1高层CSR相乘或拼成一项整体端到端成功率。<a class="cite" href="#r1">[1, pp.6–7]</a></p>
+</section>
+<section id="guarantee"><h2>4. 最关键的保证缺口：不是工程细节</h2>
+<h3>4.1 符号覆盖，不等于真实可达</h3>
+<p>论文的 completeness 是对指定有限任务集 <em>P</em>、在给定动作模型下可规划。若模型谎称“按按钮即可物体入盒”，规划器仍可能给出逻辑有效的树。规划器验证的是<strong>模型内的推导</strong>，不是模型对世界的真实性。扩大 <em>P</em> 也不自动证明任务分布外泛化。<a class="cite" href="#r1">[1, Definition 0.1]</a></p>
+<h3>4.2 强一致性定义与算法20行不等价</h3>
+<div class="equation">要求：s′ = (s ∪ add(a)) ∖ del(a)<br>Algorithm 2 第20行：s′ ⊇ (pre(a) ∪ add(a)) ∖ del(a)</div>
+<p>后者只要求若干正事实成立：没有显式确保被删除事实已消失，也没有覆盖不在pre中的旧事实是否保持。举例：原来杯子在桌上，抓取后 <code>Holding(cup)</code> 为真，但旧 <code>On(cup,table)</code> 仍误报为真，弱检验可以通过。前后都满足的安全谓词也不能自动排除动作中途的违规，除非观察器专门记住全轨迹违规。<a class="cite" href="#r1">[1, Eq.1 &amp; Algorithm 2]</a></p>
+<p>你的工程已在 <code>transition_check()</code> 区分弱检查、删除残留和完整CP相等，这是实质进步。但双臂采样阶段默认可以先接受声明契约通过、同时报告frame drift，最后才用full-frame严格验证。保存的 Pour 反例就同时出现 <code>paper_line20=true</code>、<code>effect_ok=true</code>、<code>strict_CP_transition_match=false</code>，漏记事实为 <code>parked(0)</code>。最终补丁和重验缓解了这个具体问题，不能把早期弱检查混作强保证。<a class="cite" href="#r7">[7]</a><a class="cite" href="#r9">[9]</a><a class="cite" href="#r3">[3]</a></p>
+<h3>4.3 “成功一次”和“失败N次”都不够</h3>
+<ul><li><strong>存在一个成功初态</strong>，不推出<strong>所有满足pre的物理状态</strong>都成功。</li><li><strong>采样器预算耗尽</strong>，不推出<strong>不存在实现该契约的策略</strong>。模型能力、控制器、解析器或预算都可能是瓶颈。</li><li><strong>每个状态各有一个可行策略</strong>，还不一定存在<strong>当前观察接口下同一个可复用策略</strong>；状态不可区分时尤其如此。</li></ul>
+<p>论文 p.5 将多次采样失败视为模型物理不一致，这是最需要收紧的推断。工程中的语法错误或未知谓词字符串同样可能耗尽预算；不能让这类失败触发物理语义修订。<a class="cite" href="#r1">[1]</a><a class="cite" href="#r3">[3]</a></p>
+<h3>4.4 真正的隐藏问题：状态抽象是否足够</h3>
+<div class="equation">α(x₁) = α(x₂)，但 α(F(x₁,π)) ≠ α(F(x₂,π))</div>
+<p><span class="tag">分析推论</span> 若两个连续物理状态被相同谓词表示，但同一策略产生不同抽象后果，确定性STRIPS在该抽象上就不充分。例如两个物体都“在目标上”，一个稳定居中、一个悬在边缘；或同为“抓住”，抓姿却决定下一步能否开门。这时不断修改add/del不一定能解决问题，需要补充相关谓词、分裂动作模式、改善策略，或显式建模不确定性。</p>
+<p>这比“将Oracle换成VLM”更根本：先要知道抽象需保留哪些影响未来可执行性的变量，再考虑如何可靠观测它们。也不能随意发明一个 <code>CanExecute(a)</code> 就宣告解决——它必须独立可计算、经过校准，而不是事后成功标签的改名。</p>
+<h3>4.5 用什么替代过强保证</h3>
+<p><span class="tag">研究建议</span> 保留确定契约作为规划接口，另附策略版本、上下文分布、感知版本、终止/安全条件、失败概率区间与反例集。对于声明分布D及有效启动域I，验证有限证据支持：</p>
+<div class="equation">Pr<sub>x∼D, ξ</sub>[ α(F(x,π,ξ)) = h(α(x)) 且轨迹满足安全约束 | x∈I ] ≥ 1−ε</div>
+<p>这是<strong>新的研究目标</strong>，不是现有CABTO的定理。独立同分布、固定策略、固定测试分布且零失败时，100次测试的一侧95%二项置信上界仍约为2.95%失败率；要使该上界低于1%，约需299次零失败。自适应挑选的成功轨迹、同一episode里的相关动作不满足这些简单计算条件。测试可支持统计保证，不能替代连续系统的形式证明。</p>
+</section>
+<section id="scaling"><h2>5. Scaling up 必须拆成六个维度</h2>
+<table><thead><tr><th>扩展轴</th><th>瓶颈</th><th>CABTO有利条件</th><th>必要改动</th></tr></thead><tbody>
+<tr><td>对象数N</td><td>二元关系约N²；k参数动作接地约Nᵏ；无关对象放大感知与搜索</td><td>关系型schema可共享</td><td>类型化、关系抽象、按需接地、可撤销的相关性筛选</td></tr>
+<tr><td>技能与谓词数</td><td>模型候选/回归条件组合增长；语义重复和互斥关系变多</td><td>只接地任务实际需要的动作</td><td>局部契约、派生谓词、技能检索与依赖索引</td></tr>
+<tr><td>任务长度L</td><td>错误积累、重置前缀成本、动作终态分布失配</td><td>BT可复用分支与恢复结构</td><td>真实技能衔接、有限恢复预算、历史追踪与运行时监测</td></tr>
+<tr><td>新任务/新机制</td><td>固定CP可能表达不了缺陷；过严前提造成假不可解</td><td>第三阶段可提供扩展入口</td><td>受控谓词发明、模式分裂、准备动作补全</td></tr>
+<tr><td>真实感知</td><td>遮挡、身份交换、阈值抖动、记忆过时</td><td>符号条件让不确定点可定位</td><td>true/false/unknown、主动观察、独立验真、时间戳</td></tr>
+<tr><td>多臂/动态世界</td><td>资源互斥、并发干涉、持续时间、外源事件</td><td>结构化控制便于调度和审计</td><td>资源/时序契约；区分动作效果与环境过程</td></tr>
+</tbody></table>
+<p class="muted">表中复杂度为表示与算法层面的推导，不是本次实测。参数化能减少“需生成多少程序”，不保证消除接地后的搜索空间；大场景若依赖关系稀疏更容易扩展，强耦合任务则困难得多。</p>
+<h3>已经出现的规模预警：短计划、较大树</h3><p>同一Cover库只有28个可达符号状态，C1/C2/C3的执行分别为3/5/7步，而生成树分别为23/65/246节点。<a class="cite" href="#r8">[8]</a></p>
+<div class="bars" role="img" aria-label="C1 23节点，C2 65节点，C3 246节点"><span>C1 · 3步</span><div class="bar-track"><div class="bar" style="width:9.35%"></div></div><strong>23</strong><span>C2 · 5步</span><div class="bar-track"><div class="bar" style="width:26.42%"></div></div><strong>65</strong><span>C3 · 7步</span><div class="bar-track"><div class="bar" style="width:100%"></div></div><strong>246</strong></div>
+<p>这三点<strong>不能拟合一般复杂度曲线</strong>，但足以提醒：执行长度不是BT规模的代理。当前内核按列表选扩展条件、遍历动作、扫描已访问条件作包含剪枝，每轮重新tick并计算树大小；这条路径没有看到显式的共享子树/DAG压缩或成本优先搜索。<a class="cite" href="#r6">[6]</a></p>
+<h3>长序列的物理难点更早出现</h3><p><span class="tag">示例计算，非实验结果</span> 若每步独立成功率均为95%，20步全成功约35.8%；即使每步99%，50步也只有60.5%。真实错误通常相关，且恢复可能改变分布；不能机械相乘，但“高单步成功不够支撑长任务”的警示成立。</p>
+<p>更重要的是组合：动作a结束时落入的物理终态集合，是否被下一动作b的启动域覆盖？符号上都满足 <code>Holding(obj)</code>，不代表抓姿、关节余量、可达路径都兼容。要测试<strong>上一个技能真实产生的状态</strong>，而不是每次把下一技能重置到理想初态。</p>
+</section>
+<section id="stages"><h2>6. 逐阶段的难点与改造方向</h2>
+<h3>阶段一：从“整库生成”转为“需求驱动的关系模型构造”</h3>
+<p><strong>难点：</strong>规划可解但物理虚假；对象绑定过早；增加pre提高局部可靠性却失去任务覆盖；LM为了补缺口发明不存在的能力。论文的固定有效条件集CP也意味着“缺的概念不在词表里”时，原框架不能直接表达解决方案。<a class="cite" href="#r1">[1]</a></p>
+<p><strong>建议：</strong>优先检索并复用已验证的参数化schema；依据失败回归条件提出局部候选；把几何可行性评估作为排序而非真实性证明。对被学习器筛掉的对象或动作保留回退扩张通道。只把与目标、安全和后续可执行性相关的局部因子纳入当前规划，但必须保留对未建模变化的监测，不能靠忽略副作用提高分数。</p>
+<p>例如，学到 <code>Clear(target)</code> 后，应同时检查是否需要一个搬走遮挡物的准备技能；不能仅把前提加上，然后将原任务判为不可完成。若问题是新概念，则先发明候选谓词并验证可观测性，再修动作模型。</p>
+<h3>阶段二：从“程序碰巧成功”转为“学习有边界的启动域和可衔接效果”</h3>
+<p><strong>难点：</strong>程序语法、API粒度、运动规划与抓取能力混在同一失败信号中；每次失败重新执行长前缀；固定策略不适配多种物理上下文。当前运行器的40轮上限、每动作默认4次、60次API调用等是预算约束，不是物理不可解的证明。<a class="cite" href="#r3">[3]</a></p>
+<p><strong>建议：</strong>按成本逐层筛选：格式/类型 → 符号约束 → 几何与控制可行性 → 仿真实际执行 → 独立留出验证。重用同schema的程序、轨迹和失败证据；动作a可有多个模式/控制器，但其选择条件需可观测。仅在跨任务高频复用的瓶颈上做IL/RL蒸馏，不必把全部API控制都换成VLA。</p>
+<p>学习重点不仅是“动作会不会完成”，还应包括终态稳定性、未声明副作用、恢复代价，以及哪些后继技能能从该终态继续执行。对于低概率新情况，允许返回“未知/需要探测”，而不是默认为可用或永久禁用。</p>
+<h3>阶段三：从“解释一次差异”转为“竞争假设、主动验证、最小修订”</h3>
+<p>当前 <code>refine_remaining_frames.py</code> 用最后一个接受样本补充实际差异，且保持程序不变、重新检查任务可解性，这是有用的最小工程闭环。但<strong>它没有识别差异的原因</strong>，也没有证明某次出现的 <code>parked(0)</code> 在其他布局一定是无条件效果。<a class="cite" href="#r4">[4]</a><a class="cite" href="#r9">[9]</a></p>
+<table><thead><tr><th>竞争解释</th><th>优先收集什么证据</th><th>允许的修订</th></tr></thead><tbody><tr><td>状态看错/看不见</td><td>换视角、历史观测、独立传感、身份一致性</td><td>更新观测/置信度，不立即改物理模型</td></tr><tr><td>控制器不足或参数不合适</td><td>同初态换控制器/抓姿，保持模型与判据不变</td><td>改策略、参数或选择器</td></tr><tr><td>模型遗漏前提</td><td>控制其他因素，改变疑似条件，看成败是否随之变化</td><td>补前提/分裂模式，再补必要的准备动作</td></tr><tr><td>效果或frame错误</td><td>多个上下文重复、完整前后状态与后继执行</td><td>补效果/条件效果；回归旧任务</td></tr><tr><td>外源事件/延迟后果</td><td>不执行该动作时是否也变化；等待对照与时间轨迹</td><td>学习环境过程，不塞入刚执行动作的add/del</td></tr><tr><td>技能组合/时序错误</td><td>逐步检查资源、接触、释放顺序和安全监测</td><td>修序列/局部BT/资源契约，而不是改变任务目标</td></tr></tbody></table>
+<p><span class="tag">研究建议</span> 这些受控重试不是万能因果识别，仍受可观测性、成本和安全限制。价值在于把VLM诊断当作<strong>需要验证的假设</strong>，不把自然语言解释直接写回动作库。</p>
+<p><strong>修订接受标准：</strong>解释当前反例；不削弱固定目标与安全要求；不破坏旧成功样本；通过未见上下文验证；保持声明任务集的可解性或显式记录损失；给模型、策略与谓词版本绑定。若改变谓词定义，旧轨迹必须用原始观测重标注，旧证书不能直接继承。</p>
+</section>
+<section id="papers"><h2>7. 本地七篇：借机制，不借宣传结论</h2>
+<p>它们并不都与CABTO解决同一个问题。下面按“是否改变抽象模型/策略实现/验证器”区分，避免只因都出现BT、LM或闭环就视为同类。</p>
+<div class="table-wrap"><table><thead><tr><th>研究</th><th>实际学习/修订对象</th><th>对CABTO最实质的启发</th><th>不能直接继承的能力</th></tr></thead><tbody>
+<tr><td>EPM<br>ICLR 2026</td><td>实体状态记忆更新；高层规划策略</td><td>区分世界状态估计与动作模型；适配有噪记忆；给困难情景更多采样预算</td><td>不学习动作pre/effect，也不负责低层控制；训练依赖特权标签和示范</td></tr>
+<tr><td>VASO<br>2026预印本</td><td>时序规则＋命题映射＋规划模板构成的技能契约</td><td>反例指向可复用契约；将安全与任务局部规则分开；加入技能内时序检查</td><td>命题映射和系统模型仍是假设；顺序验证不覆盖任意双臂并发；形式反例不自动解释物理根因</td></tr>
+<tr><td>LLM-GROP<br>本地2025预印本</td><td>目标空间布局；固定技能的几何可行性热图</td><td>低成本筛选站位与参数，风险/成本参与计划选择</td><td>不自动发现动作库；目标偏好不是动作效果；小规模结果不证明搜索规模可控</td></tr>
+<tr><td>VersualRL<br>本地v3，2026</td><td>专家节点库上的BT结构与参数</td><td>节点级结构化反馈、显式执行轨迹、小模型critic的领域适配</td><td>没有接地未知动作库；人工核验episode分数、告警时人工介入；非神经策略在线RL</td></tr>
+<tr><td>SynthDemo-RL<br>2026-09预印本</td><td>教师配置；合成示范SFT＋学生PPO</td><td>先补成功支持，再提高可靠性；将昂贵教师摊销成低层技能</td><td>没有学习STRIPS模型；只保留成功示范不适合故障归因；其真机不是闭环VLA可靠性证据</td></tr>
+<tr><td>LeTS-Drive<br>原始摘要已核</td><td>规划搜索启发式的策略/价值函数</td><td>经验应改善下一次搜索，而不是只存入prompt；保留规划纠偏</td><td>固定POMDP下的保证不能搬给变化中的动作模型；本报告未核正文数值</td></tr>
+<tr><td>Structured Robot Policies<br>本地v2，2026</td><td>VLM输出结构化BT的能力</td><td>用合成监督训练候选生成器，减少格式与结构错误</td><td>BT语法有效不等于效果正确；依赖外部场景图和控制器；不是学习动作契约</td></tr>
+</tbody></table></div>
+<p>对应原始资料：<a class="cite" href="#r10">[10]</a><a class="cite" href="#r15">[15]</a><a class="cite" href="#r11">[11]</a><a class="cite" href="#r14">[14]</a><a class="cite" href="#r13">[13]</a><a class="cite" href="#r16">[16]</a><a class="cite" href="#r12">[12]</a>。</p>
+<h3>几个直接影响路线选择的原文细节</h3>
+<ul>
+<li><strong>EPM不是“现成的可靠谓词替代器”。</strong>记忆训练由特权信息与启发式产生标签；真实数据节点F1为0.24，关系F1为0.16；20个真实场景任务成功55%。仿真任务成功3%→58%是55个百分点、整套系统对比，不是孤立记忆模块的纯收益。最值得借的是状态维护与失败分布适配，不是默认它已解决真机状态估计。<a class="cite" href="#r10">[10, pp.4–10]</a></li>
+<li><strong>VASO的97.2%是规约得分，不是97.2%的物理安全保证。</strong>指标对一个计划所满足的规约比例取平均，不能当作全部规约同时成立的计划比例；表1任务完成在仿真评估，手工映射行是85.3%。§4.2明确写“guarantee conditioned on the correctness of proposition alignments”。原文还存在96.6%与表中97.2%的数字不一致，本报告以表1为表格口径，保留差异。附录算法主要描述顺序执行元素的自动机化，不能据此认定任意物理动力学已被完整建模。<a class="cite" href="#r15">[15, §4.2–7 &amp; App.A/C]</a></li>
+<li><strong>LLM-GROP的成功数据是3–5物体范围。</strong>真实实验38/45成功；可行性热图训练96000次是位置与重复试验计数，不是96000种场景。正文把F描述为整计划成功概率，但算法中的平均局部可行性不能直接等同联合概率。可作为预算分配启发，不宜直接作为可靠性证书。<a class="cite" href="#r11">[11, pp.9–13]</a></li>
+<li><strong>VersualRL最有用的案例，是actor不盲信critic。</strong>误报发生时，actor根据执行轨迹和人工分数作保守修改。3B critic先用88个episode作领域微调，部署时冻结；每配置5布局×10连续episode。其结果支持反馈对齐的重要性，但“因果归因比感知精度更重要”没有被普遍性因果实验单独证明；自报confidence稳定也不等于概率已校准。<a class="cite" href="#r14">[14, pp.2–7]</a></li>
+<li><strong>SynthDemo-RL支持“先补覆盖”，不支持“一条示范就够”。</strong>实际每任务50条成功示范，再SFT和PPO；LIBERO-PRO报告97.8%/97.1%，但合成和SFT属于额外预算，且排除LIBERO-Long等设置。真机四条件各20/20是孪生轨迹开环执行、人工匹配初态，论文披露初步闭环硬件试验未成功。不能拿这些数字证明CABTO长序列和真机闭环已可解决。<a class="cite" href="#r13">[13, pp.3–7]</a></li>
+<li><strong>Structured Policies更像专用的BT编译器。</strong>10000合成样本，主表只有20个分布内真实图像请求；100%结构/任务指标不代表大规模物理rollout。新“交换位置”任务、换吸盘和不存在的对象都会暴露泛化边界；论文明确承认Verification Gap。它可以给CABTO提供候选先验，却不应替代规划器和契约检验。<a class="cite" href="#r12">[12, pp.8–15]</a></li>
+</ul>
+</section>
+<section id="beyond"><h2>8. 超出七篇清单：三条更直接的研究线索</h2>
+<h3>8.1 VisualPredicator：缺的不只是谓词读数，还可能是谓词本身</h3>
+<p>它在线交替进行：任务驱动探索 → 提出神经符号谓词 → 按成功/失败区分能力和简洁性选谓词 → 学习操作符。候选既可调用视觉模型，也可用程序组合已有关系；不只是把预定义谓词输出成布尔值。学习动作前提时避免过度保守的“成功样本交集”。例如把“壶在咖啡机中”误当作倒咖啡的必要条件，会导致不必要往返并损害多杯扩展。<a class="cite" href="#r17">[17, §3–5 &amp; App.B.2]</a></p>
+<p><strong>对CABTO：</strong>当同一个抽象状态持续出现不同结果，应允许发明候选谓词或分裂动作，而不只在固定CP中改pre/add/del。这是比“给EPM增加记忆”更直接的建模突破。论文已在CABTO参考文献中出现，但旧组合拳未把它作为主线。</p>
+<p><strong>边界：</strong>VisualPredicator预置低层技能与对象特征；五个仿真域，每种子50个测试任务、5种子，Blocks由3/4块训练扩展到5/6块测试。它自身也有指数谓词选择搜索、视觉错误和人工补充谓词的例子，不是一个可直接装上的开放世界解法。原文明确假设“a predefined inventory of basic motor skills”。<a class="cite" href="#r17">[17, §2/6 &amp; App.B.5]</a></p>
+<h3>8.2 ExoPredicator：不能把世界的一切变化都写成动作效果</h3>
+<p>它区分由技能显式启动的内生过程与满足条件后自行发生的外源过程，表达启动条件、持续条件、延迟和概率参数。打开水龙头与随后容器装满不属于同一个瞬时动作效果；等待、加热、冷却和多米诺传播都需要时间/过程状态。搜索状态不仅要有当前谓词，还要保存待发生事件与历史。<a class="cite" href="#r18">[18, §3–5 &amp; App.A]</a></p>
+<p><strong>对CABTO：</strong>若Pour结束后物体继续滑落，或环境中另一个过程改变了状态，盲目把差异补到刚执行动作上会污染动作库。第三阶段应先问“是不是这个动作造成的、是否只是延迟、是否由环境过程触发”。这也是将来Cook Meal、移动操作、多机器人扩展的结构性问题。</p>
+<p><strong>边界：</strong>它假设已有身体技能，原文直言“we assume an unfamiliar environment, but not an unfamiliar body”。实验只学习少量外源过程，依赖可用对象特征和1–2条起始示范，尚不解决CABTO的未知策略实现。两个框架互补，不是替代。<a class="cite" href="#r18">[18, §5–7]</a></p>
+<h3>8.3 iFlax：相关性筛选必须能纠错</h3>
+<p>2026年项目提出按对象重要性缩小规划空间，并以裁剪空间内的规划反馈训练评分器；用Repair、Restart、Rollback应对删掉关键对象或扩张失控。真正可迁移的点不是“再加一个网络”，而是<strong>学习剪枝必须保留纠偏路径</strong>。<a class="cite" href="#r19">[19]</a></p>
+<p><strong>对CABTO：</strong>给当前目标只检索一小部分schema和对象，失败时按符号证据扩张；不能因为VLM低置信就永久删除动作。项目网页报告三个基准及实机展示，但未给完整样本量；本报告只采用机制线索，不把其网页百分比当作对CABTO的性能预期。</p>
+<ol class="timeline"><li><strong>2025 · VisualPredicator：</strong>学习什么状态抽象能支持规划，而不仅是读出已有符号。</li><li><strong>2025预印本 / 2026后续研究 · ExoPredicator：</strong>进一步学习自主变化与时间机制。</li><li><strong>2026 · VASO / iFlax / SynthDemo-RL：</strong>分别提示契约验证、搜索纠偏和控制训练摊销；三者不是同一种“闭环”。</li></ol>
+</section>
+<section id="critique"><h2>9. 为什么不直接沿用既有“组合拳”</h2>
+<p>原HTML对文献的横向组织有参考价值，但以下跳跃会影响CABTO下一步选题：<a class="cite" href="#r20">[20]</a></p>
+<ol><li><strong>“CABTO已有形式验证，只缺学习化”不准确。</strong>符号覆盖可由规划检查，物理一致性主要还是采样证据；Algorithm 2的弱检查与严格定义有差距。学习化之前就有验证对象和证据强度问题。</li>
+<li><strong>“一致性违背可编译成形式反例”混淆了两件事。</strong>一次真实执行的前后差异是经验反例；模型检查器的反例是某抽象模型内违反时序规约的路径。两者互补，但前者不能通过文本格式化自动获得全路径保证。</li>
+<li><strong>“未抬起，因为抓深不足”已预先给出了答案。</strong>未抬起也可能是闭盖、质量过大、抓错对象、传感误报、执行超时。若归因由VLM直接宣告，错误修订会随着规模放大。</li>
+<li><strong>将感知器、奖励器、修订器一起学习，可能形成自我确认。</strong>谓词漏报副作用，奖励据此判成功，策略优化同一奖励，模型又向这些读数靠拢。必须有固定任务目标、独立验证数据与版本约束，不能让所有评价标准随生成结果一起移动。</li>
+<li><strong>“同时做EPM＋PPO＋形式验证”不是清晰的研究贡献。</strong>它会同时引入感知、数据、训练、控制、形式建模五类变量。即使最终成功率上涨，也很难解释第三阶段究竟贡献多少，更难与更强底座的收益分开。</li></ol>
+<blockquote class="warn">因此我不建议把“补齐三个模块”当作首要路线。更强的问题是：在错误动作模型与不完美策略同时存在时，能否以更少交互作出正确的跨层修订，并在新对象和新初态上继续成立？</blockquote>
+</section>
+<section id="roadmap"><h2>10. 建议的研究主线与优先级</h2>
+<h3>首选主线：反例驱动、可组合的技能契约接地</h3>
+<p><span class="tag">提议，不是已实现能力</span> 每个技能不只保存一对h和π，还保存：类型化接口；固定任务语义；策略版本；适用上下文；增删效果与安全不变量；成功/失败证据；后继技能兼容性；置信区间；依赖的谓词版本。可验证部分与经验部分分开，不使用“证书”一词掩盖未经证明的物理条件。</p>
+<div class="flow"><div><b>模型提出</b>检索已有契约 → 针对规划缺口提出局部候选。</div><div><b>执行提供证据</b>区分观察、控制、契约、组合和环境过程；优先采样能区分解释的情景。</div><div><b>修订后归档</b>最小修改 → 旧任务回归 → 留出验证 → 版本化复用。</div></div>
+<h3>为什么这比“生成更漂亮的BT”更有辨识度</h3><ul><li>相对于VersualRL：不止修一棵任务BT，而是修能支持多个任务的动作契约。</li><li>相对于VASO：不止相对给定语义映射验证计划，还研究物理执行证据如何验证或修正映射/动作实现的关系。</li><li>相对于VisualPredicator：不把低层技能永远当已知可靠，而是区分应改抽象还是应改技能，并控制联合搜索成本。</li><li>相对于SynthDemo-RL：不只最大化任务奖励，而是验证技能的启动域、效果及组合接口。</li></ul>
+<p class="muted">这些是有希望的差异化方向，不是已完成的新颖性证明；投稿前仍需针对相关工作补全检索。</p>
+<h3>一个有边界的理论目标</h3>
+<p>在固定抽象、受控分布和明确轨迹假设下，可研究：若每个技能在启动域内以至少1−εᵢ概率满足契约；前一技能成功终态满足后一技能启动域；环境干扰和观测错误已计入契约，那么有界L步组合的失败概率可用并集界上界为Σ εᵢ。<strong>并集界本身不要求独立，但各εᵢ必须对真实到达历史/状态分布有效</strong>，不能直接拿独立reset上的平均成功率代入。BT重试、分支与回环需另计访问次数、停止条件及风险预算。连续安全仍需监测器或额外动力学论证。</p>
+<p>这是比“采样通过→全系统一致”更保守也更可检验的目标。它把最难的部分暴露出来：如何得到后继可接受的终态分布、如何验证抽象与感知，而不是用一个总成功率隐藏它们。</p>
+<h3>三档推进，不要同时开所有方向</h3>
+<table><thead><tr><th>优先级</th><th>做什么</th><th>暂时不做什么</th><th>继续投入的判据</th></tr></thead><tbody>
+<tr><td>P0 · 当前最值得</td><td>固定Oracle观察与现有低层栈，故障注入；区分归因；前提/效果/模式的最小修订；旧样本保持；留出上下文</td><td>不先换VLA，不先学全套感知，不新增大量演示场景</td><td>等交互预算下，错误修订率下降、留出可靠覆盖提升</td></tr>
+<tr><td>P1 · 规模机制</td><td>类型化schema、相关性检索、惰性接地、局部重验、从经验学习采样/修订排序</td><td>不依赖永久硬剪枝；不将检索命中率当最终指标</td><td>新任务累计接地成本下降，已解任务不退化，失败可回退</td></tr>
+<tr><td>P2 · 物理泛化</td><td>对最高频失败技能做合成示范＋IL/RL；再换成可校准的视觉/记忆观察</td><td>不同时修改策略和判据；不以奖励高代替契约正确</td><td>真实布局/对象变化下改善，且收益超过数据、训练、验证和维护成本</td></tr>
+</tbody></table>
+<p><strong>训练的经济性：</strong>现有CABTO本来就能缓存程序，因此正确基线是“缓存＋参数化复用”，不是“每次重新找LLM”。只有未来累计节省的交互/恢复成本或可靠性收益，大于数据生成＋训练＋验证＋版本维护成本，蒸馏才值得。LeTS-Drive启发的是经验改善未来搜索；SynthDemo-RL启发的是教师成本摊销，二者应分开衡量。<a class="cite" href="#r3">[3]</a><a class="cite" href="#r13">[13]</a><a class="cite" href="#r16">[16]</a></p>
+</section>
+<section id="experiments"><h2>11. 怎样真正证明 Scaling Up</h2>
+<p><strong>不要只继续增加场景名称。</strong>必须分离对象数、任务长度、新机制、噪声、技能数这几个轴，并固定底座、接口、预算和初始化条件。以下是建议的实验设计，不是已经运行的实验。</p>
+<table><thead><tr><th>实验</th><th>控制与变化</th><th>关键观测</th><th>能证伪什么</th></tr></thead><tbody>
+<tr><td>A. 纯符号规模</td><td>正确固定模型；对象4/8/16/32；目标依赖深度单独增加；移除固定颜色配对</td><td>接地动作数、BT节点数、扩展数、时间、峰值内存、超时率</td><td>“BT/LM天然可规模扩展”</td></tr>
+<tr><td>B. 接地成本</td><td>固定可解任务族，逐步增加需验证的schema和上下文；冷启动与参考初始化分报</td><td>总模型调用、失败执行、恢复/重置时间、人工调整、新增可靠任务覆盖</td><td>“最后都成功，所以生成过程高效”</td></tr>
+<tr><td>C. 跨层归因</td><td>分别注入感知误报、抓取偏差、漏前提、漏删除、延迟过程；再做混合故障</td><td>归因混淆矩阵、错误修改层比例、修订次数、独立留出恢复率</td><td>“结构化批评自动等于正确诊断”</td></tr>
+<tr><td>D. 真实技能衔接</td><td>5/10/20步，不逐技能reset；来自上游真实终态；比较有/无恢复</td><td>链式成功、首次失败位置、终态分布、重试次数、轨迹违规</td><td>“单技能可靠即可任意组合”</td></tr>
+<tr><td>E. 泛化与终身复用</td><td>训练/验证按布局和物体身份分开；新形状、尺寸、材质、cm级布局变化；旧任务持续回测</td><td>零修改迁移率、适配成本、旧任务退化、按上下文可靠性校准</td><td>“±2mm或换seed已经证明泛化”</td></tr>
+<tr><td>F. 动态与双臂</td><td>共享对象/空间；受控延迟和外源变化；顺序与并发分别测试</td><td>资源冲突、死锁、错误效果归因、守护条件违规</td><td>“顺序合约保证可直接用于并发”</td></tr>
+</tbody></table>
+<h3>最小但有鉴别力的基线</h3><ol><li>固定正确模型＋相同策略采样：衡量联合模型搜索的额外代价/收益上限。</li><li>固定错误模型＋只改策略：识别哪些问题确实需要修模型。</li><li>只做形式语法/符号检查＋同预算重试：避免将基础纠错收益归给跨层机制。</li><li>当前CABTO＋现有效果补丁；扩展版允许前提/模式修订。</li><li>无结构化诊断的VLM自反思；BT-only修订。</li><li>主动区分假设的实验选择 vs 随机/固定次数采样；缓存复用 vs 训练摊销。</li></ol>
+<h3>应优先报告的指标</h3><p><strong>主指标建议：</strong>在固定总交互预算下，独立留出任务中达到预设可靠性门槛的比例。辅以：symbolic completeness、契约正确性、端到端执行成功、安全违规、错误修订率、旧任务遗忘、每新增可靠任务的成本。对每个比例给样本量与置信区间；不同场景/动作不要未经分层就合并。超时、语法失败、物理失败、无法观察、未证实不可解分别记账。</p>
+<p><strong>首个最有说服力的实验：</strong>保留当前机器人与控制API，取消固定Blocks配对，在多布局中混入“目标被占用”和“抓取参数不合适”两类外观相近的失败。检验系统是否分别学到通用 <code>Clear(target)</code> 条件与控制调整，而不是给所有失败动作盲加前提。修订后在新物体和旧任务上同时验证。若能用少量交互正确区分、可组合复用，比再跑通一个固定场景更能证明CABTO的价值。</p>
+<blockquote class="good"><strong>最终建议：</strong>保留“模型提案 → 策略实现 → 跨层修订”的骨架；把第三阶段从启发式补丁提升为证据驱动的模型辨识，把第二阶段从一次性采样提升为分布化契约验证，再用参数化与学习摊销成本。先证明“修对了、能复用”，再证明“规模更大、成本更低”。</blockquote>
+</section>
+<section id="references"><h2>12. 原文与代码来源</h2>
+<ol class="references">
+<li id="r1"><strong>CABTO: Context-Aware Behavior Tree Grounding for Robot Manipulation.</strong> 本地PDF v1，2026-03-17；重点pp.2–7。<a href="../doc/CABTO.pdf">本地原文</a> · <a href="https://arxiv.org/abs/2603.16809v1">arXiv v1</a>。分析按本地版本，不以搜索结果中的后续修订替代。</li>
+<li id="r2"><strong>保存的剩余任务汇总与声明范围。</strong> <a href="../outputs/remaining_cabto/summary.json"><code>outputs/remaining_cabto/summary.json</code></a>：最终17/17、113/113；各任务来源/扰动；325–330行不主张事项；332–367行相机诊断边界。保存记录，非本次实验。</li>
+<li id="r3"><strong>四场景运行器。</strong> <a href="../project/run_remaining_cabto.py"><code>project/run_remaining_cabto.py</code></a>：61–111行规划检查和初始化；138–163行执行判据；185–274行采样与前缀重放；276–316行最终重放。当前源码。</li>
+<li id="r4"><strong>效果修订实现。</strong> <a href="../project/refine_remaining_frames.py"><code>project/refine_remaining_frames.py</code></a>：19–37行最后一个witness及add/del补丁；44–53行完整性回查与待重验标记。当前源码。</li>
+<li id="r5"><strong>历史源码快照中的BT适配器。</strong> <a href="../outputs/remaining_cabto/blocks/final_seed0/source_snapshot/CABTO/exp4_bt_tasks/stage3_cabto/formal_bt.py"><code>outputs/remaining_cabto/blocks/final_seed0/source_snapshot/CABTO/exp4_bt_tasks/stage3_cabto/formal_bt.py</code></a>：123–143行建树；146–169行真实状态tick接口。</li>
+<li id="r6"><strong>实际BT Expansion内核。</strong> <a href="../BTExpansion-demo/src/bt_expansion/algorithm.py"><code>BTExpansion-demo/src/bt_expansion/algorithm.py</code></a>：34–135行 <code>run_algorithm_selTree()</code>。回归、条件包含剪枝和树遍历；未在本次重新比对历史内核哈希。</li>
+<li id="r7"><strong>强弱迁移检查。</strong> <a href="../project/core/cover_cabto_api.py"><code>project/core/cover_cabto_api.py</code></a>：298–306行 <code>transition_check()</code>；文件为用户已有修改之一，本次未修改。</li>
+<li id="r8"><strong>Cover模型及树规模记录。</strong> <a href="../outputs/remaining_cabto/cover/proposal_final_v2/models.json"><code>outputs/remaining_cabto/cover/proposal_final_v2/models.json</code></a>：175–257行，28可达状态、23/65/246节点及3/5/7步。</li>
+<li id="r9"><strong>Pour效果修订反例。</strong> <a href="../outputs/remaining_cabto/pour/refinement/patch01.json"><code>outputs/remaining_cabto/pour/refinement/patch01.json</code></a>：14–28行弱通过与完整不匹配；213–246行补 <code>parked(0)</code> 的模型。记录的是一次证据，不是普适因果规则。</li>
+<li id="r10"><strong>Planning with an Embodied Learnable Memory.</strong> 本地ICLR 2026原文，14页；本文采用pp.4–10。<a href="../doc/2516_Planning_with_an_Embodied.pdf">本地PDF</a> · <a href="../doc/EPM_Planning_with_an_Embodied_Learnable_Memory_论文精读.html">对应精读（辅助）</a>。公开出版状态未额外核验。</li>
+<li id="r11"><strong>LLM-GROP: Visually Grounded Robot Task and Motion Planning with Large Language Models.</strong> 本地arXiv v1，2025-11-11。<a href="../doc/LLM-GROP_2511.07727.pdf">本地PDF</a> · <a href="https://arxiv.org/abs/2511.07727v1">arXiv</a> · <a href="../doc/LLM-GROP_论文精读.html">精读（辅助）</a>。本地PDF期刊信息仍是模板占位，不沿用笔记的正式刊载断言。</li>
+<li id="r12"><strong>Learning Structured Robot Policies from Vision-Language Models via Synthetic Neuro-Symbolic Supervision.</strong> 本地v2，2026-05-15。<a href="../doc/StructuredRobotPolicies_2604.02812.pdf">本地PDF</a> · <a href="https://arxiv.org/abs/2604.02812v2">arXiv</a> · <a href="../doc/StructuredRobotPolicies_论文精读.html">精读（辅助）</a>。</li>
+<li id="r13"><strong>SynthDemo-RL: Breaking the Zero-Reward Barrier in VLA Adaptation with LLM-Guided Synthetic Demonstrations.</strong> 本地v1，arXiv:2609.21650。<a href="../doc/SynthDemo-RL.pdf">本地PDF</a> · <a href="https://arxiv.org/abs/2609.21650v1">arXiv</a> · <a href="../doc/SynthDemo-RL_论文精读.html">精读（辅助）</a>。重点pp.3–7。</li>
+<li id="r14"><strong>VersualRL: Closed-Loop Verbal Reinforcement Learning with Visual Execution Feedback for Task-Level Robot Planning.</strong> 本地v3，2026-07-19。<a href="../doc/VersualRL_2603.22169.pdf">本地PDF</a> · <a href="https://arxiv.org/abs/2603.22169v3">arXiv</a> · <a href="../doc/VersualRL_论文精读.html">精读（辅助）</a>。正式会议接收状态不作为本报告已核事实。</li>
+<li id="r15"><strong>VASO: Formally Verifiable Self-Evolving Skills for Physical AI Agents.</strong> Yunhao Yang等，2026-06-03，v1。<a href="https://arxiv.org/html/2606.05395v1">公开原文（实际阅读）</a> · <a href="../doc/VASO_论文精读.html">本地精读</a>。本地PDF截断，未按可读原文计；§4.2条件保证、§5表1、§7局限及附录是主要依据。</li>
+<li id="r16"><strong>Closing the Planning-Learning Loop with Application to Autonomous Driving.</strong> Panpan Cai、David Hsu，arXiv v3，2022-08-09。<a href="https://arxiv.org/abs/2101.03834">已核摘要及版本</a> · <a href="../doc/LeTS-Drive_TRO规划与学习_论文精读.html">本地二手精读</a>。摘要只标T-RO有条件接收；正文定理、1/10数据与具体实验数值未在本报告核实，故不作为定量结论。</li>
+<li id="r17"><strong>VisualPredicator: Learning Abstract World Models with Neuro-Symbolic Predicates for Robot Planning.</strong> Yichao Liang等，v2，2025-02-28。<a href="https://arxiv.org/html/2410.23156v2">公开原文</a>。§2–6；App.B.2/B.5。CABTO本地参考文献标ICLR 2025。</li>
+<li id="r18"><strong>ExoPredicator: Learning Abstract Models of Dynamic Worlds for Robot Planning.</strong> Yichao Liang等，2025-09-30，v1。<a href="https://arxiv.org/html/2509.26255v1">已核原文版本</a> · <a href="https://proceedings.iclr.cc/paper_files/paper/2026/hash/5140fb72e83da1383f79352ca101d0f5-Abstract-Conference.html">搜索命中的ICLR 2026条目</a>。算法细节按v1，不将后续版本视为逐字一致。</li>
+<li id="r19"><strong>Neuro-Symbolic Learning for Long-Horizon Task Planning Under Complex Logical Constraints（iFlax）.</strong> Qiwei Du等，2026；arXiv:2606.06877。<a href="https://sairlab.org/iflax/">已核作者项目页</a> · <a href="https://arxiv.org/abs/2606.06877">论文链接</a>。证据等级为项目页，未核完整论文或实验分母。</li>
+<li id="r20"><strong>既有横向报告（本报告的比较对象，不是结论来源）。</strong> <a href="../doc/神经符号闭环_七篇调研与CABTO组合拳.html"><code>doc/神经符号闭环_七篇调研与CABTO组合拳.html</code></a>。已结合对应七份精读阅读；主要评议“只缺学习化”“经验差异即形式反例”和多模块堆叠路线。</li>
+</ol></section>
+<footer>完成于2026-09-27 · 依据本地论文、源码与公开原始资料独立合成。本文中的新架构、理论目标和实验矩阵均为研究建议，未声称已实现或已验证。报告采用单文件内联样式，正文离线可读；外部引用需联网，本地引用需保留项目相对目录。</footer>
+</main></div>
+</body>
+</html>

@@ -30,7 +30,7 @@ from probe_oracle import TASKS                          # noqa: E402
 DESC = {
     "shrimp": "orange shrimp at the front of the table",
     "apple": "red apple at the front of the table",
-    "potato": "brown potato at the front of the table",
+    "pepper": "green pepper at the front of the table",
 }
 
 

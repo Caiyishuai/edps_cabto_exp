@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CABTO 主动跨层诊断：如何决定改模型、改策略还是继续观察</title>
+<style>
+:root{--bg:#0d1117;--bg-2:#161b22;--bg-3:#1f242c;--border:#30363d;--text:#e6edf3;--text-dim:#9aa4b2;--accent:#58a6ff;--accent-2:#79c0ff;--green:#3fb950;--orange:#d29922;--red:#f85149;--code-bg:#0b1020}*{box-sizing:border-box}html{scroll-behavior:smooth}html,body{background:var(--bg);color:var(--text)}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.85;font-size:15.5px}.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}aside.toc{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--bg-2);border-right:1px solid var(--border);padding:28px 18px}aside.toc h2{font-size:13px;color:var(--text-dim);letter-spacing:1px;margin:0 0 12px}aside.toc ol{padding-left:20px}aside.toc li{margin:8px 0}aside.toc a{color:var(--text);font-size:14px}main{max-width:1150px;width:100%;min-width:0;margin:0 auto;padding:46px 50px 80px}header.report-head{margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border)}header h1{font-size:32px;margin:0 0 14px;line-height:1.4}.subtitle{color:var(--text-dim);font-size:17px}.meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}.meta span,.tag{background:var(--bg-3);border:1px solid var(--border);padding:3px 9px;border-radius:5px;font-size:12px;color:var(--text-dim)}section{margin:40px 0;scroll-margin-top:24px}section h2{font-size:23px;border-left:4px solid var(--accent);padding-left:12px}section h3{font-size:18px;margin-top:28px;color:var(--accent-2)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}blockquote,.callout{border-left:3px solid var(--accent);background:var(--bg-2);margin:16px 0;padding:15px 19px;border-radius:0 7px 7px 0}.warn{border-color:var(--orange)}.good{border-color:var(--green)}code{background:var(--code-bg);padding:2px 5px;border-radius:4px;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.88em;color:var(--accent-2);overflow-wrap:anywhere}.equation{background:var(--code-bg);padding:15px 18px;border:1px solid var(--border);border-radius:7px;overflow-x:auto;font-family:Georgia,"Times New Roman",serif;font-size:17px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}th,td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top}th{background:var(--bg-3);color:var(--accent-2)}tr:nth-child(even) td{background:var(--bg-2)}.muted,small{color:var(--text-dim)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{background:var(--bg-2);border:1px solid var(--border);padding:18px;border-radius:8px}.card strong{display:block;color:var(--accent-2);font-size:20px}.flow{padding:18px;background:var(--bg-2);border:1px solid var(--border);border-radius:7px;line-height:2}.cite{font-size:12px;white-space:nowrap}.references{padding-left:23px}.references li{margin:13px 0;font-size:13px;overflow-wrap:anywhere}.timeline{list-style:none;padding-left:16px;border-left:2px solid var(--border)}.timeline li{position:relative;padding:8px 0 8px 18px}.timeline li:before{content:"";position:absolute;left:-22px;top:19px;width:10px;height:10px;border-radius:50%;background:var(--accent)}details{border:1px solid var(--border);padding:14px 18px;border-radius:7px;margin:16px 0}summary{cursor:pointer;color:var(--accent-2)}footer{border-top:1px solid var(--border);padding-top:20px;color:var(--text-dim);font-size:12px}li{margin:6px 0}@media(max-width:1000px){.layout{grid-template-columns:1fr}aside.toc{position:static;height:auto}main{padding:30px 20px}.cards{grid-template-columns:1fr}header h1{font-size:27px}}@media print{aside.toc{display:none}.layout{display:block}main{padding:0;max-width:none}a{color:inherit}}
+</style></head>
+<body><div class="layout"><aside class="toc"><h2>研究路线 · 主动跨层诊断</h2><ol><li><a href="#summary">结论与研究问题</a></li><li><a href="#reframe">先纠正问题的表述</a></li><li><a href="#literature">五篇核心研究精读</a></li><li><a href="#architecture">建议的方法结构</a></li><li><a href="#evidence">证据和竞争假设</a></li><li><a href="#experiments-choice">如何选择下一次观察/干预</a></li><li><a href="#routing">何时改哪一层</a></li><li><a href="#verification">如何验证和停止</a></li><li><a href="#case">Blocks具体推演</a></li><li><a href="#evaluation">研究实验如何设计</a></li><li><a href="#implementation">最小实施路线</a></li><li><a href="#novelty">创新点与可证明边界</a></li><li><a href="#references">参考资料与证据等级</a></li></ol><p class="muted">把“解释得合理”转化为“预测可验证”，把“猜根因”转化为“选择值得做的下一次试验”。</p></aside>
+<main><header class="report-head"><h1>CABTO 主动跨层诊断<br>该改模型、改策略，还是继续观察？</h1><div class="subtitle">围绕失败证据、可区分试验与有限交互，提出一条可实施、可消融、边界清晰的研究路线</div><div class="meta"><span>类型：academic</span><span>调研：2026-09-27</span><span>5篇新原文精读＋既有接地研究</span><span>本轮只调研，不改实验代码</span></div></header>
+<section id="summary"><h2>1. 结论：需要主动诊断规划器，而不只是更强critic</h2>
+<blockquote><strong>建议保留CABTO三阶段，但在“失败反馈→修订”之间加入一个预算化主动诊断层：</strong>维护具体的竞争解释；为每种解释写出可检验预测；规划安全且有区分力的观察/干预；根据结果更新解释；在证据足以支持某项修复时才提交，并允许未知、复合故障和弃权。</blockquote>
+<div class="cards"><div class="card"><strong>不是根因三分类</strong>“模型/策略/感知”并非天然互斥。更应判断哪项修复在当前适用域有效。</div><div class="card"><strong>不是反复跑全任务</strong>优先选择能区分竞争解释的局部试验，并计算准备、恢复、重置成本。</div><div class="card"><strong>不是相信自报置信度</strong>LM负责提出假设；规划、执行和独立验证负责提供证据。</div></div>
+<p><strong>研究问题：</strong>给定机器人失败轨迹及剩余交互预算，怎样选择继续观察、改变技能参数、修订动作契约或暂缓部署，使最终得到的修复在独立上下文中有效，同时减少错误修订和总交互成本？</p>
+<p><strong>最重要的文献组合：</strong>AIA提供“生成区分动作模型的查询”；EC²提供“为决策而非为了辨清一切选择测试”；TAMPURA提供“将感知和试探视作belief-space动作”；Practice Makes Perfect提供“把技能练习分配给未来任务真正需要的能力”；ProTracer提供“按本体信号和动作边界组织失败证据”。<a class="cite" href="#r3">[3]</a><a class="cite" href="#r4">[4]</a><a class="cite" href="#r5">[5]</a><a class="cite" href="#r6">[6]</a><a class="cite" href="#r7">[7]</a></p>
+<p><strong>没有一篇已经完整解决你的问题。</strong>这些方法分别固定了模型、技能、观测或测试空间中的某些部分。CABTO的研究空间恰好是它们之间的缺口：<strong>抽象、控制和观察同时可能出错时，怎样选择低成本、可验证的修复决策。</strong>这是一项待验证的综合方法，不是把现有定理直接拼起来就能获得的保证。</p>
+<details><summary>检索范围与证据口径</summary><p>围绕7组查询检索：① active interrogation action model learning；② Practice Makes Perfect Planning to Learn Skill Parameter Policies；③ robot failure diagnosis causal intervention；④ policy failure detection conformal prediction；⑤ partially observable task and motion planning；⑥ active diagnosis information gain/equivalence class；⑦ proprioception-guided failure onset。外网搜索与arXiv索引并行；内网通道不可用；本题为学术研究，不用社区热度代替证据。</p><p>本轮精读5个原文URL：AIA、EC²、TAMPURA、Practice Makes Perfect、ProTracer；VisualPredicator、ExoPredicator、VASO沿用此前已经核读的原文。搜索中还出现FAIL-Detect等监测工作，但未在本轮精读，不将其性能或保证作为核心论据。文献结果均为作者报告，本轮未复现；2026年的ProTracer是近期预印本。P1结论依据本地审计结果，不重新推断已运行数据。</p></details>
+</section>
+<section id="reframe"><h2>2. 先纠正问题表述：真实根因未必可唯一辨认</h2>
+<h3>2.1 “改模型还是改策略”有时是设计选择，不是唯一真相</h3>
+<p><span class="tag">分析推论</span> 同一个夹取策略在目标被占用时失败，可能有两条都有效的路线：</p><ul><li>给当前策略对应的动作模型加适用条件，并先清理目标；</li><li>开发能处理该情形的新控制策略，保留更宽的适用域。</li></ul>
+<p>因此，失败并不能唯一指向“模型错”或“策略错”。更合理的对象是<strong>策略版本相关的动作契约</strong>：在什么上下文中，这个具体策略能实现哪些效果？若策略换了，启动域和旧验证证据都可能变化。CABTO原问题本来就是联合寻找模型与策略，不能又假设两者有一个与实现无关的唯一分界。<a class="cite" href="#r1">[1]</a></p>
+<p>类似地，P0“只改模型”虽然保持技能源码不变，却改变了BT选出的动作序列。其收益是经由规划行为变化实现的；它不证明Clear是所有可能控制器都不可绕过的物理必要条件。</p>
+<h3>2.2 从“唯一根因”转为“足以选择可靠修复的证据”</h3>
+<p>建议区分两个目标：</p><ol><li><strong>诊断目标：</strong>尽量区分可竞争的解释，保留不能排除的可能性。</li><li><strong>决策目标：</strong>即使还有多个解释，只要同一修复在这些解释下都安全、有效且通过验证，就可以停止追问。</li></ol>
+<p>这与EC²的决策等价类思想一致：不一定辨识每个隐藏状态，只需辨识对最终决策有影响的类别。其理论建立在已知有限模型上，迁移到机器人只能先作为方法原则。<a class="cite" href="#r4">[4, §3–4]</a></p>
+<h3>2.3 必须承认不可辨识、未知机制和复合故障</h3>
+<p><span class="tag">分析推论</span> 若两个假设对所有可安全执行的测试都给出相同观测分布，就无法仅凭这些测试区分它们。模型再大也不能从没有信息的数据中可靠地判断。此时应：寻找新传感/新干预；报告无法区分；或者选择对两者都有效的保守修复。不能用更长解释掩盖证据不足。</p>
+<p>假设空间也不能只有三个排他标签：可能同时有抓取偏差和遗漏前提，可能是技能衔接失配，也可能是延迟/外源过程。ExoPredicator说明了为何“刚执行动作之后发生的变化”不能自动等同于该动作的直接效果。<a class="cite" href="#r9">[9]</a></p>
+<h3>2.4 P1首先暴露的是候选覆盖，而非排序失败</h3>
+<p>本地P1有3次真实生成、9个结构合法条目/7种不同修订、52次搜索执行，没有完整候选进入确认。模型把放置阶段失败也归为抓取高度问题，并重复已有前提。这里<strong>没有观测到成功修复的成本</strong>；改排序无法保证从缺少完整解的池中找到解。并且P1未执行“失败后重新提案”的完整循环，所以它只否定了当前一次性方案的充分性，不否定CABTO全部迭代可能性。<a class="cite" href="#r2">[2]</a></p>
+</section>
+<section id="literature"><h2>3. 五篇最有用的研究：具体借什么</h2>
+<div class="table-wrap"><table><thead><tr><th>研究</th><th>真正解决的子问题</th><th>给CABTO的机制</th><th>不能继承的能力/保证</th></tr></thead><tbody><tr><td>AIA · AAAI 2021</td><td>通过查询学习黑箱智能体的关系动作模型</td><td>合成让两个模型预测不同的初态/动作序列，使用最长可执行前缀和终态排除假设</td><td>依赖正确谓词、可表示模型、确定性与可查询状态；不学习低层控制器</td></tr><tr><td>EC² · 2010</td><td>有噪贝叶斯主动学习中的等价类判别</td><td>优先区分导致不同决策的假设，并考虑测试成本</td><td>有限已知假设与观测模型；近似界不能直接用于开放故障、连续状态和改变世界的操作</td></tr><tr><td>TAMPURA · RSS 2024</td><td>部分可观测、风险敏感的任务与运动规划</td><td>观察、试推、移动遮挡物都可作为belief-space控制器，与任务动作一起选择</td><td>给定仿真/观测模型与人工抽象；不是自动修所有模型，更不是硬安全证明</td></tr><tr><td>Practice Makes Perfect · RSS 2024</td><td>规划该练习哪个技能、学习连续参数选择</td><td>按对任务成功的预期改善分配练习；把准备动作纳入交互</td><td>既有技能与算子；状态独立competence等强假设；没有显式完整机会成本优化</td></tr><tr><td>ProTracer · 2026-09预印本</td><td>失败检测、分类及起始时刻定位</td><td>本体变点＋动作阶段＋确定性文字化，区分早期偏离与后期症状</td><td>主要离线看完整轨迹；文字原因没有经物理干预验证；不是在线恢复器</td></tr></tbody></table></div>
+<p>来源：<a class="cite" href="#r3">[3]</a><a class="cite" href="#r4">[4]</a><a class="cite" href="#r5">[5]</a><a class="cite" href="#r6">[6]</a><a class="cite" href="#r7">[7]</a>。</p>
+<h3>3.1 AIA：最直接的“不要猜，问能区分的问题”</h3>
+<p>AIA的query不是泛泛问“为什么失败”，而是指定初态和动作序列，询问最长成功前缀长度及其终态。两个动作模型的差别可能是某前提有没有、某效果会不会发生；算法把“寻找预测分歧”编译成规划问题，生成能够暴露差别的查询。返回信息可以排除一组模型，而不是只修改一次prompt。短原文：<em>“length of the longest prefix”</em>。<a class="cite" href="#r3">[3, §3]</a></p>
+<p><strong>对CABTO的落点：</strong>对旧契约与新契约生成分歧上下文，例如疑似前提为假、其他已知条件满足的状态；再规划如何真实到达该状态。若不能安全到达，不能偷偷用状态瞬移冒充便宜查询。AIA的实验是IPC/PDDLGym，不是实机恢复；其函数等价保证不适用于当前噪声感知和同时改变的策略。<a class="cite" href="#r3">[3, §3.5–4]</a></p>
+<h3>3.2 EC²：信息增益不等于有用的决策改进</h3>
+<p>EC²在不同等价类的假设之间连边，用先验概率乘积作为固定边权，选择期望切断跨类边权/测试成本最大的测试。这样不必花大量测试辨认同一决策类内部的无关细节。论文还展示测试互补性：一个测试单独信息收益小，却可能使后续测试有用。短原文：<em>“a set of tests can be far better than the sum of its parts.”</em><a class="cite" href="#r4">[4, §3–4]</a></p>
+<p><strong>对CABTO的落点：</strong>如果两种解释都支持同一保守抓取修订，未必值得继续分清它们；如果一种要求先观察、另一种允许执行，则区分更重要。但不能将每轮重算后验边权的启发式称为原EC²，也不能把其近似界搬过来。它假设有限且正确的测试结果模型，机器人未知干预通常不满足。<a class="cite" href="#r4">[4]</a></p>
+<h3>3.3 TAMPURA：观察动作不应该只有一个“低置信就拍照”的开关</h3>
+<p>TAMPURA把belief抽象成有限命题，并用随机转移规划观察、试探与任务控制。Inspect/Look或试推能改变信念，即使物理任务本身还没推进。信息只有改善后续达标收益时才有价值，不需要一律奖励“知道得更多”。它的风险处理主要基于期望折扣目标收益，不是CVaR或硬风险上界。<a class="cite" href="#r5">[5, §III–V]</a></p>
+<p><strong>对CABTO的落点：</strong>明确表示谓词true/false/unknown，观察器可靠性和时间戳；选择能降低决策歧义的视角/接触确认。不要仅看VLM口头confidence。TAMPURA仍依赖给定控制器、概率环境/观测模型和人工抽象，直接整体接入成本高；先做局部belief管理更现实。<a class="cite" href="#r5">[5, §VI–VIII]</a></p>
+<h3>3.4 Practice Makes Perfect：学习参数，不让LM负责猜精确数值</h3>
+<p>EES估计练习某技能后对任务分布成功的提升，并规划到达其启动集。参数选择实际用经验训练的小MLP成功分类器、先验采样和ε-greedy，<strong>不是贝叶斯优化</strong>。Beta–Bernoulli用于估计competence，主实验外推采用近期增幅启发式，附录明确：<em>“The variance of the Beta distribution is not used during extrapolation.”</em><a class="cite" href="#r6">[6, §III &amp; App.B/C]</a></p>
+<p><strong>对CABTO的落点：</strong>LM确定需要检查哪个参数/策略族，数值学习器从真实数据估计有效域。不要把Beta后验、Bayesian optimization和LLM参数生成混为一谈。EES可用于选择“练哪项技能”，但选择目标未显式按准备/恢复成本归一化；CABTO需要补这部分。其实机两环境各5学习种子，仅EES没有实机基线对照，结果不能直接预测你的收益。<a class="cite" href="#r6">[6, §IV &amp; App.D]</a></p>
+<h3>3.5 ProTracer：非常贴近P1的阶段错配，但只是诊断前端</h3>
+<p>ProTracer用末端移动/静止、夹爪开闭等离散信号做变点检测，挑选动作边界，再把本体状态确定性地转成文字叙述，结合视觉描述交给VLM。它强调失败起点可能早于可见症状。短原文：<em>“Since ProTracer runs offline”</em>，说明不能用其完整回合结果直接证明在线诊断能力。<a class="cite" href="#r7">[7, §III &amp; V]</a></p>
+<p>作者报告零样本起点MAE：短回合0.59秒、长回合4.06秒；统计范围和短长条件不同，“亚秒定位”不能推广到长任务。原因与避免建议也不是经恢复执行验证的根因。对现有CABTO而言，已有API阶段标签，<strong>先用现有边界和传感证据，不必立即训练新的分段网络</strong>。<a class="cite" href="#r7">[7, Table I]</a></p>
+<h3>补充研究：何时扩大抽象或增加时序规则</h3>
+<ul><li><strong>VisualPredicator：</strong>如果现有谓词无法区分正负样本，再发明和筛选新谓词；但预置技能是其重要假设。不要一遇失败就无限新增概念。<a class="cite" href="#r8">[8]</a></li><li><strong>ExoPredicator：</strong>当等待、外源过程、延迟作用使当前符号状态不充分时，需要过程模型，而不是不断给刚执行的动作补效果。<a class="cite" href="#r9">[9]</a></li><li><strong>VASO：</strong>适合将时序反例用于可复用契约修订，但保证依赖命题映射正确；经验差异转成文字并不会自动成为形式证明。<a class="cite" href="#r10">[10]</a></li></ul>
+</section>
+<section id="architecture"><h2>4. 建议的方法：两个闭环，不是一次分类后直接改代码</h2>
+<p><span class="tag">研究建议，尚未实现或验证</span> 对外仍保留CABTO三阶段；在第三阶段建立“诊断试验闭环”，与“任务执行闭环”分开。</p>
+<div class="flow"><strong>任务层：</strong>当前已接地动作库 → BT规划/执行 → 动作边界观测 → 异常或不确定<br><strong>诊断层：</strong>定位证据 → 维护竞争假设 → 选择下一次观察/参数试验/模型分歧试验 → 真实执行 → 更新假设<br><strong>提交层：</strong>提出最小修订 → 旧成功回归＋独立验证＋完整任务组合 → 版本化提交 / 继续诊断 / 弃权</div>
+<h3>清晰的职责划分</h3>
+<table><tr><th>组件</th><th>应该做</th><th>不应该做</th></tr><tr><td>LM/VLM</td><td>从局部证据提出可计算的机制假设、候选条件及需要观察的变量</td><td>自报confidence作为真后验；自由修改评价标准；猜精确控制数值后直接部署</td></tr><tr><td>符号规划器</td><td>检查候选、生成模型分歧测试、规划满足实验前提的准备动作</td><td>证明未知物理模型真实；把一次建树失败等同世界不可解</td></tr><tr><td>数值学习/搜索器</td><td>在安全参数域内分配局部试验，估计上下文相关的成功与副作用</td><td>只以最终奖励掩盖动作契约失败；用未校准代理替代验证</td></tr><tr><td>观测/执行器</td><td>真实动作、时间同步、状态/力/接触证据、成本和异常分类</td><td>通过修改物理状态或读取注入标签制造“诊断正确”</td></tr><tr><td>验证器</td><td>固定目标与安全标准，检查修订副作用、回归和留出</td><td>为了接受生成结果而一起改谓词真值定义</td></tr></table>
+<p>“继续观察”是诊断层的动作；“更新belief”通常不修改长期模型。只有多次独立证据表明某观察器系统性偏差时，才进入感知模型维护分支，并使依赖旧观察器的证据失效。这个区分避免每次误报都触发世界模型改写。</p>
+</section>
+<section id="evidence"><h2>5. 第一步：把失败轨迹变成可预测的竞争假设</h2>
+<h3>5.1 最小证据单元不是episode，是一次动作契约实例</h3>
+<p>建议每次动作保存：</p><ul><li>全局唯一episode/action/API索引；阶段起止时刻；当前模型、策略、观察器版本。</li><li>前提的true/false/unknown及来源、时间戳；关键原始观测，而不只保存结论。</li><li>期望效果、实际效果、未声明变化和安全残差。</li><li>执行阶段：接近、下降、闭爪、提升、搬运、释放、撤离；力、接触、跟踪误差等。</li><li>最近一个可信状态、已通过检查的动作前缀，以及仍可能影响后续的抓姿/物体稳定性。</li><li>恢复/重置代价，哪些后续动作尚未执行，因而不能把缺失效果当作它们失败。</li></ul>
+<p><strong>不要硬性宣布“前面成功，所以前面无责”。</strong>抽象验收可能漏掉抓姿或稳定性，早期偏差也可能延迟显现。先局部定位，解释失败或证据矛盾时，再沿对象、资源和技能依赖回溯。这吸收ProTracer的起点/症状区分，但仍需要后续干预验证。<a class="cite" href="#r7">[7]</a></p>
+<h3>5.2 假设必须比“模型错”更具体</h3>
+<table><tr><th>不够用的标签</th><th>可检验假设示例</th><th>需要预测什么</th></tr><tr><td>策略问题</td><td>当前夹取参数使手指闭合位置偏离目标接触区域</td><td>改变该参数、保持对象/场景/模型不变时，双指力和提升结果如何变化</td></tr><tr><td>模型问题</td><td>当前place策略只在目标表面可用时完成，而动作契约没有限制该条件</td><td>相同策略在该条件真/假时的可执行性和后效应分布</td></tr><tr><td>感知问题</td><td>当前视角把物体与夹爪接近误判成持有</td><td>换独立视角或检查接触/相对运动后，观测是否改变</td></tr><tr><td>组合问题</td><td>上游抓姿达成Holding，但不满足下游放置的姿态/空间条件</td><td>同符号状态下，改变上游终态而保持下游策略时是否影响成败</td></tr><tr><td>环境过程</td><td>物体在技能结束后继续滑移，终态尚未稳定</td><td>不追加任务动作、仅等待时是否继续变化</td></tr></table>
+<p>LM可以提出这些假设，但每条必须附：支持它的证据ID、反证、适用动作/对象、可计算条件或参数、至少一个可区分试验及预测结果。不能用“<code>CanExecute(action)</code>为真”这种事后成功的同义改名代替建模。</p>
+<h3>5.3 保存的是假设集合/因子，而非强制单选标签</h3>
+<p>实现上先维护小型候选集合：参数失配、契约缺项、观测不确定、组合/时序、未知；每项包含具体机制。允许两个假设并存，未知始终保留逃生通道。</p>
+<p>无噪声、可重放的确定性子实验中，可像AIA一样排除与观测确定冲突的假设。真实噪声下不能一次失败就删掉解释；可用经验估计的结果概率或置信区间更新。<strong>LM的“我有90%把握”不自动等于后验概率。</strong>没有可靠似然时，先采用支持/冲突/未测试的证据账本，明确称为启发式，不伪装贝叶斯校准。<a class="cite" href="#r3">[3]</a></p>
+<h3>5.4 何时扩大假设空间</h3>
+<p>如果全部当前假设都解释不了新结果，或者多个物理状态在现有谓词下完全相同却有稳定不同后果：回到原始观测，尝试新谓词、动作模式分裂或时序过程。VisualPredicator的“提出—筛选—再学习操作符”可作为参考，而不是强迫已有候选中的某一个获胜。新谓词进入后必须重标注旧轨迹、重验依赖契约。<a class="cite" href="#r8">[8]</a><a class="cite" href="#r9">[9]</a></p>
+</section>
+<section id="experiments-choice"><h2>6. 第二步：有限预算下，下一次该做什么</h2>
+<h3>6.1 测试对象必须包含准备动作与观测器</h3>
+<p>定义一次诊断试验为：<strong>目标上下文＋准备计划＋实际干预＋观测方式＋结果分类＋停止/安全条件＋恢复计划</strong>。不是只记“把偏移改成5mm试一次”。例如从失败现场重抓、搬走遮挡、切换相机，都有状态变化和费用。EES展示了到达一次练习机会可能需要多个准备技能；这部分不能免费。<a class="cite" href="#r6">[6]</a></p>
+<table><tr><th>试验类型</th><th>主要区分</th><th>重要限制</th></tr><tr><td>重新观察/换视角/接触确认</td><td>真实状态变化还是观测歧义</td><td>同模型重复看同一图通常高度相关；运动换视角也有成本/风险</td></tr><tr><td>固定契约，只调一个参数/换控制器</td><td>当前实现不足能否通过局部控制改进解决</td><td>成功只说明存在一个更好实现，不否定同时存在模型缺陷</td></tr><tr><td>固定策略，改变疑似条件</td><td>条件是否影响此策略的启动域/效果</td><td>物理改变条件可能同时改变姿态、碰撞和关节状态，需要记录混杂</td></tr><tr><td>旧/新模型的区分查询</td><td>哪个模型更能解释可执行前缀或终态</td><td>查询初态要可达且安全；不能默认任意状态可重置</td></tr><tr><td>等待或无任务动作对照</td><td>延迟/外源过程与直接动作效果</td><td>等待本身可能有不可逆代价，需要时间预算</td></tr></table>
+<h3>6.2 理想目标：最小化作错修复决策的风险</h3>
+<p><span class="tag">拟议形式化</span> 令D为已收集证据，h为竞争机制，r为候选修复或弃权；若有可信后验及损失模型，可定义：</p>
+<div class="equation">R(D) = min<sub>r</sub> E<sub>h∼b(h|D)</sub>[ℓ(r,h)]<br>VOI(e) = R(D) − E<sub>y|D,e</sub>[R(D ∪ {(e,y)})] − c(e)</div>
+<p>这表示“做一次测试，预计能减少多少错误决策损失，是否值得付出成本”。损失可包含错误部署、旧任务退化、任务不完成和修订复杂度，但<strong>关键安全约束应独立作为硬门槛，不宜仅用一个可被收益抵消的惩罚权重</strong>。</p>
+<p>上式适合测试近似不改变后续任务状态的情形。若测试搬走物体或消耗资源，应维护联合belief <em>b(x,h)</em>，把任务状态一起更新：</p>
+<div class="equation">V(b,B) = min { L<sub>stop</sub>(b), min<sub>e:c(e)≤B</sub> [c(e) + E<sub>y</sub> V(T(b,e,y), B−c(e))] }</div>
+<p>这是预算化决策问题的表述，不是要求第一版求解完整POMDP。T包含物理状态、信息与假设更新；预算可以首先按交互次数实现，同时单列秒数、风险、模型token与恢复成本。TAMPURA说明了belief-space执行的思路，但它依赖较强模型且规划开销不低，不能直接照搬全部系统。<a class="cite" href="#r5">[5]</a></p>
+<h3>6.3 第一版可实现近似：候选决策分歧/成本</h3>
+<ol><li>对每条假设，计算或学习它对一小组可执行试验的结果预测；没有依据的预测标为unknown。</li><li>只重点比较会导致不同下一步修复/观察决策的假设对；相同决策内部的差异降低优先级。</li><li>优先执行预测结果差异大、准备与恢复成本低、风险可接受的试验。</li><li>如果所有测试都不区分当前假设，扩大观察或假设空间，不能继续无效重试。</li></ol>
+<p>可从“期望切断跨决策类冲突边/总成本”的启发式起步，借鉴EC²。<strong>没有校准预测时，只能称成本敏感的分歧启发式；不具备EC²近似最优保证。</strong>如果不同解释下可接受修复集合重叠，未必能构成互斥等价类，应直接用决策风险或集合覆盖，而不是硬套原ECD定理。<a class="cite" href="#r4">[4]</a></p>
+<h3>6.4 为什么不默认“信息增益最大”</h3><p>一个观察可能非常善于区分无关细节，却不能改变修复选择；反过来，校准传感器的测试单独信息量小，却使下一次观察可信。应把简单熵下降作为对照，不当作最终正确目标。贪心规则也会受测试互补性影响，需保留短视限制和必要的两步试验组合。<a class="cite" href="#r4">[4]</a></p>
+<h3>6.5 不把数值拟合交给语言解释</h3><p>一两个连续参数时先用有界网格/局部搜索或基于成功分类的采样；累积数据后再考虑上下文bandit或贝叶斯优化。使用接触力、轨迹残差可帮助选择参数，但最终仍以固定契约和物理成功验收。接触成功对参数不一定平滑，少量数据的GP预测也不能作为安全证明。EES是参数学习参考，贝叶斯优化是另一个可选设计，不应混写为该论文实现。<a class="cite" href="#r6">[6]</a></p>
+</section>
+<section id="routing"><h2>7. 第三步：什么时候改抽象模型、策略或观察</h2>
+<table><tr><th>已有证据</th><th>优先行动</th><th>何时才允许长期修订</th></tr><tr><td>关键前提观测unknown，或多源证据冲突</td><td>重新观察/检查传感器；只更新belief</td><td>重复独立证据支持系统性观察偏差，再维护感知器；不立即改动作物理语义</td></tr><tr><td>同可靠上下文下，参数A失败、B成功</td><td>参数/策略局部修订；保留模型候选</td><td>B在相关上下文及旧成功上成立；重新估计其启动域，不只看一个试验</td></tr><tr><td>固定策略在条件q真时成功、假时稳定失败</td><td>候选前提/模式分裂，规划准备动作</td><td>有反证支持q的必要性或有用性；不能仅因成功样本总伴随q而加入</td></tr><tr><td>局部动作成功但下游系统失败</td><td>检验技能接口、上游终态和任务顺序</td><td>确认缺少何种后继条件；不得只修最终报错节点</td></tr><tr><td>同符号状态反复给出不同可预测后果</td><td>检查噪声；必要时扩展谓词或条件效果</td><td>新概念可独立观测、能提升留出预测/规划且复杂度合理</td></tr><tr><td>动作结束后仍自行变化</td><td>等待对照、过程与持续条件建模</td><td>有足够时间证据，不把外源变化错误写入动作add/del</td></tr><tr><td>假设都不解释，预算不足或测试不安全</td><td>弃权、保留当前可信库、请求外部帮助或新传感能力</td><td>不能通过放宽目标或强塞某个标签结束诊断</td></tr></table>
+<p>以上是证据驱动的优先顺序，不是硬编码真因分类规则。一次控制器改进、一次条件干预都不能证明其他解释不存在；遇到新失败必须允许复合假设和重新开启旧解释。</p>
+<h3>动作模型应带策略与上下文版本</h3><p>建议每项技能保存：<code>(schema, policy_version, observation_version, applicable_context, effects, safety_monitor, evidence, cost)</code>。修订pre时检查准备动作是否存在；改变策略时重验旧契约；改变谓词时使相关模型和证据失效或重标注。否则经验库越大，陈旧证据污染越严重。</p>
+<p>如果一个强前提只在当前弱策略下必要，可称“该策略的经验证启动条件”，不要宣称是任务在物理上不可绕过的条件。VisualPredicator中成功状态交集造成过严前提的例子，正好提醒这一点。<a class="cite" href="#r8">[8, App.B.2]</a></p>
+</section>
+<section id="verification"><h2>8. 如何验证修订、何时停止、何时弃权</h2>
+<h3>8.1 修订接受需要四道门</h3>
+<ol><li><strong>结构门：</strong>合法语法、类型、参数范围；排除重复已有前提、等价无效补丁、非法效果修改和修改目标/安全阈值。结构化无效必须与语义失败分报。</li><li><strong>证据门：</strong>解释当前反例，并保留“已解决的局部问题”；如果后续暴露新缺陷，记为部分进展，而不是抹掉前面证据。</li><li><strong>回归门：</strong>旧成功上下文、旧任务规划覆盖、技能衔接与安全检查不退化；修订后有动作可执行且完成任务，不能以永久拒绝冒充修好。</li><li><strong>验证门：</strong>候选冻结后在未用于选择的物理上下文执行；同时检查效果、删除残留、frame变化和全程相关安全条件。</li></ol>
+<p>VASO可借鉴“固定全局要求、反例作用于可复用契约”，但其命题映射本身未被普遍验证。CABTO也不能用同一个正在学习的感知器同时生成修订、奖励并证明自己正确。应保留独立的评测真值或额外验证信号。<a class="cite" href="#r10">[10]</a></p>
+<h3>8.2 停止诊断与批准部署不是同一门槛</h3><p>当剩余解释都支持同一修复，或进一步试验的预期收益不超过成本，可以停止追查根因；但修复仍要通过独立验证。相反，已成功一次而解释仍分歧，也不能为了节省交互跳过必要验证。</p>
+<p>持续自适应挑选试验之后，简单将所有动作成败当独立Bernoulli样本套置信区间并不严谨。第一版用固定候选、固定独立验证集和预先确定的停止点；多候选选择考虑多重比较。以后若要边测边停，再引入适合相应采样假设的序贯检验/置信序列。<strong>不能把VLM自报confidence、Beta后验或共形分数直接称为根因正确概率。</strong></p>
+<h3>8.3 应保留不同类型的弃权</h3>
+<ul><li>信息不足：存在有效的再观察机会，但当前不能决策。</li><li>假设不足：当前解释集合覆盖不了结果，需要新抽象或新控制能力。</li><li>表达不足：修订语言不能表达所需条件/过程。</li><li>预算不足：可能可修，但剩余预算不够验证。</li><li>安全不足：没有可接受风险的区分试验。</li><li>基础设施无效：模型/API/渲染/观察失败；不是物理不可解。</li></ul>
+<p>P1的空证据回复有弃权意图却缺字段，最终是结构拒绝；另12条搜索是候选池耗尽弃权。这种细分必须保留，不能统一算成“模型学会拒绝”。<a class="cite" href="#r2">[2]</a></p>
+</section>
+<section id="case"><h2>9. 对Blocks的一条具体诊断过程</h2>
+<p><span class="tag">示意流程，不是新的实测结果</span> 目标仍是把物体放到指定支撑上，但诊断器不知道故障注入标签。</p>
+<ol><li><strong>抓取阶段失败：</strong>日志显示approach/descend完成，闭爪后双指力不足，物体未提升。候选解释包括参数失配、对象位置误判、夹爪能力问题；此时没有证据说放置模型正确或错误，因为还没执行。</li><li><strong>决定是否观察：</strong>若位置观测过时/冲突，先做一个不同视角或接触确认；若是当前可靠Oracle条件，则不浪费重复观察，转为有界参数试验。观察优先不是一条普遍固定规则。</li><li><strong>局部参数试验：</strong>保持场景和契约不变，试验选择器挑一个有区分力的安全参数。成功后记录“抓取子问题暂时得到支持的修订”，但不宣告整个任务修好。</li><li><strong>继续执行后放置失败：</strong>从已确认抓取终态继续，失败在lower阶段；分析目标关系、接触和残差，同时保留可能的上游抓姿解释。不要把这一条重新混进“闭爪失败”统计。</li><li><strong>对疑似条件生成分歧测试：</strong>固定放置策略，比较经过真实准备动作得到的不同目标上下文，或执行旧/新契约预测不同的计划。改变条件的准备、移开障碍和恢复都计费。</li><li><strong>提出并筛选契约：</strong>由假设生成器/对比学习器提出条件，验证它是否预测失败并保留成功；宿主不给固定“Clear就是答案”。如果现有语言已有恰当概念，先不用发明新词。</li><li><strong>组合修订再验证：</strong>保留抓取参数改进与新的策略相关适用条件，让BT规划准备动作。在新布局中验证；若失败来自未表达机制则弃权或扩展表示。</li></ol>
+<p>这比“第一轮就生成一个同时解决所有问题的完整候选”更符合CABTO的迭代优势，也更容易分析到底哪一轮、哪次试验增加了什么知识。不过局部成功不能直接作为全局进展证明，需要避免参数改进破坏其他任务。</p>
+<h3>实验干预要警惕混杂</h3><p>把目标上的块搬走后，机器人关节状态、物体位置误差和接触历史也可能改变。若“清理后成功”，不能只凭此断言占用是唯一原因。可加入相同长度的准备动作对照、匹配机器人姿态、记录其他变量，或用多上下文重复检验。无法隔离时应降低因果表述强度，而不是让LM补一段确定性解释。</p>
+</section>
+<section id="evaluation"><h2>10. 怎样做实验，才能证明方法而非证明提示变好了</h2>
+<h3>10.1 首先拆开三个问题</h3>
+<table><tr><th>问题</th><th>关键对照</th><th>要排除的替代解释</th></tr><tr><td>能否产生包含有效修复的假设/候选集合？</td><td>原始混合反馈 vs 动作阶段化反馈 vs 有限执行后重提</td><td>只是输入更多token/更多正确答案提示</td></tr><tr><td>能否更省地选择观察和干预？</td><td>同一候选/假设生成器下：随机安全测试、固定顺序、熵增益、决策分歧/成本</td><td>不同方法得到不同质量候选，无法归因测试选择</td></tr><tr><td>获得的修复能否迁移？</td><td>冻结后新物体/新布局/真实技能衔接状态；旧任务同时回归</td><td>独立reset到理想状态、只挑成功样本、测试回流调参</td></tr></table>
+<h3>10.2 建议三阶段实验路线</h3>
+<p><strong>A．先解决P1的证据与迭代缺口。</strong>仍固定Oracle与控制器；比较一次性、阶段化、阶段化＋有限重提；模型类型、总输出token与总物理交互上限相同，允许任一方法提前停止。主指标先看完整修订覆盖和错误层修改率，不急于证明主动观察。</p>
+<p><strong>B．真正加入“继续观察”选项。</strong>P0/P1始终使用Oracle，尚无证据证明再观察策略。引入可测量的遮挡、过期位置、身份歧义或受控观测噪声，允许主动换视角/读接触；评估器持有真值但不传给诊断器。若仅诊断接口有噪、控制仍Oracle，明确称“噪声诊断接口实验”，不称全视觉闭环。</p>
+<p><strong>C．检验异质和不可表达故障。</strong>加入单纯参数失配、遗漏适用条件、观察歧义、下游兼容性/延迟失效、混合故障，以及当前修订语言无法解决的情况。不可表达样本用于测试弃权，不能为了高修复率全部剔除。</p>
+<h3>10.3 重要基线与消融</h3>
+<ul><li>现有P1一次性模型排名；同预算的普通执行反馈重提。</li><li>无LM的类型化前提枚举＋有界参数搜索：判断LM到底改善候选覆盖还是只是增加调用成本。</li><li>固定专家假设集作为<strong>独立上界诊断</strong>，与LM假设集分报；不能混入主方法候选。</li><li>同一假设集下固定/随机/信息增益/决策敏感试验选择，隔离主动选择贡献。</li><li>只改模型、只改策略、允许二者增量组合；有/无观察；有/无未知假设和旧样本回归。</li><li>同推理预算的更强模型对照：检验当前失败是不是主要由9B能力限制，而不是框架设计。</li></ul>
+<h3>10.4 主指标不能只有分类准确率</h3>
+<p><strong>主指标：</strong>在给定总交互预算B下，找到并通过独立验证的修复比例。给出随B变化的曲线，并对失败保留“预算内未找到”，不要只平均成功样本的交互数。</p>
+<p><strong>辅指标：</strong>到首个确认修复的实际成本；错误修订率；旧任务退化；不安全探针数；观察次数及是否改变决定；不可修样本的错误接受率；弃权覆盖—风险曲线；后继可执行性；候选池覆盖率与结构拒绝率。若多个修复都有效，评估可接受决策集合，而不是拿注入标签当唯一正确修复类别。</p>
+<p><strong>成本分账：</strong>公共证据B、准备/局部探针P、确认C、最终留出H分别记；动作数、实际仿真/机器人时间、重置恢复、模型token/GPU时间单列。测试轨迹用于选择就属于验证，不再是最终留出。已知成功前缀缓存可减少重复计算，但不能把重放成本消失；从快照恢复的仿真优势也不能宣称真实机器人同样可用。</p>
+<p>布局/物体组而非同一布局中的动作作为主要统计单位；多模型种子不替代独立任务。首轮可先做机制验证，随后再用独立任务组与配对统计支持性能结论，不能提前承诺显著提升。</p>
+</section>
+<section id="implementation"><h2>11. 最小实施路线：先做轻量版本，不直接上完整POMDP</h2>
+<table><tr><th>优先级</th><th>新增机制</th><th>复用当前底座</th><th>完成判据</th></tr><tr><td>P2-A：证据化迭代</td><td>动作级证据索引、已解决局部问题账本、有限轮重提、重复/无效补丁过滤</td><td>P1真实模型、严格候选解析、物理执行、版本冻结、独立确认</td><td>相比一次性方案，完整修订覆盖增加；不以新留出反馈调方法</td></tr><tr><td>P2-B：主动区分</td><td>具体假设与预测、局部试验模板、按成本选分歧测试、可回退的未知分支</td><td>BT准备计划、接触/跟踪日志、真实重放</td><td>同候选生成器和预算下，减少找到确认修复的成本；不牺牲修复率或安全</td></tr><tr><td>P2-C：观察与信念</td><td>三值谓词、观测来源/时效、多源确认、按决策价值主动观察</td><td>现有渲染/感知接口，评估真值隔离</td><td>观测歧义下减少错误模型修订；重新观察有可测价值</td></tr><tr><td>后续：学习摊销</td><td>从轨迹学习参数成功模型、试验结果模型和修订排序；必要时谓词发明</td><td>已有成功、失败、反例、版本记录</td><td>新任务累计接地成本随经验下降，旧任务不遗忘</td></tr></table>
+<h3>先实现的四个接口</h3><ul><li><code>EvidenceBundle</code>：只承载有来源的观测与当前契约，不含注入标签/标准答案。</li><li><code>HypothesisSet</code>：具体机制、支持/冲突、可检验预测、是否需要扩展表示。</li><li><code>DiagnosticExperiment</code>：准备BT、局部干预、观测器、预算与风险约束、预期分歧。</li><li><code>RepairCertificate</code>：修订差异、策略/观察器版本、已知适用域、回归/验证证据及未覆盖范围；名称不意味着形式证明。</li></ul>
+<p>这些是拟议接口，不是已创建的代码。本轮只产出研究方案。不要首先建设复杂多agent系统、训练通用critic或将所有控制换成VLA；那些工作可能提高底座能力，却不能单独回答“何时改哪一层、为何更省交互”。</p>
+<h3>最先值得做的一项改动</h3><blockquote class="good"><strong>把“生成完整修复候选”改成“对当前失败动作提出机制假设＋下一次能区分它的试验”。</strong>然后执行一次，输入真实新增证据再提案。并保留“不需要测试、直接尝试低成本修复”和“证据不足、弃权”作为可选决策。不要强制每次都先写一段根因分类。</blockquote>
+</section>
+<section id="novelty"><h2>12. 哪些可以成为研究贡献，哪些不能过度宣称</h2>
+<h3>更有辨识度的贡献表述</h3><ol><li><strong>问题定义：</strong>未知/不可靠抽象、策略和观察共同存在时的预算化修复决策，而不是单一失败分类。</li><li><strong>算法：</strong>动作级证据与策略相关契约、可扩展竞争假设、可达且风险受控的区分试验、决策敏感的试验选择及增量修订。</li><li><strong>评估：</strong>区分候选生成能力、诊断试验效率和修复迁移；同时包含多因、不可表达、观测歧义及旧任务保持。</li></ol>
+<p>相对AIA，新增了策略/观察不确定与有成本物理测试；相对TAMPURA，新增了修复对象本身可能需要改变；相对EES，新增了不是只练参数，而是决定是否该修模型或再观察；相对ProTracer，新增了建议必须被干预和任务执行验证；相对VASO，补足物理接地与抽象错误的证据问题。<strong>这是有希望的差异化，不是完整新颖性证明。</strong><a class="cite" href="#r3">[3]</a><a class="cite" href="#r5">[5]</a><a class="cite" href="#r6">[6]</a><a class="cite" href="#r7">[7]</a><a class="cite" href="#r10">[10]</a></p>
+<h3>理论应从窄而真实的保证开始</h3>
+<ul><li>有限确定性、正确词汇、可安全执行区分查询时，研究保留真模型、排除冲突模型及有限终止；明确不涵盖未知噪声。</li><li>固定有限假设和正确观测模型下，再研究成本敏感决策判别；若假设动态扩张，不能直接继承EC²次模近似界。</li><li>结构检查可保证只改允许字段、目标和全局要求保持；它不证明物理正确。</li><li>物理修复用声明分布上的独立经验验证；想要更强保证需另建观测误差、动力学和可达性条件。</li><li>若所有可用安全试验无法区分解释，应将不可辨识作为正式输出，不用无条件“总能修复”承诺。</li></ul>
+<h3>研究脉络</h3><ol class="timeline"><li><strong>2010 · EC²：</strong>为最终决策类别选择测试，考虑噪声与成本。</li><li><strong>2021 · AIA：</strong>把候选动作模型的预测分歧编译为主动查询。</li><li><strong>2024 · TAMPURA / EES：</strong>信息采集进入belief-space规划，技能练习由任务需求引导。</li><li><strong>2025–2026 · VisualPredicator / ExoPredicator：</strong>学习合适谓词、动作抽象与外源过程。</li><li><strong>2026 · VASO / ProTracer：</strong>技能契约反例修订、细粒度失败起点与本体证据组织。</li></ol>
+<p>真正适合CABTO的路线不是追逐“最新名字”，而是把这些问题接成一个可检验的闭环：<strong>发生了什么 → 哪些解释仍可能 → 下一次试验能区分什么 → 值不值得做 → 哪项修复已得到足够证据 → 是否能安全迁移。</strong></p>
+</section>
+<section id="references"><h2>参考资料与证据等级</h2><ol class="references">
+<li id="r1"><strong>CABTO: Context-Aware Behavior Tree Grounding for Robot Manipulation.</strong> 本地v1；<a href="../doc/CABTO.pdf">PDF</a>；<a href="https://arxiv.org/abs/2603.16809v1">arXiv原版</a>。此前逐页核读，本文用于定位三阶段与保证边界，不混入后续版本。</li>
+<li id="r2"><strong>本地P1实验审计与报告。</strong> <a href="../outputs/blocks_p1_20260927_v1_audit.json"><code>outputs/blocks_p1_20260927_v1_audit.json</code></a>；<a href="cabto-blocks-p1-20260927.html">P1报告</a>。本轮再次读取审计：3次主生成、9个合法条目、52次搜索、无确认修复；这是本地有限实验，不是完整CABTO论文复现。</li>
+<li id="r3"><strong>Asking the Right Questions: Learning Interpretable Action Models Through Query Answering.</strong> Pulkit Verma, Shashank Rao Marpally, Siddharth Srivastava；AAAI 2021，预印本始于2019。<a href="https://ar5iv.labs.arxiv.org/html/1912.12613">本轮精读全文</a>；<a href="https://ojs.aaai.org/index.php/AAAI/article/view/17428">正式出版入口</a>；<a href="https://github.com/AAIR-lab/AIA-AAAI21">作者代码（检索定位，未运行）</a>。重点§3查询/模型格/保证，§4实验。</li>
+<li id="r4"><strong>Near-Optimal Bayesian Active Learning with Noisy Observations.</strong> Daniel Golovin, Andreas Krause, Debajyoti Ray；2010。<a href="https://arxiv.org/html/1010.3091">本轮精读全文，页面对应后续版本</a>；<a href="https://papers.nips.cc/paper/4073-near-optimal-bayesian-active-learning-with-noisy-observations">NeurIPS论文入口</a>。重点§3–4、定理3/4；网页重渲染年份不作为论文发表年。</li>
+<li id="r5"><strong>Partially Observable Task and Motion Planning with Uncertainty and Risk Awareness（TAMPURA）.</strong> Aidan Curtis等；RSS 2024。<a href="https://arxiv.org/html/2403.10454v1">本轮精读v1</a>；<a href="https://www.roboticsproceedings.org/rss20/p118.pdf">RSS正式PDF入口</a>；<a href="https://aidan-curtis.github.io/tampura.github.io/">作者项目页</a>。重点§III–V与附录，控制器/模型及实机假设均需保留。</li>
+<li id="r6"><strong>Practice Makes Perfect: Planning to Learn Skill Parameter Policies.</strong> Nishanth Kumar, Tom Silver等；RSS 2024。<a href="https://arxiv.org/html/2402.15025v1">本轮精读v1</a>。重点§II–IV、App.B/C/D：EES、competence外推、参数分类器、准备成本和实机边界。</li>
+<li id="r7"><strong>ProTracer: Proprioception-Guided Failure Diagnosis in Robot Manipulation.</strong> Chang Dong, Mehdi Hosseinzadeh, King Hang Wong, Lingqiao Liu, Francois Fraysse, Feras Dayoub, Minh Hoai Nguyen；2026-09预印本。<a href="https://arxiv.org/html/2609.21369v1">本轮精读v1</a>。重点§III–V；离线诊断，不将语言建议当实际恢复结果。数据与指标为作者报告，未独立复现。</li>
+<li id="r8"><strong>VisualPredicator: Learning Abstract World Models with Neuro-Symbolic Predicates for Robot Planning.</strong> Yichao Liang等；ICLR 2025。<a href="https://arxiv.org/html/2410.23156v2">此前已核读原文</a>。用于谓词发明、前提过约束与已知技能假设；本轮不重复全文抓取。</li>
+<li id="r9"><strong>ExoPredicator: Learning Abstract Models of Dynamic Worlds for Robot Planning.</strong> Yichao Liang等；2025预印本及2026后续研究。<a href="https://arxiv.org/html/2509.26255v1">此前已核读v1</a>。用于内生/外源过程、延迟和已知身体技能假设，细节按v1。</li>
+<li id="r10"><strong>VASO: Formally Verifiable Self-Evolving Skills for Physical AI Agents.</strong> Yunhao Yang等；2026预印本。<a href="https://arxiv.org/html/2606.05395v1">此前已核读v1</a>。重点§4.2/7：命题对齐条件保证与顺序执行边界。</li>
+</ol><p class="muted">所有拟议算法、数据接口、预算规则和实验设计均是本报告建议，尚未在仓库实现或验证。参考文献的假设和保证不可自动转移到拟议方法。原始来源可联网打开，报告正文与样式离线可读。</p></section>
+<footer>调研完成于2026-09-27 · 单文件内联样式 · 不改动业务代码、不重跑实验、不创建新模型调用。研究目标是把跨层修订从自由解释推进为可预测、可干预、可验证的决策过程。</footer>
+</main></div></body></html>

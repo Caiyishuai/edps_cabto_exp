@@ -63,7 +63,7 @@ def scene(config, seed=0):
             free(name,[*xy(p),h+r+.001],f'<geom name="{name}_cube" type="box" size="{r} {r} {r}" rgba="{COLORS[name]}" mass=".05" friction="1 .02 .001"/>')
     else:
         # Kitchen sorting scene: upright bowl, chopping board and pan in the back
-        # row; shrimp, apple and potato in the front row.  All three foods are
+        # row; shrimp, apple and green pepper in the front row.  All three foods are
         # free bodies and task targets.  Supports are fixed and cannot be moved
         # by a lucky collision.
         supports={name:np.asarray(pos,float) for name,pos in c["supports"].items()}
@@ -89,7 +89,7 @@ def scene(config, seed=0):
         free("shrimp",[*items["shrimp"],h+.001],"".join(shrimp_geoms))
         ar=.025;az=.021
         free("apple",[*items["apple"],h+az],f'<geom name="apple_flesh" type="ellipsoid" size="{ar} {ar} {az}" rgba=".72 .018 .028 1" mass="0" contype="0" conaffinity="0"/><geom name="apple_grasp_core" type="cylinder" size=".020 .018" rgba=".70 .016 .026 1" mass=".026" condim="6" friction="2 .03 .003"/><geom name="apple_flat_base" type="cylinder" size=".015 .002" pos="0 0 {-az+.002}" rgba=".69 .015 .024 1" mass=".002" condim="6" friction="2 .03 .003"/><geom name="apple_stem" type="cylinder" size=".002 .007" pos="0 0 {az}" rgba=".19 .09 .025 1" mass=".0001"/>')
-        free("potato",[*items["potato"],h+.017],'<geom name="potato_skin" type="ellipsoid" size=".026 .021 .017" rgba=".04 .08 .85 1" mass="0" contype="0" conaffinity="0"/><geom name="potato_grasp_core" type="box" size=".021 .017 .015" rgba=".04 .08 .85 1" mass=".025" condim="6" friction="2 .03 .003"/><geom type="sphere" size=".0015" pos=".012 .012 .014" rgba=".02 .04 .45 1" mass=".0001"/><geom type="sphere" size=".0015" pos="-.010 -.013 .010" rgba=".02 .04 .45 1" mass=".0001"/>')
+        free("pepper",[*items["pepper"],h+.017],'<geom name="pepper_skin" type="ellipsoid" size=".026 .021 .017" rgba=".13 .74 .07 1" mass="0" contype="0" conaffinity="0"/><geom name="pepper_grasp_core" type="box" size=".021 .017 .015" rgba=".13 .74 .07 1" mass=".025" condim="6" friction="2 .03 .003"/><geom type="sphere" size=".0015" pos=".012 .012 .014" rgba=".06 .37 .04 1" mass=".0001"/><geom type="sphere" size=".0015" pos="-.010 -.013 .010" rgba=".06 .37 .04 1" mass=".0001"/>')
     assets=ROOT/"mujoco_workspace/franka_articulated/assets/panda_assets"
     tendon,equality,actuator=panda_tendon_equality_actuator()
     robot=ET.fromstring(panda_body(base_pos=c["robot_base"],pedestal=False))
@@ -119,9 +119,9 @@ def scene(config, seed=0):
 
 
 class RebuiltSingleArm:
-    def __init__(self, config, seed=0, render=False):
+    def __init__(self, config, seed=0, render=False, *, scene_builder=None):
         self.config=deepcopy(config);self.c=config["control"];self.task=config["task"]
-        self.xml,names=scene(config,seed)
+        self.xml,names=(scene_builder or scene)(config,seed)
         self.env=Exp4Env(self.xml,[("",0.)],names,render=render,img_size=720)
         self.env.reset();self.arm=self.env.arms[0];self.arm._grasp_enabled=False
         self.dt=self.env.m.opt.timestep;self.steps=int(self.c["sample_steps"])
@@ -131,6 +131,7 @@ class RebuiltSingleArm:
         self.max_tracking=0.;self.preserved=True;self.completed=[];self.home_event=None
         self.transport_monitor=False;self.grasp_relative=None;self.max_grasp_slip=0.;self.current_contact_gap=0.;self.max_contact_gap=0.
         self.force_now={};self.strict_weld_violation=False;self.stability_ok=True
+        self.target_quat=None  # None=默认朝下抓取(arm.grasp_quat)；非None时move全程用此绝对姿态(绕Z的yaw旋转)
         self.robot_ids={i for i in range(self.env.m.nbody) if self.body(i).startswith("link") or self.body(i) in ("hand","left_finger","right_finger")}
         self.initial={n:self.env.get_object_pose(n)[0].copy() for n in names}
         supports={s for _,s in self.config["pairs"]}
@@ -220,9 +221,10 @@ class RebuiltSingleArm:
     def move(self,target,grip,speed=None):
         target=np.asarray(target,float);start=self.ee().copy();speed=speed or self.c["cartesian_speed_m_s"]
         duration=max(.5,1.875*np.linalg.norm(target-start)/speed);count=math.ceil(duration/(self.steps*self.dt))
+        quat=self.target_quat if self.target_quat is not None else self.arm.grasp_quat
         for k in range(1,count+1):
             xyz=start+ease(k/count)*(target-start)
-            q=self.arm.solve_ik(xyz,self.arm.grasp_quat,local_only=True,w_rot=1.,iters=60)
+            q=self.arm.solve_ik(xyz,quat,local_only=True,w_rot=1.,iters=60)
             # Reference slew limit is physical actuator rate control, not qpos.
             maxdq=self.c["joint_speed_rad_s"]*self.steps*self.dt
             q=self.arm.arm_target+np.clip(q-self.arm.arm_target,-maxdq,maxdq)
@@ -230,6 +232,11 @@ class RebuiltSingleArm:
         self.wait(self.c["settle_seconds"],grip)
         error=float(np.linalg.norm(target-self.ee()));self.max_tracking=max(error,self.max_tracking)
         if error>.008:raise RuntimeError(f"{self.phase}: TCP residual {error:.4f}m")
+        if self.target_quat is not None:
+            _,actual_quat=self.arm.get_ee_pose();rot_err=np.zeros(3)
+            mujoco.mju_subQuat(rot_err,self.target_quat,actual_quat)
+            rot_error=float(np.linalg.norm(rot_err))
+            if rot_error>.03:raise RuntimeError(f"{self.phase}: orientation residual {rot_error:.4f}rad")
         return error
     def move_object(self,n,origin,speed=None):
         origin=np.asarray(origin);self.move(self.ee()+origin-self.pos(n),0.,speed)

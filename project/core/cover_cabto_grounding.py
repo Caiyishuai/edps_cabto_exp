@@ -16,7 +16,7 @@ sys.path.insert(0, str(PACKAGE / "CABTO/exp4_bt_tasks/stage3_cabto"))
 from formal_bt import ModelLibrary, validate_model, action_id, symbolic_dry_run
 from policy_codegen import PolicyProgram, extract_source
 
-PAIRS = [("shrimp", "bowl"), ("apple", "board"), ("potato", "pan")]
+PAIRS = [("shrimp", "bowl"), ("apple", "board"), ("pepper", "pan")]
 CONFIG = ROOT / "scenes/cover_kitchen_sort_v2.json"
 CP = {"empty()", "home_completed()"} | {f"{p}({obj})" for obj, _ in PAIRS for p in ("at_source", "holding", "at_target")}
 INITIAL = {"empty()"} | {f"at_source({obj})" for obj, _ in PAIRS}
@@ -170,7 +170,7 @@ def propose_structured(out, model_id, attempts=3, client=None):
                     +"\nAllowed condition strings: "+json.dumps(atoms)
                     +"\nConditions: empty() means open empty gripper; holding(obj) means held above table; at_source(obj) means at original table source; at_target(obj) means released at its matching support; home_completed() means at HOME with empty open gripper. Leaving HOME invalidates home_completed()."
                     +"\npre describes what must hold BEFORE. add describes newly true facts AFTER. del describes facts made false. An atom cannot be both pre and add, or both add and del. Each object must occupy exactly one state at action boundaries."
-                    +"\nTask context: independently complete shrimp->bowl; shrimp->bowl+apple->board; or all three including potato->pan. Each finishes empty at HOME. All start empty with the three objects at source."
+                    +"\nTask context: independently complete shrimp->bowl; shrimp->bowl+apple->board; or all three including pepper->pan. Each finishes empty at HOME. All start empty with the three objects at source."
                     +"\nPrior planner feedback: "+json.dumps(feedback))
             call=client.call(prompt,max_tokens=700,temperature=.15*cycle)
             row={"cycle":cycle+1,"signature":signature,"call":call}

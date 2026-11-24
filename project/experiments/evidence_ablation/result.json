@@ -1,0 +1,635 @@
+{
+  "protocol_version": "evidence-ablation-v1",
+  "experiment_question": "在相同物理执行经验下，视觉证据回看能否减少错误的契约更新（错误收紧/错误接受），而不只是提高视觉问答准确率。",
+  "methods": {
+    "A": "before-after only",
+    "B": "fixed phase evidence",
+    "C": "on-demand inspection"
+  },
+  "results": {
+    "A": {
+      "outcomes": {
+        "correct": 14,
+        "wrong_tighten": 1,
+        "wrong_accept": 2,
+        "abstain": 7
+      },
+      "evidence_frames_total": 12,
+      "inspect_frames_total": 0,
+      "inspect_calls_total": 0,
+      "task_coverage": 1.0,
+      "executable_tasks": 3,
+      "retained_tasks": 3,
+      "per_episode": [
+        {
+          "episode": "e1_success",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "insufficient",
+              "truth": true,
+              "outcome": "abstain"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 2,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        },
+        {
+          "episode": "e2_fail_holding",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "insufficient",
+              "truth": false,
+              "outcome": "abstain"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "supported",
+              "truth": false,
+              "outcome": "wrong_accept"
+            }
+          ],
+          "evidence_frames": 2,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        },
+        {
+          "episode": "e3_fail_clear",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "insufficient",
+              "truth": true,
+              "outcome": "abstain"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": false,
+              "outcome": "wrong_accept"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 2,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        },
+        {
+          "episode": "e4_fail_empty",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "insufficient",
+              "truth": true,
+              "outcome": "abstain"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 2,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        },
+        {
+          "episode": "e5_fail_ontable",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "insufficient",
+              "truth": true,
+              "outcome": "abstain"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "violated",
+              "truth": true,
+              "outcome": "wrong_tighten"
+            }
+          ],
+          "evidence_frames": 2,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        },
+        {
+          "episode": "e6_mixed",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "insufficient",
+              "truth": false,
+              "outcome": "abstain"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "insufficient",
+              "truth": false,
+              "outcome": "abstain"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 2,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        }
+      ]
+    },
+    "B": {
+      "outcomes": {
+        "correct": 21,
+        "wrong_tighten": 1,
+        "wrong_accept": 2,
+        "abstain": 0
+      },
+      "evidence_frames_total": 36,
+      "inspect_frames_total": 0,
+      "inspect_calls_total": 0,
+      "task_coverage": 1.0,
+      "executable_tasks": 3,
+      "retained_tasks": 3,
+      "per_episode": [
+        {
+          "episode": "e1_success",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 6,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        },
+        {
+          "episode": "e2_fail_holding",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "supported",
+              "truth": false,
+              "outcome": "wrong_accept"
+            }
+          ],
+          "evidence_frames": 6,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        },
+        {
+          "episode": "e3_fail_clear",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": false,
+              "outcome": "wrong_accept"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 6,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        },
+        {
+          "episode": "e4_fail_empty",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": true,
+              "outcome": "wrong_tighten"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 6,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        },
+        {
+          "episode": "e5_fail_ontable",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 6,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        },
+        {
+          "episode": "e6_mixed",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 6,
+          "inspect_frames": 0,
+          "inspect_calls": 0
+        }
+      ]
+    },
+    "C": {
+      "outcomes": {
+        "correct": 21,
+        "wrong_tighten": 1,
+        "wrong_accept": 2,
+        "abstain": 0
+      },
+      "evidence_frames_total": 34,
+      "inspect_frames_total": 22,
+      "inspect_calls_total": 10,
+      "task_coverage": 1.0,
+      "executable_tasks": 3,
+      "retained_tasks": 3,
+      "per_episode": [
+        {
+          "episode": "e1_success",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 5,
+          "inspect_frames": 3,
+          "inspect_calls": 1
+        },
+        {
+          "episode": "e2_fail_holding",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "supported",
+              "truth": false,
+              "outcome": "wrong_accept"
+            }
+          ],
+          "evidence_frames": 6,
+          "inspect_frames": 4,
+          "inspect_calls": 2
+        },
+        {
+          "episode": "e3_fail_clear",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": false,
+              "outcome": "wrong_accept"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 5,
+          "inspect_frames": 3,
+          "inspect_calls": 1
+        },
+        {
+          "episode": "e4_fail_empty",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": true,
+              "outcome": "wrong_tighten"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 6,
+          "inspect_frames": 4,
+          "inspect_calls": 2
+        },
+        {
+          "episode": "e5_fail_ontable",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 6,
+          "inspect_frames": 4,
+          "inspect_calls": 2
+        },
+        {
+          "episode": "e6_mixed",
+          "records": [
+            {
+              "predicate": "holding(A)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "clear(S)",
+              "verdict": "violated",
+              "truth": false,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "empty()",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            },
+            {
+              "predicate": "ontable(A)",
+              "verdict": "supported",
+              "truth": true,
+              "outcome": "correct"
+            }
+          ],
+          "evidence_frames": 6,
+          "inspect_frames": 4,
+          "inspect_calls": 2
+        }
+      ]
+    }
+  }
+}

@@ -116,7 +116,7 @@ class Perception:
         if self.backend == "oracle":
             p = np.r_[true_xy, z]; record["xyz"] = p.tolist(); self.records.append(record); return p
         if self.client is None: raise ValueError("Qwen backend requires an actual loaded visual model")
-        desc = {"shrimp": "orange shrimp at the front of the table", "apple": "red apple at the front of the table", "potato": "blue potato at the front of the table", "bowl": "center of the inside floor of the white bowl", "board": "center of the wooden chopping board", "pan": "center of the inside floor of the black cooking pan"}[name]
+        desc = {"shrimp": "orange shrimp at the front of the table", "apple": "red apple at the front of the table", "pepper": "green pepper at the front of the table", "bowl": "center of the inside floor of the white bowl", "board": "center of the wooden chopping board", "pan": "center of the inside floor of the black cooking pan"}[name]
         estimates = []
         record["views"] = []
         index = len(self.records)

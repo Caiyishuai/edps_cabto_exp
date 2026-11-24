@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CABTO 冲击 TPAMI：核心算法调研与设计</title>
+<style>
+body{background:#0d1117;color:#e6edf3;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.7;max-width:1000px;margin:0 auto;padding:40px 24px}
+h1{color:#58a6ff;border-bottom:2px solid #30363d;padding-bottom:12px}
+h2{color:#79c0ff;margin-top:40px;border-left:4px solid #58a6ff;padding-left:14px}
+h3{color:#a5d6ff;margin-top:28px}
+h4{color:#c9d1d9;margin-top:20px}
+table{border-collapse:collapse;width:100%;margin:20px 0;font-size:14px}
+th,td{border:1px solid #30363d;padding:10px 12px;text-align:left}
+th{background:#161b22;color:#79c0ff}
+tr:nth-child(even){background:#161b22}
+code{background:#161b22;padding:2px 6px;border-radius:4px;color:#ffa657;font-family:"SF Mono",Monaco,monospace;font-size:13px}
+pre{background:#161b22;padding:16px;border-radius:8px;overflow-x:auto;border:1px solid #30363d}
+pre code{background:none;padding:0;color:#e6edf3}
+blockquote{border-left:4px solid #58a6ff;margin:20px 0;padding:10px 20px;background:#161b22;color:#a5d6ff}
+.algo{background:#0d1117;border:1px solid #58a6ff;border-radius:8px;padding:20px;margin:20px 0}
+.meta{color:#8b949e;font-size:14px;margin-bottom:30px}
+.toc{background:#161b22;padding:20px;border-radius:8px;margin:20px 0}
+.toc a{color:#58a6ff;text-decoration:none}
+.toc a:hover{text-decoration:underline}
+.highlight{background:#1f2937;padding:2px 6px;border-radius:4px}
+.warn{color:#f85149}
+.good{color:#56d364}
+ol,ul{padding-left:24px}
+li{margin:8px 0}
+.recommend{background:#1a2f1a;border:1px solid #56d364;border-radius:8px;padding:20px;margin:20px 0}
+</style>
+</head>
+<body>
+<h1>CABTO 冲击 TPAMI：核心算法调研与设计（历史提案）</h1>
+<blockquote><strong>2026-09-30 更正：本报告不再作为当前算法路线。</strong>文中的“文献中无先例”、因果密度定位根因、单调改进/后悔界和全任务覆盖保证均未经充分论证，不能用作论文结论。当前确定的主问题是：<strong>在有限交互下，建立与实际能力匹配、且能支持任务组合的技能契约。</strong>先用小型受控实验检验契约收紧与能力扩展，再决定是否训练模型。以 <a href="../TPAMI_投稿评估与下一步路线.md">路线文档第五点五节和第十二节</a>为准；下文仅保留历史讨论。</blockquote>
+<div class="meta">历史调研日期：2026-09-30 ｜ 状态：未验证的研究设想，相关工作排他性比较需全文复核</div>
+
+<div class="toc">
+<strong>目录</strong>
+<ol>
+<li><a href="#sec1">调研目标与关键相关工作</a></li>
+<li><a href="#sec2">核心算法方向 A：跨层因果干预修复（CLCIR）</a></li>
+<li><a href="#sec3">核心算法方向 B：覆盖约束的修复合成（CCRS）</a></li>
+<li><a href="#sec4">核心算法方向 C：后悔界限驱动的主动诊断（RB-ADR）</a></li>
+<li><a href="#sec5">推荐与 TPAMI 论证</a></li>
+<li><a href="#sec6">参考资料</a></li>
+</ol>
+</div>
+
+<h2 id="sec1">一、调研目标与关键相关工作</h2>
+<blockquote>调研问题：2024–2026 年，机器人系统修复领域有哪些新方法可为 CABTO 提供核心算法？重点关注跨层修复、因果干预、反事实验证、覆盖保持、主动测试选择。</blockquote>
+
+<h3>关键相关工作（划定了当前技术边界）</h3>
+<table>
+<tr><th>工作</th><th>核心方法</th><th>与 CABTO 关系</th><th>局限</th></tr>
+<tr><td><strong>MAGMA-GEN</strong>（CoRL 2026）</td><td>特权教练假设决策错误 + 反事实重执行验证</td><td>最接近"失败归因+修复"</td><td>只修决策层，<span class="warn">不跨层</span>，无覆盖约束</td></tr>
+<tr><td><strong>RE-0</strong>（2026-09）</td><td>教师局部纠正 + 反事实验证 + 干预信用分配 + <span class="good">收益下界理论</span></td><td>有理论保证的修复</td><td>递归蒸馏，非动作模型修复</td></tr>
+<tr><td><strong>Interventional Causal Circuits</strong>（2026-07）</td><td>JPT + 因果变量排序 + 干预电路 + 支撑确定性验证</td><td>用因果干预定位参数</td><td><span class="warn">单变量单层</span>，不跨层，无覆盖约束</td></tr>
+<tr><td><strong>CoRe</strong>（2026-08）</td><td>推理时反事实想象恢复</td><td>免训练恢复</td><td>无模型修复，无覆盖约束</td></tr>
+<tr><td><strong>DrBO</strong>（ICLR 2025）</td><td>因果发现 + 贝叶斯优化</td><td>因果发现方法</td><td>非机器人修复</td></tr>
+<tr><td><strong>Active Intervention Design</strong>（Nature MI 2023）</td><td>因果主动学习识别最优干预</td><td>主动干预选择</td><td>非机器人，无覆盖约束</td></tr>
+</table>
+
+<blockquote class="highlight"><strong>关键空白</strong>：没有工作同时做到——<strong>跨层（动作模型+策略）联合修复 + 显式任务覆盖保持 + 因果干预定位 + 反事实验证</strong>。这是 CABTO 冲击 TPAMI 的机会窗口。</blockquote>
+
+<h2 id="sec2">二、核心算法方向 A：跨层因果干预修复（CLCIR）</h2>
+<p><strong>Cross-Layer Causal Intervention Repair</strong></p>
+
+<div class="algo">
+<h3>算法流程</h3>
+<pre><code>输入：失败的 BT 系统（动作模型 h, 策略 π），失败证据 E，已有任务集 T
+输出：修复后的系统（h', π'），保证 ∀t∈T 仍可完成
+
+步骤 1：构建跨层因果图 CLCG
+  节点：
+    M = {动作模型参数}（如 pick.pre, stack.add）
+    P = {策略参数}（如 grasp_offset, approach_speed）
+    S = {观测状态}（如 finger_force, object_pose）
+    R = {执行结果}（如 success, transition_match）
+  边：从历史执行数据学习因果依赖
+    M → P（模型参数决定策略该做什么）
+    P → S（策略参数影响观测状态）
+    S → R（观测状态决定执行结果）
+
+步骤 2：干预因果诊断（识别根因层和参数）
+  对每个候选干预变量 x_i ∈ M ∪ P：
+    计算 ρ_i(x̂_i) = 干预分布下观测值的合理性
+    （用 Interventional Causal Circuits 的 JPT + 支撑确定性验证）
+  主因 = argmin ρ_i
+  定位层 = 若主因 ∈ M 则模型层，若 ∈ P 则策略层
+
+步骤 3：生成跨层联合修复候选
+  根据主因层生成候选修复（改模型 / 改策略 / 联合）
+  生成方式：LLM 提议（受因果诊断引导）或规则模板
+
+步骤 4：反事实验证筛选
+  对每个候选修复 c：
+    在相同状态 s、匹配条件下重执行
+    只保留能改善下游进展的修复（借鉴 MAGMA-GEN）
+
+步骤 5：覆盖约束检查
+  验证修复后的系统是否仍能完成所有已有任务 t ∈ T
+
+步骤 6：返回满足覆盖约束的最优修复</code></pre>
+</div>
+
+<h4>理论分析</h4>
+<ul>
+<li><strong>后悔界限</strong>（借鉴 RE-0）：每轮修复收益 ≥ 验证干预收益 −（验证误差+投影误差），保证单调改进</li>
+<li><strong>因果可辨识性</strong>：跨层因果图在什么条件下可辨识根因层</li>
+<li><strong>覆盖保持</strong>：约束优化保证修复不降低任务覆盖</li>
+</ul>
+
+<h4>新颖性</h4>
+<ul>
+<li><span class="good">跨层因果干预</span>：vs Interventional Causal Circuits 的单层单变量，CLCIR 是跨层联合干预</li>
+<li><span class="good">显式覆盖约束</span>：vs MAGMA-GEN/RE-0 无覆盖约束，CLCIR 把覆盖保持作为硬约束</li>
+<li><span class="good">因果引导+反事实验证+约束优化</span>：组合创新</li>
+</ul>
+
+<h2 id="sec3">三、核心算法方向 B：覆盖约束的修复合成（CCRS）</h2>
+<p><strong>Coverage-Constrained Repair Synthesis</strong></p>
+
+<div class="algo">
+<h3>算法流程</h3>
+<pre><code>输入：失败的 BT 系统，失败反例 F，已有任务集 T，规约 Σ
+输出：修复后的系统，保证满足规约且覆盖所有 T
+
+步骤 1：从失败反例提取一致性约束
+  修复后的系统必须满足实际转移
+
+步骤 2：从已有任务提取覆盖约束
+  ∀t∈T, planable(h', t) ∧ executable(π', t)
+
+步骤 3：规约约束（如 LTL 规约）
+
+步骤 4：约束求解 / 程序合成
+  用 CSP 求解器或程序合成器，直接合成满足所有约束的修复
+
+步骤 5：验证合成的修复</code></pre>
+</div>
+
+<h4>新颖性</h4>
+<ul>
+<li><span class="good">覆盖约束作为硬约束</span>（vs 事后检查）</li>
+<li><span class="good">约束求解/程序合成视角</span>（vs 启发式搜索）</li>
+<li><span class="good">直接合成修复</span>（vs 生成候选再验证）</li>
+</ul>
+<p>CCRS <strong>颠覆</strong> CABTO：把"启发式搜索+事后验证"替换为"约束求解+直接合成"，是范式层面的改变。</p>
+
+<h2 id="sec4">四、核心算法方向 C：后悔界限驱动的主动诊断与修复（RB-ADR）</h2>
+<p><strong>Regret-Bounded Active Diagnosis and Repair</strong></p>
+
+<div class="algo">
+<h3>算法流程</h3>
+<pre><code>输入：初始 BT 系统，任务集 T，预算 B
+输出：最优修复系统，后悔有界
+
+定义：
+  状态 s_t = 当前对系统的信念
+  动作 a_t = 选择测试（运行任务）或修复（改参数）
+  奖励 r_t = 系统性能提升（修复成功率 + 覆盖保持）
+  后悔 Regret(T) = Σ_t (最优系统性能 − 当前系统性能)
+
+步骤 1：初始化对系统的信念（先验）
+步骤 2：主动测试选择（贝叶斯优化/Thompson sampling）
+  选最大化预期信息增益或修复价值的测试
+步骤 3：执行测试，更新信念（后验）
+步骤 4：信念足够确定时应用修复
+步骤 5：后悔界限保证收敛到最优系统</code></pre>
+</div>
+
+<h4>新颖性</h4>
+<ul>
+<li><span class="good">后悔界限理论</span>（vs 启发式）</li>
+<li><span class="good">主动测试选择</span>（vs 穷举/随机）</li>
+<li><span class="good">序列决策视角</span>（vs 单步修复）</li>
+</ul>
+
+<h2 id="sec5">五、推荐与 TPAMI 论证</h2>
+
+<h3>三方向对比</h3>
+<table>
+<tr><th>方向</th><th>可行性</th><th>新颖性</th><th>理论深度</th><th>TPAMI 潜力</th></tr>
+<tr><td><strong>CLCIR</strong>（跨层因果干预修复）</td><td>★★★★★</td><td>★★★★☆</td><td>★★★★☆</td><td>★★★★★</td></tr>
+<tr><td><strong>CCRS</strong>（覆盖约束修复合成）</td><td>★★★☆☆</td><td>★★★★★</td><td>★★★★★</td><td>★★★★☆</td></tr>
+<tr><td><strong>RB-ADR</strong>（后悔界限主动诊断）</td><td>★★★☆☆</td><td>★★★★☆</td><td>★★★★★</td><td>★★★★☆</td></tr>
+</table>
+
+<div class="recommend">
+<h3>推荐：CLCIR 为主线</h3>
+<ol>
+<li><strong>可行性最高</strong>：最直接建立在 CABTO 现有基础上，能复用 P0/P1/P2 实验设置</li>
+<li><strong>新颖性明确</strong>：跨层因果干预+覆盖约束，文献中无先例</li>
+<li><strong>有具体算法</strong>：干预因果电路+反事实验证+约束优化，每个组件都有成熟技术可借鉴</li>
+<li><strong>理论可分析</strong>：后悔界限、覆盖保持、因果可辨识性都有明确分析空间</li>
+<li><strong>实验可操作</strong>：用 CABTO 现有 P0/P1/P2 设置就能验证</li>
+</ol>
+<p><strong>CCRS 作为补充/未来方向</strong>：当因果干预不够时，用约束合成兜底。<strong>RB-ADR 作为理论增强</strong>：为 CLCIR 加后悔界限理论保证。</p>
+</div>
+
+<h3>CLCIR 冲击 TPAMI 的论证要点</h3>
+<ol>
+<li><strong>问题新颖性</strong>：跨层（动作模型+策略）联合修复+显式覆盖保持，机器人修复领域是新的</li>
+<li><strong>方法新颖性</strong>：因果干预电路+反事实验证+约束优化的组合，是新的方法</li>
+<li><strong>与 MAGMA-GEN 区分</strong>：MAGMA-GEN 修决策层（不跨层），CLCIR 修动作模型+策略（跨层），且有覆盖约束</li>
+<li><strong>与 Interventional Causal Circuits 区分</strong>：后者单层单变量干预，CLCIR 跨层联合干预+覆盖约束</li>
+<li><strong>理论保证</strong>：后悔界限+覆盖保持+因果可辨识性</li>
+<li><strong>实验验证</strong>：用 CABTO 的 P0/P1/P2 设置，对比原版、规则修复、固定搜索、CLCIR</li>
+</ol>
+
+<h2 id="sec6">六、参考资料</h2>
+<ol>
+<li>[MAGMA-GEN: Validated Recovery Supervision from Ambiguous Failures via Counterfactual Re-Execution](https://arxiv.org/abs/2609.20056)（CoRL 2026）</li>
+<li>[RE-0: Verified Recursive Improvement of Embodied Code-as-Policy Agents](https://arxiv.org/abs/2609.32416)（2026-09）</li>
+<li>[Interventional Causal Circuits for Safe Robot Action Testing and Failure Recovery](https://arxiv.org/html/2607.14826)（2026-07）</li>
+<li>[CoRe: Inference-Time Counterfactual Realignment for VLA Models](https://arxiv.org/abs/2608.14822)（2026-08）</li>
+<li>[DrBO: Causal Discovery via Bayesian Optimization](https://proceedings.iclr.cc/paper_files/paper/2025/hash/8693ee1ea821666f8569228d1ab38baf-Abstract-Conference.html)（ICLR 2025）</li>
+<li>[Active learning for optimal intervention design in causal models](https://www.nature.com/articles/s42256-023-00719-0)（Nature MI 2023）</li>
+</ol>
+</body>
+</html>

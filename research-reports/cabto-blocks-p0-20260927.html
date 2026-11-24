@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CABTO Blocks P0：首轮物理干预实验</title><style>
+:root{color-scheme:dark;--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#e6edf3;--muted:#9aa4b2;--blue:#58a6ff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}main{max-width:1100px;margin:auto;padding:44px 28px 80px}h1{font-size:32px;line-height:1.35}h2{margin-top:40px;border-left:4px solid var(--blue);padding-left:12px}h3{color:#79c0ff}a{color:var(--blue)}code{background:#0b1020;color:#79c0ff;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}.muted,small{color:var(--muted)}.banner,blockquote{padding:18px 22px;background:var(--card);border-left:4px solid var(--blue);margin:22px 0}.warn{border-left-color:#d29922}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:20px;background:var(--card);border:1px solid var(--border);border-radius:8px}.card strong{display:block;font-size:26px;color:#79c0ff}table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}td,th{padding:12px;border:1px solid var(--border);text-align:left}th{background:#1f242c}tr:nth-child(even){background:var(--card)}.table{overflow-x:auto}.images{display:grid;grid-template-columns:1fr 1fr;gap:16px}figure{margin:0}img{width:100%;border-radius:8px;border:1px solid var(--border)}figcaption{font-size:13px;color:var(--muted)}li{margin:8px 0}footer{border-top:1px solid var(--border);padding-top:20px;margin-top:40px;color:var(--muted);font-size:13px}@media(max-width:700px){.cards,.images{grid-template-columns:1fr}main{padding:24px 16px}h1{font-size:26px}}
+</style></head><body><main>
+<p class="muted">2026-09-27 · 本地 MuJoCo 3.10.0 · Oracle观察 · 执行器控制 · 严格无weld抓取</p>
+<h1>CABTO Blocks P0<br>目标占用与抓取参数偏差：该改模型还是改策略？</h1>
+<div class="banner"><strong>本轮确实运行了机器人动力学仿真，不是只写实验计划。</strong> 首轮64次成对执行，基础设施加固后同协议复核64次，结果逐案例一致。原始试验、失败、代码快照和渲染图像均保留。</div>
+<div class="cards"><div class="card"><strong>64 + 64</strong>首轮矩阵＋同设置复核<br><small>不能算成128个独立泛化样本</small></div><div class="card"><strong>2/8 → 8/8</strong>留出案例：不修订→联合修订<br><small>2布局 × 4条件；含修复后的重复配置</small></div><div class="card"><strong>20/20</strong>新实验完整性测试通过<br><small>旧单臂测试有3项既存命名问题</small></div></div>
+<section><h2>1. 固定协议与改变的因素</h2>
+<p>目标：在保持感知、机器人、控制器、接触阈值和评估规则不变的前提下，区分<strong>目标被其他方块占用</strong>与<strong>策略抓取点偏高45mm</strong>造成的失败。每种条件运行四种干预。</p>
+<div class="table"><table><tr><th>干预</th><th>动作模型</th><th>抓取策略</th><th>固定的其他部分</th></tr><tr><td>不修订</td><td><code>stack</code> 缺少目标Clear前提</td><td>原始偏移</td><td rowspan="4">相同初态XML、Oracle观测、细粒度API、已有清障技能、BT Expansion内核、动力学与物理验收</td></tr><tr><td>只修模型</td><td>仅增加 <code>clear(support)</code></td><td>保持原样</td></tr><tr><td>只修策略</td><td>保持原样</td><td>目标偏移归零</td></tr><tr><td>联合修订</td><td>增加Clear前提</td><td>目标偏移归零</td></tr></table></div>
+<ul><li>目标占用通过<strong>初始场景XML叠放真实自由刚体</strong>产生；执行过程中没有修改物体qpos来移除障碍。</li><li>偏移在策略读取真实抓取坐标之后加入，实际改变approach/descend命令；没有篡改Oracle返回值或直接抛出“注入失败”。</li><li><code>Clear/On</code> 从几何和真实接触计算，不读取占用标签。所有组都预先具备unstack/put_table技能，模型组没有偷偷增加控制能力。</li><li>正式BT规划器根据修订后的前提，选择“移除占用块→放回桌面→抓取目标块→叠放→HOME”，不是将拒绝执行记作任务成功。</li></ul>
+<p>协议：<a href="../project/experiments/blocks_p0_protocol.json"><code>project/experiments/blocks_p0_protocol.json</code></a>。实现：<a href="../project/experiments/blocks_p0.py"><code>blocks_p0.py</code></a>；入口：<a href="../project/experiments/run_blocks_p0.py"><code>run_blocks_p0.py</code></a>。</p>
+</section>
+<section><h2>2. 开发、验证、留出结果</h2>
+<table><tr><th>阶段</th><th>布局/目标配对</th><th>不修订</th><th>只修模型</th><th>只修策略</th><th>联合修订</th></tr><tr><td>开发</td><td>1布局；yellow→green</td><td>1/4</td><td>2/4</td><td>2/4</td><td>4/4</td></tr><tr><td>验证准入</td><td>1布局；red→green</td><td>1/4</td><td>2/4</td><td>2/4</td><td>4/4</td></tr><tr><td>首次留出</td><td>2布局；yellow→blue、green→red</td><td>2/8</td><td>4/8</td><td>4/8</td><td>8/8</td></tr></table>
+<p>每布局包含无暴露故障、仅参数偏差、仅目标占用、两者同时出现四种条件。布局坐标和对象角色在执行前写入协议；留出配对未参与开发/验证。验证阶段用于候选准入，不当作最终泛化测试。</p>
+<h3>首次留出集中的逐类表现</h3>
+<table><tr><th>条件</th><th>不修订</th><th>只修模型</th><th>只修策略</th><th>联合修订</th></tr><tr><td>无暴露故障</td><td>2/2</td><td>2/2</td><td>2/2</td><td>2/2</td></tr><tr><td>仅抓取偏差</td><td>0/2</td><td>0/2</td><td>2/2</td><td>2/2</td></tr><tr><td>仅目标占用</td><td>0/2</td><td>2/2</td><td>0/2</td><td>2/2</td></tr><tr><td>混合条件</td><td>0/2</td><td>0/2</td><td>0/2</td><td>2/2</td></tr></table>
+<p><strong>“无故障”不是说模型完全正确。</strong>所有不修模型组仍缺Clear前提，只是在目标为空时未暴露这个缺陷。这里的标签是受控条件标签，不能当成动作模型的普适正确性标签。</p>
+<div class="banner warn"><strong>v2不是新增留出实验。</strong> v1完成后，仅修复冻结artifact校验、异常落盘和基础设施失败分型，未改变物理控制、布局、候选或验收阈值。随后v2重复相同64次设置；已见过的留出布局只作为重复性核查，不再作为新独立泛化证据。两版64个对应结果全部一致。</div>
+<p>四个布局各有8种不同的“场景＋模型＋策略”组合；每版64次执行只有32种不同组合。同一布局的条件相关，修复后还存在配置重复。因此不对8/8作大样本可靠性或100%泛化的推断。</p>
+</section>
+<section><h2>3. 失败确实发生在哪里</h2>
+<h3>抓取参数偏差</h3><p>策略将抓取点提高45mm，夹爪真实闭合时左右指力均为0，细粒度API报告 <code>No simultaneous two-finger force at closure</code>。只增加Clear并不能修复；偏移归零后能够抓取、叠放、释放并回到HOME。</p>
+<h3>目标占用</h3><p>缺Clear时，BT直接搬运目标块并尝试在已占用的支撑上放置，下降阶段产生约20.1–20.9mm TCP残差，远超过原有8mm阈值。模型增加Clear后，BT在抓取目标块之前先移除障碍，仍使用相同策略源码。</p>
+<h3>混合条件</h3><p>只修策略会使最初的抓取成功，但随后暴露目标占用；只修模型仍在抓取阶段失败。只有两项干预一起完成才能达到目标。这说明一次最早失败可以遮蔽另一个缺陷，单次异常文本不足以覆盖全部问题。</p>
+<p>这组现象支持“模型修订与策略修订承担不同职责”的机制，但两项干预联合有效一般不等于已经唯一识别两个独立物理根因。</p>
+<div class="images"><figure><a href="../outputs/blocks_p0_validation_20260927_v2/cases/case0002/cross_level/before.png"><img src="../outputs/blocks_p0_validation_20260927_v2/cases/case0002/cross_level/before.png" alt="验证布局初态：黄色障碍块占据绿色支撑，红色目标块在桌面"></a><figcaption>验证集初态：yellow占据green，任务为red→green。</figcaption></figure><figure><a href="../outputs/blocks_p0_validation_20260927_v2/cases/case0002/cross_level/after.png"><img src="../outputs/blocks_p0_validation_20260927_v2/cases/case0002/cross_level/after.png" alt="验证布局完成：黄色障碍块被放回桌面，红块叠在绿块上，机器人回到HOME"></a><figcaption>实际执行后：障碍块搬回桌面，目标堆叠完成并回HOME；不是静态改图。</figcaption></figure></div>
+<p><a href="../outputs/blocks_p0_validation_20260927_v2/cases/case0002/cross_level/result.json">查看该案例完整动作结果</a> · <a href="../outputs/blocks_p0_validation_20260927_v2/cases/case0002/none/result.json">查看不修订失败</a></p>
+</section>
+<section><h2>4. 本轮能与不能宣称什么</h2>
+<h3>能支持</h3><ul><li>存在一组真实物理情景，修模型和修策略的效果可以通过成对执行区分，且混合条件需两者共同处理。</li><li>Clear前提修订可以改变BT的可执行行为，使现有清障技能被正确组合。</li><li>同一预设修订在两个未参与选择的布局和新配对上继续有效；旧正常条件没有退化。</li><li>成功episode中的完整符号迁移均通过，未出现weld激活记录。</li></ul>
+<h3>不能支持</h3><ul><li><strong>不是LLM/VLM自主发现。</strong>Clear谓词、候选前提、正确偏移、清障技能和四结果分类规则都是工程预设；本轮没有调用大模型。</li><li><strong>不是先诊断再自主修复。</strong>归因在四组干预全部运行后，根据其成功布尔向量进行；8/8是干预响应与受控条件匹配，不是单次失败诊断准确率。</li><li><strong>不是低成本主动实验选择。</strong>四组都跑，尚未学习如何以更少探针区分解释；不能将这四组花费省略。</li><li><strong>不是真实失败现场恢复。</strong>每个干预从相同初始XML重新初始化；不是从已经碰撞或掉落的状态继续。</li><li><strong>不是跨形状/材质/本体泛化。</strong>仍是同尺寸、同质量的四色块，4物体、3或5个高层动作；布局变化为厘米级而非大环境变化。</li><li><strong>不是完整连续安全证明。</strong>验收覆盖堆叠、释放、HOME、速度、部分接触、支撑/干扰物最终位移及稳定窗口；未全面记录两个非当前目标物体间的所有接触，也未检查全部物体全程最大位移。连续轨迹文件记录TCP/关节角，不是完整物理状态录像。</li></ul>
+</section>
+<section><h2>5. 代码、测试和审计</h2>
+<p>新增独立目录 <code>project/experiments/</code>，旧控制文件仅增加可选的 <code>scene_builder</code> 构造参数，默认场景不变；保留用户已有的Cover/感知修改。</p>
+<ul><li>新增20项测试通过：物理Clear、Oracle只读、模型只改pre、策略有限程序、BT清障顺序、划分配对、匿名归因、禁止直接状态写入、冻结篡改拒绝及渲染/观察/关闭异常。</li><li>v2冻结文件必须显式approved；检查候选与执行内容一致，检查证据结果哈希、源文件与清单；不能通过空对象跳过门禁。</li><li>每个动作执行前落盘，异常保留原始trace；基础设施无效试次单列，不计物理失败；渲染不参与物理成败。</li><li>本批v2全部64次trial_valid为真，未出现基础设施无效试次；两版源码快照哈希均通过审计。</li><li>旧 <code>test_single_arm_rebuilt.py</code> 29项中26项通过，2失败、1错误：测试还引用potato，而用户当前Cover场景已改为pepper。该差异执行前已存在；没有为通过测试回改用户内容。</li></ul>
+<p><a href="../outputs/blocks_p0_integrity_tests_20260927.log">新实验测试日志</a> · <a href="../outputs/blocks_p0_legacy_regression_20260927.log">旧回归日志</a> · <a href="../outputs/blocks_p0_audit_20260927.json">独立汇总审计JSON</a></p>
+<p>v2矩阵执行墙钟：开发21.19秒、验证18.94秒、同留出设置复核37.80秒，约77.93秒。这个计时不含前置源码快照、最终报告和开发成本，也不含全部初始化仿真时间；不能称作完整研究成本或用来直接估算真机时长。</p>
+</section>
+<section><h2>6. 结果入口与复现约束</h2>
+<table><tr><th>阶段</th><th>v1 首轮证据</th><th>v2 基础设施加固后的重复核查</th></tr><tr><td>开发</td><td><a href="../outputs/blocks_p0_development_20260927_v1/results.json">结果</a></td><td><a href="../outputs/blocks_p0_development_20260927_v2/summary.md">摘要</a> · <a href="../outputs/blocks_p0_development_20260927_v2/frozen_candidates.json">冻结候选</a></td></tr><tr><td>验证</td><td><a href="../outputs/blocks_p0_validation_20260927_v1/results.json">结果</a></td><td><a href="../outputs/blocks_p0_validation_20260927_v2/summary.md">摘要</a> · <a href="../outputs/blocks_p0_validation_20260927_v2/frozen_candidates.json">准入候选</a></td></tr><tr><td>留出</td><td><a href="../outputs/blocks_p0_heldout_20260927_v1/results.json">首次结果</a></td><td><a href="../outputs/blocks_p0_heldout_20260927_v2/summary.md">重复核查摘要</a> · <a href="../outputs/blocks_p0_heldout_20260927_v2/results.json">结果</a></td></tr></table>
+<p>入口支持development/validation/heldout，后两阶段必须传上一阶段的冻结产物；每次使用新输出目录。<code>manifest.json</code> 保存实际命令参数、Python/依赖版本、协议、全部导入项目源码和机器人资产哈希；<code>source_snapshot/</code> 保存执行时版本。<code>cases/</code> 保存场景XML、BT、策略、逐动作前后观测、API trace、接触汇总与图片。</p>
+<p>执行环境使用现有CABTO Python 3.11.9，无需新安装。原始结果位于被Git忽略的 <code>outputs/</code>，不等于已经提交或备份；本轮没有Git提交。单独的初始基线及测试内部运行不纳入64/128次矩阵分母。</p>
+</section>
+<section><h2>7. 下一轮最有价值的实验</h2>
+<ol><li><strong>把“预设正确候选”换成实际候选提出：</strong>允许模型从不含注入标签的观察、程序和反馈中提出多个前提/参数候选，先在开发数据上筛选，固定后进入全新留出布局。</li><li><strong>加入竞争解释和弃权：</strong>例如抓取横向偏差、不可达、夹爪能力不足、目标拥挤但未被顶部占用，使“闭爪失败＝参数错误”的简单映射失效。</li><li><strong>从固定4次干预转向预算控制：</strong>比较主动选下一个探针与固定全枚举，记录总仿真执行和重置成本。</li><li><strong>扩展前先验证安全与组合：</strong>增加连续物体状态与接触监测，以及更多真实上游终态，不靠逐技能重置保证成功。</li></ol>
+<blockquote>本轮回答了“这两类缺陷在现有物理底座上能否被分层干预区分”。下一轮才应回答“CABTO能否自己提出正确修订，并用更少交互找到它”。两者不能混成一个结果。</blockquote>
+</section>
+<footer>报告仅陈述本次实际执行与审计得到的结果。模型/控制参数、评价标准与布局未因留出结果而调优；v2是同条件复核而非新增泛化证据。</footer>
+</main></body></html>

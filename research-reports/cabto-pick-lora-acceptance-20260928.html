@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CABTO归因VLM：小样本LoRA真实训练验收</title><style>:root{color-scheme:dark;--bg:#0d1117;--panel:#161b22;--line:#30363d;--fg:#e6edf3;--dim:#9aa4b2;--blue:#58a6ff}*{box-sizing:border-box}body{background:var(--bg);color:var(--fg);margin:0;font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}main{max-width:1050px;margin:auto;padding:42px 28px 75px}h1{font-size:31px;line-height:1.4}h2{border-left:4px solid var(--blue);padding-left:12px;font-size:23px;margin-top:38px}h3,a{color:#79c0ff}code{font-size:.88em;padding:2px 5px;background:#0b1020;color:#79c0ff;border-radius:4px;overflow-wrap:anywhere}.muted,small{color:var(--dim)}.callout,blockquote{padding:16px 20px;border-left:4px solid var(--blue);background:var(--panel);margin:20px 0}.warn{border-color:#d29922}.good{border-color:#3fb950}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card{padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:8px}.card strong{font-size:25px;color:#79c0ff;display:block}table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}th,td{padding:11px 13px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#1f242c}tr:nth-child(even){background:var(--panel)}li{margin:7px 0}footer{padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:13px;margin-top:40px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0b1020;padding:16px;border:1px solid var(--line);font-size:13px;border-radius:7px}@media(max-width:720px){main{padding:24px 16px}.cards{grid-template-columns:1fr}h1{font-size:26px}}</style></head><body><main>
+<p class="muted">2026-09-28 · 本地MLX · 真实加载3B权重与LoRA更新 · 非泛化性能实验</p>
+<h1>归因VLM小样本训练链验收完成<br>标准直接多图前向通过，缓存捷径被拒</h1>
+<div class="callout"><strong>结论：真实反向传播、参数更新、适配器保存与新进程重载均已通过。</strong>过程中发现并拒绝了一条“冻结视觉特征缓存”的训练捷径——它的前向logits一致，但反传梯度与标准直接多图前向不等价；最终版本改用标准直接前向，12步训练、重载和真实模型加验全部通过。</div>
+<div class="cards"><div class="card"><strong>12步</strong>每步有效非零梯度<br><small>每条样本训练一次，尚非充分过拟合</small></div><div class="card"><strong>1,843,200</strong>可训练LoRA参数<br><small>q/v投影，144个张量均变化</small></div><div class="card"><strong>7.40 MB</strong>保存的adapter权重<br><small>新目录，不覆盖已有EPM训练</small></div></div>
+<section><h2>1. 实际使用的数据和训练设置</h2>
+<table><tr><th>项</th><th>实际设置</th></tr><tr><td>基座</td><td>本地 <code>mlx-community/Qwen2.5-VL-3B-Instruct-bf16</code>，固定revision，离线加载，不接入旧adapter</td></tr><tr><td>训练数据</td><td><code>outputs/pick_groups_sft_20260927_v3/</code>，全量224条已经通过上轮数据验收，本轮只选12条</td></tr><tr><td>训练切片</td><td>Cover apple与Blocks yellow；8 diagnosis、2 forecast、2 update，来自8个动作条件组、2个scene-seed上下文</td></tr><tr><td>验证切片</td><td>4条：两场景combined条件的diagnosis与update，各2条；没有forecast验证</td></tr><tr><td>干预样例覆盖</td><td>当前短训的forecast/update取各混合组第一条，即model-only分支；尚未覆盖policy-only与联合分支训练</td></tr><tr><td>视觉输入</td><td>每条完整6张图，保留原有顺序及processor像素设置；没有截断目标回答</td></tr><tr><td>参数更新</td><td>LoRA rank8、alpha16、dropout0，语言侧所有层q_proj/v_proj；视觉塔与基础参数冻结</td></tr><tr><td>优化</td><td>Adam，学习率1e−5，batch=1，12步，梯度范数上限1.0；梯度检查点</td></tr><tr><td>视觉路径</td><td><strong>标准直接多图前向</strong>，图片经视觉塔正常参与反传；不缓存冻结特征走捷径</td></tr><tr><td>资源</td><td>缓存0.5GiB、MLX内存指导值14GiB；训练MLX峰值14.93GiB，说明指导值不是硬上限</td></tr></table>
+<p>训练/验证context不重叠，但还是同一程序家族和小幅布局扰动。它们不构成未见场景测试，更不能用4条验证loss推断机器人恢复性能。</p>
+</section>
+<section><h2>2. 一个必须记录的发现：缓存捷径被拒</h2>
+<p>第一版为了省显存，先把六图经冻结的视觉塔算成特征常量，再把它作为 <code>cached_image_features</code> 喂给语言侧做反传。前向损失看起来正常：</p>
+<ul><li>direct 与 cached 的目标token logits 最大差异为 <strong>0</strong>；</li><li>两路径loss也完全一致。</li></ul>
+<p>但把真实模型置于可训练状态后逐一比较两条路径的 LoRA 梯度，<strong>相对L2差异未通过等价性检查</strong>。也就是说：前向数值一致，不代表反传梯度一致。这条捷径不能证明自己训练的就是标准模型。</p>
+<blockquote class="warn">最终版本放弃特征缓存，改用完整模型的标准直接多图前向。代价是训练略慢，但梯度路径不再有疑点。旧缓存版本及其失败审计全部保留，不覆盖。</blockquote>
+<p>这轮真正接入的逻辑：</p>
+<ul><li>复用上轮已检查的 <code>prepare_supervision()</code>，检查用的token、图片和labels就是训练读取的同一份张量，不另起一套预处理。</li><li>模型输入为完整序列去掉最后一个token，预测位置与下一token对齐；只对assistant目标后缀计算交叉熵，按有效目标token数归一化。</li><li>system/human与图像标记不直接受loss监督；它们仍作为上下文影响目标，反传仍可经过相应注意力路径，这是正常的。</li><li>本轮仅支持无padding的batch=1，拒绝不完整的目标后缀；使用模型默认因果attention，不把二维padding mask误当attention规则。</li><li>沿用已安装库支持的普通MLX RoPE路径，关闭当前版本缺少反传实现的fused Metal RoPE；只作用于本次独立进程，不改site-packages或旧训练脚本。</li><li>保存采用库标准 <code>save_adapter()</code> 并写入正确adapter_config；重载采用基础模型＋本次adapter目录。</li></ul>
+</section>
+<section><h2>3. 实际训练结果</h2>
+<table><tr><th>指标</th><th>训练前</th><th>12步后</th></tr><tr><td>12条训练样本平均目标CE</td><td>2.43013</td><td>2.35857</td></tr><tr><td>4条验证样本平均目标CE</td><td>2.36550</td><td>2.30334</td></tr><tr><td>发生更新的adapter张量</td><td>0</td><td>144/144</td></tr></table>
+<p>12步梯度范数均为有限正数，约0.487–1.93；超出1.0时裁剪。检查的视觉patch embedding和语言embedding权重未改变；可训练参数列表全部是声明的q/v LoRA参数。基础权重哈希为两张量抽查，不宣称逐一哈希核验了全部基础模型参数。</p>
+<p>本轮训练阶段（含训练前后loss评估）约234.53秒，MLX峰值约14.93GiB；准备、后续审计和用户原有并行训练的资源不在此计时内。步骤日志的wall_seconds包含视觉前向，可作为单步耗时参考，但不是完整端到端时钟。</p>
+<blockquote class="warn"><strong>loss下降只说明模型开始拟合这批结构化回答。</strong>数据标签含确定性事实投影和手写保守建议，输入本身已有成功/契约结果。不能将这约3%的loss下降解释成“学会根因归因”，更没有闭环任务成功率或未见场景成绩。</blockquote>
+</section>
+<section><h2>4. 适配器是否真的保存并重新加载？</h2>
+<p>训练命令完成后，另一个CLI进程（PID 86013，训练进程PID 82213）重新加载基础模型＋本次adapter，核对：</p>
+<ul><li>保存权重与训练内存中的adapter哈希完全相同。</li><li>重载权重哈希完全相同。</li><li>参考样本前两个目标位置的全词表logits最大差异为<strong>0</strong>。</li><li>参考样本全部目标token的loss差异为<strong>0</strong>，重载loss为2.1370675564。</li></ul>
+<p>该重载报告检查的是一个六图参考样本，不是所有样本或自由生成准确率；独立加验进程另记录实际PID及启动时间。</p>
+<p><a href="../outputs/pick_lora_acceptance_20260928_v2/training_result.json">训练结果与每步梯度</a> · <a href="../outputs/pick_lora_acceptance_20260928_v2/reload_result.json">新进程重载记录</a> · <a href="../outputs/pick_lora_acceptance_20260928_v2/adapter/adapter_config.json">adapter配置</a></p>
+</section>
+<section><h2>5. 真实模型加验：不依赖mock的最终结果</h2>
+<div class="callout good">真实模型加验通过：<code>mechanics_passed=true</code>，<code>passed=true</code>。</div>
+<ul><li><strong>因果mask成立：</strong>把参考样本的一个后续token改掉后，更早位置的logits最大变化为 <strong>0</strong>，未来token不影响过去输出。</li><li><strong>图像确实参与：</strong>把像素全部置零后loss变化约 <strong>0.00548</strong>，说明六图经标准像素路径影响输出；这证明的是数值依赖，不是视觉诊断优势。</li><li><strong>适配器有限且匹配：</strong>全部保存权重有限，q/v各72个张量，新进程加载后哈希一致。</li><li><strong>自由生成冒烟通过：</strong>实际用6图生成了192 tokens，7.70秒，finish_reason为 <code>length</code>（达到token上限被截断，因此 <code>valid_json=false</code>）。这一步只验证“六图+结构化提示能正常生成”，不评估生成质量。</li><li><strong>峰值内存：</strong>本次审计约8.74GiB。</li></ul>
+<p><a href="../outputs/pick_lora_acceptance_20260928_v2/real_model_audit_v2.json">真实模型加验记录（含生成原文与各指标）</a> · <a href="../outputs/pick_lora_acceptance_20260928_v2/real_model_audit.json">早期因processor路径类型失败的旧审计（保留）</a> · <a href="../outputs/pick_lora_acceptance_20260928_tests.log">19项采集/训练回归测试</a></p>
+<p>19项测试包含小数组loss/梯度、接口mock和数据隔离测试；mock只验证参数接口，不作为真实attention因果性或VLM性能证据。</p>
+</section>
+<section><h2>6. 训练准入结论与下一步</h2>
+<div class="callout"><strong>基础训练链已能产生真实更新并保存重载，且经过真实模型加验。</strong>这解除的是“数据能否进入实际训练”的工程阻碍，不是归因方法的科学有效性验证。</div>
+<p>现在不建议立即增加epoch，把这12条记住后就开始宣称泛化。先补：</p>
+<ol><li>扩充小批切片，覆盖policy-only、联合干预、partial_progress和forecast验证；保留真实组内/跨组区别。</li><li>检查自由生成的JSON/schema与证据引用，而不只看teacher-forced CE；当前生成冒烟仅证明能生成，未评估正确性。</li><li>建立text-only、图像＋状态及简单规则基线，确认模型不是只复制输入中的布尔结果。</li><li>增加真实程序家族、不同参数与契约缺陷，补自然失败、无效修订和未知/不可辨识样本；再进入240组Pilot。</li><li>为最终模型另封存对象/布局/程序/组合OOD数据，运行同预算闭环修复；当前验证集只作训练链检查。</li></ol>
+<p>已有EPM训练进程未被暂停、终止或改写；本轮使用独立输出目录和较低CPU调度优先级，资源仍可能与其共享GPU，不能声称完全没有性能竞争。</p>
+</section>
+<section><h2>7. 文件与复现</h2>
+<table><tr><th>产物</th><th>位置</th></tr><tr><td>实际训练入口</td><td><code>project/experiments/train_pick_groups_lora.py</code>；prepare/train/verify三阶段，固定新目录</td></tr><tr><td>真实模型加验入口</td><td><code>project/experiments/audit_pick_lora_training.py</code></td></tr><tr><td>样本和张量清单</td><td><a href="../outputs/pick_lora_acceptance_20260928_v2/manifest.json"><code>outputs/pick_lora_acceptance_20260928_v2/manifest.json</code></a></td></tr><tr><td>LoRA权重</td><td><code>outputs/pick_lora_acceptance_20260928_v2/adapter/adapters.safetensors</code></td></tr><tr><td>原始日志</td><td><a href="../outputs/pick_lora_acceptance_20260928_v2_train.log">训练日志</a> · <a href="../outputs/pick_lora_acceptance_20260928_v2_verify.log">重载日志</a> · <a href="../outputs/pick_lora_acceptance_20260928_v2_audit_v2.log">加验日志</a></td></tr><tr><td>上轮数据验收</td><td><a href="cabto-pick-data-acceptance-20260927.html">真实数据来源、故障和监督边界</a></td></tr></table>
+<p>输出包含源码快照、输入张量哈希、原始图片哈希、模型revision、版本、训练设置和适配器哈希。未覆盖旧数据或旧适配器，未提交Git；outputs仍为本地忽略目录，需要另行备份。</p>
+</section><footer>本轮只做有预算的小样本真实训练与持久化验收。没有生成“归因准确率”、未见场景结果或机器人闭环修复提升。缓存捷径被拒是重要工程结论：前向一致不能推断梯度一致。</footer>
+</main></body></html>

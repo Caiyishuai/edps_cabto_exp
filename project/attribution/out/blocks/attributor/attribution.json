@@ -1,0 +1,1273 @@
+{
+  "task": "blocks",
+  "rows": [
+    {
+      "task": "blocks",
+      "action_id": "pick(object=red,support=blue)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "red",
+          "support": "blue"
+        },
+        "program_kind": "pick",
+        "pre": [
+          "empty()",
+          "at_source(red)"
+        ],
+        "add": [
+          "holding(red)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(red)",
+          "home_completed()"
+        ],
+        "description": "Grasp the bound cube from table and leave it held in air"
+      },
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "threshold": 0.5,
+      "confidence": 0.8,
+      "verdict": "ok",
+      "reason": "三路全通",
+      "probes": {
+        "oracle": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "holding(red)"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "holding(red)"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "holding(red)"
+              ]
+            }
+          ]
+        },
+        "policy": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "holding(red)"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "holding(red)"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "holding(red)"
+              ]
+            }
+          ]
+        },
+        "perception": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "holding(red)"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "holding(red)"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "holding(red)"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task": "blocks",
+      "action_id": "place(object=red,support=blue)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "red",
+          "support": "blue"
+        },
+        "program_kind": "place",
+        "pre": [
+          "holding(red)"
+        ],
+        "add": [
+          "at_target(red)",
+          "empty()"
+        ],
+        "del": [
+          "holding(red)",
+          "home_completed()"
+        ],
+        "description": "Stack held cube on bound support cube, release and withdraw. Do not return home."
+      },
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "threshold": 0.5,
+      "confidence": 0.8,
+      "verdict": "ok",
+      "reason": "三路全通",
+      "probes": {
+        "oracle": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(yellow)",
+                "holding(red)"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "at_target(red)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(yellow)",
+                "holding(red)"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "at_target(red)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(yellow)",
+                "holding(red)"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "at_target(red)",
+                "empty()"
+              ]
+            }
+          ]
+        },
+        "policy": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(yellow)",
+                "holding(red)"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "at_target(red)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(yellow)",
+                "holding(red)"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "at_target(red)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(yellow)",
+                "holding(red)"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "at_target(red)",
+                "empty()"
+              ]
+            }
+          ]
+        },
+        "perception": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(yellow)",
+                "holding(red)"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "at_target(red)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(yellow)",
+                "holding(red)"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "at_target(red)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(yellow)",
+                "holding(red)"
+              ],
+              "after": [
+                "at_source(yellow)",
+                "at_target(red)",
+                "empty()"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task": "blocks",
+      "action_id": "pick(object=yellow,support=green)",
+      "model": {
+        "name": "pick",
+        "args": {
+          "object": "yellow",
+          "support": "green"
+        },
+        "program_kind": "pick",
+        "pre": [
+          "empty()",
+          "at_source(yellow)"
+        ],
+        "add": [
+          "holding(yellow)"
+        ],
+        "del": [
+          "empty()",
+          "at_source(yellow)",
+          "home_completed()"
+        ],
+        "description": "Grasp the bound cube from table and leave it held in air"
+      },
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "threshold": 0.5,
+      "confidence": 0.8,
+      "verdict": "ok",
+      "reason": "三路全通",
+      "probes": {
+        "oracle": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(red)",
+                "holding(yellow)"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(red)",
+                "holding(yellow)"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(red)",
+                "holding(yellow)"
+              ]
+            }
+          ]
+        },
+        "policy": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(red)",
+                "holding(yellow)"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(red)",
+                "holding(yellow)"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(red)",
+                "holding(yellow)"
+              ]
+            }
+          ]
+        },
+        "perception": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(red)",
+                "holding(yellow)"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(red)",
+                "holding(yellow)"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "at_source(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_source(red)",
+                "holding(yellow)"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task": "blocks",
+      "action_id": "place(object=yellow,support=green)",
+      "model": {
+        "name": "place",
+        "args": {
+          "object": "yellow",
+          "support": "green"
+        },
+        "program_kind": "place",
+        "pre": [
+          "holding(yellow)"
+        ],
+        "add": [
+          "at_target(yellow)",
+          "empty()"
+        ],
+        "del": [
+          "holding(yellow)",
+          "home_completed()"
+        ],
+        "description": "Stack held cube on bound support cube, release and withdraw. Do not return home."
+      },
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "threshold": 0.5,
+      "confidence": 0.8,
+      "verdict": "ok",
+      "reason": "三路全通",
+      "probes": {
+        "oracle": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(red)",
+                "holding(yellow)"
+              ],
+              "after": [
+                "at_source(red)",
+                "at_target(yellow)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(red)",
+                "holding(yellow)"
+              ],
+              "after": [
+                "at_source(red)",
+                "at_target(yellow)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_source(red)",
+                "holding(yellow)"
+              ],
+              "after": [
+                "at_source(red)",
+                "at_target(yellow)",
+                "empty()"
+              ]
+            }
+          ]
+        },
+        "policy": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "holding(yellow)"
+              ],
+              "after": [
+                "at_source(red)",
+                "at_target(yellow)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "holding(yellow)"
+              ],
+              "after": [
+                "at_source(red)",
+                "at_target(yellow)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "holding(yellow)"
+              ],
+              "after": [
+                "at_source(red)",
+                "at_target(yellow)",
+                "empty()"
+              ]
+            }
+          ]
+        },
+        "perception": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "holding(yellow)"
+              ],
+              "after": [
+                "at_source(red)",
+                "at_target(yellow)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "holding(yellow)"
+              ],
+              "after": [
+                "at_source(red)",
+                "at_target(yellow)",
+                "empty()"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_source(red)",
+                "holding(yellow)"
+              ],
+              "after": [
+                "at_source(red)",
+                "at_target(yellow)",
+                "empty()"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task": "blocks",
+      "action_id": "home()",
+      "model": {
+        "name": "home",
+        "pre": [
+          "empty()"
+        ],
+        "add": [
+          "home_completed()"
+        ],
+        "del": [],
+        "args": {},
+        "program_kind": "home",
+        "description": "Return empty arm home without moving cubes"
+      },
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "threshold": 0.5,
+      "confidence": 0.8,
+      "verdict": "ok",
+      "reason": "三路全通",
+      "probes": {
+        "oracle": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()",
+                "home_completed()"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()",
+                "home_completed()"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "pre_holds": true,
+              "before": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()",
+                "home_completed()"
+              ]
+            }
+          ]
+        },
+        "policy": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()",
+                "home_completed()"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()",
+                "home_completed()"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()",
+                "home_completed()"
+              ]
+            }
+          ]
+        },
+        "perception": {
+          "ok_count": 3,
+          "total": 3,
+          "rate": 1.0,
+          "ci": [
+            0.6462,
+            1.0
+          ],
+          "runs": [
+            {
+              "seed": 0,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()",
+                "home_completed()"
+              ]
+            },
+            {
+              "seed": 1,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()",
+                "home_completed()"
+              ]
+            },
+            {
+              "seed": 2,
+              "ok": true,
+              "violations": {
+                "missing_pre": [],
+                "missing_add": [],
+                "remaining_del": [],
+                "missing_preserved_pre": []
+              },
+              "exception": null,
+              "before": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()"
+              ],
+              "after": [
+                "at_target(red)",
+                "at_target(yellow)",
+                "empty()",
+                "home_completed()"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

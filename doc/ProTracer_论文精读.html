@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProTracer 论文精读</title>
+<style>
+:root{
+  --ink:#0c2230; --ink2:#2f4f63; --muted:#64879a;
+  --accent:#0369a1; --accent-soft:#e0f0fa;
+  --green:#0e7a4d; --green-soft:#e9f7f0;
+  --red:#b42318; --red-soft:#fdeceb;
+  --amber:#a16207; --amber-soft:#fff6e0;
+  --line:#d8e6ee; --bg:#f1f7fa; --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.hero{background:linear-gradient(135deg,#052b3f 0%,#0a4a6e 55%,#0c6595 100%);color:#fff;
+  padding:56px 24px 44px;margin-bottom:36px;}
+.hero-inner{max-width:980px;margin:0 auto;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.tag{font-size:12.5px;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);letter-spacing:.5px;}
+.tag.hl{background:#0284c7;border-color:#0284c7;}
+.hero h1{font-size:28px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.hero .sub{font-size:16.5px;color:#c4e0f0;margin-bottom:18px;}
+.hero .meta{font-size:14px;color:#a0cbdf;}
+.hero a{color:#7dd3fc;text-decoration:none;border-bottom:1px dashed rgba(125,211,252,.5);}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:6px 8px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 18px rgba(5,45,65,.08);}
+.toc a{font-size:13.5px;color:var(--ink2);text-decoration:none;padding:5px 12px;border-radius:8px;}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;margin-bottom:28px;}
+h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;}
+h2 .no{font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:8px;padding:2px 10px;letter-spacing:1px;flex-shrink:0;}
+h3{font-size:17.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);}
+h3::before{content:"▎";color:var(--accent);margin-right:2px;}
+p{margin-bottom:14px;color:var(--ink2);}
+strong{color:var(--ink);}
+ul,ol{margin:0 0 14px 26px;color:var(--ink2);}
+li{margin-bottom:7px;}
+.tldr{background:linear-gradient(135deg,#e0f0fa,#cfebf7);border-left:5px solid var(--accent);
+  padding:22px 26px;border-radius:0 12px 12px 0;margin-bottom:28px;font-size:16.5px;}
+.tldr b{color:var(--accent);}
+figure{margin:22px 0;text-align:center;}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 3px 14px rgba(5,45,65,.08);}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.7;padding:0 18px;}
+.box{border-radius:12px;padding:18px 22px;margin:18px 0;font-size:15.5px;}
+.box .bt{font-weight:700;margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.box.insight{background:var(--green-soft);border:1px solid #bfe5d2;}
+.box.insight .bt{color:var(--green);}
+.box.warn{background:var(--red-soft);border:1px solid #f6c6c2;}
+.box.warn .bt{color:var(--red);}
+.box.key{background:var(--accent-soft);border:1px solid #bce3ee;}
+.box.key .bt{color:var(--accent);}
+.formula{background:#eef6f8;border:1px dashed #b5d4de;border-radius:10px;
+  padding:14px 20px;margin:14px 0;font-family:"Times New Roman",Georgia,serif;
+  font-size:15px;color:var(--ink);text-align:center;overflow-x:auto;}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:12px;}
+.tbl th{background:#e8f2f7;color:var(--ink);font-weight:700;padding:7px 7px;
+  border:1px solid var(--line);text-align:center;}
+.tbl td{padding:6px 7px;border:1px solid var(--line);text-align:center;color:var(--ink2);}
+.tbl td.l,.tbl th.l{text-align:left;}
+.tbl tr.ours td{background:#e0f0fa;font-weight:600;color:var(--ink);}
+.tbl .best{color:var(--accent);font-weight:700;}
+.chips{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.chip{flex:1;min-width:165px;background:#f5fafc;border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;}
+.chip .cv{font-size:21px;font-weight:800;color:var(--accent);}
+.chip .cl{font-size:13px;color:var(--muted);margin-top:2px;}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:40px;}
+code{background:#edf4f6;padding:1px 7px;border-radius:5px;font-size:12.5px;color:#075985;}
+.linklist li{margin-bottom:9px;}
+@media (max-width:700px){section{padding:24px 20px;} .hero h1{font-size:22px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag-row">
+      <span class="tag hl">失败诊断</span>
+      <span class="tag">本体感受引导</span>
+      <span class="tag">VLM</span>
+      <span class="tag">失败起始定位</span>
+      <span class="tag">arXiv 2609.21369</span>
+    </div>
+    <h1>ProTracer：本体感受引导的机器人操作失败诊断</h1>
+    <div class="sub">ProTracer: Proprioception-Guided Failure Diagnosis in Robot Manipulation</div>
+    <div class="meta">Chang Dong, Mehdi Hosseinzadeh, King Hang Wong, Lingqiao Liu, Francois Fraysse, Feras Dayoub, Minh Hoai Nguyen · Australian Institute for Machine Learning / Adelaide University</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="tldr">
+  <b>一句话总结：</b>现有失败诊断只问"是否失败、失败是什么"，却忽略了"失败<strong>何时</strong>首次发生"。操作失败往往在 rollout 结束前很久就发生——机械手提前松开物体后，机器人可能继续空转很多秒。ProTracer 是一个<strong>训练无关</strong>的框架，用<strong>本体感受信号（夹爪状态 + 末端运动）</strong>精确定位动作边界，再把这些信号转成结构化自然语言描述、与视觉一起交给 VLM 推理——零样本做到<strong>亚秒级失败起始定位</strong>，并同步提升检测、分类、解释、避免建议。
+</div>
+
+<nav class="toc">
+  <a href="#s1">① 摘要解读</a>
+  <a href="#s2">② 背景与动机</a>
+  <a href="#s3">③ 问题定义</a>
+  <a href="#s4">④ 方法</a>
+  <a href="#s5">⑤ 数据集与设置</a>
+  <a href="#s6">⑥ 结果与分析</a>
+  <a href="#s7">⑦ Insights</a>
+  <a href="#s8">⑧ 结论与链接</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">01</span>摘要解读</h2>
+  <p>本文提出一个机器人操作失败分析的完整框架，包含<strong>二值失败检测、失败分类、解释生成</strong>，以及新增的<strong>失败起始定位（failure onset localization）</strong>能力——识别机器人执行<strong>最早偏离有效任务完成轨迹、并最终导致任务失败</strong>的时刻。为应对这些任务，作者提出 <strong>ProTracer</strong>：一个<strong>训练无关</strong>的框架，把现有 VLM 与本体感受信号结合起来做失败分析。</p>
+  <ul>
+    <li><strong>用本体感受动力学</strong>识别时间上有信息的动作边界；</li>
+    <li><strong>把更丰富的机器人状态信号</strong>转成结构化自然语言描述，与视觉观测一起交给 VLM 联合分析。</li>
+  </ul>
+  <p>这一设计把本体感受信号的<strong>时间精度</strong>与现代 VLM 的<strong>多模态推理</strong>结合起来，无需额外训练。作者还引入 <strong>FailTime</strong> 基准（同步视觉 + 本体感受观测），用于评估常规诊断任务与失败起始定位。实验显示 ProTracer 在常规诊断任务与新引入的失败起始定位任务上都取得强性能，凸显了本体感受推理对细粒度时序失败分析的重要性。</p>
+  <div class="chips">
+    <div class="chip"><div class="cv">0.59 s</div><div class="cl">失败起始定位 MAE（零样本，基线最优 0.90 s）</div></div>
+    <div class="chip"><div class="cv">71.18%</div><div class="cl">acc@0.5s（+Exp 达 77.34%）</div></div>
+    <div class="chip"><div class="cv">0 训练</div><div class="cl">training-free，复用现有 VLM</div></div>
+    <div class="chip"><div class="cv">FailTime</div><div class="cl">123 任务、1639 episode、10 类失败标注</div></div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span>研究背景与动机（Introduction）</h2>
+  <h3>从"是否/什么"到"何时"</h3>
+  <p>失败诊断对机器人学习与部署很重要（支持数据过滤、策略改进、恢复规划、安全分析）。但现有方法聚焦于<strong>是否失败、失败是什么类型、解释失败结果</strong>，却<strong>忽视了失败首次在何时发生</strong>。这一区分很重要：操作失败可能在完整 rollout 结束前很久就发生，机器人在最初的失误后还会继续执行许多秒。定位失败起始点能带来<strong>更精确的时序信用分配</strong>、从失败示范中<strong>恢复成功轨迹前缀</strong>、以及更细粒度的行为分析。</p>
+  <figure>
+    <img src="assets/protracer_fig1_onset.png" alt="失败起始定位示意">
+    <figcaption>图 1：失败起始定位。夹爪在 13.7s 提前松开，此时场景看起来还正常；溢出到 16.4s 才可见，机器人之后仍在继续执行。ProTracer 用本体感受精确定位起始点，用视觉识别哪里出了问题。</figcaption>
+  </figure>
+  <div class="box key">
+    <div class="bt">为什么在线检测器做不到这件事</div>
+    在线方法只看当前时刻之前的观测，早期失败信号<strong>天然模糊</strong>（明显错误可能之后被纠正，细微错误只有通过后续后果才可识别）。因此在线检测器的"首次告警"是不可靠的起始估计：低阈值在瞬时偏差上误报，高阈值要等失败已可见才报，两者都不标记"执行真正出错"的位置。而且在线方法常依赖任务特定的名义执行模型（期望轨迹、任务图、成功行为分布），需要大量任务特定数据与训练。<strong>回溯分析</strong>能利用完整 rollout 及其已知结果来消除早期事件的歧义，无需显式建模每种有效执行。
+  </div>
+  <h3>为什么本体感受能补 VLM 的短板</h3>
+  <p>关键观察：操作失败<strong>不纯粹是视觉现象</strong>，也反映在机器人执行动力学里。夹爪状态与末端运动提供了<strong>时间精确的动作转移线索</strong>（仅凭视频难以推断），且这些信号在操作基准与大规模机器人数据集中普遍可用。困难在于 VLM 不会解读密集的原始本体感受数值；而从头训练一个"视觉-语言-机器人状态"多模态大模型又成本过高、标注失败数据稀缺。</p>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span>问题定义：失败起始定位</h2>
+  <p>每个 episode 含任务指令、一路或多路 RGB 视频流、同步的本体感受信号（夹爪状态、末端位姿）。目标：判断成功/失败，对失败 episode 预测<strong>失败类型、解释、避免建议，并定位失败起始时刻</strong>。</p>
+  <h3>失败起始的严格定义</h3>
+  <p>把执行解释为一系列<strong>语义动作阶段</strong>（伸向、抓取、抬起、搬运、放置）。起始点是"执行最早偏离有效任务完成轨迹、且此后不再回到成功轨迹"的时刻。三条客观判据：</p>
+  <ol>
+    <li><strong>未达目标就离开动作</strong>（没抓稳就转到放置）；</li>
+    <li><strong>执行与任务目标不一致的动作</strong>（放错位置、移到无关区域）；</li>
+    <li><strong>在动作阶段停留超时无进展</strong>（反复抓取无稳定接触，起始 = 超时阈值被越过的时刻）。</li>
+  </ol>
+  <p>因为分析是回溯的、完整 episode 可用，<strong>后来被纠正的临时错误不算起始</strong>（抓取失败后成功重试不算失败起始）。这套规则提供了客观的标注协议，无需穷举所有有效执行策略。</p>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span>方法：ProTracer</h2>
+  <figure>
+    <img src="assets/protracer_fig2_framework.png" alt="ProTracer 框架">
+    <figcaption>图 2：ProTracer 框架——机器人操作的全面失败诊断（检测、分类、解释、避免、起始定位）。它用本体感受同时做关键帧选择与结构化信号叙事生成；VLM 联合分析多模态输入，推断执行上下文并输出最终诊断。</figcaption>
+  </figure>
+
+  <h3>4.1 本体感受分析：关键动作边界检测（Sign-CPD）</h3>
+  <p>把关节与夹爪状态转成 <strong>8D 末端轨迹</strong>（3D 位置 + 四元数朝向 + 夹爪开度）。为变点检测，聚焦夹爪动力学与末端运动——操作转移最有信息量的线索。对每只手臂编码两个离散指示符：夹爪开度速度符号 <code>sign(vᵏₜ)∈{−1,0,1}</code> 与去噪末端运动指示 <code>1[mᵏₜ&gt;0]</code>（丢弃幅度，因为原语边界由抓取状态与运动活动的<strong>离散切换</strong>刻画）。得到符号矩阵 X∈Σ^{T×2K}。</p>
+  <p>对候选段 [s,e) 定义<strong>模态-汉明代价</strong>（衡量该段能否被单个稳定符号状态表示）：</p>
+  <div class="formula">C(s,e) = Σ<sub>c</sub> min<sub>v</sub> Σ<sub>t=s</sub>ᵉ⁻¹ δ(x<sup>c</sup><sub>t</sub> ≠ v)</div>
+  <p>用 <strong>PELT</strong> 检测候选变点，再贪心剪枝弱边界到固定时间预算 B（FailTime-Short B=8，平均保留 6.8 个阶段；FailTime-Long B=39，平均 19.5 个）。保留的边界定义下游证据构造的关键帧与时间区间。</p>
+
+  <h3>4.2 本体感受引导的 VLM 推理（两阶段）</h3>
+  <ul>
+    <li><strong>第一阶段</strong>：VLM 分析选出的关键帧（如头视、腕视），生成简洁的场景状态描述；提供任务特定的参考词汇表（对象、动作、夹爪状态、夹爪-物体关系、物体-物体关系）以改善接地一致性；</li>
+    <li><strong>第二阶段</strong>：VLM 接收任务指令、视觉关键帧描述、<strong>本体感受描述</strong>、失败分类法、（可选）反思经验，构造事件级解释并输出最终诊断。</li>
+  </ul>
+  <p>传感器叙事用<strong>确定性规则</strong>而非学习到的 captioner 生成：<strong>零幻觉</strong>，且词汇是"本体无关的物理量"（开度、位移、旋转），因此同一套规则能<strong>不改动地迁移到不同平台</strong>。视觉描述刻画稀疏场景状态，本体感受描述刻画其间的物理转移。</p>
+
+  <h3>4.3 可选：反思学习（Reflective Learning）做少样本适配</h3>
+  <p>有少量标注校准集时，ProTracer 可不更新权重地适配反复出现的错误模式。对每个校准 episode 先预测、再与真值配对回给 VLM 做反思，生成文本"经验教训"（如常见的起始定位错误、相似类别混淆、视觉-本体感受证据不一致）。这些经验累积成反思记忆、前置到后续推理 prompt。记忆可 ADD / MERGE / UPDATE / COMPRESS。一个候选经验<strong>只有在用更新后的记忆重跑对应 episode 能纠正原预测时才被接受</strong>。测试时记忆固定、不使用真值标签。</p>
+  <figure>
+    <img src="assets/protracer_fig3_exp.png" alt="学习到的经验示例">
+    <figcaption>图 3：学习到的反思经验示例——VLM 通过 in-context reflection 把两条真实世界的经验（教训）成功纳入记忆。</figcaption>
+  </figure>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span>数据集与实验设置</h2>
+  <h3>FailTime 基准</h3>
+  <table class="tbl">
+    <tr><th class="l">组成</th><th class="l">规模</th><th class="l">特点</th></tr>
+    <tr><td class="l">FailTime-Short</td><td class="l">1539 episode（含 579 成功）</td><td class="l">基于 ViFailback 基准 + 子集训练数据，平均 12s（最长 37s）</td></tr>
+    <tr><td class="l">FailTime-Long</td><td class="l">100 长时程真实 episode（57 失败 / 43 成功）</td><td class="l">新采集，ALOHA + SO-101 双臂平台，平均 54s（最长 120s）</td></tr>
+  </table>
+  <p>共 <strong>123 个不同操作任务</strong>。把失败分类法从 4 类扩展到 <strong>10 类</strong>（错误顺序、错误物体、错误夹爪、错误放置、闭合错误、张开错误、平移错误、朝向错误、可避免干预、不可避免干预）。6 名标注者耗时 120+ 小时：失败类别平均两两一致率 0.94，起始标注平均分歧 50ms，99.6% 分歧在 0.5s 内。</p>
+
+  <h3>评估指标</h3>
+  <ul>
+    <li><strong>失败起始</strong>：MAE↓（秒，仅正确检出失败的 episode）+ 容差准确率 acc@δ（δ∈{0.5s, 1s}）；</li>
+    <li><strong>失败检测 / 类型分类</strong>：准确率（类型预测命中任一真值标签即算对）；</li>
+    <li><strong>原因 / 避免</strong>：GPT-5 作 LLM 评委按 ViFailback rubric 打分；</li>
+    <li>运行时检测器额外报告 AUROC + 阈值下 TPR/TNR。</li>
+  </ul>
+  <h3>对比方法</h3>
+  <table class="tbl">
+    <tr><th class="l">方法</th><th class="l">说明</th></tr>
+    <tr><td class="l">Gemini-3.1-pro</td><td class="l">通用 VLM：1fps 稠密多视视频帧提示</td></tr>
+    <tr><td class="l">Robotics-ER 1.6</td><td class="l">机器人数据调优的模型</td></tr>
+    <tr><td class="l">KITE</td><td class="l">光流关键帧选择的 VLM 失败诊断</td></tr>
+    <tr><td class="l">ViFailback-8B†</td><td class="l">在 ViFailback 训练集上训练的失败分析模型（非零样本）</td></tr>
+    <tr><td class="l">各方法带 ∗ 变体</td><td class="l">额外接收原始本体感受 CSV</td></tr>
+    <tr class="ours"><td class="l">ProTracer（本文）</td><td class="l">本体感受变点选择 + 结构化叙事 + VLM</td></tr>
+    <tr class="ours"><td class="l">ProTracer+Exp</td><td class="l">加反思记忆（50 episode 校准集，3 轮反思）</td></tr>
+  </table>
+</section>
+
+<section id="s6">
+  <h2><span class="no">06</span>实验结果与分析</h2>
+
+  <h3>6.1 主结果：FailTime-Short 的瓶颈是"时间精度"</h3>
+  <table class="tbl">
+    <tr><th class="l">模型</th><th>Onset MAE↓</th><th>Onset @0.5s</th><th>Detect</th><th>Type</th></tr>
+    <tr><td class="l">ViFailback-8B†</td><td>1.10</td><td>46.06</td><td>97.80</td><td>57.64</td></tr>
+    <tr><td class="l">KITE</td><td>1.75</td><td>14.53</td><td>96.26</td><td>35.71</td></tr>
+    <tr><td class="l">Robotics-ER 1.6</td><td>1.63</td><td>14.29</td><td>95.38</td><td>34.48</td></tr>
+    <tr><td class="l">Gemini-3.1-pro</td><td>1.32</td><td>27.83</td><td>95.82</td><td>49.51</td></tr>
+    <tr><td class="l">Gemini-3.1-pro∗（+raw 本体）</td><td>0.90</td><td>48.03</td><td>98.24</td><td>60.34</td></tr>
+    <tr class="ours"><td class="l">ProTracer</td><td class="best">0.59</td><td class="best">71.18</td><td>99.34</td><td class="best">72.91</td></tr>
+    <tr class="ours"><td class="l">ProTracer+Exp</td><td>0.47</td><td>77.34</td><td>98.68</td><td>77.83</td></tr>
+  </table>
+  <p>所有模型失败检测都超 95%（检测不难），但<strong>起始定位准确率差异巨大</strong>。仅仅把原始本体感受拼进稠密帧基线（∗ 变体）就把 MAE 从 1.32s 降到 0.90s、acc@0.5s 从 27.83% 提到 48.03%。ProTracer 进一步到 71.18% / 0.59s——<strong>本体感受是时序信号的来源，但"怎么用"同样重要</strong>：在本体感受变点选关键帧 + 转结构化叙事，把 acc@0.5s 从 48.03% 推到 71.18%。且它<strong>零训练</strong>就超过了在 ViFailback 上训练的 ViFailback-8B。</p>
+
+  <h3>6.2 长时程 FailTime-Long：退化最少</h3>
+  <p>所有方法在更长时程上起始定位都退化，但 ProTracer 退化最少，在每个起始与诊断指标上保持最佳。ViFailback-8B 因在分布内（训练于 ViFailback）从 46.06% 跌到 5.26% acc@0.5s，而训练无关的 ProTracer 保持 40.35%（+Exp 45.61%）。Robotics-ER 1.6 因训练含传感器数据退化较少、是最强基线——再次印证本体感受的价值，而 ProTracer 无需训练就把这种价值提供给现成 VLM。</p>
+  <figure>
+    <img src="assets/protracer_fig4_qualitative.png" alt="定性对比">
+    <figcaption>图 4：FailTime-Long 上的定性对比。ViFailback-8B 把失败起始错误地定位到更早阶段，ProTracer 精确定位到真实起始点。</figcaption>
+  </figure>
+
+  <h3>6.3 消融：本体感受与视觉互补分工</h3>
+  <table class="tbl">
+    <tr><th class="l">变体</th><th>Onset MAE↓</th><th>Onset @0.5s</th><th>Detect</th><th>Type</th></tr>
+    <tr class="ours"><td class="l">ProTracer（完整）</td><td>0.59</td><td>71.18</td><td>99.34</td><td>72.91</td></tr>
+    <tr><td class="l">w/o sensor</td><td>1.18</td><td>30.79</td><td>98.24</td><td>57.39</td></tr>
+    <tr><td class="l">w/o vision</td><td>1.88</td><td>23.65</td><td>90.33</td><td class="bad" style="color:#b42318">15.02</td></tr>
+  </table>
+  <p>去掉传感器：起始定位暴跌（71.18→30.79、MAE 翻倍到 1.18s），但检测仍高、类型只降一点——<strong>视觉单独仍支撑语义判断</strong>。去掉视觉：类型准确率崩到 15.02%——没有视觉上下文无法判断"物体级发生了什么失败"。结论呼应设计原则：<strong>传感器决定"何时看"，视觉-语言推理决定"什么失败了"</strong>。</p>
+
+  <h3>6.4 关键帧选择器：Sign-CPD 最优</h3>
+  <table class="tbl">
+    <tr><th class="l">选择器</th><th>Onset @0.5s</th><th>MAE↓</th><th>Type</th></tr>
+    <tr><td class="l">光学流</td><td>66.50</td><td>0.73</td><td>64.78</td></tr>
+    <tr><td class="l">连续 CPD</td><td>66.26</td><td>0.79</td><td>66.50</td></tr>
+    <tr class="ours"><td class="l">Sign-CPD（本文）</td><td class="best">71.18</td><td class="best">0.59</td><td class="best">72.91</td></tr>
+  </table>
+  <p>把 ProTracer 里的关键帧选择器换成光流/连续 CPD（其余不变）都差于 Sign-CPD。独立边界对齐实验显示：Sign-CPD 召回 69.68% 的真动作边界（0.5s 容差），光流仅 40.80%、连续 CPD 55.28%——说明<strong>原语边界由离散状态切换刻画得最好，而非视觉运动或幅度变化</strong>。</p>
+
+  <h3>6.5 对比运行时检测器：告警 ≠ 起始</h3>
+  <table class="tbl">
+    <tr><th class="l">检测器</th><th>AUROC</th><th>Onset MAE↓</th><th>Onset @0.5s</th></tr>
+    <tr><td class="l">RND-OE</td><td>0.57</td><td>5.03</td><td>0.74</td></tr>
+    <tr><td class="l">FIDeL</td><td>0.60</td><td>5.27</td><td>0.25</td></tr>
+    <tr><td class="l">RynnValue-8B</td><td>0.85</td><td>2.61</td><td>1.72</td></tr>
+    <tr><td class="l">GRU（起始监督）</td><td>0.74</td><td>2.08</td><td>18.97</td></tr>
+    <tr class="ours"><td class="l">ProTracer（零样本）</td><td>—</td><td class="best">0.59</td><td class="best">71.18</td></tr>
+  </table>
+  <p>三个无标签检测器最多 1.7% acc@0.5s（MAE 2.6–5.3s），即便用了起始标签监督的 GRU 也只有 19.0%。即便给检测器<strong>中位数偏移的 oracle 校正</strong>，起始准确率仍低于 9%。图 6 显示原因：密度检测器系统性过早、价值模型过晚，且都有 3–4s 的散布。<strong>运行时检测与起始定位回答的是不同问题</strong>——检测器在因果约束下决定何时停，起始定位从完整记录恢复"哪里出的错"。</p>
+  <figure>
+    <img src="assets/protracer_fig5_backbone.png" alt="跨 VLM 骨干泛化">
+    <figcaption>图 5：跨 VLM 骨干泛化。Dense+sensor vs ProTracer vs ProTracer+Exp 在 Gemini-3.1-pro、Qwen3.8-Max、GPT-5.6-Luna、Qwen3.8-27B 上的对比；反思记忆用 Gemini 学习并原样复用于其他骨干。</figcaption>
+  </figure>
+</section>
+
+<section id="s7">
+  <h2><span class="no">07</span>核心 Insights</h2>
+  <div class="box insight">
+    <div class="bt">1. "何时失败"和"是否失败"是两码事，前者难得多</div>
+    所有模型失败检测都超 95%，但起始定位准确率从 14% 到 77% 天差地别。检测靠结果，定位靠<strong>把细微、短暂、接触丰富的转移精确定位到时间轴</strong>——这才是失败诊断真正的硬骨头。
+  </div>
+  <div class="box insight">
+    <div class="bt">2. 本体感受提供"时间骨架"，视觉提供"语义内容"</div>
+    传感器决定<strong>何时该看</strong>（变点=动作边界），视觉-语言推理决定<strong>什么失败了</strong>。去掉传感器起始定位崩、去掉视觉类型分类崩——两者是严格互补的，缺一不可。
+  </div>
+  <div class="box insight">
+    <div class="bt">3. "怎么用信号"和"有没有信号"同样重要</div>
+    光给 VLM 塞原始本体感受 CSV 只能到 48% acc@0.5s；把信号转成<strong>变点选帧 + 结构化叙事</strong>才到 71%。VLM 不会读密集数值，但会读"夹爪 4.92s 张开 5.3cm→8.3cm"这种物理量语言。
+  </div>
+  <div class="box insight">
+    <div class="bt">4. 离散符号切换 &gt; 连续幅度变化</div>
+    Sign-CPD（只保留夹爪开度的符号 ±1/0 + 运动有无）优于光流和连续 CPD——因为<strong>原语边界是离散状态切换</strong>，丢弃幅度反而去噪、更贴近真实动作转移。
+  </div>
+  <div class="box insight">
+    <div class="bt">5. 回溯诊断 &gt; 在线检测，且零训练</div>
+    在线检测器首次告警被因果约束锁死（早报怕误报、晚报已太晚），即便 oracle 校正也救不回来；回溯分析用完整 rollout + 已知结果消歧义，<strong>零训练</strong>就做到 0.59s MAE——训练无关是它能在新本体、新任务上直接迁移的根源。
+  </div>
+</section>
+
+<section id="s8">
+  <h2><span class="no">08</span>结论与链接</h2>
+  <h3>结论</h3>
+  <p>本文把<strong>失败起始定位</strong>作为机器人操作失败诊断的新能力引入，配套发布 FailTime 基准（同步视觉 + 本体感受观测），并提出 ProTracer——训练无关的框架，把视觉与本体感受信号整合进现有 VLM 做多模态失败推理。实验在常规诊断与新任务上都表现强劲，凸显本体感受推理对精确理解机器人失败的重要性。</p>
+  <h3>论文与代码链接</h3>
+  <ul class="linklist">
+    <li>📄 论文：<code>arXiv:2609.21369</code> — <a href="https://arxiv.org/abs/2609.21369">https://arxiv.org/abs/2609.21369</a></li>
+    <li>💻 项目页（含 FailTime 数据集与代码）：<a href="https://protracer-failure.github.io">https://protracer-failure.github.io</a></li>
+    <li>🔗 相关基线：ViFailback（CVPR 2026）、KITE（ICRA 2026）</li>
+  </ul>
+</section>
+
+<div class="foot">ProTracer 论文精读笔记 · 生成于 2026-09-30 · 图表均截取自原论文</div>
+</div>
+
+</body>
+</html>

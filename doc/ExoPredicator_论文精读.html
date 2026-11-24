@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExoPredicator 论文精读</title>
+<style>
+:root{
+  --ink:#161330; --ink2:#3a3660; --muted:#77739a;
+  --accent:#4f46e5; --accent-soft:#e9e8fd;
+  --green:#0e7a4d; --green-soft:#e9f7f0;
+  --red:#b42318; --red-soft:#fdeceb;
+  --amber:#a16207; --amber-soft:#fff6e0;
+  --line:#e2e1f0; --bg:#f6f5fc; --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.85;font-size:16px;}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+.hero{background:linear-gradient(135deg,#171238 0%,#2b2360 55%,#44379a 100%);color:#fff;
+  padding:56px 24px 44px;margin-bottom:36px;}
+.hero-inner{max-width:980px;margin:0 auto;}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.tag{font-size:12.5px;padding:4px 12px;border-radius:99px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);letter-spacing:.5px;}
+.tag.hl{background:#6366f1;border-color:#6366f1;}
+.hero h1{font-size:29px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.hero .sub{font-size:16.5px;color:#ccc4f5;margin-bottom:18px;}
+.hero .meta{font-size:14px;color:#aca4dc;}
+.hero a{color:#a5b4fc;text-decoration:none;border-bottom:1px dashed rgba(165,180,252,.5);}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:6px 8px;
+  position:sticky;top:10px;z-index:50;box-shadow:0 4px 18px rgba(40,30,100,.08);}
+.toc a{font-size:13.5px;color:var(--ink2);text-decoration:none;padding:5px 12px;border-radius:8px;}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;margin-bottom:28px;}
+h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:20px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;}
+h2 .no{font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:8px;padding:2px 10px;letter-spacing:1px;flex-shrink:0;}
+h3{font-size:17.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);}
+h3::before{content:"▎";color:var(--accent);margin-right:2px;}
+p{margin-bottom:14px;color:var(--ink2);}
+strong{color:var(--ink);}
+ul,ol{margin:0 0 14px 26px;color:var(--ink2);}
+li{margin-bottom:7px;}
+.tldr{background:linear-gradient(135deg,#e9e8fd,#dedcfb);border-left:5px solid var(--accent);
+  padding:22px 26px;border-radius:0 12px 12px 0;margin-bottom:28px;font-size:16.5px;}
+.tldr b{color:var(--accent);}
+figure{margin:22px 0;text-align:center;}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 3px 14px rgba(40,30,100,.08);}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.7;padding:0 18px;}
+.box{border-radius:12px;padding:18px 22px;margin:18px 0;font-size:15.5px;}
+.box .bt{font-weight:700;margin-bottom:8px;font-size:15px;letter-spacing:.5px;}
+.box.insight{background:var(--green-soft);border:1px solid #bfe5d2;}
+.box.insight .bt{color:var(--green);}
+.box.warn{background:var(--red-soft);border:1px solid #f6c6c2;}
+.box.warn .bt{color:var(--red);}
+.box.key{background:var(--accent-soft);border:1px solid #cec9f7;}
+.box.key .bt{color:var(--accent);}
+.formula{background:#f1f0fa;border:1px dashed #c4bfec;border-radius:10px;
+  padding:14px 20px;margin:14px 0;font-family:"Times New Roman",Georgia,serif;
+  font-size:15.5px;color:var(--ink);text-align:center;overflow-x:auto;}
+.code{background:#161330;color:#dcd6f5;border-radius:10px;padding:16px 20px;
+  font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.7;
+  overflow-x:auto;margin:14px 0;white-space:pre;}
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;}
+.tbl th{background:#efedfa;color:var(--ink);font-weight:700;padding:8px 10px;
+  border:1px solid var(--line);text-align:center;}
+.tbl td{padding:7px 10px;border:1px solid var(--line);text-align:center;color:var(--ink2);}
+.tbl td.l,.tbl th.l{text-align:left;}
+.tbl tr.ours td{background:#e9e8fd;font-weight:600;color:var(--ink);}
+.tbl .best{color:var(--accent);font-weight:700;}
+.chips{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+.chip{flex:1;min-width:170px;background:#faf9fd;border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;}
+.chip .cv{font-size:22px;font-weight:800;color:var(--accent);}
+.chip .cl{font-size:13px;color:var(--muted);margin-top:2px;}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:40px;}
+code{background:#f0eefa;padding:1px 7px;border-radius:5px;font-size:13px;color:#4338ca;}
+.linklist li{margin-bottom:9px;}
+@media (max-width:700px){section{padding:24px 20px;} .hero h1{font-size:23px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag-row">
+      <span class="tag hl">因果过程</span>
+      <span class="tag">外生机制（Exogenous）</span>
+      <span class="tag">抽象世界模型</span>
+      <span class="tag">变分贝叶斯推断</span>
+      <span class="tag">arXiv 2509.26255 · 在审</span>
+    </div>
+    <h1>ExoPredicator：学习动态世界的抽象模型，用于机器人规划</h1>
+    <div class="sub">ExoPredicator: Learning Abstract Models of Dynamic Worlds for Robot Planning</div>
+    <div class="meta">Yichao Liang, Dat Nguyen, Cambridge Yang, Tianyang Li, Joshua B. Tenenbaum, Carl Edward Rasmussen, Adrian Weller, Zenna Tavares, Tom Silver, Kevin Ellis · Cambridge / Basis / Cornell / Princeton / MIT / Oxford</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="tldr">
+  <b>一句话总结：</b>世界不只会因智能体的动作而改变——<strong>外生过程</strong>（烧水、多米诺骨牌级联、风扇吹球）会在智能体动作的同时自己演化。本文提出一个抽象世界模型框架，<strong>联合学习符号状态表示 + 因果过程</strong>（既含智能体自己的动作，也含外部机制），每个因果过程建模一个<strong>带随机延迟</strong>的随机因果效应关系。用<strong>变分贝叶斯推断 + LLM 提议</strong>从少量数据学习，在 5 个仿真桌面机器人环境上实现快速规划并泛化到更多物体、更复杂目标的留出任务。
+</div>
+
+<nav class="toc">
+  <a href="#s1">① 摘要解读</a>
+  <a href="#s2">② 背景与动机</a>
+  <a href="#s3">③ 因果过程表示</a>
+  <a href="#s4">④ 学习与推断</a>
+  <a href="#s5">⑤ 实验设置</a>
+  <a href="#s6">⑥ 结果与分析</a>
+  <a href="#s7">⑦ Insights</a>
+  <a href="#s8">⑧ 链接</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="no">01</span>摘要解读</h2>
+  <p>长时程具身规划之所以难，是因为<strong>世界不只是通过智能体的动作改变</strong>：外生过程（水加热、多米诺级联）与智能体的动作<strong>并发展开</strong>。本文提出一个抽象世界模型框架，联合学习：</p>
+  <ol>
+    <li><strong>符号状态表示</strong>（谓词，Python 函数查询 VLM）；</li>
+    <li><strong>因果过程</strong>，覆盖<strong>内生动作（endogenous）</strong>与外生机制（exogenous）。</li>
+  </ol>
+  <p>每个因果过程建模一个<strong>随机因果效应关系的时间进程</strong>（带随机延迟与权重）。从有限数据经<strong>变分贝叶斯推断 + LLM 提议</strong>学习。在 5 个仿真桌面机器人环境上，学到的模型实现快速规划、泛化到更多物体与更复杂目标的留出任务，超越一系列基线。</p>
+  <div class="chips">
+    <div class="chip"><div class="cv">内生 + 外生</div><div class="cl">同时建模智能体动作与外部因果机制</div></div>
+    <div class="chip"><div class="cv">⟨C,O,E,W,p<sub>delay</sub>⟩</div><div class="cl">因果过程 schema：条件+效应+权重+随机延迟</div></div>
+    <div class="chip"><div class="cv">5 域</div><div class="cl">Coffee / Grow / Boil / Domino / Fan</div></div>
+    <div class="chip"><div class="cv">9 方法</div><div class="cl">对比 HRL / VLM / STRIPS / 消融</div></div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span>研究背景与动机（Introduction）</h2>
+  <h3>外生过程：被忽视的"另一半故事"</h3>
+  <p>要思考行为的未来后果，智能体是否需要逐像素、逐帧仿真世界？抽象世界模型主张保留决策所需信息、隐藏无关细节。但近期学习抽象世界模型的工作<strong>假设世界只通过直接的、瞬时动作改变</strong>。现实中动作并非瞬时，且只是"一半的故事"：<strong>外部世界有自己的因果机制，与我们的动作并发连续演化</strong>。例如烧水：打开水壶后，水温持续上升、最终沸腾——<strong>与智能体后续动作无关</strong>。</p>
+  <div class="box key">
+    <div class="bt">关键区分：抽象"时间的粒度"≠抽象"自己的动作"</div>
+    好的抽象世界模型不仅要抽象状态，还要抽象<strong>时间粒度</strong>：决策者应知道"打开水壶会触发另一机制、最终导致沸腾"，而无需推理水温的精确时间进程（机器人可以边等水开边切菜）。这与 options/skills/高层动作<strong>概念上分离</strong>——后者抽象的是<strong>自己动作</strong>的时间进程，而非外部世界因果过程的时间进程。
+  </div>
+  <h3>PDDL 的局限</h3>
+  <p>沿用数十年的标准规划表示 PDDL 也做不到：它<strong>只建模自己动作的效应，且把每个动作视为瞬时</strong>。学习符号 PDDL 规划模型会随<strong>时间粒度</strong>组合爆炸；VLM/VLA 原则上能推理外部机制，但对新颖情形（尤其时序物理约束）泛化差。</p>
+  <figure>
+    <img src="assets/exo_fig1_dynamic.png" alt="动态环境的内生与外生过程">
+    <figcaption>图 1：动态环境同时包含内生过程（智能体直接控制的动作，如打开水龙头）与外生过程（自行演化的机制，如水壶注水）。规划需同时推理两类过程。</figcaption>
+  </figure>
+  <h3>四大贡献</h3>
+  <ol>
+    <li>一种<strong>符号且可学习</strong>的抽象世界模型表示，适用于带时序动态与外部因果过程的环境；</li>
+    <li>一个<strong>利用基础模型常识</strong>的状态抽象学习器；</li>
+    <li>一个<strong>高效贝叶斯推断方法</strong>，学习因果模型的参数与结构；</li>
+    <li>一个<strong>快速规划器</strong>，用该表示做推理。</li>
+  </ol>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span>抽象状态、时间与因果过程</h2>
+  <figure>
+    <img src="assets/exo_fig2_abstraction.png" alt="状态抽象与因果过程">
+    <figcaption>图 2：原始输入经谓词映射到状态抽象（检测二元特征的短 Python 程序）；抽象状态的时序动态由因果过程支配——内生过程（动作）或外生过程（外部世界）。原因经延迟后才实现效应、且可交错。学习因果过程使规划能把逐帧动态分解为抽象状态间的离散跳跃。</figcaption>
+  </figure>
+
+  <h3>3.1 用谓词做状态抽象</h3>
+  <p>谓词 ψ 是状态的布尔特征，表示为<strong>查询 VLM 检查机器人视觉输入的 Python 函数</strong>。谓词集 Ψ 诱导抽象状态 s = 所有成立的"谓词-物体"组合（ground atoms）。</p>
+
+  <h3>3.2 因果过程：非形式直觉</h3>
+  <p>因果过程粗略建模一个"原因-效应"关系。如打开桶上方的水龙头，触发一串因果效应：塞子打开→隐藏管道注水→桶内水位上升→最终桶满。对决策而言，许多细节无关，因果过程用"某些条件（原因）稍后导致另一些条件（效应）"来抽象掉它们。</p>
+
+  <h3>3.3 因果过程：形式化 schema</h3>
+  <p>每个因果过程 L 由元组定义：</p>
+  <div class="formula">L = ⟨PAR, C, O, E, W, p<sub>delay</sub>⟩</div>
+  <ul>
+    <li><strong>PAR</strong>：类型化变量表（参数）；</li>
+    <li><strong>C（condition at start）</strong>：过程激活必须为真的原子集；</li>
+    <li><strong>O（condition overall）</strong>：过程全程必须保持为真的原子集；</li>
+    <li><strong>E（effect）</strong>：完成时的状态变化（add 集 + delete 集）；</li>
+    <li><strong>W（weight）</strong>：条件满足时效应发生的可能性；</li>
+    <li><strong>p<sub>delay</sub></strong>：激活到效应之间延迟的概率分布。</li>
+  </ul>
+  <p>内生过程额外包含一个技能 c∈C。示例：内生过程 SwitchBurnerOn（参数 ?robot、?burner），条件 C 要求炉子关着、机器手空闲，执行后效应 E（炉子开）经 p_delay 采样的延迟发生。</p>
+
+  <h3>3.4 概率语义</h3>
+  <p>因果过程定义抽象状态如何随时间演化的概率生成模型。每个 ground 过程 L 对抽象状态各特征施加一个势能（effect potential）E<sup>j</sup><sub>L</sub>，配合<strong>框架公理势能</strong> F（鼓励状态随时间保持不变，W_F 可学习）。因为因果过程有随机延迟，每个 ground 过程关联随机变量 Δ<sup>L</sup><sub>t</sub>（若在时刻 t 触发，则延迟采样自 p_delay）。状态与延迟的联合分布为逐时刻条件分布的乘积。</p>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span>学习与推断：变分贝叶斯 + LLM 提议</h2>
+  <h3>4.1 学习什么</h3>
+  <ul>
+    <li><strong>状态抽象</strong>：合成检测二元特征的谓词程序（沿用 VisualPredicator 的谓词学习方法论，但为外生动态扩展）；</li>
+    <li><strong>因果过程的结构与参数</strong>：每个过程的 schema（条件/效应/权重/延迟分布）。</li>
+  </ul>
+  <h3>4.2 变分贝叶斯推断</h3>
+  <p>学习因果过程参数与结构时，用<strong>变分贝叶斯推断</strong>从少量轨迹数据估计后验。关键是：</p>
+  <ul>
+    <li>搜索空间随候选条件组合爆炸（有时达 2<sup>50</sup> 量级），穷举不可行；</li>
+    <li>因此用 <strong>LLM 提议候选条件</strong>（利用基础模型的常识缩小搜索），再<strong>用贝叶斯后验评分</strong>选出最优结构。</li>
+  </ul>
+  <div class="box key">
+    <div class="bt">为什么"贝叶斯 + LLM"缺一不可</div>
+    只有 LLM 提议、没有贝叶斯选择 → 完全依赖 LLM 先验，遇到罕见/未见的环境动态就不可靠（No Bayes 消融失败）；只有贝叶斯、没有 LLM 引导 → 搜索空间巨大到无法评分所有候选条件（No LLM 消融失败）。两者结合：<strong>LLM 负责缩小结构搜索空间，贝叶斯后验负责用数据做可靠选择</strong>。
+  </div>
+  <h3>4.3 快速规划器</h3>
+  <p>学到抽象世界模型后，规划器把逐帧动态分解为抽象状态间的离散跳跃，用事件队列模拟因果过程的延迟与交错，做前瞻规划。</p>
+</section>
+
+<section id="s5">
+  <h2><span class="no">05</span>实验设置</h2>
+  <h3>实验平台（5 个 PyBullet 桌面环境）</h3>
+  <table class="tbl">
+    <tr><th class="l">环境</th><th class="l">任务与外生过程</th><th class="l">技能</th></tr>
+    <tr><td class="l">Coffee</td><td class="l">填满杯子（煮咖啡、倒咖啡都是外生过程）</td><td class="l">Pick / Place / Push / Pour</td></tr>
+    <tr><td class="l">Grow</td><td class="l">给花盆浇水（同色壶浇水才会长）</td><td class="l">Pick / Place / Pour</td></tr>
+    <tr><td class="l">Boil</td><td class="l">烧水（水龙头开着、下方无壶或壶已满会溢出——外生过程）</td><td class="l">Pick / Place / Switch On/Off</td></tr>
+    <tr><td class="l">Domino</td><td class="l">推倒指定多米诺（级联是外生过程，含"不可能任务"）</td><td class="l">Pick / Place / Push</td></tr>
+    <tr><td class="l">Fan</td><td class="l">控制风扇把球吹到目标（风吹球是外生过程）</td><td class="l">Switch On/Off</td></tr>
+  </table>
+  <figure>
+    <img src="assets/exo_fig4_envs.png" alt="5 个环境">
+    <figcaption>图 4：环境。上排训练任务示例，下排评估任务示例。</figcaption>
+  </figure>
+  <h3>评估协议与指标</h3>
+  <ul>
+    <li>3 个随机种子，每种子用 1–2 个训练任务（各含 1 条示范），在 <strong>50 个留出测试任务</strong>（物体更多、目标更复杂）上评估；</li>
+    <li>每次在线学习迭代做 8 次 rollout，每次最多 300 步；</li>
+    <li>指标：<strong>solve rate（解决率）</strong>。</li>
+  </ul>
+  <h3>对比方法（9 种）</h3>
+  <table class="tbl">
+    <tr><th class="l">方法</th><th class="l">说明</th></tr>
+    <tr><td class="l">Manual</td><td class="l">手工设计谓词 + 过程的规划智能体（上界参考）</td></tr>
+    <tr class="ours"><td class="l">Ours（ExoPredicator）</td><td class="l">本文方法</td></tr>
+    <tr><td class="l">MAPLE</td><td class="l">HRL：学动作价值函数选控制器，不显式学世界模型/前瞻（1000 训练任务、10000 次交互）</td></tr>
+    <tr><td class="l">ViLa（zs / fs）</td><td class="l">VLM 规划：prompt Gemini-2.5-Pro 规划技能序列（零样本/少样本）</td></tr>
+    <tr><td class="l">VisPred（VisualPredicator）</td><td class="l">在线 STRIPS 式操作学习 + 规划（对比因果过程 vs 传统 STRIPS 表示）</td></tr>
+    <tr><td class="l">No Bayes</td><td class="l">消融：只用 LLM 学过程、无贝叶斯模型选择</td></tr>
+    <tr><td class="l">No LLM</td><td class="l">消融：用快速启发式替代 LLM 条件提议（谓词提议仍用 LLM）</td></tr>
+    <tr><td class="l">Manual-d</td><td class="l">消融：Manual 抽象但所有过程统一延迟参数（如 1）</td></tr>
+    <tr><td class="l">No invent</td><td class="l">消融：只用初始抽象、不做任何学习</td></tr>
+  </table>
+</section>
+
+<section id="s6">
+  <h2><span class="no">06</span>实验结果与分析</h2>
+  <figure>
+    <img src="assets/exo_fig5_traj.png" alt="成功轨迹">
+    <figcaption>图 5：ExoPredicator 在 Domino（上）与 Fan（下）环境的成功轨迹。代码高亮学到的关键外生过程——多米诺如何级联、风扇的风如何推动球。这些过程融入了智能体发明的谓词（如 NOT-IsImmovable、FanFaces）。</figcaption>
+  </figure>
+  <figure>
+    <img src="assets/exo_fig6_results.png" alt="解决率与学习曲线">
+    <figcaption>图 6：(a) 各智能体在不同域的解决率（↑）；(b) 在线学习智能体的学习曲线。</figcaption>
+  </figure>
+
+  <h3>6.1 Q1：全面超越 HRL / VLM / STRIPS 基线</h3>
+  <ul>
+    <li>本方法在各域一致超越 ViLa、MAPLE、VisPred，达到接近满分；</li>
+    <li>每个环境学到 <strong>1–4 个外生过程</strong>，最多 <strong>3 次在线交互迭代</strong>即收敛；</li>
+    <li>MAPLE 即便 1000 倍交互量、只在训练分布内评估也难达高水平（稀疏奖励探索难题）；</li>
+    <li>ViLa 零样本在所有域都差；少样本只在简单域尚可（满足计划与示范相似时，如 Coffee 只需多做几次 Pour 和 NoOp），一旦需试错发现规则（Grow 的颜色匹配）或组合泛化就显著退化；</li>
+    <li>VisPred 在<strong>高度受限的模型空间</strong>里学习：它试图把外生过程学成 NoOp 技能的不同操作符，但过强的归纳偏置（先决条件只含效应/选项里已出现变量的原子）限制了它，尤其 NoOp 只有 "robot" 一个变量；且它<strong>不学不同过程的不同延迟</strong>（对 Boil 的高效规划至关重要）。</li>
+  </ul>
+
+  <h3>6.2 Q2：达到或超过手工抽象</h3>
+  <p>本方法在 Coffee 与 Fan 上与 Manual 持平，在 Grow 与 Domino 上更好——归功于<strong>变分推断学到的参数</strong>（而非手工调参）。No invent 与 Manual-d 接近零性能，凸显模型学习与参数学习的重要性（如 Domino 里对动力学与延迟的不完全知识导致它们把多数任务误判为不可解）。</p>
+
+  <h3>6.3 Q3：贝叶斯与 LLM 都不可或缺</h3>
+  <p>贝叶斯模型学习与 LLM 引导对高效、有效、鲁棒的结构学习都至关重要。无 LLM 引导时，每个过程的搜索空间大到天文数字（有时 2<sup>50</sup>），无法评分所有候选条件；不计算数据与模型的贝叶斯后验，选择就完全依赖 LLM 先验，遇到罕见或未见动态就不可靠。</p>
+
+  <h3>6.4 一个诚实的失败案例</h3>
+  <p>ExoPredicator 在 Boil 上无法解决全部任务，部分原因是<strong>没识别出溢出的完整条件</strong>：它学到了"水龙头下方无壶时溢水"的过程，但没学到"下方壶已满时也溢水"的过程。</p>
+</section>
+
+<section id="s7">
+  <h2><span class="no">07</span>核心 Insights</h2>
+  <div class="box insight">
+    <div class="bt">1. 抽象"时间粒度"与抽象"自己的动作"是两回事</div>
+    options/skills 只抽象自己动作的时间进程；外生过程（烧水、级联、吹风）需要<strong>另一类抽象</strong>——把"触发条件 → 延迟 → 效应"整个因果链压缩成一个带随机延迟的过程。这是 PDDL/STRIPS 无法表达、也是本工作的核心增量。
+  </div>
+  <div class="box insight">
+    <div class="bt">2. 随机延迟对高效规划至关重要</div>
+    不同的外生过程有不同的延迟分布（烧水慢、多米诺快）。不学延迟（VisPred、Manual-d）就会规划出错——如 Boil 里需要精确判断"何时壶会满/会溢出"来安排动作。
+  </div>
+  <div class="box insight">
+    <div class="bt">3. "LLM 提议 + 贝叶斯选择"是处理组合爆炸的通用配方</div>
+    结构搜索空间可达 2^50，纯枚举不可行；纯 LLM 又不可靠。LLM 用常识缩小候选、贝叶斯后验用数据做可靠评分——两者分工，各自补足对方短板。
+  </div>
+  <div class="box insight">
+    <div class="bt">4. 归纳偏置太强会"塞死"学习</div>
+    VisPred 的 STRIPS 偏置（先决条件只能引用已出现变量）让它无法把外生过程编码进 NoOp——<strong>表示能力不足时，学什么算法都白搭</strong>。放宽表示（允许因果过程的独立 schema）是性能跃升的根因。
+  </div>
+  <div class="box insight">
+    <div class="bt">5. 端到端神经网络在稀疏奖励 + 长时程前仍显乏力</div>
+    MAPLE 用 1000 倍交互仍难成功，凸显<strong>显式世界模型 + 前瞻规划</strong>在样本效率上的优势——学到 1–4 个正确因果过程，比从原始奖励里学整个动力学高效得多。
+  </div>
+</section>
+
+<section id="s8">
+  <h2><span class="no">08</span>论文与代码链接</h2>
+  <ul class="linklist">
+    <li>📄 论文（在审）：<code>arXiv:2509.26255</code> — <a href="https://arxiv.org/abs/2509.26255">https://arxiv.org/abs/2509.26255</a></li>
+    <li>💻 <strong>官方代码</strong>：<a href="https://github.com/BasisResearch/predicators/releases/tag/ExoPredicator">github.com/BasisResearch/predicators/releases/tag/ExoPredicator</a></li>
+    <li>🔗 前作 VisualPredicator（ICLR 2025）：<code>arXiv:2410.23156</code>（同一 predicators 代码库）</li>
+  </ul>
+</section>
+
+<div class="foot">ExoPredicator 论文精读笔记 · 生成于 2026-09-27 · 图表均截取自原论文</div>
+</div>
+
+</body>
+</html>

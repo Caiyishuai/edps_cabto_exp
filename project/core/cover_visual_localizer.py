@@ -13,7 +13,7 @@ from core.cover_cabto_api import Perception, intersect_plane
 from core.cover_cabto_grounding import save
 
 CAMERA = {"name": "front", "position": [.47,0.,1.5], "quat": [1.,0.,0.,0.], "fovy":45.}
-DESCRIPTIONS = {"shrimp":"the orange shrimp", "apple":"the red apple", "potato":"the blue potato",
+DESCRIPTIONS = {"shrimp":"the orange shrimp", "apple":"the red apple", "pepper":"the green pepper",
                 "bowl":"the center of the white bowl interior", "board":"the center of the wooden chopping board",
                 "pan":"the center of the round black pan interior, excluding its handle"}
 
@@ -40,7 +40,7 @@ def refine_rgb(image, coarse_uv, name):
     elif name=="pan":mask=(sat<65)&(val<67)
     elif name=="apple":mask=((hue<10)|(hue>170))&(sat>95)&(val>45)
     elif name=="board":mask=(hue>12)&(hue<42)&(sat>40)&(val>90)
-    elif name=="potato":mask=(hue>90)&(hue<135)&(sat>85)&(val>55)
+    elif name=="pepper":mask=(hue>38)&(hue<95)&(sat>85)&(val>55)
     elif name=="shrimp":mask=(hue<42)&(sat>65)&(val>110)
     else:raise ValueError("Unknown semantic color prior")
     mask=mask.astype(np.uint8)
